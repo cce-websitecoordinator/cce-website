@@ -1,0 +1,85 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock title %} | CCE</title>
+  {% tailwind_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
+  
+  {% block head %}{% endblock head %}
+</head>
+
+<body class="overflow-x-hidden">
+  <header>
+    <nav class="p-2 flex  bg-[#205072] shadow-lg w-[100vw] justify-between text-white topbar text-sm z-[10]">
+      <div class="">
+        <i class="fa-solid fa-phone mr-1"></i> <span>Office</span> 
+      </div>
+      <div class="space-x-1 ">
+        <a href="/">Research</a>
+        <a href="/about">Aluminae</a>
+        <a href="/">KTU Examinations</a>
+        <a href="/">Admission</a>
+        <a href="/">Cells</a>
+        <a href="/">Conferances</a>
+        <a href="/">NIRF</a>
+        <a href="/">IQAF</a>
+        <a href="/">Techletics</a>
+      </div>
+    </nav>
+    <nav class="absolute navbar w-[100vw] flex  justify-center items-center z-[999]">
+      <div class="flex justify-between items-center w-[80%]">
+      <div class="">
+        <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
+      </div>
+      {% with request.resolver_match.url_name as url_name %}
+      <div class="space-x-6  text-base relative  text-white">
+        <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
+        <a href="/" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
+        <a href="/" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
+        <a href="/" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
+        <a href="/" class="{% if url_name == 'about' %}active{% endif %}">About</a>
+        <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
+        <a href="/" class=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        
+      </div>
+      {% endwith %}
+    </div>
+    </nav>
+  </header>
+ 
+  {% block body %} {% endblock body %}
+</body>
+{% block script %}{% endblock script %}
+<script>
+  window.addEventListener("load", function () {
+    const topbar = document.querySelector(".topbar");
+    const navbar = document.querySelector(".navbar");
+  
+    const navbarHeight = navbar.getBoundingClientRect().height;
+    window.addEventListener("scroll", function () {
+
+      if (window.scrollY > navbarHeight) {
+        navbar.classList.add("fixed-nav");
+      
+
+
+      } else {
+        navbar.classList.remove("fixed-nav");
+        navbar.style.top = topbar.getBoundingClientRect().height + 20 + "px";
+      }
+    });
+  });
+</script>
+</html>

@@ -1,0 +1,27 @@
+.emphasis_animation {
+  animation: emphasis;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.home_bg {
+  background: url("../images/home-bg.png") center no-repeat border-box;
+
+
+}
+
+@keyframes emphasis {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+    background: #000 !important;
+  }
+
+  50% {
+    transform: translateY(-10px);
+
+  }
+
+}

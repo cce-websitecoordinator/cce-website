@@ -1,0 +1,42 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+
+.active {
+
+  font-size: 16px !important;
+  font-weight: 900;
+  background-color: #007FFF;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.fixed-nav {
+  position: fixed !important;
+  top: 0 !important;
+  background: #007FFF;
+  transition: top 1s;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  display: none;
+
+  background-color: #307ac593;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #007fff;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #205072;
+}

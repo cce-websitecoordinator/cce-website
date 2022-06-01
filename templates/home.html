@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
+<link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
+{% endblock head %} {% block body %}
+<section class="home_section relative">
+  <div class="w-[100vw] h-[100vh] overflow-clip home_bg">
+   
+  </div>
+  <div class="absolute top-0 left-0 w-[100vw] h-[100vh]  bg-[#11111d8c] img-overlay"></div>
+  <div class="absolute bottom-[20vh] right-0 pl-5 pr-5 pt-2 pb-2 rounded-tl-sm rounded-bl-sm bg-[#007FFF] text-white">
+    <i class="fa-solid fa-play"></i>
+    <span class="mr-2">Play Video</span>
+  </div>
+  <div class="absolute  w-[100vw] h-[100vh] top-0 flex justify-center items-stretch ">
+    <div class="w-full p-[15vw] text-white z-50 text-5xl flex flex-col justify-center items-start ">
+
+      <p class=" font-extralight">The</p>
+      <p class="font-black">Most Preferred</p>
+      <p class=" font-extralight">private self-financing</p>
+      <p class=" font-extralight">Engineering college</p>
+    </div>
+  </div>
+</section>
+<div class="absolute bottom-3 emphasis_animation w-full flex items-center justify-center">
+  <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+  <i class="fa-duotone fa-chevrons-down"></i>
+</div>
+
+<section class="w-[100vw] h-[10vh] ">
+  <div>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, adipisci.
+  </div>
+</section>
+
+<footer class="w-[100vw] h-[30vh] bg-[#252929] bottom-0">
+  <div class="pl-[10vw] p-8">
+    <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[200px]" />
+  </div>
+  <div class="w-full h-auto flex justify-center items-center absolute flex-col">
+    <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>
+    <p class="text-[#F5FAFA] text-xs mt-2">
+      Copyright © 2022 Christ College of Engineering
+    </p>
+  </div>
+</footer>
+
+
+{% endblock body %}
+
+{% block script %}
+<script>
+  const topbar = document.querySelector('.topbar');
+  const img-overlay = document.querySelector('.img-overlay');
+  img - overlay.style.bottom = topbar.getBoundingClientRect().height + "px";
+  console.log(topbar.getBoundingClientRect().height);
+
+</script>
+{% endblock script %}
