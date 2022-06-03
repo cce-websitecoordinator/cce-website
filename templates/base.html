@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
-  
+
   {% block head %}{% endblock head %}
 </head>
 
@@ -24,7 +24,7 @@
   <header>
     <nav class="p-2 flex  bg-[#205072] shadow-lg w-[100vw] justify-between text-white topbar text-sm z-[10]">
       <div class="">
-        <i class="fa-solid fa-phone mr-1"></i> <span>Office</span> 
+        <i class="fa-solid fa-phone mr-1"></i> <span>Office</span>
       </div>
       <div class="space-x-1 ">
         <a href="/">Research</a>
@@ -40,41 +40,59 @@
     </nav>
     <nav class="absolute navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
-      <div class="">
-        <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
+        <div class="">
+          <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
+        </div>
+        {% with request.resolver_match.url_name as url_name %}
+        <div class="space-x-6  text-base relative  text-white flex">
+          <div>
+            <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
+          </div>
+          <div>
+            <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
+          </div>
+          <div>
+            <a href="/departments" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
+          </div>
+          <div>
+            <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
+          </div>
+          <div>
+            <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
+          </div>
+
+          <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
+          <a href="/" class=""><i class="fa-solid fa-magnifying-glass"></i></a>
+
+        </div>
+        {% endwith %}
       </div>
-      {% with request.resolver_match.url_name as url_name %}
-      <div class="space-x-6  text-base relative  text-white">
-        <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
-        <a href="/" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
-        <a href="/" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
-        <a href="/" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
-        <a href="/" class="{% if url_name == 'about' %}active{% endif %}">About</a>
-        <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
-        <a href="/" class=""><i class="fa-solid fa-magnifying-glass"></i></a>
-        
-      </div>
-      {% endwith %}
-    </div>
     </nav>
   </header>
- 
+
   {% block body %} {% endblock body %}
 </body>
+<footer class="w-[100vw] h-[30vh] bg-[#252929] bottom-0">
+  <div class="pl-[10vw] p-8">
+    <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[200px]" />
+  </div>
+  <div class="w-full h-auto flex justify-center items-center absolute flex-col">
+    <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>
+    <p class="text-[#F5FAFA] text-xs mt-2">
+      Copyright © 2022 Christ College of Engineering
+    </p>
+  </div>
+</footer>
 {% block script %}{% endblock script %}
+
 <script>
   window.addEventListener("load", function () {
     const topbar = document.querySelector(".topbar");
     const navbar = document.querySelector(".navbar");
-  
     const navbarHeight = navbar.getBoundingClientRect().height;
     window.addEventListener("scroll", function () {
-
       if (window.scrollY > navbarHeight) {
         navbar.classList.add("fixed-nav");
-      
-
-
       } else {
         navbar.classList.remove("fixed-nav");
         navbar.style.top = topbar.getBoundingClientRect().height + 20 + "px";
@@ -82,4 +100,5 @@
     });
   });
 </script>
+
 </html>

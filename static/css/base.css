@@ -6,8 +6,18 @@ body {
 
 }
 
-.active {
+.cents {
+  background-color: black;
+  height: 200vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 7em;
+}
 
+.active {
   font-size: 16px !important;
   font-weight: 900;
   background-color: #007FFF;

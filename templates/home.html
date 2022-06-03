@@ -20,38 +20,69 @@
     </div>
   </div>
 </section>
+
+
 <div class="absolute bottom-3 emphasis_animation w-full flex items-center justify-center">
   <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
   <i class="fa-duotone fa-chevrons-down"></i>
 </div>
 
-<section class="w-[100vw] h-[10vh] ">
+
+<section class="w-[100vw] h-[30vh] bg-[#F9F9F9] flex items-center justify-center "id="counterSection">
+  <div class="w-[80%] flex items-center justify-between">
+  <div class="flex-col justify-center flex items-center">
+    <h1 class="text-5xl" id="2">1000+</h1>
+    <p class="text-xl text-[#007FFF]"> students</p>
+  </div>
+  <div>balh</div>
+  <div>blah</div>
+
+  </div>
+</section>
+
+<section class="w-[100vw] h-[10vh]  ">
   <div>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, adipisci.
   </div>
 </section>
 
-<footer class="w-[100vw] h-[30vh] bg-[#252929] bottom-0">
-  <div class="pl-[10vw] p-8">
-    <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[200px]" />
-  </div>
-  <div class="w-full h-auto flex justify-center items-center absolute flex-col">
-    <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>
-    <p class="text-[#F5FAFA] text-xs mt-2">
-      Copyright © 2022 Christ College of Engineering
-    </p>
-  </div>
-</footer>
+
 
 
 {% endblock body %}
 
 {% block script %}
+
+{% comment %} adding script for waypoint js used in number incrementer {% endcomment %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js" integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   const topbar = document.querySelector('.topbar');
-  const img-overlay = document.querySelector('.img-overlay');
-  img - overlay.style.bottom = topbar.getBoundingClientRect().height + "px";
+  const img_overlay = document.querySelector('.img-overlay');
+  img_overlay.style.bottom = topbar.getBoundingClientRect().height + "px";
   console.log(topbar.getBoundingClientRect().height);
+
+  const counterSection = document.querySelector('#counterSection');
+  var bodyRect = document.body.getBoundingClientRect(),
+    elemRect = counterSection.getBoundingClientRect(),
+    offset   = elemRect.top - bodyRect.top;
+    console.log(elemRect,scrollY)
+
+    if(offset==window.scrollTop){
+      console.log("hello")
+    }
+
+  function increment(elem, finalVal) {
+    var currVal = parseInt(document.getElementById(elem).innerHTML, 10);
+    if (currVal < finalVal) {
+      currVal++;
+      document.getElementById(elem).innerHTML = currVal + "+";
+  
+      setTimeout(function () {
+        increment(elem, finalVal);
+      }, 40);
+    }
+  }
+  
 
 </script>
 {% endblock script %}
