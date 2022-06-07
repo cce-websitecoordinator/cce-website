@@ -7,8 +7,8 @@ body {
 }
 
 .cents {
-  background-color: black;
-  height: 200vh;
+  background-color: rgb(183, 37, 37);
+  height: 100vh !important;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -31,6 +31,27 @@ body {
   background: #007FFF;
   transition: top 1s;
 }
+
+.search_active {
+  display: block !important;
+  animation: search-bar-animation 2s linear ease-in;
+}
+
+@keyframes search-bar-animation {
+  0% {
+    width: 0;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    width: 100%;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
 

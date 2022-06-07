@@ -3,13 +3,9 @@
 {% endblock head %} {% block body %}
 <section class="home_section relative">
   <div class="w-[100vw] h-[100vh] overflow-clip home_bg">
-   
+
   </div>
   <div class="absolute top-0 left-0 w-[100vw] h-[100vh]  bg-[#11111d8c] img-overlay"></div>
-  <div class="absolute bottom-[20vh] right-0 pl-5 pr-5 pt-2 pb-2 rounded-tl-sm rounded-bl-sm bg-[#007FFF] text-white">
-    <i class="fa-solid fa-play"></i>
-    <span class="mr-2">Play Video</span>
-  </div>
   <div class="absolute  w-[100vw] h-[100vh] top-0 flex justify-center items-stretch ">
     <div class="w-full p-[15vw] text-white z-50 text-5xl flex flex-col justify-center items-start ">
 
@@ -22,29 +18,40 @@
 </section>
 
 
-<div class="absolute bottom-3 emphasis_animation w-full flex items-center justify-center">
+<div class="absolute bottom-3 animate-bounce w w-full flex items-center justify-center">
   <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
   <i class="fa-duotone fa-chevrons-down"></i>
 </div>
 
+<section class="w-[100vw] h-[10vh] flex justify-center items-center ">
+  <div class="w-[80%]">
+    <div class="flex items-center justify-between">
+      <h1 class="font-black text-4xl">Happenings</h1>
+      <a href="/gallery" class="bg-[#007FFF] p-2 pl-4 pr-4 rounded-md font-bold text-white">Explore More</a>
+    </div>
 
-<section class="w-[100vw] h-[30vh] bg-[#F9F9F9] flex items-center justify-center "id="counterSection">
+  </div>
+</section>
+
+<section class="w-[100vw] h-[30vh] bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
   <div class="w-[80%] flex items-center justify-between">
-  <div class="flex-col justify-center flex items-center">
-    <h1 class="text-5xl" id="2">1000+</h1>
-    <p class="text-xl text-[#007FFF]"> students</p>
-  </div>
-  <div>balh</div>
-  <div>blah</div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="students_counter">0</h1>
+      <p class="text-xl text-[#007FFF]">STUDENTS</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="faculty_counter">0</h1>
+      <p class="text-xl text-[#007FFF]"> FACULTY</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="staff_counter">0</h1>
+      <p class="text-xl text-[#007FFF]"> STAFFS</p>
+    </div>
 
   </div>
 </section>
 
-<section class="w-[100vw] h-[10vh]  ">
-  <div>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, adipisci.
-  </div>
-</section>
+
 
 
 
@@ -53,36 +60,52 @@
 
 {% block script %}
 
-{% comment %} adding script for waypoint js used in number incrementer {% endcomment %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js" integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   const topbar = document.querySelector('.topbar');
   const img_overlay = document.querySelector('.img-overlay');
   img_overlay.style.bottom = topbar.getBoundingClientRect().height + "px";
-  console.log(topbar.getBoundingClientRect().height);
+  const counterSection = document.getElementById('counterSection');
+  const counterStudents = document.getElementById('students_counter');
+  const counterFaculty = document.getElementById('faculty_counter');
+  const counterStaff = document.getElementById('staff_counter');
 
-  const counterSection = document.querySelector('#counterSection');
-  var bodyRect = document.body.getBoundingClientRect(),
-    elemRect = counterSection.getBoundingClientRect(),
-    offset   = elemRect.top - bodyRect.top;
-    console.log(elemRect,scrollY)
 
-    if(offset==window.scrollTop){
-      console.log("hello")
+  function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    console.log(rect.height);
+    return {
+      height: rect.height,
+      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY
+    };
+  }
+
+  window.addEventListener('scroll', () => {
+    console.log();
+    if ((window.scrollY + getOffset(counterSection).height) >= getOffset(counterSection).top) {
+      increment(counterStudents, 1000, 10)
+      increment(counterFaculty, 70, 200)
+      increment(counterStaff, 60, 500)
+
     }
+  })
+  console.log(getOffset(counterSection).top, counterSection.offsetHeight);
 
-  function increment(elem, finalVal) {
-    var currVal = parseInt(document.getElementById(elem).innerHTML, 10);
-    if (currVal < finalVal) {
-      currVal++;
-      document.getElementById(elem).innerHTML = currVal + "+";
-  
-      setTimeout(function () {
-        increment(elem, finalVal);
-      }, 40);
+
+  function increment(element, finalValue, time) {
+    const count = parseInt(element.innerHTML);
+    if (count < finalValue) {
+      element.innerHTML = count + 1 + "+";
+      setTimeout(() => {
+        increment(element, finalValue);
+      }, time);
+    }
+    else if (count > finalValue) {
+      element.innerHTML = finalValue + "+";
     }
   }
-  
+
+
 
 </script>
 {% endblock script %}

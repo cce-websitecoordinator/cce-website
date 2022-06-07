@@ -44,39 +44,76 @@
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
         </div>
         {% with request.resolver_match.url_name as url_name %}
-        <div class="space-x-6  text-base relative  text-white flex">
-          <div>
-            <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
-          </div>
-          <div>
-            <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
-          </div>
-          <div>
-            <a href="/departments" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
-          </div>
-          <div>
-            <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
-          </div>
-          <div>
-            <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
-          </div>
+        <div>
+          <div class="space-x-6  text-base relative  text-white flex ">
+            <div>
+              <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
+            </div>
+            <div>
+              <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
+            </div>
+            <div>
+              <a href="/departments" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
+            </div>
+            <div>
+              <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
+            </div>
+            <div>
+              <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
+            </div>
 
-          <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
-          <a href="/" class=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
+            <button id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
 
+          </div>
+          {% endwith %}
+          <div class=" w-full h-[40px] hidden" id="search_container">
+            <input type="search" name="" id="" class="w-full mt-6 rounded-xl border-2 border-[#6baad7]">
+          </div>
         </div>
-        {% endwith %}
       </div>
     </nav>
   </header>
 
   {% block body %} {% endblock body %}
 </body>
-<footer class="w-[100vw] h-[30vh] bg-[#252929] bottom-0">
-  <div class="pl-[10vw] p-8">
-    <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[200px]" />
+<footer class="w-[100vw]  bg-[#252929] h-auto relative">
+  <div class="p-5 w-full flex justify-center items-center flex-col">
+    <div class="w-[90%] p-5 flex space-x-7 justify-center">
+      <div class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center">
+        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
+
+          <i class="fa-solid fa-location-dot fa-2x"></i>
+        </div>
+        <div class="text w-[90%] text-center text-white font-medium mt-2">Christ College of Engineering,
+          Irinjalakuda, Thrissur,
+          Kerala - 680125</div>
+      </div>
+      <div class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center">
+        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex  justify-center items-center">
+          <i class="fa-solid fa-phone fa-2x"></i>
+
+        </div>
+        <div class="text w-[90%] text-center text-white font-medium mt-2">Office
+          0480 <br> 2825355</div>
+      </div>
+
+      <div class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center">
+        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
+
+          <i class="fa-solid fa-envelope fa-2x"></i>
+
+        </div>
+        <div class="text w-[90%] text-center text-white font-medium mt-2">contact@cce.edu.in</div>
+      </div>
+    </div>
   </div>
-  <div class="w-full h-auto flex justify-center items-center absolute flex-col">
+  <div class=" flex justify-center items-center ">
+    <div class="flex justify-center-items-center w-[90%] rounded-lg">
+      <img src="{%  static  'images/footerMap.png'  %}" alt="logo" class="md:w-[80vw] h-[20vh] rounded-lg">
+    </div>
+  </div>
+  <div class="w-full h-auto flex justify-center items-center absolute flex-col bottom-0 ">
     <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>
     <p class="text-[#F5FAFA] text-xs mt-2">
       Copyright © 2022 Christ College of Engineering
@@ -87,6 +124,11 @@
 
 <script>
   window.addEventListener("load", function () {
+    const searchButton = document.getElementById("search_button")
+    const searchContainer = document.getElementById("search_container")
+    searchButton.addEventListener("click", function () {
+      searchContainer.classList.toggle("hidden")
+    })
     const topbar = document.querySelector(".topbar");
     const navbar = document.querySelector(".navbar");
     const navbarHeight = navbar.getBoundingClientRect().height;
