@@ -78,8 +78,10 @@
   {% block body %} {% endblock body %}
 </body>
 <footer class="w-[100vw]  bg-[#252929] h-auto relative">
+  {% with request.resolver_match.url_name as url_name %}
+  {% if url_name == 'home' %}active
   <div class="p-5 w-full flex justify-center items-center flex-col">
-    <div class="w-[90%] p-5 flex space-x-7 justify-center">
+    <div class="w-[90%] p-5 flex space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
       <div class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center">
         <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
 
@@ -108,10 +110,51 @@
       </div>
     </div>
   </div>
-  <div class=" flex justify-center items-center ">
-    <div class="flex justify-center-items-center w-[90%] rounded-lg">
-      <img src="{%  static  'images/footerMap.png'  %}" alt="logo" class="md:w-[80vw] h-[20vh] rounded-lg">
+  <div class=" flex justify-center items-center w-[100vw] pb-11">
+    <div class="flex justify-center-items-center w-[75%] ">
+      <img src="{%  static  'images/footerMap.png'  %}" alt="logo" class="h-full w-full rounded-xl">
     </div>
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 items-center">
+    <div class="md:w-[75%] w-[90%] flex justify-between flex-wrap">
+      <div>
+        <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]">
+
+
+        <div class="socials flex space-x-6 text-white">
+          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          <a href=""><i class="fa-brands fa-youtube"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="quicklinks text-sm flex  flex-col text-white space-y-4">
+        <h1 class="font-semibold mb-2 text-xl ">QUICK LINKS</h1>
+        <a href="">KTU Website</a>
+        <a href="">DTE Kerala</a>
+        <a href="">CEE Kerala</a>
+        <a href="">Grivence Cell</a>
+      </div>
+      <div class="affliations flex text-sm  flex-col text-white space-y-4">
+        <h1 class="text-xl font-semibold mb-2">AFFILIATIONS</h1>
+        <a href="">KTU Affliliations</a>
+        <a href="">AICTE Affliliations</a>
+      </div>
+      <div class="other flex  text-sm flex-col text-white space-y-4">
+        <h1 class="text-xl  font-semibold mb-2">OTHER</h1>
+        <a href="">AICTE Website</a>
+        <a href="">Results</a>
+        <a href="">Publications by
+          our Faculty</a>
+      </div>
+
+    </div>
+
   </div>
   <div class="w-full h-auto flex justify-center items-center absolute flex-col bottom-0 ">
     <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>

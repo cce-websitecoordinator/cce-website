@@ -6,6 +6,10 @@ body {
 
 }
 
+.rd {
+  border-radius: 30px !important;
+}
+
 .cents {
   background-color: rgb(183, 37, 37);
   height: 100vh !important;

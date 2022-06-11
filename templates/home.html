@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 {% endblock head %} {% block body %}
+
+
 <section class="home_section relative">
   <div class="w-[100vw] h-[100vh] overflow-clip home_bg">
 
@@ -23,7 +26,7 @@
   <i class="fa-duotone fa-chevrons-down"></i>
 </div>
 
-<section class="w-[100vw] h-[10vh] flex justify-center items-center ">
+<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
   <div class="w-[80%]">
     <div class="flex items-center justify-between">
       <h1 class="font-black text-4xl">Happenings</h1>
@@ -31,6 +34,8 @@
     </div>
 
   </div>
+
+
 </section>
 
 <section class="w-[100vw] h-[30vh] bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
@@ -52,13 +57,43 @@
 </section>
 
 
+<section class="testimonials w-[100vw] h-[90vh] flex flex-col justify-center items-center">
+  <h1 class="text-6xl font-bold mt-6">Testimonials</h1>
 
+  <div class="swiper w-[90%] h-[95vh]">
+    <div class="swiper-wrapper ">
+      {% for item in Testimonials %}
+      <div class="swiper-slide">
+        <div class="md:w-full w-[70%] h-full flex justify-center items-center ">
+          <div class="w-full flex justify-center items-center flex-col">
+            <div class="w-[150px] ">
+              <img src={{item.image}} alt="studentImage " class="rounded-full">
+            </div>
+            <h1 class="text-2xl font-bold mt-3">{{item.name}}</h1>
+            <p class="font-thin">{{item.role}}</p>
 
+            <h2 class="text-xl mt-11 font-bold text-[#205072]">{{item.department}}</h2>
+            <p class="w-[70%] text-[#787070] text-center mt-2">" {{item.quote}} "</p>
+            <p class="mt-11 font-bold">Batch {{item.batch}}</p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+  </div>
+
+</section>
 
 
 {% endblock body %}
 
 {% block script %}
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script>
   const topbar = document.querySelector('.topbar');
@@ -89,9 +124,6 @@
 
     }
   })
-  console.log(getOffset(counterSection).top, counterSection.offsetHeight);
-
-
   function increment(element, finalValue, time) {
     const count = parseInt(element.innerHTML);
     if (count < finalValue) {
@@ -105,6 +137,16 @@
     }
   }
 
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 
 
 </script>
