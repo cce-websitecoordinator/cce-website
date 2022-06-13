@@ -1,8 +1,5 @@
-from http.client import HTTPResponse
-from multiprocessing import context
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
-# Create your views here.
 
 
 def home_page(request):
@@ -26,6 +23,7 @@ def home_page(request):
 
 
 def academics_page(request):
+
     return render(request, 'academics.html')
 
 

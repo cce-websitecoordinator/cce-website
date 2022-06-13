@@ -27,15 +27,49 @@
 </div>
 
 <section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
-  <div class="w-[80%]">
+  <div class="md:w-[80%] w-full">
     <div class="flex items-center justify-between">
       <h1 class="font-black text-4xl">Happenings</h1>
       <a href="/gallery" class="bg-[#007FFF] p-2 pl-4 pr-4 rounded-md font-bold text-white">Explore More</a>
     </div>
 
+    <div class="flex w-full flex-wrap justify-center items-center mt-4">
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings1.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings2.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings3.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings4.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="p-5 md:w-[600px]">
+        <h1 class="font-bold text-2xl">Techletics '22</h1>
+        <p class="text-xl">Moto Expo was conducted on the banner of Techletics ‘22.</p>
+        <p>
+          and the students were also able to interact with the industry.
+          Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in.
+          Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus
+          fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis ed ornare pharetra, risus id.
+          Aliquam placerat consequat.
+        </p>
+        <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">See More</button>
+      </div>
+
+    </div>
+
   </div>
 
-
+</section>
+<section class="marquee w-full h-[10vh] text-4xl font-black ">
+  <div>
+    <marquee behavior="" direction="left">
+      2021 Semester VII Results published.    |    College Techfest, Techletics'22 successfully held on May 4,5 and 6.    |
+    </marquee>
+  </div>
 </section>
 
 <section class="w-[100vw] h-[30vh] bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
@@ -93,6 +127,7 @@
 {% endblock body %}
 
 {% block script %}
+<script src={% static 'js/marquee.js' %}></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script>
@@ -103,7 +138,6 @@
   const counterStudents = document.getElementById('students_counter');
   const counterFaculty = document.getElementById('faculty_counter');
   const counterStaff = document.getElementById('staff_counter');
-
 
   function getOffset(el) {
     const rect = el.getBoundingClientRect();
@@ -147,6 +181,21 @@
       prevEl: '.swiper-button-prev',
     },
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>
