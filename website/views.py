@@ -37,3 +37,6 @@ def campuslife_page(request):
 
 def about_page(request):
     return render(request, 'about.html')
+
+def nirf_page(request):
+    return render(request, 'nirf.html')
