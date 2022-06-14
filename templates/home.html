@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 {% endblock head %} {% block body %}
+
+
 <section class="home_section relative">
   <div class="w-[100vw] h-[100vh] overflow-clip home_bg">
 
@@ -23,13 +26,49 @@
   <i class="fa-duotone fa-chevrons-down"></i>
 </div>
 
-<section class="w-[100vw] h-[10vh] flex justify-center items-center ">
-  <div class="w-[80%]">
+<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
+  <div class="md:w-[80%] w-full">
     <div class="flex items-center justify-between">
       <h1 class="font-black text-4xl">Happenings</h1>
       <a href="/gallery" class="bg-[#007FFF] p-2 pl-4 pr-4 rounded-md font-bold text-white">Explore More</a>
     </div>
 
+    <div class="flex w-full flex-wrap justify-center items-center mt-4">
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings1.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings2.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings3.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings4.png'  %}" alt=""
+          srcset="">
+      </div>
+      <div class="p-5 md:w-[600px]">
+        <h1 class="font-bold text-2xl">Techletics '22</h1>
+        <p class="text-xl">Moto Expo was conducted on the banner of Techletics ‘22.</p>
+        <p>
+          and the students were also able to interact with the industry.
+          Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in.
+          Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus
+          fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis ed ornare pharetra, risus id.
+          Aliquam placerat consequat.
+        </p>
+        <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">See More</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="marquee w-full h-[10vh] text-4xl font-black ">
+  <div>
+    <marquee behavior="" direction="left">
+      2021 Semester VII Results published.    |    College Techfest, Techletics'22 successfully held on May 4,5 and 6.    |
+    </marquee>
   </div>
 </section>
 
@@ -52,13 +91,44 @@
 </section>
 
 
+<section class="testimonials w-[100vw] h-[90vh] flex flex-col justify-center items-center">
+  <h1 class="text-6xl font-bold mt-6">Testimonials</h1>
 
+  <div class="swiper w-[90%] h-[95vh]">
+    <div class="swiper-wrapper ">
+      {% for item in Testimonials %}
+      <div class="swiper-slide">
+        <div class="md:w-full w-[70%] h-full flex justify-center items-center ">
+          <div class="w-full flex justify-center items-center flex-col">
+            <div class="w-[150px] ">
+              <img src={{item.image}} alt="studentImage " class="rounded-full">
+            </div>
+            <h1 class="text-2xl font-bold mt-3">{{item.name}}</h1>
+            <p class="font-thin">{{item.role}}</p>
 
+            <h2 class="text-xl mt-11 font-bold text-[#205072]">{{item.department}}</h2>
+            <p class="w-[70%] text-[#787070] text-center mt-2">" {{item.quote}} "</p>
+            <p class="mt-11 font-bold">Batch {{item.batch}}</p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+  </div>
+
+</section>
 
 
 {% endblock body %}
 
 {% block script %}
+<script src={% static 'js/marquee.js' %}></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script>
   const topbar = document.querySelector('.topbar');
@@ -68,7 +138,6 @@
   const counterStudents = document.getElementById('students_counter');
   const counterFaculty = document.getElementById('faculty_counter');
   const counterStaff = document.getElementById('staff_counter');
-
 
   function getOffset(el) {
     const rect = el.getBoundingClientRect();
@@ -89,9 +158,6 @@
 
     }
   })
-  console.log(getOffset(counterSection).top, counterSection.offsetHeight);
-
-
   function increment(element, finalValue, time) {
     const count = parseInt(element.innerHTML);
     if (count < finalValue) {
@@ -104,6 +170,31 @@
       element.innerHTML = finalValue + "+";
     }
   }
+
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

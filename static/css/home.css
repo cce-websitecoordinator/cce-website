@@ -1,25 +1,9 @@
-.emphasis_animation {
-  animation: emphasis;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
+.ents {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f80d0d;
+  position: absolute;
+  top: 0;
 
-.home_bg {
-  background: url("../images/home-bg.png") center no-repeat border-box;
-}
-
-@keyframes emphasis {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-    background: #000 !important;
-  }
-
-  50% {
-    transform: translateY(-10px);
-
-  }
 
 }

@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+.main-section {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+.mainsection-parts {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+}
+.mainsection-parts > button {
+  background-color: #007fff;
+  color: white;
+  width: 500px;
+  padding: 10px;
+  height: 63px;
+  border-radius: 8px;
+  border: none;
+}
