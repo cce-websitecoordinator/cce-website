@@ -33,18 +33,18 @@
         <a href="/">Admission</a>
         <a href="/">Cells</a>
         <a href="/">Conferances</a>
-        <a href="/">NIRF</a>
-        
+        <a href="/nirf">NIRF</a>
         <a href="/">IQAF</a>
         <a href="/">Techletics</a>
       </div>
     </nav>
-    <nav class="absolute navbar w-[100vw] flex  justify-center items-center z-[999]">
+    {% with request.resolver_match.url_name as url_name %}
+    <nav class="{% if url_name == 'home' %}absolute{% else %}bg-[#007FFF]{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
         </div>
-        {% with request.resolver_match.url_name as url_name %}
+        
         <div>
           <div class="space-x-6  text-base relative  text-white flex ">
             <div>
@@ -176,6 +176,8 @@
     const topbar = document.querySelector(".topbar");
     const navbar = document.querySelector(".navbar");
     const navbarHeight = navbar.getBoundingClientRect().height;
+
+
     window.addEventListener("scroll", function () {
       if (window.scrollY > navbarHeight) {
         navbar.classList.add("fixed-nav");

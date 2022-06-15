@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} {% block title %} NIRF {% endblock title %} {% block head %}
+<link rel="stylesheet" href="{%  static  'css/nirf.css'  %}" />
+{% endblock head %}
+{% block body %}
+  <main class="main-section ">
+            <div class="mainsection-left mainsection-parts">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <p style="font-size: 2.5em; font-weight: 100;">National Institutional Ranking Framework</p>
+                    <span style="font-size: 5em; font-weight: 800;">NIRF</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 30px;">
+                    <p style="font-weight: 600; font-size:2.5em;">Uploaded Documents</p>
+                    <span style="font-size: 1.2em; font-weight:600;">-NIRF 2022</span>
+                </div>
+                <button>SUBMITTED INSTITUTE DATA FOR NIRF 2020</button>
+            </div>
+            <div class="mainsection-right mainsection-parts">
+                <img src="{%  static  'images/nirf.jpg'  %}"
+                    alt="image of nirf ranking" style="height: 20em;">
+            </div>
+        </main>
+{% endblock  %}
