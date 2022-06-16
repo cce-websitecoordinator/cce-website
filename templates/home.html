@@ -1,7 +1,26 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-{% endblock head %} {% block body %}
+{% endblock head %}
+{% block topbar %}
+<nav class="p-2 flex pl-4 pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white topbar text-sm z-[10]">
+  <div class="">
+    <i class="fa-solid fa-phone mr-1"></i> <span>Office</span>
+  </div>
+  <div class="space-x-1 ">
+    <a href="/">Research</a>
+    <a href="/about">Aluminae</a>
+    <a href="/">KTU Examinations</a>
+    <a href="/">Admission</a>
+    <a href="/">Cells</a>
+    <a href="/">Conferances</a>
+    <a href="/nirf">NIRF</a>
+    <a href="/">IQAF</a>
+    <a href="/">Techletics</a>
+  </div>
+</nav>
+{% endblock topbar %}
+{% block body %}
 
 
 <section class="home_section relative">
@@ -28,22 +47,22 @@
 
 <section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
   <div class="md:w-[80%] w-full">
-    <div class="flex items-center justify-between">
+    <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
       <h1 class="font-black text-4xl">Happenings</h1>
-      <a href="/gallery" class="bg-[#007FFF] p-2 pl-4 pr-4 rounded-md font-bold text-white">Explore More</a>
+      <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
     </div>
 
-    <div class="flex w-full flex-wrap justify-center items-center mt-4">
-      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings1.png'  %}" alt=""
+    <div class="w-full happenings-grid">
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full rounded-md"><img src="{%  static  'images/happenings1.png'  %}" alt="happenings-img"
           srcset="">
       </div>
-      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings2.png'  %}" alt=""
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings2.png'  %}" alt="happenings-img"
           srcset="">
       </div>
-      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings3.png'  %}" alt=""
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings3.png'  %}" alt="happenings-img"
           srcset="">
       </div>
-      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings4.png'  %}" alt=""
+      <div class="m-2 md:w-[200px] lg:w-[300px] w-full"><img src="{%  static  'images/happenings4.png'  %}" alt="happenings-img"
           srcset="">
       </div>
       <div class="p-5 md:w-[600px]">

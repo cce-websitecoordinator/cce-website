@@ -40,3 +40,6 @@ def about_page(request):
 
 def nirf_page(request):
     return render(request, 'nirf.html')
+
+def gallery_page(request):
+    return render(request, 'gallery.html')

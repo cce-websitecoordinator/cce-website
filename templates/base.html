@@ -22,24 +22,10 @@
 
 <body class="overflow-x-hidden">
   <header>
-    <nav class="p-2 flex pl-4 pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white topbar text-sm z-[10]">
-      <div class="">
-        <i class="fa-solid fa-phone mr-1"></i> <span>Office</span>
-      </div>
-      <div class="space-x-1 ">
-        <a href="/">Research</a>
-        <a href="/about">Aluminae</a>
-        <a href="/">KTU Examinations</a>
-        <a href="/">Admission</a>
-        <a href="/">Cells</a>
-        <a href="/">Conferances</a>
-        <a href="/nirf">NIRF</a>
-        <a href="/">IQAF</a>
-        <a href="/">Techletics</a>
-      </div>
-    </nav>
+    {% block topbar %}{% endblock topbar %}
+    
     {% with request.resolver_match.url_name as url_name %}
-    <nav class="{% if url_name == 'home' %}absolute{% else %}bg-[#007FFF]{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
+    <nav class="{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
@@ -47,6 +33,7 @@
         
         <div>
           <div class="space-x-6  text-base relative  text-white flex ">
+            <div id="navlinks" class="space-x-6  text-base relative  text-white flex ">
             <div>
               <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
             </div>
@@ -64,13 +51,17 @@
             </div>
 
             <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
-            <button id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+            <div class="search-container" id="search_container">
+              <input type="text" name="search" placeholder="Search..." class="search-input">
+              <a href="#" class="search-btn">
+                      <i class="fas fa-search"></i>      
+              </a>
+          </div>
 
           </div>
           {% endwith %}
-          <div class=" w-full h-[40px] hidden" id="search_container">
-            <input type="search" name="" id="" class="w-full mt-6 rounded-xl border-2 border-[#6baad7]">
-          </div>
+          
         </div>
       </div>
     </nav>
@@ -163,19 +154,51 @@
       Copyright © 2022 Christ College of Engineering
     </p>
   </div>
+
+<div class="scroll-to-top absolute flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]" id="scroll-to-top">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
 </footer>
 {% block script %}{% endblock script %}
 
 <script>
   window.addEventListener("load", function () {
-    const searchButton = document.getElementById("search_button")
-    const searchContainer = document.getElementById("search_container")
-    searchButton.addEventListener("click", function () {
-      searchContainer.classList.toggle("hidden")
-    })
     const topbar = document.querySelector(".topbar");
     const navbar = document.querySelector(".navbar");
     const navbarHeight = navbar.getBoundingClientRect().height;
+    const searchButton = document.getElementById("search_button"),
+     searchContainer = document.getElementById("search_container"),
+     scrollToTop = document.getElementById("scroll-to-top"),
+    navlinks = document.getElementById("navlinks")
+
+
+
+
+    
+    searchContainer.addEventListener("mouseenter", function () {
+      navlinks.classList.add("hidden")
+      searchContainer.classList.add("bg-white")
+      searchContainer.classList.add("search-shadow") 
+    })
+    searchContainer.addEventListener("mouseleave", function () {
+      searchContainer.classList.remove("bg-white")
+      setTimeout(()=>{
+        navlinks.classList.remove("hidden")
+      searchContainer.classList.remove("search-shadow")
+      document.activeElement.blur();
+
+        
+      },500)   
+    })
+
+    scrollToTop.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+   
 
 
     window.addEventListener("scroll", function () {
