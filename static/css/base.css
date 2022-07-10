@@ -86,7 +86,20 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
     color: #ffffff;
 }
 
-    
+.dropdown{
+  display: none;
+  width: inherit;
+  position: absolute;
+}
+
+.show{
+  display: flex !important;
+  flex-direction: column;
+  /* justify-items: center; */
+  /* align-items: center; */
+  position: absolute;
+}
+ 
 @keyframes search-bar-animation {
   0% {
     width: 0;

@@ -53,17 +53,34 @@
             <div>
               <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
             </div>
-            <div>
-              <a href="/departments" class="{% if url_name == 'departments' %}active{% endif %}">Departments</a>
+            
+
+
+            <div class="">
+              <h1  id="dropdown--container" >
+                <button id="dropdownBtn">Departments <i class="fa-solid fa-caret-down ml-2 " id = 'bounce'></i></button>
+                <ul class="space-y-13 dropdown top-10 p-5 h-auto bg-[#252929] rounded-md" id="dropdown">
+                  
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"> <a href="/departments/BSH">Basic Science & Humanities</a></li>
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CSE">Computer Science & Engineering</a></li>
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CE">Civil Engineering</a></li>
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ECE">Electronics & Communication Engineering</a></li>
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/EEE">Electrical & Electronics Engineering</a></li>
+                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ME">Mechanical Engineering</a></li>
+                
+                </ul>
+              </h1>
+                
             </div>
-            <div>
+            <div class="{% if 'departments/' in request.get_full_path %}block{% else %}hidden{% endif %}"><a href="/"> Assoaiations</a></div>
+            <div class="{% if 'departments/' in request.get_full_path %}hidden{% endif %} ">
               <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
             </div>
             <div>
               <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
             </div>
 
-            <a href="/" class="">More<i class="fa-solid fa-caret-down ml-2"></i></a>
+            <a href="/" class="{% if 'departments/' in request.get_full_path %}hidden{% endif %}">More<i class="fa-solid fa-caret-down ml-2"></i></a>
           </div>
             <div class="search-container" id="search_container">
               <input type="text" name="search" placeholder="Search..." class="search-input">
@@ -183,13 +200,36 @@
     const navbarHeight = navbar.getBoundingClientRect().height;
     const searchButton = document.getElementById("search_button"),
      searchContainer = document.getElementById("search_container"),
-     scrollToTop = document.getElementById("scroll-to-top"),
-    navlinks = document.getElementById("navlinks")
-
-
-
-
     
+    navlinks = document.getElementById("navlinks")
+    
+    
+    //Dropdown menu for the navbar
+
+    // Down-aarow Animation
+    document.getElementById("dropdownBtn").addEventListener("mouseenter", function () {
+      console.log("Clicked");
+      document.getElementById("bounce").classList.add("animate-bounce");
+      document.getElementById("bounce").classList.add("text-[#007FFF]");
+      
+    });
+    document.getElementById("dropdownBtn").addEventListener("mouseleave", function () {
+      console.log("Clicked");
+      document.getElementById("bounce").classList.remove("animate-bounce");
+      document.getElementById("bounce").classList.remove("text-[#007FFF]");
+
+      
+    });
+    
+    //Dropdown menu
+    document.getElementById("dropdownBtn").addEventListener("click", function () {
+      console.log("Clicked");
+      document.getElementById("dropdown").classList.toggle("show");
+    });
+    document.getElementById("dropdown").addEventListener("mouseleave",()=>{
+      document.getElementById("dropdown").classList.remove("show");
+    })
+    // Search Button
     searchContainer.addEventListener("mouseenter", function () {
       navlinks.classList.add("hidden")
       searchContainer.classList.add("bg-white")
@@ -206,14 +246,9 @@
       },500)   
     })
 
-    scrollToTop.addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+    
    
-
+    // Navbar Scrolling
 
     window.addEventListener("scroll", function () {
       if (window.scrollY > navbarHeight) {
@@ -225,6 +260,16 @@
     });
   });
 
+  // scroll to top button
+  document.getElementById("scroll-to-top").addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    });
+
+  // Footer Map Configurations
   var map = L.map('map',{
     center: [43.64701, -79.39425],
     zoom: 15

@@ -27,8 +27,22 @@ def academics_page(request):
     return render(request, 'academics.html')
 
 
-def departments_page(request):
-    return render(request, 'departments.html')
+def department_of_BSH_page(request):
+    return render(request, 'Departments/index.html')
+
+def department_of_CSE_page(request):
+    return render(request, 'Departments/index.html')
+
+def department_of_CE_page(request):
+    return render(request, 'Departments/index.html')
+def department_of_ME_page(request):
+    return render(request, 'Departments/index.html')
+
+def department_of_EEE_page(request):
+    return render(request, 'Departments/index.html')
+
+def department_of_ECE_page(request):
+    return render(request, 'Departments/index.html')
 
 
 def campuslife_page(request):

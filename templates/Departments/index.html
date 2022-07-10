@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% with request.resolver_match.url_name as url_name %}
+<div class="  cents ">{{url_name}} </div>
+{% endwith %}
+{% endblock body %}
