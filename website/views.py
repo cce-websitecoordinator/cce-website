@@ -28,21 +28,29 @@ def academics_page(request):
 
 
 def department_of_BSH_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Basic Sciences and Humanities"}
+    return render(request, 'Departments/index.html',context=context)
 
 def department_of_CSE_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Computer Science and Engineering"}
+    return render(request, 'Departments/index.html',context=context)
 
 def department_of_CE_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Civil Engineering"}
+    return render(request, 'Departments/index.html',context=context)
+
+
 def department_of_ME_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Mechanical Engineering"}
+    return render(request, 'Departments/index.html',context=context)
 
 def department_of_EEE_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Electrical and Electronics Engineering"}
+    return render(request, 'Departments/index.html',context=context)
 
 def department_of_ECE_page(request):
-    return render(request, 'Departments/index.html')
+    context={"Page_Title": "Electronics and Communication Engineering"}
+    return render(request, 'Departments/index.html',context=context)
 
 
 def campuslife_page(request):

@@ -38,7 +38,7 @@
     {% block topbar %}{% endblock topbar %}
     
     {% with request.resolver_match.url_name as url_name %}
-    <nav class="{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
+    <nav class="{% if 'departments/' in request.get_full_path %}absolute{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
