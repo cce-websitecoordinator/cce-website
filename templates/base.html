@@ -99,7 +99,7 @@
 
   {% block body %} {% endblock body %}
 </body>
-<footer class="w-[100vw]  bg-[#252929] h-auto relative">
+<footer class="w-[100vw]  bg-[#252929] h-auto relative bottom-0">
   {% with request.resolver_match.url_name as url_name %}
   {% if url_name == 'home' %}active
   <div class="p-5 w-full flex justify-center items-center flex-col">
