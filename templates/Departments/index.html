@@ -6,18 +6,20 @@
 <link rel="stylesheet" href="{%  static  'css/department.css'  %}">
 <script src="https://kit.fontawesome.com/78057bbc72.js" crossorigin="anonymous"></script>
 {% endblock head %}
+
+
 {% block body %}
 {% with request.resolver_match.url_name as url_name %}
 <div class="">
-<div class="department-hero" >
+<div class="department-hero" style='background-image: url({{Hero_image}});'>
     <div class="department-hero-intro-details-wrapper">
         <div style="position: relative;">
-            <h1 class="department-abbrevation">CSE</h1>
+            <h1 class="department-abbrevation">{{Department_Abbrevation}}</h1>
             <div style="position:absolute; top:0;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:40px">
                 <span style="font-weight: 100;color:white;font-size: 2.5rem;">Department Of</span>
-                <p class="department-name">COMPUTER SCIENCE ENGINEERING</p>
+                <p class="department-name">{{Page_Title}}</p>
                 <div class="w-auto h-auto">
-                <i class="fa-solid fa-angles-down animate-bounce "></i>
+                <i class="fa-solid fa-angles-down animate-pulse text-white fa-xl "></i>
             </div>
             </div>
             
@@ -28,14 +30,14 @@
 <div class="dep-about">
     <h2 class="dep-ab">About</h2>
     <p class="dep-abco">
-        Department of Computer Science & Engineering started in 2015 in Christ College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B. Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. The department provides the students an environment that stimulates their intellectual growth and personality development. We provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital library and language lab. We also have high speed leased line Internet connection and online access to all IEEE journals. The Department has an excellent team of committed and qualified faculty members encouraging and guiding students in their academic as well as personal development. We pride ourselves in providing a positive environment conducive to Engineering Studies and Research.
+        {{About_Data}}
     </p>
     <div class="flex-container">
         <div class="vision vmv">
             <div class="vmv-content vision-vmv-content">
                 <h3>Vision</h3>
                 <p>
-                    To faster professionally competent and responsible graduates with strong theoretical and practical knowledge across the dicipline of Computer Science and Engineering
+                    {{Vision}}
                 </p>
             </div>
             <img src="../../static/images/vision.png" alt="vision">
@@ -45,7 +47,7 @@
             <div class="vmv-content mission-vmv-content">
                 <h3>Mission</h3>
                 <p>
-                    To achieve technical proficiency by adopting effective teaching learning strategies that promote practical expertise,innovation annd team spirit.<br><br> To mould ethical engineers having theoretical and practical knowledge that enhance employability prospects.<br><br>To provide training towards research,development and consultancy servises in the frontiers of Computer Science and Engineering.
+                   {{Mission}} 
                 </p>
             </div>
             <img src="../../static/images/target.png" alt="target">
@@ -55,7 +57,7 @@
             <div class="vmv-content values-vmv-content">
                 <h3>Values</h3>
                 <p>
-                    To achieve technical proficiency by adopting effective teaching learning strategies that promote practical expertise,innovation annd team spirit.<br><br> To mould ethical engineers having theoretical and practical knowledge that enhance employability prospects.
+                    {{Values}}
                 </p>
             </div>
             <img src="../../static/images/diamond.png" alt="diamond">

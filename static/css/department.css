@@ -7,15 +7,15 @@
 }
 .department-hero {
   position: relative;
-  background-image: url(../images/department.png);
-  background-position: top;
+  /* background-image: url(../images/department.png); */
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: top;
+  /* background-size: center; */
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .nirf-header {
   display: grid;
