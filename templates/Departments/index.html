@@ -1,8 +1,105 @@
 {% extends 'base.html' %}
 {% block title %} {{Page_Title}} {% endblock title %}
+<link rel="stylesheet" href="../../static/css/department.css">
+<script src="https://kit.fontawesome.com/78057bbc72.js" crossorigin="anonymous"></script>
 {% block body %}
 {% with request.resolver_match.url_name as url_name %}
 
-<div class="  cents ">{{url_name}} </div>
+<div class="department-hero" >
+    <div class="department-hero-intro-details-wrapper">
+        <div style="position: relative;">
+            <h1 class="department-abbrevation">CSE</h1>
+            <div style="position:absolute; top:0;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:40px">
+                <span style="font-weight: 100;color:white;font-size: 2.5rem;">Department Of</span>
+                <p class="department-name">COMPUTER SCIENCE ENGINEERING</p>
+                <i class="fa-solid fa-angles-down pos"></i>
+            </div>
+            
+        </div>
+        </h1>
+    </div>
+</div>
+<div class="dep-about">
+    <h2 class="dep-ab">About</h2>
+    <p class="dep-abco">
+        Department of Computer Science & Engineering started in 2015 in Christ College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B. Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. The department provides the students an environment that stimulates their intellectual growth and personality development. We provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital library and language lab. We also have high speed leased line Internet connection and online access to all IEEE journals. The Department has an excellent team of committed and qualified faculty members encouraging and guiding students in their academic as well as personal development. We pride ourselves in providing a positive environment conducive to Engineering Studies and Research.
+    </p>
+    <div class="flex-container">
+        <div class="vision vmv">
+            <div class="vmv-content vision-vmv-content">
+                <h3>Vision</h3>
+                <p>
+                    To faster professionally competent and responsible graduates with strong theoretical and practical knowledge across the dicipline of Computer Science and Engineering
+                </p>
+            </div>
+            <img src="../../static/images/vision.png" alt="vision">
+            <h3>Vision</h3>
+        </div>
+        <div class="mission vmv">
+            <div class="vmv-content mission-vmv-content">
+                <h3>Mission</h3>
+                <p>
+                    To achieve technical proficiency by adopting effective teaching learning strategies that promote practical expertise,innovation annd team spirit.<br><br> To mould ethical engineers having theoretical and practical knowledge that enhance employability prospects.<br><br>To provide training towards research,development and consultancy servises in the frontiers of Computer Science and Engineering.
+                </p>
+            </div>
+            <img src="../../static/images/target.png" alt="target">
+            <h3>Mission</h3>
+        </div>
+        <div class="values vmv">
+            <div class="vmv-content values-vmv-content">
+                <h3>Values</h3>
+                <p>
+                    To achieve technical proficiency by adopting effective teaching learning strategies that promote practical expertise,innovation annd team spirit.<br><br> To mould ethical engineers having theoretical and practical knowledge that enhance employability prospects.
+                </p>
+            </div>
+            <img src="../../static/images/diamond.png" alt="diamond">
+            <h3>Values</h3>
+        </div>  
+    </div>
+    <div >
+        <h2 class="dep-ab">Faculty</h2>
+
+    </div>
+    <div class="dep-wrapper">
+        <h2 class="dep-ab">Programme Details</h2>
+        <div class="dep-prg">
+            <div class="prg-obj obj-col-1">
+                <div class="prg-title">
+                    <h3>Program Educational Objectives (PEOs)</h3>
+                    <i class="fa-solid fa-chevron-down"  onclick="findId()"></i>
+                </div>
+                <div class="prg-dropdown-content"><p>PEO 1:<br>Demonstrate their expertise in solving contemporary problems through design,analysis and implementation of hardware and software systems.<br><br>PEO 2:<br>Adapt to a constantly changing world through professional development and continuous learning.<br><br>PEO 3:<br>Develop teamwork, leadership and entrepreneurship skills required to function productively in their profession.</p></div>
+            </div>
+            <div class="prg-obj obj-col-2">
+                <div class="prg-title">
+                    <h3>Program Outcomes (POs)</h3>
+                    <i class="fa-solid fa-chevron-down " onclick="findId()"></i>
+                </div>
+                
+                <div class="prg-dropdown-content"><p>
+                    PO 1:<br>Engineering Knowledge: Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization to the solution of complex engineering problems.<br><br>PO 2:<br>Problem Analysis: Identify, formulate, review research literature, and analyze principles of mathematics, natural sciences, and engineering sciences.<br><br>PO 3:<br>Design/development of solutions: Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for the public health and safety, and the cultural, societal, and environmental considerations.
+                </p></div>
+            </div>
+            <div class="prg-obj obj-col-3" >
+                <div class="prg-title" >
+                    <h3>Program Specific Outcomes (PSOs)</h3>
+                    <i class="fa-solid fa-chevron-down"  onclick="findId()"></i>
+                </div>
+                
+                <div class="prg-dropdown-content " ><p>PSO 1:<br>Understand, analyse and develop computer programs in the areas related to algorithms, system software, data management and communication for efficient design of computer-based systems of moderate complexity.<br><br>PSO 2:<br>Apply standard practices and methods in software project management and software development using suitable programming environments to deliver quality products for the industry.</p></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script>
+    function findId()
+    {
+        event.target.classList.toggle("dropdown-active");
+        
+            
+            event.target.parentElement.nextElementSibling.classList.toggle('block-active');
+    }
+</script>
 {% endwith %}
 {% endblock body %}
