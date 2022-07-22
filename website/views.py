@@ -78,7 +78,6 @@ def department_of_CE_page(request):
         "CE"}
     return render(request, 'Departments/index.html',context=context)
 
-
 def department_of_ME_page(request):
     context={"Page_Title": "Mechanical Engineering",
     "About_Data":
@@ -141,3 +140,8 @@ def nirf_page(request):
 
 def gallery_page(request):
     return render(request, 'gallery.html')
+
+
+
+def test_page(request):
+    return render(request, 'Test.html')

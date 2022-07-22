@@ -10,7 +10,7 @@
   /* background-image: url(../images/department.png); */
   background-position: center center;
   background-repeat: no-repeat;
-  /* background-size: center; */
+  background-size: center;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -98,7 +98,6 @@
   order: 1;
   flex-grow: 0;
   width: auto;
-  height: 245px;
   padding-left: 11em;
   padding-right: 11em;
 }
@@ -107,6 +106,7 @@
   font-weight: 600;
   font-size: 3em;
   line-height: 96px;
+  
   text-align: center;
 }
 
@@ -203,7 +203,9 @@
 }
 .dep-wrapper {
   display: grid;
-  place-items: center;
+  margin-bottom: 50px;
+
+  /* place-items: center; */
 }
 
 .prg-obj {
@@ -249,3 +251,164 @@
 .dropdown-active {
   transform: rotate(180deg);
 }
+
+
+/* faculty Slider */
+
+
+
+.slider_circle_10{
+  position:relative;
+  width:600px;
+  margin: 0 auto;
+  user-select: none;
+  height:550px;
+  }
+  .slider_circle_10 div img{
+  width:100%;
+  }
+  .slider_circle_10 .slider-desc{
+  position:absolute;
+  bottom:55px;
+  display:none;
+  width:100%;
+  text-align: center;
+  }
+  .slider_circle_10 .active .slider-desc{
+  display: block;
+  }
+  .slider_circle_10 .slider-desc h3{
+  font-size:25px;
+  font-weight:800;
+  margin:30px 0px -10px 0px;
+  /* text-transform:uppercase; */
+  }
+  .slider_circle_10 .slider-desc p{
+  font-size:20px;
+  color:#a2a2a2;
+  margin:5px 0px 5px 0px;
+  }
+  .slider_circle_10 .slider-desc a i{
+  font-size: 20px;
+  padding-left:10px;
+  color:#7B8D8E;
+  text-align: center;
+  padding:10px;
+  height:15px;
+  width:15px;
+  margin:0px 5px;
+  }
+  .slider_circle_10 > div .img{
+  border-radius: 50%;
+  background: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px #000;
+  }
+  .slider_circle_10 > div .img,
+  .slider_circle_10 .hidden .img{
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: 0;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  }
+  .slider_circle_10 .active .img{
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  }
+  .slider_circle_10 .prev1 .img,
+  .slider_circle_10 .next1 .img{
+  opacity: 0.9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: -120px;
+  width: 150px;
+  height: 150px;
+  z-index: 9;
+  }
+  .slider_circle_10 .next1 .img{
+  margin-left: 120px;
+  }
+  .slider_circle_10 .prev2 .img,
+  .slider_circle_10 .next2 .img{
+  opacity: 0.7;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: -220px;
+  width: 100px;
+  height: 100px;
+  z-index: 8;
+  padding-top:-100px;
+  }
+  .slider_circle_10 .next2 .img{
+  margin-left: 220px;
+  }
+  .nav_indicators {
+  position: absolute;
+  bottom:0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  z-index: 50000;
+  }
+  .nav_indicators ul {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  }
+  .nav_indicators ul li {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  }
+  .nav_indicators ul li.active {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  padding: 0;
+  background: #555;
+  color: #555;
+  border: 2px solid #aaa;
+  }
+  .next_button,
+  .prev_button {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  color:#c2c2c2;
+  }
+  .prev_button {
+  position: absolute;
+  left: 0%;
+  }
+  .next_button:hover,
+  .prev_button:hover {
+  opacity: 1;
+  }
