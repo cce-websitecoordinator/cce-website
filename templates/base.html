@@ -16,29 +16,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
 
-  <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""
-/>
 
-<script
-  src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-  crossorigin=""
-></script>
   <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
 
   {% block head %}{% endblock head %}
 </head>
-
+<script>
+  const observer2 = new PerformanceObserver((entries) => {
+  entries.getEntriesByType("resource").forEach(res => console.log(res.toJSON()))
+});
+observer2.observe({ entryTypes: ["resource"] });
+</script>
 <body class="overflow-x-hidden">
   <header>
     {% block topbar %}{% endblock topbar %}
     
     {% with request.resolver_match.url_name as url_name %}
-    <nav class="{% if 'departments/' in request.get_full_path %}absolute{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
+    <nav class="{% if 'departments/' in request.get_full_path %}absolute mt-7{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
@@ -255,8 +249,9 @@
         navbar.classList.add("fixed-nav");
       } else {
         navbar.classList.remove("fixed-nav");
+        if(topbar){
         navbar.style.top = topbar.getBoundingClientRect().height + 20 + "px";
-      }
+      }}
     });
   });
 
@@ -269,31 +264,8 @@
       });
     });
 
-  // Footer Map Configurations
-  var map = L.map('map',{
-    center: [43.64701, -79.39425],
-    zoom: 15
-    });
+  
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    var firefoxIcon = L.icon({
-        iconUrl: "{%  static  'images/cce.png'  %}",
-        iconSize: [138, 95], 
-        popupAnchor: [0,-15]
-        });
-
-    var customPopup = `Christ College <img src="{%  static  'images/cce.png'  %}"></img><br/>`;
-
-    var customOptions =
-        {
-        'maxWidth': '2900',
-        'className' : 'custom'
-        }
-
-    L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
 </script>
 
 
