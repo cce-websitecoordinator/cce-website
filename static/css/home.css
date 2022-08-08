@@ -11,11 +11,4 @@
   background: url("../images/home-bg.png") center no-repeat border-box;
 }
 
-.happenings-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
 
-.happenings-grid:nth-child(5){
-  grid-column: 2/3;
-}

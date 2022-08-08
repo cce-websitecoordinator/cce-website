@@ -14,5 +14,6 @@ urlpatterns = [
     path('departments/ME', views.department_of_ME_page, name='Department of ME'),
     path('departments/EEE', views.department_of_EEE_page, name='Department of EEE'),
     path('departments/ECE', views.department_of_ECE_page, name='Department of ECE'),
+    path('test', views.test_page, name='Department of ECE'),
 
 ]
