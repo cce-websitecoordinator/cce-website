@@ -1,5 +1,5 @@
 {% load static %}
-{% load static tailwind_tags %}
+{#{% load static tailwind_tags %} activate this in production to use Tailwind CSS #}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,91 +8,141 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}{% endblock title %} | CCE</title>
-  {% tailwind_css %}
+
+
+  {#{% tailwind_css %} activate this in production to use Tailwind CSS #}
+
+
+
+  {#Favicons Sections#}
+  <link rel="apple-touch-icon" sizes="180x180" href="{%  static  'favicons/apple-touch-icon.png'  %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{%  static  'favicons/favicon-32x32.png'  %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{%  static  'favicons/favicon-16x16.png'  %}">
+  <link rel="shortcut icon" href="{%  static  'favicons/favicon.ico'  %}" type="image/x-icon">
+  <link rel="manifest" href="{%  static  'favicons/site.webmanifest'  %}">
+
+  {# Google fFonts And Font-Awsome Icones#}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com" ></script>
 
 
+  {# Tailwind css fro devlopment use remove this in production#}
+  
+  <script src="{%  static  'js/base.js'  %}" defer></script>
   <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
-
+  
   {% block head %}{% endblock head %}
 </head>
 <script>
+  
+  // script to log the request  the website is making to external APIs/CDNs
   const observer2 = new PerformanceObserver((entries) => {
-  entries.getEntriesByType("resource").forEach(res => console.log(res.toJSON()))
-});
-observer2.observe({ entryTypes: ["resource"] });
+    let req = document.getElementById('requests');
+    entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
+  });
+  observer2.observe({ entryTypes: ["resource"] });
 </script>
+<script defer>
+  {
+    window.addEventListener('load', () => {
+     document.getElementById('loader').style.display = 'none';
+      console.log('loaded');
+      let homeArrow = document.getElementById("home--arrow")
+      if(homeArrow){
+        homeArrow.classList.remove("hidden")
+        homeArrow.classList.add("flex")
+      }
+    });
+    
+  }
+</script>
+
+
 <body class="overflow-x-hidden">
+  <div class="intial_loader w-[100vw] h-[100vh] z-[999] bg-black grid place-items-center fixed" id="loader">
+    <h1 class="text-white "> Loading data from:
+    <span id="requests" class="text-white  text-center"></span></h1>
+
+  </div>
   <header>
     {% block topbar %}{% endblock topbar %}
-    
+
     {% with request.resolver_match.url_name as url_name %}
-    <nav class="{% if 'departments/' in request.get_full_path %}absolute mt-7{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
+
+    {# Navbar Segment #}
+    <nav
+      class="{% if 'departments/' in request.get_full_path %}absolute mt-7{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
         </div>
-        
+
         <div>
           <div class="space-x-6  text-base relative  text-white flex ">
             <div id="navlinks" class="space-x-6  text-base relative  text-white flex ">
-            <div>
-              <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
-            </div>
-            <div>
-              <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
-            </div>
-            
+              <div>
+                <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
+              </div>
+              <div>
+                <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
+              </div>
+              <div class="">
+                <h1 id="dropdown--container">
+                  <button id="dropdownBtn">Departments <i class="fa-solid fa-caret-down ml-2 " id='bounce'></i></button>
+                  <ul class="space-y-13 dropdown top-10 p-5 h-auto bg-[#252929] rounded-md" id="dropdown">
 
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"> <a href="/departments/BSH">Basic Science &
+                        Humanities</a></li>
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CSE">Computer Science &
+                        Engineering</a></li>
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CE">Civil Engineering</a></li>
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ECE">Electronics & Communication
+                        Engineering</a></li>
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/EEE">Electrical & Electronics
+                        Engineering</a></li>
+                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ME">Mechanical Engineering</a>
+                    </li>
 
-            <div class="">
-              <h1  id="dropdown--container" >
-                <button id="dropdownBtn">Departments <i class="fa-solid fa-caret-down ml-2 " id = 'bounce'></i></button>
-                <ul class="space-y-13 dropdown top-10 p-5 h-auto bg-[#252929] rounded-md" id="dropdown">
-                  
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"> <a href="/departments/BSH">Basic Science & Humanities</a></li>
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CSE">Computer Science & Engineering</a></li>
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CE">Civil Engineering</a></li>
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ECE">Electronics & Communication Engineering</a></li>
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/EEE">Electrical & Electronics Engineering</a></li>
-                  <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ME">Mechanical Engineering</a></li>
-                
-                </ul>
-              </h1>
-                
-            </div>
-            <div class="{% if 'departments/' in request.get_full_path %}block{% else %}hidden{% endif %}"><a href="/"> Assoaiations</a></div>
-            <div class="{% if 'departments/' in request.get_full_path %}hidden{% endif %} ">
-              <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
-            </div>
-            <div>
-              <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
-            </div>
+                  </ul>
+                </h1>
 
-            <a href="/" class="{% if 'departments/' in request.get_full_path %}hidden{% endif %}">More<i class="fa-solid fa-caret-down ml-2"></i></a>
-          </div>
+              </div>
+              <div class="{% if 'departments/' in request.get_full_path %}block{% else %}hidden{% endif %}"><a href="/">
+                  Assoaiations</a></div>
+              <div class="{% if 'departments/' in request.get_full_path %}hidden{% endif %} ">
+                <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
+              </div>
+              <div>
+                <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
+              </div>
+
+              <a href="/" class="{% if 'departments/' in request.get_full_path %}hidden{% endif %}">More<i
+                  class="fa-solid fa-caret-down ml-2"></i></a>
+            </div>
             <div class="search-container" id="search_container">
-              <input type="text" name="search" placeholder="Search..." class="search-input">
+              <input type="text" name="search" placeholder="Search..." class="search-input p-2 text-black">
               <a href="#" class="search-btn">
-                      <i class="fas fa-search"></i>      
+                <i class="fas fa-search"></i>
               </a>
-          </div>
+            </div>
 
           </div>
           {% endwith %}
-          
+
         </div>
       </div>
     </nav>
   </header>
 
   {% block body %} {% endblock body %}
-</body>
+
+  {# Footer Segment #}
+
 <footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative">
   {% with request.resolver_match.url_name as url_name %}
   {% if url_name == 'home' %}active
@@ -127,10 +177,10 @@ observer2.observe({ entryTypes: ["resource"] });
     </div>
   </div>
   <div class=" flex justify-center items-center w-[100vw] pb-11   pt-4">
-    
-    <div class="w-[90%] h-[50vh] flex justify-center items-center rounded-[15px]"> 
-       <div id="map" class="w-full  h-full rounded-lg" ></div>
-  </div>
+
+    <div class="w-[90%] h-[50vh] flex justify-center items-center rounded-[15px]">
+      <div id="map" class="w-full  h-full rounded-lg"></div>
+    </div>
   </div>
   {% endif %}
   {% endwith %}
@@ -180,93 +230,15 @@ observer2.observe({ entryTypes: ["resource"] });
     </p>
   </div>
 
-<div class="scroll-to-top absolute flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]" id="scroll-to-top">
-  <i class="fa-solid fa-arrow-up"></i>
-</div>
+  <div
+    class="scroll-to-top absolute flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]"
+    id="scroll-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
 
 </footer>
 {% block script %}{% endblock script %}
-
-<script>
-  window.addEventListener("load", function () {
-    const topbar = document.querySelector(".topbar");
-    const navbar = document.querySelector(".navbar");
-    const navbarHeight = navbar.getBoundingClientRect().height;
-    const searchButton = document.getElementById("search_button"),
-     searchContainer = document.getElementById("search_container"),
-    
-    navlinks = document.getElementById("navlinks")
-    
-    
-    //Dropdown menu for the navbar
-
-    // Down-aarow Animation
-    document.getElementById("dropdownBtn").addEventListener("mouseenter", function () {
-      console.log("Clicked");
-      document.getElementById("bounce").classList.add("animate-bounce");
-      document.getElementById("bounce").classList.add("text-[#007FFF]");
-      
-    });
-    document.getElementById("dropdownBtn").addEventListener("mouseleave", function () {
-      console.log("Clicked");
-      document.getElementById("bounce").classList.remove("animate-bounce");
-      document.getElementById("bounce").classList.remove("text-[#007FFF]");
-
-      
-    });
-    
-    //Dropdown menu
-    document.getElementById("dropdownBtn").addEventListener("click", function () {
-      console.log("Clicked");
-      document.getElementById("dropdown").classList.toggle("show");
-    });
-    document.getElementById("dropdown").addEventListener("mouseleave",()=>{
-      document.getElementById("dropdown").classList.remove("show");
-    })
-    // Search Button
-    searchContainer.addEventListener("mouseenter", function () {
-      navlinks.classList.add("hidden")
-      searchContainer.classList.add("bg-white")
-      searchContainer.classList.add("search-shadow") 
-    })
-    searchContainer.addEventListener("mouseleave", function () {
-      searchContainer.classList.remove("bg-white")
-      setTimeout(()=>{
-        navlinks.classList.remove("hidden")
-      searchContainer.classList.remove("search-shadow")
-      document.activeElement.blur();
-
-        
-      },500)   
-    })
-
-    
-   
-    // Navbar Scrolling
-
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > navbarHeight) {
-        navbar.classList.add("fixed-nav");
-      } else {
-        navbar.classList.remove("fixed-nav");
-        if(topbar){
-        navbar.style.top = topbar.getBoundingClientRect().height + 20 + "px";
-      }}
-    });
-  });
-
-  // scroll to top button
-  document.getElementById("scroll-to-top").addEventListener('click', function () {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });
-    });
-
-  
-
-</script>
+</body>
 
 
 </html>

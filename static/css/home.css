@@ -13,9 +13,11 @@
 
 .happenings-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  place-items: center;
+
 }
 
 .happenings-grid:nth-child(5){
-  grid-column: 2/3;
+  grid-column: 2/4 !important;
 }
