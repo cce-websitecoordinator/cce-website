@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
-{% block title %} Server Error {% endblock title %}
+{% load static %}
+
+{% block title %} Not Found Error {% endblock title %}
 
 {% block body %}
-<div class="cents">Server error kutta</div>
+<section class="grid md:grid-cols-2 grid-cols-1  items-center w-[100vw] h-max gap-10">
+    <div class="md:ml-24 space-y-6 place-items-center grid">
+        <img src="{%  static  'images/404.png'  %}" alt="404-img" >
+        <h1 class="text-4xl font-black place-self-center">We can't find the page you are<br> looking for.</h1>
+        <p class="text-2xl">it might be relocated or deleted</p>
+        <div class="w-full place-items-center grid">
+
+            <a href="/" class="pl-4 pr-4 p-2 bg-[#007FFF] active:bg-white hover:scale-125 hover:shadow-xl ease-in-out duration-100">Go To Home</a>
+        </div>
+    </div>
+<div>
+    <img src="{%  static  'images/404_img.png'  %}" alt="404-robot-img" >
+</div>    
+</section>
 {% endblock body %}
