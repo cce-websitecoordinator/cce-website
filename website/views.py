@@ -145,3 +145,12 @@ def gallery_page(request):
 
 def test_page(request):
     return render(request, 'Test.html')
+
+
+
+
+def server_error_page(request):
+    return render(request, 'Errors/500.html')
+
+def not_found_error_page(request,exception):
+    return render(request, 'Errors/404.html')
