@@ -71,3 +71,15 @@ document.getElementById("scroll-to-top").addEventListener("click", function () {
 });
 
 
+{
+  window.onload= () => {
+   document.getElementById('loader').style.display = 'none';
+    console.log('loaded');
+    let homeArrow = document.getElementById("home--arrow")
+    if(homeArrow){
+      homeArrow.classList.remove("hidden")
+      homeArrow.classList.add("flex")
+    }
+  }
+  
+}

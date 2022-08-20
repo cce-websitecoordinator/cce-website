@@ -28,40 +28,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com" ></script>
-
-
-  {# Tailwind css fro devlopment use remove this in production#}
   
+  
+  {# Tailwind css fro devlopment use remove this in production#}
+  <script src="https://cdn.tailwindcss.com" ></script>
+  
+  {# Custom CSS and JS  #}
+  <script>
+    // script to log the request  the website is making to external APIs/CDNs
+    const observer2 = new PerformanceObserver((entries) => {
+      let req = document.getElementById('requests');
+      entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
+    });
+    observer2.observe({ entryTypes: ["resource"] });
+  </script>
   <script src="{%  static  'js/base.js'  %}" defer></script>
   <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
   
   {% block head %}{% endblock head %}
 </head>
-<script>
-  
-  // script to log the request  the website is making to external APIs/CDNs
-  const observer2 = new PerformanceObserver((entries) => {
-    let req = document.getElementById('requests');
-    entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
-  });
-  observer2.observe({ entryTypes: ["resource"] });
-</script>
-<script defer>
-  {
-    window.addEventListener('load', () => {
-     document.getElementById('loader').style.display = 'none';
-      console.log('loaded');
-      let homeArrow = document.getElementById("home--arrow")
-      if(homeArrow){
-        homeArrow.classList.remove("hidden")
-        homeArrow.classList.add("flex")
-      }
-    });
-    
-  }
-</script>
-
 
 <body class="overflow-x-hidden">
   <div class="intial_loader w-[100vw] h-[100vh] z-[999] bg-black grid place-items-center fixed" id="loader">
