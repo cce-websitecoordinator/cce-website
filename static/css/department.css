@@ -156,13 +156,16 @@
 
 .flex-container {
   display: flex;
-  width: auto;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .flex-container > div {
-  margin: 20px;
+  gap: 10px;
   padding: 40px;
-  width: 400px;
+  width: 400px
 }
 
 .vision {
@@ -192,6 +195,8 @@
 .dep-prg {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 5px solid black;
   padding: 20px 20px 20px 20px;
   gap: 8.7px;
@@ -213,8 +218,7 @@
   flex-direction: column;
   padding: 20px;
   gap: 50px;
-  width: 1000px;
-  height: fit-content;
+  width: 90%;
   border-radius: 6.09219px;
 }
 
