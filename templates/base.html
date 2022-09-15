@@ -133,9 +133,9 @@
 
 <footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative overflow-x-clip">
   {% with request.resolver_match.url_name as url_name %}
-  {% if url_name == 'home' %}active
+  {% if url_name == 'home' %}
   <div class="p-5 w-full flex justify-center items-center flex-col">
-    <div class="w-[90%] p-5 flex space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
+    <div class="w-[90%] p-5 flex md:space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
       <div class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center">
         <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
 
