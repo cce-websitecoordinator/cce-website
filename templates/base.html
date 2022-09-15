@@ -51,7 +51,7 @@
 </head>
 
 <body class="overflow-x-hidden">
-  <div class="intial_loader w-[100vw] h-[100vh] z-[999] bg-black grid place-items-center fixed" id="loader">
+  <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
     <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
     <h1 class="text-white "> Loading data from:
     <span id="requests" class="text-white  text-center"></span></h1>
@@ -174,7 +174,7 @@
   {% endwith %}
 
   <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 items-center">
-    <div class="md:w-[75%] w-[90%] flex justify-between flex-wrap">
+    <div class="md:w-[75%] w-[90%] flex md:justify-between justify-center items-center flex-wrap flex-col md:flex-row md:space-y-0 space-y-11">
       <div>
         <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]">
 
@@ -188,19 +188,19 @@
         </div>
       </div>
 
-      <div class="quicklinks text-sm flex  flex-col text-white space-y-4">
+      <div class="quicklinks text-sm flex  flex-col text-white space-y-4 text-center">
         <h1 class="font-semibold mb-2 text-xl ">QUICK LINKS</h1>
         <a href="">KTU Website</a>
         <a href="">DTE Kerala</a>
         <a href="">CEE Kerala</a>
         <a href="">Grivence Cell</a>
       </div>
-      <div class="affliations flex text-sm  flex-col text-white space-y-4">
+      <div class="affliations flex text-sm  flex-col text-white space-y-4 text-center">
         <h1 class="text-xl font-semibold mb-2">AFFILIATIONS</h1>
         <a href="">KTU Affliliations</a>
         <a href="">AICTE Affliliations</a>
       </div>
-      <div class="other flex  text-sm flex-col text-white space-y-4">
+      <div class="other flex  text-sm flex-col text-white space-y-4 text-center">
         <h1 class="text-xl  font-semibold mb-2">OTHER</h1>
         <a href="">AICTE Website</a>
         <a href="">Results</a>
