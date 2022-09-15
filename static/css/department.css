@@ -156,13 +156,16 @@
 
 .flex-container {
   display: flex;
-  width: auto;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .flex-container > div {
-  margin: 20px;
+  gap: 10px;
   padding: 40px;
-  width: 400px;
+  width: 400px
 }
 
 .vision {
@@ -192,6 +195,8 @@
 .dep-prg {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 5px solid black;
   padding: 20px 20px 20px 20px;
   gap: 8.7px;
@@ -213,8 +218,7 @@
   flex-direction: column;
   padding: 20px;
   gap: 50px;
-  width: 1000px;
-  height: fit-content;
+  width: 90%;
   border-radius: 6.09219px;
 }
 
@@ -259,11 +263,12 @@
 
 .slider_circle_10{
   position:relative;
-  width:600px;
+  width:50vw;
   margin: 0 auto;
   user-select: none;
-  height:550px;
+  height:70vh;
   }
+
   .slider_circle_10 div img{
   width:100%;
   }
@@ -273,6 +278,8 @@
   display:none;
   width:100%;
   text-align: center;
+  
+
   }
   .slider_circle_10 .active .slider-desc{
   display: block;
@@ -298,12 +305,15 @@
   width:15px;
   margin:0px 5px;
   }
+
   .slider_circle_10 > div .img{
   border-radius: 50%;
   background: #fff;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0px 0px 25px #000;
+  /* margin: 0 50px; */
+  
   }
   .slider_circle_10 > div .img,
   .slider_circle_10 .hidden .img{
@@ -315,7 +325,8 @@
   height: 1px;
   z-index: 0;
   overflow: hidden;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
+  
   }
   .slider_circle_10 .active .img{
   opacity: 1;
@@ -323,8 +334,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   z-index: 10;
   }
   .slider_circle_10 .prev1 .img,
@@ -334,13 +345,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-left: -120px;
-  width: 150px;
-  height: 150px;
+  margin-left: -160px;
+  width: 200px;
+  height: 200px;
   z-index: 9;
   }
   .slider_circle_10 .next1 .img{
-  margin-left: 120px;
+  margin-left: 160px;
   }
   .slider_circle_10 .prev2 .img,
   .slider_circle_10 .next2 .img{
@@ -349,14 +360,14 @@
   top:50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-left: -220px;
-  width: 100px;
-  height: 100px;
+  margin-left: -260px;
+  width: 180px;
+  height: 180px;
   z-index: 8;
   padding-top:-100px;
   }
   .slider_circle_10 .next2 .img{
-  margin-left: 220px;
+  margin-left: 260px;
   }
   .nav_indicators {
   position: absolute;
@@ -364,7 +375,8 @@
   left: 0px;
   width: 100%;
   text-align: center;
-  z-index: 50000;
+  z-index: 50;
+  
   }
   .nav_indicators ul {
   display: inline-block;

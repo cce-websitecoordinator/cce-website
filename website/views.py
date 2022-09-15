@@ -141,7 +141,16 @@ def nirf_page(request):
 def gallery_page(request):
     return render(request, 'gallery.html')
 
+def iqac_page(request):
+    return render(request, 'iqac.html')
 
 
 def test_page(request):
     return render(request, 'Test.html')
+
+
+def server_error_page(request):
+    return render(request, 'Errors/500.html')
+
+def not_found_error_page(request,exception):
+    return render(request, 'Errors/404.html')

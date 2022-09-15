@@ -7,6 +7,7 @@ urlpatterns = [
     path('campuslife', views.campuslife_page, name='campuslife'),
     path('about', views.about_page, name='about'),
     path('nirf', views.nirf_page, name='nirf'),
+    path('iqac', views.iqac_page, name='iqac'),
     path('gallery', views.gallery_page, name='gallery'),
     path('departments/BSH', views.department_of_BSH_page, name='Department of BSH'),
     path('departments/CSE', views.department_of_CSE_page, name='Department of CSE'),

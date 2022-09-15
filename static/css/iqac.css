@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+  }
+  
+  .iqac-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 70px;
+    align-items: center;
+  }
+  
+  .quality-wrapper {
+    display: flex;
+    min-width: 1100px;
+    max-width: 1100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .quality-wrapper-content > p {
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+  }
+  
+  .objectives-wrapper {
+    display: flex;
+    min-width: 1100px;
+    max-width: 1100px;
+    overflow: hidden;
+    background-color: rgba(197, 226, 159, 0.5);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    min-height: 400px;
+    position: relative;
+    max-height: 400px;
+  }
+  
+  .objectives-wrapper-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    width: 33.33%;
+    left: 33.33%;
+    transition: all 200ms ease 0s;
+  }
+  
+  .objectives-wrapper-image > h1 {
+    font-size: 50px;
+    font-weight: 600;
+  }
+  
+  .objectives-wrapper-description {
+    display: flex;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    width: 66.66%;
+    transition: all 200ms ease 0s;
+  }
+  
+  .objectives-wrapper-description > ul > li {
+    font-weight: 600;
+    line-height: 40px;
+  }
+  
+  .objectives-wrapper:hover .objectives-wrapper-description {
+    left: 33.33%;
+    transition: all 200ms ease 0s;
+  }
+  
+  .objectives-wrapper:hover .objectives-wrapper-image {
+    left: 0;
+    transition: all 200ms ease 0s;
+  }
+  
+  .function-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(161, 217, 242, 0.5);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    padding: 100px;
+    min-width: 1100px;
+    max-width: 1100px;
+    gap: 50px;
+  }
+  
+  .function-wrapper-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .function-wrapper-image > h1 {
+    font-size: 50px;
+    font-weight: 600;
+  }
+  .function-wrapper-description > ul {
+    padding: 0px 100px 0px 100px;
+  }
+  
+  .function-wrapper-description > ul > li {
+    font-weight: 600;
+    line-height: 40px;
+  }
+  
+  .executive-committee-wrapper {
+    display: flex;
+    min-width: 1100px;
+    max-width: 1100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    border-radius: 7px;
+  }
+  
+  .executive-committee-wrapper > div {
+    max-height: 400px;
+    position: relative;
+    text-align: center;
+    overflow-y: auto;
+    margin-bottom: 100px;
+    width: 100%;
+    border: 5px solid black;
+    border-radius: 7px;
+    padding: 3px;
+  }
+  
+  .executive-committee-wrapper > div::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .executive-committee-table {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .executive-committee-table > thead > tr > th {
+    background-color: #4796cb;
+    height: 70px;
+    border-radius: 7px;
+    color: white;
+  }
+  
+  .executive-committee-table > tbody > tr:nth-child(odd) > td {
+    background-color: #d9d9d9;
+    height: 50px;
+    border-radius: 7px;
+    margin-top: 5px;
+  }
+  
+  .executive-committee-table > tbody > tr:nth-child(even) > td {
+    background-color: #f9f9f9;
+    height: 50px;
+    border-radius: 7px;
+    margin-top: 5px;
+  }
+  
+  .fixed-scroll {
+    position: sticky;
+    top: 0;
+    background-color: white;
+  }
+  .fixed-scroll > thead > tr {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .fixed-scroll > thead > tr > th {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .executive-committee-table > tbody > tr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .executive-committee-table > tbody > tr > td {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

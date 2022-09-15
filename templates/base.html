@@ -15,11 +15,12 @@
 
 
   {#Favicons Sections#}
-  <link rel="apple-touch-icon" sizes="180x180" href="{%  static  'favicons/apple-touch-icon.png'  %}">
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="{%  static  'favicons/apple-touch-icon.png'  %}"> -->
   <link rel="icon" type="image/png" sizes="32x32" href="{%  static  'favicons/favicon-32x32.png'  %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{%  static  'favicons/favicon-16x16.png'  %}">
   <link rel="shortcut icon" href="{%  static  'favicons/favicon.ico'  %}" type="image/x-icon">
-  <link rel="manifest" href="{%  static  'favicons/site.webmanifest'  %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <link rel="manifest" href="{%  static  'favicons/site.webmanifest'  %}"> -->
 
   {# Google fFonts And Font-Awsome Icones#}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -28,43 +29,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com" ></script>
 
-
-  {# Tailwind css fro devlopment use remove this in production#}
   
+  
+  {# Tailwind css fro devlopment use remove this in production#}
+  <script src="https://cdn.tailwindcss.com" ></script>
+  
+  {# Custom CSS and JS  #}
+  <script>
+    // script to log the request  the website is making to external APIs/CDNs
+    const observer2 = new PerformanceObserver((entries) => {
+      let req = document.getElementById('requests');
+      entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
+    });
+    observer2.observe({ entryTypes: ["resource"] });
+  </script>
   <script src="{%  static  'js/base.js'  %}" defer></script>
   <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
   
   {% block head %}{% endblock head %}
 </head>
-<script>
-  
-  // script to log the request  the website is making to external APIs/CDNs
-  const observer2 = new PerformanceObserver((entries) => {
-    let req = document.getElementById('requests');
-    entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
-  });
-  observer2.observe({ entryTypes: ["resource"] });
-</script>
-<script defer>
-  {
-    window.addEventListener('load', () => {
-     document.getElementById('loader').style.display = 'none';
-      console.log('loaded');
-      let homeArrow = document.getElementById("home--arrow")
-      if(homeArrow){
-        homeArrow.classList.remove("hidden")
-        homeArrow.classList.add("flex")
-      }
-    });
-    
-  }
-</script>
-
 
 <body class="overflow-x-hidden">
   <div class="intial_loader w-[100vw] h-[100vh] z-[999] bg-black grid place-items-center fixed" id="loader">
+    <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
     <h1 class="text-white "> Loading data from:
     <span id="requests" class="text-white  text-center"></span></h1>
 
@@ -76,7 +64,7 @@
 
     {# Navbar Segment #}
     <nav
-      class="{% if 'departments/' in request.get_full_path %}absolute mt-7{% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[999]">
+      class="{% if 'departments/' in request.get_full_path %}absolute {% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[300]">
       <div class="flex justify-between items-center w-[80%]">
         <div class="">
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
@@ -143,11 +131,11 @@
 
   {# Footer Segment #}
 
-<footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative">
+<footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative overflow-x-clip">
   {% with request.resolver_match.url_name as url_name %}
-  {% if url_name == 'home' %}active
+  {% if url_name == 'home' %}
   <div class="p-5 w-full flex justify-center items-center flex-col">
-    <div class="w-[90%] p-5 flex space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
+    <div class="w-[90%] p-5 flex md:space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
       <div class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center">
         <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
 
