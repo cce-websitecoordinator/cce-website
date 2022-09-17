@@ -42,7 +42,7 @@
 <section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
   <div class="md:w-[80%] w-full">
     <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
-      <h1 class="font-black text-4xl">Happenings</h1>
+      <h1 class="font-black text-5xl">Events</h1>
       <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
     </div>
 
@@ -72,10 +72,14 @@
 
 </section>
 
-<section class="marquee w-full h-[10vh] text-4xl font-black ">
+<section class=" w-full pt-2  font-black  bg-blue-100 md:fixed bottom-0 ">
   <div>
     <marquee behavior="" direction="left">
-      2021 Semester VII Results published. | College Techfest, Techletics'22 successfully held on May 4,5 and 6. |
+     
+      {% for item in updates %}
+
+      {{item.data}}
+      {% endfor %}
     </marquee>
   </div>
 </section>
@@ -117,7 +121,7 @@
             <div class="w-[150px] ">
               <img src={{item.image}} alt="studentImage " class="rounded-full">
             </div>
-            <h1 class="text-2xl font-bold mt-3">{{item.name}}</h1>
+            <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>
 
             <h2 class="text-xl mt-11 font-bold text-[#205072] text-center">{{item.department}}</h2>
