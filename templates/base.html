@@ -50,8 +50,8 @@
   {% block head %}{% endblock head %}
 </head>
 
-<body class="overflow-x-hidden">
-  <div class="intial_loader w-[100vw] h-[100vh] z-[999] bg-black grid place-items-center fixed" id="loader">
+<body class="overflow-x-hidden relative">
+  <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
     <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
     <h1 class="text-white "> Loading data from:
     <span id="requests" class="text-white  text-center"></span></h1>
@@ -63,68 +63,8 @@
     {% with request.resolver_match.url_name as url_name %}
 
     {# Navbar Segment #}
-    <nav
-      class="{% if 'departments/' in request.get_full_path %}absolute {% else %}{% if url_name == 'home' %}absolute{% else %}bg-[#252929]{% endif %}{% endif %} navbar w-[100vw] flex  justify-center items-center z-[300]">
-      <div class="flex justify-between items-center w-[80%]">
-        <div class="">
-          <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[300px]">
-        </div>
-
-        <div>
-          <div class="space-x-6  text-base relative  text-white flex ">
-            <div id="navlinks" class="space-x-6  text-base relative  text-white flex ">
-              <div>
-                <a href="/" class="{% if url_name == 'home' %}active{% endif %}">Home</a>
-              </div>
-              <div>
-                <a href="/academics" class="{% if url_name == 'academics' %}active{% endif %}">Academics</a>
-              </div>
-              <div class="">
-                <h1 id="dropdown--container">
-                  <button id="dropdownBtn">Departments <i class="fa-solid fa-caret-down ml-2 " id='bounce'></i></button>
-                  <ul class="space-y-13 dropdown top-10 p-5 h-auto bg-[#252929] rounded-md" id="dropdown">
-
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"> <a href="/departments/BSH">Basic Science &
-                        Humanities</a></li>
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CSE">Computer Science &
-                        Engineering</a></li>
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/CE">Civil Engineering</a></li>
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ECE">Electronics & Communication
-                        Engineering</a></li>
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/EEE">Electrical & Electronics
-                        Engineering</a></li>
-                    <li class="p-2 hover:bg-[#007FFF] rounded-md"><a href="/departments/ME">Mechanical Engineering</a>
-                    </li>
-
-                  </ul>
-                </h1>
-
-              </div>
-              <div class="{% if 'departments/' in request.get_full_path %}block{% else %}hidden{% endif %}"><a href="/">
-                  Assoaiations</a></div>
-              <div class="{% if 'departments/' in request.get_full_path %}hidden{% endif %} ">
-                <a href="/campuslife" class="{% if url_name == 'campuslife' %}active{% endif %}">Campus Life</a>
-              </div>
-              <div>
-                <a href="/about" class="{% if url_name == 'about' %}active{% endif %}">About</a>
-              </div>
-
-              <a href="/" class="{% if 'departments/' in request.get_full_path %}hidden{% endif %}">More<i
-                  class="fa-solid fa-caret-down ml-2"></i></a>
-            </div>
-            <div class="search-container" id="search_container">
-              <input type="text" name="search" placeholder="Search..." class="search-input p-2 text-black">
-              <a href="#" class="search-btn">
-                <i class="fas fa-search"></i>
-              </a>
-            </div>
-
-          </div>
-          {% endwith %}
-
-        </div>
-      </div>
-    </nav>
+  {%include 'components/_partials/navbar.html'%}
+  {% endwith %}
   </header>
 
   {% block body %} {% endblock body %}
@@ -174,7 +114,7 @@
   {% endwith %}
 
   <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 items-center">
-    <div class="md:w-[75%] w-[90%] flex justify-between flex-wrap">
+    <div class="md:w-[75%] w-[90%] flex md:justify-between justify-center items-center flex-wrap flex-col md:flex-row md:space-y-0 space-y-11">
       <div>
         <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]">
 
@@ -188,19 +128,19 @@
         </div>
       </div>
 
-      <div class="quicklinks text-sm flex  flex-col text-white space-y-4">
+      <div class="quicklinks text-sm flex  flex-col text-white space-y-4 text-center">
         <h1 class="font-semibold mb-2 text-xl ">QUICK LINKS</h1>
         <a href="">KTU Website</a>
         <a href="">DTE Kerala</a>
         <a href="">CEE Kerala</a>
         <a href="">Grivence Cell</a>
       </div>
-      <div class="affliations flex text-sm  flex-col text-white space-y-4">
+      <div class="affliations flex text-sm  flex-col text-white space-y-4 text-center">
         <h1 class="text-xl font-semibold mb-2">AFFILIATIONS</h1>
         <a href="">KTU Affliliations</a>
         <a href="">AICTE Affliliations</a>
       </div>
-      <div class="other flex  text-sm flex-col text-white space-y-4">
+      <div class="other flex  text-sm flex-col text-white space-y-4 text-center">
         <h1 class="text-xl  font-semibold mb-2">OTHER</h1>
         <a href="">AICTE Website</a>
         <a href="">Results</a>
@@ -219,7 +159,7 @@
   </div>
 
   <div
-    class="scroll-to-top absolute flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]"
+    class="scroll-to-top fixed flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]"
     id="scroll-to-top">
     <i class="fa-solid fa-arrow-up"></i>
   </div>

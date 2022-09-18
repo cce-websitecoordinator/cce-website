@@ -98,6 +98,13 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 
 .show{
   display: flex !important;
+  flex-direction: column !important;
+  /* justify-items: center; */
+  /* align-items: center; */
+  position: absolute;
+}
+.show2{
+  display: flex !important;
   flex-direction: column;
   /* justify-items: center; */
   /* align-items: center; */
@@ -123,7 +130,6 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
     transform: translateY(0);
   }
 }
-
 
 
 

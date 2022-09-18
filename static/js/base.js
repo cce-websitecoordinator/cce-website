@@ -32,6 +32,14 @@ window.addEventListener("load", function () {
   document.getElementById("dropdown").addEventListener("mouseleave", () => {
     document.getElementById("dropdown").classList.remove("show");
   });
+
+  document.getElementById("dropdownBtn2").addEventListener("click", function () {
+    console.log("Clicked");
+    document.getElementById("dropdown2").classList.toggle("show2");
+  });
+  document.getElementById("dropdown2").addEventListener("mouseleave", () => {
+    document.getElementById("dropdown2").classList.remove("show2");
+  });
   // Search Button
   searchContainer.addEventListener("mouseenter", function () {
     navlinks.classList.add("hidden");
