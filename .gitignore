@@ -6,6 +6,9 @@ __pycache__
 db.sqlite3
 media
 
+
+# Npm#
+/node_modules
 # Backup files # 
 *.bak 
 
