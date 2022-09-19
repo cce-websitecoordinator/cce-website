@@ -1,3 +1,4 @@
+
 from django.db import models
 
 
@@ -18,3 +19,7 @@ class HomeUpdates(models.Model):
     def __str__(self):
         return self.data
    
+class HomeEvents(models.Model):
+    heading = models.CharField(max_length=30)
+    sub_heading = models.CharField(max_length=50)
+    sub_text = models.TextField()

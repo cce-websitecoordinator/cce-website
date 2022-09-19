@@ -16,8 +16,7 @@
 {% endblock topbar %}
 {% block body %}
 
-
-<section class="home_section relative ">
+<section class="home_section relative snap-center">
   <div class="w-[100vw] md:h-[100vh] overflow-clip  -z-1">
     <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video>
     <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden">
@@ -32,14 +31,17 @@
       <p class=" font-extralight">Engineering college</p>
     </div>
   </div>
+  <div class="flex w-full justify-center animate-bounce z-[10]  absolute bottom-11">
+
+    <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+  </div>
+  
 </section>
 
 
-<div class="absolute bottom-3 animate-bounce  w-full  items-center justify-center hidden " >
-  <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
-</div>
 
-<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
+
+<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6 snap-start">
   <div class="md:w-[80%] w-full">
     <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
       <h1 class="font-black text-5xl">Events</h1>
@@ -52,19 +54,16 @@
       <img src="{%  static  'images/happenings3.png'  %}" alt="happenings-img" class="" srcset="">
 
       <img src="{%  static  'images/happenings4.png'  %}" class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1 " alt="happenings-img" srcset="">
-
+      {% for item in Events %}
       <div class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
-        <h1 class="font-bold text-3xl font-black">Techletics '22</h1>
-        <p class="text-xl font-semibold">Moto Expo was conducted on the banner of Techletics ‘22.</p>
+        <h1 class="font-bold text-3xl font-black">{{item.heading}}</h1>
+        <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>
-          and the students were also able to interact with the industry.
-          Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in.
-          Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus
-          fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis ed ornare pharetra, risus id.
-          Aliquam placerat consequat.
+          {{item.sub_text}}
         </p>
         <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">See More</button>
       </div>
+      {% endfor %}
 
     </div>
 
@@ -72,17 +71,9 @@
 
 </section>
 
-<section class=" w-full pt-2  font-black  bg-blue-100 md:fixed bottom-0 ">
-  <div>
-    <marquee behavior="" direction="left">
-     
-      {% for item in updates %}
 
-      {{item.data}}
-      {% endfor %}
-    </marquee>
-  </div>
-</section>
+
+
 
 <section class="w-[100vw] h-auto pt-11 pb-11 bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
   <div class="w-[80%] flex items-center justify-between md:flex-row flex-col md:space-y-0 space-y-24 ">
@@ -202,22 +193,22 @@
 
 
 
-
+{% comment %} https://codepen.io/ccallen001/pen/bEYByd {% endcomment %}
 
   // Footer Map Configurations
 
   var map = L.map('map', {
     center: [10.35891, 76.21279],
-    zoom: 15
+    zoom: 30
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  var firefoxIcon = L.icon({
-    iconUrl: "{%  static  'images/cce.png'  %}",
-    iconSize: [138, 95],
+  var christIcon = L.icon({
+    iconUrl: "{%  static  'images/mapLogo.png'  %}",
+    iconSize: [80, 80],
     popupAnchor: [0, -15]
   });
 
@@ -229,7 +220,7 @@
     'className': 'custom'
   }
 
-  L.marker([10.35891, 76.21279], { icon: firefoxIcon }).bindPopup(customPopup, customOptions).addTo(map);
+  L.marker([10.35891, 76.21279], { icon: christIcon }).bindPopup(customPopup, customOptions).addTo(map);
 
 
 

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
+    # 'compressor',
     'website'
 
     # 'tailwind', // activate this in production to use Tailwind CSS
@@ -166,3 +167,9 @@ NPM_BIN_PATH = shutil.which('npm')
 TAILWIND_APP_NAME = 'theme'
 
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# COMPRESS_ROOT = BASE_DIR / 'static'
+# 
+# COMPRESS_ENABLED = True
+
+# STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

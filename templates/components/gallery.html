@@ -1,42 +1,7 @@
 {% load static %}
-{% block head %} <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
+{% block head %} <link rel="stylesheet" href="{%  static  'css/base.css'  %}" /><link rel="stylesheet" href="{%  static  'ticker/dist/css/ticker.min.css'  %}" />
 <style>
-    .slider {
-        
-        position: relative;
-        width: 100%;
-      
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-      }
-      .slider::before,
-      .slider::after{
-        position:absolute;
-        /*background-image:linear-gradient(to right,rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);*/
-        content:'';
-        height:100%;width:25%;
-        z-index:2;pointer-events:none;
-      }
-      .slider::before{
-        left:0;
-        top:0;
-      }
-      .slider::after{
-        right:0;
-        top:0;
-        transform:rotateZ(180deg);
-      }
-      
-      /*  IMPORTANT CODE BELOW */
-      
-      .slide-track {
-        width: calc(150px * 20);
-        display: flex;
-        gap: 10;
-        animation: scroll2 20s linear infinite;
-        justify-content: space-between;
-      }
+    
       .slide {
         height:300px;
         transform:scale(0.9);
@@ -50,57 +15,26 @@
         transform:scale(1)
       }
       
-      
-      
-      @keyframes scroll2 {
-        0% {
-          transform: translateX(0px);
-        }
-        100% {
-          transform: translateX(calc(-150px * 5));
-        }
-      }
-      
       @media screen and (max-width: 768px) {
-        .slide-track {
-          width: calc(200px * 20);
-        }
       
-        .slide-track2 {
-          width: calc(200px * 15);
-        }
       
         .slide {
-          width: 200px;
           height: 200px;
           margin-left: 4px;
           margin-right: 6px;
         }
       
-        @keyframes scroll {
-          0% {
-            transform: translateX(0px);
-          }
-          100% {
-            transform: translateX(calc(-80px * 10));
-          }
-        }
       
-        @keyframes scroll2 {
-          0% {
-            transform: translateX(0px);
-          }
-          100% {
-            transform: translateX(calc(-80px * 5));
-          }
-        }
+      
+        
       }
 </style>
 {% endblock head %}
 
-<section class="gallery  min-h-[70vh] overflow-hidden w-[300vw] relative p-11 flex gap-6" >
-    <div class="slider h-full">
-        <div class="slide-track ">
+<section class="gallery  min-h-[70vh] w-[100vw] p-11 gap-6" >
+  <h1 class="text-center text-4xl md:text-5xl font-bold pb-11">Gallery</h1>
+  <div>
+        <div class="slide-track bg-white">
             <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
             <img src="{%  static  'images/happenings4.png'  %}" class="slide " alt="happenings-img" srcset="">
             <img src="{%  static  'images/happenings3.png'  %}" class="slide " alt="happenings-img" srcset="">
@@ -144,38 +78,30 @@
             <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
             <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
           
-        </div>
+        
       </div>
+    </div>
+    <div class="w-full flex justify-center mt-11">
+
+      <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white hover:scale-125 duration-500">Explore More</a>
+    </div>
 
 </section>
 
 
 {% block script %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.5.0/jquery.marquee.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous"></script>
+<script src="{%  static  'ticker/dist/js/ticker.min.js'  %}"></script>
 <script>
-    window.addEventListener('load', function () {
-        function go() {
-            i = i < width ? i + step : 1;
-            m.style.marginLeft = -i + 'px';
-        }
-        var i = 0,
-            step = 3,
-            space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-        var m = document.getElementById('marquee');
-        var t = m.innerHTML; //text
-        m.innerHTML = t + space;
-        m.style.position = 'absolute'; 
-        var width = (m.clientWidth + 1);
-        m.style.position = '';
-        m.innerHTML = t + space + t + space + t + space + t + space + t + space + t + space + t + space;
-        m.addEventListener('mouseenter', function () {
-            step = 0;
-        }, true);
-        m.addEventListener('mouseleave', function () {
-            step = 3;
-        }, true);
-        var x = setInterval(go, 50);
-    }, true);
+    $(".slide-track").ticker({
+    item: 'img',
+    pauseOnHover: true,
+    speed: 60,
+    pauseAt: '',
+    delay: 500
+  
+  });
 </script>
 {% endblock%}

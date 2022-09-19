@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from website.models import Testimonials,HomeUpdates
+from website.models import Testimonials,HomeUpdates,HomeEvents
 
 print(HomeUpdates.objects.all().values())
 
 def home_page(request):
-    context = {'Testimonials': Testimonials.objects.all().values(), "name": "John Doe","updates":HomeUpdates.objects.all().values() }
+    context = {'Testimonials': Testimonials.objects.all().values(), "name": "John Doe","updates":HomeUpdates.objects.all().values(),"Events":HomeEvents.objects.all().values()}
     return render(request, 'home.html', context=context)
 
 

@@ -1,3 +1,4 @@
+{% comment %} {% load compress %} {% endcomment %}
 {% load static %}
 {#{% load static tailwind_tags %} activate this in production to use Tailwind CSS #}
 <!DOCTYPE html>
@@ -33,6 +34,11 @@
   
   
   {# Tailwind css fro devlopment use remove this in production#}
+   {% comment %} {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> {% endcomment %}
+
   <script src="https://cdn.tailwindcss.com" ></script>
   
   {# Custom CSS and JS  #}
@@ -50,15 +56,15 @@
   {% block head %}{% endblock head %}
 </head>
 
-<body class="overflow-x-hidden relative">
+<body class="overflow-x-hidden relative snap-y snap-mandatory">
   <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
     <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
-    <h1 class="text-white "> Loading data from:
-    <span id="requests" class="text-white  text-center"></span></h1>
+    <h1 class="text-white text-center"> Loading data from:
+    <span id="requests" class="text-white  text-center text-xs"></span></h1>
 
   </div>
   <header>
-    {% block topbar %}{% endblock topbar %}
+  {% block topbar %}{% endblock topbar %}
 
     {% with request.resolver_match.url_name as url_name %}
 
@@ -69,7 +75,10 @@
 
   {% block body %} {% endblock body %}
 
+  {% include 'components/infoScroller.html'%}
   {# Footer Segment #}
+
+
 
 <footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative overflow-x-clip">
   {% with request.resolver_match.url_name as url_name %}
@@ -113,7 +122,7 @@
   {% endif %}
   {% endwith %}
 
-  <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 items-center">
+  <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 mt-items-center">
     <div class="md:w-[75%] w-[90%] flex md:justify-between justify-center items-center flex-wrap flex-col md:flex-row md:space-y-0 space-y-11">
       <div>
         <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]">
@@ -151,15 +160,15 @@
     </div>
 
   </div>
-  <div class="w-full h-auto flex justify-center items-center absolute flex-col bottom-0 ">
-    <div class="w-[75vw] bg-[#F9F9F9] h-[1px] mt-4"></div>
-    <p class="text-[#F5FAFA] text-xs mt-2">
-      Copyright © 2022 Christ College of Engineering
-    </p>
-  </div>
+ <div class="w-full pb-11 flex flex-col justify-center items-center">
+  <div class="h-[1px] bg-slate-300 w-[90%]"></div>
+  <p class="text-white text-xs pt-4">Copyright 	&#169; 2022 Christ College of Engineering</p>
+
+ </div>
+  
 
   <div
-    class="scroll-to-top fixed flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF]"
+    class="scroll-to-top fixed flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF] z-[100]"
     id="scroll-to-top">
     <i class="fa-solid fa-arrow-up"></i>
   </div>

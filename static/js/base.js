@@ -42,7 +42,8 @@ window.addEventListener("load", function () {
   });
   // Search Button
   searchContainer.addEventListener("mouseenter", function () {
-    navlinks.classList.add("hidden");
+    console.log("enter");
+    navlinks.classList.style.display="none";
     searchContainer.classList.add("bg-white");
     searchContainer.classList.add("search-shadow");
   });

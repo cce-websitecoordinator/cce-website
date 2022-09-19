@@ -23,13 +23,7 @@ body {
   font-size: 7em;
 }
 
-.active {
-  font-size: 16px !important;
-  font-weight: 900;
-  background-color: #007FFF;
-  padding: 10px;
-  border-radius: 5px;
-}
+
 
 .fixed-nav {
   position: fixed !important;
@@ -57,7 +51,6 @@ body {
 .search-container{
   height: 35px;
   border-radius: 30px;
-  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -99,8 +92,7 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 .show{
   display: flex !important;
   flex-direction: column !important;
-  /* justify-items: center; */
-  /* align-items: center; */
+  width: 100vw;
   position: absolute;
 }
 .show2{
