@@ -24,49 +24,6 @@ body {
 }
 
 
-
-.fixed-nav {
-  position: fixed !important;
-  top: 0 !important;
-  background: #252929 !important;
-  transition: top 1s;
-}
-
-.search_active {
-  display: block !important;
-  animation: search-bar-animation 2s linear ease-in;
-}
-
-.cssmarquee {
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-}
-
-.cssmarquee  {
-  width: 100%;
-  height: 100%;
-  animation: cssmarquee 10s linear infinite;
-}
-.search-container{
-  height: 35px;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.8s;
-}
-.search-shadow{
-  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-  -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-inset -4px -4px 6px 0 rgba(255,255,255,.2),
-inset 4px 4px 6px 0 rgba(0, 0, 0, .2);  
-}
-
-.search-container:hover > .search-input{
-  width: 400px;
-}
-
 .search-container .search-input{
   background: transparent;
   border: none;
@@ -77,31 +34,7 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
   transition: 0.8s;
 
 }
-.custom .leaflet-popup-tip,
-.custom .leaflet-popup-content-wrapper {
-    background: #007FFF;
-    color: #ffffff;
-}
 
-.dropdown{
-  display: none;
-  width: inherit;
-  position: absolute;
-}
-
-.show{
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100vw;
-  position: absolute;
-}
-.show2{
-  display: flex !important;
-  flex-direction: column;
-  /* justify-items: center; */
-  /* align-items: center; */
-  position: absolute;
-}
  
 @media screen and (max-width: 768px) {
   .swiper-button-prev,
@@ -109,20 +42,6 @@ inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
     display: none;
   }
 }
-@keyframes search-bar-animation {
-  0% {
-    width: 0;
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  100% {
-    width: 100%;
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 
 

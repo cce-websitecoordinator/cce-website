@@ -17,9 +17,9 @@
 {% block body %}
 
 <section class="home_section relative snap-center">
-  <div class="w-[100vw] md:h-[100vh] overflow-clip  -z-1">
-    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video>
-    <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden">
+  <div class="w-[100vw] h-[100vh] overflow-clip  -z-1 home_bg ">
+    {% comment %} <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video> {% endcomment %}
+    {% comment %} <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden"> {% endcomment %}
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-full  bg-[#11111d8c] img-overlay"></div>
   <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">
@@ -38,6 +38,14 @@
   
 </section>
 
+<section class="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] h-[100vh] lg:px-11 ">
+<div class="flex flex-col items-center justify-center text-center h-full">
+<h1 class="text-5xl font-bold">About Us</h1>
+<p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long list of institutions managed by CMI Fathers.</p></div>
+<div class="">
+
+</div>
+</section>
 
 
 
