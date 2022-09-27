@@ -5,7 +5,7 @@
       .slide {
         height:300px;
         transform:scale(0.9);
-      
+        background-color:red;
         display: grid;
         place-items: center;
         transition:0.5s;
@@ -35,50 +35,9 @@
   <h1 class="text-center text-4xl md:text-5xl font-bold pb-11">Gallery</h1>
   <div>
         <div class="slide-track bg-white">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings4.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings3.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings1.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-            <img src="{%  static  'images/happenings2.png'  %}" class="slide " alt="happenings-img" srcset="">
-          
-        
+        {% for item in gallery %}
+            <img src="media/{{item.image}}" class="slide " alt="happenings-img" srcset="">
+      {% endfor %}
       </div>
     </div>
     <div class="w-full flex justify-center mt-11">

@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -10,20 +9,21 @@
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
 {% endblock head %}
-{% block topbar %} 
-{% include 'components/topbar.html'  %}
+{% block topbar %}
+{% include 'components/topbar.html' %}
 
 {% endblock topbar %}
 {% block body %}
 
 <section class="home_section relative snap-center">
-  <div class="w-[100vw] h-[100vh] overflow-clip  -z-1 home_bg ">
-    {% comment %} <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video> {% endcomment %}
+  <div class="w-[100vw] h-[100vh] overflow-clip  -z-1  ">
+    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video>
     {% comment %} <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden"> {% endcomment %}
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-full  bg-[#11111d8c] img-overlay"></div>
   <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">
-    <div class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
+    <div
+      class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
 
       <p class=" font-extralight">The</p>
       <p class="font-black">Most Preferred</p>
@@ -31,20 +31,38 @@
       <p class=" font-extralight">Engineering college</p>
     </div>
   </div>
-  <div class="flex w-full justify-center animate-bounce z-[10]  absolute bottom-11">
+  <div class="flex w-full justify-center animate-bounce z-[10]  absolute bottom-24" id="down-icon">
 
     <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
   </div>
-  
+
 </section>
 
 <section class="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] h-[100vh] lg:px-11 ">
-<div class="flex flex-col items-center justify-center text-center h-full">
-<h1 class="text-5xl font-bold">About Us</h1>
-<p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long list of institutions managed by CMI Fathers.</p></div>
-<div class="">
+  <div class="flex flex-col items-center justify-center text-center h-full col-span-1">
+    <h1 class="text-5xl font-bold mb-11">About Us</h1>
+    <p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala
+      with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long
+      list of institutions managed by CMI Fathers.</p>
+ 
+  <div class="grid place-content-center grid-cols-3 w-[90%] mt-11 px-auto">
+    <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group">
+      <h1 class="font-bold text-2xl mb-2 ">Vission</h1>
+      <p class="group-hover:block   hidden">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+    </div>
+    <div class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100">
+      <h1 class="font-bold text-2xl mb-2 ">Mission</h1>
+      <p class="group-hover:block hidden">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+    </div>
+  </div>
+  </div>
 
-</div>
+  <div class="">
+    <div class="w-full h-full flex items-center justify-center p-11 md:px-24">
+      <div class="w-full h-full bg-white shadow-xl rounded-md"> </div>
+    </div>
+
+  </div>
 </section>
 
 
@@ -55,15 +73,18 @@
       <h1 class="font-black text-5xl">Events</h1>
       <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
     </div>
+    {% for item in Events %}
 
     <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-      <img src="{%  static  'images/happenings1.png'  %}" class=" " alt="happenings-img" srcset="">
-      <img src="{%  static  'images/happenings2.png'  %}" class="hidden lg:block" alt="happenings-img" srcset="">
-      <img src="{%  static  'images/happenings3.png'  %}" alt="happenings-img" class="" srcset="">
+      <img src="media/{{item.img1}}" class=" " alt="happenings-img" srcset="">
+      <img src="media/{{item.img2}}" class="hidden lg:block" alt="happenings-img" srcset="">
+      <img src="media/{{item.img3}}" alt="happenings-img" class="" srcset="">
 
-      <img src="{%  static  'images/happenings4.png'  %}" class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1 " alt="happenings-img" srcset="">
-      {% for item in Events %}
-      <div class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
+      <img src="media/{{item.img4}}"
+        class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1 " alt="happenings-img" srcset="">
+      
+      <div
+        class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
         <h1 class="font-bold text-3xl font-black">{{item.heading}}</h1>
         <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>
@@ -106,7 +127,7 @@
   <img src="{%  static  'images/recruiters.png'  %}" alt="Recruiters" class="p-6 mt-11" srcset="">
 
 </section>
-{% include 'components/gallery.html'  %}
+{% include 'components/gallery.html' %}
 
 <section class="testimonials w-[100vw] min-h-[100vh] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
@@ -118,7 +139,7 @@
         <div class="w-full  h-full flex justify-center items-center ">
           <div class="w-full flex justify-center items-center flex-col">
             <div class="w-[150px] ">
-              <img src={{item.image}} alt="studentImage " class="rounded-full">
+              <img src="media/{{item.image}}" alt="studentImage " class="rounded-full">
             </div>
             <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>
@@ -199,9 +220,18 @@
     },
   });
 
+  document.getElementById('down-icon').addEventListener('click', () => {
+    window.scrollTo({
+      top: getOffset(counterSection).top,
+      behavior: 'smooth'
+    })
+  })
 
 
-{% comment %} https://codepen.io/ccallen001/pen/bEYByd {% endcomment %}
+
+  //{% comment %} 
+  //https://codepen.io/ccallen001/pen/bEYByd 
+  //{% endcomment %}
 
   // Footer Map Configurations
 
