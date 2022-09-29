@@ -45,27 +45,27 @@
 </section>
 
 <section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 ">
-  <div class="flex flex-col items-center justify-center text-center h-full col-span-1 ">
+  <div class="flex flex-col items-center justify-center text-center h-full col-span-1 " >
     <h1 class="text-5xl font-bold mb-11">About Us</h1>
     <p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala
       with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long
       list of institutions managed by CMI Fathers.</p>
  
-  <div class="grid place-content-center grid-cols-3 w-[90%] mt-11 px-auto">
-    <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group">
+  <div class="grid place-content-center md:grid-cols-3 grid-cols-1 w-[90%] mt-11 px-auto">
+    <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group" id='Vision'>
       <h1 class="font-bold text-2xl mb-2 ">Vission</h1>
-      <p class="group-hover:block   hidden">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+      <p class="block">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
     </div>
-    <div class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100">
+    <div class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100"  id='Mission'>
       <h1 class="font-bold text-2xl mb-2 ">Mission</h1>
-      <p class="group-hover:block hidden">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+      <p class="block ">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
     </div>
   </div>
   </div>
 
   <div class="relative">
-    <div class="w-full h-auto flex items-center justify-center p-11 pr-0 md:px-24 flex-col ">
-      <div class="w-[80%] h-full bg-white shadow-xl rounded-md p-8">
+    <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0 lg:px-24 md:px-11 flex-col ">
+      <div class="lg:w-[80%] w-full h-full bg-white shadow-xl rounded-md p-8">
         <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
         <div class="swiper2 overflow-x-clip">
           <div class="swiper-wrapper ">
@@ -79,7 +79,7 @@
               <h1 class='font-bold text-xl px-1'>
                 {{event.date.day}}
               </h1>
-              <h2 class='border-t-2 border-blue-500 px-1'>
+              <h2 class='border-t-2 border-blue-500 px-1 font-bold' id ='upcomingMonth'>
                 {{event.date.month}}
               </h2>
             </div>
@@ -305,8 +305,40 @@ const swiper2 = new Swiper('.swiper2', {
 
   L.marker([10.35891, 76.21279], { icon: christIcon }).bindPopup(customPopup, customOptions).addTo(map);
 
+  var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+  var upcomingMonth = document.querySelectorAll('#upcomingMonth');
+  
+
+ upcomingMonth.forEach((item)=>{
+      const inner =  item.innerText
+      item.innerText = months[inner]
+ })
+  
 
 
+
+var mission = document.querySelector('#Mission');
+var vision = document.querySelector('#Vision');
+vision.querySelector('p').classList.add('hidden')
+
+
+vision.addEventListener("mouseover",()=>{
+  mission.classList.remove('col-span-2')
+  mission.classList.add('col-span-1')
+  vision.classList.add('col-span-2')
+  mission.querySelector('p').classList.add('hidden')
+  vision.querySelector('p').classList.remove('hidden')
+  console.log("fdjsdghsjdfhg")
+})
+mission.addEventListener("mouseover",()=>{
+  vision.classList.remove('col-span-2')
+  vision.classList.add('col-span-1')
+  mission.classList.add('col-span-2')
+  mission.querySelector('p').classList.remove('hidden')
+  vision.querySelector('p').classList.add('hidden')
+})
 
 
 
