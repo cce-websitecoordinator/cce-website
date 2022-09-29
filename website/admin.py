@@ -1,11 +1,12 @@
 from django.contrib import admin
-from website.models import Testimonials,HomeUpdates,HomeEvents,Gallery
+from website.models import *
 
 # Register your models here.
 admin.site.register(Testimonials)
 admin.site.register(HomeUpdates)
 admin.site.register(HomeEvents)
 admin.site.register(Gallery)
+admin.site.register(UpcomingEvent)
 
 ADMIN_REORDER = (
 # 'webapp',

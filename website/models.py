@@ -1,5 +1,6 @@
 
 from distutils.command.upload import upload
+from turtle import title
 from django.db import models
 
 
@@ -32,3 +33,12 @@ class HomeEvents(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
+
+
+class UpcomingEvent(models.Model):
+    date= models.DateField() 
+    image = models.ImageField(upload_to="upcomingEvents")
+    title = models.CharField(max_length=30)
+    sub_title  = models.CharField(max_length=100)
+
+

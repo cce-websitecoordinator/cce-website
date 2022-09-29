@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin="" />
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
@@ -15,12 +21,12 @@
 {% endblock topbar %}
 {% block body %}
 
-<section class="home_section relative snap-center">
-  <div class="w-[100vw] h-[100vh] overflow-clip  -z-1  ">
-    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video>
+<section class="home_section relative h-[100vh] overflow-clip">
+  <div class="w-[100vw] h-[100vh] -z-1  ">
+    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block "></video>
     {% comment %} <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden"> {% endcomment %}
   </div>
-  <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-full  bg-[#11111d8c] img-overlay"></div>
+  <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
   <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">
     <div
       class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
@@ -38,8 +44,8 @@
 
 </section>
 
-<section class="grid grid-cols-1 md:grid-cols-2 md:h-[80vh] h-[100vh] lg:px-11 ">
-  <div class="flex flex-col items-center justify-center text-center h-full col-span-1">
+<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 ">
+  <div class="flex flex-col items-center justify-center text-center h-full col-span-1 ">
     <h1 class="text-5xl font-bold mb-11">About Us</h1>
     <p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala
       with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long
@@ -57,11 +63,42 @@
   </div>
   </div>
 
-  <div class="">
-    <div class="w-full h-full flex items-center justify-center p-11 md:px-24">
-      <div class="w-full h-full bg-white shadow-xl rounded-md"> </div>
-    </div>
+  <div class="relative">
+    <div class="w-full h-auto flex items-center justify-center p-11 pr-0 md:px-24 flex-col ">
+      <div class="w-[80%] h-full bg-white shadow-xl rounded-md p-8">
+        <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
+        <div class="swiper2 overflow-x-clip">
+          <div class="swiper-wrapper ">
+            {% for event in upcomingEvents %}
 
+        <div class="swiper-slide">
+          <img src="media/{{event.image}}"/>
+        
+          <div class='w-full flex pt-3'>
+            <div class='border-2 border-blue-300 h-full w-[50px] text-center shadow-xl rounded-md'>
+              <h1 class='font-bold text-xl px-1'>
+                {{event.date.day}}
+              </h1>
+              <h2 class='border-t-2 border-blue-500 px-1'>
+                {{event.date.month}}
+              </h2>
+            </div>
+            <div class="mx-3 w-[4px] bg-blue-500 mt-3"></div>
+            <div class='pl-1'>
+              <h1 class='font-bold'>{{event.title}}</h1>
+              <p class ='text-xs'>{{event.sub_title}}</p>
+            </div>
+          </div>
+        </div>
+
+
+{% endfor %}
+
+
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -227,7 +264,15 @@
     })
   })
 
-
+const swiper2 = new Swiper('.swiper2', {
+  speed: 400,
+  spaceBetween: 100,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 3000,
+  },
+  
+});
 
   //{% comment %} 
   //https://codepen.io/ccallen001/pen/bEYByd 
