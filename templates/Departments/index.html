@@ -1,13 +1,14 @@
-{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %} <link rel="stylesheet" href="{%  static  'css/department.css'  %}">
+<script src="http://nicesnippets.com/demo/easy_slide.js"></script>{% block head %}
 
 <main class="min-h-[100vh] overflow-x-hidden">
     <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
             <img src="/static/images/BSH_Department.png" alt="department-hero-img" class="w-full h-full object-cover object-center" >
-            
-            <h1 class="md:text-[500px] text-[200px] justify-self-center self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center"></h1>
-            
+            {% with request.resolver_match.url_name as url_name %}
+            <h1 class="md:text-[500px] text-[200px] justify-self-center self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">{{url_name}}</h1>
+            {% endwith %}
         </div>
         <div class="z-[5] text-center space-y-5 ">
             
@@ -91,6 +92,84 @@
             </div>
             
             </div>
+
+
+
+            <div class="fac">
+                <div class="slider slider_circle_10">
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Dr VD Jhon</h3>
+                            <P>HOD</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Tefgkl; Coock</h3>
+                            <P>Designer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Justine trodu</h3>
+                            <P>Developer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://t4.ftcdn.net/jpg/01/59/44/71/160_F_159447194_oZfyvVr9yDPISGzWfcDpYRQzb6gXy29c.jpg">
+                        </div>
+                        <div class="slider-desc">
+                            <h3>mike hanrik</h3>
+                            <P>Graphic Designer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>jef load</h3>
+                            <P>Interior Designer</P>
+    
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>jef load</h3>
+                            <P>Interior Designer</P>
+    
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>gdkh load</h3>
+                            <P>Interior Designer</P>
+    
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>win desal</h3>
+                            <P>SEO</P>
+                        </div>
+                    </div>
+                    <div class="next_button"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                    <div class="prev_button"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                    <!-- <div class="nav_indicators"></div> -->
+                </div>
+            </div>
     </div>
     <div class="col-span-1 bg-">
     {% include 'Departments/Sidebar.html'%}    
@@ -105,3 +184,13 @@
 </main>
 
 {% endblock%}
+
+
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 5 })
+    });
+</script>
+{% endblock script %}
