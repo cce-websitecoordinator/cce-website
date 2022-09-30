@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
-    'website'
+    'website',
+    'departments',
 
     # 'tailwind', // activate this in production to use Tailwind CSS
     # 'theme'

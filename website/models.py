@@ -1,6 +1,5 @@
 
 from distutils.command.upload import upload
-from turtle import title
 from django.db import models
 
 
