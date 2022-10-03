@@ -1,0 +1,17 @@
+  <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
+            <img src="/static/images/BSH_Department.png" alt="department-hero-img"
+                class="w-full h-full object-cover object-center">
+            {% with request.resolver_match.url_name as url_name %}
+            <h1
+                class="md:text-[500px] text-[200px] items-center justify-self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">
+                {{url_name}}</h1>
+            {% endwith %}
+        </div>
+        <div class="z-[5] text-center space-y-5 ">
+
+            <h1 class="md:text-4xl text-xl  text-white">Department Of</h1>
+            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">{{title}}</h2>
+        </div>
+    </section>

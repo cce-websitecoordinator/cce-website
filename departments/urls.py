@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('BSH', views.BSH, name='BSH'),
+    path('BSH/', views.depHome, name='BSH'),
+    path('BSH/<str:route>', views.BSH, name='BSH'),
 ]
 
 
