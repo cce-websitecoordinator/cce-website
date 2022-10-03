@@ -1,7 +1,13 @@
 
 from distutils.command.upload import upload
+from email.policy import default
 from django.db import models
 
+class Role(models.Model):
+    role = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.role
 
 class Testimonials(models.Model):
     full_name = models.CharField(max_length=30)
@@ -33,6 +39,21 @@ class HomeEvents(models.Model):
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
     category = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"))
+
+
+class Faculty(models.Model):
+    uuid = models.CharField(max_length=8)
+    full_name = models.CharField(max_length=100)
+    role = models.ManyToManyField(Role)
+    image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    doj = models.DateField(null = True)
+
+
+    
+
+
 
 
 # class UpcomingEvent(models.Model):
