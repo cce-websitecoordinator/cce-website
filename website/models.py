@@ -32,12 +32,13 @@ class HomeEvents(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
+    category = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"))
 
 
-class UpcomingEvent(models.Model):
-    date= models.DateField() 
-    image = models.ImageField(upload_to="upcomingEvents")
-    title = models.CharField(max_length=30)
-    sub_title  = models.CharField(max_length=100)
+# class UpcomingEvent(models.Model):
+#     date= models.DateField() 
+#     image = models.ImageField(upload_to="upcomingEvents")
+#     title = models.CharField(max_length=30)
+#     sub_title  = models.CharField(max_length=100)
 
 

@@ -1,96 +1,130 @@
-{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %} <link rel="stylesheet" href="{%  static  'css/department.css'  %}">
-<script src="http://nicesnippets.com/demo/easy_slide.js"></script>{% block head %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
+{% block head %}
 
 <main class="min-h-[100vh] overflow-x-hidden">
     <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
-            <img src="/static/images/BSH_Department.png" alt="department-hero-img" class="w-full h-full object-cover object-center" >
+            <img src="/static/images/BSH_Department.png" alt="department-hero-img"
+                class="w-full h-full object-cover object-center">
             {% with request.resolver_match.url_name as url_name %}
-            <h1 class="md:text-[500px] text-[200px] justify-self-center self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">{{url_name}}</h1>
+            <h1
+                class="md:text-[500px] text-[200px] items-center justify-self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">
+                {{url_name}}</h1>
             {% endwith %}
         </div>
         <div class="z-[5] text-center space-y-5 ">
-            
-            <h1 class="md:text-4xl text-xl  text-white">Department OF</h1>
-            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">Basic Sciences and Humanities</h2>
+
+            <h1 class="md:text-4xl text-xl  text-white">Department Of</h1>
+            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">Basic Sciences and
+                Humanities</h2>
         </div>
     </section>
 
     <section class="  pt-20 max-w-screen-2xl mx-auto p-3">
         <div class="w-full">
             <h1 class="text-center m-6 mb-11 font-bold text-4xl">About</h1>
-            <p class="text-center p-8 pt-1">Department of Computer Science & Engineering started in 2015 in Christ College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B. Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital library and language lab. We also have high speed leased line Internet connection and online access to all IEEE journals. The Department has an excellent team of committed and qualified faculty members encouraging and guiding students in their academic as well as personal development. </p>
+            <p class="text-center p-8 pt-1">Department of Computer Science & Engineering started in 2015 in Christ
+                College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B.
+                Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We
+                provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital
+                library and language lab. We also have high speed leased line Internet connection and online access to
+                all IEEE journals. The Department has an excellent team of committed and qualified faculty members
+                encouraging and guiding students in their academic as well as personal development. </p>
         </div>
     </section>
 
-    <section class='md:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3'>
-    <div class="md:col-span-2 place-items-center">
-        <div class="vission bg-[#A1D9F2BF] md:mr-7 p-2">
-            <h1 class="text-left m-6 mb-5 font-bold text-4xl">Vision</h1>
-            <p class="text-left p-8 pt-1">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-        </div>
-        <div class="vission bg-[#C5E29FBF] md:mr-7 p-2 mt-7">
-            <h1 class="md:text-right text-center m-6 mb-5 font-bold text-4xl">Mission</h1>
-            <p class="md:text-right text-center p-8 pt-1">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-        </div>
-        <h1 class="text-center text-4xl font-semibold my-11">Programme Details</h1>
+    <section class='lg:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3'>
+        <div class="lg:col-span-2 place-items-center">
+            <div class="vission bg-[#A1D9F2BF] md:mr-28 p-2">
+                <h1 class="text-left m-6 mb-5 font-bold text-4xl">Vision</h1>
+                <p class="text-left p-8 pt-1">To be a leading department in the field of Computer Science and
+                    Engineering by providing quality education and to produce competent and skilled professionals.</p>
+            </div>
+            <div class="vission bg-[#C5E29FBF] md:mr-28 p-2 mt-7">
+                <h1 class="md:text-right text-center m-6 mb-5 font-bold text-4xl">Mission</h1>
+                <p class="md:text-right text-center p-8 pt-1">To be a leading department in the field of Computer
+                    Science and Engineering by providing quality education and to produce competent and skilled
+                    professionals.</p>
+            </div>
+            <h1 class="text-center text-4xl font-semibold my-11">Programme Details</h1>
 
-        <div class="vission border-[6px] border-black md:mr-7 p-2 mt-7">
-            <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] ">
-                <h1 class="flex justify-between font-bold">Program Educational Objectives (PEOs) <span><i class="fa-solid fa-arrow-down group-hover:rotate-180 duration-1000"></i></span> </h1>
-                <div class="hidden group-hover:block p-8 pt-1 ">
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 1:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 2:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 3:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
+            <div class="vission border-[6px] border-black md:mr-28 p-2 mt-7 ">
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
+                    <h1 class="flex justify-between font-bold">Program Educational Objectives (PEOs) <span><i
+                                class="fa-solid fa-arrow-down rotate-180 duration-1000"></i></span> </h1>
+                    <div class="  p-8 pt-1 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] ">
-                <h1 class="flex justify-between font-bold">Program Outcomes (POs) <span><i class="fa-solid fa-arrow-down group-hover:rotate-180 duration-1000"></i></span> </h1>
-                <div class="hidden group-hover:block p-8 pt-1 ">
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 1:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 2:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 3:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box ">
+                    <h1 class="flex justify-between font-bold">Program Outcomes (POs) <span><i
+                                class="fa-solid fa-arrow-down duration-1000"></i></span> </h1>
+                    <div class="hidden  p-8 pt-1 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] ">
-                <h1 class="flex justify-between font-bold">Program Specific Outcomes (PSOs) <span><i class="fa-solid fa-arrow-down group-hover:rotate-180 duration-1000"></i></span> </h1>
-                <div class="hidden group-hover:block p-8 pt-1 ">
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 1:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 2:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
-                    </div>
-                    <div class="my-4">
-                        <h2 class="font-semibold">PEO 3:</h2>
-                        <p class="text-left ">To be a leading department in the field of Computer Science and Engineering by providing quality education and to produce competent and skilled professionals.</p>
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
+                    <h1 class="flex justify-between font-bold">Program Specific Outcomes (PSOs) <span><i
+                                class="fa-solid fa-arrow-down  duration-1000"></i></span> </h1>
+                    <div class="hidden p-8 pt-1 duration-100 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
+
             </div>
 
 
@@ -136,7 +170,7 @@
                         <div class="slider-desc">
                             <h3>jef load</h3>
                             <P>Interior Designer</P>
-    
+
                         </div>
                     </div>
                     <div>
@@ -145,7 +179,7 @@
                         <div class="slider-desc">
                             <h3>jef load</h3>
                             <P>Interior Designer</P>
-    
+
                         </div>
                     </div>
                     <div>
@@ -154,12 +188,13 @@
                         <div class="slider-desc">
                             <h3>gdkh load</h3>
                             <P>Interior Designer</P>
-    
+
                         </div>
                     </div>
                     <div>
                         <div class="img"><img
-                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png"></div>
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png">
+                        </div>
                         <div class="slider-desc">
                             <h3>win desal</h3>
                             <P>SEO</P>
@@ -170,13 +205,13 @@
                     <!-- <div class="nav_indicators"></div> -->
                 </div>
             </div>
-    </div>
-    <div class="col-span-1 bg-">
-    {% include 'Departments/Sidebar.html'%}    
-    {% include 'Departments/Updates.html'%}    
-    </div>
+        </div>
+        <div class="col-span-1 bg-">
+            {% include 'Departments/Sidebar.html'%}
+            {% include 'Departments/Updates.html'%}
+        </div>
     </section>
-    
+
     {% include 'components/gallery.html'%}
 
 
@@ -188,9 +223,17 @@
 
 
 {% block script %}
+<script src="http://nicesnippets.com/demo/easy_slide.js"></script>
 <script>
+    document.querySelectorAll('.po_box').forEach((e)=>{
+        e.addEventListener('click',()=>{
+
+            e.querySelector('.po_content').classList.toggle('hidden')
+            e.querySelector('i').classList.toggle('rotate-180')
+        })
+    })
     $(document).ready(function () {
-        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 5 })
+        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 4 })
     });
 </script>
 {% endblock script %}

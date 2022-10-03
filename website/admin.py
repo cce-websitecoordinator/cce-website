@@ -6,7 +6,7 @@ admin.site.register(Testimonials)
 admin.site.register(HomeUpdates)
 admin.site.register(HomeEvents)
 admin.site.register(Gallery)
-admin.site.register(UpcomingEvent)
+# admin.site.register(UpcomingEvent)
 
 ADMIN_REORDER = (
 # 'webapp',
