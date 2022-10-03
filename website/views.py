@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from website.models import Testimonials,HomeUpdates
+from website.models import *
 
-print(HomeUpdates.objects.all().values())
 
 def home_page(request):
-    context = {'Testimonials': Testimonials.objects.all().values(), "name": "John Doe","updates":HomeUpdates.objects.all().values() }
+    context = {'Testimonials': Testimonials.objects.all().values(), "name": "John Doe","updates":HomeUpdates.objects.all().values(),"Events":HomeEvents.objects.all().values(),"gallery":Gallery.objects.all().values()}
     return render(request, 'home.html', context=context)
 
 
@@ -122,7 +121,7 @@ def about_page(request):
     return render(request, 'about.html')
 
 def nirf_page(request):
-    return render(request, 'nirf.html')
+    return render(request, 'nirf.html',context={})
 
 def gallery_page(request):
     return render(request, 'gallery.html')

@@ -1,30 +1,35 @@
-
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin="" />
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
 {% endblock head %}
-{% block topbar %} 
-{% include 'components/topbar.html'  %}
+{% block topbar %}
+{% include 'components/topbar.html' %}
 
 {% endblock topbar %}
 {% block body %}
 
-
-<section class="home_section relative ">
-  <div class="w-[100vw] md:h-[100vh] overflow-clip  -z-1">
-    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block"></video>
-    <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden">
+<section class="home_section relative h-[100vh] overflow-clip">
+  <div class="w-[100vw] h-[100vh] -z-1  ">
+    <video src="https://traversymedia.com/downloads/video.mov" autoplay muted loop class="hidden md:block "></video>
+    {% comment %} <img src="{%  static  'images/home-bg.png'  %}" alt="hero image" class="md:hidden"> {% endcomment %}
   </div>
-  <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-full  bg-[#11111d8c] img-overlay"></div>
+  <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
   <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">
-    <div class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
+    <div
+      class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
 
       <p class=" font-extralight">The</p>
       <p class="font-black">Most Preferred</p>
@@ -32,39 +37,108 @@
       <p class=" font-extralight">Engineering college</p>
     </div>
   </div>
+  <div class="flex w-full justify-center animate-bounce z-[10]  absolute bottom-24" id="down-icon">
+
+    <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+  </div>
+
+</section>
+
+<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 ">
+  <div class="flex flex-col items-center justify-center text-center h-full col-span-1 " >
+    <h1 class="text-5xl font-bold mb-11">About Us</h1>
+    <p class="px-11">Christ College Of Engineering has emerged as the most sought after engineering college in Kerala
+      with highest admission rate. Within a short span of existence, we are proving to be yet another gem among the long
+      list of institutions managed by CMI Fathers.  To bring forth high quality standards and to maintain quality
+        consciousness, Internal Quality Assurance Cell (IQAC) has been
+        constituted at Christ College of Engineering. Internal Quality Assurance
+        Cell gives necessary advice and guidelines to the administration to
+        uphold high quality work in academics and administration of the college.
+        The IQAC is responsible to take necessary measures foreseen to improvise
+        the education quality of the institution. The cell works towards various
+        accreditation aspects and helps the institution to set benchmarks. It
+        assesses the performance of the institute periodically and conducts
+        internal audits.</p>
+ 
+  <div class="grid place-content-center md:grid-cols-3 grid-cols-1 w-[90%] mt-11 px-auto">
+    <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group" id='Vision'>
+      <h1 class="font-bold text-2xl mb-2 ">Vision</h1>
+      <p class="block">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+    </div>
+    <div class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100"  id='Mission'>
+      <h1 class="font-bold text-2xl mb-2 ">Mission</h1>
+      <p class="block ">To foster professionally competent and responsible graduates with strong theoretical and practical knowledge across the discipline of Computer Science and Engineering.</p>
+    </div>
+  </div>
+  </div>
+
+  <div class="relative">
+    <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0 lg:px-24 md:px-11 flex-col ">
+      <div class="lg:w-[80%] w-full h-full bg-white shadow-xl rounded-md p-8">
+        <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
+        <div class="swiper2 overflow-x-clip">
+          <div class="swiper-wrapper ">
+            {% for event in upcomingEvents %}
+
+        <div class="swiper-slide">
+          <img src="media/{{event.image}}"/>
+        
+          <div class='w-full flex pt-3'>
+            <div class='border-2 border-blue-300 h-full w-[50px] text-center shadow-xl rounded-md'>
+              <h1 class='font-bold text-xl px-1'>
+                {{event.date.day}}
+              </h1>
+              <h2 class='border-t-2 border-blue-500 px-1 font-bold' id ='upcomingMonth'>
+                {{event.date.month}}
+              </h2>
+            </div>
+            <div class="mx-3 w-[4px] bg-blue-500 mt-3"></div>
+            <div class='pl-1'>
+              <h1 class='font-bold'>{{event.title}}</h1>
+              <p class ='text-xs'>{{event.sub_title}}</p>
+            </div>
+          </div>
+        </div>
+
+
+{% endfor %}
+
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
-<div class="absolute bottom-3 animate-bounce  w-full  items-center justify-center hidden " >
-  <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
-</div>
 
-<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6">
+<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6 snap-start">
   <div class="md:w-[80%] w-full">
     <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
       <h1 class="font-black text-5xl">Events</h1>
       <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
     </div>
+    {% for item in Events %}
 
     <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-      <img src="{%  static  'images/happenings1.png'  %}" class=" " alt="happenings-img" srcset="">
-      <img src="{%  static  'images/happenings2.png'  %}" class="hidden lg:block" alt="happenings-img" srcset="">
-      <img src="{%  static  'images/happenings3.png'  %}" alt="happenings-img" class="" srcset="">
+      <img src="media/{{item.img1}}" class=" " alt="happenings-img" srcset="">
+      <img src="media/{{item.img2}}" class="hidden lg:block" alt="happenings-img" srcset="">
+      <img src="media/{{item.img3}}" alt="happenings-img" class="" srcset="">
 
-      <img src="{%  static  'images/happenings4.png'  %}" class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1 " alt="happenings-img" srcset="">
-
-      <div class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
-        <h1 class="font-bold text-3xl font-black">Techletics '22</h1>
-        <p class="text-xl font-semibold">Moto Expo was conducted on the banner of Techletics ‘22.</p>
+      <img src="media/{{item.img4}}"
+        class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1 " alt="happenings-img" srcset="">
+      
+      <div
+        class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
+        <h1 class="font-bold text-3xl font-black">{{item.heading}}</h1>
+        <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>
-          and the students were also able to interact with the industry.
-          Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in.
-          Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus
-          fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis ed ornare pharetra, risus id.
-          Aliquam placerat consequat.
+          {{item.sub_text}}
         </p>
         <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">See More</button>
       </div>
+      {% endfor %}
 
     </div>
 
@@ -72,17 +146,9 @@
 
 </section>
 
-<section class=" w-full pt-2  font-black  bg-blue-100 md:fixed bottom-0 ">
-  <div>
-    <marquee behavior="" direction="left">
-     
-      {% for item in updates %}
 
-      {{item.data}}
-      {% endfor %}
-    </marquee>
-  </div>
-</section>
+
+
 
 <section class="w-[100vw] h-auto pt-11 pb-11 bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
   <div class="w-[80%] flex items-center justify-between md:flex-row flex-col md:space-y-0 space-y-24 ">
@@ -107,19 +173,19 @@
   <img src="{%  static  'images/recruiters.png'  %}" alt="Recruiters" class="p-6 mt-11" srcset="">
 
 </section>
-{% include 'components/gallery.html'  %}
+{% include 'components/gallery.html' %}
 
-<section class="testimonials w-[100vw] min-h-[100vh] flex flex-col justify-center items-center">
+<section class="testimonials w-[100vw] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
 
-  <div class="swiper w-[90%] h-[95vh]">
+  <div class="swiper w-[90%] +">
     <div class="swiper-wrapper ">
       {% for item in Testimonials %}
       <div class="swiper-slide">
         <div class="w-full  h-full flex justify-center items-center ">
           <div class="w-full flex justify-center items-center flex-col">
             <div class="w-[150px] ">
-              <img src={{item.image}} alt="studentImage " class="rounded-full">
+              <img src="media/{{item.image}}" alt="studentImage " class="rounded-full">
             </div>
             <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>
@@ -200,24 +266,41 @@
     },
   });
 
+  document.getElementById('down-icon').addEventListener('click', () => {
+    window.scrollTo({
+      top: getOffset(counterSection).top,
+      behavior: 'smooth'
+    })
+  })
 
+const swiper2 = new Swiper('.swiper2', {
+  speed: 400,
+  spaceBetween: 100,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 3000,
+  },
+  
+});
 
-
+  //{% comment %} 
+  //https://codepen.io/ccallen001/pen/bEYByd 
+  //{% endcomment %}
 
   // Footer Map Configurations
 
   var map = L.map('map', {
     center: [10.35891, 76.21279],
-    zoom: 15
+    zoom: 30
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  var firefoxIcon = L.icon({
-    iconUrl: "{%  static  'images/cce.png'  %}",
-    iconSize: [138, 95],
+  var christIcon = L.icon({
+    iconUrl: "{%  static  'images/mapLogo.png'  %}",
+    iconSize: [80, 80],
     popupAnchor: [0, -15]
   });
 
@@ -229,10 +312,42 @@
     'className': 'custom'
   }
 
-  L.marker([10.35891, 76.21279], { icon: firefoxIcon }).bindPopup(customPopup, customOptions).addTo(map);
+  L.marker([10.35891, 76.21279], { icon: christIcon }).bindPopup(customPopup, customOptions).addTo(map);
+
+  var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+  var upcomingMonth = document.querySelectorAll('#upcomingMonth');
+  
+
+ upcomingMonth.forEach((item)=>{
+      const inner =  item.innerText
+      item.innerText = months[inner]
+ })
+  
 
 
 
+var mission = document.querySelector('#Mission');
+var vision = document.querySelector('#Vision');
+vision.querySelector('p').classList.add('hidden')
+
+
+vision.addEventListener("mouseover",()=>{
+  mission.classList.remove('col-span-2')
+  mission.classList.add('col-span-1')
+  vision.classList.add('col-span-2')
+  mission.querySelector('p').classList.add('hidden')
+  vision.querySelector('p').classList.remove('hidden')
+  console.log("fdjsdghsjdfhg")
+})
+mission.addEventListener("mouseover",()=>{
+  vision.classList.remove('col-span-2')
+  vision.classList.add('col-span-1')
+  mission.classList.add('col-span-2')
+  mission.querySelector('p').classList.remove('hidden')
+  vision.querySelector('p').classList.add('hidden')
+})
 
 
 

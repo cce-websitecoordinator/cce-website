@@ -1,31 +1,40 @@
+{% load static %}
+
 <div
-  class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[10] hidden">
-  <div class="hidden md:block">
-    <i class="fa-solid fa-phone mr-1"></i> <span>Office</span>
+  class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[10] hidden ">
+  <div class="hidden md:block space-x-6">
+    <i class="fa-solid fa-map-location-dot fa-lg"></i>
+        <i class="fa-solid fa-phone mr-1 fa-lg"></i>
+        <i class="fa-solid fa-envelope fa-lg"></i>
   </div>
-  <div class="space-x-1 lg:block   justify-center items-center hidden  w-auto">
+  <div class="space-x-6 lg:flex  justify-center items-center hidden  w-auto">
     <a href="/">Research</a>
     
-    <a href="/about">Aluminae</a>
+    <a href="/about">Alumni</a>
    
-    <a href="/">KTU Examinations</a>
    
-    <a href="/">Admission</a>
+    <a href="/">Admissions</a>
    
     <a href="/">Cells</a>
     
-    <a href="/">Conferances</a>
+ 
     
     <a href="/nirf">NIRF</a>
     
-    <a href="/iqac">IQAF</a>
+    <a href="/iqac">IQAC</a>
     
     <a href="/">Techletics</a>
+    <div  class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
+      <div class="group-hover:flex space-x-4 hidden duration-700">
+
+        <a href="http://">Student Login</a> <a href="http://">Faculty Login</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <div
-  class="p-2 flex pl-4 md:hidden flex-col justify-center items-center pr-4 bg-[#205072] shadow-lg w-[100vw] md:justify-between text-white space-y-11 md:space-y-0 topbar text-sm z-[10]">
+  class="p-2 flex pl-4 lg:hidden flex-col justify-center items-center pr-4 bg-[#205072] shadow-lg w-[100vw] md:justify-between text-white space-y-11 md:space-y-0 topbar text-sm z-[10]">
   <div class="w-full flex  justify-between px-6 flex-row-reverse">
     <div class="space-x-6">
         <i class="fa-solid fa-map-location-dot fa-lg"></i>
@@ -36,18 +45,22 @@
     </div>
     <i class="fa-solid fa-bars fa-2x topmenu" ></i>
   </div>
-  <div class="space-x-1 hidden flex flex-col justify-center items-center space-y-5 md:space-y-0 w-full md:w-auto topbar-mobile">
+  <div class="space-x-1 hidden flex flex-col justify-center items-center space-y-5 md:space-y-0 w-full md:w-auto topbar-mobile relative z-[9]">
+  <div class="w-full h-full z-[-1] absolute top-0 left-0 flex justify-center items-center">
+    <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" class="w-[200px] opacity-[0.3]">
+
+
+  </div>
+
     <a href="/">Research</a>
     <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
     <a href="/about">Alumni</a>
-    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
-    <a href="/">KTU Examinations</a>
+   
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Admission</a>
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Cells</a>
-    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
-    <a href="/">Conferances</a>
+  
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/nirf">NIRF</a>
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>

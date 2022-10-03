@@ -1,215 +1,239 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %} {{Page_Title}} {% endblock title %}
+{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
 {% block head %}
-<link rel="stylesheet" href="{%  static  'css/department.css'  %}">
-<script src="http://nicesnippets.com/demo/easy_slide.js"></script>
-{% endblock head %}
-{% block body %}
-{% with request.resolver_match.url_name as url_name %}
-<section class="">
-    <div class="department-hero" style='background-image: url({{Hero_image}});'>
-        <div class="department-hero-intro-details-wrapper">
-            <div style="position: relative;">
-                <h1 class="department-abbrevation">{{Department_Abbrevation}}</h1>
-                <div
-                    style="position:absolute; top:0;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:40px">
-                    <span style="font-weight: 100;color:white;font-size: 2.5rem;">Department Of</span>
-                    <p class="department-name">{{Page_Title}}</p>
-                </div>
 
-            </div>
-            </h1>
+<main class="min-h-[100vh] overflow-x-hidden">
+    <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
+            <img src="/static/images/BSH_Department.png" alt="department-hero-img"
+                class="w-full h-full object-cover object-center">
+            {% with request.resolver_match.url_name as url_name %}
+            <h1
+                class="md:text-[500px] text-[200px] items-center justify-self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">
+                {{url_name}}</h1>
+            {% endwith %}
         </div>
-    </div>
-    <div class="absolute bottom-3 animate-bounce  w-full  items-center justify-center hidden" id="home--arrow">
-        <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
-      </div>
-    <div class="dep-about">
-        <h2 class="dep-ab">About</h2>
-        <p class="dep-abco">
-            {{About_Data}}
-        </p>
-        <div class="flex-container">
-            <div class="vision vmv">
-                <div class="vmv-content vision-vmv-content">
-                    <h3>Vision</h3>
-                    <p>
-                        {{Vision}}
-                    </p>
-                </div>
-                <img src="../../static/images/vision.png" alt="vision">
-                <h3>Vision</h3>
+        <div class="z-[5] text-center space-y-5 ">
+
+            <h1 class="md:text-4xl text-xl  text-white">Department Of</h1>
+            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">Basic Sciences and
+                Humanities</h2>
+        </div>
+    </section>
+
+    <section class="  pt-20 max-w-screen-2xl mx-auto p-3">
+        <div class="w-full">
+            <h1 class="text-center m-6 mb-11 font-bold text-4xl">About</h1>
+            <p class="text-center p-8 pt-1">Department of Computer Science & Engineering started in 2015 in Christ
+                College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B.
+                Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We
+                provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital
+                library and language lab. We also have high speed leased line Internet connection and online access to
+                all IEEE journals. The Department has an excellent team of committed and qualified faculty members
+                encouraging and guiding students in their academic as well as personal development. </p>
+        </div>
+    </section>
+
+    <section class='lg:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3'>
+        <div class="lg:col-span-2 place-items-center">
+            <div class="vission bg-[#A1D9F2BF] md:mr-28 p-2">
+                <h1 class="text-left m-6 mb-5 font-bold text-4xl">Vision</h1>
+                <p class="text-left p-8 pt-1">To be a leading department in the field of Computer Science and
+                    Engineering by providing quality education and to produce competent and skilled professionals.</p>
             </div>
-            <div class="mission vmv">
-                <div class="vmv-content mission-vmv-content">
-                    <h3>Mission</h3>
-                    <p>
-                        {{Mission}}
-                    </p>
-                </div>
-                <img src="../../static/images/target.png" alt="target">
-                <h3>Mission</h3>
+            <div class="vission bg-[#C5E29FBF] md:mr-28 p-2 mt-7">
+                <h1 class="md:text-right text-center m-6 mb-5 font-bold text-4xl">Mission</h1>
+                <p class="md:text-right text-center p-8 pt-1">To be a leading department in the field of Computer
+                    Science and Engineering by providing quality education and to produce competent and skilled
+                    professionals.</p>
             </div>
-            <div class="values vmv">
-                <div class="vmv-content values-vmv-content">
-                    <h3>Values</h3>
-                    <p>
-                        {{Values}}
-                    </p>
+            <h1 class="text-center text-4xl font-semibold my-11">Programme Details</h1>
+
+            <div class="vission border-[6px] border-black md:mr-28 p-2 mt-7 ">
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
+                    <h1 class="flex justify-between font-bold">Program Educational Objectives (PEOs) <span><i
+                                class="fa-solid fa-arrow-down rotate-180 duration-1000"></i></span> </h1>
+                    <div class="  p-8 pt-1 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                    </div>
                 </div>
-                <img src="../../static/images/diamond.png" alt="diamond">
-                <h3>Values</h3>
+
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box ">
+                    <h1 class="flex justify-between font-bold">Program Outcomes (POs) <span><i
+                                class="fa-solid fa-arrow-down duration-1000"></i></span> </h1>
+                    <div class="hidden  p-8 pt-1 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
+                    <h1 class="flex justify-between font-bold">Program Specific Outcomes (PSOs) <span><i
+                                class="fa-solid fa-arrow-down  duration-1000"></i></span> </h1>
+                    <div class="hidden p-8 pt-1 duration-100 po_content">
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 1:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 2:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                        <div class="my-4">
+                            <h2 class="font-semibold">PEO 3:</h2>
+                            <p class="text-left ">To be a leading department in the field of Computer Science and
+                                Engineering by providing quality education and to produce competent and skilled
+                                professionals.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="fac">
+                <div class="slider slider_circle_10">
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Dr VD Jhon</h3>
+                            <P>HOD</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Tefgkl; Coock</h3>
+                            <P>Designer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>Justine trodu</h3>
+                            <P>Developer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://t4.ftcdn.net/jpg/01/59/44/71/160_F_159447194_oZfyvVr9yDPISGzWfcDpYRQzb6gXy29c.jpg">
+                        </div>
+                        <div class="slider-desc">
+                            <h3>mike hanrik</h3>
+                            <P>Graphic Designer</P>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>jef load</h3>
+                            <P>Interior Designer</P>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>jef load</h3>
+                            <P>Interior Designer</P>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
+                        <div class="slider-desc">
+                            <h3>gdkh load</h3>
+                            <P>Interior Designer</P>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img"><img
+                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png">
+                        </div>
+                        <div class="slider-desc">
+                            <h3>win desal</h3>
+                            <P>SEO</P>
+                        </div>
+                    </div>
+                    <div class="next_button"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                    <div class="prev_button"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                    <!-- <div class="nav_indicators"></div> -->
+                </div>
             </div>
         </div>
-        <div class="overflow-hidden">
-            <h2 class="dep-ab">Faculty</h2>
-            <div class="slider slider_circle_10">
-                <div>
-                    <div class="img"><img
-                            src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>Dr VD Jhon</h3>
-                        <P>HOD</P>
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>Tefgkl; Coock</h3>
-                        <P>Designer</P>
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>Justine trodu</h3>
-                        <P>Developer</P>
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://t4.ftcdn.net/jpg/01/59/44/71/160_F_159447194_oZfyvVr9yDPISGzWfcDpYRQzb6gXy29c.jpg">
-                    </div>
-                    <div class="slider-desc">
-                        <h3>mike hanrik</h3>
-                        <P>Graphic Designer</P>
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>jef load</h3>
-                        <P>Interior Designer</P>
-
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>jef load</h3>
-                        <P>Interior Designer</P>
-
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>gdkh load</h3>
-                        <P>Interior Designer</P>
-
-                    </div>
-                </div>
-                <div>
-                    <div class="img"><img
-                            src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png"></div>
-                    <div class="slider-desc">
-                        <h3>win desal</h3>
-                        <P>SEO</P>
-                    </div>
-                </div>
-                <div class="next_button"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                <div class="prev_button"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-                <!-- <div class="nav_indicators"></div> -->
-            </div>
+        <div class="col-span-1 bg-">
+            {% include 'Departments/Sidebar.html'%}
+            {% include 'Departments/Updates.html'%}
         </div>
+    </section>
 
-        </div>
-        <div class="dep-wrapper">
-            <h2 class="dep-ab">Programme Details</h2>
-            <div class="dep-prg">
-                <div class="prg-obj obj-col-1">
-                    <div class="prg-title">
-                        <h3>Program Educational Objectives (PEOs)</h3>
-                        <i class="fa-solid fa-chevron-down" onclick="findId()"></i>
-                    </div>
-                    <div class="prg-dropdown-content">
-                        <p>PEO 1:<br>Demonstrate their expertise in solving contemporary problems through
-                            design,analysis and implementation of hardware and software systems.<br><br>PEO 2:<br>Adapt
-                            to a constantly changing world through professional development and continuous
-                            learning.<br><br>PEO 3:<br>Develop teamwork, leadership and entrepreneurship skills required
-                            to function productively in their profession.</p>
-                    </div>
-                </div>
-                <div class="prg-obj obj-col-2">
-                    <div class="prg-title">
-                        <h3>Program Outcomes (POs)</h3>
-                        <i class="fa-solid fa-chevron-down " onclick="findId()"></i>
-                    </div>
-
-                    <div class="prg-dropdown-content">
-                        <p>
-                            PO 1:<br>Engineering Knowledge: Apply the knowledge of mathematics, science, engineering
-                            fundamentals, and an engineering specialization to the solution of complex engineering
-                            problems.<br><br>PO 2:<br>Problem Analysis: Identify, formulate, review research literature,
-                            and analyze principles of mathematics, natural sciences, and engineering sciences.<br><br>PO
-                            3:<br>Design/development of solutions: Design solutions for complex engineering problems and
-                            design system components or processes that meet the specified needs with appropriate
-                            consideration for the public health and safety, and the cultural, societal, and
-                            environmental considerations.
-                        </p>
-                    </div>
-                </div>
-                <div class="prg-obj obj-col-3">
-                    <div class="prg-title">
-                        <h3>Program Specific Outcomes (PSOs)</h3>
-                        <i class="fa-solid fa-chevron-down" onclick="findId()"></i>
-                    </div>
-
-                    <div class="prg-dropdown-content ">
-                        <p>PSO 1:<br>Understand, analyse and develop computer programs in the areas related to
-                            algorithms, system software, data management and communication for efficient design of
-                            computer-based systems of moderate complexity.<br><br>PSO 2:<br>Apply standard practices and
-                            methods in software project management and software development using suitable programming
-                            environments to deliver quality products for the industry.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-<script>
-    function findId() {
-        event.target.classList.toggle("dropdown-active");
+    {% include 'components/gallery.html'%}
 
 
-        event.target.parentElement.nextElementSibling.classList.toggle('block-active');
-    }
-</script>
 
-{% endwith %}
-{% endblock body %}
+</main>
+
+{% endblock%}
+
+
 
 {% block script %}
+<script src="http://nicesnippets.com/demo/easy_slide.js"></script>
 <script>
+    document.querySelectorAll('.po_box').forEach((e)=>{
+        e.addEventListener('click',()=>{
+
+            e.querySelector('.po_content').classList.toggle('hidden')
+            e.querySelector('i').classList.toggle('rotate-180')
+        })
+    })
     $(document).ready(function () {
-        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 5 })
+        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 4 })
     });
 </script>
 {% endblock script %}

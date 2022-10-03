@@ -3,9 +3,11 @@
 *.pot
 *.pyc
 __pycache__
-db.sqlite3
-media
 
+
+
+# Npm#
+/node_modules
 # Backup files # 
 *.bak 
 
@@ -52,7 +54,6 @@ atlassian-ide-plugin.xml
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
-dist/ 
 downloads/ 
 eggs/ 
 .eggs/ 

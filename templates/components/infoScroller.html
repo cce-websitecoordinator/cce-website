@@ -1,0 +1,11 @@
+<section class=" w-full pt-2  font-black  bg-blue-100 md:fixed  bottom-0 z-[100] ">
+  <div>
+    <marquee behavior="" direction="left">
+     
+      {% for item in updates %}
+
+      {{item.data}}  |  
+      {% endfor %}
+    </marquee>
+  </div>
+</section>
