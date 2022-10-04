@@ -6,6 +6,8 @@ admin.site.register(Testimonials)
 admin.site.register(HomeUpdates)
 admin.site.register(HomeEvents)
 admin.site.register(Gallery)
+admin.site.register(Faculty)
+admin.site.register(Role)
 # admin.site.register(UpcomingEvent)
 
 ADMIN_REORDER = (
