@@ -7,12 +7,10 @@ from website.models import Gallery,HomeUpdates
 def home(request):
     return redirect('BSH/home')
 
-def depHome(request):
-    return redirect('home')
 
 
-def BSH(request,route):
-    print(route)
+def Department(request,route,department):
+    
     if route  == "home":
         context={
         "title":"Basic Sciences and Humanities",
@@ -20,18 +18,7 @@ def BSH(request,route):
         'updates':HomeUpdates.objects.all()
         }
         return render(request,"Departments/index.html",context=context)
-    if route  == "faculty":
-        context={
-        "title":"Faculty Basic Sciences and Humanities",
-        "gallery":Gallery.objects.all(),
-        'updates':HomeUpdates.objects.all()
-        }
-        return render(request,"Departments/Faculty.html",context=context)
+    
    
     return render(request, "Departments/index.html",context=context)
-
-
-
-
-
 
