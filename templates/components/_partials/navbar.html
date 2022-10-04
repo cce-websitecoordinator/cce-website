@@ -1,4 +1,4 @@
-<nav class="lg:bg-none {% if a%}{% endif %} absolute top-9 z-[999] left-0 right-0  glass">
+<nav class="lg:bg-none {% if a%}{% endif %}  z-[999] left-0 right-0  glass" id ="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl px-4 lg:px-6">
         <a href="cce.edu.in" class="flex items-center">
             <img src="/static/images/cce.png" class="mr-3 h-[100px]" alt="CCE Logo" />
@@ -126,3 +126,27 @@
         </div>
     </div> -->
 </nav>
+
+
+
+
+{% block script %}
+<script>
+    var navbar = document.getElementById("main-nav");
+    var top = navbar.offsetTop;
+    const normal = ['absolute' ,'top-9']
+    const sticky = ['fixed' ,'top-0','bg-black']
+    navbar.classList.add(...normal);
+    window.addEventListener('scroll', function() {
+       if (window.scrollY > navbar.getBoundingClientRect().height) {
+          navbar.classList.add(...sticky);
+          navbar.classList.remove(...normal);
+       } else {
+          navbar.classList.add(...normal);
+          navbar.classList.remove(...sticky);
+       }
+    });
+  
+</script>
+
+{% endblock script %}

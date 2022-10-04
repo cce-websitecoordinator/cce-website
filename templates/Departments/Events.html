@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
+{% block head %}
+{% endblock%}
+
+<main class="min-h-[100vh] overflow-x-hidden">
+  {% include 'Departments/Hero.html'%}
+
+  <h1 class="text-4xl font-bold text-center text-gray-800 h-screen w-screen">{{route}}</h1>
+{% block body %}
+{% endblock%}
