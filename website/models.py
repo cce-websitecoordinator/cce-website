@@ -54,15 +54,3 @@ class Faculty(models.Model):
         return self.full_name
 
 
-    
-
-
-
-
-# class UpcomingEvent(models.Model):
-#     date= models.DateField() 
-#     image = models.ImageField(upload_to="upcomingEvents")
-#     title = models.CharField(max_length=30)
-#     sub_title  = models.CharField(max_length=100)
-
-

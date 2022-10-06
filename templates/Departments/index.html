@@ -17,14 +17,14 @@
         </div>
     </section>
 
-    <section class='lg:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3'>
-        <div class="lg:col-span-2 place-items-center">
-            <div class="vission bg-[#A1D9F2BF] md:mr-28 p-2">
+    <section class='lg:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3 place-content-center place-items-center'>
+        <div class="lg:col-span-2 place-items-center  place-content-center mx-auto">
+            <div class="vission bg-[#A1D9F2BF] lg:mr-28 p-2">
                 <h1 class="text-left m-6 mb-5 font-bold text-4xl">Vision</h1>
                 <p class="text-left p-8 pt-1">To be a leading department in the field of Computer Science and
                     Engineering by providing quality education and to produce competent and skilled professionals.</p>
             </div>
-            <div class="vission bg-[#C5E29FBF] md:mr-28 p-2 mt-7">
+            <div class="vission bg-[#C5E29FBF] lg:mr-28 p-2 mt-7">
                 <h1 class="md:text-right text-center m-6 mb-5 font-bold text-4xl">Mission</h1>
                 <p class="md:text-right text-center p-8 pt-1">To be a leading department in the field of Computer
                     Science and Engineering by providing quality education and to produce competent and skilled
@@ -32,7 +32,7 @@
             </div>
             <h1 class="text-center text-4xl font-semibold my-11">Programme Details</h1>
 
-            <div class="vission border-[6px] border-black md:mr-28 p-2 mt-7 ">
+            <div class="vission border-[6px] border-black lg:mr-28 p-2 mt-7 ">
                 <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
                     <h1 class="flex justify-between font-bold">Program Educational Objectives (PEOs) <span><i
                                 class="fa-solid fa-arrow-down rotate-180 duration-1000"></i></span> </h1>
@@ -114,77 +114,36 @@
 
             <div class="fac">
                 <div class="slider slider_circle_10">
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>Dr VD Jhon</h3>
-                            <P>HOD</P>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>Tefgkl; Coock</h3>
-                            <P>Designer</P>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>Justine trodu</h3>
-                            <P>Developer</P>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://t4.ftcdn.net/jpg/01/59/44/71/160_F_159447194_oZfyvVr9yDPISGzWfcDpYRQzb6gXy29c.jpg">
-                        </div>
-                        <div class="slider-desc">
-                            <h3>mike hanrik</h3>
-                            <P>Graphic Designer</P>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>jef load</h3>
-                            <P>Interior Designer</P>
 
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>jef load</h3>
-                            <P>Interior Designer</P>
+                        {% for faculty in HOD %}
+                                        <div>
+                                            <div class="img"><img
+                                                src="{{faculty.image.url}}"></div>
+                                            <div class="slider-desc">
+                                                <h3>{{faculty.full_name}}</h3>
+                                                <P>HOD</P>
+                                            </div>
+                                        </div>
+                        {% endfor %}
 
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png"></div>
-                        <div class="slider-desc">
-                            <h3>gdkh load</h3>
-                            <P>Interior Designer</P>
+                   
 
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img"><img
-                                src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/supportmale-512.png">
-                        </div>
-                        <div class="slider-desc">
-                            <h3>win desal</h3>
-                            <P>SEO</P>
-                        </div>
-                    </div>
-                    <div class="next_button"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                    <div class="prev_button"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                            {% for faculty in faculties %}
+                                        <div>
+                                            <div class="img"><img
+                                                    src="{{faculty.image.url}}"></div>
+                                            <div class="slider-desc">
+                                                <h3>{{faculty.full_name}}</h3>
+                                                <P>Designer</P>
+                                            </div>
+                                        </div>
+                            {% endfor %}
+
+               
+                 
+                   
+                    <div class="next_button text-black text-xl"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                    <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
                     <!-- <div class="nav_indicators"></div> -->
                 </div>
             </div>
@@ -216,7 +175,7 @@
         })
     })
     $(document).ready(function () {
-        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 4 })
+        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 5 })
     });
 </script>
 {% endblock script %}

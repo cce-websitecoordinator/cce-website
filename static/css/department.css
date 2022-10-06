@@ -149,9 +149,9 @@
   .next_button,
   .prev_button {
   position: absolute;
-  left: 100%;
+  /* left: 50%; */
   top: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(50%); */
   cursor: pointer;
   color:#c2c2c2;
   }
