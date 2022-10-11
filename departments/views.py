@@ -85,12 +85,76 @@ def Department(request, route, department):
                 case "newsletters":
                     return render(request, 'Departments/Newsletters.html', context)
         case "ECE":
-            return render(request, 'Departments/index.html', context)
+            match route:
+                case "about":
+                    return render(request, 'Departments/index.html', context)
+                case "faculty":
+                    return render(request, 'Departments/Faculty.html', context)
+                case "syllabus":
+                    return render(request, 'Departments/Syllabus.html', context)
+                case "professionalBodies":
+                    return render(request, 'Departments/ProfessionalBodies.html', context)
+                case "lab":
+                    return render(request, 'Departments/Laboratories.html', context)
+                case "achievements":
+                    return render(request, 'Departments/Achievements.html', context)
+                case "events":
+                    return render(request, 'Departments/Events.html', context)
+                case "newsletters":
+                    return render(request, 'Departments/Newsletters.html', context)
         case "EEE":
-            return render(request, 'Departments/index.html', context)
+            match route:
+                case "about":
+                    return render(request, 'Departments/index.html', context)
+                case "faculty":
+                    return render(request, 'Departments/Faculty.html', context)
+                case "syllabus":
+                    return render(request, 'Departments/Syllabus.html', context)
+                case "professionalBodies":
+                    return render(request, 'Departments/ProfessionalBodies.html', context)
+                case "lab":
+                    return render(request, 'Departments/Laboratories.html', context)
+                case "achievements":
+                    return render(request, 'Departments/Achievements.html', context)
+                case "events":
+                    return render(request, 'Departments/Events.html', context)
+                case "newsletters":
+                    return render(request, 'Departments/Newsletters.html', context)
         case "ME":
-            return render(request, 'Departments/index.html', context)
+            match route:
+                case "about":
+                    return render(request, 'Departments/index.html', context)
+                case "faculty":
+                    return render(request, 'Departments/Faculty.html', context)
+                case "syllabus":
+                    return render(request, 'Departments/Syllabus.html', context)
+                case "professionalBodies":
+                    return render(request, 'Departments/ProfessionalBodies.html', context)
+                case "lab":
+                    return render(request, 'Departments/Laboratories.html', context)
+                case "achievements":
+                    return render(request, 'Departments/Achievements.html', context)
+                case "events":
+                    return render(request, 'Departments/Events.html', context)
+                case "newsletters":
+                    return render(request, 'Departments/Newsletters.html', context)
         case "CE":
-            return render(request, 'Departments/index.html', context)
+            match route:
+                case "about":
+                    return render(request, 'Departments/index.html', context)
+                case "faculty":
+                    return render(request, 'Departments/Faculty.html', context)
+                case "syllabus":
+                    return render(request, 'Departments/Syllabus.html', context)
+                case "professionalBodies":
+                    return render(request, 'Departments/ProfessionalBodies.html', context)
+                case "lab":
+                    return render(request, 'Departments/Laboratories.html', context)
+                case "achievements":
+                    return render(request, 'Departments/Achievements.html', context)
+                case "events":
+                    return render(request, 'Departments/Events.html', context)
+                case "newsletters":
+                    return render(request, 'Departments/Newsletters.html', context)
         case _:
             raise Http404

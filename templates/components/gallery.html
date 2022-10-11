@@ -38,7 +38,7 @@
   <div>
         <div class="slide-track bg-white">
         {% for item in gallery %}
-            <img src="media/{{item.image}}" class="slide " alt="happenings-img" srcset="">
+            <img src="{{item.image.url}}" class="slide " alt="happenings-img" srcset="">
       {% endfor %}
       </div>
     </div>
