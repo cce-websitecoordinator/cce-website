@@ -37,7 +37,13 @@ class HomeEvents(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
-    category = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.image.name
+
+
 
 
 class Faculty(models.Model):
@@ -46,8 +52,10 @@ class Faculty(models.Model):
     role = models.ManyToManyField(Role)
     email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
+    image_2 = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
 
     def __str__(self):

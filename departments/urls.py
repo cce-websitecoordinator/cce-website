@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('<str:department>-<str:route>', views.Department, name='Department'),
+    path('<str:department>/<str:route>', views.Department, name='Department'),
 ]
 
 
