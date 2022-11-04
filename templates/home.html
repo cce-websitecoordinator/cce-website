@@ -121,7 +121,7 @@
     {% for item in Events %}
 
     <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-      <img src="media/{{item.img1}}" class=" " alt="happenings-img" srcset="">
+      <img src="{{item.img1.url}}" class=" " alt="happenings-img" srcset="">
       <img src="media/{{item.img2}}" class="hidden lg:block" alt="happenings-img" srcset="">
       <img src="media/{{item.img3}}" alt="happenings-img" class="" srcset="">
 
@@ -130,7 +130,7 @@
       
       <div
         class="p-5 md:col-start-2 md:col-end-3  lg:col-end-4 col-start-1 col-end-3 w-full md:bg-white bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
-        <h1 class="font-bold text-3xl font-black">{{item.heading}}</h1>
+        <h1 class="text-3xl font-black">{{item.heading}}</h1>
         <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>
           {{item.sub_text}}
@@ -174,10 +174,10 @@
 </section>
 {% include 'components/gallery.html' %}
 
-<section class="testimonials w-[100vw] flex flex-col justify-center items-center">
+<section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
 
-  <div class="swiper w-[90%] +">
+  <div class="swiper w-[90%] h-[80vh]">
     <div class="swiper-wrapper ">
       {% for item in Testimonials %}
       <div class="swiper-slide">
