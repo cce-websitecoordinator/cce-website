@@ -2,7 +2,6 @@ from hashlib import new
 from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
-from numpy import mat
 
 from website.models import Gallery, HomeUpdates, Faculty
 

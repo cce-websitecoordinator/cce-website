@@ -20,8 +20,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -151,8 +151,8 @@ NPM_BIN_PATH = shutil.which('npm')
 
 TAILWIND_APP_NAME = 'theme'
 
-
-MEDIA_URL = 'media/media/' 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
@@ -164,15 +164,14 @@ if not DEBUG:
     AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
     }
+    PUBLIC_MEDIA_LOCATION = 'media'
 
-    AWS_LOCATION = 'media'
-
+    AWS_LOCATION = ''
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    # MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    print("AWS Configurations are set")
     DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage' 
