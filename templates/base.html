@@ -53,7 +53,6 @@
   <style>
   .glass{
 background: rgba( 255, 255, 255, 0.35 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 9.5px );
 -webkit-backdrop-filter: blur( 9.5px );
 border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -64,19 +63,19 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 </head>
 
 <body class="overflow-x-hidden relative snap-y snap-mandatory">
-  <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
+  {% comment %} <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
     <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
     <h1 class="text-white text-center"> Loading data from:
     <span id="requests" class="text-white  text-center text-xs"></span></h1>
 
-  </div>
+  </div> {% endcomment %}
   <header>
   {% block topbar %}{% endblock topbar %}
 
     {% with request.resolver_match.url_name as url_name %}
 
     {# Navbar Segment #}
-  {%include 'components/_partials/navbar.html'%}
+  {% include 'components/_partials/navbar.html'%}
   {% endwith %}
   </header>
 
