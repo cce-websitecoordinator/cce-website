@@ -139,31 +139,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # custom settings
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, "static"),
+    # os.path.join(BASE_DIR, "static"),
 ]
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-NPM_BIN_PATH = shutil.which('npm')
-TAILWIND_APP_NAME = 'theme'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = '/media/'
-
-# AWS Confifugrations
-
 
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-PUBLIC_MEDIA_LOCATION = 'media'
-AWS_LOCATION = ''
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-a = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-print(a)
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
 
-
-# DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
+MEDIA_URL = 'https://cce-website-media.s3.ap-south-1.amazonaws.com/'
+MEDIA_ROOT = "https://cce-website-media.s3.ap-south-1.amazonaws.com/"
