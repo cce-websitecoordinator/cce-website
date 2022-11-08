@@ -5,4 +5,5 @@ Pillow==9.2.0
 whitenoise==6.2.0
 boto3==1.18.49
 django-storages==1.13.1
-
+psycopg2-binary==2.9.5
+django-environ==0.9.0
