@@ -8,6 +8,7 @@ urlpatterns = [
     path('about', views.about_page, name='about'),
     path('academics', views.academics_page, name='academics'),
     path('arts', views.arts_page, name='arts'),
+    path('governing_body', views.governing_body__page, name='governingBody'),
     path('campuslife', views.campuslife_page, name='campuslife'),
     path('nirf', views.nirf_page, name='nirf'),
     path('iqac', views.iqac_page, name='iqac'),
