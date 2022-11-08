@@ -148,6 +148,7 @@ NPM_BIN_PATH = shutil.which('npm')
 TAILWIND_APP_NAME = 'theme'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = '/media/'
+
 # AWS Confifugrations
 
 
@@ -160,5 +161,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 PUBLIC_MEDIA_LOCATION = 'media'
 AWS_LOCATION = ''
-print("AWS Configurations are set")
-DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
+
+a = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+print(a)
+
+
+# DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
