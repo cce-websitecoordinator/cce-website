@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
+{% block head %}
+{% endblock%}
+{% block body%}
+<main class="min-h-[100vh] overflow-x-hidden">
+  {% include 'Departments/Hero.html'%}
+
+    <section class="  pt-20 max-w-screen-2xl mx-auto p-3">
+        <div class="w-full">
+            <h1 class="text-center m-6 mb-11 font-bold text-4xl">Faculty & Staff</h1>
+            <p class="text-center p-8 pt-1">Department of Computer Science & Engineering started in 2015 in Christ
+                College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B.
+                Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We
+                provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital
+                library and language lab. We also have high speed leased line Internet connection and online access to
+                all IEEE journals. The Department has an excellent team of committed and qualified faculty members
+                encouraging and guiding students in their academic as well as personal development. </p>
+        </div>
+    </section>
+
+    <section class='lg:grid-cols-3  grid max-w-screen-2xl mx-auto lg:p-3 lg:gap-10 px-8'>
+      {% for faculty in HOD %}
+      <div class="md:col-span-2  flex flex-col  justify-center items-center relative group">
+        <div  class="group mx-auto w-full h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4 ">
+          <img src="{{faculty.image.url}}" layout='fill' loading="lazy" alt="Dep-HOD" class="w-full h-full object-contain object-center absolute inset-0   transition duration-200" />
+          
+         
+        </div>
+        <div class="w-full mx-11 flex flex-col text-center rounded-lg relative p-4 justify-center">
+            
+          <span class="text-xl lg:text-3xl  font-bold flex w-full items-center justify-center text-[#16BFFD]">{{faculty.full_name}}</span>
+
+          {{faculty.role.all|join:", "}}
+        </div>
+        
+        
+      </div>
+      {% endfor %}
+     
+       
+      {% for faculty in faculties %}
+
+      <div class=" flex flex-col  justify-center items-center relative group">
+        <div  class="group mx-auto w-full h-96 flex items-end bg-gray-100 rounded-lg overflow-hidden shadow-lg relative p-4 ">
+          <img src="{{faculty.image.url}}" layout='fill' loading="lazy" alt="Dep_Faculty" class="w-full h-full object-contain object-center absolute inset-0   transition duration-400 " />
+          
+         
+        </div>
+        <div class="w-full mx-11 flex flex-col text-center rounded-lg relative p-4 justify-center">
+            
+          <h1 class="text-xl lg:text-3xl  text-center font-bold flex w-full items-center justify-center text-[#16BFFD]">{{faculty.full_name}}</h1>
+
+          {{faculty.role.all|join:", "}}
+        </div>
+        
+        
+      </div> 
+      
+      {% endfor %}
+       <div class="col-start-3 col-end-4 ro3 row-start-1 row-end-3 hidden lg:block">{% include 'Departments/Sidebar.html'%}</div>
+            
+          
+    </section>
+
+    {% include 'components/gallery.html'%}
+
+
+
+</main>
+
+{% endblock%}

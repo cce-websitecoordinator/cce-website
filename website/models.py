@@ -1,4 +1,3 @@
-
 from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
@@ -38,28 +37,28 @@ class HomeEvents(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
-    category = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"))
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.image.name
+
+
 
 
 class Faculty(models.Model):
     uuid = models.CharField(max_length=8)
     full_name = models.CharField(max_length=100)
     role = models.ManyToManyField(Role)
+    email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
+    image_2 = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
 
-
-    
-
-
-
-
-# class UpcomingEvent(models.Model):
-#     date= models.DateField() 
-#     image = models.ImageField(upload_to="upcomingEvents")
-#     title = models.CharField(max_length=30)
-#     sub_title  = models.CharField(max_length=100)
+    def __str__(self):
+        return self.full_name
 
 
