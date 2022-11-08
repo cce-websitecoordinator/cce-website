@@ -7,7 +7,7 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#setting up environment variables
+# setting up environment variables
 env = environ.Env()
 environ.Env.read_env()
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     # 'tailwind', // activate this in production to use Tailwind CSS
     # 'theme'
-     
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 
 ]
@@ -83,11 +83,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME'), 
-        'USER': env('DB_USER'),
+        'USER': env('DB_USERNAME'), 
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
     }
 }
 
@@ -140,38 +141,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
-
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
 NPM_BIN_PATH = shutil.which('npm')
-
 TAILWIND_APP_NAME = 'theme'
-
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = '/media/' 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+# AWS Confifugrations
 
 
-
-# AWS Confifugrations 
-
-if not DEBUG:
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-    PUBLIC_MEDIA_LOCATION = 'media'
-
-    AWS_LOCATION = ''
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-    # MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-    print("AWS Configurations are set")
-    DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage' 
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+PUBLIC_MEDIA_LOCATION = 'media'
+AWS_LOCATION = ''
+print("AWS Configurations are set")
+DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
