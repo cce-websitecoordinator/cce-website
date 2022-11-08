@@ -116,6 +116,8 @@ def department_of_ECE_page(request):
 def campuslife_page(request):
     return render(request, 'campuslife.html')
 
+def arts_page(request):
+    return render(request, 'arts.html')
 
 def about_page(request):
     return render(request, 'about.html')
