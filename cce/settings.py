@@ -14,16 +14,20 @@ import os
 from pickle import FALSE
 import shutil
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#setting up environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--4buefz491*ynm*c(rvn99xcs)cyk2^bpwwgy$e&8e@@oq33kb'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -97,12 +101,20 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'cce2022', 
+    #     'USER': 'cce22web', 
+    #     'PASSWORD': 'WebsiteMail1',
+    #     'HOST': 'sg2nlmysql21plsk.secureserver.net', 
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cce2022', 
-        'USER': 'cce22web', 
-        'PASSWORD': 'WebsiteMail1',
-        'HOST': 'sg2nlmysql21plsk.secureserver.net', 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'), 
+        'USER': env('DB_USERNAME'), 
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT') 
     }
 }
 
