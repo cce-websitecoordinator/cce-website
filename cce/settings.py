@@ -21,7 +21,6 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-# DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -36,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django_browser_reload',
     'website',
     'departments',
     'storages',
@@ -45,6 +43,7 @@ INSTALLED_APPS = [
     # 'theme'
 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,9 +56,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # "django_browser_reload.middleware.BrowserReloadMiddleware",
 
 ]
+
+
+# Development Settings
+
+if env('PRODUCTION') != 'True':
+    MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
+    INSTALLED_APPS.append("django_browser_reload")
+    DEBUG = True
+
 
 ROOT_URLCONF = 'cce.urls'
 
@@ -212,3 +219,5 @@ JAZZMIN_SETTINGS = {
 
     "related_modal_active": True,
 }
+
+

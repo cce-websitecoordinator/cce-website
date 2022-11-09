@@ -53,6 +53,8 @@ atlassian-ide-plugin.xml
 
 # static #
 static/admin
+static/jazzmin
+static/vendor
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
