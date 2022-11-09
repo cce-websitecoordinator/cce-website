@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+
+.adm-header {
+  background-image: url(/static/images/Admission/Background.png);
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.adm-header > h1 {
+  color: white;
+  font-size: 8vw;
+  font-weight: 600;
+  margin: 170px 0px 130px 0px;
+}
+
+.adm-arrow {
+  color: white;
+  font-size: 1.5vw;
+}
+
+.adm-timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 150px;
+}
+
+.adm-details-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+}
+
+.adm-details-img {
+  width: 300px;
+}
+
+.adm-details-wrapper > h2 {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.adm-course-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+  height: 300px;
+  padding: 10px 0px 10px 0px;
+}
+
+.adm-course-offer {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 20px;
+  margin-left: 30px;
+}
+
+.adm-course-img {
+  width: 220px;
+}
+
+.adm-course-offer > h2 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.adm-course-offer > ul {
+  list-style-type: none;
+}
+
+.adm-course-offer > ul > li {
+  width: 100%;
+  text-align: right;
+  font-size: 25px;
+}
+
+.adm-course-rect {
+  height: 100%;
+  width: 60px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    #8bc53f 0%,
+    #52c53f 47.92%,
+    #3fc554 72.92%,
+    #3fc585 100%
+  );
+}
+
+.adm-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 100px;
+}
+
+.adm-timeline-single {
+  position: relative;
+  padding: 20px;
+  background: #f9f9f9;
+  width: 450px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  transform: translateX(320px);
+}
+
+.adm-timeline-single > ul {
+  list-style-type: none;
+}
+
+.adm-timeline-single > ul > li {
+  font-size: 15px;
+}
+.adm-timeline-single-line {
+  position: absolute;
+  left: -100px;
+  height: calc(100% + 100px);
+  width: 8px;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    #28aae1 0%,
+    #28d6e1 26.56%,
+    #28e1cb 51.04%,
+    #28cbd6 76.04%,
+    #28aae1 97.92%
+  );
+}
+
+.adm-timeline-single h3 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.adm-contact-us-wrapper h3 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.adm-timeline-single-outercircle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: -30px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding: 8px;
+  top: -20px;
+  left: -13px;
+  background-color: #28ace1;
+}
+
+.adm-timeline-innercircle {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: white;
+}
+
+.adm-timeline-single-title-odd {
+  position: absolute;
+  left: -250px;
+}
+
+.adm-timeline-single-title-even {
+  position: absolute;
+  left: 100px;
+}
+
+.adm-timeline-single-even {
+  transform: translateX(-330px);
+}
+
+.adm-timeline-single-line-even {
+  left: calc(100% + 100px);
+}
+
+.adm-timeline-lastcircle {
+  top: 100%;
+}
+
+.adm-timeline-button {
+  background-color: #007fff;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+.adm-fee-details-align-right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.adm-fee-details-align-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.adm-timeline-single > small {
+  text-align: right;
+}
+.adm-fee-details-align-right > div {
+  width: fit-content;
+  display: inherit;
+  flex-direction: inherit;
+  align-items: inherit;
+}
+
+.adm-document-required-align-left > ul {
+  list-style-type: none;
+}
+
+.adm-scholorship-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.scholorship-detail-amount {
+  grid-row: 3/4;
+}
+
+.keam-rand-details {
+  grid-row: 3/4;
+}
+.adm-contact-us-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 70px;
+  height: 300px;
+}
+.adm-contact-us-names > ul {
+  list-style-type: none;
+}
+
+.adm-contact-us {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  background: #f9f9f9;
+  width: 450px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  height: 100%;
+
+}
+
+.adm-contact-us-outer {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.adm-contact-us-names{
+  text-align: right;
+}
+
+.adm-contact-us-no{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}

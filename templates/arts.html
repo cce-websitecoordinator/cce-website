@@ -1,0 +1,324 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Arts {% endblock title %} {% block head %}
+<link href="../static/css/arts.css" rel="stylesheet"/>
+<link href="../static/css/carousel.css" rel="stylesheet"/>
+<script defer src="{% static '/js/carousel.js' %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+{% endblock head %}
+{% block body %}
+    <div class="bg-img relative" style="background-image: url('../static/images/Arts/Arts-bg.png')">
+      <div class="bg-wrapper">
+        <div class="relative">
+          <h1 class="bg-CCE place-items-center text-center font-black tracking-[20px] md:text-[54rem] text-[16rem] gap:[80px] md:gap-[40px] relative">CCE</h1>
+          <div class="arts-header-font-arrow">
+            <p class=" md:text-[12rem] font-semibold text-center text-[6rem] relative py-4 my-4 -top-56 md:top-0">ARTS</p>
+            <div class="w-auto h-auto ">
+              <a href="#about"><i
+                class=" fa-solid fa-angles-down animate-pulse text-white fa-xl  pl-auto pr-auto "
+              ></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="about" class="about py-4 mb-5 ">
+        <h2 class="text-center text-6xl font-poppins font-semibold py-4 ">About</h2>
+        <p class="text-center text-3xl font-medium px-[16px] md:px-[200px] ">Christ College Of Engineering provides a wide range of opportunities to its students in the form of Arts and other cultural activities. Making sure that the students are culturally attached had been a major priority set since the beginning.</p>
+    </div>
+    <div class="overall md:flex items-center justify-center place-items-center py-4">
+        <div class="carousel ml-auto mr-auto pl-0 pr-0 md:mr-0 md:ml-[80px]">
+        </div>
+        <div class="updates p-12 pl-16 mr-auto ml-auto rounded-lg shadow-2xl h-[50%] w-[70%] md:w-[25%] md:text-lg hover:shadow-inner gap-4 mb-3 ">
+            <h1 class="text-center relative text-5xl font-semibold pl-auto pr-auto md:ml-2 py-4 ">Updates</h2>
+            <ul class="list-disc text-3xl gap-4 pb-2">
+                <li class=" p-2 ">Opportunities in TCS EIS:
+                    A webinar on 9th June for NON-CSE students to know more about the Engineering and Industrial Services division of TCS.   Read More</li>
+                <p class="text-2xl text-right right-2 p-2"><i>sep 19,2022</i></p>
+                <li class=" p-2">All students who have received offer letters are requested share a copy to tnp@cce.edu.in</li>
+                <p class="text-2xl text-right right-2 p-2">sep 19,2022</p>
+                <li class=" p-2 ">Online programming training for S6 students from 27-4-21 onwards.</li>
+                <p class="text-2xl text-right right-2 p-2">sep 19,2022</p>
+            </ul>
+            <button class="mt-2 text-2xl  bg-blue-500 text-white  bottom-4 right-2 rounded-lg p-5 w-40  ">View All.</button>
+        </div>  
+    </div>
+    <div class="events md:bg-gray-200 text-center mt-12 mb-10 pb-4 pl-auto pr-auto">
+        <h1 class="text-center relative text-5xl font-semibold py-4 ">Events</h2>
+            <div class="md:flex">
+                <div class="img-event py-4">
+                    <img class="ml-auto mr-auto md:pl-[20%] md:pr-[5%] py-4 pb-4 md:w-[2400px] md:h-[440px]" src="../static/images/Arts/Events-logo.png"/>
+                </div>
+                <div class=" py-4  text-ellipsis overflow-hidden ">
+                    <h1 class=" text-center md:text-left text-4xl font-bold pt-2  py-4">Thaikkudam Bridge</h2>
+                    <h2 class=" text-center md:text-left font-semibold pt-2 text-3xl  py-4">Thaikkudam Bridge is here with some mindblowing stuffs</h3>
+                    <h2 class="text-center md:text-left font-normal py-4 pb-5 text-3xl px-4 md:px-0">Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in. Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis dignissim nisi neque ornare in molestie egestas aliquam nullam. Pretium, egestas urna, scelerisque non senectus. Lorem dui ac blandit quis aliquet lorem arcu eget. Sed ornare pharetra, risus id. Aliquam placerat consequat.</p>
+                    <button class="text-center md:text-left bg-blue-500 text-white rounded-lg p-5 my-4">See More</button>
+                </div>
+            </div> 
+    </div>
+
+    <div class="cards-overall">
+      <div class="flip-card-container" >
+        <div class="flip-card">
+          <div class="card-front">
+            <div class=" h-full relative">
+                <div class=" bg-white  border-[12px] border-red-700 bg-red-700 rounded-3xl h-full shadow-2xl">
+                    <img src="../static/images/Arts/house-bg.png"
+                        class="w-full h-full relative" />
+                </div>
+                <div class="absolute top-0 left-0 ">
+                    <div class="flex justify-between">
+                        <div class="bg-red-700 pt-3 pl-8 pr-6 pb-1 rounded-lg w-full ">
+                            <p class="text-white text-4xl p-4 font-semibold ">
+                                CETUS
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-9 left-9  ">
+                    <div class="flex justify-between">
+                        <div class="score bg-red-700 h-full w-full">
+                            <p class="text-white text-2xl pl-2 pt-1 pb-0">
+                                Score
+                            </p>
+                            <p class="text-white font-bold text-5xl pl-6 pr-6 pb-2 pt-0">
+                                140
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 ml-[150px]">
+                    <div class="flex justify-between">
+                        <div class="bg-red-700  rounded-lg   ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0">
+                                <p class="text-red-700 text-3xl font-bold text-center py-3">
+                                    160
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Won
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 right-3">
+                    <div class="flex justify-between">
+                        <div class="bg-red-700  rounded-lg  ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0 ">
+                                <p class="text-red-700 font-bold text-3xl text-center py-3">
+                                    140
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Lost
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-back bg-red-700 flex-col">
+            <h1 class=" text-center text-5xl font-black py-4">CETUS</h1>
+            <p class=" text-center text-3xl font-bold ">Champions : 2017, 2018 <br> Runners-Up : 2020</p>
+          </div>
+        </div>
+      </div> 
+    <!-- /flip-card-container 2-->
+          <div class="flip-card-container" >
+            <div class="flip-card">
+              <div class="card-front">
+                <div class=" h-full  relative">
+                    <div class=" bg-blue-500 border-[12px] border-blue-500  rounded-3xl h-full shadow-2xl">
+                        <img src="../static/images/Arts/house-bg.png"
+                            class="w-full h-full relative" />
+                    </div>
+                    <div class="absolute top-0 left-0 ">
+                        <div class="flex justify-between">
+                            <div class="bg-blue-500 pt-3 pl-8 pr-6 pb-1 rounded-lg w-full ">
+                                <p class="text-white  text-4xl p-4  font-semibold ">
+                                    PEGASUS
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-9 left-9 ">
+                        <div class="flex justify-between">
+                            <div class="score bg-blue-500 w-full">
+                                <p class="text-white text-2xl pl-2 pt-1 pb-0">
+                                    Score
+                                </p>
+                                <p class="text-white font-bold text-5xl pl-6 pr-6 pb-2 pt-0">
+                                    140
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 ml-[150px]">
+                        <div class="flex justify-between">
+                            <div class="bg-blue-500  rounded-lg   ">
+                                <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0">
+                                    <p class="text-blue-500 text-3xl font-bold text-center py-3">
+                                        160
+                                    </p>
+                                </div>
+                                <p class="text-white text-md text-center mb-4 font-medium">
+                                    Won
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 right-3">
+                        <div class="flex justify-between">
+                            <div class="bg-blue-500 rounded-lg  ">
+                                <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0 py-3">
+                                    <p class="text-blue-500 font-bold text-3xl text-center py-1">
+                                        140
+                                    </p>
+                                </div>
+                                <p class="text-white text-md text-center mb-4 font-medium">
+                                    Lost
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="card-back bg-blue-500 flex-col">
+                <h1 class=" text-center text-5xl font-black py-4">PEGASUS</h1>
+                <p class=" text-center text-3xl font-bold ">Champions : 2019, 2021 <br> Not Runners-Up Yet</p>
+              </div>
+            </div>
+          </div>      
+    <!-- flip-card-container 3-->
+    <div class="flip-card-container" >
+        <div class="flip-card">
+          <div class="card-front">
+            <div class=" h-full  relative">
+                <div class=" bg-white  border-[12px] border-green-600 bg-green-600 rounded-3xl h-full shadow-2xl">
+                    <img src="../static/images/Arts/house-bg.png"
+                        class="w-full h-full relative" />
+                </div>
+                <div class="absolute top-0 left-0 ">
+                    <div class="flex justify-between">
+                        <div class="bg-green-600 pt-3 pl-8 pr-6 pb-1 rounded-lg w-full ">
+                            <p class="text-white  text-4xl p-4 font-semibold ">
+                                TAURUS
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-9 left-9  ">
+                    <div class="flex justify-between">
+                        <div class="score bg-green-600  w-full">
+                            <p class="text-white text-2xl pl-2 pt-1 pb-0">
+                                Score
+                            </p>
+                            <p class="text-white font-bold text-5xl pl-6 pr-6 pb-2 pt-0">
+                                140
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 ml-[150px]">
+                    <div class="flex justify-between">
+                        <div class="bg-green-600  rounded-lg   ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0">
+                                <p class="text-green-600 text-3xl font-bold text-center py-3">
+                                    160
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Won
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 right-3">
+                    <div class="flex justify-between">
+                        <div class="bg-green-600 rounded-lg  ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0 py-3">
+                                <p class="text-green-600 font-bold text-3xl text-center py-1">
+                                    140
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Lost
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-back bg-green-600 flex-col">
+            <h1 class=" text-center text-5xl font-black py-4">TAURUS</h1>
+            <p class=" text-center text-3xl font-bold ">Not Champions Yet <br> Runners-Up : 2018,2020</p>
+          </div>
+        </div>
+      </div> 
+    <!-- /flip-card-container 4-->
+    <div class="flip-card-container" >
+        <div class="flip-card">
+          <div class="card-front">
+            <div class=" h-full  relative">
+                <div class=" bg-white  border-[12px] border-orange-500 bg-orange-500 rounded-3xl h-full shadow-2xl">
+                    <img src="../static/images/Arts/house-bg.png"
+                        class="w-full h-full relative" />
+                </div>
+                <div class="absolute top-0 left-0 ">
+                    <div class="flex justify-between">
+                        <div class="bg-orange-500 pt-3 pl-8 pr-6 pb-1 rounded-lg w-full ">
+                            <p class="text-white  text-4xl p-4  font-semibold ">
+                                LUPUS
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute  bottom-8 left-8 ">
+                    <div class="flex justify-between">
+                        <div class="score bg-orange-500  w-full">
+                            <p class="text-white text-2xl pl-2 pt-1 pb-0">
+                                Score
+                            </p>
+                            <p class="text-white font-bold text-5xl pl-6 pr-6 pb-2 pt-0">
+                                140
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 ml-[150px]">
+                    <div class="flex justify-between">
+                        <div class="bg-orange-500  rounded-lg   ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0">
+                                <p class="text-orange-500 text-3xl font-bold text-center py-3">
+                                    160
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Won
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 right-3">
+                    <div class="flex justify-between">
+                        <div class="bg-orange-500 rounded-lg  ">
+                            <div class="bg-white justify-center items-center rounded-lg w-20 m-3 h-[42px] mb-0 py-3">
+                                <p class="text-orange-500 font-bold text-3xl text-center py-1">
+                                    140
+                                </p>
+                            </div>
+                            <p class="text-white text-md text-center mb-4 font-medium">
+                                Lost
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-back bg-orange-500 flex-col">
+            <h1 class=" text-center text-5xl font-black py-4">LUPUS</h1>
+            <p class=" text-center text-3xl font-bold px-[30px]">Not Champions or Runners-Up Yet</p>
+          </div>
+        </div>
+      </div> 
+    </div>
+{% endblock  %}
