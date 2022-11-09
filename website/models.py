@@ -79,3 +79,27 @@ class CCEManagement(models.Model):
     def __str__(self):
         return self.name
 
+class GoverningBody(models.Model):
+    phone = models.CharField(max_length=10)
+    role =  models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)\
+
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+
+class Alumni(models.Model):
+    memorandum = models.FileField(upload_to="AlumniMemorandum")
+    by_laws = models.FileField(upload_to="AlumniByLaws")
+    def __str__(self):
+        return self.name
+
+
+class AlumniCommittee(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
