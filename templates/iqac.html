@@ -1,10 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block title %} IQAC {% endblock title %} {% block head %}
 <link rel="stylesheet" href="../static/css/iqac.css" />
 {% endblock head %} {% block body %}
-<main class="iqac-wrapper">
-  <div class="quality-wrapper">
-    <h1>Internal Quality Assurance Cell</h1>
-    <div class="quality-wrapper-content">
+<main class="iqac-wrapper ">
+<section class="hero-wrapper h-screen">
+  <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
+  <div class="absolute inset-0 flex justify-center items-center flex-col">
+    <h1 class="hero-title z-10">IQAC</h1>
+  </div>
+  <h1 class="flex text-[500px] font-black opacity-[0.5] z-0 absolute inset-0 justify-center items-center" >CCE</h1>
+  <div class="absolute inset-0 bg-black bg-opacity-[0.5]" ></div>
+</section>
+  <div class="quality-wrapper ">
+       <div class="quality-wrapper-content">
       <p>
         To bring forth high quality standards and to maintain quality
         consciousness, Internal Quality Assurance Cell (IQAC) has been
@@ -188,6 +195,25 @@
         </tbody>
       </table>
     </div>
+    <h1 class="text-center text-3xl">IQAC Formation Notices</h1>
+      <div class="Formation-notices">    
+        <ul class="text-xl">
+          <li> <a href="">Constitution Notification 2021-2022</a></li>
+          <li> <a href="">Constitution Notification 2020-2021</a></li>
+          <li> <a href="">Constitution Notification 2019-2020</a></li>
+          <li> <a href="">Constitution Notification 2017-2019</a></li>
+        </ul>
+      </div>
+      <h1 class="text-center text-3xl">IQAC Meeting Notices And Minutes</h1>
+      <div class="IQAC-Meeting-Notices-And-Minutes">
+        <ul class="text-xl">
+          <li>1. Notice and Meeting Minutes 2021-2022  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a> <a href="">|MOM4|</a></li>
+          <li>2. Notice and Meeting Minutes 2020-2021  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a></li>
+          <li>3. Notice and Meeting Minutes 2019-2020  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a></li>
+          <li>4. Notice and Meeting Minutes 2018-2019  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a></li>
+          <li>5. Notice and Meeting Minutes 2017-2018  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a></li>
+        </ul>
+      </div>
   </div>
 </main>
 {% endblock %}

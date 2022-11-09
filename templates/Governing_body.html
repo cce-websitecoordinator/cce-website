@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Governing Body {% endblock title %} {% block head %}
+<link rel="stylesheet" href="../static/css/iqac.css" />
+{% endblock head %} {% block body %}
+<main class="iqac-wrapper ">
+<section class="hero-wrapper h-screen">
+  <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
+  <div class="absolute inset-0 flex justify-center items-center flex-col">
+    <h1 class="hero-title z-10">IQAC</h1>
+  </div>
+  <h1 class="flex text-[500px] font-black opacity-[0.5] z-0 absolute inset-0 justify-center items-center" >CCE</h1>
+  <div class="absolute inset-0 bg-black bg-opacity-[0.5]" ></div>
+</section>
+ 
+  <div class="executive-committee-wrapper">
+    <h1>Governing Body Members 2020-21</h1>
+    <div>
+      <table class="executive-committee-table fixed-scroll">
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>DESIGNATION</th>
+            <th>ROLE</th>
+          </tr>
+        </thead>
+      </table>
+      <table class="executive-committee-table">
+        <tbody>
+          <tr>
+            <td>Fr.John Paliakara CMI</td>
+            <td>Executive Director</td>
+            <td>Management Representative</td>
+          </tr>
+          <tr>
+            <td>Fr.Joy Payyappilly CMI</td>
+            <td>Joint Director(Finance)</td>
+            <td>Management Representative</td>
+          </tr>
+          <tr>
+            <td>Dr.Sajeev John</td>
+            <td>Principal</td>
+            <td>Chairman</td>
+          </tr>
+          <tr>
+            <td>Dr.V D John</td>
+            <td>Professor and Vice Principal</td>
+            <td>Convener</td>
+          </tr>
+          <tr>
+            <td>Dr.Caren Babu</td>
+            <td>Associate Professor and HOD,ECE</td>
+            <td>Coordinator</td>
+          </tr>
+          <tr>
+            <td>Fr.Antony Davis CMI</td>
+            <td>Joint Director(Administration)</td>
+            <td>Administrative Representative</td>
+          </tr>
+          <tr>
+            <td>Ms.Santa Giri</td>
+            <td>Chairperson,Irinjalakuda Muncipality</td>
+            <td>Nominee from local society</td>
+          </tr>
+          <tr>
+            <td>Mr.Tito Jose Moothedan</td>
+            <td>Delivery Manager,Infosys Technologies</td>
+            <td>Industry Representative</td>
+          </tr>
+          <tr>
+            <td>Dr. M V Rajesh</td>
+            <td>Associate Professor,CEC,IETE Kochi Chapter</td>
+            <td>Administrative Representative</td>
+          </tr>
+          <tr>
+            <td>Mr.Sajith Bosco</td>
+            <td>Practice Head,Erasmith Technologies</td>
+            <td>Employer Representative</td>
+          </tr>
+          <tr>
+            <td>Mr.Gracious Kanjanikkaran</td>
+            <td>Parent</td>
+            <td>Parent Representative</td>
+          </tr>
+          <tr>
+            <td>Ms.Vinitha Sharon</td>
+            <td>Assistant Professor,CE</td>
+            <td>Faculty Representative,Secretary</td>
+          </tr>
+          <tr>
+            <td>Ms.Reshmi M</td>
+            <td>Assistant Professor,BSH</td>
+            <td>Faculty Representative</td>
+          </tr>
+          <tr>
+            <td>Mr.Jinu K T</td>
+            <td>Assistant Professor,EEE</td>
+            <td>Faculty Representative</td>
+          </tr>
+          <tr>
+            <td>Mr.Prasanth K Baby</td>
+            <td>Assistant Professor,CSE</td>
+            <td>Faculty Representative</td>
+          </tr>
+          <tr>
+            <td>Mr.Girisanikar T R</td>
+            <td>Assistant Professor,ME</td>
+            <td>Faculty Representative</td>
+          </tr>
+          <tr>
+            <td>Aravind Krishna C U</td>
+            <td>B. Tech 2015-19 Batch,EE</td>
+            <td>Alumini Representative</td>
+          </tr>
+          <tr>
+            <td>Leo T Francis</td>
+            <td>Students Union Chairman,B.Tech 2019-23</td>
+            <td>Student Representative</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+{% endblock %}

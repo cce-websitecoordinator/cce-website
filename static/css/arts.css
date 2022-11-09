@@ -1,0 +1,106 @@
+.bg-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .bg-wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: grid;
+    place-items: center;
+  }
+  
+  .bg-CCE {
+    letter-spacing: 20px;
+    color: rgba(0, 0, 0.1, 0.32);
+  }
+  
+  .arts-header-font-arrow {
+    position: absolute;
+    top: 180px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    
+  }
+  .cards-overall::after,
+  .cards-overall::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .cards-overall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .flip-card-container {
+    width: 300px;
+    height: 450px;
+    margin: 30px;
+    perspective: 1000px;
+  }
+  
+  .flip-card {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: .6s .1s;
+  }
+  
+  .flip-card-container:hover .flip-card,
+  .flip-card-container:focus-within .flip-card {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-front {
+    transform: rotateY(0deg);
+    z-index: 1;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  
+  .score{
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  
+  }
