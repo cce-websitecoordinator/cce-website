@@ -34,6 +34,12 @@ class HomeEvents(models.Model):
     sub_heading = models.CharField(max_length=50)
     sub_text = models.TextField()
 
+class UpcomingEvents(models.Model):
+    img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
+    title = models.CharField(max_length=30)
+    sub_title = models.CharField(max_length=50)
+    date = models.DateTimeField()
+
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
