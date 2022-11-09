@@ -26,6 +26,9 @@ def governing_body__page(request):
 def about_page(request):
     return render(request, 'about.html')
 
+def management_page(request):
+    return render(request, 'management.html')
+
 def nirf_page(request):
     return render(request, 'nirf.html',context={})
 
