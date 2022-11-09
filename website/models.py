@@ -62,3 +62,20 @@ class Faculty(models.Model):
         return self.full_name
 
 
+
+class CCEinMedia(models.Model):
+    image = models.ImageField(upload_to="CCEinMedia")
+    title = models.CharField(max_length=100)
+    date = models.DateField(null = False)
+    short_description = models.CharField(max_length=200)
+    link = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
+class CCEManagement(models.Model):
+    image = models.ImageField(upload_to="CCEManagement")
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+

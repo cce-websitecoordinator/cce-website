@@ -20,8 +20,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -148,4 +148,8 @@ INTERNAL_IPS = [
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
-DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage' 
+                         
+MEDIA_ROOT = '/media/'                                                          
+S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME                
+MEDIA_URL = S3_URL + MEDIA_ROOT                                                                 
+DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
