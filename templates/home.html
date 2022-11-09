@@ -73,14 +73,17 @@
 
   <div class="relative">
     <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0 lg:px-24 md:px-11 flex-col ">
-      <div class="lg:w-[80%] w-full h-full bg-white shadow-xl rounded-md p-8">
+      <div class="lg:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
         <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
         <div class="swiper2 overflow-x-clip">
           <div class="swiper-wrapper ">
             {% for event in upcomingEvents %}
 
         <div class="swiper-slide">
-          <img src="{{event.image.url}}"/>
+          
+        <div class="w-full  flex items-center justify-center">
+          <img src="{{event.img.url}}" class="max-h-[500px]"/>
+        </div>
         
           <div class='w-full flex pt-3'>
             <div class='border-2 border-blue-300 h-full w-[50px] text-center shadow-xl rounded-md'>
@@ -277,7 +280,7 @@ const swiper2 = new Swiper('.swiper2', {
   spaceBetween: 100,
   slidesPerView: 1,
   autoplay: {
-    delay: 3000,
+    delay: 6000,
   },
   
 });
