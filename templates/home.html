@@ -80,7 +80,10 @@
             {% for event in upcomingEvents %}
 
         <div class="swiper-slide">
-          <img src="{{event.image.url}}"/>
+          
+        <div class="w-full">
+          <img src="{{event.img.url}}"/>
+        </div>
         
           <div class='w-full flex pt-3'>
             <div class='border-2 border-blue-300 h-full w-[50px] text-center shadow-xl rounded-md'>
