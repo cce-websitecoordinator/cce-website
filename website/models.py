@@ -39,6 +39,8 @@ class UpcomingEvents(models.Model):
     title = models.CharField(max_length=30)
     sub_title = models.CharField(max_length=50)
     date = models.DateTimeField()
+    def __str__(self) -> str:
+        return self.title
 
 
 class Gallery(models.Model):

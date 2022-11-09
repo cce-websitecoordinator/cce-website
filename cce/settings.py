@@ -85,8 +85,8 @@ WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'), 
-        'USER': env('DB_USERNAME'), 
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USERNAME'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT')
@@ -153,7 +153,62 @@ AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 # S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'                
-# MEDIA_URL = S3_URL + MEDIA_ROOT                                                                 
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+# MEDIA_URL = S3_URL + MEDIA_ROOT
 DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
+
+# Jazzmin settings
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "slate",
+    "dark_mode_theme": "slate",
+}
+
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "CCE Admin",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "CCE",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "CCE",
+
+    # # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "favicons/favicon-32x32.png",
+    "site_logo_small": "favicons/favicon-32x32.png",
+
+    "site_favicon": "favicons/favicon.ico",
+     "login_logo": "favicons/android-chrome-192x192.png",
+
+
+    # # CSS classes that are applied to the logo above
+    "site_logo_classes": "img-circle",
+
+    # # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
+    # "site_icon": None,
+
+    # # Welcome text on the login screen
+    "welcome_sign": "Welcome Administration Page of CCE Web",
+
+    # # Copyright on the footer
+    "copyright": " Christ College Of Engineering & Technology",
+
+
+
+    # # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index",
+            "permissions": ["auth.view_user"]},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"Main Website": "website"},
+        {"Departments": "departments"},
+    ],
+
+    "related_modal_active": True,
+}
