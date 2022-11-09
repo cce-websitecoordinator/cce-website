@@ -42,7 +42,9 @@ def nirf_page(request):
 
 
 def gallery_page(request):
-    return render(request, 'gallery.html')
+    gallery_imgs = Gallery.objects.all()
+    context = {"gallery":gallery_imgs}
+    return render(request, 'gallery.html', context=context)
 
 
 def iqac_page(request):
