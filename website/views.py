@@ -11,6 +11,9 @@ def academics_page(request):
 
     return render(request, 'academics.html')
 
+def admission_page(request):
+    return render(request, 'admission.html')
+
 def campuslife_page(request):
     return render(request, 'campuslife.html')
 
