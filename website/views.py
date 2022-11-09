@@ -3,7 +3,7 @@ from website.models import *
 
 
 def home_page(request):
-    context = {'Testimonials': Testimonials.objects.all().values(), "name": "John Doe","updates":HomeUpdates.objects.all().values(),"Events":HomeEvents.objects.all().values(),"gallery":Gallery.objects.all().values()}
+    context = {'Testimonials': Testimonials.objects.all(), "name": "John Doe","updates":HomeUpdates.objects.all(),"Events":HomeEvents.objects.all(),"gallery":Gallery.objects.all()}
     return render(request, 'home.html', context=context)
 
 
@@ -25,6 +25,9 @@ def governing_body__page(request):
 
 def about_page(request):
     return render(request, 'about.html')
+
+def management_page(request):
+    return render(request, 'management.html')
 
 def nirf_page(request):
     return render(request, 'nirf.html',context={})
