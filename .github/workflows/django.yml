@@ -22,6 +22,18 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+      with:
+        DB_USERNAME: {{ secrets.DB_USERNAME }}
+        DB_PASSWORD: {{ secrets.DB_PASSWORD }}
+        DB_HOST: {{ secrets.DB_HOST }}
+        DB_PORT: {{ secrets.DB_PORT }}
+        DB_NAME: {{ secrets.DB_NAME }}
+        SECRET_KEY: {{ secrets.SECRET_KEY }}
+        AWS_ACCESS_KEY_ID: {{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: {{ secrets.AWS_SECRET_ACCESS_KEY }}
+        PRODUCTION: {{ secrets.PRODUCTION }}
+
+
     - name: Run Tests
       run: |
         python manage.py test
