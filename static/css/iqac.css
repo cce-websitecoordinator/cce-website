@@ -218,3 +218,52 @@
     
   }
   
+
+
+  .Formation-notices{
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(247, 247, 234);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    padding: 50px;
+    margin-bottom: 30px;
+    margin-top : 0px;
+    min-width: 1100px;
+    max-width: 1100px;
+    gap: 50px;
+  }
+  .Formation-notices > ul {
+    list-style-type:square;
+    padding: 0px 0px 0px 0px;
+    pointer-events: all;
+  }
+  
+  .Formation-notices > ul > li {
+    font-weight: 500;
+    line-height: 40px;
+  }
+
+  .IQAC-Meeting-Notices-And-Minutes{
+    display: flex;
+    flex-direction: column;
+    background-color:aliceblue;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    padding: 50px;
+    margin-bottom: 30px;
+    min-width: 1100px;
+    max-width: 1100px;
+    gap: 50px;
+  }
+
+  .IQAC-Meeting-Notices-And-Minutes > ul {
+    list-style-type:square;
+    padding: 0px 0px 0px 0px;
+    pointer-events: all;
+  }
+  
+  .IQAC-Meeting-Notices-And-Minutes > ul > li {
+    font-weight: 500;
+    line-height: 40px;
+  }
