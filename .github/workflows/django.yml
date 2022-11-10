@@ -2,29 +2,36 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "production" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.8, 3.9]
-
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.10"
+        arch: "x64"
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Run Tests
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        PRODUCTION: ${{ secrets.PRODUCTION }}
       run: |
         python manage.py test
+

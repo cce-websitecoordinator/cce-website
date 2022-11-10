@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
+{% load static %} {% block title %} Gallery {% endblock title %}
+{% block head %}
+
+{% endblock head %}
 
 {% block body %}
-<div class="">
-    
-</div>
+<main>
+<h1 class="text-center w-full my-24 text-6xl font-bold ">CCE Gallery </h1>
+    <div class="flex  justify-evenly gap-4   flex-wrap w-full">
+        
+        {% for item in gallery %}
+        <div class="bg-gray-100 p-1 shadow-xl">
+            
+            <img src="{{item.image.url}}" alt="{{item.image}}" class="h-[300px]">
+        </div>
+        {% endfor %}
+        
+        
+        
+    </div>
+</main>
 {% endblock body %}

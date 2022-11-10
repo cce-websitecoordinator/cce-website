@@ -1,4 +1,4 @@
-#!/home/sai/Documents/Projects/cce-website/cceweb/bin/python3
+#!/home/sai/Documents/Projects/cce-website/cceweb/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

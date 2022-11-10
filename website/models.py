@@ -34,6 +34,14 @@ class HomeEvents(models.Model):
     sub_heading = models.CharField(max_length=50)
     sub_text = models.TextField()
 
+class UpcomingEvents(models.Model):
+    img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
+    title = models.CharField(max_length=30)
+    sub_title = models.CharField(max_length=50)
+    date = models.DateTimeField()
+    def __str__(self) -> str:
+        return self.title
+
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery")
@@ -62,3 +70,44 @@ class Faculty(models.Model):
         return self.full_name
 
 
+
+class CCEinMedia(models.Model):
+    image = models.ImageField(upload_to="CCEinMedia")
+    title = models.CharField(max_length=100)
+    date = models.DateField(null = False)
+    short_description = models.CharField(max_length=200)
+    link = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
+class CCEManagement(models.Model):
+    image = models.ImageField(upload_to="CCEManagement")
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class GoverningBody(models.Model):
+    phone = models.CharField(max_length=10)
+    role =  models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)\
+
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+
+class Alumni(models.Model):
+    memorandum = models.FileField(upload_to="AlumniMemorandum")
+    by_laws = models.FileField(upload_to="AlumniByLaws")
+    def __str__(self):
+        return self.name
+
+
+class AlumniCommittee(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
