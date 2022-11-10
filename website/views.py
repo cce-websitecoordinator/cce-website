@@ -22,11 +22,15 @@ def campuslife_page(request):
 
 
 def arts_page(request):
-    return render(request, 'arts.html')
+    gallery_imgs = Gallery.objects.all()
+    context = {"gallery":gallery_imgs}
+    return render(request, 'arts.html', context=context)
 
 
 def governing_body__page(request):
-    return render(request, 'Governing_body.html')
+    gallery_imgs = Gallery.objects.all()
+    context = {"gallery":gallery_imgs}
+    return render(request, 'Governing_body.html', context=context)
 
 
 def about_page(request):

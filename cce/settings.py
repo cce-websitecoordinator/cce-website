@@ -145,10 +145,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Added by manually
 # custom settings
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "static"),
-]
+if env('PRODUCTION') != 'True':
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
