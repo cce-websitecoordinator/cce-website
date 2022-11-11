@@ -176,8 +176,8 @@ DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 # Jazzmin settings
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "slate",
-    "dark_mode_theme": "slate",
+    "theme": "cerulean",
+    "dark_mode_theme": "cerulean",
 }
 
 
