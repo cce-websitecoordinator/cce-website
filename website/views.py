@@ -54,6 +54,11 @@ def gallery_page(request):
 def iqac_page(request):
     return render(request, 'iqac.html')
 
+def alumini_page(request):
+    return render(request, 'Alumini.html')
+
+
+
 
 def test_page(request):
     return render(request, 'Test.html')

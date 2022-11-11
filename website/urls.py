@@ -13,7 +13,8 @@ urlpatterns = [
     path('campuslife', views.campuslife_page, name='campuslife'),
     path('management', views.management_page, name='management'),
     path('nirf', views.nirf_page, name='nirf'),
-    path('iqac', views.iqac_page, name='iqac'),
+    path('iqac', views.iqac_page, name='alumini'),
+    path('alumini', views.alumini_page, name='iqac'),
     path('gallery', views.gallery_page, name='gallery'),
     path('test', views.test_page, name='Department of ECE'),
 
