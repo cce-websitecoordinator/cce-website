@@ -15,6 +15,7 @@ urlpatterns = [
     path('nirf', views.nirf_page, name='nirf'),
     path('iqac', views.iqac_page, name='alumini'),
     path('alumini', views.alumini_page, name='iqac'),
+    path('facilities', views.facilities_page, name='Facilities'),
     path('gallery', views.gallery_page, name='gallery'),
     path('test', views.test_page, name='Department of ECE'),
 

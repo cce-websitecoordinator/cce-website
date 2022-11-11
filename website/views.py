@@ -57,6 +57,8 @@ def iqac_page(request):
 def alumini_page(request):
     return render(request, 'Alumini.html')
 
+def facilities_page(request):
+    return render(request, 'Facilities.html')
 
 
 

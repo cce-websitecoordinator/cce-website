@@ -60,7 +60,7 @@ class Faculty(models.Model):
     role = models.ManyToManyField(Role)
     email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
-
+    image_2 = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     priorities = models.IntegerField(default=10)
@@ -111,3 +111,12 @@ class AlumniCommittee(models.Model):
     role = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+
+
+
+class Facilities(models.Model):
+    image = models.ImageField(upload_to="Facilities")
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    def __str__(self):
+        return self.title
