@@ -38,7 +38,7 @@ class UpcomingEvents(models.Model):
     img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
     title = models.CharField(max_length=30)
     sub_title = models.CharField(max_length=50)
-    date = models.DateTimeField()
+    date = models.DateField()
     def __str__(self) -> str:
         return self.title
 
@@ -84,16 +84,6 @@ class CCEManagement(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
-    def __str__(self):
-        return self.name
-
-class GoverningBody(models.Model):
-   
-    role =  models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-    designation = models.CharField(max_length=100)\
-
-    
     def __str__(self):
         return self.name
 
