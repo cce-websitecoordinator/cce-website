@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Facilities
+
+{% endblock title %} {% block head %}
+<link href="{% static 'css/facilities.css' %}" rel="stylesheet" />
+
+<script defer src="{% static '/js/carousel.js' %}"></script>
+{% endblock head %} {% block body %}
+
+<section class="home_section relative h-[100vh] overflow-clip">
+  {% comment %}
+  <div class="w-[100vw] h-[100vh] -z-1">
+    {% endcomment %}
+    <img
+      src="{% static 'images/Arts/Arts-bg.png' %}"
+      class="w-full absolute bottom-0 -top-2 min-w-full h-full"
+    />
+    {% comment %}
+  </div>
+  {% endcomment %}
+  <div
+    class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"
+  ></div>
+  <div
+    class="flex w-full justify-center animate-bounce z-[10] absolute bottom-24"
+    id="down-icon"
+  >
+    <img
+      src="{%  static  'images/chevrons-down.svg'  %}"
+      alt="chevrons-down"
+      class=""
+    />
+  </div>
+</section>
+
+<section id="sub-container">
+  <section class="wrapper">
+    <div class="top-card">
+      <h2>Facilities</h2>
+      <p>Home / Facilities</p>
+    </div>
+    <section class="facilities">
+      <div class="left-card">
+        <div class="menu-container">
+          <a href="#">
+            <span class="image">
+              <img src="{%  static  'images/centeral-library.svg'  %}" alt="Icon" />
+            </span>
+            Central Library
+          </a>
+          <a href="#">
+            <span class="image">
+              <img src="./assets/icons/computer-center.svg" alt="Icon" />
+            </span>
+            Computer Center
+          </a>
+          <a href="#">
+            <span class="image">
+              <img src="./assets/icons/central-library.svg" alt="Icon" />
+            </span>
+            Canteen
+          </a>
+          <a href="#">
+            <span class="image">
+              <img src="./assets/icons/computer-center.svg" alt="Icon" />
+            </span>
+            Language Lab
+          </a>
+          <a href="#">
+            <span class="image">
+              <img src="./assets/icons/central-library.svg" alt="Icon" />
+            </span>
+            Auditorium
+          </a>
+          <a href="#">
+            <span class="image">
+              <img src="./assets/icons/computer-center.svg" alt="Icon" />
+            </span>
+            Amphitheater
+          </a>
+        </div>
+      </div>
+      <div class="right-card">
+        <div class="cards">
+          <div class="content">
+            <h2>Central Library</h2>
+            <p>
+              Viverra morbi amet, etiam at. Egestas volutpat vel egestas sed
+              enim massa. Amet sit sit condimentum vel posuere id non at. Dictum
+              aenean ultrices scelerisque pellentesque tellus. Tortor vulputate
+              maecenas quisque interdum platea. Ornare nunc vel, adipiscing
+              tortor tortor. Nunc, eu aenean non eget amet. Eu nisl eget urna,
+              placerat cursus sit. Molestie semper vitae phasellus et elit
+              pulvinar. Diam augue scelerisque sit feugiat. Tortor eu, velit
+              pretium in sem. Tellus cursus nibh elit volutpat. Habitant et
+              placerat molestie vivamus nibh bibendum quam. Condimentum vel
+              malesuada morbi viverra risus scelerisque nunc. Turpis dui, ipsum
+              elementum mauris facilisis. Nisl aliquam sed non feugiat.
+            </p>
+          </div>
+          <div class="image">
+            <img src="./assets/images/image.jpeg" alt="Image" />
+          </div>
+        </div>
+        <div class="cards">
+          <div class="content">
+            <h2>Central Library</h2>
+            <p>
+              Viverra morbi amet, etiam at. Egestas volutpat vel egestas sed
+              enim massa. Amet sit sit condimentum vel posuere id non at. Dictum
+              aenean ultrices scelerisque pellentesque tellus. Tortor vulputate
+              maecenas quisque interdum platea. Ornare nunc vel, adipiscing
+              tortor tortor. Nunc, eu aenean non eget amet. Eu nisl eget urna,
+              placerat cursus sit. Molestie semper vitae phasellus et elit
+              pulvinar. Diam augue scelerisque sit feugiat. Tortor eu, velit
+              pretium in sem. Tellus cursus nibh elit volutpat. Habitant et
+              placerat molestie vivamus nibh bibendum quam. Condimentum vel
+              malesuada morbi viverra risus scelerisque nunc. Turpis dui, ipsum
+              elementum mauris facilisis. Nisl aliquam sed non feugiat.
+            </p>
+          </div>
+          <div class="image">
+            <img src="./assets/images/image.jpeg" alt="Image" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+
+{% endblock body %}

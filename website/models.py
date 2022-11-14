@@ -110,7 +110,14 @@ class AlumniCommittee(models.Model):
         return self.name
 
 
-class Recruiters(models.Model):
+
+class Facilities(models.Model):
+    image = models.ImageField(upload_to="Facilities")
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    def __str__(self):
+        return self.title
+class GoverningBody(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to="Recruiters")
     def __str__(self):

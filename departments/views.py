@@ -2,7 +2,7 @@ from hashlib import new
 from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
-
+from .models import DepHero
 from website.models import Gallery, HomeUpdates, Faculty
 
 # Create your views here.
@@ -18,6 +18,7 @@ class Context:
         self.route = route
         self.faculties = Faculty.objects.filter(department=dep).exclude(role__role='HOD')
         self.HOD = Faculty.objects.filter(department=dep).filter(role__role='HOD'),
+        self.hero_image = DepHero.objects.filter(department=dep).first()
     
     def data(self):
         return {
@@ -27,6 +28,7 @@ class Context:
             'route': self.route,
             'faculties': self.faculties,
             'HOD': self.HOD,
+            'hero_image': self.hero_image
         }
     
 
@@ -37,14 +39,8 @@ def home(request):
 
 
 def Department(request, route, department):
-    context = {
-                "title": "Basic Sciences and Humanities",
-                "gallery": Gallery.objects.filter(department=department),
-                'updates': HomeUpdates.objects.all(),
-                'route': route,
-                "faculties": Faculty.objects.filter(department=department).exclude(role__role='HOD').order_by('priorities'),
-                "HOD": Faculty.objects.filter(department=department).filter(role__role='HOD')
-            }
+    context = Context(department,department,route).data()
+    print(context)
     match department:
         case "BSH":
             match route:
