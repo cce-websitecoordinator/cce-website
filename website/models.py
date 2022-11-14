@@ -110,3 +110,9 @@ class Facilities(models.Model):
     description = models.CharField(max_length=500)
     def __str__(self):
         return self.title
+class GoverningBody(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
