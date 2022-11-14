@@ -4,7 +4,7 @@
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class="{% if url_name != 'home'%} relative top-0 left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home   z-[999] left-0 right-0 {% endif %} glass max-h-[100px]"
+<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px]"
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="cce.edu.in" class="flex items-center absolute md:relative top-0 ">
@@ -12,46 +12,120 @@
         </a>
         <nav>
             <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-            <ul class="nav-list">
+            <ul class="nav-list glass ">
                 <li>
-                    <a href="#!">Home</a>
+                    <a href="{% url 'home' %}">Home</a>
                 </li>
+                
                 <li>
                     <a href="#!">About</a>
-                </li>
-                <li>
-                    <a href="#!">Services</a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="#!">Web Design</a>
+                            <a href="#!">About CCE</a>
                         </li>
                         <li>
-                            <a href="#!">Web Development</a>
+                            <a href="#!">Management</a>
                         </li>
                         <li>
-                            <a href="#!">Graphic Design</a>
+                            <a href="#!">Directors Desk</a>
+                        </li>
+                        <li>
+                            <a href="#!">Principal's Desk</a>
+                        </li>
+                        <li>
+                            <a href="#!">CCE in Media</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#!">Pricing</a>
-                </li>
-                <li>
-                    <a href="#!">Portfolio</a>
+                    <a href="#!">Administration</a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="#!">Web Design</a>
+                            <a href="#!">Governing Body</a>
                         </li>
-                        <li>
-                            <a href="#!">Web Development</a>
+                         <li>
+                            <a href="#!">Organogram</a>
                         </li>
-                        <li>
-                            <a href="#!">Graphic Design</a>
+                         <li>
+                            <a href="#!">Mandatory Disclosure</a>
+                        </li>
+                         <li>
+                            <a href="#!">Anti Raging Cell</a>
+                        </li>
+                         <li>
+                            <a href="#!">Grivence Redressal System</a>
+                        </li>
+                         <li>
+                            <a href="#!">Sc/St Monitoring Commitee</a>
+                        </li>
+                         <li>
+                            <a href="#!">IQAC</a>
+                        </li>
+                         <li>
+                            <a href="#!">Examination Cell</a>
+                        </li>
+                         <li>
+                            <a href="#!">PTA</a>
+                        </li>
+                         <li>
+                            <a href="#!">Office</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#!">Contact</a>
+                    <a href="#!">Academics</a>
+                    <ul class="nav-dropdown">
+                        <li>
+                            <a href="#!">Department Of Computer Science And Engineering</a>
+                        </li>
+                            <li>
+                                <a href="#!">Department Of Electronics And Communication Engineering</a>
+                            </li>
+                            <li>
+                                <a href="#!">Department Of Electrical And Electronics Engineering</a>
+                            </li>
+                            <li>
+                                <a href="#!">Department Of Mechanical Engineering</a>
+                            </li>
+                            <li>
+                                <a href="#!">Department Of Civil Engineering</a>
+                            </li>
+                            <li>
+                                <a href="#!">Department Of Basic Science and Hummanites</a>
+                            </li>
+                    </ul>
+                </li>
+                 <li>
+                    <a href="#!">Placements</a>
+                </li>
+                <li>
+                    <a href="#!">Student Services</a>
+                    <ul class="nav-dropdown">
+                        <li>
+                            <a href="#!">IEDC</a>
+                        </li>
+                        <li>
+                            <a href="#!">TBI</a>
+                        </li>
+                        <li>
+                            <a href="#!">IIC</a>
+                        </li>
+                        <li>
+                            <a href="#!">Clubs</a>
+                        </li>
+                        <li>
+                            <a href="#!">Women Development Cell</a>
+                        </li>
+                        <li>
+                            <a href="#!">Nss</a>
+                        </li>
+                        <li>
+                            <a href="#!">College Union</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#!">Facilities</a>
                 </li>
             </ul>
         </nav>
@@ -60,29 +134,29 @@
 {% endwith %}
 {% block script %}
 <script>
-    (function ($) { // Begin jQuery
-        $(function () { // DOM ready
-            // If a link has a dropdown, add sub menu toggle.
+    (function ($) { 
+        $(function () { 
+           
             $('nav ul li a:not(:only-child)').click(function (e) {
                 $(this).siblings('.nav-dropdown').toggle();
-                // Close one dropdown when selecting another
+               
                 $('.nav-dropdown').not($(this).siblings()).hide();
                 e.stopPropagation();
             });
-            // Clicking away from dropdown will remove the dropdown class
+          
             $('html').click(function () {
                 $('.nav-dropdown').hide();
             });
-            // Toggle open and close nav styles on click
+           
             $('#nav-toggle').click(function () {
                 $('nav ul').slideToggle();
             });
-            // Hamburger to X toggle
+           
             $('#nav-toggle').on('click', function () {
                 this.classList.toggle('active');
             });
-        }); // end DOM ready
-    })(jQuery); // end jQuery
+        }); 
+    })(jQuery); 
     var navbar = document.getElementById("main-nav");
     let normal
     if (navbar.classList.contains("home")) {

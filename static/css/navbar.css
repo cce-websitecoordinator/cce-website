@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .nav-container {
-    min-width: 100vw;
+  min-width: 100vw;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -10,15 +10,19 @@
 nav {
   float: right;
 }
+
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 nav ul li {
   float: left;
   position: relative;
+  /* background: #000; */
 }
+
 nav ul li a,
 nav ul li a:visited {
   display: block;
@@ -29,14 +33,31 @@ nav ul li a:visited {
   text-decoration: none;
 }
 
+nav ul li ul a:hover {
+  width: 100%;
+  background: #205072;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+nav ul li ul {
+  width: 100%;
+}
+
+nav ul li ul li {
+  width: 100%;
+}
+
 nav ul li a:not(:only-child):after,
 nav ul li a:visited:not(:only-child):after {
   padding-left: 4px;
   content: " ▾";
 }
+
 nav ul li ul li {
-  min-width: 190px;
+  min-width: 290px;
 }
+
 nav ul li ul li a {
   padding: 15px;
   line-height: 20px;
@@ -46,7 +67,11 @@ nav ul li ul li a {
   position: absolute;
   display: none;
   z-index: 1;
-  background-color: blanchedalmond;
+  min-width: 390px !important;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -70,16 +95,27 @@ nav ul li ul li a {
     width: 100%;
     padding: 70px 0 15px;
   }
+
   nav ul {
     display: none;
+    background: #000;
+    position: absolute;
+    left: 0;
+    top: 10vh;
+    width: 100%;
+    z-index: 1;
+    /* @apply glass; */
   }
+
   nav ul li {
     float: none;
   }
+
   nav ul li a {
     padding: 15px;
     line-height: 20px;
   }
+
   nav ul li ul li a {
     padding-left: 30px;
   }
@@ -88,11 +124,13 @@ nav ul li ul li a {
     position: static;
   }
 }
+
 @media screen and (min-width: 799px) {
   .nav-list {
     display: block !important;
   }
 }
+
 #nav-toggle {
   position: absolute;
   top: 20px;
@@ -100,6 +138,7 @@ nav ul li ul li a {
   cursor: pointer;
   padding: 10px 35px 16px 0px;
 }
+
 #nav-toggle span,
 #nav-toggle span:before,
 #nav-toggle span:after {
@@ -113,21 +152,28 @@ nav ul li ul li a {
   content: "";
   transition: all 300ms ease-in-out;
 }
+
 #nav-toggle span:before {
   top: -10px;
 }
+
 #nav-toggle span:after {
   bottom: -10px;
 }
+
 #nav-toggle.active span {
   background-color: transparent;
 }
-#nav-toggle.active span:before, #nav-toggle.active span:after {
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
   top: 0;
 }
+
 #nav-toggle.active span:before {
   transform: rotate(45deg);
 }
+
 #nav-toggle.active span:after {
   transform: rotate(-45deg);
 }

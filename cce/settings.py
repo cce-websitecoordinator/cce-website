@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'departments',
+    'aboutCCE',
     'storages',
 
     # 'tailwind', // activate this in production to use Tailwind CSS
