@@ -14,6 +14,7 @@ admin.site.register(CCEManagement)
 admin.site.register(GoverningBody)
 admin.site.register(Alumni)
 admin.site.register(AlumniCommittee)
+admin.site.register(Recruiters)
 
 
 

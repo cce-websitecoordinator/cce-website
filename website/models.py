@@ -36,8 +36,8 @@ class HomeEvents(models.Model):
 
 class UpcomingEvents(models.Model):
     img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
-    title = models.CharField(max_length=30)
-    sub_title = models.CharField(max_length=50)
+    title = models.CharField(max_length=80)
+    sub_title = models.TextField(max_length=150)
     date = models.DateTimeField()
     def __str__(self) -> str:
         return self.title
@@ -88,12 +88,9 @@ class CCEManagement(models.Model):
         return self.name
 
 class GoverningBody(models.Model):
-    phone = models.CharField(max_length=10)
     role =  models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    designation = models.CharField(max_length=100)\
-
-    title = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
     def __str__(self):
         return self.name
 
@@ -109,5 +106,12 @@ class AlumniCommittee(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+
+class Recruiters(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="Recruiters")
     def __str__(self):
         return self.name
