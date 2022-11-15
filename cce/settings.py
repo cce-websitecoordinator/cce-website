@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'website',
     'departments',
     'aboutCCE',
+    'Administration',
     'storages',
 
     # 'tailwind', // activate this in production to use Tailwind CSS

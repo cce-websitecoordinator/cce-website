@@ -9,7 +9,6 @@ urlpatterns = [
     path('academics', views.academics_page, name='academics'),
     path('admission', views.admission_page, name='admission'),
     path('arts', views.arts_page, name='arts'),
-    path('governing_body', views.governing_body__page, name='governingBody'),
     path('campuslife', views.campuslife_page, name='campuslife'),
     path('management', views.management_page, name='management'),
     path('nirf', views.nirf_page, name='nirf'),

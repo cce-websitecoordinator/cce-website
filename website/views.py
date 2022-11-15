@@ -27,10 +27,6 @@ def arts_page(request):
     return render(request, 'arts.html', context=context)
 
 
-def governing_body__page(request):
-    gallery_imgs = Gallery.objects.all()
-    context = {"gallery":gallery_imgs}
-    return render(request, 'Governing_body.html', context=context)
 
 
 def about_page(request):
