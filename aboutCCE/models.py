@@ -5,6 +5,7 @@ class Management(models.Model):
     name = models.CharField(max_length=200)
     designation = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
+    img = models.ImageField(upload_to="Management",default="img.png")
     def __str__(self):
         return self.name
 

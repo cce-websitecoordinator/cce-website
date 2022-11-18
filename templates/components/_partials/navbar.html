@@ -4,7 +4,7 @@
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px]"
+<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="cce.edu.in" class="flex items-center absolute md:relative top-0 ">
@@ -76,22 +76,22 @@
                     <a href="#!">Academics</a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="#!">Department Of Computer Science And Engineering</a>
+                            <a href="{% url 'Department' 'CSE' 'about' %}">Department Of Computer Science And Engineering</a>
                         </li>
                             <li>
-                                <a href="#!">Department Of Electronics And Communication Engineering</a>
+                                <a href="{% url 'Department' 'ECE' 'about' %}">Department Of Electronics And Communication Engineering</a>
                             </li>
                             <li>
-                                <a href="#!">Department Of Electrical And Electronics Engineering</a>
+                                <a href="{% url 'Department' 'EEE' 'about' %}">Department Of Electrical And Electronics Engineering</a>
                             </li>
                             <li>
-                                <a href="#!">Department Of Mechanical Engineering</a>
+                                <a href="{% url 'Department' 'ME' 'about' %}">Department Of Mechanical Engineering</a>
                             </li>
                             <li>
-                                <a href="#!">Department Of Civil Engineering</a>
+                                <a href="{% url 'Department' 'CE' 'about' %}">Department Of Civil Engineering</a>
                             </li>
                             <li>
-                                <a href="#!">Department Of Basic Science and Hummanites</a>
+                                <a href="{% url 'Department' 'BSH' 'about' %}">Department Of Basic Science and Hummanites</a>
                             </li>
                     </ul>
                 </li>

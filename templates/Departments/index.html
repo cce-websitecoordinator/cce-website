@@ -1,7 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
 {% block head %}
+{% endblock head %}
+{% block body %}
 
-<main class="min-h-[100vh] overflow-x-hidden">
+
+<main class="min-h-[100vh] overflow-x-hidden z-100">
   {% include 'Departments/Hero.html'%}
 
     <section class="  pt-20 max-w-screen-2xl mx-auto p-3">
@@ -160,7 +163,7 @@
 
 </main>
 
-{% endblock%}
+{% endblock body %}
 
 
 

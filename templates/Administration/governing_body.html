@@ -3,37 +3,63 @@
 {% endblock head %} {% block body %}
 <main class="">
 
-    <section class="w-screen h-screen overflow-clip relative z-[-1]" >
-        <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
-        <div class="bg-black bg-opacity-[0.5] absolute inset-0 "></div>
-</section>
- 
-  <div class="executive-committee-wrapper">
-    <h1 class="my-11">Governing Body Members 2020-21</h1>
-    <div>
-      <table class="executive-committee-table fixed-scroll">
-        <thead>
-          <tr>
-            <th>NAME</th>
-            <th>DESIGNATION</th>
-            <th>ROLE</th>
-          </tr>
-        </thead>
-      </table>
-      <table class="executive-committee-table">
-        <tbody>
+  <section class="w-screen h-screen overflow-clip relative z-[-1]">
+    <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
+    <div class="bg-black bg-opacity-[0.5] absolute inset-0 "></div>
+  </section>
+  <section class="w-screen ">
+
+    <div class="executive-committee-wrapper w-full ">
+      <h1 class="my-11 text-center">Governing Body Members 2020-21</h1>
+      <div class="w-full px-24 md:block hidden">
+        <table class="executive-committee-table fixed-scroll w-full">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>DESIGNATION</th>
+              <th>ROLE</th>
+            </tr>
+          </thead>
+        </table>
+        <table class="executive-committee-table">
+          <tbody>
+            {% for item in governing_body_data%}
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.designation}}</td>
+              <td>{{item.role}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="w-full px-11 md:hidden space-y-3">
         {% for item in governing_body_data%}
-          <tr>
-            <td>{{item.name}}</td>
-            <td>{{item.designation}}</td>
-            <td>{{item.role}}</td>
-          </tr>
-          {% endfor %}
+        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+
+            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
           
-        </tbody>
-      </table>
+          </div>
+          <div class="flex justify-between  mt-4">
+            <div class="text-start">
+              <p class="text-gray-500">Designation</p>
+              <h1>{{item.designation}}</h1>
+            </div>
+            <div class="text-start">
+              <p class="text-gray-500">Role</p>
+              <h1>{{item.role}}</h1>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+
+      </div>
     </div>
-  </div>
+  </section>
+
 </main>
 {% endblock %}
-s

@@ -15,27 +15,29 @@
 
 <section class="px-24">
     <h1 class="text-center w-full text-4xl my-11 font-bold">CCE in Media</h1>
-    <div class="grid md:grid-cols-2 grid-cols-1" >
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-6" >
         <div>
-            {%for item in cce_in_media_main%}
-            <div class="w-full h-[400px] overflow-clip rounded-xl">
+             
+            <div class="w-full  overflow-clip rounded-xl p-2">
 
-                <img  src="{% static 'images/defaultbg.jpg' %}" alt="cce_in_media" class="object-cover ">
-                <div class="space-y-3">
-                    <p class="text-sm text-gray-400 mt-2">{{item.date}}</p>
-                    <h1 class="font-bold">{{item.title}}</h1>
-                    <p class="text-xs text-gray-400 mb-3">{{item.description}}</p>
-                    <a href="{{item.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a>
+                <img  src="{{cce_in_media_main.image.url}}" alt="cce_in_media" class="object-cover w-full  ">
+                <div class="space-y-3 p-3">
+                    <p class="text-sm text-gray-400 mt-2">{{cce_in_media_main.date}}</p>
+                    <h1 class="font-bold text-2xl">{{cce_in_media_main.title}}</h1>
+                    <p class=" text-gray-400 mb-3">{{cce_in_media_main.description}}</p>
+                    <a href="{{cce_in_media_main.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a>
                 </div>
             </div>
-            {%endfor%}
+         
         </div>
-        <div>
-            {%for item in cce_in_media%}
-            <div class="w-full h-[300px] overflow-clip rounded-xl flex space-x-6">
+        <div class="space-y-3">
+            {%for item in cce_in_media_data%}
+            <div class="w-full overflow-clip  flex space-x-6 group ">
+                <div class="lg:h-[200px] h-[150px] w-[300px] rounded-xl relative overflow-hidden">
 
-                <img  src="{% static 'images/defaultbg.jpg' %}" alt="cce_in_media" class="object-cover h-full w-300px">
-                <div class="space-y-3">
+                    <img  src="{{item.image.url}}" alt="{{item.image.name}}" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200">
+                </div>
+                <div class="space-y-3 max-w-[60%]">
                     <p class="text-sm text-gray-400 mt-2">{{item.date}}</p>
                     <h1 class="font-bold">{{item.title}}</h1>
                     <p class="text-xs text-gray-400 mb-3">{{item.description}}</p>
@@ -50,9 +52,12 @@
 <section class="px-24">
     <h1 class="text-center w-full text-4xl my-11 font-bold">More on CCE</h1>
     <div class="flex flex-wrap lg:gap-16 gap-8 mb-24">
-     {% for item in more_on_cce%}
-        <div class="bg-white p-3 h-[440px] w-[290px] shadow-xl border-[0.5px] border-gray-100 rounded-xl">
-            <img src="{{item.image.url}}" alt="hero_img" class="rounded-xl h-[50%] w-full object-cover mx-auto">
+     {% for item in more_about_cce_data%}
+        <div class="bg-white p-3 shadow-xl w-[330px] border-[0.5px] border-gray-100 rounded-xl group">
+            <div class="rounded-xl h-64 relative w-[300px] overflow-hidden">
+
+                <img  src="{{item.image.url}}" alt="cce_in_media" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200">
+            </div>
             <div class="space-y-3">
                 <p class="text-sm text-gray-400 mt-2">{{item.date}}</p>
                 <h1 class="font-bold">{{item.title}}</h1>
