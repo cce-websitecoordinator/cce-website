@@ -102,3 +102,10 @@ class Facilities(models.Model):
     def __str__(self):
         return self.title
 
+
+class Recruiters(models.Model):
+    image = models.ImageField(upload_to="Recruiters")
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+

@@ -11,6 +11,7 @@ admin.site.register(Role)
 admin.site.register(UpcomingEvents)
 admin.site.register(Alumni)
 admin.site.register(AlumniCommittee)
+admin.site.register(Recruiters)
 
 
 

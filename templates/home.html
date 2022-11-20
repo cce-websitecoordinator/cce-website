@@ -170,9 +170,19 @@
   </div>
 </section>
 
+
+
 <section class="recruiters bg-white pt-11 pb-11 flex flex-col justify-center items-center">
   <h1 class="text-4xl md:text-5xl font-bold"> Our Top Recruiters</h1>
-  <img src="{%  static  'images/recruiters.png'  %}" alt="Recruiters" class="p-6 mt-11" srcset="">
+  <div class="space-y-6">
+
+    {% include 'components/logo_marquee.html' %}
+    {%with left=True%}
+    {% include 'components/logo_marquee.html' %}
+    {%endwith%}
+    
+    {% include 'components/logo_marquee.html' %}
+  </div>
 
 </section>
 {% include 'components/gallery.html' %}

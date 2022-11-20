@@ -2,9 +2,16 @@ from django.shortcuts import render
 from website.models import *
 
 
+
 def home_page(request):
-    context = {'Testimonials': Testimonials.objects.all(), "name": "John Doe", "updates": HomeUpdates.objects.all(
-    ), "Events": HomeEvents.objects.all(), "gallery": Gallery.objects.all(),"upcomingEvents":UpcomingEvents.objects.all()}
+    testimonials = Testimonials.objects.all()
+    updates = HomeUpdates.objects.all()
+    events =  HomeEvents.objects.all()
+    gallery_imgs = Gallery.objects.all()
+    upcomingEvents = UpcomingEvents.objects.all()
+    recruiters = Recruiters.objects.all()
+
+    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters}
     return render(request, 'home.html', context=context)
 
 
