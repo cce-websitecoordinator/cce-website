@@ -40,7 +40,7 @@ def home(request):
 
 def Department(request, route, department):
     context = Context(department,department,route).data()
-    print(context)
+    print(context.get("updates"))
     match department:
         case "BSH":
             match route:

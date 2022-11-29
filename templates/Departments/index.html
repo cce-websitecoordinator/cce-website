@@ -1,184 +1,217 @@
-{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
-{% block head %}
+{% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
+
 {% endblock head %}
 {% block body %}
 
 
-<main class="min-h-[100vh] overflow-x-hidden z-100">
-  {% include 'Departments/Hero.html'%}
+<main class="relative">
+    <section class="md:px-24  pt-24 px-6">
+        <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+        <p class="text-center text-xl mt-4">Department of Computer Science & Engineering started in 2015 in Christ
+            College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B. Tech.
+            program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We provide
+            excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital library and
+            language lab. We also have high speed leased line Internet connection and online access to all IEEE
+            journals. The Department has an excellent team of committed and qualified faculty members encouraging and
+            guiding students in their academic as well as personal development.</p>
 
-    <section class="  pt-20 max-w-screen-2xl mx-auto p-3">
-        <div class="w-full">
-            <h1 class="text-center m-6 mb-11 font-bold text-4xl">About</h1>
-            <p class="text-center p-8 pt-1">Department of Computer Science & Engineering started in 2015 in Christ
-                College of Engineering, which offers the undergraduate (B. Tech.) course. The annual intake of the B.
-                Tech. program is 60 students and it is affiliated to Dr. A P J Abdul Kalam Technological University. We
-                provide excellent infrastructure facilities with well-equipped computer labs, smart classrooms, digital
-                library and language lab. We also have high speed leased line Internet connection and online access to
-                all IEEE journals. The Department has an excellent team of committed and qualified faculty members
-                encouraging and guiding students in their academic as well as personal development. </p>
-        </div>
     </section>
 
-    <section class='lg:grid-cols-3 grid-cols-1  grid max-w-screen-2xl mx-auto p-3 place-content-center place-items-center'>
-        <div class="lg:col-span-2 place-items-center  place-content-center mx-auto">
-            <div class="vission bg-[#A1D9F2BF] lg:mr-28 p-2">
-                <h1 class="text-left m-6 mb-5 font-bold text-4xl">Vision</h1>
-                <p class="text-left p-8 pt-1">To be a leading department in the field of Computer Science and
-                    Engineering by providing quality education and to produce competent and skilled professionals.</p>
-            </div>
-            <div class="vission bg-[#C5E29FBF] lg:mr-28 p-2 mt-7">
-                <h1 class="md:text-right text-center m-6 mb-5 font-bold text-4xl">Mission</h1>
-                <p class="md:text-right text-center p-8 pt-1">To be a leading department in the field of Computer
-                    Science and Engineering by providing quality education and to produce competent and skilled
-                    professionals.</p>
-            </div>
-            <h1 class="text-center text-4xl font-semibold my-11">Programme Details</h1>
+    <section class="md:px-24 px-7 mt-11">
+        <div class="flex gap-10 md:flex-row flex-col">
+            <div class="col-span-1">
+                <h2 class="font-semibold text-2xl px-4">Departments</h2>
+                <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
 
-            <div class="vission border-[6px] border-black lg:mr-28 p-2 mt-7 ">
-                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
-                    <h1 class="flex justify-between font-bold">Program Educational Objectives (PEOs) <span><i
-                                class="fa-solid fa-arrow-down rotate-180 duration-1000"></i></span> </h1>
-                    <div class="  p-8 pt-1 po_content">
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 1:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 2:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 3:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
+                {% include 'Departments/Sidebar.html' %}
+            </div>
+
+            <div class="col-span-2 gap-10 space-y-11 mt-11 md:mt-0">
+                <div
+                    class="bg-[#D9FFA8] flex flex-col md:flex-row justify-center md:items-center space-y-4 md:space-y-0 p-11 space-x-6 md:items-start rounded-xl">
+                    <div class="bg-[#8BC53F] p-4 py-6 flex items-center justify-center text-gray rounded-[12px]">
+                        <span class="material-symbols-outlined text-gray text-3xl" style="font-size:50px;color:white;">
+                            assistant_navigation
+                        </span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold">Vision</h3>
+                        <p>To foster professionally competent and responsible graduates with strong theoretical and
+                            practical knowledge across the discipline of Computer Science and Engineering.</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#D4F2FF] flex flex-col md:flex-row justify-center md:items-center space-y-4 md:space-y-0 p-11 space-x-6 md:items-start rounded-xl">
+                    <div class="bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px]">
+                        <i class="material-symbols-outlined text-gray text-3xl" style="font-size:50px;color:white;">
+
+                            thunderstorm
+
+                        </i>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold">Mission</h3>
+                        <p>To foster professionally competent and responsible graduates with strong theoretical and
+                            practical knowledge across the discipline of Computer Science and Engineering.</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#D9D9D9] flex flex-col md:flex-row justify-center md:items-center space-y-4 md:space-y-0 p-11 space-x-6 md:items-start rounded-xl">
+                    <div class="bg-[#515151] p-4 py-6 flex items-center justify-center text-gray rounded-[12px]">
+                        <span class="material-symbols-outlined text-gray text-3xl" style="font-size:50px;color:white;">
+                            casino
+                        </span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold">Objectives</h3>
+                        <p>To foster professionally competent and responsible graduates with strong theoretical and
+                            practical knowledge across the discipline of Computer Science and Engineering. To foster
+                            professionally competent and responsible graduates with strong theoretical and practical
+                            knowledge across the discipline of Computer Science and Engineering. To foster
+                            professionally competent and responsible graduates with strong theoretical and practical
+                            knowledge across the discipline of Computer Science and Engineering.</p>
                     </div>
                 </div>
 
-                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box ">
-                    <h1 class="flex justify-between font-bold">Program Outcomes (POs) <span><i
-                                class="fa-solid fa-arrow-down duration-1000"></i></span> </h1>
-                    <div class="hidden  p-8 pt-1 po_content">
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 1:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 2:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 3:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="m-3 p-2 group border-[4px] border-[#A1D9F2BF] po_box">
-                    <h1 class="flex justify-between font-bold">Program Specific Outcomes (PSOs) <span><i
-                                class="fa-solid fa-arrow-down  duration-1000"></i></span> </h1>
-                    <div class="hidden p-8 pt-1 duration-100 po_content">
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 1:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 2:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                        <div class="my-4">
-                            <h2 class="font-semibold">PEO 3:</h2>
-                            <p class="text-left ">To be a leading department in the field of Computer Science and
-                                Engineering by providing quality education and to produce competent and skilled
-                                professionals.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-
-            <div class="fac">
-                <div class="slider slider_circle_10">
-
-                        {% for faculty in HOD %}
-                                        <div>
-                                            <div class="img"><img
-                                                src="{{faculty.image.url}}"></div>
-                                            <div class="slider-desc">
-                                                <h3>{{faculty.full_name}}</h3>
-                                                <P>HOD</P>
-                                            </div>
-                                        </div>
-                        {% endfor %}
-
-                   
-
-                            {% for faculty in faculties %}
-                                        <div>
-                                            <div class="img"><img
-                                                    src="{{faculty.image.url}}"></div>
-                                            <div class="slider-desc">
-                                                <h3>{{faculty.full_name}}</h3>
-                                                <P>Designer</P>
-                                            </div>
-                                        </div>
-                            {% endfor %}
-
-               
-                 
-                   
-                    <div class="next_button text-black text-xl"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                    <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-                    <!-- <div class="nav_indicators"></div> -->
-                </div>
             </div>
         </div>
-        <div class="col-span-1 bg-">
-            {% include 'Departments/Sidebar.html'%}
-            {% include 'Departments/Updates.html'%}
-        </div>
+
     </section>
-
-    {% include 'components/gallery.html'%}
-
-
 
 </main>
 
-{% endblock body %}
 
+
+<section class="md:px-24 px-7 mt-11">
+    <div class="md:grid-cols-3 grid grid-cols-1">
+        <div> {% include 'Departments/Updates.html' %}</div>
+        <div class="col-span-2 space-y-6 mt-11 md:mt-0 ">
+            <h2 class="text-center font-bold text-5xl">Programme Details</h2>
+            <div class="p-6 shadow-xl rounded-[16px] group">
+                <h2 class="flex justify-between text-2xl font-medium items-center">Program Educational Objectives (PEOs)<span
+                        class="material-symbols-outlined" style="font-size:35px ;">
+                        expand_more
+                    </span></h2>
+                <div class="hidden group-hover:block pl-3 ">
+                    <div >
+                        <h3 class="text-xl font-semibold">PEO-1</h3>
+                        <p class="text-gray-600 pl-4">Purus ultrices adipiscing risus mi. Placerat non sit ut in tincidunt diam tincidunt eu.
+                            Scelerisque gravida morbi morbi nulla scelerisque massa auctor euismod viverra. Cras eu
+                            justo
+                            nunc at dignissim proin. Sociis nam nisi augue imperdiet lectus bibendum sit. Ullamcorper
+                            rhoncus ipsum.</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <div class="p-6 shadow-xl rounded-[16px] group">
+                <h2 class="flex justify-between text-2xl font-medium items-center">Program Outcomes (POs)<span
+                        class="material-symbols-outlined" style="font-size:35px ;">
+                        expand_more
+                    </span></h2>
+                <div class="hidden group-hover:block pl-3 ">
+                    <div >
+                        <h3 class="text-xl font-semibold">PEO-1</h3>
+                        <p class="text-gray-600 pl-4">Purus ultrices adipiscing risus mi. Placerat non sit ut in tincidunt diam tincidunt eu.
+                            Scelerisque gravida morbi morbi nulla scelerisque massa auctor euismod viverra. Cras eu
+                            justo
+                            nunc at dignissim proin. Sociis nam nisi augue imperdiet lectus bibendum sit. Ullamcorper
+                            rhoncus ipsum.</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <div class="p-6 shadow-xl rounded-[16px] group">
+                <h2 class="flex justify-between text-2xl font-medium items-center">Program Specific Outcomes (PSOs)<span
+                        class="material-symbols-outlined" style="font-size:35px ;">
+                        expand_more
+                    </span></h2>
+                <div class="hidden group-hover:block pl-3 ">
+                    <div >
+                        <h3 class="text-xl font-semibold">PEO-1</h3>
+                        <p class="text-gray-600 pl-4">Purus ultrices adipiscing risus mi. Placerat non sit ut in tincidunt diam tincidunt eu.
+                            Scelerisque gravida morbi morbi nulla scelerisque massa auctor euismod viverra. Cras eu
+                            justo
+                            nunc at dignissim proin. Sociis nam nisi augue imperdiet lectus bibendum sit. Ullamcorper
+                            rhoncus ipsum.</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<section class="md:block hidden">
+
+    <div class="fac">
+        <div class="slider slider_circle_10">
+
+            {% for faculty in HOD %}
+            <div>
+                <div class="img"><img src="{{faculty.image.url}}"></div>
+                <div class="slider-desc">
+                    <h3>{{faculty.full_name}}</h3>
+                    <P>HOD</P>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+            {% for faculty in faculties %}
+            <div>
+                <div class="img"><img src="{{faculty.image.url}}"></div>
+                <div class="slider-desc">
+                    <h3>{{faculty.full_name}}</h3>
+                    <P>Designer</P>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+            <div class="next_button text-black left-full text-xl"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+            <!-- <div class="nav_indicators"></div> -->
+        </div>
+    </div>
+</section>
+
+{% include 'components/gallery.html' %}
+
+
+
+
+{% endblock body %}
 
 
 {% block script %}
 <script src="http://nicesnippets.com/demo/easy_slide.js"></script>
 <script>
-    document.querySelectorAll('.po_box').forEach((e)=>{
-        e.addEventListener('click',()=>{
+    document.querySelectorAll('.po_box').forEach((e) => {
+        e.addEventListener('click', () => {
 
             e.querySelector('.po_content').classList.toggle('hidden')
             e.querySelector('i').classList.toggle('rotate-180')
         })
     })
     $(document).ready(function () {
-        $('.slider_circle_10').EasySlides({ 'autoplay': false, 'show': 5 })
+        $('.slider_circle_10').EasySlides({ 'autoplay': true, 'show': 5 })
     });
 </script>
 {% endblock script %}
