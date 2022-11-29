@@ -4,7 +4,7 @@
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px] "
+<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px] z-[999] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="cce.edu.in" class="flex items-center absolute md:relative top-0 ">

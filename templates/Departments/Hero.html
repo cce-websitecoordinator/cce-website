@@ -1,12 +1,12 @@
-  <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
+  <section class="h-[90vh] w-[100vw]  flex justify-center items-center flex-col relative">
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
-        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col ">
             <img src="/static/images/BSH_Department.png" alt="department-hero-img"
                 class="w-full h-full object-cover object-center">
             {% with request.resolver_match.url_name as url_name %}
             <h1
-                class="md:text-[500px] text-[200px] items-center justify-self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">
-                {{url_name}}</h1>
+                class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-30  absolute inset-0  text-center">
+                CCE</h1>
             {% endwith %}
         </div>
         <div class="z-[5] text-center space-y-5 ">

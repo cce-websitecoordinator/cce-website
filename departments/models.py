@@ -33,10 +33,15 @@ class Mission(models.Model):
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     Mission = models.CharField(max_length=300)
+    def __str__(self):
+        return self.Mission
  
 class DepUpdates(models.Model):
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     title = models.CharField(max_length=100)
     data = models.CharField(max_length=300)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.title

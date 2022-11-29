@@ -1,56 +1,22 @@
-<div class="updates p-6 shadow-2xl bg-white rounded-2xl mt-11 max-w-[400px]">
+<div class="updates p-6 shadow-2xl bg-white rounded-2xl mt-11 md:w-[400px] w-full">
     <h1 class="text-center text-3xl mb-11 font-semibold">Updates</h1>
     <div class="items space-y-8">
+        {% for item in side_updates %}
         <div class="space-x-4 h-full">
             <div class="pr-4">
 
                 <div class="border-l-4 border-[#007FFF] pl-4">
 
-                    <h2 class="font-bold">Opportunities in TCS EIS:
+                    <h2 class="font-bold">{{item.title}}
                     </h2>
-                    <p class="text-sm"> A webinar on 9th June for NON-CSE students to know more about the Engineering
-                        and
-                        Industrial
-                        Services division of TCS. Read More
-                    </p>
+                    <p class="text-sm"> {{item.data}}</p>
                 </div>
-                <p class="w-full text-right text-xs text-[#007FFF]">2019</p>
+                <p class="w-full text-right text-xs text-[#007FFF]">{{item.date}}</p>
             </div>
         </div>
+        {% endfor %}
 
-        <div class="space-x-4 h-full">
-            <div class="pr-4">
-
-                <div class="border-l-4 border-[#007FFF] pl-4">
-
-                    <h2 class="font-bold">Opportunities in TCS EIS:
-                    </h2>
-                    <p class="text-sm"> A webinar on 9th June for NON-CSE students to know more about the Engineering
-                        and
-                        Industrial
-                        Services division of TCS. Read More
-                    </p>
-                </div>
-                <p class="w-full text-right text-xs text-[#007FFF]">2019</p>
-            </div>
-        </div>
-
-        <div class="space-x-4 h-full">
-            <div class="pr-4">
-
-                <div class="border-l-4 border-[#007FFF] pl-4">
-
-                    <h2 class="font-bold">Opportunities in TCS EIS:
-                    </h2>
-                    <p class="text-sm"> A webinar on 9th June for NON-CSE students to know more about the Engineering
-                        and
-                        Industrial
-                        Services division of TCS. Read More
-                    </p>
-                </div>
-                <p class="w-full text-right text-xs text-[#007FFF]">2019</p>
-            </div>
-        </div>
+        
 
     </div>
 
