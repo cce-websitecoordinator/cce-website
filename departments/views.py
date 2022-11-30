@@ -39,6 +39,9 @@ class Context:
         self.poes = POES.objects.filter(department=dep)
         self.pos = POS.objects.filter(department=dep)
         self.psos = PSOS.objects.filter(department=dep)
+        self.associations = Associations.objects.filter(department=dep)
+        self.professional_bodies = ProfessionalBodies.objects.filter(department=dep)
+        self.dep = dep
 
     
     def data(self):
@@ -55,25 +58,22 @@ class Context:
             'mission': self.mission,
             'poes': self.poes,
             'pos': self.pos,
-            'psos': self.psos,  
+            'psos': self.psos,
+            'associations': self.associations,
+            'professional_bodies': self.professional_bodies,
+            "dep": self.dep  
         }
-    
-
-
-
 def home(request):
     return redirect('BSH/about')
-
-
 def Department(request, route, department):
     context = Context(department,route).data()
-    print(context.get("route"))
-
     match route:
             case "about":
                 return render(request, 'Departments/index.html', context)
             case "faculty":
                 return render(request, 'Departments/Faculty.html', context)
+            case "associations":
+                return render(request, 'Departments/Associations.html', context)
             case "syllabus":
                 return render(request, 'Departments/Syllabus.html', context)
             case "professionalBodies":
@@ -85,6 +85,8 @@ def Department(request, route, department):
             case "events":
                 return render(request, 'Departments/Events.html', context)
             case "newsletters":
-                return render(request, 'Departments/Newsletters.html', context)      
+                return render(request, 'Departments/Newsletters.html', context) 
+            case other:
+                raise Http404("Page Not Found")     
     
         

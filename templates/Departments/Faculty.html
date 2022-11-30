@@ -1,46 +1,67 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Faculty {{dep}}
 {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 
-<section class="w-screen h-screen overflow-clip relative z-[-1]">
-  <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="" />
-  <div class="bg-black bg-opacity-[0.5] absolute inset-0"></div>
-</section>
-<section class="md:px-24 px-7 w-full text-center space-y-6">
-  <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
-  <div class="w-full flex items-center justify-center mb-11">
-    <div class="bg-white shadow-md px-4 py-1 rounded-xl w-fit">
-      <img
-        src="{{HOD.image.url}}"
-        alt="hero_img"
-        class="h-[350px] rounded-xl bg-gray-300"
-      />
-      <div class="space-y-1 mt-1">
-        <h1 class="text-xl font-bold">{{HOD.full_name}}</h1>
-        <p class="text-xs text-gray-500">HOD</p>
+{% include 'Departments/Hero.html' %}
+
+
+
+
+<section class="md:px-24 px-7 mt-11">
+  <div class="flex gap-10 md:flex-row flex-col">
+      <div class="col-span-1">
+          <h2 class="font-semibold text-2xl px-4">Departments</h2>
+          <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+
+          {% include 'Departments/Sidebar.html' %}
       </div>
-    </div>
+
+      <div class=" w-full space-y-16 mt-11 ">
+        <div class="w-full flex flex-col justify-center items-center">
+          <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
+          <div class="w-full flex items-center justify-center mb-11">
+            <div class="bg-white shadow-md px-4 py-1 rounded-xl w-fit group ">
+              <div class="overflow-clip h-[280px]  rounded-xl">
+              <img
+                src="{{HOD.image.url}}"
+                alt="hero_img"
+                class="h-[350px] bg-gray-300 group-hover:scale-125 transition-all duration-500 ease-in-out "
+              />
+              </div>
+              <div class="space-y-1 mt-1 text-center">
+                <h1 class="text-xl font-bold">{{HOD.full_name}}</h1>
+                <p class="text-xs text-gray-500">HOD</p>
+              </div>
+            </div>
+          </div>
+        
+          <div
+            class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+          >
+            {%for faculty in faculties%}
+            <div
+              class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
+            >
+            <div class="overflow-clip h-[280px]  rounded-xl">
+              <img
+                src="{{faculty.image.url}}"
+                alt="hero_img"
+                class="h-[350px] bg-gray-300 group-hover:scale-125 transition-all duration-500 ease-in-out "
+              />
+            </div>
+              <div class="space-y-1 mt-1 text-center">
+                <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
+                <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
+              </div>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
   </div>
 
-  <div
-    class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
-  >
-    {%for faculty in faculties%}
-    <div
-      class="bg-white shadow-md px-4 py-1 rounded-xl w-[350px] flex flex-col items-center"
-    >
-      <img
-        src="{{faculty.image.url}}"
-        alt="hero_img"
-        class="h-[350px] rounded-xl bg-gray-300"
-      />
-      <div class="space-y-1 mt-1">
-        <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
-        <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
-      </div>
-    </div>
-    {%endfor%}
-  </div>
 </section>
 
-{% include 'components/gallery.html'%} {% endblock body %} {% comment %}
+{% include 'components/gallery.html'%}
+{% include 'Departments/Contact.html'%}
+{% endblock body %} {% comment %}
 {{faculty.role.all|join:", "}} {% endcomment %}

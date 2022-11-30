@@ -4,7 +4,7 @@
 {% block body %}
 
 
-<main class="relative">
+
     {% include 'Departments/Hero.html' %}
 
     <section class="md:px-24  pt-24 px-6">
@@ -81,7 +81,7 @@
 
     </section>
 
-</main>
+
 
 
 
@@ -154,21 +154,18 @@
 </section>
 
 
-<section class="md:block hidden">
-
+<section class="block ">
+    
     <div class="fac">
-        <div class="slider slider_circle_10">
-
-            {% for faculty in HOD %}
+        <h1 class="text-center text-4xl font-bold mt-16">Faculty</h1>
+        <div class="slider slider_circle_10 -mt-11">
             <div>
-                <div class="img"><img src="{{faculty.image.url}}"></div>
+                <div class="img"><img src="{{HOD.image.url}}"></div>
                 <div class="slider-desc">
-                    <h3>{{faculty.full_name}}</h3>
+                    <h3>{{HOD.full_name}}</h3>
                     <P>HOD</P>
                 </div>
             </div>
-            {% endfor %}
-
 
 
             {% for faculty in faculties %}
@@ -176,7 +173,7 @@
                 <div class="img"><img src="{{faculty.image.url}}"></div>
                 <div class="slider-desc">
                     <h3>{{faculty.full_name}}</h3>
-                    <P>Designer</P>
+                    <P>{{faculty.role.all|join:", "}}</P>
                 </div>
             </div>
             {% endfor %}
@@ -187,12 +184,12 @@
             <div class="next_button text-black left-full text-xl"><i class="fa fa-chevron-right" aria-hidden="true"></i>
             </div>
             <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-            <!-- <div class="nav_indicators"></div> -->
         </div>
-    </div>
+    </div> 
 </section>
 
 {% include 'components/gallery.html' %}
+{% include 'Departments/Contact.html' %}
 
 
 
@@ -211,7 +208,12 @@
         })
     })
     $(document).ready(function () {
-        $('.slider_circle_10').EasySlides({ 'autoplay': true, 'show': 5 })
+
+        if($(document).width()>740){
+        $('.slider_circle_10').EasySlides({ 'autoplay': true, 'show': 5 })}
+        else{
+            $('.slider_circle_10').EasySlides({ 'autoplay': true, 'show': 3 })
+        }
     });
 </script>
 {% endblock script %}

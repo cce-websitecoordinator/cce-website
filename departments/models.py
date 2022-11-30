@@ -45,3 +45,28 @@ class DepUpdates(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Associations(models.Model):
+    title = models.CharField(max_length=150)
+    data = models.CharField(max_length=500)
+    image = models.ImageField(upload_to="AssociationsImages")
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    linkname = models.CharField(max_length=100)
+    link = models.URLField()
+
+    def __str__(self):
+        return self.title
+
+
+class ProfessionalBodies(models.Model):
+    title = models.CharField(max_length=150)
+    data = models.CharField(max_length=500)
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    linkname = models.CharField(max_length=100)
+    link = models.URLField()
+    def __str__(self):
+        return self.title
+
