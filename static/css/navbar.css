@@ -65,14 +65,15 @@ nav ul li ul li a {
 
 .nav-dropdown {
   position: absolute;
+  top: 80px;
   display: none;
   z-index: 1;
   min-width: 390px !important;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.51);
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.51);
 }
 
 /* Mobile navigation */

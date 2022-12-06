@@ -108,3 +108,8 @@ class Recruiters(models.Model):
     def __str__(self):
         return self.name
 
+
+class Hero_Image(models.Model):
+    image = models.ImageField(upload_to="Heros_Images")
+    def __str__(self):
+        return self.image.name

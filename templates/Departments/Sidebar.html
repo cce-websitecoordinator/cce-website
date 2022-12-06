@@ -1,53 +1,53 @@
 <aside class="p-8 shadow-2xl rounded-2xl flex  space-y-6 mt-4 flex-col md:w-[450px] font-medium">
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if  'about' in route%}border-[#007FFF] border-2{%endif%}  flex items-center justify-start pl-9">
-        <a href="http://" class=" space-x-11 text-gray-600 group-hover:text-[#007FFF]  text-xl items-center flex ">
-            <i class="material-icons" class=" group-hover:text-[#007FFF] ">info</i><span>About</span>
+        <a href="{% url 'Department' dep 'about' %}" class=" space-x-11 text-gray-600 group-hover:text-[#007FFF]  text-xl items-center flex ">
+            <i class="material-icons" class=" group-hover:text-[#007FFF] ">info</i><span>About </span>
         </a>
     </div>
-    {%if  'about' in route%}{%endif%}
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if  'faculty' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+        <a href="{% url 'Department' dep 'faculty' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Faculty &
                 Staff</span>
         </a>
     </div>
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'syllabus' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+        <a href="{% url 'Department' dep 'curriculum_and_syllabus' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Curriculum & Syllabus</span>
         </a>
     </div>
+
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'professionalBodies' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+        <a href="{% url 'Department' dep 'professionalBodies' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional Bodies</span>
         </a>
     </div>
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'associations' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+        <a href="{% url 'Department' dep 'associations' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
         </a>
     </div>
-    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'achievements' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'research' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
+        <a href="{% url 'Department' dep 'research' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Research & Consultancy</span>
         </a>
     </div>
-    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'events' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">biotech</i><span>Laboratories</span>
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'labs' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
+        <a href="{% url 'Department' dep 'labs' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+            <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">biotech</i><span>Laboratories</span>
         </a>
     </div>
-    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'about' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">military_tech</i><span>Achievements</span>
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'achievements' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
+        <a href="{% url 'Department' dep 'achievements' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+            <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">military_tech</i><span>Achievements</span>
         </a>
     </div>
-    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if  'newsletters' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if  'events' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
+        <a href="{% url 'Department' dep 'events' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Events</span>
         </a>
     </div>
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if  'newsletters' in route%} border-[#007FFF] border-2{%endif%}  justify-start pl-9">
-        <a href="http://" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
+        <a href="{% url 'Department' dep 'newsletters' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF] text-xl items-center flex">
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">newspaper</i><span>Newsletters & Magazines</span>
         </a>
     </div>

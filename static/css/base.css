@@ -1,19 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
 
 *{
-  font-family: 'Poppins', sans-serif !important;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-
+  font-family: 'Poppins';
+  
 }
-
-
-
 .cents {
-  background-color: rgb(183, 37, 37);
+  background-color:  rgba(10, 5, 5, 0.35);
   height: 100vh !important;
   width: 100vw;
   display: flex;
@@ -62,28 +54,8 @@
   background-color: #205072;
 }
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
-}
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -moz-font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 
 .material-symbols-outlined {
@@ -93,15 +65,3 @@
   'GRAD' 0,
   'opsz' 48
 }
-
-
-
-
-
-
-
-
-
-
-
-

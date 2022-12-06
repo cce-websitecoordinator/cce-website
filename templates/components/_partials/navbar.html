@@ -4,14 +4,14 @@
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[999] left-0 right-0 {% endif %} glass max-h-[100px] z-[999] "
+<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[998] left-0 right-0 {% endif %} glass max-h-[100px] z-[999] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
-        <a href="cce.edu.in" class="flex items-center absolute md:relative top-0 ">
-            <img src="{% static '/images/cce.png' %}" class="mr-3 h-[90px]" alt="CCE Logo" />
+        <a href="{% url 'home' %}" class="flex items-center absolute md:relative top-3  md:top-0">
+            <img src="{% static '/images/cce.png' %}" class="mr-3 md:h-[90px] p-2 h-[80px]" alt="CCE Logo" />
         </a>
         <nav>
-            <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+            <div class="nav-mobile top-3"><a id="nav-toggle" href="#!"><span></span></a></div>
             <ul class="nav-list glass ">
                 <li>
                     <a href="{% url 'home' %}">Home</a>
@@ -19,7 +19,7 @@
                 
                 <li>
                     <a href="#!">About</a>
-                    <ul class="nav-dropdown">
+                    <ul class="nav-dropdown ">
                         <li>
                             <a href="#!">About CCE</a>
                         </li>

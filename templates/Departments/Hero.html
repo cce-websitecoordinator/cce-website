@@ -1,7 +1,7 @@
   <section class="h-[90vh] w-[100vw]  flex justify-center items-center flex-col relative">
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
         <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col ">
-            <img src="/static/images/BSH_Department.png" alt="department-hero-img"
+            <img src="{{hero_image.image.url}}" alt="department-hero-img"
                 class="w-full h-full object-cover object-center">
             {% with request.resolver_match.url_name as url_name %}
             <h1

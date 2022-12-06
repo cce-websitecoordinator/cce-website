@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
+{% extends 'base.html' %} {% load static %} {% block title %} About - {{title}}  {% endblock title %} {% block head %}
 
 {% endblock head %}
 {% block body %}
@@ -24,7 +24,7 @@
             <div class="col-span-1">
                 <h2 class="font-semibold text-2xl px-4">Departments</h2>
                 <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
-
+                
                 {% include 'Departments/Sidebar.html' %}
             </div>
 
@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div
-                    class="bg-[#D4F2FF] flex flex-col md:flex-row justify-center md:items-center space-y-4 md:space-y-0 p-11 space-x-6 md:items-start rounded-xl">
-                    <div class="bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px]">
+                    class="bg-[#D4F2FF] flex flex-col md:flex-row justify-center  space-y-4 md:space-y-0 p-11 space-x-6 md:items-start rounded-xl">
+                    <div class="bg-[#28AAE1] p-4 py-6 flex items-start  h-full justify-center text-gray rounded-[12px]">
                         <i class="material-symbols-outlined text-gray text-3xl" style="font-size:50px;color:white;">
 
                             thunderstorm
@@ -54,7 +54,12 @@
 
                     <div>
                         <h3 class="text-2xl font-bold">Mission</h3>
-                        <p>{{mission.Mission}}</p>
+                        <ol class="space-y-3">
+                            {% for mission in mission %}
+                            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{mission.Mission}}</p></li>
+                            {% endfor %}
+                            
+                        </ol>
                     </div>
                 </div>
                 <div
@@ -90,12 +95,12 @@
         <div> {% with dep_updates as side_updates  %} {% include 'Departments/Updates.html' %}{% endwith %}</div>
         <div class="w-full space-y-6 mt-11 md:mt-0 ">
             <h2 class="text-center font-bold text-5xl">Programme Details</h2>
-            <div class="p-6 shadow-xl rounded-[16px] group">
+            <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
                 <h2 class="flex justify-between text-2xl font-medium items-center">Program Educational Objectives (PEOs)<span
                         class="material-symbols-outlined" style="font-size:35px ;">
                         expand_more
                     </span></h2>
-                <div class="hidden group-hover:block pl-3 space-y-4 ">
+                <div class="hidden  pl-3 space-y-4 " id='peos-data'>
                     {% for item in poes %}
                     <div >
                         <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
@@ -107,13 +112,13 @@
             </div>
 
 
-            <div class="p-6 shadow-xl rounded-[16px] group">
+            <div class="p-6 shadow-xl rounded-[16px] " id="pos">
                 <h2 class="flex justify-between text-2xl font-medium items-center">Program Outcomes (POs)<span
                         class="material-symbols-outlined" style="font-size:35px ;">
                         expand_more
                     </span></h2>
-                <div class="hidden group-hover:block pl-3 ">
-                    <div class="hidden group-hover:block pl-3 space-y-4 ">
+                <div class="  pl-3 " >
+                    <div class="hidden pl-3 space-y-4 " id="pos-data">
                         {% for item in pos %}
                         <div >
                             <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
@@ -127,13 +132,13 @@
             </div>
 
 
-            <div class="p-6 shadow-xl rounded-[16px] group">
+            <div class="p-6 shadow-xl rounded-[16px] " id = "psos">
                 <h2 class="flex justify-between text-2xl font-medium items-center">Program Specific Outcomes (PSOs)<span
                         class="material-symbols-outlined" style="font-size:35px ;">
                         expand_more
                     </span></h2>
-                <div class="hidden group-hover:block pl-3 ">
-                    <div class="hidden group-hover:block pl-3 space-y-4 ">
+                <div class=" pl-3 ">
+                    <div class="hidden  pl-3 space-y-4 " id="psos-data">
                         {% for item in psos %}
                         <div >
                             <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
@@ -200,6 +205,19 @@
 {% block script %}
 <script src="http://nicesnippets.com/demo/easy_slide.js"></script>
 <script>
+   
+    $('#peos').click(() => {
+        $('#peos-data').toggleClass('hidden')
+        $('#peos').find('span').toggleClass('rotate-180')
+    })
+    $('#pos').click(() => {
+        $('#pos-data').toggleClass('hidden')
+        $('#pos').find('span').toggleClass('rotate-180')
+    })
+    $('#psos').click(() => {
+        $('#psos-data').toggleClass('hidden')
+        $('#psos').find('span').toggleClass('rotate-180')
+    })
     document.querySelectorAll('.po_box').forEach((e) => {
         e.addEventListener('click', () => {
 

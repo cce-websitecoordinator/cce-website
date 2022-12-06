@@ -28,7 +28,19 @@
     </div>
 
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6">
-     
+      {% for item in syllabus  %}
+      <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">
+        <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
+          picture_as_pdf
+          </span></div>
+        <h3 class="mx-4 mt-2">{{item.title}}</h3>
+        <a href="{{item.file.url}}" download class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Download<span class="material-symbols-outlined">
+          download
+          </span>
+          
+          </a>
+      </div>
+      {% endfor %}
       
      </div>
   </div>
@@ -40,7 +52,41 @@
       {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
     </div>
     <div class="w-full space-y-6 mt-11 md:mt-0">
-      
+      <h2 class="text-center text-5xl font-semibold">Handouts</h2>
+
+      <!-- Table for s1&s2 -->
+      <div class="w-full">
+        <table class="w-full">
+          <thead class="rounded-t-lg bg-[#28AAE1]">
+            <tr class=" text-white ">
+              <th class="p-2">S.No</th>
+              <th class="p-2">Course Name</th>
+              <th class="p-2">Course Code</th>
+              <th class="p-2">Credits</th>
+              <th class="p-2">Information Sheet</th>
+              <th class="p-2">Notes</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <!-- Table for s3 -->
+      <div class="w-full">
+        <table class="w-full">
+          <thead class="rounded-t-lg">
+            <tr class="bg-[#28AAE1] text-white rounded-t-xl">
+              <th class="p-2">S.No</th>
+              <th class="p-2">Course Name</th>
+              <th class="p-2">Course Code</th>
+              <th class="p-2">Credits</th>
+              <th class="p-2">Information Sheet</th>
+              <th class="p-2">Notes</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+
     </div>
   </div>
 </section>
