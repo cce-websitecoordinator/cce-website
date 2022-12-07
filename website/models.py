@@ -111,5 +111,7 @@ class Recruiters(models.Model):
 
 class Hero_Image(models.Model):
     image = models.ImageField(upload_to="Heros_Images")
+    PAGE = (("Home","Home"),("About","About"),("Facilities","Facilities"),("Gallery","Gallery"),("Alumni","Alumni"),("Contact","Contact"))
+    page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.image.name

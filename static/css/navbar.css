@@ -86,7 +86,7 @@ nav ul li ul li a {
   width: 70px;
 }
 
-@media only screen and (max-width: 798px) {
+@media only screen and (max-width: 1200px) {
   .nav-mobile {
     display: block;
     min-height: fit-content;
@@ -126,7 +126,7 @@ nav ul li ul li a {
   }
 }
 
-@media screen and (min-width: 799px) {
+@media screen and (min-width: 1200px) {
   .nav-list {
     display: block !important;
   }
