@@ -73,7 +73,7 @@ nav ul li ul li a {
   background: rgba(0, 0, 0, 0.51);
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.51);
+  box-shadow: 0 3px 12px rgba(148, 122, 218, 0.51);
 }
 
 /* Mobile navigation */

@@ -4,7 +4,7 @@
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0  bg-black  bg-opacity-[0.5] {% else %} home z-[998] left-0 right-0 {% endif %} glass max-h-[100px] z-[999] "
+<nav class="{% if url_name != 'home'%} relative top-0 w-full left-0 right-0 {% else %} home z-[998] left-0 right-0 {% endif %} glass max-h-[100px] z-[999] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="{% url 'home' %}" class="flex items-center absolute md:relative top-3  md:top-0">
@@ -18,11 +18,8 @@
                 </li>
                 
                 <li>
-                    <a href="#!">About</a>
+                    <a href="#">About</a>
                     <ul class="nav-dropdown ">
-                        <li>
-                            <a href="#!">About CCE</a>
-                        </li>
                         <li>
                             <a href="{% url 'Management'%}">Management</a>
                         </li>
@@ -102,7 +99,7 @@
                     <a href="#!">Student Services</a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="#!">IEDC</a>
+                            <a href="https://iedc.cce.edu.in">IEDC</a>
                         </li>
                         <li>
                             <a href="#!">TBI</a>
@@ -163,7 +160,7 @@
         normal = ['absolute', 'top-9']
     }
     var top = navbar.offsetTop;
-    const sticky = ['fixed', 'top-0', 'bg-black', 'bg-opacity-[0.5]']
+    const sticky = ['fixed', 'top-0']
     navbar.classList.add(...normal);
     window.addEventListener('scroll', function () {
         if (window.scrollY > navbar.getBoundingClientRect().height) {

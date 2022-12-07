@@ -33,6 +33,7 @@ class Context:
         self.updates = HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
+        self.contact = Contact.objects.filter(department=dep)
         self.route = route
         self.faculties = None
         self.HOD = None
@@ -45,6 +46,8 @@ class Context:
         self.professional_bodies = None
         self.syllabus = None
         self.labs = None
+        self.events = None
+        self.achivements = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -63,6 +66,10 @@ class Context:
                 self.professional_bodies = ProfessionalBodies.objects.filter(department=dep)
             case "labs":
                 self.labs = Laboratories.objects.filter(department=dep)
+            case "events":
+                self.events = Events.objects.filter(department=dep)
+            case "achievements":
+                self.achivements = Achivements.objects.filter(department=dep)
     def data(self):
         '''This method returns the context'''
         return {
@@ -83,8 +90,10 @@ class Context:
             'associations': self.associations,
             'professional_bodies': self.professional_bodies,
             'syllabus': self.syllabus,
-            'labs':self.labs
-
+            'labs':self.labs,
+            'events': self.events,
+            'achivements': self.achivements,
+            'contact': self.contact,
         }
 def home(request):
     return redirect('BSH/about')

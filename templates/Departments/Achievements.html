@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Labotories - {{title}}
+{% extends 'base.html' %} {% load static %} {% block title %} Achivements - {{title}}
 {% endblock title %} {% block head %} {% endblock head %} {% block body %}
 {%include 'Departments/Hero.html' %}
 
@@ -10,12 +10,27 @@
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
-      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+      <p class="px-4 text-gray-400">Home / Academics / Department / Achivements</p>
 
       {% include 'Departments/Sidebar.html' %}
     </div>
 
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
+        {% for achivement in achivements %}
+        
+        <div class="flex w-full px-6 md:space-x-6 h-auto group">
+            <div class="w-[400px] h-[350px] rounded-2xl overflow-clip object-fit ">
+
+                <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}" class="min-w-[400px] object-fit h-full  group-hover:scale-110 transition-all duration-500">
+            </div>
+            <div class="space-y-5 flex flex-col group-odd:pr-11 px-8">
+              <h3 class="text-2xl font-bold">{{achivement.name}}</h3>
+              <p>{{achivement.data}}</p>
+              <a href="{{achivement.link}}" class="p-3 px-6 border-2 border-blue-500 w-[150px] text-center rounded-xl">See More</a>
+            </div>
+          </div>
+          <div class="h-[2px] w-full bg-gray-200"></div>
+          {% endfor %}
      </div>
   </div>
 </section>
