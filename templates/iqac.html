@@ -1,17 +1,31 @@
 {% extends 'base.html' %} {% load static %} {% block title %} IQAC {% endblock title %} {% block head %}
 <link rel="stylesheet" href="../static/css/iqac.css" />
 {% endblock head %} {% block body %}
-<main class="iqac-wrapper ">
-<section class="hero-wrapper h-screen">
-  <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
-  <div class="absolute inset-0 flex justify-center items-center flex-col">
-    <h1 class="hero-title z-10">IQAC</h1>
-  </div>
-  <h1 class="flex text-[500px] font-black opacity-[0.5] z-0 absolute inset-0 justify-center items-center" >CCE</h1>
-  <div class="absolute inset-0 bg-black bg-opacity-[0.5]" ></div>
-</section>
-  <div class="quality-wrapper ">
-       <div class="quality-wrapper-content">
+<main class="w-[100vw]">
+  {% load static %}
+  <section class="h-[90vh] w-[100vw]  flex justify-center items-center flex-col relative">
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
+        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col ">
+            <img src="{{hero_image.image.url}}" alt="department-hero-img"
+                class="w-full h-full object-cover object-center">
+            <h1
+                class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-30  absolute inset-0  text-center">
+                CCE</h1>
+         
+        </div>
+        <div class="z-[5] text-center space-y-5 ">
+            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">Internal Quality Assurance Cell
+              (IQAC)</h2>
+        </div>
+        <div class="flex w-full justify-center animate-bounce z-[10]  absolute bottom-24" id="down-icon">
+
+            <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+          </div>
+    </section>
+    <section class="max-w-screen-2xl mx-auto px-11 mt-11">
+        <div class="w-full text-center">
+       <div class="">
+        <h1 class="text-center font-semibold lg:text-5xl text-4xl mb-6">About</h1>
       <p>
         To bring forth high quality standards and to maintain quality
         consciousness, Internal Quality Assurance Cell (IQAC) has been
@@ -26,14 +40,15 @@
       </p>
     </div>
   </div>
-  <div class="objectives-wrapper">
-    <div class="objectives-wrapper-image">
-      <img src="../static/images/goals 1.png" alt="objectives" />
-      <h1>Objectives</h1>
+  <div class="w-full flex justify-evenly  px-11 bg-[#F4FFE7] p-6 items-center mt-11 relative">
+    <div class="lg:w-[300px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1">
+      <img src="{%  static  'images/iqac/objectives.png'  %}" alt="iqac_objecctives" class="lg:opacity-[1] opacity-[0.5]">
     </div>
-    <div class="objectives-wrapper-description">
-      <ul>
+    <div class="z-0">
+      <h2 class="mb-4 font-semibold text-4xl">Objectives</h2>
+      <ol class="space-y-6 h-full list-disc">
         <li>
+
           To create and develop a quality structured system with constant,
           conscious, and planned actions to increase the internal quality of the
           institution.
@@ -47,16 +62,16 @@
           To provide a platform to improve the institution quality in line with
           various global accreditation standards
         </li>
-      </ul>
+      </ol>
     </div>
   </div>
-  <div class="function-wrapper">
-    <div class="function-wrapper-image">
-      <img src="../static/images/settings 1.png" alt="function" />
-      <h1>Function</h1>
+  <div class="w-full flex justify-evenly  px-11 bg-[#DBF4FF] p-6 items-center mt-11 relative gap-10">
+    <div class="lg:w-[380px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1">
+      <img src="{%  static  'images/iqac/functions.png'  %}" alt="iqac_objecctives" class="lg:opacity-[1] opacity-[0.5]">
     </div>
-    <div class="function-wrapper-description">
-      <ul>
+    <div class="z-0">
+      <h2 class="mb-4 font-semibold text-4xl">Functions</h2>
+      <ul class="space-y-6 h-full list-disc">
         <li>
           Development of quality enhancement techniques for various academic and
           extracurricular activities.
@@ -88,19 +103,23 @@
       </ul>
     </div>
   </div>
-  <div class="executive-committee-wrapper">
-    <h1>Executive Committee</h1>
-    <div>
-      <table class="executive-committee-table fixed-scroll">
-        <thead>
+
+</section>
+
+
+
+  <section class="max-w-screen-2xl mx-auto px-11">
+    <h1 class="my-11 font-semibold text-4xl text-center">Executive Committee</h1>
+    <div class="w-full">
+      <table class="fixed-scroll w-full executive-committee-table">
+        <thead class="w-full bg-[#28AAE199]">
           <tr>
             <th>NAME</th>
             <th>DESIGNATION</th>
             <th>ROLE</th>
           </tr>
         </thead>
-      </table>
-      <table class="executive-committee-table">
+      
         <tbody>
           <tr>
             <td>Fr.John Paliakara CMI</td>
@@ -214,6 +233,6 @@
           <li>5. Notice and Meeting Minutes 2017-2018  <a href="">|MOM1|</a> <a href="">|MOM2|</a> <a href="">|MOM3|</a></li>
         </ul>
       </div>
-  </div>
+  </section>
 </main>
 {% endblock %}

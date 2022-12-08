@@ -111,7 +111,27 @@ class Recruiters(models.Model):
 
 class Hero_Image(models.Model):
     image = models.ImageField(upload_to="Heros_Images")
-    PAGE = (("Home","Home"),("About","About"),("Facilities","Facilities"),("Gallery","Gallery"),("Alumni","Alumni"),("Contact","Contact"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("None","None"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
-        return self.image.name
+        return self.image.name 
+
+
+class IQACExecutiveCommitee:
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "IQAC Executive Commitee"
+    
+
+class IQACFormationNotice:
+
+    notice = models.FileField(upload_to="IQACFormationNotice")
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.notice.name
+    class Meta:
+        verbose_name_plural = "IQAC Formation Notice"

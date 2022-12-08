@@ -8,6 +8,10 @@ class Management(models.Model):
     img = models.ImageField(upload_to="Management",default="img.png")
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "Management"
+
 
 class CCEinMedia(models.Model):
     title = models.CharField(max_length=200)
@@ -17,6 +21,8 @@ class CCEinMedia(models.Model):
     link = models.URLField()
     def __str__(self):
         return self.title
+    class Meta:
+        verbose_name_plural = "CCE in Media"
 class MoreAboutCCE(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
@@ -25,3 +31,5 @@ class MoreAboutCCE(models.Model):
     date = models.DateField()
     def __str__(self):
         return self.title
+    class Meta:
+        verbose_name_plural = "More About CCE"

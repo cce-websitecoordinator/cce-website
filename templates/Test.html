@@ -4,18 +4,95 @@
 {% block title %} Not Found Error {% endblock title %}
 
 {% block body %}
-<section class="grid md:grid-cols-2 grid-cols-1  items-center w-[100vw] h-max gap-10">
-    <div class="md:ml-24 space-y-6 place-items-center grid">
-        <img src="{%  static  'images/404.png'  %}" alt="404-img" >
-        <h1 class="text-4xl font-black place-self-center">We can't find the page you are<br> looking for.</h1>
-        <p class="text-2xl">it might be relocated or deleted</p>
-        <div class="w-full place-items-center grid">
-
-            <a href="/" class="pl-4 pr-4 p-2 bg-[#007FFF] active:bg-white hover:scale-125 hover:shadow-xl ease-in-out duration-100">Go To Home</a>
+<div class="relative">
+    <div class="bg-img relative bg-center" style="background-image: url('images/Alumni.png')"></div>
+    <h1 class="absolute font-poppins text-[200px] md:text-[400px] lg:text-[600px] font-bold text-grey top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">CCE</h1>
+    <h1 class="absolute text-[50px] md:text-[150px] font-bold text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">ALUMINI</h1>
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-bounce " id="arrow">
+        <a href="#about" >
+            <img class="ml-auto mr-auto pl-auto pr-auto" src="./images/Arrow.jpg" alt="">
+        </a>
+    </div>
+</div>
+  <div id="about" class="about lg:flex  md:text-left lg:px-[150px] ">
+    <div class="px-4 max-h-[419px] overflow-hidden ">
+      <h2 class="text-center lg:text-left text-4xl font-bold pb-4 pt-[50px] ">ALUMINI</h2>
+      <p class="text-center lg:text-left text-lg">Morbi accumsan bibendum ut cursus libero egestas. In pharetra nunc arcu mauris ac enim nisi. Leo sed nibh eu pharetra sed ac quis sit. Venenatis urna lectus tortor hac tellus convallis. Proin diam massa nulla purus at. Volutpat neque nulla auctor aliquet tincidunt donec. Aliquam donec vestibulum quis nec urna non mauris. Ut semper aliquet diam lobortis integer commodo. Adipiscing imperdiet a dictumst risus a mauris. Mi ut tempor cursus etiam velit sem. Quis felis ac amet sem commodo non at. Et a nulla volutpat dui tempus aliquam eu sagittis.
+        Aenean facilisis ornare scelerisque in nascetur. Non hendrerit ac nulla lorem mus. Felis sit quam fermentum in tempus. At pellentesque duis id semper nullam bibendum. Placerat convallis sapien pulvinar arcu viverra faucibus. Faucibus lobortis hendrerit tincidunt cras purus odio purus. Sem ornare ultricies ac facilisis. Habitant vestibulum sit faucibus quam bibendum. Nunc varius iaculis cras nec hendrerit lectus gravida. Amet nunc id tortor malesuada purus fames hendrerit. Purus neque sed convallis urna lorem sit. Est egestas at rhoncus risus mauris volutpat ullamcorper nulla. Feugiat sed mollis et at turpis.</p>
+    </div class="">
+      <img class="pt-[50px] ml-auto mr-auto md:min-w-[695px] max-h-[419px] p-4" src="./Images/Alumini-students.png"/>
+  </div>
+  <h1 class="text-center text-5xl font-bold py-4 mt-12">Commitee</h1>
+  <div class=" flex justify-center font-sans overflow-hidden pb-36 px-4">
+    <div class="w-full lg:w-5/6 ">
+        <div class="bg-white shadow-md rounded my-4 ">
+            <table class="min-w-max w-full table-auto">
+                <thead>
+                    <tr class="mr-auto ml-auto bg-blue-100 text-gray-600 uppercase text-lg leading-normal">
+                        <th class="py-4 text-center">Name</th>
+                        <th class="py-4 text-center">Designation</th>
+                        <th class="py-4 text-center">Role</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-2xl font-light ">
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-4 text-center">Amal C P</td>
+                        <td class="py-4 text-center">Lead</td>
+                        <td class="py-4 text-center">Lead</td> 
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-4 text-center">Amal C P</td>
+                        <td class="py-4 text-center">Lead</td>
+                        <td class="py-4 text-center">Lead</td> 
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-4 text-center">Amal C P</td>
+                        <td class="py-4 text-center">Lead</td>
+                        <td class="py-4 text-center">Lead</td> 
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-4 text-center">Amal C P</td>
+                        <td class="py-4 text-center">Lead</td>
+                        <td class="py-4 text-center">Lead</td> 
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-4 text-center">Amal C P</td>
+                        <td class="py-4 text-center">Lead</td>
+                        <td class="py-4 text-center">Lead</td> 
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-<div>
-    <img src="{%  static  'images/404_img.png'  %}" alt="404-robot-img" >
-</div>    
-</section>
+</div>
+
+<h1 class="text-center text-5xl font-bold py-12">Testimonials</h1>
+
+<h1 class="text-center text-6xl font-bold pt-[10px] pb-8 overflow-hidden">Events</h1>
+<div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center ">
+    <div class="img-event">
+        <img class="max-w-5/6 md:min-w-[400px] min-h-[400px] ml-auto mr-auto p-4 " src="./Images/events-logo.png"/>
+    </div>
+    <div class="px-4">
+        <h1 class=" text-center lg:text-left text-4xl py-2 font-semibold">Thaikudam Bridge</h1>
+        <h2 class=" text-center lg:text-left text-2xl py-2 font-medium">Thaikkudam Bridge is here with some mindblowing stuffs</h2>
+        <div class="absolute right-2 md:right-28 w-1/16 h-1/16 pt-12 items-center justify-center " id="arrow">
+            <a href="#" >
+                <img src="images/icon-right.png" alt="">
+            </a>
+        </div>
+        <h2 class="text-center lg:text-left text-lg py-2 ">Fermentum amet nulla risus augue cras morbi consectetur amet. Dui sit tristique elementum convallis sed in. Ultrices lorem egestas at diam. Et nec, etiam auctor ut tortor, feugiat volutpat. Mauris porta rhoncus fermentum mollis. Rutrum massa curabitur posuere tincidunt nulla commodo. Duis dignissim nisi neque ornare in molestie egestas aliquam nullam. Pretium, egestas urna, scelerisque non senectus. Lorem dui ac blandit quis aliquet lorem arcu eget. Sed ornare pharetra, risus id. Aliquam placerat consequat.</h2>
+        <div class=" flex justify-center items-center  lg:justify-between botttom-4 ml-auto mr-auto py-">
+        <button class=" md:mx-0 text-center md:text-left bg-blue-500 text-white rounded-lg p-5 md:my-4 py-2 w-28">See More</button>
+        </div>
+    </div>
+</div> 
+
+<h1 class="text-center text-5xl font-bold py-16">Memorandum</h1>
+<div class=" mx-12 my-12 bg-gray-200 h-[300px] w-5/6 md:h-[800px]  ml-auto mr-auto">
+</div>
+<h1 class="text-center text-5xl font-bold py-16">By Laws</h1>   
+<div class=" mx-12 my-12 bg-gray-200 h-[300px] w-5/6 md:h-[800px] ml-auto mr-auto">
+</div>
+
 {% endblock body %}

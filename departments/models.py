@@ -11,6 +11,14 @@ class DepHero(models.Model):
     def __str__(self):
         return self.department
 
+class DepAbout(models.Model):
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    PAGES =(("about","About"),("faculty","Faculties"),("associations","Associations"),("professionalBodies","Professional Bodies"),("curriculum_and_syllabus","Sylabus"))
+    page = models.CharField(max_length=200, choices = PAGES, default="About")
+    about = models.TextField()
+
+    def __str__(self):
+        return self.department
 class POES(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     data = models.CharField(max_length=300)

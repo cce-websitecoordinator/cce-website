@@ -35,6 +35,7 @@ class Context:
         self.dep_updates = DepUpdates.objects.filter(department=dep)
         self.contact = Contact.objects.filter(department=dep)
         self.route = route
+        self.about = DepAbout.objects.filter(department=dep).filter(page=route).first()
         self.faculties = None
         self.HOD = None
         self.vission = None
@@ -62,7 +63,7 @@ class Context:
                 self.HOD = Faculty.objects.filter(department=dep).filter(role__role='HOD').first()
             case "associations":
                 self.associations = Associations.objects.filter(department=dep)
-            case "syllabus":
+            case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(department=dep)
@@ -77,6 +78,7 @@ class Context:
         return {
             'dep': self.dep,  
             'title': self.title,
+            'about': self.about,
             'gallery': self.gallery,
             'updates': self.updates,
             'route': self.route,
@@ -108,8 +110,6 @@ def Department(request, route, department):
                 return render(request, 'Departments/Faculty.html', context)
             case "associations":
                 return render(request, 'Departments/Associations.html', context)
-            case "syllabus":
-                return render(request, 'Departments/Syllabus.html', context)
             case "professionalBodies":
                 return render(request, 'Departments/ProfessionalBodies.html', context)
             case "labs":
@@ -121,7 +121,7 @@ def Department(request, route, department):
             case "curriculum_and_syllabus":
                 return render(request, 'Departments/curriculum_and_syllabus.html', context)
             case "newsletters":
-                return render(request, 'Departments/Newsletters.html', context) 
+                return render(request, 'Departments/NewsLetters.html', context) 
             case "research":
                 return render(request, 'Departments/Research.html', context) 
             case other:

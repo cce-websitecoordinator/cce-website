@@ -70,10 +70,9 @@ nav ul li ul li a {
   z-index: 1;
   min-width: 390px !important;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.51);
+  background: rgba(0, 0, 0, 0.51) !important;
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
-  box-shadow: 0 3px 12px rgba(148, 122, 218, 0.51);
 }
 
 /* Mobile navigation */
