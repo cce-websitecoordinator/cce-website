@@ -55,6 +55,8 @@ class Context:
                 self.poes = POES.objects.filter(department=dep)
                 self.pos = POS.objects.filter(department=dep)
                 self.psos = PSOS.objects.filter(department=dep)
+                self.faculties = Faculty.objects.filter(department=dep).exclude(role__role='HOD')
+                self.HOD = Faculty.objects.filter(department=dep).filter(role__role='HOD').first()
             case "faculty":
                 self.faculties = Faculty.objects.filter(department=dep).exclude(role__role='HOD')
                 self.HOD = Faculty.objects.filter(department=dep).filter(role__role='HOD').first()
