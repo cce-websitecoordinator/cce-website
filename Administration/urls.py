@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("governing_body", views.governing_body, name="Governing_Body"),
+    path('iqac', views.iqac_page, name='iqac'),
 ]
 
 if settings.DEBUG:     

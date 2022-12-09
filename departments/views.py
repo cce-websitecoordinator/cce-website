@@ -70,7 +70,7 @@ class Context:
             case "labs":
                 self.labs = Laboratories.objects.filter(department=dep)
             case "events":
-                self.events = Events.objects.filter(department=dep)
+                self.events = Events.objects.filter(department=dep).order_by('-date')
             case "achievements":
                 self.achivements = Achivements.objects.filter(department=dep)
     def data(self):

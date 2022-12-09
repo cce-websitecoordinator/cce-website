@@ -10,7 +10,6 @@ def home_page(request):
     gallery_imgs = Gallery.objects.all()
     upcomingEvents = UpcomingEvents.objects.all()
     recruiters = Recruiters.objects.all()
-
     context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters}
     return render(request, 'home.html', context=context)
 
@@ -33,16 +32,8 @@ def arts_page(request):
     context = {"gallery":gallery_imgs}
     return render(request, 'arts.html', context=context)
 
-
-
-
 def about_page(request):
     return render(request, 'about.html')
-
-
-def management_page(request):
-    return render(request, 'management.html')
-
 
 def nirf_page(request):
     return render(request, 'nirf.html', context={})
@@ -54,15 +45,12 @@ def gallery_page(request):
     return render(request, 'gallery.html', context=context)
 
 
-def iqac_page(request):
-    return render(request, 'iqac.html')
 
 def alumini_page(request):
     return render(request, 'Alumini.html')
 
 def facilities_page(request):
     return render(request, 'Facilities.html')
-
 
 
 def test_page(request):
