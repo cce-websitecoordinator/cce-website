@@ -1,10 +1,18 @@
 {% load static %}
 {% block head %}
 <link href="{% static 'css/navbar.css' %}" rel="stylesheet"/>
+<style>
+    .fixed_nav{
+        position: fixed;
+        top: 0%;
+        left: 0;
+        right: 0;
+    }
+</style>
 {% endblock head %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class=" glass {% if url_name != 'home'%} relative top-0 w-full left-0 right-0 {% else %} home left-0 right-0 {% endif %} max-h-[100px] z-[999] "
+<nav class=" glass  relative w-full  max-h-[100px] z-[999] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="{% url 'home' %}" class="flex items-center absolute md:relative top-3  md:top-0">
@@ -154,24 +162,17 @@
             });
         }); 
     })(jQuery); 
-    var navbar = document.getElementById("main-nav");
-    let normal
-    if (navbar.classList.contains("home")) {
-        normal = ['absolute', 'top-9']
-    }
-    var top = navbar.offsetTop;
-    const sticky = ['fixed', 'top-0']
-    navbar.classList.add(...normal);
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > navbar.getBoundingClientRect().height) {
-            navbar.classList.add(...sticky);
-            navbar.classList.remove(...normal);
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('#main-nav').addClass('fixed_nav');
+            $('#main-nav').removeClass('relative');
+
         } else {
-            navbar.classList.add(...normal);
-            navbar.classList.remove(...sticky);
+            $('#main-nav').addClass('relative');
+
+            $('#main-nav').removeClass('fixed_nav');
         }
     });
-
 </script>
 
 {% endblock script %}

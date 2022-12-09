@@ -117,5 +117,8 @@ class Hero_Image(models.Model):
     PAGE = (("management","Management"),("directors_desk","Directors Desk"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("None","None"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
-        return self.type=='img' if self.image.name else self.video.name 
+        return self.type=='img' if self.image.name else self.video.name
+    
+    class Meta:
+        verbose_name_plural = "Hero Images"
 

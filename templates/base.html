@@ -59,8 +59,15 @@
 
   <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
     <header>
-      {% block topbar %}{% endblock topbar %} {% with request.resolver_match.url_name as url_name %} {# Navbar Segment #} 
-      {% include 'components/_partials/navbar.html'%} {% endwith %}
+      <div class="relative">
+
+        {% block topbar %}{% endblock topbar %} 
+      </div>
+      {% with request.resolver_match.url_name as url_name %}
+       {# Navbar Segment #}
+       <div class="relative">
+         {% include 'components/_partials/navbar.html'%} {% endwith %}
+       </div> 
     </header>
 
     {% block body %} {% endblock body %} {% include 'components/infoScroller.html'%} {# Footer Segment #}
