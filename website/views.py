@@ -50,7 +50,12 @@ def alumini_page(request):
     return render(request, 'Alumini.html')
 
 def facilities_page(request):
-    return render(request, 'Facilities.html')
+    context = {
+        "facilities": Facilities.objects.all(),
+        "hero_img":Hero_Image.objects.all().filter(page="facilities").first(),
+        "hero_title":"Facilities"
+    }
+    return render(request, 'facilities.html' ,context=context)
 
 
 def test_page(request):

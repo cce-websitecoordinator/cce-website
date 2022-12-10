@@ -2,11 +2,7 @@
 <link rel="stylesheet" href="../static/css/iqac.css" />
 {% endblock head %} {% block body %}
 <main class="">
-
-  <section class="w-screen h-screen overflow-clip relative z-[-1]">
-    <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
-    <div class="bg-black bg-opacity-[0.5] absolute inset-0 "></div>
-  </section>
+  {% include 'components/Hero_section.html' %}
   <section class="w-screen ">
 
     <div class="executive-committee-wrapper w-full ">
@@ -60,6 +56,13 @@
       </div>
     </div>
   </section>
+
+  <div class="w-full text-center mb-11">
+    <h3 class="text-2xl font-semibold">  Click below to download the order</h3>
+    <a href="{{governing_body_order_file.file.url}}" target="_blank" class="text-[#007FFF] flex items-center justify-center">{{governing_body_order_file.name}} <span class="material-symbols-outlined">
+      link
+      </span></a>
+  </div>
 
 </main>
 {% endblock %}

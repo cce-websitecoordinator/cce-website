@@ -13,7 +13,7 @@ admin.site.register(Alumni)
 admin.site.register(AlumniCommittee)
 admin.site.register(Recruiters)
 admin.site.register(Hero_Image)
-
+admin.site.register(Facilities)
 
 
 

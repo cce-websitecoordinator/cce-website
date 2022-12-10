@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class GoverningBody(models.Model):
+class GoverningBodyMembers(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
@@ -10,6 +10,19 @@ class GoverningBody(models.Model):
     
     class Meta:
         verbose_name_plural = "Governing Body"
+
+class GoverningBodyOrderFile(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="GoverningBodyOrderFile")
+    
+
+    class Meta:
+        verbose_name = "GoverningBodyOrderFile"
+        verbose_name_plural = "GoverningBodyOrderFiles"
+
+    def __str__(self):
+        return self.name
+
 
 
 

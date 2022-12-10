@@ -49,7 +49,7 @@ class Gallery(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
     def __str__(self):
-        return self.image.name
+        return "("+self.department+')' +self.image.name 
 
 
 
@@ -60,7 +60,7 @@ class Faculty(models.Model):
     role = models.ManyToManyField(Role)
     email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
-    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"),("administrative_staff","Administrative Staff"),("supporting_staff","Supporting Staff"),("supporting_staff","Supporting Staff"),("security_staff","Security Staff"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
@@ -97,6 +97,8 @@ class AlumniCommittee(models.Model):
 class Facilities(models.Model):
     image = models.ImageField(upload_to="Facilities")
     title = models.CharField(max_length=100)
+    icon = models.CharField(max_length=100,default="star")
+    link_name = models.CharField(max_length=100,default="")
     description = models.CharField(max_length=500)
     def __str__(self):
         return self.title
@@ -114,11 +116,12 @@ class Hero_Image(models.Model):
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
-    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("None","None"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("None","None"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
-        return self.type=='img' if self.image.name else self.video.name
+        return self.page+"---"+self.image.name + self.video.name
     
     class Meta:
         verbose_name_plural = "Hero Images"
+
 

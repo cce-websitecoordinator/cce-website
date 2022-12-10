@@ -10,9 +10,14 @@
       class="w-full h-full object-cover object-center absolute"
     ></video>
     <div class="absolute inset-0 bg-[#00000066]"></div>
-    <div class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10 font-bold text-center">
+    <div class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10  text-center">
       {{hero_title}}
     </div>
+    <h1
+    class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-70 absolute inset-0 text-center font-serif "
+  >
+    CCE
+  </h1>
 
   </div>
   {% else %}
@@ -22,16 +27,21 @@
       alt="hero-img"
       class="w-full h-full object-cover object-center"
     />
-    <h1
-      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-30 absolute inset-0 text-center"
+    <h4
+      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
     >
       CCE
-    </h1>
+    </h4>
+  
   </div>
   {% endif %}
   <div
-    class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"
-  ></div>
+    class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay z-10"
+  >
+  <div class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-50 font-bold text-center">
+    {{hero_title}}
+  </div>
+</div>
   <div
     class="absolute w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch"
   >
