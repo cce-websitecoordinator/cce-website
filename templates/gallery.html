@@ -44,7 +44,8 @@
         width:100%;
         height:auto;
         margin: 4% auto;
-        box-shadow:-3px 5px 15px #000;
+        {% comment %} box-shadow:-3px 5px 15px #000;   {% endcomment %}
+        border-radius: 8px;
         cursor: pointer;
         -webkit-transition: all 0.2s;
         transition: all 0.2s;
@@ -64,7 +65,7 @@
 {% endblock head %}
 
 {% block body %}
-<main>
+<main class='md:mx-24 mx-11'>
     <div class="h-24"></div>
 <h1 class="text-center w-full py-24 text-6xl font-bold pt-24 ">CCE Gallery </h1>
 <div id="gallery" class="container-fluid">  

@@ -5,9 +5,11 @@ from website.models import Faculty
 # Create your models here.
 DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
 class DepHero(models.Model):
-    image = models.ImageField(upload_to="DepHeroImages")
+    image = models.ImageField(upload_to="DEP_Heros_Images",blank=True)
+    video = models.FileField(upload_to="DEP_Heros_Videos",blank=True)
+    TYPE = (("img","IMAGE"),("vdo","VIDEO"))
+    type = models.CharField(max_length=200, choices = TYPE, default="img")
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
-
     def __str__(self):
         return self.department
 
@@ -22,16 +24,22 @@ class DepAbout(models.Model):
 class POES(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     data = models.CharField(max_length=300)
-
+    class Meta:
+        verbose_name_plural = "POE"
 
 class POS(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     data = models.CharField(max_length=300)
+    class Meta:
+        verbose_name_plural = "PO"
 
 
 class PSOS(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     data = models.CharField(max_length=300)
+
+    class Meta:
+        verbose_name_plural = "PSO"
 
 class Vission(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
@@ -138,9 +146,12 @@ class Achivements(models.Model):
 class Events(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to="EventsImages")
+    poster = models.ImageField(upload_to="EventsImages",default="None")
     data = models.CharField(max_length=500)
     date = models.DateField()
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    TYPE = (("workshops_seminars","Workshops / Seminars"),("addons","Add-Ons"),("iv","Industrial Visits"))
+    type  = models.CharField(choices=TYPE,max_length=100,default="iv")
     link = models.URLField()
     class Meta:
         verbose_name = ("Event")

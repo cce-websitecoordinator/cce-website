@@ -31,7 +31,7 @@ class Context:
         self.title = getDepartment(dep)
         self.gallery = Gallery.objects.filter(department=dep)
         self.updates = HomeUpdates.objects.all()
-        self.hero_image = DepHero.objects.filter(department=dep).first()
+        self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
         self.contact = Contact.objects.filter(department=dep)
         self.route = route
@@ -84,7 +84,7 @@ class Context:
             'route': self.route,
             'faculties': self.faculties,
             'HOD': self.HOD,
-            'hero_image': self.hero_image,
+            'hero_img': self.hero_image,
             'dep_updates': self.dep_updates,
             'vission': self.vission,
             'mission': self.mission,
