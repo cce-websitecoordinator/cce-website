@@ -38,7 +38,7 @@ class UpcomingEvents(models.Model):
     img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
     title = models.CharField(max_length=80)
     sub_title = models.TextField(max_length=150)
-    date = models.DateTimeField()
+    date = models.DateField()
     def __str__(self) -> str:
         return self.title
 

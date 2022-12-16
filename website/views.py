@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from website.models import *
 
@@ -8,7 +9,7 @@ def home_page(request):
     updates = HomeUpdates.objects.all()
     events =  HomeEvents.objects.all()
     gallery_imgs = Gallery.objects.all()
-    upcomingEvents = UpcomingEvents.objects.all()
+    upcomingEvents = UpcomingEvents.objects.filter(date__lte=datetime.date.today())
     recruiters = Recruiters.objects.all()
     context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters}
     return render(request, 'home.html', context=context)
