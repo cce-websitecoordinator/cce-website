@@ -8,10 +8,7 @@
 {% block body %}
 <main >
 
-    <section class="w-screen h-screen overflow-clip relative z-[-1]" >
-        <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
-        <div class="bg-black bg-opacity-[0.5] absolute inset-0 "></div>
-</section>
+    {% include 'components/Hero_section.html' %}
 <section class="px-24 w-full text-center ">
 <h1 class="text-4xl my-11 font-bold">Christ Educational and Charitable Trust</h1>
 <div class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center ">

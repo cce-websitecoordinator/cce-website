@@ -8,10 +8,7 @@
 {% block body %}
 <main >
 
-    <section class="w-screen h-screen overflow-clip relative z-[-1]" >
-        <img src="{% static 'images/defaultbg.jpg' %}" alt="hero_img" class="">
-        <div class="bg-black bg-opacity-[0.5] absolute inset-0 "></div>
-</section>
+    {% include 'components/Hero_section.html' %}
 
     <section class="md:px-44 px-3 w-full text-center ">
         <h1 class="text-4xl my-11 font-bold">Principal</h1>

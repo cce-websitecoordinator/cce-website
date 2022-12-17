@@ -192,8 +192,8 @@
       <div class="swiper-slide">
         <div class="w-full  h-full flex justify-center items-center ">
           <div class="w-full flex justify-center items-center flex-col">
-            <div class="w-[150px] ">
-              <img src="{{item.image.url}}" alt="studentImage " class="rounded-full">
+            <div class="w-[150px]  h-[150px] overflow-clip rounded-full">
+              <img src="{{item.image.url}}" alt="studentImage " class=" w-full">
             </div>
             <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>
@@ -243,7 +243,7 @@
 
   window.addEventListener('scroll', () => {
     console.log();
-    if ((window.scrollY + getOffset(counterSection).height) >= getOffset(counterSection).top) {
+    if ((window.scrollY + getOffset(counterSection).height)+300 >= getOffset(counterSection).top) {
       increment(counterStudents, 1000, 10)
       increment(counterFaculty, 70, 200)
       increment(counterStaff, 60, 500)
@@ -263,16 +263,30 @@
     }
   }
 
-  const swiper = new Swiper('.swiper', {
+  const swiper_services = new Swiper('.swiper', {
     loop: true,
     pagination: {
       el: '.swiper-pagination',
     },
+  slidesPerView: 3,
+  
+    
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
   });
+  $(window).on('resize', function(){
+    var width = $(window).width();
+    if(width < 1000 ) {
+        swiper_services.params.slidesPerView =1 ;
+        swiper_services.params.spaceBetween = 40;
+     } else {
+        swiper_services.params.slidesPerView = 3;
+        swiper_services.params.spaceBetween = 50;
+    }
+    
+}).resize(); 
 
   document.getElementById('down-icon').addEventListener('click', () => {
     window.scrollTo({
