@@ -172,12 +172,17 @@
   <h1 class="text-4xl md:text-5xl font-bold"> Our Top Recruiters</h1>
   <div class="space-y-6">
 
+    {%with recruiters=recruiters2%}
     {% include 'components/logo_marquee.html' %}
+    {%endwith%}
     {%with left=True%}
     {% include 'components/logo_marquee.html' %}
     {%endwith%}
+    {%with recruiters=recruiters3%}
     
     {% include 'components/logo_marquee.html' %}
+    {%endwith%}
+
   </div>
 
 </section>

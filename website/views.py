@@ -1,4 +1,5 @@
 import datetime
+from random import shuffle
 from django.shortcuts import render
 from website.models import *
 
@@ -11,7 +12,11 @@ def home_page(request):
     gallery_imgs = Gallery.objects.all()
     upcomingEvents = UpcomingEvents.objects.filter(date__lte=datetime.date.today())
     recruiters = Recruiters.objects.all()
-    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters}
+    recruiters3 = recruiters.order_by('?')
+    recruiters2 = recruiters.order_by('?')
+    # recruiters2 = shuffle(recruiters2)
+
+    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3}
     return render(request, 'home.html', context=context)
 
 
