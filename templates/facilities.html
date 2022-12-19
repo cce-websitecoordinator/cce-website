@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Faclities {% endblock title %} {% block head %}
+{% endblock head %} {% block body %}
+<main class="">
+  {% include 'components/Hero_section.html' %}
+
+
+
+  <section class="md:px-24 px-7 mt-11">
+    <div class="flex gap-10 lg:flex-row flex-col">
+      <div class="col-span-1 mx-auto">
+        <h2 class="font-semibold text-2xl px-4">Facilities</h2>
+        <p class="px-4 text-gray-400">Home / Facilities </p>
+        <aside class="p-8 shadow-2xl rounded-2xl flex  space-y-6 mt-4 flex-col md:w-[450px] font-medium mx-auto">
+            {% for item in facilities %}
+            <div class="bg-[#F9F9F9] p-3 rounded-[16px] group   flex items-center justify-start pl-9">
+                <a href="#{{item.link_name}}" class=" space-x-11 text-gray-600 group-hover:text-[#007FFF]  text-xl items-center flex ">
+                    <i class="material-icons" class=" group-hover:text-[#007FFF] ">{{item.icon}}</i><span>{{item.title}} </span>
+                </a>
+            </div>
+            {% endfor %}
+        </aside>
+      </div>
+  
+      <div class="col-span-2 gap-10 space-y-16 my-11 pt-6 ">
+        {% for item in facilities %}
+        <div class="flex lg:flex-row flex-col w-full px-6 md:space-x-6  lg:odd:flex-row-reverse group h-auto items-center "  id="{{item.link_name}}">
+          <img src="{{item.image.url}}" alt="{{item.image.name}}" class="w-[400px] h-full rounded-2xl">
+          <div class="space-y-5 group-odd:text-end flex flex-col group-odd:pr-11 md:px-8 mt-6 md:mt-0 w-[400px] lg:w-full">
+            <h3 class="text-2xl font-bold text-start mt-11 lg:mt-0">{{item.title}}</h3>
+            <p class='text-start'>{{item.description}}</p>
+          </div>
+        </div>
+  
+        {% endfor %}
+       </div>
+    </div>
+  </section>
+
+
+</main>
+{% endblock %}

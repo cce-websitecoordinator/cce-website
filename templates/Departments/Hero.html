@@ -1,17 +1,52 @@
-  <section class="h-[100vh] w-[100vw]  flex justify-center items-center flex-col relative">
-        <div class="absolute top-0 left-0 right-0 bottom-0 z-[1] bg-black bg-opacity-70"></div>
-        <div class="absolute top-0 left-0 right-0 bottom-0 z-[-1] flex flex-col">
-            <img src="/static/images/BSH_Department.png" alt="department-hero-img"
-                class="w-full h-full object-cover object-center">
-            {% with request.resolver_match.url_name as url_name %}
-            <h1
-                class="md:text-[500px] text-[200px] items-center justify-self-center font-black opacity-30  absolute top-0 left-0 right-0 bottom-0 text-center">
-                {{url_name}}</h1>
-            {% endwith %}
-        </div>
-        <div class="z-[5] text-center space-y-5 ">
+{% load static %}
+<section class="home_section relative h-[100vh] overflow-clip">
+  {% if 'vdo' in hero_img.type %}
+  <div class="w-[100vw] h-[100vh] -z-1">
+    <video src="{{hero_img.video.url}}" autoplay muted loop
+      class="w-full h-full object-cover object-center absolute"></video>
+    <div class="absolute inset-0 bg-[#00000066]"></div>
+    <div
+      class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10  text-center">
+      {{hero_title}}
+    </div>
+    <div
+      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-70 absolute inset-0 text-center  ">
+      CCE
+    </div>
+    <div
+      class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
+      <h3 class="text-white text-2xl">Department of</h3>
+      <p class="text-6xl text-white">{{title}}</p>
+    </div>
 
-            <h1 class="md:text-4xl text-xl  text-white">Department Of</h1>
-            <h2 class="font-semibold md:text-6xl text-3xl text-white uppercase tracking-wide">{{title}}</h2>
-        </div>
-    </section>
+  </div>
+  {% else %}
+  <div class="w-[100vw] h-[100vh] -z-1">
+    <img src="{{hero_img.image.url}}" 
+      class="w-full h-full object-cover object-center absolute"></img>
+    <div class="absolute inset-0 bg-[#00000066]"></div>
+    <div
+      class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10  text-center">
+      {{hero_title}}
+    </div>
+    <div
+      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-70 absolute inset-0 text-center  ">
+      CCE
+    </div>
+    <div
+      class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
+      <h3 class="text-white text-2xl">Department of</h3>
+      <p class="text-6xl text-white">{{title}}</p>
+    </div>
+
+  </div>
+  {% endif %}
+  <div class="absolute w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch">
+    <div class="flex flex-col justify-center items-center text-center">
+      <h1 class="text-4xl md:text-6xl text-white font-bold">{{name}}</h1>
+    </div>
+  </div>
+  <a href="#content" class="flex w-full justify-center animate-bounce z-[50] absolute bottom-24" id="down-icon">
+    <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+  </a>
+</section>

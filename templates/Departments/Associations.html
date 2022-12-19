@@ -1,10 +1,42 @@
-{% extends 'base.html' %} {% load static %} {% block title %} {{title}} {% endblock title %}
-{% block head %}
-{% endblock%}
+{% extends 'base.html' %} {% load static %} {% block title %} Associations | {{dep}}
+{%endblock title %} {% block head %} {% endblock head %} {% block body %}
 
-<main class="min-h-[100vh] overflow-x-hidden">
-  {% include 'Departments/Hero.html'%}
+{% include 'Departments/Hero.html' %}
 
-  <h1 class="text-4xl font-bold text-center text-gray-800 h-screen w-screen">{{route}}</h1>
-{% block body %}
-{% endblock%}
+
+<section class="md:px-24  pt-24 px-6" id="content">
+  <h3 class="text-3xl font-semibold text-center mt-11">Associations</h3>
+  <p class="text-center text-xl mt-4">{{about.about}}</p>
+
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+
+    <div class=" w-full space-y-16 mt-11 ">
+
+      {% for item  in associations %}
+      <div class="w-full flex flex-col justify-center items-center">
+
+        <img src="{{item.image.url}}" alt="Associationimg">
+
+        <h2 class="uppercase  text-2xl md:text-4xl font-semibold mt-5 text-center">{{item.title}}</h2>
+        <p class="mt-6 text-center md:px-16">{{item.data}}</p>
+
+        <a href="{{item.link}}" target="_blank" class="text-[#007FFF] font-bold mt-11">{{item.linkname}}</a>
+
+      </div>
+      {% endfor %}
+
+
+    </div>
+  </div>
+
+</section>
+
+{% include 'components/gallery.html'%}
+{% include 'Departments/Contact.html'%}
+{% endblock body %}

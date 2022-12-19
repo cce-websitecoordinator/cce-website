@@ -9,12 +9,11 @@ admin.site.register(Gallery)
 admin.site.register(Faculty)
 admin.site.register(Role)
 admin.site.register(UpcomingEvents)
-admin.site.register(CCEinMedia)
-admin.site.register(CCEManagement)
-admin.site.register(GoverningBody)
 admin.site.register(Alumni)
 admin.site.register(AlumniCommittee)
 admin.site.register(Recruiters)
+admin.site.register(Hero_Image)
+admin.site.register(Facilities)
 
 
 

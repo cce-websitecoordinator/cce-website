@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    /* max-width: 1350px; */
+}
+
+.menu-container {
+    background: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.menu-container a {
+    background: #f8f8f8;
+    border-radius: 16px;
+    border: 2px solid #f8f8f8;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    color: #808080;
+    min-width: max-content;
+}
+
+.menu-container a:hover {
+    border: 2px solid #007fff;
+    border-radius: 16px;
+    color: #007fff;
+    opacity: 100%;
+}
+
+.menu-container a:hover .image {
+    opacity: 100%;
+}
+
+.menu-container a .image {
+    width: 24px;
+    opacity: 50%;
+    display: block;
+}
+
+.menu-container a .image img {
+    display: block;
+    width: 100%;
+}
+
+header {
+    height: 100px;
+}
+
+#spotlight {
+    background-image: url(./../assets/images/facilities.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px);
+}
+
+#spotlight h2 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 80px;
+}
+
+#sub-container {
+    padding: 100px 0;
+    background-color: #e5e5e5;
+}
+
+#sub-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#sub-container .top-card {
+    margin-bottom: 40px;
+}
+
+#sub-container .top-card h2 {
+    color: #1a1c1e;
+    font-weight: 400;
+    font-size: 33px;
+}
+
+#sub-container .top-card p {
+    color: #a3a3a3;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+#sub-container .facilities {
+    display: flex;
+    gap: 73px;
+}
+
+#sub-container .facilities .left-card {}
+
+#sub-container .facilities .right-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sub-container .facilities .right-card .cards {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 70px;
+}
+
+#sub-container .facilities .right-card .cards:last-child {
+    margin-bottom: 0;
+}
+
+#sub-container .facilities .right-card .cards:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+#sub-container .facilities .right-card .cards .content {
+    width: 70%;
+}
+
+#sub-container .facilities .right-card .cards .content h2 {
+    font-weight: 400;
+    font-size: 33px;
+    margin-bottom: 16px;
+}
+
+#sub-container .facilities .right-card .cards .content p {
+    font-weight: 400;
+    color: #1a1c1e;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.005em;
+}
+
+#sub-container .facilities .right-card .cards .image {
+    width: 30%;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+}
+
+#sub-container .facilities .right-card .cards .image img {
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+/* contact us*/
+
+#contact-us {
+    background: rgba(139, 197, 63, 0.6);
+    padding: 60px 100px;
+}
+
+#contact-us {}
+
+#contact-us h2 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 64px;
+    margin-bottom: 51px;
+}
+
+#contact-us .contact-container {
+    display: flex;
+    gap: 33px;
+}
+
+#contact-us .contact-container .contact {}
+
+#contact-us .contact-container .contact p {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #1a1c1e;
+    margin-bottom: 53px;
+}
+
+#contact-us .contact-container .contact .name {
+    font-weight: 700;
+    font-size: 27px;
+    color: #1a1c1e;
+    margin-bottom: 10px;
+}
+
+#contact-us .contact-container .contact a {
+    font-weight: 500;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: #1a1c1e;
+    margin-bottom: 10px;
+}
+
+#contact-us .contact-container .contact a:last-child {
+    margin-bottom: 0;
+}
+
+#contact-us .contact-container .contact a .icon {
+    display: inline-block;
+    width: 24px;
+}
+
+#contact-us .contact-container .contact a .icon img {
+    display: block;
+    width: 100%;
+}
+
+/* COMPUTER SOCIETY OF INDIA */
+
+#computer-society {
+    display: flex;
+    gap: 100px;
+}
+
+#computer-society div.left {
+    width: 30%;
+}
+
+#computer-society div.right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+#computer-society div.right .logo {
+    margin-bottom: 50px;
+    width: 396px;
+}
+
+#computer-society div.right .logo img {
+    display: block;
+    width: 100%;
+}
+
+#computer-society div.right h2 {
+    color: #1a1c1e;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#computer-society div.right p {
+    font-weight: 500;
+    text-align: center;
+    font-size: 18px;
+    color: #1a1c1e;
+    margin-bottom: 32px;
+}
+
+#computer-society div.right a {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: #007fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#computer-society div.right a .icon {
+    width: 27px;
+    height: 27px;
+}
+
+#computer-society div.right a .icon img {
+    display: block;
+    width: 100%;
+}

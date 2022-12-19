@@ -1,187 +1,203 @@
-
-{% load static %}
-{#{% load static tailwind_tags %} activate this in production to use Tailwind CSS #}
+{% load static %} {#{% load static tailwind_tags %} activate this in production to use Tailwind CSS #}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %} | CCE</title>
+ <!-- include material-icons -->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{%  static  'favicons/favicon-32x32.png'  %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{%  static  'favicons/favicon-16x16.png'  %}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{%  static  'favicons/favicon.ico'  %}"
+      type="image/x-icon"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> 
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{% endblock title %} | CCE</title>
-
-
-  {#{% tailwind_css %} activate this in production to use Tailwind CSS #}
-
-
-
-  {#Favicons Sections#}
-  <!-- <link rel="apple-touch-icon" sizes="180x180" href="{%  static  'favicons/apple-touch-icon.png'  %}"> -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{%  static  'favicons/favicon-32x32.png'  %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{%  static  'favicons/favicon-16x16.png'  %}">
-  <link rel="shortcut icon" href="{%  static  'favicons/favicon.ico'  %}" type="image/x-icon">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- <link rel="manifest" href="{%  static  'favicons/site.webmanifest'  %}"> -->
-
-  {# Google fFonts And Font-Awsome Icones#}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="{%  static  'css/department.css'  %}">
-
-  
-  
+    <link rel="stylesheet" href="{%  static  'css/department.css'  %}" />
 
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
-  <script src="https://cdn.tailwindcss.com" ></script>
-  
-  {# Custom CSS and JS  #}
-  <script>
-    // script to log the request  the website is making to external APIs/CDNs
-    const observer2 = new PerformanceObserver((entries) => {
-      let req = document.getElementById('requests');
-      entries.getEntriesByType("resource").forEach(res => req.innerText=res.toJSON().name)
-    });
-    observer2.observe({ entryTypes: ["resource"] });
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {# Custom CSS and JS #}
+
+    <script src="{%  static  'js/base.js'  %}" defer></script>
+    <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
+    <style>
+      .glass {
+        background:rgba(0, 0, 0, 0.51);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(9.5px);
+      }
+    </style>
+
+    {% block head %}{% endblock head %}
+  </head>
+
+  <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
+    <header>
+      <div class="relative">
+
+        {% block topbar %}{% endblock topbar %} 
+      </div>
+      {% with request.resolver_match.url_name as url_name %}
+       {# Navbar Segment #}
+       <div class="relative">
+         {% include 'components/_partials/navbar.html'%} {% endwith %}
+       </div> 
+    </header>
+
+    {% block body %} {% endblock body %} {% include 'components/infoScroller.html'%} {# Footer Segment #}
+
+    <footer
+      class="w-[100vw] bg-[#252929] h-auto bottom-0 relative overflow-x-clip"
+    >
+      {% with request.resolver_match.url_name as url_name %} {% if url_name == 'home' %}
+      <div class="p-5 w-full flex justify-center items-center flex-col">
+        <div
+          class="w-[90%] p-5 flex md:space-x-7 justify-center flex-wrap space-y-5 md:space-y-0"
+        >
+          <div
+            class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center"
+          >
+            <div
+              class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center"
+            >
+              <i class="fa-solid fa-location-dot fa-2x"></i>
+            </div>
+            <div class="text w-[90%] text-center text-white font-medium mt-2">
+              Christ College of Engineering, Irinjalakuda, Thrissur, Kerala -
+              680125
+            </div>
+          </div>
+          <div
+            class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center"
+          >
+            <div
+              class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center"
+            >
+              <i class="fa-solid fa-phone fa-2x"></i>
+            </div>
+            <div class="text w-[90%] text-center text-white font-medium mt-2">
+              Office 0480 <br />
+              2825355
+            </div>
+          </div>
+
+          <div
+            class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center"
+          >
+            <div
+              class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center"
+            >
+              <i class="fa-solid fa-envelope fa-2x"></i>
+            </div>
+            <div class="text w-[90%] text-center text-white font-medium mt-2">
+              contact@cce.edu.in
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center items-center w-[100vw] pb-11 pt-4">
+        <div
+          class="w-[90%] h-[50vh] flex justify-center items-center rounded-[15px]"
+        >
+          <div id="map" class="w-full h-full rounded-lg"></div>
+        </div>
+      </div>
+      {% endif %} {% endwith %}
+
+      <div
+        class="w-[100vw] h-auto pt-5 flex justify-center pb-11 mt-items-center"
+      >
+        <div
+          class="md:w-[75%] w-[90%] flex md:justify-between justify-center items-center flex-wrap flex-col md:flex-row md:space-y-0 space-y-11"
+        >
+          <div>
+            <img
+              src="{%  static  'images/cce.png'  %}"
+              alt="logo"
+              class="w-[280px]"
+            />
+
+            <div
+              class="socials flex space-x-6 text-white w-full justify-center text-2xl mt-4"
+            >
+              <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-youtube"></i></a>
+              <a href=""><i class="fa-brands fa-twitter"></i></a>
+              <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div
+            class="quicklinks text-sm flex flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="font-semibold mb-2 text-xl">QUICK LINKS</h1>
+            <a href="">KTU Website</a>
+            <a href="">DTE Kerala</a>
+            <a href="">CEE Kerala</a>
+            <a href="">Grivence Cell</a>
+          </div>
+          <div
+            class="affliations flex text-sm flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="text-xl font-semibold mb-2">AFFILIATIONS</h1>
+            <a href="">KTU Affliliations</a>
+            <a href="">AICTE Affliliations</a>
+          </div>
+          <div
+            class="other flex text-sm flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="text-xl font-semibold mb-2">OTHER</h1>
+            <a href="">AICTE Website</a>
+            <a href="">Results</a>
+            <a href="">Publications by our Faculty</a>
+          </div>
+        </div>
+      </div>
+      <div class="w-full pb-11 flex flex-col justify-center items-center">
+        <div class="h-[1px] bg-slate-300 w-[90%]"></div>
+        <p class="text-white text-xs pt-4">
+          Copyright &#169; 2022 Christ College of Engineering
+        </p>
+      </div>
+
+      <div
+        class="scroll-to-top fixed flex justify-center items-center text-white  bottom-6 right-11 md:bottom-4 md:right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF] z-[100]"
+        id="scroll-to-top"
+      >
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+    </footer>
+    <script src="{% static 'js/consoleimg.min.js' %}"></script>
+    <script>
+      consoleimg.load("static/images/cceCompressed.png", {size: 300, color: '#FFFFFF'})
   </script>
-  <script src="{%  static  'js/base.js'  %}" defer></script>
-  <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
-  <style>
-  .glass{
-background: rgba( 255, 255, 255, 0.35 );
-backdrop-filter: blur( 9.5px );
--webkit-backdrop-filter: blur( 9.5px );
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-  }
-  </style>
-  
-  {% block head %}{% endblock head %}
-</head>
-
-<body class="overflow-x-hidden relative snap-y snap-mandatory">
-  {% comment %} <div class="intial_loader w-[100vw] h-[100vh] z-[99999] bg-black grid place-items-center fixed overflow-y-hidden " id="loader">
-    <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" srcset="">
-    <h1 class="text-white text-center"> Loading data from:
-    <span id="requests" class="text-white  text-center text-xs"></span></h1>
-
-  </div> {% endcomment %}
-  <header>
-  {% block topbar %}{% endblock topbar %}
-
-    {% with request.resolver_match.url_name as url_name %}
-
-    {# Navbar Segment #}
-  {% include 'components/_partials/navbar.html'%}
-  {% endwith %}
-  </header>
-
-  {% block body %} {% endblock body %}
-
-  {% include 'components/infoScroller.html'%}
-  {# Footer Segment #}
-
-
-
-<footer class="w-[100vw]  bg-[#252929] h-auto  bottom-0 relative overflow-x-clip">
-  {% with request.resolver_match.url_name as url_name %}
-  {% if url_name == 'home' %}
-  <div class="p-5 w-full flex justify-center items-center flex-col">
-    <div class="w-[90%] p-5 flex md:space-x-7 justify-center flex-wrap space-y-5 md:space-y-0">
-      <div class="w-[300px] bg-[#686868] h-[190px] rounded-[25px] flex flex-col justify-center items-center">
-        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
-
-          <i class="fa-solid fa-location-dot fa-2x"></i>
-        </div>
-        <div class="text w-[90%] text-center text-white font-medium mt-2">Christ College of Engineering,
-          Irinjalakuda, Thrissur,
-          Kerala - 680125</div>
-      </div>
-      <div class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center">
-        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex  justify-center items-center">
-          <i class="fa-solid fa-phone fa-2x"></i>
-
-        </div>
-        <div class="text w-[90%] text-center text-white font-medium mt-2">Office
-          0480 <br> 2825355</div>
-      </div>
-
-      <div class="w-[300px] bg-[#686868] h-[180px] rounded-[25px] flex flex-col justify-center items-center">
-        <div class="logo rounded-full w-[80px] h-[80px] bg-white flex justify-center items-center">
-
-          <i class="fa-solid fa-envelope fa-2x"></i>
-
-        </div>
-        <div class="text w-[90%] text-center text-white font-medium mt-2">contact@cce.edu.in</div>
-      </div>
-    </div>
-  </div>
-  <div class=" flex justify-center items-center w-[100vw] pb-11   pt-4">
-
-    <div class="w-[90%] h-[50vh] flex justify-center items-center rounded-[15px]">
-      <div id="map" class="w-full  h-full rounded-lg"></div>
-    </div>
-  </div>
-  {% endif %}
-  {% endwith %}
-
-  <div class="w-[100vw] h-auto pt-5 flex justify-center pb-11 mt-items-center">
-    <div class="md:w-[75%] w-[90%] flex md:justify-between justify-center items-center flex-wrap flex-col md:flex-row md:space-y-0 space-y-11">
-      <div>
-        <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]">
-
-
-        <div class="socials flex space-x-6 text-white w-full justify-center text-2xl mt-4">
-          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-          <a href=""><i class="fa-brands fa-instagram"></i></a>
-          <a href=""><i class="fa-brands fa-youtube"></i></a>
-          <a href=""><i class="fa-brands fa-twitter"></i></a>
-          <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-      </div>
-
-      <div class="quicklinks text-sm flex  flex-col text-white space-y-4 text-center">
-        <h1 class="font-semibold mb-2 text-xl ">QUICK LINKS</h1>
-        <a href="">KTU Website</a>
-        <a href="">DTE Kerala</a>
-        <a href="">CEE Kerala</a>
-        <a href="">Grivence Cell</a>
-      </div>
-      <div class="affliations flex text-sm  flex-col text-white space-y-4 text-center">
-        <h1 class="text-xl font-semibold mb-2">AFFILIATIONS</h1>
-        <a href="">KTU Affliliations</a>
-        <a href="">AICTE Affliliations</a>
-      </div>
-      <div class="other flex  text-sm flex-col text-white space-y-4 text-center">
-        <h1 class="text-xl  font-semibold mb-2">OTHER</h1>
-        <a href="">AICTE Website</a>
-        <a href="">Results</a>
-        <a href="">Publications by
-          our Faculty</a>
-      </div>
-
-    </div>
-
-  </div>
- <div class="w-full pb-11 flex flex-col justify-center items-center">
-  <div class="h-[1px] bg-slate-300 w-[90%]"></div>
-  <p class="text-white text-xs pt-4">Copyright 	&#169; 2022 Christ College of Engineering</p>
-
- </div>
-  
-
-  <div
-    class="scroll-to-top fixed flex justify-center items-center text-white bottom-4 right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF] z-[100]"
-    id="scroll-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </div>
-
-</footer>
-{% block script %}{% endblock script %}
-</body>
-
-
+    {% block script %}{% endblock script %}
+  </body>
 </html>

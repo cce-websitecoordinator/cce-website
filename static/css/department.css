@@ -163,3 +163,19 @@
   .prev_button:hover {
   opacity: 1;
   }
+
+
+  @media screen and (max-width: 768px) {
+  .slider_circle_10 .active .img{
+    width: 200px;
+    height: 200px;
+    
+  }
+  .slider_circle_10 .prev1 .img,
+  .slider_circle_10 .next1 .img{
+    width: 150px;
+    height: 150px;
+
+  }
+    
+  }

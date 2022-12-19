@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+
+{% load static %} {% block title %} Alumini {% endblock title %}
+ {% block head %}
+<link href="{% static 'css/alumini.css' %}" rel="stylesheet"/>
+{% endblock head %}
+{% block body %}
+
+<main>
+    <div class="bg-img relative" style="background-image: url('../static/images/Alumini/Alumni.png')">
+        <div class="bg-wrapper">
+          <div class="relative">
+            <h1 class="bg-CCE place-items-center text-center font-black tracking-[20px] md:text-[54rem] text-[16rem] gap:[80px] md:gap-[40px] relative">CCE</h1>
+            <div class="Alumini-header-font-arrow">
+              <p class=" md:text-[12rem] font-semibold text-center text-[6rem] relative py-4 my-4 -top-60 md:top-6">Alumini</p>
+              <div class="w-auto h-auto ">
+                <a href="#about "><i
+                  class=" fa-solid  fa-angles-down animate-pulse text-white fa-xl  pl-auto pr-auto "
+                ></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="about" class="about md:flex  md:text-left md:px-[150px] mb-40">
+        <div class="px-12">
+          <h2 class="text-center md:text-left text-4xl font-bold pb-4 pt-[50px] ">ALUMINI</h2>
+          <p class="text-center md:text-left text-2xl">Morbi accumsan bibendum ut cursus libero egestas. In pharetra nunc arcu mauris ac enim nisi. Leo sed nibh eu pharetra sed ac quis sit. Venenatis urna lectus tortor hac tellus convallis. Proin diam massa nulla purus at. Volutpat neque nulla auctor aliquet tincidunt donec. Aliquam donec vestibulum quis nec urna non mauris. Ut semper aliquet diam lobortis integer commodo. Adipiscing imperdiet a dictumst risus a mauris. Mi ut tempor cursus etiam velit sem. Quis felis ac amet sem commodo non at. Et a nulla volutpat dui tempus aliquam eu sagittis.
+            Aenean facilisis ornare scelerisque in nascetur. Non hendrerit ac nulla lorem mus. Felis sit quam fermentum in tempus. At pellentesque duis id semper nullam bibendum. Placerat convallis sapien pulvinar arcu viverra faucibus. Faucibus lobortis hendrerit tincidunt cras purus odio purus. Sem ornare ultricies ac facilisis. Habitant vestibulum sit faucibus quam bibendum. Nunc varius iaculis cras nec hendrerit lectus gravida. Amet nunc id tortor malesuada purus fames hendrerit. Purus neque sed convallis urna lorem sit. Est egestas at rhoncus risus mauris volutpat ullamcorper nulla. Feugiat sed mollis et at turpis.</p>
+        </div class="">
+          <img class="pt-[50px] px-12 md:min-w-[695px] max-h-[419px]" src="{% static 'images/Alumini/Alumini-students.png'  %}"/>
+      </div>
+      <h1 class="text-center text-5xl font-bold py-12">Commitee</h1>
+      <div class=" flex justify-center font-sans overflow-hidden pb-36">
+        <div class="w-full lg:w-5/6 ">
+            <div class="bg-white shadow-md rounded my-4 ">
+                <table class="min-w-max w-full table-auto">
+                    <thead>
+                        <tr class="bg-blue-100 text-gray-600 uppercase text-3xl leading-normal">
+                            <th class="py-4 text-center">Name</th>
+                            <th class="py-4 text-center">Designation</th>
+                            <th class="py-4 text-center">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-2xl font-light ">
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-4 text-center">Amal C P</td>
+                            <td class="py-4 text-center">Lead</td>
+                            <td class="py-4 text-center">Lead</td> 
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-4 text-center">Amal C P</td>
+                            <td class="py-4 text-center">Lead</td>
+                            <td class="py-4 text-center">Lead</td> 
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-4 text-center">Amal C P</td>
+                            <td class="py-4 text-center">Lead</td>
+                            <td class="py-4 text-center">Lead</td> 
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-4 text-center">Amal C P</td>
+                            <td class="py-4 text-center">Lead</td>
+                            <td class="py-4 text-center">Lead</td> 
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-4 text-center">Amal C P</td>
+                            <td class="py-4 text-center">Lead</td>
+                            <td class="py-4 text-center">Lead</td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="text-center text-5xl font-bold py-12">Testimonials</h1>
+
+    <h1 class="text-center text-5xl font-bold py-16">Memorandum</h1>
+    <div class="md:mx-[180px] mx-12 my-12 bg-slate-500 md:min-h-[1330px] md:max-w-[1336px]">
+    </div>
+    <h1 class="text-center text-5xl font-bold py-16">By Laws</h1>
+    <div class="md:mx-[180px] mx-12 my-12 bg-slate-500 md:min-h-[1330px] md:max-w-[1336px]">
+    </div>
+</main>
+
+
+{% endblock body %}

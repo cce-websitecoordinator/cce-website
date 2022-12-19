@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% load static %} {% block title %} Management {% endblock title %}
+ {% block head %}
+
+{% endblock head %}
+{% block body %}
+<main >
+
+    {% include 'components/Hero_section.html' %}
+<section class="px-24 w-full text-center ">
+<h1 class="text-4xl my-11 font-bold">Christ Educational and Charitable Trust</h1>
+<div class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center ">
+    {%for item in management_data%}
+    <div class="bg-white shadow-md px-4 py-1 rounded-xl w-fit ">
+        <img src="{{item.img.url}}" alt="hero_img" class=" h-[7] w-full rounded-xl bg-gray-300">
+        <div class="space-y-1 mt-6">
+
+            <h1 class="text-xl font-bold">{{item.name}}</h1>
+            <p class="text-sm text-gray-500 ">{{item.designation}}</p>
+            <p class="text-xs text-gray-500 ">{{item.title}}</p>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+</section>
+</main>
+
+
+
+
+    {% include 'components/gallery.html' %}
+
+{% endblock  %}

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'departments',
+    'aboutCCE',
+    'Administration',
     'storages',
 
     # 'tailwind', // activate this in production to use Tailwind CSS
@@ -176,8 +178,8 @@ DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 # Jazzmin settings
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "slate",
-    "dark_mode_theme": "slate",
+    "theme": "cerulean",
+    "dark_mode_theme": "cerulean",
 }
 
 
