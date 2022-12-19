@@ -68,9 +68,9 @@ class Context:
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(department=dep)
             case "labs":
-                self.labs = Laboratories.objects.filter(department=dep)
+                self.labs = Laboratories.objects.filter(department=dep).order_by('faculties__priorities').distinct()
             case "events":
-                self.events = Events.objects.filter(department=dep).order_by('-date')
+                self.events = Events.objects.filter(department=dep).order_by('date')
             case "achievements":
                 self.achivements = Achivements.objects.filter(department=dep)
     def data(self):
