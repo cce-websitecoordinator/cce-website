@@ -34,7 +34,7 @@ def campuslife_page(request):
 
 
 def arts_page(request):
-    gallery_imgs = Gallery.objects.all()
+    gallery_imgs = Gallery.objects.all().filter(category="Arts")
     context = {"gallery":gallery_imgs}
     return render(request, 'arts.html', context=context)
 
@@ -46,7 +46,7 @@ def nirf_page(request):
 
 
 def gallery_page(request):
-    gallery_imgs = Gallery.objects.all()
+    gallery_imgs = Gallery.objects.order_by('?')
     context = {"gallery":gallery_imgs}
     return render(request, 'gallery.html', context=context)
 

@@ -34,7 +34,9 @@
   <div>
         <div class="slide-track bg-white">
         {% for item in gallery %}
-            <img src="{{item.image.url}}" class="slide " alt="happenings-img" srcset="">
+        {% if 'img' in item.type %}
+        <img src="{{item.image.url}}" class="slide " alt="happenings-img" srcset="">
+        {% endif %}
       {% endfor %}
       </div>
     </div>
