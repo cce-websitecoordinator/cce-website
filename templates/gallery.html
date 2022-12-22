@@ -78,13 +78,17 @@
   <div class="h-24"></div>
   <h1 class="text-center w-full py-24 text-6xl font-bold pt-24 ">CCE Gallery </h1>
   <div id="gallery" class="">
-    {% comment %} <video class="vid" controls>
-      <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-      </source>
-    </video> {% endcomment %}
     {% for item in gallery %}
-
+    {% if 'vdo' in item.type %}
+    <div class="relative z-[100]" id="video--container">
+      <video  controls  class="z-[50] relative">
+      <source src="{{item.video.url}}" type="video/mp4" id="Myvid">
+      </source>
+    </video> 
+  </div>
+    {% else %}
     <img src="{{item.image.url}}" class="img-responsive">
+    {% endif %}
     {% endfor %}
 
   </div>
@@ -115,14 +119,9 @@
     });
      $("#myModal").click(function () {
       $("#myModal").toggleClass("hidden");
+      
     }); 
-
-    $("video").click(function () {
-      var v = $("video > source");
-      var t = v.attr("src");
-      $(".modal-body").html("<video class='model-vid' controls><source src='" + t + "' type='video/mp4'></source></video>");
-      $("#myModal").modal();
-    });
+      
   });//EOF Document.ready
 </script>
 {% endblock script %}
