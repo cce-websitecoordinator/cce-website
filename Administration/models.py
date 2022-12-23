@@ -44,3 +44,22 @@ class IQACFormationNotice(models.Model):
         return self.notice.name
     class Meta:
         verbose_name_plural = "IQAC Formation Notice"
+
+
+class PTAExecutiveCommitee(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "PTA Executive Commitee"
+
+class PTAMembers(models.Model):
+    name = models.CharField(max_length=100)
+    tudent_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "PTA  Members"

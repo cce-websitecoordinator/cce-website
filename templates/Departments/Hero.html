@@ -1,7 +1,7 @@
 {% load static %}
-<section class="home_section relative h-[100vh] overflow-clip">
+<section class="home_section relative md:h-[100vh] h-[90vh] overflow-clip">
   {% if 'vdo' in hero_img.type %}
-  <div class="w-[100vw] h-[100vh] -z-1">
+  <div class="w-[100vw] md:h-[100vh] h-[90vh] -z-1">
     <video src="{{hero_img.video.url}}" autoplay muted loop
       class="w-full h-full object-cover object-center absolute"></video>
     <div class="absolute inset-0 bg-[#00000066]"></div>
@@ -15,13 +15,13 @@
     </div>
     <div
       class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
-      <h3 class="text-white text-2xl">Department of</h3>
-      <p class="text-6xl text-white">{{title}}</p>
+      <h3 class="text-white md:text-2xl">Department of</h3>
+      <p class="md:text-6xl text-3xl text-white">{{title}}</p>
     </div>
 
   </div>
   {% else %}
-  <div class="w-[100vw] h-[100vh] -z-1">
+  <div class="w-[100vw] md:h-[100vh] h-[90vh] -z-1">
     <img src="{{hero_img.image.url}}" 
       class="w-full h-full object-cover object-center absolute"></img>
     <div class="absolute inset-0 bg-[#00000066]"></div>
@@ -35,13 +35,13 @@
     </div>
     <div
       class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
-      <h3 class="text-white text-2xl">Department of</h3>
-      <p class="text-6xl text-white">{{title}}</p>
+      <h3 class="text-white md:text-2xl">Department of</h3>
+      <p class="md:text-6xl text-3xl text-white">{{title}}</p>
     </div>
 
   </div>
   {% endif %}
-  <div class="absolute w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch">
+  <div class="absolute w-[100vw] md:h-[100vh] h-[90vh] top-0 flex justify-center items-stretch">
     <div class="flex flex-col justify-center items-center text-center">
       <h1 class="text-4xl md:text-6xl text-white font-bold">{{name}}</h1>
     </div>

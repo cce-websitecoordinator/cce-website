@@ -177,5 +177,11 @@
     height: 150px;
 
   }
+  .slider_circle_10 .slider-desc h3{
+    font-size:15px;
+  }
+  .slider_circle_10 .slider-desc p{
+    font-size:10px;
+  }
     
   }

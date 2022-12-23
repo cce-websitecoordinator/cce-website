@@ -5,7 +5,7 @@
     {% include 'Departments/Hero.html' %}
     <section class="md:px-24  pt-24 px-6" id="content" >
         <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
-        <p class="text-center text-xl mt-4 text-justify mb-11">{{about.about}}</p>
+        <p class="text-center text-sm md:text-xl mt-4 text-justify mb-11">{{about.about}}</p>
 
         <div class="flex gap-10 lg:flex-row flex-col">
             <div class="col-span-1 flex justify-center items-center flex-col">
@@ -125,7 +125,7 @@
                     <div class="hidden  pl-3 space-y-4 " id="psos-data">
                         {% for item in psos %}
                         <div >
-                            <h3 class="md:text-xl font-semibold">PEO-{{forloop.counter}}</h3>
+                            <h3 class="md:text-xl font-semibold">PSO-{{forloop.counter}}</h3>
                             <p class="text-gray-600 pl-4">{{item.data}}</p>
                         </div>
                         {% endfor %}

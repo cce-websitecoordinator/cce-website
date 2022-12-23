@@ -1,22 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Admission {% endblock title %} {% block head %}
     <link rel="stylesheet" href="/static/css/admission.css" />
-    <script
-      src="https://kit.fontawesome.com/78057bbc72.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Saira+Condensed"
-      rel="stylesheet"
-    />
     {% endblock head %}
     {% block body %}
-    <main>
-      <div class="adm-header">
-        <h1>Admission</h1>
-        <div class="adm-arrow">
-          <i class="fa-solid fa-angles-down animate-pulse text-white fa-xl"></i>
-        </div>
-      </div>
+      {% include 'components/Hero_section.html' %}
       <div class="adm-timeline-wrapper">
         <div class="adm-details-wrapper">
           <h2>Admission<br />Details</h2>
@@ -276,5 +262,4 @@
           </div>
         </div>
       </div>
-    </main>
   {% endblock body %}

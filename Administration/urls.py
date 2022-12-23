@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("governing_body", views.governing_body, name="Governing_Body"),
+    path("pta", views.pta_page, name="PTA"),
+    path("office/<str:slug>", views.office_page, name="Office"),
     path('iqac', views.iqac_page, name='iqac'),
 ]
 
