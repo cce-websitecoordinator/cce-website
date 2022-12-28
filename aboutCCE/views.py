@@ -1,12 +1,18 @@
 from django.shortcuts import render
 
 from aboutCCE.models import *
-from website.models import Faculty, Hero_Image
+from website.models import Faculty, Gallery, Hero_Image
 
 # Create your views here.
 def management_page(request):
     management_data = Management.objects.all()
-    context = {"management_data": management_data}
+    hero_img = Hero_Image.objects.filter(page="management").first()
+    context = {
+        "management_data": management_data,
+         'hero_img':hero_img,
+         "hero_title":'Management',
+         'gallery':Gallery.objects.all(),
+         }
     return render(request, 'aboutCCE/management.html',context=context)
 
 def directors_desk_page(request):

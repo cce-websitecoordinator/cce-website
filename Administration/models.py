@@ -63,3 +63,11 @@ class PTAMembers(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "PTA  Members"
+class ProfileHighlights(models.Model):
+    qulaification = models.CharField(max_length=500)
+    choices = (("principal","Principal"),("exedir","Executive Director"))
+    designation = models.CharField(max_length=100,choices=choices)
+    def __str__(self):
+        return self.choices[0]
+
+

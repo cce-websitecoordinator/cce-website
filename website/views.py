@@ -10,13 +10,14 @@ def home_page(request):
     updates = HomeUpdates.objects.all()
     events =  HomeEvents.objects.all()
     gallery_imgs = Gallery.objects.all()
-    upcomingEvents = UpcomingEvents.objects.filter(date__lte=datetime.date.today())
+    upcomingEvents = UpcomingEvents.objects.all().filter(date__lte=datetime.date.today())
     recruiters = Recruiters.objects.all()
     recruiters3 = recruiters.order_by('?')
     recruiters2 = recruiters.order_by('?')
+    achivements = Achivements.objects.order_by('?')
     # recruiters2 = shuffle(recruiters2)
 
-    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3}
+    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3,"achivements":achivements}
     return render(request, 'home.html', context=context)
 
 

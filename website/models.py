@@ -1,3 +1,4 @@
+import datetime
 from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
@@ -151,8 +152,15 @@ class Hero_Image(models.Model):
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.page+"---"+self.image.name + self.video.name
-    
     class Meta:
         verbose_name_plural = "Hero Images"
+class Achivements (models.Model):
+    image = models.ImageField(upload_to='achivements')
+    date = models.DateField(default=datetime.date.today)
+    class Meta:
+        verbose_name = "Achivement"
+        verbose_name_plural = "Achivements"
+    def __str__(self):
+        return self.image.name
 
-
+  
