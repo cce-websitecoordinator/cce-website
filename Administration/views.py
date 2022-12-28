@@ -30,10 +30,10 @@ def pta_page(request):
     return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
 
 def office_page(request, slug):
-    staff  = Faculty.objects.filter(department=slug).order_by('priorities')
+    staff  = Faculty.objects.filter(department=slug)
     hero_img = Hero_Image.objects.filter(page="office").first()
-    context = {'hero_img':hero_img,"staff":staff}
-    return render(request,'Administration/office_{}'.format(slug),context)
+    context = {'hero_img':hero_img,"office_data":staff,"slug":slug}
+    return render(request,'Administration/office_{}.html'.format(slug),context)
 
            
         
