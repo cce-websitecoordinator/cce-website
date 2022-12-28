@@ -92,11 +92,6 @@ class Faculty(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
-    def save(self, *args, **kwargs):
-        new_image = Compress(self.image)
-        self.image = new_image
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.full_name
 
