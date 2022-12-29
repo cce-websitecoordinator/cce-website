@@ -27,9 +27,11 @@
 
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
       {% for lab in labs %}
-      <div class="flex w-full px-6 md:space-x-6  flex-col md:flex-row md:odd:flex-row-reverse  group h-auto">
-        <img src="{{lab.image.url}}" alt="{{lab.image.name}}" class="w-[400px] h-full rounded-2xl">
-        <div class="space-y-5 md:group-odd:text-end flex flex-col md:group-odd:pr-11 px-8">
+      <div class="flex w-full px-6 md:space-x-6  flex-col md:flex-row md:odd:flex-row-reverse justify-center items-center md:items-start group h-auto">
+        <div class="max-w-[400px] h-[300px] overflow-clip rounded-2xl mb-4">
+          <img src="{{lab.image.url}}" alt="{{lab.image.name}}" class="w-[400px] object-center h-full rounded-2xl">
+        </div>
+        <div class="space-y-5 md:group-odd:text-end flex flex-col md:group-odd:pr-11 px-2 md:w-[70%]">
           <h3 class="text-2xl font-bold">{{lab.name}}</h3>
           <p>{{lab.data}}</p>
           <div class="font-bold">Faculties In Charge: {% for faculty in lab.faculties.all %}{{faculty.full_name}}({{faculty.role.first}}) ,  {% endfor %}</div>

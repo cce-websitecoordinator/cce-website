@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% block title %} SC/ST Monitoring Commitee| Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+
+    <div class="flex md:flex-row flex-col w-full items-center justify-center md:px-24 px-6 my-16 gap-10">
+      <div class="md:w-1/2 ">
+        <h2 class="font-bold text-4xl mb-6">SC/ST Monitoring Commitee</h2>
+        <p class="text-gray-600">Morbi accumsan bibendum ut cursus libero egestas. In pharetra nunc arcu mauris ac enim nisi. Leo sed nibh eu pharetra sed ac quis sit. Venenatis urna lectus tortor hac tellus convallis. Proin diam massa nulla purus at. Volutpat neque nulla auctor aliquet tincidunt donec. Aliquam donec vestibulum quis nec urna non mauris. Ut semper aliquet diam lobortis integer commodo. Adipiscing imperdiet a dictumst risus a mauris. Mi ut tempor cursus etiam velit sem. Quis felis ac amet sem commodo non at. Et a nulla volutpat dui tempus aliquam eu sagittis.
+          Aenean facilisis ornare scelerisque in nascetur. Non hendrerit ac nulla lorem mus. Felis sit quam fermentum in tempus. At pellentesque duis id semper nullam bibendum. Placerat convallis sapien pulvinar arcu viverra faucibus. Faucibus lobortis hendrerit tincidunt cras purus odio purus. Sem ornare ultricies ac facilisis. Habitant vestibulum sit faucibus quam bibendum. Nunc varius iaculis cras nec hendrerit lectus gravida. Amet nunc id tortor malesuada purus fames hendrerit. Purus neque sed convallis urna lorem sit. Est egestas at rhoncus risus mauris volutpat ullamcorper nulla. Feugiat sed mollis et at turpis.</p>
+      </div>
+      <div class="md:w-1/2 ">
+        <img src="{% static 'images/500_img.png' %}" alt="Anti Ragging Cell" class="md:w-[80%]  rounded-2xl h-full object-cover">
+      </div>
+    </div>
+
+    <div class="w-full px-24 md:block hidden">
+      <table class="w-full top-[100px] sticky ">
+        <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full">
+          <tr class="grid grid-cols-4">
+            <th>NAME</th>
+            <th>DESIGNATION</th>
+            <th>ROLE</th>
+            <th>EMAIL</th>
+          </tr>
+        </thead>
+     
+        <tbody class=''>
+          {% for item in sc_st_cell_data%}
+          <tr class="grid grid-cols-4 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td>{{item.name}}</td>
+            <td>{{item.designation}}</td>
+            <td>{{item.role}}</td>
+            <td>{{item.email}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="w-full px-6 md:hidden space-y-3">
+      {% for item in sc_st_cell_data%}
+      <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+        <div class="flex justify-between items-center">
+
+          <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
+        
+        </div>
+        <div class="flex justify-between  mt-4">
+          <div class="text-start">
+            <p class="text-gray-500">Designation</p>
+            <h1>{{item.designation}}</h1>
+          </div>
+          <div class="text-start">
+            <p class="text-gray-500">Role</p>
+            <h1>{{item.role}}</h1>
+          </div>
+        </div>
+        <div class="flex justify-between  mt-4">
+          <div class="text-start">
+            <p class="text-gray-500">Email</p>
+            <h1>{{item.email}}</h1>
+          </div>
+          
+        </div>
+        
+      </div>
+      {% endfor %}
+
+    </div>
+
+    
+
+
+    
+    
+  </section>
+
+  <div class="w-full text-center my-11 text-[#007FFF] flex justify-center items-center">
+    <a class="text-2xl font-semibold">Click Here to enter Grivence
+     <span class="material-symbols-outlined">
+      link
+      </span>
+    </a>
+  </div>
+</main>
+
+{% include 'components/gallery.html' %} {% endblock %}

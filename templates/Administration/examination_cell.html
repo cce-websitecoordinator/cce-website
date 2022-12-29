@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Examiniation Cell|
+Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 px-7 mt-11" id="content">
+    <div class="w-full space-y-16 mt-11">
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
+        
+
+        <div
+          class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+        >
+          {%for faculty in faculties.faculties.all%}
+          
+          <div
+            class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
+          >
+            <div class="overflow-clip h-[280px] rounded-xl">
+              <img
+                src="{{faculty.image.url}}"
+                alt="hero_img"
+                class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out"
+              />
+            </div>
+            <div class="space-y-1 mt-1 text-center">
+              <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
+              <p class="text-xs text-gray-500">
+                {{faculty.role.all|join:", "}}
+              </p>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="w-full md:flex justify-center items-center my-11 gap-10">
+      <a href="" class="border-[1px] border-[#007FFF] text-[#007FFF]  px-4 p-2 rounded-xl flex items-center"><span class="material-symbols-outlined mx-2">
+        description
+        </span>
+        
+        Rules And Regulation</a>
+      <a href="" class="bg-[#007FFF] text-white font-bold p-2 rounded-xl">Grievance Redressal for Exams</a>
+    </div>
+  </section>
+</main>
+
+{% include 'components/gallery.html' %} {% endblock %}

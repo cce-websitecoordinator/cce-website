@@ -8,6 +8,9 @@ urlpatterns = [
     path("pta", views.pta_page, name="PTA"),
     path("office/<str:slug>", views.office_page, name="Office"),
     path('iqac', views.iqac_page, name='iqac'),
+    path('anti_ragging_cell', views.anti_ragging_cell_page, name='anti_ragging_cell'),
+    path('sc_st_committee_cell', views.sc_st_monitoring_cell_page, name='sc_st_committee_cell'),
+    path('examination_cell', views.examination_cell_page, name='examination_cell'),
 ]
 
 if settings.DEBUG:     

@@ -41,7 +41,7 @@
 
 </section>
 
-<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 " id="content">
+<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 place-items-center" id="content">
   <div class="flex flex-col items-center  justify-center text-center h-full col-span-1 ">
     <h1 class="text-5xl font-bold mb-11">About Us</h1>
     <p class="px-11 text-justify">Christ College of Engineering (CCE), established in 2015, is affiliated to APJ Abdul
@@ -63,32 +63,10 @@
       also imparted to mould the character of the students and make them altruistic.
     </p>
 
-    <div class="grid place-content-center md:grid-cols-3 grid-cols-1 w-[90%] mt-11 px-auto">
-      <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group"
-        id='Vision'>
-        <h1 class="font-bold text-2xl mb-2 ">Vision</h1>
-        <p class="block">To be a premier institution that nurtures professionally competent and socially responsible
-          engineers through quality technical education, research and training.</p>
-      </div>
-      <div
-        class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100"
-        id='Mission'>
-        <h1 class="font-bold text-2xl mb-2 ">Mission</h1>
-        <p class="block text-left">1. Implement the best teaching-learning practices with qualified faculty and
-          supportive
-          infrastructure to impart knowledge in modern technology.
-          <br />
-          2. Create a quality education system that encourages faculty and students to involve in
-          meaningful research for the benefit of society.
-          <br />
-          3. Inculcate leadership qualities, ethical values and foster the notion of lifelong learning in
-          students.
-        </p>
-      </div>
-    </div>
+   
   </div>
 
-  <div class="relative">
+  <div class="relative w-full">
     <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0   flex-col px-6 ">
       <div class=" xl:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
         <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
@@ -132,23 +110,48 @@
   </div>
   </div>
   </div>
+  <div class="w-full  md:col-span-2  flex items-center justify-center">
+  <div class="grid place-content-center md:grid-cols-3 grid-cols-1 w-[90%] mt-11 px-auto xl:w-[50%]  justify-self-center  mx-auto ">
+    <div class="col-span-1  mx-auto p-6 text-center bg-[#c5e29f] w-full min-h-[200px] grid place-content-center group"
+      id='Vision'>
+      <h1 class="font-bold text-2xl mb-2 ">Vision</h1>
+      <p class="block">To be a premier institution that nurtures professionally competent and socially responsible
+        engineers through quality technical education, research and training.</p>
+    </div>
+    <div
+      class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100"
+      id='Mission'>
+      <h1 class="font-bold text-2xl mb-2 ">Mission</h1>
+      <p class="block text-left">1. Implement the best teaching-learning practices with qualified faculty and
+        supportive
+        infrastructure to impart knowledge in modern technology.
+        <br />
+        2. Create a quality education system that encourages faculty and students to involve in
+        meaningful research for the benefit of society.
+        <br />
+        3. Inculcate leadership qualities, ethical values and foster the notion of lifelong learning in
+        students.
+      </p>
+    </div>
+  </div>
+</div>
 </section>
 
 
 <section>
-  <div class="md:w-[80%] w-full mx-auto  my-24">
+  <div class="md:w-[80%] w-full mx-auto  my-24 overflow-x-clip">
     <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
       <h1 class="font-black text-5xl">Achivements</h1>
     </div>
 
 
     <!-- Slider main container -->
-    <div class="swiper mx-auto">
+    <div class="swiper3 ">
       <!-- Additional required wrapper -->
-      <div class="swiper-wrapper mx-auto">
+      <div class="swiper-wrapper ">
         {% for item in achivements %}
-        <div class="swiper-slide">
-          <div class="w-full">
+        <div class="swiper-slide ">
+          <div class="w-full flex items-center justify-center">
             <img src="{{item.image.url}}" class="h-[500px] rounded-xl " />
 
           </div>
@@ -428,5 +431,29 @@
     mission.querySelector('p').classList.remove('hidden')
     vision.querySelector('p').classList.add('hidden')
   })
+
+  const swiper_services3 = new Swiper('.swiper3', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    autoplay: {
+      delay: 3000,
+    },
+    slidesPerView: 3,
+
+  });
+  $(window).on('resize', function () {
+    var width = $(window).width();
+    if (width < 1000) {
+      swiper_services3.params.slidesPerView = 1;
+      swiper_services3.params.spaceBetween = 40;
+    } else {
+      swiper_services3.params.slidesPerView = 3;
+      swiper_services3.params.spaceBetween = 50;
+    }
+
+  }).resize();
+
 </script>
 {% endblock script %}

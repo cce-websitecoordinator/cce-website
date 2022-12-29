@@ -15,11 +15,11 @@
     <div class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10  text-center">
       {{hero_title}}
     </div>
-    <h1
-    class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-70 absolute inset-0 text-center font-serif "
+    <h4
+    class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
   >
     CCE
-  </h1>
+  </h4>
 
   </div>
   {% else %}
@@ -51,14 +51,14 @@
       <h1 class="text-4xl md:text-6xl text-white font-bold">{{name}}</h1>
     </div>
   </div>
-  <div
-    class="flex w-full justify-center animate-bounce z-[10] absolute bottom-24"
-    id="down-icon"
+  <a
+    class="flex w-full justify-center animate-bounce z-[9999] absolute bottom-24"
+    href="#content"
   >
     <img
       src="{%  static  'images/chevrons-down.svg'  %}"
       alt="chevrons-down"
-      class=""
+      class="z-[9999]"
     />
-  </div>
+  </a>
 </section>

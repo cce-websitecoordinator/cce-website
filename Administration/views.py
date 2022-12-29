@@ -32,8 +32,26 @@ def pta_page(request):
 def office_page(request, slug):
     staff  = Faculty.objects.filter(department=slug)
     hero_img = Hero_Image.objects.filter(page="office").first()
-    context = {'hero_img':hero_img,"office_data":staff,"slug":slug}
+    title = slug.replace("_"," ") + " (Office)"
+    print(title)
+    context = {'hero_img':hero_img,"office_data":staff,"slug":slug,'hero_title':title}
     return render(request,'Administration/office_{}.html'.format(slug),context)
 
            
         
+def  anti_ragging_cell_page(request):
+    hero_img = Hero_Image.objects.filter(page="antiraging_cell").first()
+    anti_ragging_cell_data = AntiRaggingCommittee.objects.all()
+    return render(request,'Administration/anti_raging_cell.html',context={'hero_img':hero_img,'hero_title':'Anti Ragging Committee','anti_ragging_cell_data':anti_ragging_cell_data})
+
+
+def sc_st_monitoring_cell_page(request):
+    hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_cell").first()
+    sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
+    return render(request,'Administration/sc_monitoring_commitee.html',context={'hero_img':hero_img,'hero_title':'SC/ST Monitoring Committee','sc_st_cell_data':sc_st_cell_data})
+
+def examination_cell_page(request):
+    hero_img = Hero_Image.objects.filter(page="examination_cell").first()
+    faculties = ExaminationCellFaculty.objects.all().first()
+   
+    return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties})
