@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from Administration.models import *
-from website.models import Faculty, Hero_Image
+from website.models import Faculty, Gallery, Hero_Image
 
 # Create your views here.
 def governing_body(request):
@@ -53,5 +53,5 @@ def sc_st_monitoring_cell_page(request):
 def examination_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="examination_cell").first()
     faculties = ExaminationCellFaculty.objects.all().first()
-   
-    return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties})
+    gallery = Gallery.objects.all();
+    return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties,"gallery":gallery})

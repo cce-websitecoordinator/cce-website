@@ -12,7 +12,7 @@
 
 <section>
     <h3 class="text-3xl font-semibold text-center my-11">PTA Executive Committee</h3>
-    <table class="w-[90%] mx-auto">
+    <table class="w-[90%] mx-auto hidden md:table">
         <thead class="w-full p-4 bg-[#28a9e1] h-[50px] sticky top-[12vh]">
 
             <tr class="p-4">
@@ -37,12 +37,36 @@
 
     </table>
 
+    <div class="w-full px-11 md:hidden space-y-3">
+        {% for item in PTA_executive_commitee%}
+        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+
+            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
+          
+          </div>
+          <div class="flex justify-between  mt-4 gap-6">
+            <div class="text-start">
+              <p class="text-gray-500">Designation</p>
+              <h1>{{item.designation}}</h1>
+            </div>
+            <div class="text-start">
+              <p class="text-gray-500">Phone</p>
+              <h1>{{item.phone}}</h1>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+
+      </div>
+
 </section>
 
 
 <section>
     <h3 class="text-3xl font-semibold text-center my-11">PTA  Members</h3>
-    <table class="w-[90%] mx-auto">
+    <table class="w-[90%] mx-auto hidden md:table">
         <thead class="w-full p-4 bg-[#28a9e1] h-[50px] sticky top-[12vh]">
 
             <tr class="p-4">
@@ -66,6 +90,30 @@
         </tbody>
 
     </table>
+
+    <div class="w-full px-11 md:hidden space-y-3">
+        {% for item in PTA_members%}
+        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+
+            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
+          
+          </div>
+          <div class="flex justify-between  mt-4 gap-10">
+            <div class="text-start">
+              <p class="text-gray-500">Name Of Student</p>
+              <h1>{{item.tudent_name}}</h1>
+            </div>
+            <div class="text-start">
+              <p class="text-gray-500">Phone</p>
+              <h1>{{item.phone}}</h1>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+
+      </div>
 
 </section>
 
