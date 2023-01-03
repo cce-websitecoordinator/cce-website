@@ -6,6 +6,7 @@ from website.models import *
 
 
 def home_page(request):
+    anouncement = HomeAnouncement.objects.all().first()
     testimonials = Testimonials.objects.all()
     updates = HomeUpdates.objects.all()
     events =  HomeEvents.objects.all()
@@ -15,14 +16,11 @@ def home_page(request):
     recruiters3 = recruiters.order_by('?')
     recruiters2 = recruiters.order_by('?')
     achivements = Achivements.objects.order_by('?')
-    # recruiters2 = shuffle(recruiters2)
-
-    context = {'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3,"achivements":achivements}
+    context = {"anouncement":anouncement,'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3,"achivements":achivements}
     return render(request, 'home.html', context=context)
 
 
 def academics_page(request):
-
     return render(request, 'academics.html')
 
 
@@ -32,7 +30,6 @@ def admission_page(request):
 
 def campuslife_page(request):
     return render(request, 'campuslife.html')
-
 
 
 def about_page(request):

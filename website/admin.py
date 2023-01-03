@@ -15,6 +15,7 @@ admin.site.register(Recruiters)
 admin.site.register(Hero_Image)
 admin.site.register(Facilities)
 admin.site.register(Achivements)
+admin.site.register(HomeAnouncement)
 
 
 

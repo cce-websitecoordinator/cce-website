@@ -158,4 +158,14 @@ class Achivements (models.Model):
     def __str__(self):
         return self.image.name
 
+class HomeAnouncement(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(("image"), upload_to='HomeAnouncements', height_field=None, width_field=None, max_length=None,default="HomeAnouncements/announcement.png")
+    description = models.TextField()
+    date = models.DateField(default=datetime.date.today)
+    link_name = models.CharField(max_length=100,default="")
+    link = models.URLField(max_length=100,default="")
+    def __str__(self):
+        return self.title
+
   
