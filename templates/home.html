@@ -20,8 +20,9 @@
 
 <section class="home_section relative h-[100vh] overflow-clip ">
   <div class="w-[100vw] h-[100vh] -z-1  ">
-    <video src="{% static 'images/Sunset.mp4'%}" autoplay loop
-      class="w-full absolute bottom-0 top-0 min-w-full min-h-full "></video>
+    {% comment %} <video src="{% static 'images/Sunset.mp4'%}" autoplay loop {% endcomment %}
+      {% comment %} class="w-full absolute bottom-0 top-0 min-w-full min-h-full "></video> {% endcomment %}
+      <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" />
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
   <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">

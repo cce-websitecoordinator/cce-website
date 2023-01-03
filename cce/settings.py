@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'departments',
     'aboutCCE',
     'Administration',
+    'StudentServices',
     'storages',
 
     # 'tailwind', // activate this in production to use Tailwind CSS

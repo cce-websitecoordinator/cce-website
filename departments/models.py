@@ -172,3 +172,17 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
+
+class NewsLetters(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="NewsLettersImages",default="None")
+    file = models.FileField(upload_to="NewsLetters")
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    class Meta:
+        verbose_name = ("NewsLetters")
+        verbose_name_plural = ("NewsLetterss")
+
+    def __str__(self):
+        return self.title
+
+    

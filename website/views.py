@@ -34,10 +34,6 @@ def campuslife_page(request):
     return render(request, 'campuslife.html')
 
 
-def arts_page(request):
-    gallery_imgs = Gallery.objects.all().filter(category="Arts")
-    context = {"gallery":gallery_imgs}
-    return render(request, 'arts.html', context=context)
 
 def about_page(request):
     return render(request, 'about.html')

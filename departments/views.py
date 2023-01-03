@@ -49,6 +49,7 @@ class Context:
         self.labs = None
         self.events = None
         self.achivements = None
+        self.newsletters = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -73,6 +74,8 @@ class Context:
                 self.events = Events.objects.filter(department=dep).order_by('date')
             case "achievements":
                 self.achivements = Achivements.objects.filter(department=dep)
+            case "newsletters":
+                self.newsletters = NewsLetters.objects.filter(department=dep)
     def data(self):
         '''This method returns the context'''
         return {
@@ -98,6 +101,7 @@ class Context:
             'events': self.events,
             'achivements': self.achivements,
             'contact': self.contact,
+            'newsletters': self.newsletters,
         }
 def home(request):
     return redirect('BSH/about')
