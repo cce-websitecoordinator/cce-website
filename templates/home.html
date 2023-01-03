@@ -25,15 +25,12 @@
       <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" />
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
-  <div class="absolute  w-[100vw] md:h-[100vh] top-0 flex justify-center items-stretch ">
-    <div
-      class="w-full p-[15vw] text-white z-50 md:text-7xl text-3xl md:flex hidden flex-col justify-center items-start ">
+  <div class="absolute  inset-0  flex flex-col justify-center items-center space-y-6 ">
+    <div class="w-[180px] h-[180px]">
 
-      <p class=" font-extralight">The</p>
-      <p class="font-black">Most Preferred</p>
-      <p class=" font-extralight">private self-financing</p>
-      <p class=" font-extralight">Engineering college</p>
+      <img src="{% static 'images/cce_square.png' %}" alt="cce_Logo" class="w-full h-full">
     </div>
+      <h1 class="text-3xl font-black text-white md:text-5xl uppercase text-center">Christ College of Engineering And Technology</h1>
   </div>
   <a href="#content" class="flex w-full justify-center animate-bounce z-[50]  absolute bottom-24" id="down-icon">
 
@@ -152,8 +149,8 @@
       <div class="swiper-wrapper ">
         {% for item in achivements %}
         <div class="swiper-slide ">
-          <div class="w-full flex items-center justify-center">
-            <img src="{{item.image.url}}" class="h-[500px] rounded-xl " />
+          <div class="w-full flex items-center justify-center h-[500px] max-w-[400px] overflow-clip object-center">
+            <img src="{{item.image.url}}" class="rounded-xl h-full object-center" />
 
           </div>
 

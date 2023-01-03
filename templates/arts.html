@@ -100,34 +100,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute bottom-0 left-[135px]">
-                            <div class="flex justify-between">
-                                <div class="bg-[{{team.color}}] rounded-lg px-2">
-                                    <div class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0">
-                                        <p class="text-[{{team.color}}] text-3xl font-bold text-center pt-1 ">
-                                            {{team.won}}
-                                        </p>
-                                    </div>
-                                    <p class="text-white text-md text-center mb-4 font-medium">
-                                        Won
-                                    </p>
-                                </div>
-                            </div>
+                        <div
+                        class="absolute bottom-0 right-1 flex bg-[{{team.color}}] rounded-lg px-2"
+                      >
+                        <div>
+                          <div
+                            class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0"
+                          >
+                            <p
+                              class="text-[{{team.color}}] font-bold text-3xl text-center pt-1"
+                            >
+                              {{team.lost}}
+                            </p>
+                          </div>
+                          <p class="text-white text-md text-center mb-4 font-medium">
+                            Lost
+                          </p>
                         </div>
-                        <div class="absolute bottom-0 right-1">
-                            <div class="flex justify-between">
-                                <div class="bg-[{{team.color}}] rounded-lg px-2">
-                                    <div class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0">
-                                        <p class="text-[{{team.color}}] font-bold text-3xl text-center pt-1">
-                                            {{team.lost}}
-                                        </p>
-                                    </div>
-                                    <p class="text-white text-md text-center mb-4 font-medium">
-                                        Lost
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                          <div
+                            class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0"
+                          >
+                            <p
+                              class="text-[{{team.color}}] text-3xl font-bold text-center pt-1 "
+                            >
+                              {{team.won}}
+                            </p>
+                          </div>
+                          <p class="text-white text-md text-center mb-4 font-medium">
+                            Won
+                          </p>
                         </div>
+                      </div>
+                        
                     </div>
                 </div>
                 <div class="card-back bg-[{{team.color}}] flex-col">
