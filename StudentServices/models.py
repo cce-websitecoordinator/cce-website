@@ -1,5 +1,7 @@
 from django.db import models
 
+from website.models import Faculty
+
 # Create your models here.
 class Artsupdates(models.Model):
     title = models.CharField(max_length=100)
@@ -68,3 +70,29 @@ class SportsGallery(models.Model):
     image = models.ImageField(upload_to='arts/gallery')
     def __str__(self):
         return self.image.name
+
+
+class NssFaculty(models.Model):
+    faculty = models.ManyToManyField(Faculty)
+
+
+class NssStudents(models.Model):
+    name = models.CharField(max_length=100)
+    year = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='nss/students')
+    def __str__(self):
+        return self.name
+
+class NssGallery(models.Model):
+    image = models.ImageField(upload_to='nss/gallery')
+    def __str__(self):
+        return self.image.name
+
+class NssEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='nss/events')
+    def __str__(self):
+        return self.title

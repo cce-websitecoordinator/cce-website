@@ -1,5 +1,5 @@
 from django.db import models
-
+import uuid
 from website.models import Faculty
 
 # Create your models here.
@@ -75,26 +75,61 @@ class DepUpdates(models.Model):
 
 class Associations(models.Model):
     title = models.CharField(max_length=150)
-    data = models.CharField(max_length=500)
+    short_description = models.CharField(max_length=500,default="None")
+    data = models.TextField()
     image = models.ImageField(upload_to="AssociationsImages")
+    hero_image = models.ImageField(upload_to="AssociationsImages/Hero_images",default="None")
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     linkname = models.CharField(max_length=100)
-    link = models.URLField()
-
     def __str__(self):
         return self.title
 
+
+class AssociationsEvents(models.Model):
+    title = models.CharField(max_length=150)
+    subtitle = models.CharField(max_length=150)
+    short_description = models.CharField(max_length=500,default="None")
+    assosiation = models.ForeignKey(Associations, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="AssociationsImagesEvents")
+    def __str__(self):
+        return self.title
+  
+class AssociationTeamMembers(models.Model):
+    name = models.CharField(max_length=150)
+    designation = models.CharField(max_length=150)
+    image = models.ImageField(upload_to="Association")
+    assosiation = models.ForeignKey(Associations, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
+   
 
 class ProfessionalBodies(models.Model):
     title = models.CharField(max_length=150)
-    data = models.CharField(max_length=500)
+    short_description = models.CharField(max_length=500,default="None")
+    image = models.ImageField(upload_to="ProfessionalBodiesImages",default="None")
+    hero_image = models.ImageField(upload_to="ProfessionalBodiesImages/Hero_images",default="None")
+    data = models.TextField()
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     linkname = models.CharField(max_length=100)
-    link = models.URLField()
+    def __str__(self):
+        return self.title
+class ProfessionalBodiesEvents(models.Model):
+    title = models.CharField(max_length=150)
+    subtitle = models.CharField(max_length=150)
+    short_description = models.CharField(max_length=500,default="None")
+    ProfessionalBodies = models.ForeignKey(ProfessionalBodies, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="ProfessionalBodiesImagesEvents")
     def __str__(self):
         return self.title
 
-
+class ProfessionalBodiesTeamMembers(models.Model):
+    name = models.CharField(max_length=150)
+    designation = models.CharField(max_length=150)
+    image = models.ImageField(upload_to="ProfessionalBodies")
+    ProfessionalBodies = models.ForeignKey(ProfessionalBodies, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 class SyllabusPDFS(models.Model):
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to="SyllabusPDFS")

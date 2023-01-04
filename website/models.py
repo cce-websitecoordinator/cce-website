@@ -11,10 +11,10 @@ class Role(models.Model):
         return self.role
 
 class Testimonials(models.Model):
-    full_name = models.CharField(max_length=30)
-    role = models.CharField(max_length=15)
-    department = models.CharField(max_length=50)
-    quote = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=50)
+    role = models.CharField(max_length=150)
+    department = models.CharField(max_length=150)
+    quote = models.CharField(max_length=500)
     image = models.ImageField(upload_to="testimonials")
     batch = models.CharField(max_length=10)
 

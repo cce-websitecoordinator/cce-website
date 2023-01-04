@@ -8,7 +8,7 @@ def arts_page(request):
     gallery_imgs = ArtsGallery.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="arts").first
     context = {'arts_updates':arts_updates,"events":ArtsEvents.objects.all(),"teams":artsTeamStatus.objects.all(),"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Arts"}
-    return render(request, 'arts.html',context=context)
+    return render(request, 'StudentServices/arts.html',context=context)
 
 
 
@@ -19,4 +19,8 @@ def sports_page(request):
     teams = SportsTeamStatus.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="sports").first
     context = {'arts_updates':arts_updates,"events":events,"teams":teams,"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Sports"}
-    return render(request, 'sports.html',context=context)
+    return render(request, 'StdentServices/sports.html',context=context)
+
+def nss_page(request):
+   
+    return render(request, 'StudentServices/nss.html',context={})

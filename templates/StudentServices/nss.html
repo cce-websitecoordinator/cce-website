@@ -1,0 +1,171 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Arts {% endblock title %} {% block head %}
+<link href="{% static 'css/arts.css' %}" rel="stylesheet" />
+<link href="../static/css/carousel.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script defer src="{% static '/js/carousel.js' %}"></script>
+{% endblock head %} {% block body %}
+<main class="text-sm">
+    {% include 'components/Hero_section.html' %}
+    <div id="about" class="about py-4 pt-10 px-4">
+        <h2 class="text-center text-6xl font-poppins font-semibold pt-6 pb-12">
+            About
+        </h2>
+        <p class="text-center text-sm md:text-xl font-poppins md:px-16">
+            Christ College Of Engineering provides a wide range of opportunities to
+            its students in the form of Arts and other activities. Making sure that
+            the students are not only mentally but physically fit had been a major
+            priority set since the beginning.
+        </p>
+    </div>
+    <div class="overall lg:flex py-4 lg:px-[150px] mb-12 px-4">
+        {% with arts_updates as side_updates %}{% include 'Departments/Updates.html'%}{%endwith %}
+        <div class="carousel ml-auto mr-auto pl-0 pr-0 w-[300px] md:w-[700px] lg:py-[100px] md:px-[100px]"></div>
+    </div>
+
+    <section class='my-11 relative'>
+    <h1 class="text-center text-6xl font-bold pt-[10px] pb-8 overflow-hidden">
+        Events
+    </h1>
+    <div class="swiper3 relative" >
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper ">
+          <!-- Slides -->
+          {% for event in events %}
+          <div class="swiper-slide ">
+
+            <div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center">
+                <div class="img-event">
+                    <img class="w-7/8 md:max-w-[400px] min-h-[400px] ml-auto mr-auto p-4" src="{{event.image.url}}" />
+                </div>
+                <div class="px-4">
+                    <h1 class="text-center lg:text-left text-4xl py-2 font-semibold">
+                        {{event.title}}
+                    </h1>
+                    <h2 class="text-center lg:text-left text-2xl py-2 font-medium">
+                        {{event.sub_title}}
+                    </h2>
+        
+                    <h2 class="text-justify lg:text-left text-lg py-2">
+                        {{event.description|safe}}
+                    </h2>
+                    <p class='text-blue-500'>
+
+                        {{event.date|date:"d M Y"}}
+                    </p>
+                </div>
+        
+            </div>
+
+
+
+          </div>
+          {% endfor %}
+          
+         
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination "></div>
+      
+      </div>
+    
+
+    </section>
+
+    <div class="cards-overall my-4 mt-8">
+        {% for team in teams %}
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="card-front">
+                    <div class="h-full relative">
+                        <div
+                            class="border-[12px] border-[{{team.color}}] bg-[{{team.color}}] rounded-3xl h-full shadow-2xl">
+                            <img src="{{team.image.url}}" class="w-full h-full relative" />
+                        </div>
+                        <div class="absolute top-0 left-0">
+                            <div class="flex justify-between">
+                                <div class="bg-[{{team.color}}] pt-3 pl-3 pr-1 pb-1 rounded-lg w-full">
+                                    <p class="text-white text-3xl p-1 font-semibold capitalize">
+                                        {{team.teamname}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-5 left-5">
+                            <div class="flex justify-between">
+                                <div class=" h-[80px]  bg-[{{team.color}}] rounded-xl px-4 ">
+                                    <p class="text-white text-lg pl-2 pt-1 pb-0">Score</p>
+                                    <p class="text-white font-bold text-3xl pl-6 pr-6 pb-2 pt-0">
+                                        {{team.score}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                        class="absolute bottom-0 right-1 flex bg-[{{team.color}}] rounded-lg px-2"
+                      >
+                        <div>
+                          <div
+                            class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0"
+                          >
+                            <p
+                              class="text-[{{team.color}}] font-bold text-3xl text-center pt-1"
+                            >
+                              {{team.lost}}
+                            </p>
+                          </div>
+                          <p class="text-white text-md text-center mb-4 font-medium">
+                            Lost
+                          </p>
+                        </div>
+                        <div>
+                          <div
+                            class="bg-white justify-center items-center rounded-lg px-2 m-3 h-[44px] mb-0"
+                          >
+                            <p
+                              class="text-[{{team.color}}] text-3xl font-bold text-center pt-1 "
+                            >
+                              {{team.won}}
+                            </p>
+                          </div>
+                          <p class="text-white text-md text-center mb-4 font-medium">
+                            Won
+                          </p>
+                        </div>
+                      </div>
+                        
+                    </div>
+                </div>
+                <div class="card-back bg-[{{team.color}}] flex-col">
+                    <h1 class="text-center text-3xl font-black py-4 uppercase">
+                        {{team.teamname}}
+                    </h1>
+                    <img src="{{team.logo.url}}" class="w-full" />
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include 'components/gallery.html' %}
+</main>
+{% endblock %}
+ {% block script %}
+ 
+ 
+ <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+ <script>
+    const swiper = new Swiper('.swiper3', {
+    speed: 400,
+    spaceBetween: 100,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+      },
+  });
+  </script>
+{% endblock script %}

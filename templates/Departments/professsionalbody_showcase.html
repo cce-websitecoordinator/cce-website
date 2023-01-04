@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{professional_body.title}} {% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+
+
+
+{% block body %}
+<section class="home_section relative h-[100vh] overflow-clip ">
+    <div class="w-[100vw] h-[100vh] -z-1  ">
+        <img src="{{professional_body.hero_image.url}}" class= "w-full h-full object-cover object-center absolute" />
+    </div>
+    <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
+    <div class="absolute  inset-0  flex flex-col justify-center items-center space-y-6 ">
+      <div class="w-[180px] h-[180px]">
+  
+        <img src="{{professional_body.image.url}}" alt="cce_Logo" class="w-full h-full">
+      </div>
+        <h1 class="text-3xl font-black text-white md:text-5xl uppercase text-center">{{professional_body.title}}</h1>
+    </div>
+    <a href="#content" class="flex w-full justify-center animate-bounce z-[50]  absolute bottom-24" id="down-icon">
+  
+      <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+    </a>
+  
+  </section>
+
+  <section class="xl:px-24 px-6  my-11 lg:mx-24  ">
+    <div class="flex md:flex-row flex-col items-center  gap-10 lg:w-[80%] mx-auto">
+      <div>
+
+        <h2 class="text-2xl md:text-3xl font-bold my-4">About</h2>
+        <p class="text-gray-700 ">{{professional_body.data}}</p>
+      </div>
+      <div>
+        <div class="md:w-[330px] md:h-[330px] h-[280px] w-[280px]">
+          
+          <img src="{{professional_body.image.url}}" alt="cce_Logo" class="w-full h-full ">
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+
+  <section class='my-11 relative bg-gray-50 p-6'>
+    <h1 class="text-center text-4xl font-bold pt-[10px] pb-8 overflow-hidden">
+        Events
+    </h1>
+    <div class="swiper3 relative" >
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper ">
+          <!-- Slides -->
+          {% for event in events %}
+          <div class="swiper-slide ">
+
+            <div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center">
+                <div class="img-event">
+                    <img class=" md:max-w-[400px] max-h-[400px] ml-auto mr-auto p-4" src="{{event.image.url}}" />
+                </div>
+                <div class="px-4">
+                    <h1 class="text-center lg:text-left text-2xl py-2 font-semibold">
+                        {{event.title}}
+                    </h1>
+                    <h2 class="text-center lg:text-left text-xl py-2 font-medium">
+                        {{event.subtitle}}
+                    </h2>
+        
+                    <h2 class="text-justify lg:text-left text-gray-600 py-2">
+                        {{event.short_description|safe}}
+                    </h2>
+                    <p class='text-blue-500'>
+
+                        {{event.date|date:"d M Y"}}
+                    </p>
+                </div>
+        
+            </div>
+
+
+
+          </div>
+          {% endfor %}
+          
+         
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination "></div>
+      
+      </div>
+    
+
+    </section>
+
+    <section class="my-11">
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Our Team</h1>
+        
+
+        <div
+          class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+        >
+          {%for member in members%}
+          
+          <div
+            class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
+          >
+            <div class="overflow-clip h-[280px] rounded-xl">
+              <img
+                src="{{member.image.url}}"
+                alt="hero_img"
+                class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out"
+              />
+            </div>
+            <div class="space-y-1 mt-1 text-center">
+              <h1 class="text-xl font-bold">{{member.name}}</h1>
+              <p class="text-xs text-gray-500">
+                {{member.designation}}
+              </p>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </section>
+    {% include 'components/gallery.html' %}
+{% endblock body %}
+{% block script %}
+ 
+ 
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+   const swiper = new Swiper('.swiper3', {
+   speed: 400,
+   spaceBetween: 100,
+   autoplay: {
+     delay: 2500,
+     disableOnInteraction: false,
+   },
+   slidesPerView: 1,
+   loop: true,
+   pagination: {
+       el: '.swiper-pagination',
+     },
+ });
+ </script>
+{% endblock script %}
