@@ -1,9 +1,14 @@
+
 {% extends 'base.html' %} {% load static %} {% block title %} Admission {% endblock title %} {% block head %}
+{% comment %} inorder to achive fast delivery of the website the mediam  {% endcomment %}
+{% comment %} screen and above screen views are styled usind pure css {% endcomment %}
+ {% comment %} and the rest using Tailwind which should be addressed in future {% endcomment %}
     <link rel="stylesheet" href="/static/css/admission.css" />
     {% endblock head %}
     {% block body %}
       {% include 'components/Hero_section.html' %}
-      <div class="adm-timeline-wrapper">
+      <div class="hidden md:block">
+      <div class="adm-timeline-wrapper md">
         <div class="adm-details-wrapper">
           <h2>Admission<br />Details</h2>
 
@@ -262,4 +267,6 @@
           </div>
         </div>
       </div>
+
+    </div>
   {% endblock body %}

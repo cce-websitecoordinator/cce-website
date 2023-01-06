@@ -11,22 +11,6 @@ main {
   gap: 90px;
 }
 
-.adm-header {
-  background-image: url(/static/images/Admission/Background.png);
-  background-size: 100% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.adm-header > h1 {
-  color: white;
-  font-size: 8vw;
-  font-weight: 600;
-  margin: 170px 0px 130px 0px;
-}
 
 .adm-arrow {
   color: white;
@@ -308,3 +292,4 @@ main {
   flex-direction: column;
   gap: 25px;
 }
+

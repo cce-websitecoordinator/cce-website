@@ -9,7 +9,7 @@ def home_page(request):
     anouncement = HomeAnouncement.objects.all().first()
     testimonials = Testimonials.objects.all()
     updates = HomeUpdates.objects.all()
-    events =  HomeEvents.objects.all()
+    events =  HomeEvents.objects.all().order_by('?')
     gallery_imgs = Gallery.objects.all()
     upcomingEvents = UpcomingEvents.objects.all().filter(date__lte=datetime.date.today())
     recruiters = Recruiters.objects.all()
