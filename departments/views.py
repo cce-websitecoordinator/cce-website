@@ -40,6 +40,7 @@ class Context:
         self.HOD = None
         self.vission = None
         self.mission = None
+        self.objectives = None
         self.poes = None
         self.pos = None
         self.psos = None
@@ -53,6 +54,7 @@ class Context:
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
+                self.objectives = Objectives.objects.filter(department=dep)
                 self.mission = Mission.objects.filter(department=dep)
                 self.poes = POES.objects.filter(department=dep)
                 self.pos = POS.objects.filter(department=dep)
@@ -90,6 +92,7 @@ class Context:
             'hero_img': self.hero_image,
             'dep_updates': self.dep_updates,
             'vission': self.vission,
+            'objectives':self.objectives,
             'mission': self.mission,
             'poes': self.poes,
             'pos': self.pos,
@@ -102,6 +105,7 @@ class Context:
             'achivements': self.achivements,
             'contact': self.contact,
             'newsletters': self.newsletters,
+
         }
 def home(request):
     return redirect('BSH/about')
