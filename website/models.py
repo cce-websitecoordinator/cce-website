@@ -163,3 +163,60 @@ class HomeAnouncement(models.Model):
         return self.title
 
   
+DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+
+class FundedProjects(models.Model):
+    name = models.CharField(max_length=100)
+    principal_investigator = models.CharField(max_length=100)
+    duration =  models.CharField(max_length=100)
+    STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
+    status = models.CharField(choices=STATUS,max_length=100)
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    funding_agency = models.CharField(max_length=100)
+    grand_sanctioned = models.IntegerField()
+    grand_recived = models.IntegerField()
+    publictaion_details = models.FileField(upload_to="research/FundedProjects")
+    def __str__(self):
+        return self.name
+
+class AcademicConsultancy(models.Model):
+    name = models.CharField(max_length=100)
+    year = models.IntegerField()
+    name_of_client = models.CharField(max_length=100)
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
+    work_status = models.CharField(max_length=100,choices=STATUS)
+    amount_recived = models.IntegerField()
+    publictaion_details = models.FileField(upload_to="research/AcademicConsultancy")
+    def __str__(self):
+        return self.name
+
+class ResearchGuides(models.Model):
+    name = models.CharField(max_length=100)
+    department  = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+
+    year = models.IntegerField()
+    def __str__(self):
+        return self.name
+
+class Conference(models.Model):
+    name = models.CharField(max_length=100)
+    STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
+    status = models.CharField(max_length=100,choices=STATUS)
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    duration = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class AcademicPartnerShip(models.Model):
+    name = models.CharField(max_length=100)
+    year = models.IntegerField()
+    name_of_client = models.CharField(max_length=100)
+    STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
+    status = models.CharField(max_length=100,choices=STATUS)
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    amount  = models.IntegerField()
+    def __str__(self):
+        return self.name

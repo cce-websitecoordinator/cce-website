@@ -1,0 +1,108 @@
+
+<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full">
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 lg:hidden text-center"
+        id="sidebar-header">
+        <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
+            {%ifequal 'index' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
+            {%endifequal%}
+
+            {%ifequal 'parternship' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Academic Partnership / Internship </span>
+            {%endifequal%}
+
+            {%ifequal 'consultancy' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Academic Consultancy  </span>
+            {%endifequal%}
+            
+
+            {%ifequal 'funded_projects' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Funded Projects</span>
+            {%endifequal%}
+
+            {%ifequal 'research_guides' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>KTU approved Research Guides </span>
+            {%endifequal%}
+
+            {%ifequal 'publications' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty & Student Publications </span>
+            {%endifequal%}
+            {%ifequal 'conference' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Conference & Symposium  </span>
+            {%endifequal%}
+
+           
+        </div>
+    </div>
+    <div class="w-full flex items-center justify-center lg:hidden">
+        <span class="material-symbols-outlined text-4xl hover:text-[#007FFF]" id="icon-sidebar-expand">
+            expand_more
+        </span>
+    </div>
+    <div class="space-y-4 lg:block hidden" id="sidebar-content">
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'index' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'index' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
+            </a>
+        </div>
+     
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'parternship' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'parternship' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Academic Partnership / Internship </span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'consultancy' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'consultancy' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Academic Consultancy </span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'funded_projects' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'funded_projects' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Funded Projects </span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'research_guides' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'research_guides' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>KTU approved Research Guides </span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'publications' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'publications' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty & Student Publications </span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'conference' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'conference' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Conference & Symposium </span>
+            </a>
+        </div>
+        
+    </div>
+</aside>
+{% block script %}
+<script>
+    $('#icon-sidebar-expand').click(
+        function () {
+            $('#sidebar-header').toggleClass('hidden');
+            $('#sidebar-content').toggleClass('hidden');
+            $("#icon-sidebar-expand").toggleClass("rotate-180");
+        }
+    )
+
+</script>
+
+{% endblock script %}

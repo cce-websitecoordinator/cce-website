@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block title %} About  - Research & Consultancy {% endblock title %} {% block head %} {% endblock head %} 
+{% block body %} {%include 'components/Hero_section.html' %}
+
+<section class="md:px-24 pt-24 px-6 my-11" id="content">
+  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research</h3>
+
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">
+        Home / Research & Consultancy / About 
+      </p>
+
+     {%include 'researchAndConsultancy/sidebar.html'%}
+    </div>
+
+    <div class=" pt-6">
+      <h2 class="text-3xl font-bold">About</h2>
+      <p class="text-gray-700 ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+  </div>
+</section>
+{% endblock body %} {% block script %}
+<script></script>
+{% endblock script %}
