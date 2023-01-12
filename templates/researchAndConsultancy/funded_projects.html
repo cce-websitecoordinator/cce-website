@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} About - Research & Consultancy {% endblock title %}
+{% extends 'base.html' %} {% load static %} {% block title %} Funded Projects - Research & Consultancy {% endblock title %}
 {%block head %} {% endblock head %}
 {% block body %} {%include 'components/Hero_section.html' %}
 
@@ -31,7 +31,8 @@
           </div>
         </div>
         <div class="table-row-group">
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of CS</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of CS</div>
           {% for item in cse_projects%}
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
@@ -41,13 +42,15 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of EC</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of EC</div>
           {% for item in ece_projects%}
-         
+
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
             <div class=" text-center px-2">{{item.principal_investigator}}</div>
@@ -56,11 +59,13 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of EE</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of EE</div>
           {% for item in eee_projects%}
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
@@ -70,11 +75,13 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of CE</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of CE</div>
           {% for item in ce_projects%}
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
@@ -84,11 +91,13 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of ME</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of ME</div>
           {% for item in me_projects%}
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
@@ -98,11 +107,13 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">Department Of BSH</div>
+          <div class="w-full bg-[#E0F2FF] text-center min-h-[50px] text-2xl text-gray-700 text-center font-bold">
+            Department Of BSH</div>
           {% for item in bsh_projects%}
           <div class="w-auto flex justify-evenly min-h-[50px] py-6">
             <div class=" text-center px-2">{{item.name}}</div>
@@ -112,15 +123,16 @@
             <div class=" text-center px-2">{{item.funding_agency}}</div>
             <div class=" text-center px-2">{{item.grand_sanctioned}}</div>
             <div class=" text-center px-2">{{item.grand_recived}}</div>
-            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a></div>
+            <div class=" text-center px-2"><a href="{{item.publictaion_details.url}}" target="_blank">Open File</a>
+            </div>
           </div>
           {% endfor %}
 
-         
+
 
         </div>
 
-     
+
       </div>
     </div>
   </div>

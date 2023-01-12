@@ -5,7 +5,7 @@ from website.models import Faculty, Gallery, Hero_Image
 
 # Create your views here.
 def management_page(request):
-    management_data = Management.objects.all()
+    management_data = Management.objects.all().order_by('order')
     hero_img = Hero_Image.objects.filter(page="management").first()
     context = {
         "management_data": management_data,
@@ -16,7 +16,18 @@ def management_page(request):
     return render(request, 'aboutCCE/management.html',context=context)
 
 def directors_desk_page(request):
-    return render(request, 'aboutCCE/directors_desk.html') 
+    executive_director = Faculty.objects.filter(role__role="Executive Director").first()
+    joint_director_administration = Faculty.objects.filter(role__role="Joint Director Admin").first()
+    joint_director_finance = Faculty.objects.filter(role__role="Joint Director Finan").first()
+    hero_img = Hero_Image.objects.filter(page="directors_desk").first()
+    context = {
+        "executive_director": executive_director,
+        "joint_director_administration": joint_director_administration,
+        "joint_director_finance": joint_director_finance,
+        'hero_img':hero_img,
+         "hero_title":'Director\'s Desk',
+    }
+    return render(request, 'aboutCCE/directors_desk.html',context) 
 
 def principals_desk_page(request):
     hero_img = Hero_Image.objects.filter(page="principals_desk").first()

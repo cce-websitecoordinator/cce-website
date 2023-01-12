@@ -14,6 +14,9 @@
       <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
 
       {% include 'Departments/Sidebar.html' %}
+      <div>
+        {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
+      </div>
     </div>
 
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6">
@@ -37,9 +40,6 @@
 
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
-    <div>
-      {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
-    </div>
     <div class="w-full space-y-6 mt-11 md:mt-0">
       <h2 class="text-center text-5xl font-semibold">Handouts</h2>
 

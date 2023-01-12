@@ -22,7 +22,7 @@
         {% for item  in professional_bodies %}
       <div class="w-full flex flex-col justify-center items-center">
 
-        <img src="{{item.image.url}}" alt="Associationimg">
+        <img src="{{item.image.url}}" alt="Associationimg" class="max-w-[400px]">
 
         <h2 class="uppercase  text-2xl md:text-4xl font-semibold mt-5 text-center">{{item.title}}</h2>
         <p class="mt-6 text-center md:px-16">{{item.data}}</p>

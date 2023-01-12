@@ -1,15 +1,12 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Director's Desk {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} Director's Desk {%endblock title %} {% block head %} 
+{% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-44 px-3 w-full text-center">
     <h1 class="text-4xl my-11 font-bold">Executive Director</h1>
     <div class="w-full">
-      <img
-        src="{% static 'images/director.png' %}"
-        alt="hero_img"
-        class="w-full mx-auto"
-      />
-      <h1 class="text-4xl my-6 font-bold">Rev. Fr. John Paliakara CMI</h1>
+      <img src="{{executive_director.image.url}}" alt="executive_director" class="w-full mx-auto" />
+      <h1 class="text-4xl my-6 font-bold">{{executive_director.full_name}}</h1>
       <p class="text-2xl text-gray-400">Director</p>
       <div class="flex flex-col items-start justify-center">
         <h1 class="md:text-4xl text-2xl font-semibold mb-4">Quantification</h1>
@@ -72,14 +69,10 @@
   </section>
 
   <section class="md:px-44 px-3 w-full text-center">
-    <h1 class="text-4xl my-11 font-bold">Joint Director(Finance)</h1>
+    <h1 class="text-4xl my-11 font-bold">Joint Director (Finance)</h1>
     <div class="w-full">
-      <img
-        src="{% static 'images/fr_joy_payyappilly.jpeg' %}"
-        alt="hero_img"
-        class="w-full mx-auto"
-      />
-      <h1 class="text-4xl my-6 font-bold">Rev. Fr. Joy Payyappilly CMI</h1>
+      <img src="{{joint_director_finance.image.url}}" alt="joint_director_finance" class="w-full mx-auto" />
+      <h1 class="text-4xl my-6 font-bold">{{joint_director_finance.full_name}}</h1>
       <p class="text-2xl text-gray-400">Joint Director</p>
 
       <div class="my-11 flex flex-col items-start justify-center">
@@ -118,14 +111,10 @@
   </section>
 
   <section class="md:px-44 px-3 w-full text-center">
-    <h1 class="text-4xl my-11 font-bold">Joint Director(Administration)</h1>
+    <h1 class="text-4xl my-11 font-bold">Joint Director (Administration)</h1>
     <div class="w-full">
-      <img
-        src="{% static 'images/director.png' %}"
-        alt="hero_img"
-        class="w-full mx-auto"
-      />
-      <h1 class="text-4xl my-6 font-bold">Rev. Fr. Antony Davis CMI</h1>
+      <img src="{{joint_director_administration.image.url}}" alt="joint_director_administration" class="w-full mx-auto" />
+      <h1 class="text-4xl my-6 font-bold">{{joint_director_administration.full_name}}</h1>
       <p class="text-2xl text-gray-400">Joint Director</p>
 
       <div class="my-11 flex flex-col items-start justify-center">

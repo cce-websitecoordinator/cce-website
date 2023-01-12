@@ -30,11 +30,12 @@ def pta_page(request):
     return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
 
 def office_page(request, slug):
+    gallery = Gallery.objects.all()[:10];
     staff  = Faculty.objects.filter(department=slug)
     hero_img = Hero_Image.objects.filter(page="office").first()
     title = slug.replace("_"," ") + " (Office)"
     print(title)
-    context = {'hero_img':hero_img,"office_data":staff,"slug":slug,'hero_title':title}
+    context = {'hero_img':hero_img,"office_data":staff,"slug":slug,'hero_title':title,"gallery":gallery}
     return render(request,'Administration/office_{}.html'.format(slug),context)
 
            
