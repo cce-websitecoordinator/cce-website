@@ -182,9 +182,8 @@ class AcademicConsultancy(models.Model):
     name_of_client = models.CharField(max_length=100)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
-    work_status = models.CharField(max_length=100,choices=STATUS)
+    status = models.CharField(max_length=100,choices=STATUS)
     amount_recived = models.IntegerField()
-    publictaion_details = models.FileField(upload_to="research/AcademicConsultancy")
     def __str__(self):
         return self.name
 

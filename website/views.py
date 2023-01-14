@@ -58,9 +58,21 @@ def research_page(request,slug):
             
             return render(request, 'researchAndConsultancy/index.html',context=context)
         case 'consultancy':
-            return render(request, 'researchAndConsultancy/academic_consultancy.html')
+            context = {
+                "hero_img":Hero_Image.objects.all().filter(page="research").first(),
+                "hero_title":"Academic Consultancy",
+                "slug":slug,
+                "academic_consultancy":AcademicConsultancy.objects.all()
+            }
+            return render(request, 'researchAndConsultancy/academic_consultancy.html',context=context)
         case 'parternship':
-            return render(request, 'researchAndConsultancy/academic_partnership.html')
+            context = {
+                "hero_img":Hero_Image.objects.all().filter(page="research").first(),
+                "hero_title":"Academic Partnership",
+                "slug":slug,
+                "academic_partnership":AcademicPartnerShip.objects.all()
+            }
+            return render(request, 'researchAndConsultancy/academic_partnership.html',context=context)
         case 'conference':
             return render(request, 'researchAndConsultancy/conference.html')
         case 'funded_projects':
