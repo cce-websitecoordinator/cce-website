@@ -134,7 +134,7 @@ class Hero_Image(models.Model):
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
-    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("arts","Arts"),("sports","Sports"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.page+"---"+self.image.name + self.video.name
@@ -188,15 +188,14 @@ class AcademicConsultancy(models.Model):
         return self.name
 
 class ResearchGuides(models.Model):
-    name = models.CharField(max_length=100)
-    department  = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
-
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE , default=1)
     year = models.IntegerField()
     def __str__(self):
-        return self.name
+        return self.faculty.full_name
 
 class Conference(models.Model):
     name = models.CharField(max_length=100)
+    investor = models.CharField(("Name of Investor"), max_length=500,default="")
     STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
     status = models.CharField(max_length=100,choices=STATUS)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
@@ -216,3 +215,11 @@ class AcademicPartnerShip(models.Model):
     amount  = models.IntegerField()
     def __str__(self):
         return self.name
+
+class FacultyStudentPublications(models.Model):
+    title = models.CharField(max_length=500)
+    name = models.CharField(("Name Of Author"), max_length=300)
+    dep = models.CharField(("Department of Faculty/student"), max_length=100,choices=DEPARTMENTS)
+    journal = models.CharField(("Name Of Journal"), max_length=500)
+    year = models.CharField(("Year Of Publication"), max_length=50)
+    details = models.FileField(("Details of Publictaion"), upload_to='research/publications', max_length=100)
