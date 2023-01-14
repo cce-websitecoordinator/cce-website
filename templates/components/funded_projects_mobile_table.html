@@ -1,0 +1,40 @@
+<div class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]">
+  <div class="flex justify-between items-center">
+    <h1 class="text-xl font-bold">{{forloop.counter}}. {{item.name}}</h1>
+  </div>
+  <div class="flex justify-between mt-4 gap-4">
+    <div class="text-start">
+      <p class="text-gray-500">Principal Investigator</p>
+      <h1>{{item.principal_investigator}}</h1>
+    </div>
+    <div class="text-end">
+      <p class="text-gray-500">Duration</p>
+      <h1>{{item.duration}}</h1>
+    </div>
+  </div>
+  <div class="flex justify-between mt-4 gap-4">
+    <div class="text-start">
+      <p class="text-gray-500">Funding Agency</p>
+      <h1>{{item.funding_agency}}</h1>
+    </div>
+    <div class="text-end">
+      <p class="text-gray-600">Status</p>
+      <h1
+        class="{% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
+      >
+        {{item.status}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="flex justify-between mt-4 gap-4">
+    <div class="text-start">
+      <p class="text-gray-500">Grand Santioned</p>
+      <h1>{{item.grand_sanctioned}}</h1>
+    </div>
+    <div class="text-end">
+      <p class="text-gray-500">Grand Recived</p>
+      <h1>{{item.grand_recived}}</h1>
+    </div>
+  </div>
+</div>

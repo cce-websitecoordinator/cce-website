@@ -51,10 +51,7 @@ class UpcomingEvents(models.Model):
     title = models.CharField(max_length=80)
     sub_title = models.TextField(max_length=150)
     date = models.DateField()
-    def save(self, *args, **kwargs):
-        new_image = Compress(self.img)
-        self.img = new_image
-        super().save(*args, **kwargs)
+    
 
 
 
