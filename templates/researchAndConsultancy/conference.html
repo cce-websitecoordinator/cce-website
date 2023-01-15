@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Conference &
 Symposium - Research & Consultancy {% endblock title %} {%block head %} {%endblock head %} {% block body %} {%include 'components/Hero_section.html' %}
-
+<main class='relative bg-gray-50'>
 <section class="md:px-24 pt-24 px-6 my-11" id="content">
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
@@ -20,7 +20,7 @@ Symposium - Research & Consultancy {% endblock title %} {%block head %} {%endblo
       </h3>
       <div class="block xl:table w-full">
         <div
-          class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
+          class="hidden xl:block bg-blue-300 rounded-t-xl  sticky top-[10vh]"
         >
           <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
             <div class="text-center px-2">Duration</div>
@@ -32,9 +32,9 @@ Symposium - Research & Consultancy {% endblock title %} {%block head %} {%endblo
           </div>
         </div>
 
-        <div class="space-y-4 xl:space-y-0 xl:table-row-group">
+        <div class="space-y-4 ">
           {% for item in conferences%}
-          <div class="hidden xl:block">
+          <div class="hidden xl:block bg-white my-3">
             <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
               <div class="text-center px-2">{{item.duration}}</div>
               <div class="text-center px-2">{{item.name}}</div>
@@ -88,6 +88,7 @@ Symposium - Research & Consultancy {% endblock title %} {%block head %} {%endblo
     </div>
   </div>
 </section>
+</main>
 {% endblock body %} {% block script %}
 <script></script>
 {% endblock script %}

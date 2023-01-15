@@ -1,34 +1,19 @@
-{% load static %} {#{% load static tailwind_tags %} activate this in productionto use Tailwind CSS #}
+{% load static %} 
+{#{% load static tailwind_tags %} activate this in production to use Tailwind CSS #}
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en"  class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Christ College of Engineering (CCE), established in 2015, is affiliated to APJ Abdul Kalam Technological University, Thiruvananthapuram; and is recognized by AICTE, New Delhi. This college was founded at a time when venturing into starting a new engineering college was not considered as a sensible idea. In its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of Engineering has managed to create ripples on the academic front in the university examinations, so much so that today the college is being accepted as one of the best self-financing engineering colleges in Kerala. " />
     <title>{% block title %}{% endblock title %} | CCE</title>
-    <!-- include material-icons -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link
+ <!-- include material-icons -->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   <link
       rel="icon"
       type="image/png"
       sizes="32x32"
@@ -50,10 +35,11 @@
       integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    ></script>
+    ></script> 
 
     <link rel="stylesheet" href="{%  static  'css/department.css'  %}" />
 
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -63,7 +49,7 @@
     <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
     <style>
       .glass {
-        background: rgba(0, 0, 0, 0.51);
+        background:rgba(0, 0, 0, 0.51);
         backdrop-filter: blur(9.5px);
         -webkit-backdrop-filter: blur(9.5px);
       }
@@ -74,11 +60,15 @@
 
   <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
     <header>
-      <div class="relative">{% block topbar %}{% endblock topbar %}</div>
-      {% with request.resolver_match.url_name as url_name %} {# Navbar Segment #}
       <div class="relative">
-        {% include 'components/_partials/navbar.html'%} {% endwith %}
+
+        {% block topbar %}{% endblock topbar %} 
       </div>
+      {% with request.resolver_match.url_name as url_name %}
+       {# Navbar Segment #}
+       <div class="relative">
+         {% include 'components/_partials/navbar.html'%} {% endwith %}
+       </div> 
     </header>
 
     {% block body %} {% endblock body %} {% include 'components/infoScroller.html'%} {# Footer Segment #}
@@ -193,22 +183,13 @@
       </div>
       <div class="w-full pb-11 flex flex-col justify-center items-center">
         <div class="h-[1px] bg-slate-300 w-[90%]"></div>
-        <p class="text-white text-sm pt-4">
+        <p class="text-white text-xs pt-4">
           Copyright &#169; 2022 Christ College of Engineering
-        </p>
-        <p class="text-xs text-center text-gray-400 my-3">
-          Website Designed and Maintained by
-          <a
-            href="{%url 'Department' 'CSE' 'about'%}"
-            class="cursor-pointer hover:text-blue-500"
-          >
-            Department of Computer Science & Engineering</a
-          >
         </p>
       </div>
 
       <div
-        class="scroll-to-top fixed flex justify-center items-center text-white bottom-6 right-11 md:bottom-4 md:right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF] z-[100]"
+        class="scroll-to-top fixed flex justify-center items-center text-white  bottom-6 right-11 md:bottom-4 md:right-4 w-[50px] h-[50px] rounded-full bg-[#007FFF] z-[100]"
         id="scroll-to-top"
       >
         <i class="fa-solid fa-arrow-up"></i>
@@ -216,11 +197,8 @@
     </footer>
     <script src="{% static 'js/consoleimg.min.js' %}"></script>
     <script>
-      consoleimg.load("static/images/cceCompressed.png", {
-        size: 300,
-        color: "#FFFFFF",
-      });
-    </script>
+      consoleimg.load("static/images/cceCompressed.png", {size: 300, color: '#FFFFFF'})
+  </script>
     {% block script %}{% endblock script %}
   </body>
 </html>
