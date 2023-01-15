@@ -143,9 +143,7 @@
         </div>
       </div>
     </div>
-    <!-- {% comment %} </div> {% endcomment %} -->
-    <!-- </div> -->
-    </div>
+   
     <div class="w-full  md:col-span-2  flex items-center justify-center">
       <div class=" flex md:flex-row flex-col">
         <div id="msv"
@@ -224,24 +222,15 @@
             </div>
             <div class="swiper-pagination"></div>
           </div>
-
-
-
           {% endfor %}
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
         <div />
-
-
       </div>
-
   </section>
 
-  {% comment %} Events Section End{% endcomment %}
 
-
-  {% comment %} Achivements section Start {% endcomment %}
   <section>
     <div class="md:w-[80%] w-full mx-auto  my-24 overflow-x-clip">
       <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
@@ -250,7 +239,7 @@
 
 
 
-      <div class="swiper3 ">
+      <div class="swiper">
         <div class="swiper-wrapper ">
           {% for item in achivements %}
           <div class="swiper-slide ">
@@ -534,6 +523,7 @@
     slidesPerView: 3,
 
   });
+
   $(window).on('resize', function () {
     var width = $(window).width();
     if (width < 1000) {
