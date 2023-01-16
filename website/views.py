@@ -95,7 +95,7 @@ def research_page(request,slug):
             me_projects = FundedProjects.objects.all().filter(department="ME")
             ce_projects = FundedProjects.objects.all().filter(department="CE")
             bsh_projects = FundedProjects.objects.all().filter(department="BSH")
-            context = {"cse_projects":cse_projects,"ece_projects":ece_projects,'eee_projects':eee_projects,"me_projects":me_projects,"ce_projects":ce_projects,"bsh_projects":bsh_projects,"hero_title":hero_title**context_temp,}
+            context = {"cse_projects":cse_projects,"ece_projects":ece_projects,'eee_projects':eee_projects,"me_projects":me_projects,"ce_projects":ce_projects,"bsh_projects":bsh_projects,"hero_title":hero_title,**context_temp,}
             return render(request, 'researchAndConsultancy/funded_projects.html',context)
         case 'publications':
             publications = FacultyStudentPublications.objects.all()
