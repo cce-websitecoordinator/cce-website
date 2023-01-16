@@ -18,7 +18,7 @@
 {% block body %}
 
 <main class="relative">
-  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start  justify-center" id="modal">
+  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start  justify-center hidden" id="modal">
     <div class="w-[90%] md:h-[60%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
       <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2 shadow-inner rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
         close
@@ -55,12 +55,16 @@
       <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" />
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
-  <div class="absolute  inset-0  flex flex-col justify-center items-center space-y-6 ">
-    <div class="w-[180px] h-[180px]">
+  <div class="absolute  inset-0  flex flex-col justify-center items-start space-y-6 ">
+    <div class="md:w-1/2 flex justify-center">
 
-      <img src="{% static 'images/cce_square.png' %}" alt="cce_Logo" class="w-full h-full">
-    </div>
-      <h1 class="text-3xl font-black text-white md:text-5xl uppercase text-center">Christ College of Engineering And Technology</h1>
+   <h3 class="text-3xl font-bold  text-white"> CCE Transforms Your ... </br>
+    Knowladge into Wisdom </br>
+  Flair into Excellence & </br>
+  Passion into Innovation   </br>
+ </h3>
+</div>
+    
   </div>
   <a href="#content" class="flex w-full justify-center animate-bounce z-[50]  absolute bottom-24" id="down-icon">
 
@@ -83,12 +87,7 @@
       Trust. The college is a testament to the patronage enjoyed by the CMI congregation.
       <br />
       Today, Christ College of Engineering is well on its way to becoming a much sought-after destination for
-      engineering education due to the efforts of all stakeholders. Staff and students are at the center of this success
-      story. No stone is being left unturned in ensuring that along with academics, the students get the right amount of
-      exposure required for tomorrow’s successful global citizen, through the various initiatives held at this campus.
-      With the kind of transformative learning model in place here, the college is on its way to making a positive
-      impact on our society and nation at large. Career excellence is not the sole emphasis here; holistic training is
-      also imparted to mould the character of the students and make them altruistic.
+
     </p>
 
    
