@@ -2,23 +2,32 @@ import datetime
 from random import shuffle
 from django.shortcuts import render
 from website.models import *
-from django.http import Http404
+from django.http import Http404, HttpResponse
 
 
 
 def home_page(request):
-    anouncement = HomeAnouncement.objects.all().first()
-    testimonials = Testimonials.objects.all()
-    updates = HomeUpdates.objects.all()
-    events =  HomeEvents.objects.all().order_by('?')
-    gallery_imgs = Gallery.objects.all()
-    upcomingEvents = UpcomingEvents.objects.all().filter(date__lte=datetime.date.today())
-    recruiters = Recruiters.objects.all()
-    recruiters3 = recruiters.order_by('?')
-    recruiters2 = recruiters.order_by('?')
-    achivements = Achivements.objects.order_by('?')
-    context = {"anouncement":anouncement,'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3,"achivements":achivements}
-    return render(request, 'home.html', context=context)
+    """
+    This function is used to render the home page of the website.
+    :param request: The request that is sent to the server.
+    :return: The rendered html file of the home page.
+    """
+    try:
+        anouncement = HomeAnouncement.objects.all().first()
+        testimonials = Testimonials.objects.all()
+        updates = HomeUpdates.objects.all()
+        events =  HomeEvents.objects.all().order_by('?')
+        gallery_imgs = Gallery.objects.all().order_by('?')[:10]
+        upcomingEvents = UpcomingEvents.objects.all().filter(date__lte=datetime.date.today())
+        recruiters = Recruiters.objects.all()
+        recruiters3 = recruiters.order_by('?')
+        recruiters2 = recruiters.order_by('?')
+        achivements = Achivements.objects.order_by('?')
+        context = {"anouncement":anouncement,'Testimonials': testimonials, "updates":updates, "Events": events, "gallery": gallery_imgs,"upcomingEvents": upcomingEvents,"recruiters":recruiters,"recruiters2":recruiters2,"recruiters3":recruiters3,"achivements":achivements}
+        return render(request, 'home.html', context=context)
+    except Exception as ex:
+        print(ex)
+        return HttpResponse("An error occured, please contact the administrator")
 
 
 
@@ -34,17 +43,24 @@ def nirf_page(request):
 
 def gallery_page(request):
     gallery_imgs = Gallery.objects.order_by('?')
-    context = {"gallery":gallery_imgs}
-    return render(request, 'gallery.html', context)
+    if gallery_imgs:
+        context = {"gallery":gallery_imgs}
+        return render(request, 'gallery.html', context)
+    else:
+        return render(request, 'gallery.html', {"error":"No images found"})
 
 def alumini_page(request):
     return render(request, 'Alumini.html')
 
 def facilities_page(request):
+    """Displays the facilities page"""
+    facilities = Facilities.objects.all()
+    hero_img = Hero_Image.objects.all().filter(page="facilities").first()
+    hero_title = "Facilities"
     context = {
-        "facilities": Facilities.objects.all(),
-        "hero_img":Hero_Image.objects.all().filter(page="facilities").first(),
-        "hero_title":"Facilities"
+        "facilities": facilities,
+        "hero_img": hero_img,
+        "hero_title": hero_title
     }
     return render(request, 'facilities.html' ,context)
 

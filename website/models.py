@@ -41,6 +41,16 @@ class HomeEvents(models.Model):
     heading = models.CharField(max_length=30)
     sub_heading = models.CharField(max_length=50)
     sub_text = models.TextField()
+    def save(self, *args, **kwargs):
+        compressed_image1 = Compress(self.img1)
+        compressed_image2 = Compress(self.img2)
+        compressed_image3 = Compress(self.img3)
+        compressed_image4 = Compress(self.img4)                
+        self.img1 = compressed_image1
+        self.img2 = compressed_image2
+        self.img3 = compressed_image3
+        self.img4 = compressed_image4
+        super().save(*args, **kwargs)    
     def __str__(self):
         return self.heading
 

@@ -8,3 +8,4 @@ psycopg2-binary==2.9.5
 django-jazzmin==2.6.0
 django-environ==0.9.0
 uuid
+django-htmlmin==0.11.0

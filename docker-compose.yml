@@ -9,7 +9,7 @@ services:
       environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: toor
-        POSTGRES_DB: relay
+        POSTGRES_DB: cce2023
 
     web:
       build: .

@@ -63,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 
 
 ]
@@ -176,6 +178,7 @@ MEDIA_URL = f'http://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 # MEDIA_URL = S3_URL + MEDIA_ROOT
 DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
+HTML_MINIFY = True
 
 # Jazzmin settings
 
