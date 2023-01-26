@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from website.models import *
+from website.models import HomeUpdates,Gallery
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ class Context:
     def __init__(self, dep,route):
         self.dep = dep
         self.title = getDepartment(dep)
-        self.gallery = Gallery.objects.filter(department=dep)
+        self.gallery = Gallery.objects.filter(department=dep)[:10]
         self.updates = HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
