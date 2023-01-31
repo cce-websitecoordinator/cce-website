@@ -249,21 +249,6 @@
     </div>
 
 
-   
-    <div class="swiper3 ">
-      <div class="swiper-wrapper ">
-        {% for item in achivements %}
-        <div class="swiper-slide ">
-          <div class="w-full flex items-center justify-center h-[500px] max-w-[400px] overflow-clip object-center">
-            <img src="{{item.image.url}}" class="rounded-xl h-full object-center" />
-
-          </div>
-
-        </div>
-        {% endfor %}
-      </div>
-
-    </div>
 
   </div>
 </section>
@@ -324,7 +309,7 @@
 <section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
 
-  <div class="swiper w-[90%] h-[80vh]">
+  <div class="swiper w-[90%] min-h-[90vh] h-fit">
     <div class="swiper-wrapper ">
       {% for item in Testimonials %}
       <div class="swiper-slide">

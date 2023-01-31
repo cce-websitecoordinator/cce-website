@@ -91,6 +91,7 @@ class Faculty(models.Model):
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"),("administrative_staff","Administrative Staff"),("wardens","Wardens "),("supporting_staff","Supporting Staff"),("security_staff","Security Staff"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    profile = models.FileField(upload_to="faculty_profile", default = "faculty_profile.pdf")
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
     def __str__(self):
