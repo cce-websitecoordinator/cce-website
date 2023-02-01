@@ -5,6 +5,7 @@ from website.models import *
 admin.site.register(Testimonials)
 admin.site.register(HomeUpdates)
 admin.site.register(HomeEvents)
+admin.site.register(GalleryEventTypes)
 admin.site.register(Gallery)
 admin.site.register(Faculty)
 admin.site.register(Role)

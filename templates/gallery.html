@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %} {% block title %} Gallery {% endblock title %}
-{% block head %}
+{% block body %}
+{% block 'head'%}
 <style>
   #gallery {
     -webkit-column-count: 4;
@@ -9,7 +10,7 @@
     -webkit-column-gap: 20px;
     -moz-column-gap: 20px;
     column-gap: 20px;
-    
+
   }
 
   @media (max-width:1200px) {
@@ -50,8 +51,8 @@
     height: auto;
     margin: 4% auto;
 
- 
-    box-shadow:-2px 4px 10px #000;
+
+    box-shadow: -2px 4px 10px #000;
 
 
     border-radius: 8px;
@@ -70,35 +71,80 @@
     padding: 0px;
   }
 </style>
-
-{% endblock head %}
-
-{% block body %}
+{% endblock 'head' %}
 <main class='md:mx-24 mx-11 relative'>
-  <div class="h-24"></div>
+  <div class="min-h-24">
+  </div>
   <h1 class="text-center w-full py-24 text-6xl font-bold pt-24 ">CCE Gallery </h1>
-  <div id="gallery" class="mb-11">
+  <div>
+    <form method="get" action="/gallery" class="flex justify-between py-6 items-center">
+      <div class="flex space-x-4 items-center">
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="ALL" checked  />
+          <label for="ALL">ALL</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="CSE" {% ifequal dep 'CSE' %} checked {% endifequal %} />
+          <label for="CSE">CSE</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="ECE" {% ifequal dep 'ECE' %}checked{% endifequal %} />
+          <label for="ECE">ECE</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="EEE" {% ifequal dep 'EEE' %}checked{% endifequal %} />
+          <label for="EEE">EEE</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="ME" {% ifequal dep 'ME' %}checked{% endifequal %} />
+          <label for="ME">MECH</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="CE" {% ifequal dep 'CE' %}checked{% endifequal %} />
+          <label for="CE">CE</label>
+        </div>
+        <div class="space-x-2">
+          <input type="radio" name="dep" value="BSH" {% ifequal dep 'BSH' %}checked{% endifequal %} />
+          <label for="BSH">BSH</label>
+        </div>
+        <div class="space-x-2">
+          <button type="submit" class="px-2 py-1 bg-blue-500 rounded-xl">Apply</button>
+        </div>
+
+      </div>
+
+      <input type="text" name="query" placeholder="Search Gallery" class="p-2 bg-gray-300 rounded-xl">
+    </form>
+  </div>
+
+  {% if error %}
+  <div class="min-h-[60vh]  flex items-center justify-center">
+    <h1 class="md:text-6xl text-2xl font-bold text-center text-blue-600">Oops....{{error}}</h1>
+  </div> 
+   {% else %}
+    <div id="gallery" class="mb-11">
+
     {% for item in gallery %}
     {% if 'vdo' in item.type %}
     <div class="relative z-[100]" id="video--container">
-      <video  controls  class="z-[50] relative">
-      <source src="{{item.video.url}}" type="video/mp4" id="Myvid">
-      </source>
-    </video> 
-  </div>
+      <video controls class="z-[50] relative">
+        <source src="{{item.video.url}}" type="video/mp4" id="Myvid">
+        </source>
+      </video>
+    </div>
     {% else %}
     <img src="{{item.image.url}}" class="img-responsive">
     {% endif %}
     {% endfor %}
-
-  </div>
-
-
-  <div id="myModal" class="fixed inset-0  h-[100vh] w-[100vw] hidden z-[99999]">
-    <div class="modal-body p-24 h-full w-full flex justify-center items-center backdrop-blur-lg">
-      
     </div>
-  </div>
+    {% endif %}
+
+
+    <div id="myModal" class="fixed inset-0  h-[100vh] w-[100vw] hidden z-[99999]">
+      <div class="modal-body p-24 h-full w-full flex justify-center items-center backdrop-blur-lg">
+
+      </div>
+    </div>
 
 
 
@@ -115,13 +161,13 @@
       var t = $(this).attr("src");
       $(".modal-body").html("<img   class='max-h-[90vh] max-w-[90vw] rounded-xl shadow-xl' src='" + t + "'>");
       $("#myModal").toggleClass("hidden");
-      
+
     });
-     $("#myModal").click(function () {
+    $("#myModal").click(function () {
       $("#myModal").toggleClass("hidden");
-      
-    }); 
-      
+
+    });
+
   });//EOF Document.ready
 </script>
 {% endblock script %}
