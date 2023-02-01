@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% load static %} {% block title %} About - Research &
+Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {%include 'components/Hero_section.html' %}
+<main class='bg-gray-50'>
+<section class="md:px-24 pt-24 px-6 my-11" id="content">
+  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research</h3>
+
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Research & Consultancy / About</p>
+
+      {%include 'Departments/Sidebar.html'%}
+    </div>
+    
+    <div class="relative w-full">
+      <div class="">
+        {%include 'Departments/research/dropdown.html'%}
+
+      </div>
+      <div class="pt-6 w-full">
+        <h3
+          class="text-2xl md:text-4xl font-semibold text-center mt-11 w-full my-6"
+        >
+          Conference & Symposium
+        </h3>
+        <div class="block xl:table w-full">
+          <div
+            class="hidden xl:block bg-blue-300 rounded-t-xl  sticky top-[10vh]"
+          >
+            <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+              <div class="text-center px-2">Duration</div>
+              <div class="text-center px-2">Name of the Project</div>
+              <div class="text-center px-2">
+                Name of the Principal Investigator
+              </div>
+              <div class="text-center px-2">Status</div>
+            </div>
+          </div>
+  
+          <div class="space-y-4 ">
+            {% for item in conferences%}
+            <div class="hidden xl:block bg-white my-3">
+              <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+                <div class="text-center px-2">{{item.duration}}</div>
+                <div class="text-center px-2">{{item.name}}</div>
+                <div class="text-center px-2">{{item.investor}}</div>
+  
+                <div
+                  class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
+                >
+                  {{item.status}}
+                </div>
+              </div>
+            </div>
+  
+            {% comment %} mobile view starts {% endcomment %}
+            <div class="xl:hidden w-full">
+              <div
+                class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+              >
+                <div class="flex justify-between items-center">
+                  <h1 class="text-xl font-bold">
+                    {{forloop.counter}}. {{item.name}}
+                  </h1>
+                </div>
+                <div class="flex justify-between mt-4 gap-4">
+                  <div class="text-start">
+                    <p class="text-gray-500">Duration</p>
+                    <h1>{{item.duration}}</h1>
+                  </div>
+                  <div class="text-end">
+                    <p class="text-gray-600">Status</p>
+                    <h1
+                      class="{% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
+                    >
+                      {{item.status}}
+                    </h1>
+                  </div>
+                </div>
+                <div class="flex justify-between mt-4 gap-4">
+                  <div class="text-start">
+                    <p class="text-gray-500"> Name of the Principal Investigator</p>
+                    <h1>{{item.investor}}</h1>
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+            {% comment %} mobile view Ends {% endcomment %} {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{% endblock body %} {% block script %}
+<script></script>
+{% endblock script %}

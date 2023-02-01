@@ -63,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 
 
 ]
@@ -165,17 +167,16 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+AWS_S3_URL_PROTOCOL='http:'
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'cce-website-media'
-
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-# S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
+AWS_S3_CUSTOM_DOMAIN =  "www.assets.cce.edu.in"
 PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-# MEDIA_URL = S3_URL + MEDIA_ROOT
+MEDIA_URL = 'http://' + AWS_S3_CUSTOM_DOMAIN + '/' + PUBLIC_MEDIA_LOCATION + '/'
 DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
+HTML_MINIFY = True
 
 # Jazzmin settings
 

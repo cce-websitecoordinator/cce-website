@@ -41,6 +41,16 @@ class HomeEvents(models.Model):
     heading = models.CharField(max_length=30)
     sub_heading = models.CharField(max_length=50)
     sub_text = models.TextField()
+    def save(self, *args, **kwargs):
+        compressed_image1 = Compress(self.img1)
+        compressed_image2 = Compress(self.img2)
+        compressed_image3 = Compress(self.img3)
+        compressed_image4 = Compress(self.img4)                
+        self.img1 = compressed_image1
+        self.img2 = compressed_image2
+        self.img3 = compressed_image3
+        self.img4 = compressed_image4
+        super().save(*args, **kwargs)    
     def __str__(self):
         return self.heading
 
@@ -58,12 +68,18 @@ class UpcomingEvents(models.Model):
     def __str__(self) -> str:
         return self.title
 
+class  GalleryEventTypes(models.Model):
 
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
 class Gallery(models.Model):
     image = models.ImageField(upload_to="gallery",blank=True)
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
+    date = models.DateField(default=datetime.date.today)
+    event_type = models.ManyToManyField(GalleryEventTypes,default="None")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
@@ -81,6 +97,7 @@ class Faculty(models.Model):
     image = models.ImageField(upload_to="faculty", default = "faculty.jpeg")
     DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"),("administrative_staff","Administrative Staff"),("wardens","Wardens "),("supporting_staff","Supporting Staff"),("security_staff","Security Staff"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+    profile = models.FileField(upload_to="faculty_profile", default = "faculty_profile.pdf")
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null = True)
     def __str__(self):
@@ -134,7 +151,7 @@ class Hero_Image(models.Model):
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
-    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("arts","Arts"),("sports","Sports"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.page+"---"+self.image.name + self.video.name
@@ -188,15 +205,14 @@ class AcademicConsultancy(models.Model):
         return self.name
 
 class ResearchGuides(models.Model):
-    name = models.CharField(max_length=100)
-    department  = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
-
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE , default=1)
     year = models.IntegerField()
     def __str__(self):
-        return self.name
+        return self.faculty.full_name
 
 class Conference(models.Model):
     name = models.CharField(max_length=100)
+    investor = models.CharField(("Name of Investor"), max_length=500,default="")
     STATUS = (("ongoing","ONGOING"),("completed","COMPLETED"))
     status = models.CharField(max_length=100,choices=STATUS)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
@@ -216,3 +232,11 @@ class AcademicPartnerShip(models.Model):
     amount  = models.IntegerField()
     def __str__(self):
         return self.name
+
+class FacultyStudentPublications(models.Model):
+    title = models.CharField(max_length=500)
+    name = models.CharField(("Name Of Author"), max_length=300)
+    dep = models.CharField(("Department of Faculty/student"), max_length=100,choices=DEPARTMENTS)
+    journal = models.CharField(("Name Of Journal"), max_length=500)
+    year = models.CharField(("Year Of Publication"), max_length=50)
+    details = models.FileField(("Details of Publictaion"), upload_to='research/publications', max_length=100)

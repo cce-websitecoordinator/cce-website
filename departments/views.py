@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from website.models import Gallery, HomeUpdates, Faculty
+from website.models import HomeUpdates,Gallery
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ class Context:
     def __init__(self, dep,route):
         self.dep = dep
         self.title = getDepartment(dep)
-        self.gallery = Gallery.objects.filter(department=dep)
+        self.gallery = Gallery.objects.filter(department=dep)[:10]
         self.updates = HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
@@ -108,7 +108,10 @@ class Context:
 
         }
 def home(request):
-    return redirect('BSH/about')
+    return redirect('CSE/about')
+
+
+
 def Department(request, route, department):
     context = Context(department,route).data()
     match route:
@@ -131,9 +134,64 @@ def Department(request, route, department):
             case "newsletters":
                 return render(request, 'Departments/NewsLetters.html', context) 
             case "research":
-                return render(request, 'Departments/Research.html', context) 
+                return redirect('dep_research',department,'index') 
             case other:
-                raise Http404("Page Not Found")     
+                raise Http404("Page Not Found")
+
+def research_page(request,department,slug):
+    hero_image = DepHero.objects.all().filter(department = department).first()
+    context_temp = {'dep':department,'route':'research','slug':slug,'hero_img':hero_image}  
+    match slug:
+        case "index":
+            hero_title = "Research"
+            context = {"hero_title":hero_title,**context_temp} 
+            return render(request, 'Departments/research/index.html',context)
+        case 'consultancy':
+            context = {
+                
+                "hero_title":"Academic Consultancy",
+
+                "academic_consultancy":AcademicConsultancy.objects.all().filter(department=department)
+                ,**context_temp
+            }
+            return render(request, 'Departments/research/academic_consultancy.html',context)
+        case 'parternship':
+            context = {
+                
+                "hero_title":"Academic Partnership",
+               
+                "academic_partnership":AcademicPartnerShip.objects.all().filter(department=department)
+                ,**context_temp
+            }
+            return render(request, 'Departments/research/academic_partnership.html',context)
+        case 'conference':
+            context = {
+                **context_temp,
+                "hero_title":"Conference & Symposium ",
+                "conferences":Conference.objects.all().filter(department=department)
+            }
+            return render(request, 'Departments/research/conference.html',context)
+        case 'funded_projects':
+            context = {
+                **context_temp,
+                "hero_title":"Funded Projects",
+                "funded_projects":FundedProjects.objects.all().filter(department=department)
+                }
+            hero_title = "Funded Projects"
+            return render(request, 'Departments/research/funded_projects.html',context)
+        case 'publications':
+            publications = FacultyStudentPublications.objects.all()
+            context = {**context_temp,'hero_title':"Publications",'publications':publications}
+            return render(request, 'Departments/research/publications.html',context)
+        case 'research_guides':
+            research_guides = ResearchGuides.objects.all().filter(faculty__department=department)
+            context = {**context_temp,'hero_title':"KTU Approved RESEARCH GUIDES","research_guides":research_guides}
+
+            return render(request, 'Departments/research/research_guides.html',context)
+        case other:
+            raise Http404("Page Kanumanilla")
+ 
+
     
 def ProfessionalBodie(request,slug):
     context = {

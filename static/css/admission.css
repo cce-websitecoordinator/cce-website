@@ -293,3 +293,67 @@ main {
   gap: 25px;
 }
 
+@media screen and (max-width:768px) {
+  .adm-course-wrapper {
+    height: max-content;
+    text-align: end;
+    width: 100vw;
+  }
+  .adm-details-wrapper h2{
+    font-size: 2rem;
+  }
+  .adm-details-img{
+    width: 150px;
+  }
+  .adm-course-img{
+    display: none;
+  }
+  .adm-course-offer{
+    margin-left: 0px;
+    justify-content: end !important;
+    align-items: flex-end !important;
+    text-align: start !important;
+    width: 100% !important;
+  }
+  .adm-course-offer > h2{
+    font-size: 2rem;
+  }
+  .adm-course-offer > ul{
+    width: 100%;
+  }
+  .adm-course-offer > ul>li{
+    font-size: 1.2rem;
+    width: 100%;
+  }
+  .adm-timeline-single{
+    transform: translateX(0);
+    margin: 0  2rem;
+    width: 90%;
+    z-index: 1;
+  }
+  .adm-timeline-single-title-odd{
+    left: 0;
+    position: relative;
+  }
+  .adm-timeline-single-even{
+    right: 0%;
+    left: 0%;
+    position: relative;
+  }
+  .adm-timeline-single-line{
+    position: absolute;
+    left: 50%;
+    z-index: -100 !important;
+    mix-blend-mode: color-dodge;
+    display: inline-block;
+  }
+  .adm-timeline-single-even{
+    transform: translateX(0);
+  }
+  .adm-timeline-single-line-even{
+    left: 50%;
+  }
+  .adm-timeline-single-title-odd{
+    left: 0;
+  }
+}

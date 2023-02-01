@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% load static %} {% block title %} About - Research &
+Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {%include 'components/Hero_section.html' %}
+
+<main class='bg-gray-50'>
+<section class="md:px-24 pt-24 px-6 my-11" id="content">
+  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research</h3>
+
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Research & Consultancy / About</p>
+
+      {%include 'Departments/Sidebar.html'%}
+    </div>
+    
+    <div class="relative">
+      <div class="">
+        {%include 'Departments/research/dropdown.html'%}
+
+      </div>
+      <div class="pt-6 w-full">
+        <div class="block  xl:table w-full">
+          <div class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
+            <div class="w-auto grid grid-cols-8 justify-evenly min-h-[50px] py-6">
+              <div class="text-center px-2">Name of the Project</div>
+              <div class="text-center px-2">
+                Name of the Principal Investigator
+              </div>
+              <div class="text-center px-2">Duration</div>
+              <div class="text-center px-2">Status</div>
+              <div class="text-center px-2">Funding Agency</div>
+              <div class="text-center px-2">Grant Sactioned</div>
+              <div class="text-center px-2">Grant Recieved</div>
+              <div class="text-center px-2">Publication Details</div>
+            </div>
+          </div>
+  
+          <div class=" space-y-4">
+  
+            {% for item in funded_projects%}
+            <div class="hidden xl:block my-3 bg-white">
+              {% include 'components/funded_projects_xl_screen_table.html' %}
+            </div>
+            <div class="xl:hidden w-full">
+              {% include 'components/funded_projects_mobile_table.html' %}
+            </div>
+  
+            {% endfor %}
+  
+           
+  
+      
+  
+  
+  
+  
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{% endblock body %} {% block script %}
+<script></script>
+{% endblock script %}
