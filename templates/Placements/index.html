@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %} {% load static %} {% block title %} PLacemennts {% endblock title %} {% block head %}
+
+    {% endblock head %}
+    {% block body %}
+      {% include 'components/Hero_section.html' %}
+      <section class="md:px-24  pt-24 px-6" id="content" >
+        <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+        <p class="text-center text-sm mt-4 text-justify mb-11">{{about.about}}</p>
+
+        <div class="flex gap-10 lg:flex-row flex-col">
+            <div class="col-span-1 flex justify-center items-center flex-col">
+                <h2 class="font-semibold text-2xl px-4">Departments</h2>
+                <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+                {% include 'Placements/sidebar.html' %}
+            </div>
+            <div class="col-span-2 gap-10 space-y-16 mt-11 w-full">
+                <div
+                class="bg-[#D9FFA8] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+                <div class="lg:bg-[#8BC53F] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                    <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+                            assistant_navigation
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Vision</h3>
+                        <p>{{vission.vission}}</p>
+                    </div>
+                </div>
+                <div
+                class="bg-[#D4F2FF] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+                <div class="lg:bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                    <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+                
+
+                            thunderstorm
+
+                    </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Mission</h3>
+                        <ol class="space-y-3">
+                            {% for mission in mission %}
+                            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{mission.Mission}}</p></li>
+                            {% endfor %}
+                            
+                        </ol>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#D9D9D9] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+                    <div class="lg:bg-[#515151] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                        <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+                            casino
+                        </span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold z-[1]">Academic Uniqueness</h3>
+                        <ol class="space-y-3">
+                            {% for objective in objectives %}
+                            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{objective.data}}</p></li>
+                            {% endfor %}
+                            
+                        </ol>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+  {% endblock body %}
