@@ -8,20 +8,14 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-#setting up environment variables
-env = environ.Env()
-environ.Env.read_env()
 
-# setting up environment variables
-env = environ.Env()
-environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -73,7 +67,7 @@ MIDDLEWARE = [
 
 # Development Settings
 
-if env('PRODUCTION') != 'True':
+if os.getenv('PRODUCTION') != 'True':
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
     INSTALLED_APPS.append("django_browser_reload")
     DEBUG = True
@@ -104,11 +98,11 @@ WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USERNAME'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT')
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USERNAME'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
 }
 
@@ -157,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Added by manually
 # custom settings
-if env('PRODUCTION') != 'True':
+if os.getenv('PRODUCTION') != 'True':
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
     ]
@@ -169,8 +163,8 @@ INTERNAL_IPS = [
 ]
 
 AWS_S3_URL_PROTOCOL='http:'
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
 AWS_S3_CUSTOM_DOMAIN =  "www.assets.cce.edu.in"
 PUBLIC_MEDIA_LOCATION = 'media'
