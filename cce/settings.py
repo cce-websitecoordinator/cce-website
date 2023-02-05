@@ -3,7 +3,6 @@ from pickle import FALSE
 import shutil
 from pathlib import Path
 from dotenv import load_dotenv
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +15,7 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environb.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -68,7 +67,7 @@ MIDDLEWARE = [
 
 # Development Settings
 
-if os.getenv('PRODUCTION') != 'True':
+if  os.environb.get('PRODUCTION') != 'True':
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
     INSTALLED_APPS.append("django_browser_reload")
     DEBUG = True
@@ -99,11 +98,11 @@ WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USERNAME'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT')
+        'NAME':  os.environb.get('DB_NAME'),
+        'USER':  os.environb.get('DB_USERNAME'),
+        'PASSWORD':  os.environb.get('DB_PASSWORD'),
+        'HOST':  os.environb.get('DB_HOST'),
+        'PORT':  os.environb.get('DB_PORT')
     }
 }
 
@@ -152,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Added by manually
 # custom settings
-if os.getenv('PRODUCTION') != 'True':
+if  os.environb.get('PRODUCTION') != 'True':
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
     ]
@@ -164,8 +163,8 @@ INTERNAL_IPS = [
 ]
 
 AWS_S3_URL_PROTOCOL='http:'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID =  os.environb.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY =  os.environb.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
 AWS_S3_CUSTOM_DOMAIN =  "www.assets.cce.edu.in"
 PUBLIC_MEDIA_LOCATION = 'media'
