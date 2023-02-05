@@ -13,4 +13,11 @@ class  PVissionANDMission(models.Model):
         return self.name
 
 
-
+class Testimonials(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='placement/testimonials/')
+    def __str__(self):
+        return self.title

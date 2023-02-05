@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from placements.models import PVissionANDMission
+from placements.models import *
 
 from website.models import Hero_Image
 
@@ -16,5 +16,6 @@ def placement_page(request,slug):
     vission = PVissionANDMission.objects.filter(name='Vision').first()
     mission = PVissionANDMission.objects.filter(name='Mission').first()
     objectives = PVissionANDMission.objects.filter(name='objectives')
-    context = {**context_temp,vission:vission,mission:mission,objectives:objectives}
-    return render(request, 'Placements/index.html',context={**context_temp,'vission':vission,'mission':mission,'objectives':objectives})
+    testimonials = Testimonials.objects.all()
+    context = {**context_temp,'vission':vission,'mission':mission,'objectives':objectives,'testimonials':testimonials}
+    return render(request, 'Placements/index.html',context=context)
