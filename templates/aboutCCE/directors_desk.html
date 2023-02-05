@@ -2,14 +2,14 @@
 {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
-  <section class="md:px-44 px-3 w-full text-center">
+  <section class="md:px-44 px-3 w-full text-center" id="content">
     <h1 class="text-4xl my-11 font-bold">Executive Director</h1>
     <div class="w-full">
       <img src="{{executive_director.image.url}}" alt="executive_director" class="w-full mx-auto" />
       <h1 class="text-4xl my-6 font-bold">{{executive_director.full_name}}</h1>
       <p class="text-2xl text-gray-400">Director</p>
       <div class="flex flex-col items-start justify-center">
-        <h1 class="md:text-4xl text-2xl font-semibold mb-4">Quantification</h1>
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">Profile Highlights</h1>
         <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
           <li>Former manager of CHRIST Group of Institutions, Irinjalakuda.</li>
 

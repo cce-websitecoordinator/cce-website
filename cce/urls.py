@@ -1,18 +1,4 @@
-"""cce URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# Description: This file contains the URL patterns for the CCE website.
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings 
@@ -25,9 +11,8 @@ urlpatterns = [
     path('aboutCCE/', include('aboutCCE.urls')),
     path('administration/', include('Administration.urls')),
     path('student_services/', include('StudentServices.urls')),
+    path('placements/', include('placements.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
-    
-
 ]
 
 handler500 = "website.views.server_error_page"

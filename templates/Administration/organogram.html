@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  Organogram | Office {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+    <section class="py-11">
+        <img src="{% static 'images/organogram.jpeg' %}" alt="organogram" class="w-full">
+
+    </section>
+</main>
+
+{% include 'components/gallery.html' %} {% endblock %}
