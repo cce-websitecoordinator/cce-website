@@ -19,7 +19,7 @@ def sports_page(request):
     teams = SportsTeamStatus.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="sports").first
     context = {'arts_updates':arts_updates,"events":events,"teams":teams,"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Sports"}
-    return render(request, 'StdentServices/sports.html',context=context)
+    return render(request, 'StudentServices/sports.html',context=context)
 
 def nss_page(request):
    

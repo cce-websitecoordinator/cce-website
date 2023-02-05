@@ -42,8 +42,9 @@ def principals_desk_page(request):
     return render(request, 'aboutCCE/principals_desk.html',context=context)
 
 def cce_in_media_page(request):
+    hero_img = Hero_Image.objects.filter(page="cce_in_media").first()
     cce_in_media_main =  CCEinMedia.objects.all().first()
     cce_in_media_data = CCEinMedia.objects.all()[1:4]
     more_about_cce_data= MoreAboutCCE.objects.all()
-    context = {"cce_in_media_main":cce_in_media_main,"cce_in_media_data": cce_in_media_data,"more_about_cce_data": more_about_cce_data}
+    context = {"cce_in_media_main":cce_in_media_main,"cce_in_media_data": cce_in_media_data,"more_about_cce_data": more_about_cce_data,'hero_img':hero_img,"hero_title":'CCE in Media',}
     return render(request, 'aboutCCE/cce_in_media.html',context=context)
