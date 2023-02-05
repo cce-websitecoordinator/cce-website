@@ -56,3 +56,17 @@ def examination_cell_page(request):
     faculties = ExaminationCellFaculty.objects.all().first()
     gallery = Gallery.objects.all();
     return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties,"gallery":gallery})
+
+
+
+
+def organogram_page(request):
+    hero_img = Hero_Image.objects.filter(page="organogram").first()
+    gallery = Gallery.objects.all()
+    return render(request,'Administration/organogram.html',context={'hero_img':hero_img,'hero_title':'Organogram','gallery':gallery})
+
+
+def mandatory_disclosure_page(request):
+    data = MandatoryDisclosure.objects.all()
+    hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
+    return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data})

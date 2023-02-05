@@ -103,3 +103,10 @@ class ExaminationCellFaculty(models.Model):
 
 
 
+class MandatoryDisclosure(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="MandatoryDisclosure")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Mandatory Disclosure"
