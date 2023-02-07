@@ -1,8 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %} PLacemennts {% endblock title %} {% block head %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
+{% extends 'base.html' %} {% load static %} {% block title %} Placemennts {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 {% endblock head %}
 {% block body %}
 {% include 'components/Hero_section.html' %}
@@ -78,7 +75,7 @@
 </section>
 
 <section class="my-11 relative ">
-  <h1 class="text-center text-2xl md:text-5xl font-bold pt-[10px] pb-8 overflow-hidden">
+  <h1 class="text-center text-2xl md:text-4xl font-bold pt-[10px] pb-8 overflow-hidden">
     Testimonials
   </h1>
   <div class="swiper3 relative">
@@ -90,7 +87,7 @@
         <div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center relative">
           <div class="h-[400px] min-w-[450px] relative flex justify-center items-center">
             <img class=" w-[380px] absolute z-10 top-0" src="{{testimonial.image.url}}" />
-            
+
           </div>
           <div class="px-4">
             <h1 class="text-center lg:text-left text-4xl py-2 font-semibold">
@@ -111,6 +108,31 @@
       <div class="swiper-pagination"></div>
     </div>
 </section>
+
+
+<section class="md:px-24  py-24 px-6 bg-blue-50">
+  <div class="flex flex-col lg:flex-row lg:justify-evenly items-center">
+    {% include 'Placements/updates.html' %}
+    <div class="swiper max-w-[500px] lg:max-w-6xl lg:w-[60%] ">
+      <h3 class="text-center text-4xl font-semibold">Our Recruiters</h3>
+      <div class="space-y-6">
+
+        {%with recruiters=recruiters2%}
+        {% include 'Placements/logo_coloured_slider.html' %}
+        {%endwith%}
+        {%with left=True%}
+        {% include 'Placements/logo_coloured_slider.html' %}
+        {%endwith%}
+       +
+    
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+{% include 'components/gallery.html' %}
 {% endblock body %}
 {% block script %}
 
@@ -129,5 +151,7 @@
       el: ".swiper-pagination",
     },
   });
+
+  
 </script>
 {% endblock script %}
