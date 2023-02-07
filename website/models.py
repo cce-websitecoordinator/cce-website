@@ -80,7 +80,7 @@ class Gallery(models.Model):
     type = models.CharField(max_length=200, choices = TYPE, default="img")
     date = models.DateField(default=datetime.date.today)
     event_type = models.ManyToManyField(GalleryEventTypes,default="None")
-    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","ME"),("CIVIL","CE"),("BSH","BSH"),("All","All"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
     def __str__(self):

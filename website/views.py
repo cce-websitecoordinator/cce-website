@@ -41,6 +41,7 @@ def nirf_page(request):
 
 def gallery_page(request):
     if request.method == "GET":
+        print(Gallery.objects.filter(department="MECH"))
         if request.GET.get('dep'):
             department = request.GET.get('dep')
             if department == "ALL":

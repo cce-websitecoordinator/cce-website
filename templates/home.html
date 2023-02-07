@@ -242,6 +242,18 @@
       <h1 class="font-black text-5xl">Achivements</h1>
     </div>
 
+<div class="achivements_swiper swiper">
+  <div class="swiper-wrapper">
+    {% for achivement in achivements %}
+    <div class="swiper-slide">
+    <img src="{{achivement.image.url}}" alt="imgages" class="h-[400px]">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+
 
 
   </div>
@@ -432,6 +444,37 @@
 
   });
 
+  const achivements_swiper = new Swiper('.achivements_swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    autoplay: {
+      delay: 3000,
+    },
+    slidesPerView: 'auto',
+    spaceBetween: 50,
+   breakpoints:{
+      0:{
+        slidesPerView:1,
+        spaceBetween:10
+      },
+      640:{
+        slidesPerView:2,
+        spaceBetween:20
+      },
+      768:{
+        slidesPerView:3,
+        spaceBetween:40
+      },
+      1024:{
+        slidesPerView:4,
+        spaceBetween:50
+      }
+   }
+  });
+  
+  
   const eventsSwiper = new Swiper('.events-slider', {
     loop: true,
     pagination: {
@@ -449,11 +492,6 @@
   },
 
   });
-  //{% comment %} 
-  //https://codepen.io/ccallen001/pen/bEYByd 
-  //{% endcomment %}
-
-  // Footer Map Configurations
 
   var map = L.map('map', {
     center: [10.35891, 76.21279],

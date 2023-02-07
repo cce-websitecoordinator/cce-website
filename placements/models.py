@@ -21,3 +21,11 @@ class Testimonials(models.Model):
     image = models.ImageField(upload_to='placement/testimonials/')
     def __str__(self):
         return self.title
+class PlacementUpdates(models.Model):
+    title = models.CharField(max_length=100)
+    data = models.TextField()
+    date = models.DateField()
+    def __str__(self):
+        return self.title
+
+# class Posters(models.Model):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from placements.models import *
 
-from website.models import Hero_Image
+from website.models import Gallery, Hero_Image, Recruiters
 
 # Create your views here.
 
@@ -17,5 +17,10 @@ def placement_page(request,slug):
     mission = PVissionANDMission.objects.filter(name='Mission').first()
     objectives = PVissionANDMission.objects.filter(name='objectives')
     testimonials = Testimonials.objects.all()
-    context = {**context_temp,'vission':vission,'mission':mission,'objectives':objectives,'testimonials':testimonials}
+    recruiters = Recruiters.objects.all()
+    recruiters3 = recruiters.order_by('?')
+    recruiters2 = recruiters.order_by('?')
+    side_updates = PlacementUpdates.objects.all().order_by('-date')
+    gallery = Gallery.objects.all()
+    context = {**context_temp,'vission':vission,'mission':mission,'objectives':objectives,'testimonials':testimonials,"recruiters": recruiters, "recruiters2": recruiters2, "recruiters3": recruiters3,"side_updates":side_updates,"gallery":gallery}
     return render(request, 'Placements/index.html',context=context)
