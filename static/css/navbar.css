@@ -88,7 +88,7 @@ nav ul li ul li a {
 @media only screen and (max-width: 1200px) {
   .nav-mobile {
     display: block;
-    min-height: fit-content;
+    min-height: calc(fit-content+ 100px );
   }
 
   nav {

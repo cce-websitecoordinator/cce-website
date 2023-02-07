@@ -18,7 +18,7 @@ def home_page(request):
         events = HomeEvents.objects.all().order_by('?')
         gallery_imgs = Gallery.objects.all().order_by('?')[:10]
         upcomingEvents = UpcomingEvents.objects.all().filter(
-            date__lte=datetime.date.today())
+            date__gte=datetime.date.today())
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by('?')
         recruiters2 = recruiters.order_by('?')

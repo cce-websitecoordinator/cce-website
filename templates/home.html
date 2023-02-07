@@ -211,9 +211,7 @@
         <h1 class="text-3xl font-black">{{item.heading}}</h1>
         <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>{{item.sub_text}}</p>
-        <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">
-          See More
-        </button>
+        
       </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -254,20 +252,31 @@
 {% comment %} Counter Section Start  {% endcomment %}
 
 <section class="w-[100vw] h-auto pt-11 pb-11 bg-[#F9F9F9] flex items-center justify-center " id="counterSection">
-  <div class="w-[80%] flex items-center justify-between md:flex-row flex-col md:space-y-0 space-y-24 ">
+  <div class="w-full flex items-center justify-between lg:flex-row flex-col lg:space-y-0 space-y-24 md:px-11">
     <div class="flex-col justify-center flex items-center">
-      <h1 class="text-5xl font-black" id="students_counter">0</h1>
-      <p class="text-xl text-[#007FFF]">STUDENTS</p>
+      <h1 class="text-5xl font-black" id="schools_counter">0</h1>
+      <p class= "text-[#007FFF]">Schools</p>
     </div>
     <div class="flex-col justify-center flex items-center">
-      <h1 class="text-5xl font-black" id="faculty_counter">0</h1>
-      <p class="text-xl text-[#007FFF]"> FACULTY</p>
+      <h1 class="text-5xl font-black" id="degree_counter">0</h1>
+      <p class=" text-[#007FFF]"> Degree Colleges</p>
     </div>
     <div class="flex-col justify-center flex items-center">
-      <h1 class="text-5xl font-black" id="staff_counter">0</h1>
-      <p class="text-xl text-[#007FFF]"> STAFFS</p>
+      <h1 class="text-5xl font-black" id="technical_counter">0</h1>
+      <p class=" text-[#007FFF]"> Technical Institutions</p>
     </div>
-
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="engineering_counter">0</h1>
+      <p class=" text-[#007FFF]"> Engineering Colleges</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="medical_counter">0</h1>
+      <p class=" text-[#007FFF]"> Medical Colleges</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="university_counter">0</h1>
+      <p class=" text-[#007FFF]"> University</p>
+    </div>
   </div>
 </section>
 {% comment %} Counter Section End {% endcomment %}
@@ -347,9 +356,13 @@
   const img_overlay = document.querySelector('.img-overlay');
   img_overlay.style.bottom = topbar.getBoundingClientRect().height + "px";
   const counterSection = document.getElementById('counterSection');
-  const counterStudents = document.getElementById('students_counter');
-  const counterFaculty = document.getElementById('faculty_counter');
-  const counterStaff = document.getElementById('staff_counter');
+  const counterSchools = document.getElementById('schools_counter');
+  const counterDegree = document.getElementById('degree_counter');
+  const counterTechnical = document.getElementById('technical_counter'), 
+  CounterEngineering = document.getElementById('engineering_counter'),
+  CounterMedical = document.getElementById('medical_counter'),
+  CounterUniversity = document.getElementById('university_counter')
+
 
   $("#modal_close").click(function () {
     $("#modal").addClass("hidden");
@@ -368,22 +381,25 @@
   window.addEventListener('scroll', () => {
     console.log();
     if ((window.scrollY + getOffset(counterSection).height) + 300 >= getOffset(counterSection).top) {
-      increment(counterStudents, 1000, 10)
-      increment(counterFaculty, 70, 200)
-      increment(counterStaff, 60, 500)
+      increment(counterSchools, 570, 100)
+      increment(counterDegree, 54, 10)
+      increment(counterTechnical, 9, 5)
+      increment(CounterEngineering, 4, 1)
+      increment(CounterMedical, 1, 1),
+      increment(CounterUniversity, 1, 1)
 
     }
   })
   function increment(element, finalValue, time) {
     const count = parseInt(element.innerHTML);
     if (count < finalValue) {
-      element.innerHTML = count + 1 + "+";
+      element.innerHTML = count + 1 ;
       setTimeout(() => {
         increment(element, finalValue);
       }, time);
     }
     else if (count > finalValue) {
-      element.innerHTML = finalValue + "+";
+      element.innerHTML = finalValue;
     }
   }
 
