@@ -70,3 +70,10 @@ def mandatory_disclosure_page(request):
     data = MandatoryDisclosure.objects.all()
     hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
     return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data})
+
+
+def academic_administration_page(request):
+    hero_img =Hero_Image.objects.filter(page="academic_research").first()
+    data = AcademicAdministration.objects.all().first()
+    gallery  = Gallery.objects.all()
+    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administartion','hero_img':hero_img,'data':data,'gallery':gallery})
