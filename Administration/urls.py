@@ -13,6 +13,8 @@ urlpatterns = [
     path('examination_cell', views.examination_cell_page, name='examination_cell'),
     path('organogram',views.organogram_page,name='organogram'),
     path('mandatory_disclosure',views.mandatory_disclosure_page,name='mandatory_disclosure'),
+    path('academic_administration',views.academic_administration_page,name='academic_administration')
+
 ]
 
 if settings.DEBUG:     

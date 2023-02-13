@@ -110,3 +110,8 @@ class MandatoryDisclosure(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "Mandatory Disclosure"
+
+class AcademicAdministration(models.Model):
+    faculties = models.ManyToManyField(Faculty)
+    director_reserch_img = models.ImageField( upload_to='academicAdministraction/faculty')
+    director_reserch_name = models.CharField(max_length=200)

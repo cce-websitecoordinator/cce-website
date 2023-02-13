@@ -27,7 +27,7 @@ def pta_page(request):
     PTA_executive_commitee = PTAExecutiveCommitee.objects.all()
     PTA_members = PTAMembers.objects.all()
     hero_img = Hero_Image.objects.filter(page="pta").first()
-    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
+    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_image':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
 
 def office_page(request, slug):
     gallery = Gallery.objects.all()[:10];
@@ -70,3 +70,10 @@ def mandatory_disclosure_page(request):
     data = MandatoryDisclosure.objects.all()
     hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
     return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data})
+
+
+def academic_administration_page(request):
+    hero_img =Hero_Image.objects.filter(page="academic_research").first()
+    data = AcademicAdministration.objects.all().first()
+    gallery  = Gallery.objects.all()
+    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'gallery':gallery})
