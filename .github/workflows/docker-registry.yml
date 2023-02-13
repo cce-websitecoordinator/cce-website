@@ -44,4 +44,5 @@ jobs:
         PRODUCTION: ${{ secrets.PRODUCTION }}
 
       run: |
-        docker build --build-arg DB_USERNAME=$DB_USERNAME --build-arg DB_PASSWORD=$DB_PASSWORD --build-arg DB_HOST=$DB_HOST --build-arg DB_NAME=$DB_NAME --build-arg DB_PORT=$DB_PORT --build-arg SECRET_KEY=$SECRET_KEY --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg PRODUCTION=$PRODUCTION -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg DB_USERNAME=$DB_USERNAME --build-arg DB_PASSWORD=$DB_PASSWORD --build-arg DB_HOST=$DB_HOST --build-arg DB_NAME=$DB_NAME --build-arg DB_PORT=$DB_PORT --build-arg SECRET_KEY=$SECRET_KEY --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg PRODUCTION=$PRODUCTION . 
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
