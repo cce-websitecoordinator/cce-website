@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
 from website.models import *
+from .models import Achivements as DepAchievements
 
 # Create your views here.
 
@@ -75,7 +76,7 @@ class Context:
             case "events":
                 self.events = Events.objects.filter(department=dep).order_by('-date')
             case "achievements":
-                self.achivements = Achivements.objects.filter(department=dep)
+                self.achivements = DepAchievements.objects.filter(department=dep)
             case "newsletters":
                 self.newsletters = NewsLetters.objects.filter(department=dep)
     def data(self):
