@@ -1,5 +1,25 @@
 FROM python:3.10
 
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_HOST
+ARG DB_NAME
+ARG DB_PORT
+ARG SECRET_KEY
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG PRODUCTION
+
+ENV DB_USERNAME = ${DB_USERNAME}
+ENV DB_PASSWORD = ${DB_PASSWORD}
+ENV DB_HOST = ${DB_HOST}
+ENV DB_NAME = ${DB_NAME}
+ENV DB_PORT = ${DB_PORT}
+ENV SECRET_KEY = ${SECRET_KEY}
+ENV AWS_ACCESS_KEY_ID = ${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}
+ENV PRODUCTION = ${PRODUCTION} 
+
 WORKDIR /webapp
 
 ADD . /webapp
@@ -9,7 +29,5 @@ COPY ./requirements.txt /webapp/requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python3 manage.py collectstatic --noinput
-
 
 COPY . /webapp/ 

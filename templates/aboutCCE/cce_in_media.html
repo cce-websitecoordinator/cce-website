@@ -7,43 +7,7 @@
 
     {% include 'components/Hero_section.html' %}
 
-<section class="px-24">
-    <h1 class="text-center w-full text-4xl my-11 font-bold">CCE in Media</h1>
-    <div class="grid md:grid-cols-2 grid-cols-1 gap-6" >
-        <div>
-             
-            <div class="w-full  overflow-clip rounded-xl md:h-[50vh] group p-2">
-
-                <img  src="{{cce_in_media_main.image.url}}" alt="cce_in_media" class="object-center group-hover:scale-125 scale-110 transition duration-200 md:w-[50vw] w-full ">
-                <div class="space-y-3 p-3">
-                    <p class="text-sm text-gray-400 mt-2">{{cce_in_media_main.date}}</p>
-                    <h1 class="font-bold text-2xl">{{cce_in_media_main.title}}</h1>
-                    <p class=" text-gray-400 mb-3">{{cce_in_media_main.description}}</p>
-                    <a href="{{cce_in_media_main.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a>
-                </div>
-            </div>
-         
-        </div>
-        <div class="space-y-3">
-            {%for item in cce_in_media_data%}
-            <div class="w-full overflow-clip  flex space-x-6 group ">
-                <div class="lg:h-[200px] h-[150px] w-[300px] rounded-xl relative overflow-hidden">
-
-                    <img  src="{{item.image.url}}" alt="{{item.image.name}}" class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200">
-                </div>
-                <div class="space-y-3 max-w-[60%]">
-                    <p class="text-sm text-gray-400 mt-2">{{item.date}}</p>
-                    <h1 class="font-bold">{{item.title}}</h1>
-                    <p class="text-xs text-gray-400 mb-3">{{item.description}}</p>
-                    <a href="{{item.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a>
-                </div>
-            </div>
-            {%endfor%}
-        </div>
-    </div>
-</section>
-
-<section class="px-24">
+<section class="px-24" id='content'>
     <h1 class="text-center w-full text-4xl my-11 font-bold">More on CCE</h1>
     <div class="flex flex-wrap lg:gap-16 gap-8 mb-24 items justify-center">
      {% for item in more_about_cce_data%}

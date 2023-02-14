@@ -1,7 +1,40 @@
 {% load static %}
 {% load tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en"  class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %} | CCE</title>
+ <!-- include material-icons -->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{%  static  'favicons/favicon-32x32.png'  %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{%  static  'favicons/favicon-16x16.png'  %}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{%  static  'favicons/favicon.ico'  %}"
+      type="image/x-icon"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> 
 
 <head>
   <meta charset="UTF-8" />
@@ -46,23 +79,18 @@
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <link rel="stylesheet" href="{%  static  'css/department.css'  %}" />
-
-
-  {# Custom CSS and JS #}
-
-  <script src="{%  static  'js/base.js'  %}"></script>
-  <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
-  <style>
-    .glass {
-      background: rgba(0, 0, 0, 0.51);
-      backdrop-filter: blur(9.5px);
-      -webkit-backdrop-filter: blur(9.5px);
-    }
-  </style>
-
-  {% block head %}{% endblock head %}
-</head>
+    <script src="{%  static  'js/base.js'  %}" defer></script>
+    <link rel="stylesheet" href="{%  static  'css/base.css'  %}" />
+    <style>
+      .glass {
+        background:rgba(0, 0, 0, 0.51);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(9.5px);
+      }
+    </style>
+    {% block head %}{% endblock head %}
+  </head>
+  
 
 <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
   <header>
@@ -125,12 +153,41 @@
         <div>
           <img src="{%  static  'images/cce.png'  %}" alt="logo" class="w-[280px]" />
 
-          <div class="socials flex space-x-6 text-white w-full justify-center text-2xl mt-4">
-            <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
-            <a href=""><i class="fa-brands fa-youtube"></i></a>
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+            <div
+              class="socials flex space-x-6 text-white w-full justify-center text-2xl mt-4"
+            >
+              <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-youtube"></i></a>
+              <a href=""><i class="fa-brands fa-twitter"></i></a>
+              <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div
+            class="quicklinks text-sm flex flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="font-semibold mb-2 text-xl">QUICK LINKS</h1>
+            <a href="https://ktu.edu.in/">KTU Website</a>
+            <a href="http://www.dtekerala.gov.in/">DTE Kerala</a>
+            <a href="https://cee.kerala.gov.in">CEE Kerala</a>
+            <a href="">Grivence Cell</a>
+          </div>
+          <div
+            class="affliations flex text-sm flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="text-xl font-semibold mb-2">Results</h1>
+            <a href="https://ktu.edu.in/eu/res/viewExamStudentResults.htm">KTU Results</a>
+            <a href="https://gate.iitkgp.ac.in/app/login.html">Gate Examination</a>
+          </div>
+          <div
+            class="other flex text-sm flex-col text-white space-y-4 text-center"
+          >
+            <h1 class="text-xl font-semibold mb-2">OTHER</h1>
+            <a href="https://www.aicte-india.org/">AICTE Website</a>
+            <a href="https://www.aicte-india.org/feedback/">AICTE feedback</a>
+            <a href="{%  static 'pdfs/mandatory_disclosure.pdf' %}">Mandatory Disclosure</a>
+            <a href="https://docs.google.com/forms/d/1HDf0pJrkBTXZxqb36K3GDw-lN3fC8tr92OAgtjnKi2g/viewform?edit_requested=true">Career</a>
           </div>
         </div>
 
