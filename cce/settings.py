@@ -34,9 +34,8 @@ INSTALLED_APPS = [
     'StudentServices',
     'placements',
     'storages',
-
-    # 'tailwind', // activate this in production to use Tailwind CSS
-    # 'theme'
+    'tailwind',
+    'cce_web_theme'
 
 ]
 
@@ -166,6 +165,8 @@ DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
 HTML_MINIFY = True
 
+
+TAILWIND_APP_NAME = 'cce_web_theme'
 # Jazzmin settings
 
 JAZZMIN_UI_TWEAKS = {
