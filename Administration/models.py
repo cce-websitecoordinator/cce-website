@@ -96,11 +96,11 @@ class SCSTMonitoringCommittee(models.Model):
 
 
 class ExaminationCellFaculty(models.Model):
-    faculties = models.ManyToManyField(Faculty)
-    class Meta:
-        verbose_name = (" Examination Cell Faculty")
-        verbose_name_plural = ("Examination Cell Faculty")
+    faculty = models.ForeignKey(Faculty,on_delete=models.CASCADE,default=2)
+    designation = models.CharField(max_length=200,default=None)
 
+    def __str__(self) -> str:
+        return self.faculty.full_name + "  " + self.designation
 
 
 class MandatoryDisclosure(models.Model):
