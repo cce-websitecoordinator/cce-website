@@ -1,4 +1,6 @@
+html{
 
+}
 
 *{
   font-family: 'Poppins';
@@ -141,4 +143,10 @@ video {
   justify-content: center;
   align-items: center;
   
+}
+
+@media screen and (min-width:1260px) and (max-width:9000px){
+  html{
+    zoom: 80% !important;
+  }
 }

@@ -11,22 +11,22 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
         <div
           class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
         >
-          {%for faculty in faculties.faculties.all%}
+          {%for faculty in faculties%}
           
           <div
             class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
           >
             <div class="overflow-clip h-[280px] rounded-xl">
               <img
-                src="{{faculty.image.url}}"
+                src="{{faculty.faculty.image.url}}"
                 alt="hero_img"
                 class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out"
               />
             </div>
             <div class="space-y-1 mt-1 text-center">
-              <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
+              <h1 class="text-xl font-bold">{{faculty.faculty.full_name}}</h1>
               <p class="text-xs text-gray-500">
-                {{faculty.role.all|join:", "}}
+                {{faculty.designation}}
               </p>
             </div>
           </div>
