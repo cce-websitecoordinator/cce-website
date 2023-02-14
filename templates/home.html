@@ -1,13 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
-<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin="" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
@@ -155,14 +154,7 @@
           3. Inculcate leadership qualities, ethical values and foster the notion of lifelong learning in
           students. </p>
       </div>
-      <div id="msv"
-        class="col-span-2 mx-auto p-6 text-center bg-[#a1d9f2] w-full min-h-[200px] grid place-content-center group z-100">
-        <h1 class="font-bold text-2xl mb-2 ">Vision</h1>
-        <p class="invisible group-hover:visible text-left">To be a premier institution that nurtures
-          professionally competent and socially responsible
-          engineers through quality technical education, research and training.
-        </p>
-      </div>
+
 
       <div id="msv"
 class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid place-content-center group z-100">
@@ -253,17 +245,17 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
       <h1 class="font-black text-5xl">Achievements</h1>
     </div>
 
-    <div class="swiper w-[90%] min-h-[90vh] h-fit">
+    <div class="swiper-container w-[90%] md:min-h-[90vh] min-h-[60vh] h-fit">
       <div class="swiper-wrapper ">
         {% for item in achivements %}
-        <div class="swiper-slide">
+        <div class="swiper-slide w-full flex justify-center items-center mx-auto">
          <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]">
         </div>
         {% endfor %}
       </div>
       <div class="swiper-pagination "></div>
-      <div class="swiper-button-prev invisible md:visible "></div>
-      <div class="swiper-button-next invisible md:visible"></div>
+      <div class="swiper-button-prev invisible  "></div>
+      <div class="swiper-button-next invisible "></div>
   
     </div>
 
@@ -339,7 +331,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
 <section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
 
-  <div class="swiper w-[90%] min-h-[90vh] h-fit">
+  <div class="swiper-container w-[90%] min-h-[90vh] h-fit">
     <div class="swiper-wrapper ">
       {% for item in Testimonials %}
       <div class="swiper-slide">
@@ -433,49 +425,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     }
   }
 
-  const swiper_services = new Swiper('.swiper', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    autoplay: {
-      delay: 3000,
-    },
-  breakpoints: {
-    // when window width is >= 320px
-    320: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    },
-    // when window width is >= 480px
-    480: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    // when window width is >= 640px
-    640: {
-      slidesPerView: 4,
-      spaceBetween: 40
-    }
-  },
 
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-  $(window).on('resize', function () {
-    var width = $(window).width();
-    if (width < 1000) {
-      swiper_services.params.slidesPerView = 1;
-      swiper_services.params.spaceBetween = 40;
-    } else {
-      swiper_services.params.slidesPerView = 3;
-      swiper_services.params.spaceBetween = 50;
-    }
-
-  }).resize();
 
   document.getElementById('down-icon').addEventListener('click', () => {
     window.scrollTo({
@@ -511,11 +461,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
   },
 
   });
-  //{% comment %} 
-  //https://codepen.io/ccallen001/pen/bEYByd 
-  //{% endcomment %}
 
-  // Footer Map Configurations
 
   var map = L.map('map', {
     center: [10.35891, 76.21279],
@@ -555,26 +501,25 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     speed: 400,
     spaceBetween: 100,
   });
-  var mission = document.querySelector('#Mission');
-  var vision = document.querySelector('#Vision');
-  vision.querySelector('p').classList.add('hidden')
+  const achivementsswiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3
+      },
+      0: {
+        slidesPerView: 1
+      }
+    }
+  });
+  
 
 
-  vision.addEventListener("mouseover", () => {
-    mission.classList.remove('col-span-2')
-    mission.classList.add('col-span-1')
-    vision.classList.add('col-span-2')
-    mission.querySelector('p').classList.add('hidden')
-    vision.querySelector('p').classList.remove('hidden')
-    console.log("fdjsdghsjdfhg")
-  })
-  mission.addEventListener("mouseover", () => {
-    vision.classList.remove('col-span-2')
-    vision.classList.add('col-span-1')
-    mission.classList.add('col-span-2')
-    mission.querySelector('p').classList.remove('hidden')
-    vision.querySelector('p').classList.add('hidden')
-  })
 
   const swiper_services3 = new Swiper('.swiper3', {
     loop: true,
@@ -587,17 +532,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     slidesPerView: 3,
 
   });
-  $(window).on('resize', function () {
-    var width = $(window).width();
-    if (width < 1000) {
-      swiper_services3.params.slidesPerView = 1;
-      swiper_services3.params.spaceBetween = 40;
-    } else {
-      swiper_services3.params.slidesPerView = 3;
-      swiper_services3.params.spaceBetween = 50;
-    }
 
-  }).resize();
 
 </script>
 {% endblock script %}
