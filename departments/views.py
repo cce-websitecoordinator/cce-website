@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from website.models import HomeUpdates,Gallery
+from website.models import *
 
 # Create your views here.
 
