@@ -2746,6 +2746,10 @@ select {
     min-height: 90vh;
   }
 
+  .md\:min-h-\[70vh\] {
+    min-height: 70vh;
+  }
+
   .md\:w-\[75\%\] {
     width: 75%;
   }
