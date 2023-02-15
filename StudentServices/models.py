@@ -96,3 +96,27 @@ class NssEvents(models.Model):
     image = models.ImageField(upload_to='nss/events')
     def __str__(self):
         return self.title
+
+
+class Clubs(models.Model):
+    name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='clubs/logos')
+    description = models.CharField(max_length=100)
+    link  = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class IICCertificate(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='iic/certificates')
+    def __str__(self):
+        return self.name
+
+class IICCommitee(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    designamtion = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name

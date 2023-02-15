@@ -331,7 +331,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
 <section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
   <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
 
-  <div class="swiper-container w-[90%] min-h-[90vh] h-fit">
+  <div class="testimonialsSwiper w-[90%] min-h-[90vh] h-fit">
     <div class="swiper-wrapper ">
       {% for item in Testimonials %}
       <div class="swiper-slide">
@@ -434,15 +434,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     })
   })
 
-  const swiper2 = new Swiper('.swiper2', {
-    speed: 400,
-    spaceBetween: 100,
-    slidesPerView: 1,
-    autoplay: {
-      delay: 6000,
-    },
 
-  });
 
   const eventsSwiper = new Swiper('.events-slider', {
     loop: true,
@@ -497,10 +489,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     item.innerText = months[inner - 1]
   })
 
-  const swiper = new Swiper('.swiper5454', {
-    speed: 400,
-    spaceBetween: 100,
-  });
+
   const achivementsswiper = new Swiper('.swiper-container', {
     slidesPerView: 4,
     spaceBetween: 30,
@@ -521,18 +510,26 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
 
 
 
-  const swiper_services3 = new Swiper('.swiper3', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
+  const testimonialsSwiper = new Swiper('.testimonialsSwiper', {
+    slidesPerView: 4,
+    spaceBetween: 30,
     autoplay: {
       delay: 3000,
+      disableOnInteraction: false
     },
-    slidesPerView: 3,
-
+    breakpoints: {
+      1260:{
+slidesPerView:3
+      },
+      768: {
+        slidesPerView: 2
+      },
+      0: {
+        slidesPerView: 1
+      }
+    }
   });
-
+  
 
 </script>
 {% endblock script %}

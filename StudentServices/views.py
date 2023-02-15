@@ -24,3 +24,6 @@ def sports_page(request):
 def nss_page(request):
    
     return render(request, 'StudentServices/nss.html',context={})
+
+def clubs_page(request):
+    return render(request, 'StudentServices/clubs.html',context={})

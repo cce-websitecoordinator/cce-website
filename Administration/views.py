@@ -77,3 +77,9 @@ def academic_administration_page(request):
     data = AcademicAdministration.objects.all().first()
     gallery  = Gallery.objects.all()
     return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'gallery':gallery})
+
+
+
+def grivence_redressal_page(request,slug):
+    hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
+    return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img})

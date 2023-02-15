@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Governing Body {% endblock title %} {% block head %}
+<link rel="stylesheet" href="../static/css/iqac.css" />
+{% endblock head %} {% block body %}
+<main class="">
+  {% include 'components/Hero_section.html' %}
+  <section class="w-screen ">
+
+    <div class="executive-committee-wrapper w-full ">
+      <h1 class="my-11 text-center">Governing Body Members 2020-21</h1>
+      <div class="w-full px-24 md:block hidden">
+        <table class="executive-committee-table fixed-scroll w-full top-[100px]">
+          <thead class="bg-[#28AAE199] h-[50px]">
+            <tr>
+              <th>NAME</th>
+              <th>DESIGNATION</th>
+              <th>ROLE</th>
+            </tr>
+          </thead>
+        </table>
+        <table class="executive-committee-table">
+          <tbody>
+            {% for item in governing_body_data%}
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.designation}}</td>
+              <td>{{item.role}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="w-full px-11 md:hidden space-y-3">
+        {% for item in governing_body_data%}
+        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+
+            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
+          
+          </div>
+          <div class="flex justify-between  mt-4">
+            <div class="text-start">
+              <p class="text-gray-500">Designation</p>
+              <h1>{{item.designation}}</h1>
+            </div>
+            <div class="text-start">
+              <p class="text-gray-500">Role</p>
+              <h1>{{item.role}}</h1>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+
+      </div>
+      
+    </div>
+  </section>
+
+  <div class="w-full text-center my-11">
+    <h3 class="text-2xl font-semibold">  Click below to download the order</h3>
+    <a href="{{governing_body_order_file.file.url}}" target="_blank" class="text-[#007FFF] flex items-center justify-center">{{governing_body_order_file.name}} <span class="material-symbols-outlined">
+      link
+      </span></a>
+  </div>
+
+</main>
+{% endblock %}

@@ -15,7 +15,7 @@
 <nav class=" glass  relative w-full  max-h-[100px] z-[999] "
     id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
-        <a href="{% url 'home' %}" class="flex items-center absolute lg:relative top-3  md:top-0">
+        <a href="{% url 'home' %}" class="flex items-center absolute xl:relative top-3  md:top-0 ">
             <img src="{% static '/images/cce.png' %}" class="mr-3 lg:h-[100px] p-2 h-[80px]" alt="CCE Logo" />
         </a>
         <nav>
@@ -61,7 +61,7 @@
                             <a href="{%url 'anti_ragging_cell'%}">Anti Raging Cell</a>
                         </li>
                          <li>
-                            <a href="#!">Grivence Redressal System</a>
+                            <a href="{% url 'grivence_redressal' 'index'%}">Grivence Redressal System</a>
                         </li>
                          <li>
                             <a href="{%url 'sc_st_committee_cell'%}">Sc/St Monitoring Commitee</a>
@@ -113,7 +113,7 @@
                             <a href="https://iedc.cce.edu.in">IEDC</a>
                         </li>
                         <li>
-                            <a href="#!">TBI</a>
+                            <a href="https://iedc.cce.edu.in/tbi.html">TBI</a>
                         </li>
                         <li>
                             <a href="#!">IIC</a>
@@ -125,7 +125,7 @@
                             <a href="{%url 'sports'%}">Sports</a>
                         </li>
                         <li>
-                            <a href="#!">Clubs</a>
+                            <a href="{%url 'clubs'%}">Clubs</a>
                         </li>
                         <li>
                             <a href="#!">Women Development Cell</a>

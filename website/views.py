@@ -11,7 +11,7 @@ def home_page(request):
     :param request: The request that is sent to the server.
     :return: The rendered html file of the home page.
     """
-    try:
+    if request.method == "GET":
         anouncement = HomeAnouncement.objects.all().first()
         testimonials = Testimonials.objects.all()
         updates = HomeUpdates.objects.all()
@@ -26,10 +26,7 @@ def home_page(request):
         context = {"anouncement": anouncement, 'Testimonials': testimonials, "updates": updates, "Events": events, "gallery": gallery_imgs,
                    "upcomingEvents": upcomingEvents, "recruiters": recruiters, "recruiters2": recruiters2, "recruiters3": recruiters3, "achivements": achivements}
         return render(request, 'home.html', context=context)
-    except Exception as ex:
-        print(ex)
-        return HttpResponse("An error occured, please contact the administrator")
-
+    
 
 def admission_page(request):
     return render(request, 'admission.html')
