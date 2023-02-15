@@ -145,8 +145,8 @@ video {
   
 }
 
-@media screen and (min-width:1260px) and (max-width:9000px){
+@media screen and (min-width:1260px) and (max-width:1560){
   html{
-    zoom: 80% !important;
+    zoom: 90% !important;
   }
 }

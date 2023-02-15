@@ -11,6 +11,7 @@ def home_page(request):
     :param request: The request that is sent to the server.
     :return: The rendered html file of the home page.
     """
+    print(Gallery.objects.all().order_by('?'))
     if request.method == "GET":
         anouncement = HomeAnouncement.objects.all().first()
         testimonials = Testimonials.objects.all()
@@ -38,24 +39,29 @@ def nirf_page(request):
 
 def gallery_page(request):
     if request.method == "GET":
-        print(Gallery.objects.filter(department="MECH"))
+        j =0 
+        for i in  Gallery.objects.all():
+            if i.image or i.video:
+                continue
+            else:
+                print(i.delete())
         if request.GET.get('dep'):
             department = request.GET.get('dep')
             if department == "ALL":
                 gallery_imgs = Gallery.objects.all().order_by('?')
                 if gallery_imgs:
                     context = {"gallery": gallery_imgs, "dep": department}
-                    return render(request, 'gallery.html', context)
+                    return render(request, 'gallery.html', context=context)
             else:
                 gallery_imgs = Gallery.objects.filter(department=department)
                 if gallery_imgs:
                     context = {"gallery": gallery_imgs, "dep": department}
-                    return render(request, 'gallery.html', context)
+                    return render(request, 'gallery.html', context=context)
         else:
             gallery_imgs = Gallery.objects.all().order_by('?')
             if gallery_imgs:
                 context = {"gallery": gallery_imgs}
-                return render(request, 'gallery.html', context)
+                return render(request, 'gallery.html', context=context)
             else:
                 return render(request, 'gallery.html', {"error": "No images found"})
     return render(request, 'gallery.html', {"error": "No images found","dep":department})

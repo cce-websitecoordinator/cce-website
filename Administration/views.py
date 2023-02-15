@@ -76,7 +76,7 @@ def academic_administration_page(request):
     hero_img =Hero_Image.objects.filter(page="academic_research").first()
     data = AcademicAdministration.objects.all().first()
     gallery  = Gallery.objects.all()
-    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'gallery':gallery})
+    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'gallery':{}})
 
 
 

@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "grievance-377905",
+    "private_key_id": "cc3ef78f9ded4fe6b018c856521dcf358d118255",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC356nLROkD7/TR\nXYSMJrhqbHDBRqRnKLsrd9iLaghS5lU05gokZhCou4faBjq7/H77ZUhnBH3YHMqP\nlXRaww+820BjvxVmh6ydeXPXGFOGqkjYq4Y6kWbOufF//7EEBklUx5Rb82h/tlf9\nSTMt4Fw6fGTUBRJKdDfGoMZqn8mpLNUz4Sg3Ah4mtw7141nxEWkQxfFpj+SSxAle\n1pU6lermdsT8tXfasopZpZEL10Ew/C0W29QXjC3E2WLTigM7e3e5VPWICdUdg6so\ncAfvUB2YJRyZBbsghXCHxdSJLK1FfpHiVmw3rL3A1UT7VHPxPT4OgdcRPwX+JIOv\n7gdY9nNLAgMBAAECggEAR+7/HMmzBT2+OoiEWJeqqcIJ5qe9lbY6Y/nIQ1vxro92\nw665R9x+ZqmXrWGjZrWQa8AFrnn0yWwVlU0lynyi8sGl8X4kHksyaxQ/CeLzhOil\nfs60vcLy/iiAPItkj4jv9Q/tyXuvo8jMqP+RW7/3A0911vK24VWNHY30nm8q35dG\nZWzHglOdkcOgisltNi7brIpt/V0+LrfmbE8Hx0/6MAGKYo3xCR0ZZdJ6TzMb/Er2\nszCUT8B/O5yVwr6rgcbADzYDpzjaAiE4cxwPJ7AUeIz0cUplY0YT9E6Cpa95Aq47\neeA3ufQkolBH68INNvyeJMkPOVvhhkOwtWdJeqnqYQKBgQDgVD/5AmOGR3IBhBps\nLqhQg9h0KCcLK5Kvqszp+7vp5paAyySXXHzk1wTEkUIaHIt82drK5Ry0L/1vPyJW\nqE/Gy1KiBGJjU7fM+MyjdVgJzdBmLOcohGSckKcoume/OE7dGNKe1gcJ0pj7eboH\nyBKGFcrpLZ590JjKNA/VartzYQKBgQDR3mUATDYik5CWcNJNFwA2s2y+E0EjJOQs\nSZJb3TNbxbjdlgCXKUmjtBe7bhccVI8tawY0NfKX548/An9PS88sJihdxzAiCnoW\nW2oG8zQMxgR4hfdZSRIM9awPoE+H+PiebmQGKcdkPlGEJFBv/skg/GmdBNsy9NCq\nulGe46VSKwKBgGfnPfZFH/nrD6gaGu7usXERkGlEy8jFttx8vQrHWWNeNWmULe+Z\nnBOWcBPnv/k+LXF3qnp9okznSXiEgpAmx0Spmi2G4FdnSGO8/XPcfxmTZapds/e1\nUrCd437ez/zmxMhtneiJ85qeG9Omrv65sbK/V0unoJhfzNUjRg4wsIAhAoGAXcXU\nNVzYN3zd9wp0PTPQyaBEL23lBfH+7fb1qYxd3VysbH4Qx3oQSFA45mubcfIqg221\nuPB98/foXowcHG9QI3btRHGzBRLPWFwCNRbIJAj6iGu7iK6InTfMaLMFtki9tfS3\nRrW2PQlHXRboxhH/BnkiK6G2277d2dskiy1Gej8CgYEApIN6Q9cFcCEkGkHN7wkC\nyzvOwBiui2ChN/ms1Uw2CKSCOSv3gwOZfMbUicEnMY+0RtvreNyQumgNuwfrG37X\nRTR6fyQpy/cc2T6ZBzgP0FZbKGghpjo63wvMZGXxT/RUMpD4DDvCjmbsmyBUK5Yb\n1qpKDecxK2aBbD4ngjmPqBg=\n-----END PRIVATE KEY-----\n",
+    "client_email": "grievance@grievance-377905.iam.gserviceaccount.com",
+    "client_id": "102825595191916741202",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/grievance%40grievance-377905.iam.gserviceaccount.com"
+  }
+  
