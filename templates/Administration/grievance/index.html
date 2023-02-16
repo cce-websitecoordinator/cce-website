@@ -1,69 +1,79 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Governing Body {% endblock title %} {% block head %}
-<link rel="stylesheet" href="../static/css/iqac.css" />
-{% endblock head %} {% block body %}
-<main class="">
+{% extends 'base.html' %} {% load static %} {% block title %}  Grivence Redressal System   {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
   {% include 'components/Hero_section.html' %}
-  <section class="w-screen ">
-
-    <div class="executive-committee-wrapper w-full ">
-      <h1 class="my-11 text-center">Governing Body Members 2020-21</h1>
-      <div class="w-full px-24 md:block hidden">
-        <table class="executive-committee-table fixed-scroll w-full top-[100px]">
-          <thead class="bg-[#28AAE199] h-[50px]">
-            <tr>
-              <th>NAME</th>
-              <th>DESIGNATION</th>
-              <th>ROLE</th>
-            </tr>
-          </thead>
-        </table>
-        <table class="executive-committee-table">
-          <tbody>
-            {% for item in governing_body_data%}
-            <tr>
-              <td>{{item.name}}</td>
-              <td>{{item.designation}}</td>
-              <td>{{item.role}}</td>
-            </tr>
-            {% endfor %}
-
-          </tbody>
-        </table>
-      </div>
-
-      <div class="w-full px-11 md:hidden space-y-3">
-        {% for item in governing_body_data%}
-        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
-          <div class="flex justify-between items-center">
-
-            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
-          
-          </div>
-          <div class="flex justify-between  mt-4">
-            <div class="text-start">
-              <p class="text-gray-500">Designation</p>
-              <h1>{{item.designation}}</h1>
-            </div>
-            <div class="text-start">
-              <p class="text-gray-500">Role</p>
-              <h1>{{item.role}}</h1>
-            </div>
-          </div>
-          
-        </div>
-        {% endfor %}
-
-      </div>
-      
+  <section class="md:px-24 pt-24 px-6 py-4 md:flex-row flex flex-col gap-10" id="content">
+    <div>
+   {% include 'Administration/grievance/sidebar.html' %}
+    </div> 
+   <div>
+<div>
+      <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+      <p class="my-2 text-gray-700 text-justify">The Community of Developers (CODe) is the Students’ Association of the Department of Computer Science and Engineering, Christ College of Engineering, established in the year 2016. Various events  like competitions, web and app development, workshops, etc are conducted by it. CODe proudly hosts its flagship event, South India’s one and only Beach Hackathon - Beach Hack. The Alumni continue to contribute to this forum by guiding their juniors on academics, placement and career. This association provides a space for students to develop their leadership & management skills, exhibit & share their technical skills. Overall, CODe brings together the students, alumni & staff of CSE Department as a single community.</p>
     </div>
-  </section>
+   
 
-  <div class="w-full text-center my-11">
-    <h3 class="text-2xl font-semibold">  Click below to download the order</h3>
-    <a href="{{governing_body_order_file.file.url}}" target="_blank" class="text-[#007FFF] flex items-center justify-center">{{governing_body_order_file.name}} <span class="material-symbols-outlined">
-      link
-      </span></a>
+  <div class="pt-6 w-full">
+      <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">Committee Members </h3>
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
+        >
+          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+            <div class="text-center px-2">S.NO</div>
+            <div class="text-center px-2">Committee Members</div>
+            <div class="text-center px-2">Status</div>
+            <div class="text-center px-2">Email</div>
+            
+          </div>
+        </div>
+
+        <div class="space-y-4 xl:space-y-0 xl:table-row-group">
+          {% for item in data%}
+          <div class="hidden xl:block">
+            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+              <div class="text-center px-2">{{forloop.counter}}</div>
+              <div class="text-center px-2">
+                {{item.name}}
+              </div>
+              <div class="text-center px-2">{{item.status}}</div>
+              <div class="text-center px-2 ">{{item.email}}</div>
+              
+            </div>
+          </div>
+
+          {% comment %} mobile view  starts {% endcomment %}
+          <div class="xl:hidden w-full" aria-hidden="TRUE">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+            >
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Status</p>
+                  <h1>{{item.status}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-500">Email</p>
+                  <h1>{{item.email}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% comment %} mobile view Ends {% endcomment %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 
+  </section>
+
+ 
 </main>
-{% endblock %}
+
+ {% endblock %}

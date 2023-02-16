@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 
 from Administration.models import *
@@ -83,5 +84,8 @@ def academic_administration_page(request):
 
 
 def grivence_redressal_page(request,slug):
-    hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
-    return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img})
+    match slug:
+        case "index":
+            hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
+            data = GrivenceCommitee.objects.all()
+            return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"slug":slug,"data":data})

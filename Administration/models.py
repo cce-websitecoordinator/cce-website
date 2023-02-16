@@ -122,3 +122,13 @@ class AcademicAdministractors(models.Model):
 
     def __str__(self) -> str:
         return self.faculty.full_name
+
+
+class GrivenceCommitee(models.Model):
+    name = models.CharField(max_length=200)
+    status = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return self.name
+
