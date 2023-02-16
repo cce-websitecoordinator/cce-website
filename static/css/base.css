@@ -58,8 +58,8 @@ html{
 
 
 .hero--fallback__image{
-  background-image: url('../images/home.jpg');
-  background-repeat: no-repeat;
+  background-image: url('../images/home.jpg') !important;
+  background-repeat: no-repeat !important;
   background-position: center center;
 }
 
