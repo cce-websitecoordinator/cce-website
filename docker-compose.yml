@@ -10,6 +10,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: toor
       POSTGRES_DB: relay
+    volumes:
+      - ./data:/var/lib/postgresql/data
 
   web:
     build: .
