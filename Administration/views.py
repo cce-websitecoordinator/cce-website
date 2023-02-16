@@ -74,9 +74,11 @@ def mandatory_disclosure_page(request):
 
 def academic_administration_page(request):
     hero_img =Hero_Image.objects.filter(page="academic_research").first()
-    data = AcademicAdministration.objects.all().first()
-    gallery  = Gallery.objects.all()
-    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'gallery':{}})
+    director = AcademicAdministrationDirector.objects.all().first()
+    data = AcademicAdministractors.objects.all().order_by('order')
+    
+    gallery  = Gallery.objects.all().order_by('?')[:10]
+    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'director':director,'gallery':gallery})
 
 
 

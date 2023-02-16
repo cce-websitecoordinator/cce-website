@@ -1,50 +1,69 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Academic Administration | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} Academic
+Administration | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 px-7 mt-11 w-full" id="content">
     <h1 class="text-4xl my-11 font-bold">Director (Research)</h1>
     <div class="w-full">
-      <img src="{{data.director_reserch_img.url}}" alt="executive_director" class="w-full mx-auto" />
-      <h1 class="text-4xl my-6 font-bold">{{executive_director.full_name}}</h1>
-      <p class="text-2xl text-gray-400">Dr. Elizabeth Elias</p>
+      <img
+        src="{{director.director_reserch_img.url}}"
+        alt="executive_director"
+        class="w-full mx-auto"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{director.director_reserch_name}}
+      </h1>
+      <p class="text-2xl text-gray-400 mb-6 text-center">Research Director</p>
       <div class="flex flex-col items-start justify-center">
-        <h1 class="md:text-4xl text-2xl font-semibold mb-4">Profile Highlights</h1>
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
         <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
-          
+          <li>B.Tech- College of Engg, Trivandrum, Kerala, India, 1975</li>
+
+          <li>M.Tech- College of Engg, Trivandrum, , Kerala, India, 1978</li>
 
           <li>
-            B.Tech- College of Engg, Trivandrum, Kerala, India, 1975
+            Joined Regional Engineering College , Calicut , India,(Renamed in
+            2002 as National Institute of Technology Calicut) as Lecturer, 1978
+          </li>
+          <li>
+            Completed PhD from Indian Institute of Technology Madras, 1988
+          </li>
+
+          <li>Post doctorate from Linkoping University, Sweden, 2001</li>
+
+          <li>
+            Former Head of Department of Electronics and Communication
+            Engineering ,National Institute of Technology Calicut 2003-2006,
+            2015-16
           </li>
 
           <li>
-            M.Tech- College of Engg, Trivandrum, , Kerala, India, 1978
+            Former Dean, Planning &amp; Development, National Institute of
+            Technology Calicut ,2006-2008
           </li>
-
-          <li>Joined Regional Engineering College , Calicut , India,(Renamed in 2002 as National Institute of
-            Technology Calicut) as Lecturer, 1978</li>
-          <li>Completed PhD from Indian Institute of Technology Madras, 1988</li>
-
-          <li>
-            Post doctorate from Linkoping University, Sweden, 2001
-          </li>
-
-          <li> Former Head of Department of Electronics and Communication Engineering ,National Institute of Technology
-            Calicut 2003-2006, 2015-16</li>
-            
-          <li>Former Dean, Planning &amp; Development, National Institute of Technology Calicut ,2006-2008</li>
 
           <li>Retired as Professor(HAG), ECE, NIT Calicut on 31-12-2018</li>
 
-          <li>Coordinator of several R &amp; D Projects from Ministry of HRD and a Project on Manpower Development
-            Programme in VLSI by Ministry of Information and Communication Technology</li>
+          <li>
+            Coordinator of several R &amp; D Projects from Ministry of HRD and a
+            Project on Manpower Development Programme in VLSI by Ministry of
+            Information and Communication Technology
+          </li>
 
-            <li>PhD Guidance:- Completed -15</li>
+          <li>PhD Guidance:- Completed -15</li>
 
-            <li>Paper Publications: International Journals- 55/Conferences -45</li>
+          <li>
+            Paper Publications: International Journals- 55/Conferences -45
+          </li>
 
-            <li>Expert Member of NBA accreditation team - More than 60 Colleges in India</li>
+          <li>
+            Expert Member of NBA accreditation team - More than 60 Colleges in
+            India
+          </li>
 
-            <li>Chairperson of NBA accreditation team from 2019 onwards</li>
+          <li>Chairperson of NBA accreditation team from 2019 onwards</li>
         </ol>
       </div>
       <div class="my-11 flex flex-col items-start justify-center">
@@ -80,44 +99,35 @@
         </p>
       </div>
     </div>
-    
   </section>
 
   <section>
     <div class="w-full space-y-16 mt-11">
-        <div class="w-full flex flex-col justify-center items-center">
-          <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
-          
-  
-          <div
-            class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
-          >
-            {%for faculty in data.faculties.all%}
-            
-            <div
-              class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
-            >
-              <div class="overflow-clip h-[280px] rounded-xl">
-                <img
-                  src="{{faculty.image.url}}"
-                  alt="hero_img"
-                  class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out"
-                />
-              </div>
-              <div class="space-y-1 mt-1 text-center">
-                <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
-                <p class="text-xs text-gray-500">
-                  {{faculty.role.all|join:", "}}
-                </p>
-              </div>
-            </div>
-            {%endfor%}
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Academic Administractors</h1>
+
+        <div
+          class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+        >
+        {% for item in data %}
+        <div class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center">
+          <div class="overflow-clip h-[280px] rounded-xl">
+            <img src="{{ item.faculty.image.url }}" alt="hero_img" class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out" />
+          </div>
+          <div class="space-y-1 mt-1 text-center">
+            <h1 class="text-xl font-bold">{{ item.faculty.full_name }}</h1>
+           {% if 'Dr. Sajeev John' not in item.faculty.full_name %}
+        <p class="text-xs text-gray-500">{{ item.faculty.role.all|join:', ' }} Department of {{ item.faculty.department }}</p>
+        {% else %}
+        <p class="text-xs text-gray-500">{{ item.faculty.role.all|join:', ' }}</p>
+      {% endif %}
           </div>
         </div>
+      {% endfor %}
+        </div>
       </div>
+    </div>
   </section>
-
-  
 </main>
 
 {% include 'components/gallery.html' %} {% endblock %}

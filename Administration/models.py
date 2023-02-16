@@ -111,7 +111,14 @@ class MandatoryDisclosure(models.Model):
     class Meta:
         verbose_name_plural = "Mandatory Disclosure"
 
-class AcademicAdministration(models.Model):
-    faculties = models.ManyToManyField(Faculty)
+class AcademicAdministrationDirector(models.Model):
     director_reserch_img = models.ImageField( upload_to='academicAdministraction/faculty')
     director_reserch_name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.director_reserch_name
+class AcademicAdministractors(models.Model):
+    faculty = models.ForeignKey(Faculty,on_delete=models.CASCADE,default=2)
+    order = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.faculty.full_name

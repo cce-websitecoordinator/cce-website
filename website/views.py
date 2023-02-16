@@ -11,7 +11,6 @@ def home_page(request):
     :param request: The request that is sent to the server.
     :return: The rendered html file of the home page.
     """
-    print(Gallery.objects.all().order_by('?'))
     if request.method == "GET":
         anouncement = HomeAnouncement.objects.all().first()
         testimonials = Testimonials.objects.all()
@@ -39,12 +38,6 @@ def nirf_page(request):
 
 def gallery_page(request):
     if request.method == "GET":
-        j =0 
-        for i in  Gallery.objects.all():
-            if i.image or i.video:
-                continue
-            else:
-                print(i.delete())
         if request.GET.get('dep'):
             department = request.GET.get('dep')
             if department == "ALL":

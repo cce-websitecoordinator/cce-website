@@ -17,4 +17,8 @@ admin.site.register(NssFaculty)
 admin.site.register(NssStudents)
 admin.site.register(NssEvents)
 admin.site.register(NssGallery)
+admin.site.register(IICCertificate)
+admin.site.register(IICCommitee)
+admin.site.register(Clubs)
+
 
