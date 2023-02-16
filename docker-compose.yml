@@ -2,8 +2,17 @@ version: '3.8'
 
 
 services:
-    web:
-      build: .
-      command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
-      ports:
-        - 8000:8000
+  db:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: relay
+
+  web:
+    build: .
+    command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
