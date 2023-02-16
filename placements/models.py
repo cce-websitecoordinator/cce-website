@@ -1,5 +1,7 @@
 from django.db import models
 
+from website.models import Faculty
+
 # Create your models here.
 class  PVissionANDMission(models.Model):
     data = models.TextField(max_length=250)
@@ -42,3 +44,9 @@ class Achivements(models.Model):
     date = models.DateField()
     def __str__(self):
         return self.title
+
+class PlacementFaculty(models.Model):
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    order = models.IntegerField()
+    def __str__(self):
+        return self.faculty.full_name

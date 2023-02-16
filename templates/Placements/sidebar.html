@@ -1,4 +1,4 @@
-<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full bg-white">
+<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full bg-white mb-11">
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 lg:hidden text-center"
         id="sidebar-header">
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
@@ -78,21 +78,21 @@
                     class="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Statistics</span>
             </a>
         </div>
-        <div
+        {% comment %} <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'activities' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'placement_page'  'activities' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Activites</span>
             </a>
-        </div>
-        <div
+        </div> {% endcomment %}
+        {% comment %} <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'recruiters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'placement_page'  'recruiters' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     class="text-gray group-hover:text-[#007FFF]">biotech</i><span>Recruiters</span>
             </a>
-        </div>
+        </div> {% endcomment %}
 
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
             <a href="#gallery" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">

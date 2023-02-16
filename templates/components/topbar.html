@@ -10,7 +10,7 @@
   <div class="space-x-6 lg:flex  justify-center items-center hidden  w-auto">
     <a href="{%url 'home_research' 'index'%}">Research</a>
     
-    <a href="/about">Alumni</a>
+    {% comment %} <a href="/about">Alumni</a> {% endcomment %}
    
    
     <a href="{%url 'admission'%}">Admissions</a>
@@ -53,8 +53,8 @@
   </div>
 
     <a href="{%url 'home_research' 'index' %}">Research</a>
-    <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
-    <a href="/about">Alumni</a>
+    {% comment %} <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
+    <a href="/about">Alumni</a> {% endcomment %}
    
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Admission</a>
