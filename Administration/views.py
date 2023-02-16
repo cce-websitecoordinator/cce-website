@@ -47,7 +47,7 @@ def  anti_ragging_cell_page(request):
 
 
 def sc_st_monitoring_cell_page(request):
-    hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_cell").first()
+    hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_commite").first()
     sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
     return render(request,'Administration/sc_monitoring_commitee.html',context={'hero_img':hero_img,'hero_title':'SC/ST Monitoring Committee','sc_st_cell_data':sc_st_cell_data})
 
