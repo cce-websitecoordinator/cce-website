@@ -28,7 +28,7 @@ def pta_page(request):
     PTA_executive_commitee = PTAExecutiveCommitee.objects.all()
     PTA_members = PTAMembers.objects.all()
     hero_img = Hero_Image.objects.filter(page="pta").first()
-    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_image':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
+    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
 
 def office_page(request, slug):
     gallery = Gallery.objects.all()[:10];
