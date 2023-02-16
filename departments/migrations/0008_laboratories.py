@@ -6,7 +6,6 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('website', '0027_hero_image'),
         ('departments', '0007_syllabuspdfs_department'),
     ]
 

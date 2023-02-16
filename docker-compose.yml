@@ -12,7 +12,6 @@ services:
       POSTGRES_DB: relay
     volumes:
        - ./data/db:/var/lib/postgresql/data
-
   web:
     build: .
     command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
