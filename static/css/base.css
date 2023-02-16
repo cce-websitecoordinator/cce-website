@@ -57,7 +57,11 @@ html{
 }
 
 
-
+.hero--fallback__image{
+  background-image: url('../images/home.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 
 .material-symbols-outlined {

@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  {{union.name}}  {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 pt-24 px-6 py-4" id="content">
+    <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+    <p class="my-2 text-gray-700 text-justify w-full">{{union.about}}</p>
+   
+  </section>
+
+  <section>
+    <div class="w-full space-y-16 mt-11">
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Members</h1>
+
+        <div
+          class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+        >
+        {% for item in union_members %}
+        <div class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center">
+          <div class="overflow-clip h-[280px] rounded-xl">
+            <img src="{{ item.img.url }}" alt="hero_img" class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out" />
+          </div>
+          <div class="space-y-1 mt-1 text-center">
+            <h1 class="text-xl font-bold">{{ item.name }}</h1>
+        <p class="text-xs text-gray-500">{{item.position}}</p>
+        
+          </div>
+        </div>
+      {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+ {% endblock %}

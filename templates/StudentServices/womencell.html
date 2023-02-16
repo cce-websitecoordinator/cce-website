@@ -1,0 +1,109 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  Women Cell   {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 pt-24 px-6 py-4" id="content">
+    <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+    <p class="my-2 text-gray-700 text-justify">The Community of Developers (CODe) is the Students’ Association of the Department of Computer Science and Engineering, Christ College of Engineering, established in the year 2016. Various events  like competitions, web and app development, workshops, etc are conducted by it. CODe proudly hosts its flagship event, South India’s one and only Beach Hackathon - Beach Hack. The Alumni continue to contribute to this forum by guiding their juniors on academics, placement and career. This association provides a space for students to develop their leadership & management skills, exhibit & share their technical skills. Overall, CODe brings together the students, alumni & staff of CSE Department as a single community.</p>
+   
+  </section>
+
+  <section class="md:px-24 my-4  pt-24 px-6 w-full">
+    <div class="flex gap-10 lg:flex-row flex-col w-full">
+        <div class="col-span-2 gap-10 space-y-16 mt-11  w-full">
+            <div
+            class="bg-[#D9FFA8] flex flex-col  w-full lg:flex-row justify-center  space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+            <div class="lg:bg-[#8BC53F] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+                        assistant_navigation
+                    </span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Vision</h3>
+                    <p>kgkh dfiugyiudfy goidyufoi hdoiuhf oidhoudfjoi hdfoiuhu oiufdoiu ldh goihdg fdhygoidgoidfygoyfd uiygdfuiydgiufdygiuyggkjhgfkhggfjkhghgfuiugfhiuy</p>
+                </div>
+            </div>
+            <div
+            class="bg-[#D4F2FF] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+            <div class="lg:bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+            
+
+                        thunderstorm
+
+                </span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Mission</h3>
+                    <ol class="space-y-3">
+                        
+                        shdfh sdhdfjk sgdfjgsdfjgsdjfg jsgfjhsdgdf jhsd gfjhjsdgfjgsdfjgsjh jhsdgfjh ssgfgjhsdgdf jsdfg gjhgsfhj hjsdfghjsdghjsd jhjgsf jhgsdfjhg sjhjj gfjsjdgdf j
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+  <div class="pt-6 w-full">
+      <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">Committee Members </h3>
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
+        >
+          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6 ">
+            <div class="text-center px-2 border-x-2 border-white">S.NO</div>
+            <div class="text-center px-2 border-x-2 border-white">Name</div>
+            <div class="text-center px-2 border-x-2 border-white">Designation </div>
+            <div class="text-center px-2 border-x-2 border-white">Department</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 xl:space-y-0 xl:table-row-group">
+          {% for item in data%}
+          <div class="hidden xl:block">
+            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+              <div class="text-center px-2">{{forloop.counter}}</div>
+              <div class="text-center px-2">
+                {{item.name}}
+              </div>
+              <div class="text-center px-2 ">{{item.department}}</div>
+              <div class="text-center px-2">{{item.designamtion}}</div>
+            </div>
+          </div>
+
+          {% comment %} mobile view  starts {% endcomment %}
+          <div class="xl:hidden w-full" aria-hidden="TRUE">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+            >
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Designation </p>
+                  <h1>{{item.designamtion}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-500">Department</p>
+                  <h1>{{item.department}}</h1>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          {% comment %} mobile view Ends {% endcomment %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+ {% endblock %}

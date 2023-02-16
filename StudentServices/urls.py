@@ -9,6 +9,8 @@ urlpatterns = [
     path('nss', views.nss_page, name='nss'),
     path('clubs', views.clubs_page, name='clubs'),
     path('iic', views.iic_page, name='iic'),
+    path('womencell', views.womencell_page, name='women_cell'),
+    path('union', views.union_page, name='union'),
     
 ]
 

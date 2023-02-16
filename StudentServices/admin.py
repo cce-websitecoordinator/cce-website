@@ -20,5 +20,9 @@ admin.site.register(NssGallery)
 admin.site.register(IICCertificate)
 admin.site.register(IICCommitee)
 admin.site.register(Clubs)
+admin.site.register(WomenCellCommitee)
+admin.site.register(Union)
+admin.site.register(UnionCommitee)
+
 
 

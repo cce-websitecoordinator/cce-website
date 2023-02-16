@@ -120,3 +120,29 @@ class IICCommitee(models.Model):
     role = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+
+class WomenCellCommitee(models.Model):
+    name = models.CharField(max_length=300)
+    department = models.CharField(max_length=300)
+    designamtion = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name
+
+class Union(models.Model):
+    name = models.CharField(max_length=300)
+    about = models.TextField()
+
+    def __str__(self) -> str:
+        return self.name
+
+
+
+class UnionCommitee(models.Model):
+    name = models.CharField(max_length=300)
+    img = models.ImageField(("Member Image"), upload_to="union/member")
+    position = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.name
+    
