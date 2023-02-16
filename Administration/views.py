@@ -1,5 +1,6 @@
 import os
 from django.shortcuts import render
+from django.http import HttpResponse
 
 from Administration.models import *
 from website.models import Faculty, Gallery, Hero_Image
@@ -83,9 +84,29 @@ def academic_administration_page(request):
 
 
 
-def grivence_redressal_page(request,slug):
+
+def grivence_redressal_page(request,slug,page):
     match slug:
         case "index":
             hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
             data = GrivenceCommitee.objects.all()
             return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"slug":slug,"data":data})
+        case "staff":
+            if page =='login':
+                if request.method == "POST":
+                    return HttpResponse(request.POST.get('email'))
+                else:
+                    return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+            else :
+                if request.method == "POST":
+                    return HttpResponse("gjhdfjgh")
+                else:
+                    return render(request,"Administration/grievance/signup.html",context={"slug":slug,"page":page})
+        case "student":
+            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+
+        case "women":
+            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+
+        case "exams":
+            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})

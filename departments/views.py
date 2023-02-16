@@ -198,7 +198,7 @@ def ProfessionalBodie(request,slug):
     context = {
         'professional_body': ProfessionalBodies.objects.filter(id=slug).first(),
         'events':ProfessionalBodiesEvents.objects.filter(ProfessionalBodies_id=slug),
-        'members':ProfessionalBodiesTeamMembers.objects.filter(ProfessionalBodies_id=slug).order_by('priorities'),
+        'members':ProfessionalBodiesTeamMembers.objects.filter(ProfessionalBodies_id=slug).order_by('priority'),
         'gallery':Gallery.objects.all()
 
 
@@ -209,7 +209,7 @@ def Association(request,slug):
     context = {
         'association':Associations.objects.filter(id=slug).first(),
         'events':AssociationsEvents.objects.filter(assosiation_id=slug),
-        'members':AssociationTeamMembers.objects.filter(assosiation_id=slug).order_by('priorities'),
+        'members':AssociationTeamMembers.objects.filter(assosiation_id=slug).order_by('priority'),
         'gallery':Gallery.objects.all()
 
     }

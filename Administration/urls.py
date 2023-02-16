@@ -14,7 +14,7 @@ urlpatterns = [
     path('organogram',views.organogram_page,name='organogram'),
     path('mandatory_disclosure',views.mandatory_disclosure_page,name='mandatory_disclosure'),
     path('academic_administration',views.academic_administration_page,name='academic_administration'),
-    path("grivence/<str:slug>",views.grivence_redressal_page,name="grivence_redressal"),
+    path("grivence/<str:slug>/<str:page>",views.grivence_redressal_page,name="grivence_redressal"),
 
 ]
 
