@@ -165,7 +165,7 @@
     </div>
     <div class="w-full pb-11 flex flex-col justify-center items-center">
       <div class="h-[1px] bg-slate-300 w-[90%]"></div>
-      <p class="text-xs  pt-4 text-white" >Designed And Developed by <a href="{% url 'Department' 'CSE' 'about' %}" class="text-blue-600 ">Department of Computer Science And Engineering</a> </p>
+      <p class="text-xs  pt-4 text-white text-center" >Designed And Developed by <a href="{% url 'Department' 'CSE' 'about' %}" class="text-blue-600 ">Department of Computer Science And Engineering</a> </p>
       <p class="text-white text-xs pt-4">
         Copyright &#169; 2022 Christ College of Engineering
       </p>
@@ -179,7 +179,7 @@
   </footer>
   <script src="{% static 'js/consoleimg.min.js' %}"></script>
   <script>
-    consoleimg.load("static/images/cceCompressed.png", { size: 300, color: '#FFFFFF' })
+    {% comment %} consoleimg.load("static/images/cceCompressed.png", { size: 300, color: '#FFFFFF' }) {% endcomment %}
   </script>
   {% block script %}{% endblock script %}
 </body>

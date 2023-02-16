@@ -119,9 +119,9 @@
           </tr>
         </thead>
 
-        <tbody class="md:table hidden">
+        <tbody class="md:table hidden w-full">
           {% for member in IQAC_executive_commitee %}
-          <tr>
+          <tr class='grid grid-cols-3 w-full'>
             <td>{{member.name}}</td>
             <td>{{member.designation}}</td>
             <td>{{member.role}}</td>

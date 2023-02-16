@@ -28,4 +28,17 @@ class PlacementUpdates(models.Model):
     def __str__(self):
         return self.title
 
-# class Posters(models.Model):
+class PlacementTraning(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='placement/training/')
+    data = models.TextField()
+    date = models.DateField()
+    def __str__(self):
+        return self.title
+class Achivements(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='placement/training/')
+    data = models.TextField()
+    date = models.DateField()
+    def __str__(self):
+        return self.title

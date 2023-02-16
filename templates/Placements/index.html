@@ -100,10 +100,9 @@
             <h2 class="text-justify lg:text-left text-lg py-2">
               {{testimonial.description|safe}}
             </h2>
-            <p class="text-blue-500">{{testimonial.date|date:"d M Y"}}</p>
           </div>
         </div>
-      </div {% endfor %} </div>
+      </div >{% endfor %} </div>
       <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
     </div>
@@ -131,8 +130,33 @@
 
 
 </section>
-
 {% include 'components/gallery.html' %}
+<section class="md:px-24 p-5 px-6 bg-gray-50 " id="contact-us">
+  <div class="flex md:flex-row flex-col text-xl md:items-end md:justify-evenly   md:gap-10 w-full">
+      <div class="space-y-4 ">
+          <h1 class="md:text-6xl text-4xl font-semibold md:my-11 mb-4 ">Contact us</h1>
+          <p class="text-sm md:text-base">For all doubts, queries regarding the department, <br> contact Placement Officer </p>
+          <h3 class="uppercase md:text-2xl text-xl font-bold">Roshan David</h3>
+          <h4 class="md:text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
+              call
+              </span class="text-sm md:text-xl ">+91 98090 55360</h4>
+          <h5 class="text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
+              mail
+              </span class="text-sm md:text-xl ">roshandavid@cce.edu.in</h5>
+      </div>
+      <div class="space-y-4 mt-6 md:mt-0">
+          <p class="text-sm md:text-base">For all doubts, queries regarding the department, <br> contact Training & Placement Officer. </p>
+          <h3 class="uppercase text-xl md:text-2xl font-bold">Hingston Xavier</h3>
+          <h4 class="text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
+              call
+              </span class="text-sm md:text-xl ">+91 95269 49872</h4>
+          <h5 class="text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
+              mail
+              </span class="text-sm md:text-xl ">hingstonxavier@cce.edu.in</h5>
+      </div>
+  </div>
+</section>
+
 
 
 {% endblock body %}

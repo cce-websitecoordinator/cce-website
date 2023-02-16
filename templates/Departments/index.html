@@ -142,7 +142,7 @@
 
 
 </section>
-<section class="md:px-24 pt-24 px-6 my-11" id="content">
+{% comment %} <section class="md:px-24 pt-24 px-6 my-11" id="content">
     <div class="flex gap-10 md:flex-row flex-col">
       
   
@@ -182,7 +182,7 @@
               </div>
             </div>
   
-            {% comment %} mobile view starts {% endcomment %}
+            
             <div class="xl:hidden w-full">
               <div
                 class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
@@ -216,7 +216,7 @@
                 
               </div>
             </div>
-            {% comment %} mobile view Ends {% endcomment %} {% endfor %}
+            {% endfor %}
           </div>
         </div>
 
@@ -250,7 +250,7 @@
                 </div>
               </div>
     
-              {% comment %} mobile view starts {% endcomment %}
+              
               <div class="xl:hidden w-full">
                 <div
                   class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
@@ -284,12 +284,12 @@
                   
                 </div>
               </div>
-              {% comment %} mobile view Ends {% endcomment %} {% endfor %}
+             {% endfor %}
             </div>
           </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
 
 <section class="relative block overflow-x-clip bg-gray-50 py-6 my-11 ">
@@ -325,6 +325,7 @@
         </div>
     </div> 
 </section>
+
 
 {% include 'components/gallery.html' %}
 {% include 'Departments/Contact.html' %}
