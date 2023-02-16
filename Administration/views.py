@@ -53,60 +53,60 @@ def sc_st_monitoring_cell_page(request):
     sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
     return render(request,'Administration/sc_monitoring_commitee.html',context={'hero_img':hero_img,'hero_title':'SC/ST Monitoring Committee','sc_st_cell_data':sc_st_cell_data})
 
-def examination_cell_page(request):
-    hero_img = Hero_Image.objects.filter(page="examination_cell").first()
-    faculties = ExaminationCellFaculty.objects.all()
-    gallery = Gallery.objects.all();
-    return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties,"gallery":gallery})
+# def examination_cell_page(request):
+#     hero_img = Hero_Image.objects.filter(page="examination_cell").first()
+#     faculties = ExaminationCellFaculty.objects.all()
+#     gallery = Gallery.objects.all();
+#     return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties,"gallery":gallery})
 
 
 
 
-def organogram_page(request):
-    hero_img = Hero_Image.objects.filter(page="organogram").first()
-    gallery = Gallery.objects.all()
-    return render(request,'Administration/organogram.html',context={'hero_img':hero_img,'hero_title':'Organogram','gallery':gallery})
+# def organogram_page(request):
+#     hero_img = Hero_Image.objects.filter(page="organogram").first()
+#     gallery = Gallery.objects.all()
+#     return render(request,'Administration/organogram.html',context={'hero_img':hero_img,'hero_title':'Organogram','gallery':gallery})
 
 
-def mandatory_disclosure_page(request):
-    data = MandatoryDisclosure.objects.all()
-    hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
-    return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data})
+# def mandatory_disclosure_page(request):
+#     data = MandatoryDisclosure.objects.all()
+#     hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
+#     return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data})
 
 
-def academic_administration_page(request):
-    hero_img =Hero_Image.objects.filter(page="academic_research").first()
-    director = AcademicAdministrationDirector.objects.all().first()
-    data = AcademicAdministractors.objects.all().order_by('order')
+# def academic_administration_page(request):
+#     hero_img =Hero_Image.objects.filter(page="academic_research").first()
+#     director = AcademicAdministrationDirector.objects.all().first()
+#     data = AcademicAdministractors.objects.all().order_by('order')
     
-    gallery  = Gallery.objects.all().order_by('?')[:10]
-    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'director':director,'gallery':gallery})
+#     gallery  = Gallery.objects.all().order_by('?')[:10]
+#     return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'director':director,'gallery':gallery})
 
 
 
 
-def grivence_redressal_page(request,slug,page):
-    match slug:
-        case "index":
-            hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
-            data = GrivenceCommitee.objects.all()
-            return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"slug":slug,"data":data})
-        case "staff":
-            if page =='login':
-                if request.method == "POST":
-                    return HttpResponse(request.POST.get('email'))
-                else:
-                    return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
-            else :
-                if request.method == "POST":
-                    return HttpResponse("gjhdfjgh")
-                else:
-                    return render(request,"Administration/grievance/signup.html",context={"slug":slug,"page":page})
-        case "student":
-            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+# def grivence_redressal_page(request,slug,page):
+#     match slug:
+#         case "index":
+#             hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
+#             data = GrivenceCommitee.objects.all()
+#             return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"slug":slug,"data":data})
+#         case "staff":
+#             if page =='login':
+#                 if request.method == "POST":
+#                     return HttpResponse(request.POST.get('email'))
+#                 else:
+#                     return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+#             else :
+#                 if request.method == "POST":
+#                     return HttpResponse("gjhdfjgh")
+#                 else:
+#                     return render(request,"Administration/grievance/signup.html",context={"slug":slug,"page":page})
+#         case "student":
+#             return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
 
-        case "women":
-            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+#         case "women":
+#             return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
 
-        case "exams":
-            return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
+#         case "exams":
+#             return render(request,"Administration/grievance/login.html",context={"slug":slug,"page":page})
