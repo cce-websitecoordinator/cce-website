@@ -45,6 +45,6 @@ def womencell_page(request):
 def union_page(request):
     union = Union.objects.all().first()
     union_members = UnionCommitee.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="union").first
+    hero_img = Hero_Image.objects.all().filter(page="college_union").first
     return render(request, 'StudentServices/union.html',context={"union":union,"hero_img":hero_img,"hero_title":union.name,'union_members':union_members})
 
