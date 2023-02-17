@@ -1,17 +1,14 @@
 FROM python:3.10-alpine3.16
 
-WORKDIR /webapp
+ENV PYTHONUNBUFFERED 1
 
-ADD . /webapp
-
-COPY ./requirements.txt /webapp/requirements.txt
-
-
+COPY requirements.txt /requirements.txt
 RUN apk add --upgrade --no-cache build-base linux-headers && \
     pip install --upgrade pip && \
     pip install -r /requirements.txt
 
-COPY . /webapp/
+COPY app/ /app
+WORKDIR /app
 
 RUN adduser --disabled-password --no-create-home django
 
