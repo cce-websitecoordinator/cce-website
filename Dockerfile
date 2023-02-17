@@ -6,7 +6,7 @@ ADD . /webapp
 
 COPY ./requirements.txt /webapp/requirements.txt
 
-RUN apt install --upgrade --no-cache build-base linux-headers
+RUN apt install build-base linux-headers
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
