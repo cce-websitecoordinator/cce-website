@@ -28,9 +28,9 @@ def getDepartment(department):
 class Context:
     '''This class is used to pass context to the templates'''
     def __init__(self, dep,route):
+        
         self.dep = dep
         self.title = getDepartment(dep)
-        self.gallery = Gallery.objects.filter(department=dep)[:10]
         self.updates = HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
@@ -52,6 +52,7 @@ class Context:
         self.events = None
         self.achivements = None
         self.newsletters = None
+        self.gallery = Gallery.objects.filter(department=dep)[:10]
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
