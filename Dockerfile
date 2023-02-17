@@ -1,4 +1,4 @@
-FROM python:3.10-alpine3.16
+FROM python:3.10
 
 WORKDIR /webapp
 
@@ -6,7 +6,7 @@ ADD . /webapp
 
 COPY ./requirements.txt /webapp/requirements.txt
 
-RUN apk add --upgrade --no-cache build-base linux-headers
+RUN apt install --upgrade --no-cache build-base linux-headers
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
