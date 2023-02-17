@@ -6,6 +6,9 @@ ADD . /webapp
 
 COPY ./requirements.txt /webapp/requirements.txt
 
+RUN apk add --upgrade --no-cache build-base linux-headers
+RUN apk add --no-cache postgresql-libs
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql \
