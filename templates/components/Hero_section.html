@@ -2,13 +2,9 @@
 <section class="home_section relative h-[100vh] overflow-clip">
   {% if 'vdo' in hero_img.type  %}
   <div class="w-[100vw] h-[100vh] -z-1">
-    <video
-      src="{{hero_img.video.url}}"
-      autoplay
-      muted
-      loop
-      class="w-full h-full object-cover object-center absolute"
-    ></video>
+    <video autoplay loop muted poster="{% static 'images/home.jpg' %}" class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
+      <source  src="{{hero_img.video.url}}" type="video/mp4">
+    </video>
     <div
     class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay z-10"
     >

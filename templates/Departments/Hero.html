@@ -2,20 +2,21 @@
 <section class="home_section relative md:h-[100vh] h-[90vh] overflow-clip">
   {% if 'vdo' in hero_img.type %}
   <div class="w-[100vw] md:h-[100vh] h-[90vh] -z-1">
-    <video src="{{hero_img.video.url}}" autoplay muted loop
-      class="w-full h-full object-cover object-center absolute"></video>
+    <video autoplay loop muted poster="{% static 'images/home.jpg' %}" class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
+      <source  src="{{hero_img.video.url}}" type="video/mp4">
+    </video>
     <div class="absolute inset-0 bg-[#00000066]"></div>
     <div
       class="absolute inset-0 flex items-center justify-center text-white capitalize lg:text-6xl text-4xl z-10  text-center">
       {{hero_title}}
     </div>
     <h4
-      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
+      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full  flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
     >
       CCE
     </h4>
     <div
-      class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
+      class="items-center text-center justify-center h-full w-full  flex flex-col absolute inset-0  z-[50]">
       <h3 class="text-white md:text-2xl">Department of</h3>
       <p class="md:text-6xl text-3xl text-white">{{title}}</p>
     </div>
@@ -31,12 +32,12 @@
       {{hero_title}}
     </div>
     <h4
-      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full items-center flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
+      class="md:text-[500px] text-[200px] items-center justify-center h-full w-full  flex font-black opacity-[.75] absolute inset-0 text-center font-sans"
     >
       CCE
     </h4>
     <div
-      class="items-center text-center justify-center h-full w-full items-center flex flex-col absolute inset-0 text-center z-[50]">
+      class="items-center text-center justify-center h-full w-full  flex flex-col absolute inset-0 r z-[50]">
       <h3 class="text-white md:text-2xl">Department of</h3>
       <p class="md:text-6xl text-3xl text-white">{{title}}</p>
     </div>
