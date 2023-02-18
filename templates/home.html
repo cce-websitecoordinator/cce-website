@@ -49,7 +49,9 @@
 
 <section class="home_section relative h-[100vh] overflow-clip ">
   <div class="w-[100vw] h-[100vh] -z-1 " >
-    <video src="{% static 'videos/Website.mp4'%}" autoplay loop muted class="w-full absolute bottom-0 top-0 min-w-full min-h-full "></video>
+    <video autoplay loop muted poster="{% static 'images/home.jpg' %}" class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
+      <!-- <source  src="{% static 'videos/Website.mp4'%}" type="video/mp4"> -->
+    </video>
       {% comment %} <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" /> {% endcomment %}
   </div>
   <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
@@ -66,7 +68,7 @@
 </div>
     
   </div>
-  <a href="#content" class="flex w-full justify-center animate-bounce z-[50]  absolute bottom-24" id="down-icon">
+  <a href="#content" class=" w-full justify-center animate-bounce z-[50]  absolute bottom-24 hidden lg:flex" id="down-icon">
 
     <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
   </a>
