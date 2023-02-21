@@ -50,8 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
 
 
 ]
@@ -154,30 +152,14 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-AWS_S3_URL_PROTOCOL='http:'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-
 AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
-AWS_S3_CUSTOM_DOMAIN = 'www.assets.cce.edu.in' + '/media'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_CUSTOM_DOMAIN = 'www.assets.cce.edu.in'
+MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/media/'
+MEDIA_ROOT = ''
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/'
-
-# AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
-# AWS_S3_CUSTOM_DOMAIN =  "www.assets.cce.edu.in"
-# PUBLIC_MEDIA_LOCATION = 'media'
-# AWS_S3_ENDPOINT_URL = 'http://www.assets.cce.edu.in.s3-website.ap-south-1.amazonaws.com'
-
-# MEDIA_URL = "dnbca6q7do6n.cloudfront.net/" + PUBLIC_MEDIA_LOCATION + '/'
-# DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
-
-HTML_MINIFY = True
 
 
 TAILWIND_APP_NAME = 'cce_web_theme'
