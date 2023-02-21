@@ -10,6 +10,7 @@
     }
 </style>
 {% endblock head %}
+{% block body %}
 {% with request.resolver_match.url_name as url_name %}
 
 <nav class=" glass  relative w-full  max-h-[100px] z-[999] "
@@ -146,6 +147,7 @@
     </div>
 </nav>
 {% endwith %}
+{%endblock body %}
 {% block script %}
 <script>
     (function ($) { 

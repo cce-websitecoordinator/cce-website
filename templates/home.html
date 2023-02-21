@@ -93,7 +93,7 @@
     <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0   flex-col px-6 ">
       <div class=" xl:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
         <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
-        <div class="swiper2 overflow-x-clip">
+        <div class="upcomming-slider overflow-x-clip">
           <div class="swiper-wrapper ">
             {% for event in upcomingEvents %}
 
@@ -436,7 +436,23 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     })
   })
 
+const upcommingSwiper = new Swiper('.upcomming-slider', {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  speed: 400,
+  spaceBetween: 100,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 4000,
+  },
+  effect: 'fade',
+fadeEffect: {
+  crossFade: true
+},
 
+})
 
   const eventsSwiper = new Swiper('.events-slider', {
     loop: true,
