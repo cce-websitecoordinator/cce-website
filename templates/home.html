@@ -1,15 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
-<link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin="" />
+<link rel="stylesheet" href="{% static 'leaflet/leaflet.css' %}" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-  crossorigin=""></script>
+<script src="{% static 'leaflet/leaflet.js' %}"></script>
 {% endblock head %}
 {% block topbar %}
 {% include 'components/topbar.html' %}
@@ -32,7 +27,7 @@
   <h2 class="text-2xl">{{anouncement.title}}</h2>
   <div class="max-h-[350px] overflow-clip">
 
-    <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]">
+    <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]" loading="lazy">
   </div>
   <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description}}</p>
   <p>{{anouncement.date}}</p>
@@ -100,7 +95,7 @@
             <div class="swiper-slide">
               <div class="relative">
                 <div class="w-full  flex items-center justify-center">
-                  <img src="{{event.img.url}}" class="max-h-[500px]" />
+                  <img src="{{event.img.url}}" class="max-h-[500px]" loading="lazy" />
                 </div>
 
                 <div class='w-full flex pt-3 items-center'>
@@ -193,20 +188,21 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     {% for item in Events %}
     <div class="swiper-slide">
     <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-      <img src="{{item.img1.url}}" class=" " alt="happenings-img" srcset="" />
+      <img src="{{item.img1.url}}" class=" " alt="happenings-img" srcset="" loading="lazy"/>
       <img
         src="{{item.img2.url}}"
         class="hidden lg:block"
         alt="happenings-img"
         srcset=""
       />
-      <img src="{{item.img3.url}}" alt="happenings-img" class="" srcset="" />
+      <img src="{{item.img3.url}}" alt="happenings-img" class="" srcset="" loading="lazy"/>
     
       <img
         src="{{item.img4.url}}"
         class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1"
         alt="happenings-img"
         srcset=""
+        loading="lazy"
       />
     
       <div
@@ -215,9 +211,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
         <h1 class="text-3xl font-black">{{item.heading}}</h1>
         <p class="text-xl font-semibold">{{item.sub_heading}}</p>
         <p>{{item.sub_text}}</p>
-        <button class="border-[1px] border-[#007FFF] p-3 rounded-md mt-2">
-          See More
-        </button>
+        
       </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -250,7 +244,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
       <div class="swiper-wrapper ">
         {% for item in achivements %}
         <div class="swiper-slide w-full flex justify-center items-center mx-auto">
-         <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]">
+         <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]" loading="lazy">
         </div>
         {% endfor %}
       </div>
@@ -341,7 +335,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
         <div class="w-full  h-full flex justify-center items-start ">
           <div class="w-full flex justify-start items-center flex-col">
             <div class="w-[150px]  h-[150px] overflow-clip rounded-full">
-              <img src="{{item.image.url}}" alt="studentImage " class=" w-full">
+              <img src="{{item.image.url}}" alt="studentImage " class=" w-full" loading="lazy">
             </div>
             <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>
@@ -370,7 +364,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
 
 {% block script %}
 <script src={% static 'js/marquee.js' %}></script>
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 
 <script>
   const topbar = document.querySelector('.topbar');
