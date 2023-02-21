@@ -99,6 +99,7 @@ class AssociationTeamMembers(models.Model):
     designation = models.CharField(max_length=150)
     image = models.ImageField(upload_to="Association")
     assosiation = models.ForeignKey(Associations, on_delete=models.CASCADE)
+    priority = models.IntegerField(default=0)
     def __str__(self):
         return self.name
 

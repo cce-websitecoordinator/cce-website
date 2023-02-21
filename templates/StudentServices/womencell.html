@@ -1,0 +1,120 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  Women Cell   {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 pt-24 px-6 py-4" id="content">
+    <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+    <p class="my-2 text-gray-700 text-justify">The Women Cell aims at empowering and orienting women to recognize their true potential and to help them attain their own stand in a competing world. The goal is to provide a platform to young women to voice their thoughts and opinions and to share their experiences. It also aims at providing personal guidance, legal awareness on specific issues concerning women.</p>
+   
+  </section>
+
+  <section class="md:px-24 my-4  pt-24 px-6 w-full">
+    <div class="flex gap-10 lg:flex-row flex-col w-full">
+        <div class="col-span-2 gap-10 space-y-16 mt-11  w-full">
+            <div
+            class="bg-[#D9FFA8] flex flex-col  w-full lg:flex-row justify-center  space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+            <div class="lg:bg-[#8BC53F] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+                        assistant_navigation
+                    </span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Vision</h3>
+                    <p>To enlighten and empower women in rural and suburban society and enable them to act as agents of social transformation and acquire knowledge of self and surroundings and to make the world a better place.</p>
+                </div>
+            </div>
+            <div
+            class="bg-[#D4F2FF] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
+            <div class="lg:bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
+                <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
+            
+
+                        thunderstorm
+
+                </span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Mission</h3>
+                    <ol class="space-y-3">
+                        
+                      <li>To stimulate the most conducive ambience for the promotion of quality in teaching and learning.</li>
+                      <li>To empower women students hailing from rural background to face the challenges of life with dignity, honour and self-respect and to inculcate self-esteem in them.</li>
+                      <li>To become a centre of excellence providing value-based education aimed at the integrated development of individuals into responsible citizens with social commitment.</li>
+                      <li>To groom the personality of students making them self-sufficient to reach out to the less privileged, the downtrodden and the abandoned in the community</li>
+                      <li>To mould a team of students with the required knowledge, skills and attitude with global competency, capable of working towards the transformation of the society.</li>
+                      <li>To create awareness to live in harmony with the natural environment, to preserve it and to act as agents of peace, goodwill, natural integration and solidarity to make the world a better place.</li>
+                      <li>To enable students to communicate effectively and to empower them to face the issues and challenges with poise and confidence.</li>
+                      
+                      
+                      
+                      
+                      
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+  <div class="pt-6 w-full">
+      <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">Committee Members </h3>
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
+        >
+          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6 ">
+            <div class="text-center px-2 border-x-2 border-white">S.NO</div>
+            <div class="text-center px-2 border-x-2 border-white">Name</div>
+            <div class="text-center px-2 border-x-2 border-white">Designation </div>
+            <div class="text-center px-2 border-x-2 border-white">Department</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 xl:space-y-0 xl:table-row-group">
+          {% for item in data%}
+          <div class="hidden xl:block">
+            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+              <div class="text-center px-2">{{forloop.counter}}</div>
+              <div class="text-center px-2">
+                {{item.name}}
+              </div>
+              <div class="text-center px-2 ">{{item.department}}</div>
+              <div class="text-center px-2">{{item.designamtion}}</div>
+            </div>
+          </div>
+
+          {% comment %} mobile view  starts {% endcomment %}
+          <div class="xl:hidden w-full" aria-hidden="TRUE">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+            >
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Designation </p>
+                  <h1>{{item.designamtion}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-500">Department</p>
+                  <h1>{{item.department}}</h1>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          {% comment %} mobile view Ends {% endcomment %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+ {% endblock %}

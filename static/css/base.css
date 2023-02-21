@@ -1,4 +1,6 @@
+html{
 
+}
 
 *{
   font-family: 'Poppins';
@@ -55,7 +57,11 @@
 }
 
 
-
+.hero--fallback__image{
+  background-image: url('../images/home.jpg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center;
+}
 
 
 .material-symbols-outlined {
@@ -141,4 +147,10 @@ video {
   justify-content: center;
   align-items: center;
   
+}
+
+@media screen and (min-width:1260px) and (max-width:1560){
+  html{
+    zoom: 90% !important;
+  }
 }

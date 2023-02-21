@@ -1,0 +1,73 @@
+<aside class="p-8 shadow-2xl rounded-2xl flex space-y-6 mt-4 flex-col md:w-[380px] 2xl:w-[400px] font-medium w-full">
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 md:hidden text-center"
+        id="sidebar-header">
+        <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]  items-center flex  mx-auto">
+            {%ifequal 'staff'  slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Staff</span>
+            {%endifequal%}
+
+            {%ifequal 'student'  slug%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Grievance Redressal Cell For Students</span>
+            {%endifequal%}
+
+            {%ifequal 'women'  slug%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Grievance Redressal Cell For Harassment Against Women</span>
+            {%endifequal%}
+
+            {%ifequal 'exams'  slug%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Grievance Redressal Cell For Exams</span>
+            {%endifequal%}
+
+            
+        </div>
+    </div>
+    <div class="w-full flex items-center justify-center md:hidden">
+        <span class="material-symbols-outlined text-4xl hover:text-[#007FFF]" id="icon-sidebar-expand">
+            expand_more
+        </span>
+    </div>
+    <div class="space-y-6 md:block hidden" id="sidebar-content">
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'staff' in  slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'grivence_redressal' 'staff' 'login' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Staff</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'student' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'grivence_redressal' 'student' 'login' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Grievance Redressal Cell For Students</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'women' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'grivence_redressal' 'women'  'login'%}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Grievance Redressal Cell For Harassment Against Women</span>
+            </a>
+        </div>
+
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'exams' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'grivence_redressal' 'exams' 'login' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Grievance Redressal Cell For Exams</span>
+            </a>
+        </div>
+       
+    </div>
+</aside>
+{% block script %}
+<script>
+    $('#icon-sidebar-expand').click(
+        function () {
+            $('#sidebar-header').toggleClass('hidden');
+            $('#sidebar-content').toggleClass('hidden');
+            $("#icon-sidebar-expand").toggleClass("rotate-180");
+        }
+    );
+</script>
+
+{% endblock script %}

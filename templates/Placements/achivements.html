@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Placements {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+  <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+  <p class=" text-sm mt-4 text-justify mb-11">{{about.about}}</p>
+
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Placements</h2>
+      <p class="px-4 text-gray-400">Home / Placements / Achivements </p>
+      {% include 'Placements/sidebar.html' %}
+    </div>
+    <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
+        <h3 class="text-2xl font-semibold text-center md:text-4xl w-full">Achivements</h3>
+        {% for achivement in data %}
+        
+        <div class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">
+          <div class="h-[400px]  md:min-w-[300px] overflow-clip rounded-2xl">
+            <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}" class="w-full h-full scale-110 group-hover:scale-125 transition-all duration-500 object-cover">
+            </div>
+            <div class="space-y-5 flex flex-col group-odd:pr-11 md:px-8 px-1">
+              <h3 class="text-2xl font-bold">{{achivement.title}}</h3>
+              <p>{{achivement.data}}</p>
+              <a href="{{achivement.date}}" class="p-3 px-6 border-2 text-blue-500  text-center rounded-xl">View Image</a>
+            </div>
+          </div>
+          <div class="h-[2px] w-full bg-gray-200"></div>
+          {% endfor %}
+     </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+{% endblock body %}
+{% block script %}
+
+
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+

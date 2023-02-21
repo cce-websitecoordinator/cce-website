@@ -1,0 +1,23 @@
+<div class="updates p-6 shadow-2xl bg-white rounded-2xl mt-11 lg:w-[400px] w-full h-full">
+    <h1 class="text-center text-3xl mb-11 font-semibold">Updates</h1>
+    <div class="items space-y-8 max-h-[500px] overflow-y-scroll ">
+        {% for item in side_updates %}
+        <div class="space-x-4 h-full">
+            <div class="pr-4">
+
+                <div class="border-l-4 border-[#007FFF] pl-4">
+
+                    <h2 class="font-bold">{{item.title}}
+                    </h2>
+                    <p class="text-sm"> {{item.data}}</p>
+                </div>
+                <p class="w-full text-right text-xs text-[#007FFF]">{{item.date}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        
+
+    </div>
+
+</div>

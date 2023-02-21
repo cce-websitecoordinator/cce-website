@@ -9,7 +9,4 @@ COPY ./requirements.txt /webapp/requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python3 manage.py collectstatic --noinput
-
-
-COPY . /webapp/ 
+COPY . /webapp/

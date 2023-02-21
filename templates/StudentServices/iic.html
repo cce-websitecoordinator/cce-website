@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  IIC   {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 pt-24 px-6 py-4" id="content">
+    <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+    <p class="my-2 text-gray-700 text-justify">Ministry of Human Resource Development (MHRD), Govt. of India has established ‘MHRD’s Innovation Cell (MIC)’ to systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with new ideas and transform them into prototypes while they are in formative years.
+      MIC has envisioned encouraging creation of ‘Institution’s Innovation Council (IICs)’ across selected HEIs. A network of these IICs will be established to promote innovation in the Institution through multitudinous modes leading to an innovation promotion eco-system in the campuses</p>
+   
+  </section>
+
+  <section class="md:px-24 my-4  pt-24 px-6 ">
+  <div class="pt-6 w-full">
+      <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">Committee Members </h3>
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
+        >
+          <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6">
+            <div class="text-center px-2">S.NO</div>
+            <div class="text-center px-2">Name</div>
+            <div class="text-center px-2">Designation & Department</div>
+            <div class="text-center px-2">member Type</div>
+            <div class="text-center px-2">keyRole</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 xl:space-y-0 xl:table-row-group">
+          {% for item in members%}
+          <div class="hidden xl:block">
+            <div class="w-auto grid grid-cols-5 min-h-[50px] py-6">
+              <div class="text-center px-2">{{forloop.counter}}</div>
+              <div class="text-center px-2">
+                {{item.name}}
+              </div>
+              <div class="text-center px-2">{{item.designamtion}}</div>
+              <div class="text-center px-2 ">{{item.member_type}}</div>
+              <div class="text-center px-2">{{item.role}}</div>
+            </div>
+          </div>
+
+          {% comment %} mobile view  starts {% endcomment %}
+          <div class="xl:hidden w-full" aria-hidden="TRUE">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+            >
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Designation & Department</p>
+                  <h1>{{item.designamtion}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-500">Member Type</p>
+                  <h1>{{item.member_type}}</h1>
+                </div>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Role</p>
+                  <h1>{{item.role}}</h1>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          {% comment %} mobile view Ends {% endcomment %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-11">
+    <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6" >Certificates</h3>
+  <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
+  {% for item in certificates  %}
+        <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">
+          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
+            picture_as_pdf
+            </span></div>
+          <h3 class="mx-4 mt-2">{{item.name}}</h3>
+          <a href="{{item.image.url}}" target="_blank" class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Open<span class="material-symbols-outlined">
+            download
+            </span>
+            
+            </a>
+        </div>
+        {% endfor %}
+  </div>
+  </section>
+</main>
+
+ {% endblock %}

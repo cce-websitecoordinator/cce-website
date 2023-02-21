@@ -41,16 +41,7 @@ class HomeEvents(models.Model):
     heading = models.CharField(max_length=30)
     sub_heading = models.CharField(max_length=50)
     sub_text = models.TextField()
-    def save(self, *args, **kwargs):
-        compressed_image1 = Compress(self.img1)
-        compressed_image2 = Compress(self.img2)
-        compressed_image3 = Compress(self.img3)
-        compressed_image4 = Compress(self.img4)                
-        self.img1 = compressed_image1
-        self.img2 = compressed_image2
-        self.img3 = compressed_image3
-        self.img4 = compressed_image4
-        super().save(*args, **kwargs)    
+    
     def __str__(self):
         return self.heading
 
@@ -80,7 +71,7 @@ class Gallery(models.Model):
     type = models.CharField(max_length=200, choices = TYPE, default="img")
     date = models.DateField(default=datetime.date.today)
     event_type = models.ManyToManyField(GalleryEventTypes,default="None")
-    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","MECH"),("CIVIL","CIVIL"),("BSH","BSH"),("All","All"))
+    DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("MECH","ME"),("CIVIL","CE"),("BSH","BSH"),("All","All"))
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
     def __str__(self):
@@ -151,7 +142,7 @@ class Hero_Image(models.Model):
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
-    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("PTA","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"),("placements","Placements"),("admissions","Admissions"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("pta","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"),("placements","Placements"),("admissions","Admissions"),("academic_research","Academic Research"),("womencell","Women Cell"),("clubs","Clubs"),("iic","IIC"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.page+"---"+self.image.name + self.video.name

@@ -3,7 +3,8 @@ from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from website.models import HomeUpdates,Gallery
+from website.models import *
+from .models import Achivements as DepAchievements
 
 # Create your views here.
 
@@ -27,9 +28,9 @@ def getDepartment(department):
 class Context:
     '''This class is used to pass context to the templates'''
     def __init__(self, dep,route):
+        
         self.dep = dep
         self.title = getDepartment(dep)
-        self.gallery = Gallery.objects.filter(department=dep)[:10]
         self.updates = HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
@@ -51,6 +52,7 @@ class Context:
         self.events = None
         self.achivements = None
         self.newsletters = None
+        self.gallery = Gallery.objects.filter(department=dep)[:10]
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -71,11 +73,11 @@ class Context:
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(department=dep)
             case "labs":
-                self.labs = Laboratories.objects.filter(department=dep).order_by('faculties__priorities').distinct()
+                self.labs = Laboratories.objects.filter(department=dep)
             case "events":
                 self.events = Events.objects.filter(department=dep).order_by('-date')
             case "achievements":
-                self.achivements = Achivements.objects.filter(department=dep)
+                self.achivements = DepAchievements.objects.filter(department=dep)
             case "newsletters":
                 self.newsletters = NewsLetters.objects.filter(department=dep)
     def data(self):
@@ -180,7 +182,7 @@ def research_page(request,department,slug):
             hero_title = "Funded Projects"
             return render(request, 'Departments/research/funded_projects.html',context)
         case 'publications':
-            publications = FacultyStudentPublications.objects.all()
+            publications = FacultyStudentPublications.objects.all().filter(dep=department)
             context = {**context_temp,'hero_title':"Publications",'publications':publications}
             return render(request, 'Departments/research/publications.html',context)
         case 'research_guides':
@@ -197,7 +199,7 @@ def ProfessionalBodie(request,slug):
     context = {
         'professional_body': ProfessionalBodies.objects.filter(id=slug).first(),
         'events':ProfessionalBodiesEvents.objects.filter(ProfessionalBodies_id=slug),
-        'members':ProfessionalBodiesTeamMembers.objects.filter(ProfessionalBodies_id=slug),
+        'members':ProfessionalBodiesTeamMembers.objects.filter(ProfessionalBodies_id=slug).order_by('priority'),
         'gallery':Gallery.objects.all()
 
 
@@ -208,7 +210,7 @@ def Association(request,slug):
     context = {
         'association':Associations.objects.filter(id=slug).first(),
         'events':AssociationsEvents.objects.filter(assosiation_id=slug),
-        'members':AssociationTeamMembers.objects.filter(assosiation_id=slug),
+        'members':AssociationTeamMembers.objects.filter(assosiation_id=slug).order_by('priority'),
         'gallery':Gallery.objects.all()
 
     }

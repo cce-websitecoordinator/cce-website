@@ -11,14 +11,14 @@ def home_page(request):
     :param request: The request that is sent to the server.
     :return: The rendered html file of the home page.
     """
-    try:
+    if request.method == "GET":
         anouncement = HomeAnouncement.objects.all().first()
         testimonials = Testimonials.objects.all()
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by('?')
-        gallery_imgs = Gallery.objects.all().order_by('?')[:10]
+        gallery_imgs = Gallery.objects.all()[:6]
         upcomingEvents = UpcomingEvents.objects.all().filter(
-            date__lte=datetime.date.today())
+            date__gte=datetime.date.today())
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by('?')
         recruiters2 = recruiters.order_by('?')
@@ -26,10 +26,7 @@ def home_page(request):
         context = {"anouncement": anouncement, 'Testimonials': testimonials, "updates": updates, "Events": events, "gallery": gallery_imgs,
                    "upcomingEvents": upcomingEvents, "recruiters": recruiters, "recruiters2": recruiters2, "recruiters3": recruiters3, "achivements": achivements}
         return render(request, 'home.html', context=context)
-    except Exception as ex:
-        print(ex)
-        return HttpResponse("An error occured, please contact the administrator")
-
+    
 
 def admission_page(request):
     return render(request, 'admission.html')
@@ -47,17 +44,17 @@ def gallery_page(request):
                 gallery_imgs = Gallery.objects.all().order_by('?')
                 if gallery_imgs:
                     context = {"gallery": gallery_imgs, "dep": department}
-                    return render(request, 'gallery.html', context)
+                    return render(request, 'gallery.html', context=context)
             else:
                 gallery_imgs = Gallery.objects.filter(department=department)
                 if gallery_imgs:
                     context = {"gallery": gallery_imgs, "dep": department}
-                    return render(request, 'gallery.html', context)
+                    return render(request, 'gallery.html', context=context)
         else:
             gallery_imgs = Gallery.objects.all().order_by('?')
             if gallery_imgs:
                 context = {"gallery": gallery_imgs}
-                return render(request, 'gallery.html', context)
+                return render(request, 'gallery.html', context=context)
             else:
                 return render(request, 'gallery.html', {"error": "No images found"})
     return render(request, 'gallery.html', {"error": "No images found","dep":department})

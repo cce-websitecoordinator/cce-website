@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Placements {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+  <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+  <p class=" text-sm mt-4 text-justify mb-11">{{about.about}}</p>
+
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Placements</h2>
+      <p class="px-4 text-gray-400">Home / Placements / Placement Traning </p>
+      {% include 'Placements/sidebar.html' %}
+    </div>
+    <div class=" w-full space-y-16 mt-11 ">
+        <div class="w-full flex flex-col justify-center items-center">
+          <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
+    
+          <div
+            class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+          >
+            {%for faculty in faculties%}
+            <a
+              class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
+              href='{{faculty.profile.url}}' target="_blank"
+            >
+            <div class="overflow-clip h-[280px]  rounded-xl">
+              <img
+                src="{{faculty.image.url}}"
+                alt="hero_img"
+                class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out "
+              />
+            </div>
+              <div class="space-y-1 mt-1 text-center">
+                <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
+                <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
+              </div>
+            </a>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+{% endblock body %}
+{% block script %}
+
+
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+

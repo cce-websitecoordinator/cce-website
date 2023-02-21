@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Grivence Redressal
+System {%endblock title %} {% block head %} <style>
+    .loginbg{
+        background: linear-gradient(155.66deg, #7BE495 14.17%, #28AAE1 141.66%);
+    }
+</style>{% endblock head %} {% block body %}
+<main>
+  <section
+    class="w-screen h-[80vh] flex flex-col md:flex-row items-center justify-center"
+    id="content"
+  >
+    <div class="w-[400px] md:w-auto flex lg:flex-row flex-col">
+        <div class="loginbg  p-6 min-h-[300px] md:min-w-[400px] h-auto w-auto">
+            <img src="{% static 'images/student.png'%}" alt="dssf">
+        </div>
+        <div class="bg-gray-100 w-full p-6 min-h-[300px] md:min-w-[400px]">
+            <form action="{% url 'grivence_redressal' slug 'dsjfjk'%}" method="post" class="space-y-4 flex w-full flex-col items-center justify-center">
+                {% csrf_token %}
+                <div class="space-y-3 flex flex-col items-start">
+                    <label for="email">UserID</label>
+                    <input type="text" name="email" placeholder="Enter Your UserID" class="border-none rounded-md">
+                </div>
+                <div class="space-y-3 flex flex-col">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Enter Your Password" class="border-none rounded-md">
+                </div>
+                <div class="space-y-3 flex flex-col">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="confirm" placeholder="Confirm Your Password" class="border-none rounded-md">
+                </div>
+                <div class="flex w-full justify-center">
+
+                    <button type="submit" class="px-5 py-2 bg w-[150px] text-center bg-blue-500 text-white rounded-md">SignUp</button>
+                </div>
+
+                <span class="text-sm">dont have a account, <a href="{% url 'grivence_redressal' slug 'login'%}" class="text-blue-500 underline">LoginIn</a></span>
+                
+            </form>
+            <div class="text-red-400 my-4 text-center font-serif"></div>
+        </div>
+    </div>
+
+  </div>
+
+  </section>
+</main>
+
+{% endblock %}

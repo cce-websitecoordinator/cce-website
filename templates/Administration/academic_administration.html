@@ -1,0 +1,133 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Academic
+Administration | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+    <h1 class="text-4xl my-11 font-bold">Director (Research)</h1>
+    <div class="w-full">
+      <img
+        src="{{director.director_reserch_img.url}}"
+        alt="executive_director"
+        class="w-full mx-auto"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{director.director_reserch_name}}
+      </h1>
+      <p class="text-2xl text-gray-400 mb-6 text-center">Research Director</p>
+      <div class="flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
+        <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
+          <li>B.Tech- College of Engg, Trivandrum, Kerala, India, 1975</li>
+
+          <li>M.Tech- College of Engg, Trivandrum, , Kerala, India, 1978</li>
+
+          <li>
+            Joined Regional Engineering College , Calicut , India,(Renamed in
+            2002 as National Institute of Technology Calicut) as Lecturer, 1978
+          </li>
+          <li>
+            Completed PhD from Indian Institute of Technology Madras, 1988
+          </li>
+
+          <li>Post doctorate from Linkoping University, Sweden, 2001</li>
+
+          <li>
+            Former Head of Department of Electronics and Communication
+            Engineering ,National Institute of Technology Calicut 2003-2006,
+            2015-16
+          </li>
+
+          <li>
+            Former Dean, Planning &amp; Development, National Institute of
+            Technology Calicut ,2006-2008
+          </li>
+
+          <li>Retired as Professor(HAG), ECE, NIT Calicut on 31-12-2018</li>
+
+          <li>
+            Coordinator of several R &amp; D Projects from Ministry of HRD and a
+            Project on Manpower Development Programme in VLSI by Ministry of
+            Information and Communication Technology
+          </li>
+
+          <li>PhD Guidance:- Completed -15</li>
+
+          <li>
+            Paper Publications: International Journals- 55/Conferences -45
+          </li>
+
+          <li>
+            Expert Member of NBA accreditation team - More than 60 Colleges in
+            India
+          </li>
+
+          <li>Chairperson of NBA accreditation team from 2019 onwards</li>
+        </ol>
+      </div>
+      <div class="my-11 flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-8">Message</h1>
+        <p class="pl-5 border-l-[14px] border-blue-300 text-start">
+          The idea of Christ College of Engineering was born out of the
+          aspirations of locals from different strata of society who felt the
+          need for a world-class institution offering professional education in
+          the mini education hub called Irinjalakuda. Bearing in mind the then
+          prevailing scenario in the Engineering Education sector, with a giant
+          leap of faith, this college was established in 2015. Today, by God’s
+          grace and due to the efforts put in by all the stakeholders, we are
+          scripting success stories one after another.
+          <br />
+          <br />
+          Successful engineering careers don’t happen by chance. We believe that
+          success comes to those who work hard and stays with those who do not
+          rest on their past laurels. This is the mantra we regularly ingrain in
+          our students. We too, as an institution, follow the same path. As we
+          continue in our pursuit of excellence, we constantly remind ourselves
+          that excellence is not an act, but a habit. It should be like second
+          nature to us.
+          <br />
+          <br />
+          At Christ College of Engineering, we are committed to providing our
+          students with the right platform to launch themselves into a fruitful
+          and rewarding future. With the kind of transformative learning model
+          we have in place here, coupled with the collaborative and harmonious
+          co-existence of all stakeholders, we intend to positively shape the
+          minds of the global citizens of tomorrow. Do you want your success
+          story to start taking shape here? Well then, come and join Christ
+          College of Engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="w-full space-y-16 mt-11">
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Academic Administrators</h1>
+
+        <div
+          class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+        >
+        {% for item in data %}
+        <div class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center">
+          <div class="overflow-clip h-[280px] rounded-xl">
+            <img src="{{ item.faculty.image.url }}" alt="hero_img" class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out" />
+          </div>
+          <div class="space-y-1 mt-1 text-center">
+            <h1 class="text-xl font-bold">{{ item.faculty.full_name }}</h1>
+           {% if 'Dr. Sajeev John' not in item.faculty.full_name %}
+        <p class="text-xs text-gray-500">{{ item.faculty.role.all|join:', ' }} Department of {{ item.faculty.department }}</p>
+        {% else %}
+        <p class="text-xs text-gray-500">{{ item.faculty.role.all|join:', ' }}</p>
+      {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include 'components/gallery.html' %} {% endblock %}

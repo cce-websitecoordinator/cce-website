@@ -2,8 +2,26 @@ version: '3.8'
 
 
 services:
-    web:
-      build: .
-      command: python3 manage.py runserver 0.0.0.0:8000
-      ports:
-        - 8000:8000
+  db:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: relay
+    volumes:
+       - ./data/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      - DEBUG=1
+    depends_on:
+      - db

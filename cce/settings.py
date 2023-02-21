@@ -7,16 +7,8 @@ import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 load_dotenv()
-
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -38,29 +30,26 @@ INSTALLED_APPS = [
     'website',
     'departments',
     'aboutCCE',
-    'Administration',
-    'StudentServices',
+    'administration',
+    'studentservices',
     'placements',
     'storages',
-
-    # 'tailwind', // activate this in production to use Tailwind CSS
-    # 'theme'
+    'tailwind',
+    'cce_web_theme'
 
 ]
 
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
 
 
 ]
@@ -163,18 +152,19 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-AWS_S3_URL_PROTOCOL='http:'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
-AWS_S3_CUSTOM_DOMAIN =  "www.assets.cce.edu.in"
-PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = 'http://' + AWS_S3_CUSTOM_DOMAIN + '/' + PUBLIC_MEDIA_LOCATION + '/'
-DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
+AWS_S3_CUSTOM_DOMAIN = 'www.assets.cce.edu.in'
+MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/media/'
+MEDIA_ROOT = ''
 
-HTML_MINIFY = True
 
+
+
+TAILWIND_APP_NAME = 'cce_web_theme'
 # Jazzmin settings
+
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "cerulean",

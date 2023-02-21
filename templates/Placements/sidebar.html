@@ -1,33 +1,33 @@
-<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full bg-white">
+<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full bg-white mb-11">
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 lg:hidden text-center"
         id="sidebar-header">
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
-            {%ifequal 'about' route%}
+            {%ifequal 'index' route%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
             {%endifequal%}
 
-            {%ifequal 'faculty' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Placement Tranning</span>
+            {%ifequal 'placement_traning' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Placement Training</span>
             {%endifequal%}
 
-            {%ifequal 'curriculum_and_syllabus' route%}
+            {%ifequal 'achivements' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Achievements</span>
             {%endifequal%}
 
-            {%ifequal 'professionalBodies' route%}
+            {%ifequal 'faculty' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Faculty & Staff</span>
             {%endifequal%}
 
-            {%ifequal 'associations' route%}
+            {%ifequal 'statistics' route%}
             <i class="material-icons"
                 lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Statistics</span>
             {%endifequal%}
 
-            {%ifequal 'research' route%}
+            {%ifequal 'activities' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Activites</span>
             {%endifequal%}
 
-            {%ifequal 'labs' route%}
+            {%ifequal 'recruiters' route%}
             <i class="material-icons"
                 lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Recruiters</span>
             {%endifequal%}
@@ -42,57 +42,57 @@
     </div>
     <div class="space-y-4 lg:block hidden" id="sidebar-content">
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'about' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
-            <a href="{% url 'Department' dep 'about' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'index' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'placement_page'  'index' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'faculty' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'faculty' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'placement_traning' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page'  'placement_traning' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Placement Tranning</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Placement Training</span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'syllabus' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'curriculum_and_syllabus' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'achivements' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page' 'achivements' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Achievements</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">book</i><span>Achievements</span>
             </a>
         </div>
 
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'professionalBodies' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'professionalBodies' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'faculty' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page' 'faculty' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Faculty & Staff</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Faculty & Staff</span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'associations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'associations' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'statistics' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page'  'statistics' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
-                    lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Statistics</span>
+                    class="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Statistics</span>
             </a>
         </div>
-        <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'research' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'research' %}"
+        {% comment %} <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'activities' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page'  'activities' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Activites</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Activites</span>
             </a>
-        </div>
-        <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'labs' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'labs' %}"
+        </div> {% endcomment %}
+        {% comment %} <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'recruiters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'placement_page'  'recruiters' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     class="text-gray group-hover:text-[#007FFF]">biotech</i><span>Recruiters</span>
             </a>
-        </div>
+        </div> {% endcomment %}
 
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
             <a href="#gallery" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
