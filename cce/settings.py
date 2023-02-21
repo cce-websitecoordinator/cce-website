@@ -165,6 +165,7 @@ MEDIA_ROOT = ''
 TAILWIND_APP_NAME = 'cce_web_theme'
 # Jazzmin settings
 
+
 JAZZMIN_UI_TWEAKS = {
     "theme": "cerulean",
     "dark_mode_theme": "cerulean",
