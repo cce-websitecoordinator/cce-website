@@ -1379,8 +1379,12 @@ select {
   max-width: 90vw;
 }
 
-.max-w-\[380px\] {
-  max-width: 380px;
+.max-w-\[200px\] {
+  max-width: 200px;
+}
+
+.max-w-\[350px\] {
+  max-width: 350px;
 }
 
 .max-w-screen-2xl {
@@ -1403,12 +1407,24 @@ select {
   max-width: 100vw;
 }
 
-.max-w-\[350px\] {
-  max-width: 350px;
-}
-
 .max-w-\[320px\] {
   max-width: 320px;
+}
+
+.max-w-\[250px\] {
+  max-width: 250px;
+}
+
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+
+.max-w-\[100px\] {
+  max-width: 100px;
+}
+
+.max-w-\[10px\] {
+  max-width: 10px;
 }
 
 .table-auto {
@@ -1996,16 +2012,6 @@ select {
 .bg-\[\#E0F2FF\] {
   --tw-bg-opacity: 1;
   background-color: rgb(224 242 255 / var(--tw-bg-opacity));
-}
-
-.bg-blue-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
-.bg-blue-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -2615,6 +2621,10 @@ select {
 
 .duration-700 {
   transition-duration: 700ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
 }
 
 .ease-in-out {

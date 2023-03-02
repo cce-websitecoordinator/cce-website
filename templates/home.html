@@ -243,8 +243,11 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     <div class="swiper-container w-[90%] md:min-h-[70vh] min-h-[60vh] h-fit">
       <div class="swiper-wrapper ">
         {% for item in achivements %}
-        <div class="swiper-slide w-full flex justify-center items-center mx-auto">
-         <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]" >
+        <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
+          <div class="swiper-slide w-full  flex justify-center items-center mx-auto max-w-[210px] p-2  overflow-clip group rounded-xl ">
+            
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px] box-shadow rounded-xl group-hover:scale-110 transition-all duration-300" >
+          </div>
         </div>
         {% endfor %}
       </div>

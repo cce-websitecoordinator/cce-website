@@ -152,13 +152,17 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+
+# AWS_S3_URL_PROTOCOL='http:'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'www.assets.cce.edu.in'
-AWS_S3_CUSTOM_DOMAIN = 'www.assets.cce.edu.in'
-# MEDIA_URL = "http://www.assets.cce.edu.in/media/"
+AWS_S3_CUSTOM_DOMAIN =  "dnbca6q7do6n.cloudfront.net"
+# PUBLIC_MEDIA_LOCATION = 'media'
+# MEDIA_URL = 'http://' + AWS_S3_CUSTOM_DOMAIN + '/' + PUBLIC_MEDIA_LOCATION + '/'
+DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
+
 MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/media/'
-MEDIA_ROOT = ''
 
 
 
