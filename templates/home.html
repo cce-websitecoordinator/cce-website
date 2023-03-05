@@ -95,7 +95,7 @@
             <div class="swiper-slide">
               <div class="relative">
                 <div class="w-full  flex items-center justify-center">
-                  <img src="{{event.img.url}}" class="max-h-[500px]" loading="lazy" />
+                  <img src="{{event.img.url}}" class="max-h-[500px]"  />
                 </div>
 
                 <div class='w-full flex pt-3 items-center'>
@@ -188,21 +188,21 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     {% for item in Events %}
     <div class="swiper-slide">
     <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-      <img src="{{item.img1.url}}" class=" " alt="happenings-img" srcset="" loading="lazy"/>
+      <img src="{{item.img1.url}}" class=" " alt="happenings-img"  />
       <img
         src="{{item.img2.url}}"
         class="hidden lg:block"
         alt="happenings-img"
         srcset=""
       />
-      <img src="{{item.img3.url}}" alt="happenings-img" class="" srcset="" loading="lazy"/>
+      <img src="{{item.img3.url}}" alt="happenings-img" class="" />
     
       <img
         src="{{item.img4.url}}"
         class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1"
         alt="happenings-img"
         srcset=""
-        loading="lazy"
+        
       />
     
       <div
@@ -243,8 +243,11 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     <div class="swiper-container w-[90%] md:min-h-[70vh] min-h-[60vh] h-fit">
       <div class="swiper-wrapper ">
         {% for item in achivements %}
-        <div class="swiper-slide w-full flex justify-center items-center mx-auto">
-         <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]" loading="lazy">
+        <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
+          <div class="swiper-slide w-full  flex justify-center items-center mx-auto max-w-[210px] p-2  overflow-clip group rounded-xl ">
+            
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px] box-shadow rounded-xl group-hover:scale-110 transition-all duration-300" >
+          </div>
         </div>
         {% endfor %}
       </div>
@@ -335,7 +338,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
         <div class="w-full  h-full flex justify-center items-start ">
           <div class="w-full flex justify-start items-center flex-col">
             <div class="w-[150px]  h-[150px] overflow-clip rounded-full">
-              <img src="{{item.image.url}}" alt="studentImage " class=" w-full" loading="lazy">
+              <img src="{{item.image.url}}" alt="studentImage " class=" w-full" >
             </div>
             <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
             <p class="font-thin">{{item.role}}</p>

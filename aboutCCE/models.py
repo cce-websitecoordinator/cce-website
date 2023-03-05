@@ -35,9 +35,5 @@ class MoreAboutCCE(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        compressed_image1 = Compress(self.image)    
-        self.img4 = compressed_image1
-        super().save(*args, **kwargs)
     class Meta:
         verbose_name_plural = "More About CCE"

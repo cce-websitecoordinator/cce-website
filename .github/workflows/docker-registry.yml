@@ -1,49 +1,51 @@
 name: Deploy image to AWS ECR
+name: Deploy image to AWS ECR
 
-# Run this workflow every time a new tag is created
-on: 
-  create:
-    tags:
-      - .*
+on:
+ 
   push:
     branches: [ production ]
+
 jobs:
-  ecr:
-    # Name the Job
-    name: build and deploy image to AWS ECR
-    # Set the type of machine to run on
+  
+  build:
+    
+    name: Build Image
     runs-on: ubuntu-latest
 
+   
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
-          
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Check out code
+      uses: actions/checkout@v2
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: cce-website
+        IMAGE_TAG: cce_website_image
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        PRODUCTION: ${{ secrets.PRODUCTION }}
+
         
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Set Tag Number
-        id: tag-number
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: Check Tag Release
-        env:
-          RELEASE_VERSION: ${{ steps.tag-number.outputs.tag }}
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }}
-        
-      - name: Build, tag, and push image to Amazon ECR
-        env:
-          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-          ECR_REPOSITORY: website
-          IMAGE_TAG: ${{ steps.tag-number.outputs.tag }}
-        run: |
-          docker build -t website .
-          docker tag website:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg $DB_USERNAME --build-arg $DB_PASSWORD --build-arg $DB_HOST --build-arg $DB_NAME --build-arg $DB_PORT --build-arg $SECRET_KEY --build-arg $AWS_ACCESS_KEY_ID --build-arg $AWS_SECRET_ACCESS_KEY --build-arg $PRODUCTION . 
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
