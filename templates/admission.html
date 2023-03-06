@@ -109,8 +109,10 @@
           <div class="adm-timeline-single">
             <ul>
               <li><b>Academic Eligibility Criteria</b></li>
-              <li>Some description should 4e entered</li>
-              <button class="adm-timeline-button">View</button>
+              <li><h5>Eligibility Criteria for admission.</h5></li>
+              
+              <a href="{%static 'pdfs/criteria.pdf'%}" class="adm-timeline-button" target="blank">View</a>
+              
             </ul>
 
             <div class="adm-timeline-single-line">
@@ -152,9 +154,9 @@
                   flex-direction: column;
                 "
               >
-                <button class="adm-timeline-button">
+                <a href="{%static 'pdfs/fitness_certificate.pdf'%}" class="adm-timeline-button">
                   Download Certificate
-                </button>
+                </a>
               </div>
               <br />
               <div class="adm-document-required-align-left">
@@ -191,6 +193,8 @@
               <h5>For more details, Contact Office</h5>
               <br />
             </div>
+            
+            {#
             <!-- <div class="adm-scholorship-details-grid">
               <div>
                 <h4>KEAM Rank</h4>
@@ -221,7 +225,7 @@
                   <br />Rs. 20,000 at time of admission
                 </span>
               </div>
-            </div> -->
+            </div> --> #}
 
             <div class="adm-timeline-single-line">
               <div class="adm-timeline-single-outercircle">
