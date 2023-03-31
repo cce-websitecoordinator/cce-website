@@ -48,3 +48,14 @@ def cce_in_media_page(request):
     more_about_cce_data= MoreAboutCCE.objects.all().order_by('-date')
     context = {"cce_in_media_main":cce_in_media_main,"cce_in_media_data": cce_in_media_data,"more_about_cce_data": more_about_cce_data,'hero_img':hero_img,"hero_title":'CCE in Media',}
     return render(request, 'aboutCCE/cce_in_media.html',context=context)
+
+def committees(request):
+    management_data = Management.objects.all().order_by('order')
+    hero_img = Hero_Image.objects.filter(page="committees").first()
+    context = {
+        "management_data": management_data,
+         'hero_img':hero_img,
+         "hero_title":'Committees',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/committees.html',context=context)
