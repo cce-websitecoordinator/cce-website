@@ -21,10 +21,16 @@
                 Bodies</span>
             {%endifequal%}
 
-            {%ifequal 'associations' route%}
-            <i class="material-icons"
-                lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
-            {%endifequal%}
+            {%if dep == "BSH" %}
+
+            {% else %}
+
+                {%ifequal 'associations' route%}
+                <i class="material-icons"
+                    lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
+                {%endifequal%}
+            
+            {%endif%}
 
             {%ifequal 'research' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Research &
@@ -71,7 +77,7 @@
                     Syllabus</span>
             </a>
         </div>
-
+        {% if dep != 'BSH' %}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'professionalBodies' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'professionalBodies' %}"
@@ -80,14 +86,17 @@
                     Bodies</span>
             </a>
         </div>
+        
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'associations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'associations' %}"
+
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
             </a>
         </div>
+        {%endif%}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'research' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'research' %}"
