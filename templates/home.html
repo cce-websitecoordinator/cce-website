@@ -12,7 +12,7 @@
 {% block body %}
 
 <main class="relative">
-  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start  justify-center hidden" id="modal">
+  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999]  items-start hidden justify-center " id="modal">
     <div class="w-[90%] md:h-[60%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
       <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2 shadow-inner rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
         close
@@ -223,7 +223,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
     </div>
     <!-- If we need pagination -->
     <div class="swiper-pagination"></div>
-    <div/>
+  </div>
 
 
   </div>
@@ -366,7 +366,7 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
 {% endblock body %}
 
 {% block script %}
-<script src={% static 'js/marquee.js' %}></script>
+<script src="{% static 'js/marquee.js' %}"></script>
 
 
 <script>
@@ -414,13 +414,13 @@ class="col-span-2 mx-auto p-6 text-center bg-[#D9D9D9] w-full min-h-[200px] grid
   function increment(element, finalValue, time) {
     const count = parseInt(element.innerHTML);
     if (count < finalValue) {
-      element.innerHTML = count + 1 + "+";
+      element.innerHTML = count + 1;
       setTimeout(() => {
         increment(element, finalValue);
       }, time);
     }
     else if (count > finalValue) {
-      element.innerHTML = finalValue + "+";
+      element.innerHTML = finalValue;
     }
   }
 
