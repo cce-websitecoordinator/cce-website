@@ -50,12 +50,47 @@ def cce_in_media_page(request):
     return render(request, 'aboutCCE/cce_in_media.html',context=context)
 
 def committees(request):
-    management_data = Management.objects.all().order_by('order')
     hero_img = Hero_Image.objects.filter(page="committees").first()
     context = {
-        "management_data": management_data,
          'hero_img':hero_img,
          "hero_title":'Committees',
          'gallery':Gallery.objects.all(),
          }
     return render(request, 'aboutCCE/committees.html',context=context)
+
+def programs(request):
+    hero_img = Hero_Image.objects.filter(page="programs").first()
+    context = {
+         'hero_img':hero_img,
+         "hero_title":'Programs Offered',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/programs.html',context=context)
+
+def hr_manual(request):
+    hero_img = Hero_Image.objects.filter(page="hr_manual").first()
+    context = {
+         'hero_img':hero_img,
+         "hero_title":'HR Manual',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/hr_manual.html',context=context)
+
+def vision_2035(request):
+    hero_img = Hero_Image.objects.filter(page="vision_2035").first()
+    context = {
+         'hero_img':hero_img,
+         "hero_title":'Vision 2035',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/vision_2035.html',context=context)
+
+def annual_report(request):
+    hero_img = Hero_Image.objects.filter(page="annual_report").first()
+    context = {
+         'hero_img':hero_img,
+         "hero_title":'Annual Report',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/annual_report.html',context=context)
+
