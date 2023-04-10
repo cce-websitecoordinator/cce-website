@@ -28,15 +28,15 @@
     </div>
     <div class="space-y-4 lg:block hidden" id="sidebar-content">
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'about' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
-            <a href="{% url 'Department' dep 'about' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'mandatory_disclosure' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'mandatory_disclosure' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
             </a>
         </div>
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'faculty' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'faculty' %}"
+            <a href=""
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Faculty &
                     Staff</span>
@@ -44,7 +44,7 @@
         </div>
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'syllabus' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Department' dep 'curriculum_and_syllabus' %}"
+            <a href=""
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Curriculum &
                     Syllabus</span>

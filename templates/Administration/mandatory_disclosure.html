@@ -5,7 +5,10 @@
     <h3 class="text-3xl font-semibold text-center mt-11">Mandatory Disclosures</h3>
    
   
-    <div class="flex gap-10 md:flex-row flex-col">
+    <div class="flex gap-10 md:flex-row flex-col items-start">
+      <div class="col-span-1 flex justify-center items-center flex-col">
+        {% include 'Administration/Sidebar.html' %}
+      </div>
       
   
       <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
@@ -14,7 +17,7 @@
           <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
             picture_as_pdf
             </span></div>
-          <h3 class="mx-4 mt-2">{{item.name}}</h3>
+          <h3 class="mx-4 mt-2">{{item.name}}</h3>  
           <a href="{{item.file.url}}" target="_blank" class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Open<span class="material-symbols-outlined">
             download
             </span>
