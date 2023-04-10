@@ -13,6 +13,7 @@ urlpatterns = [
     path('hr_manual', views.hr_manual, name='HR_Manual'),
     path('vision_2035', views.vision_2035, name='Vision_2035'),
     path('annual_report', views.annual_report, name='Annual_Report'),
+    path('college_handbook', views.college_handbook, name='College_Handbook'),
 ]
 
 if settings.DEBUG:     
