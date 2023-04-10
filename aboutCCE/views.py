@@ -49,8 +49,8 @@ def cce_in_media_page(request):
     context = {"cce_in_media_main":cce_in_media_main,"cce_in_media_data": cce_in_media_data,"more_about_cce_data": more_about_cce_data,'hero_img':hero_img,"hero_title":'CCE in Media',}
     return render(request, 'aboutCCE/cce_in_media.html',context=context)
 
-def committees(request):
-    hero_img = Hero_Image.objects.filter(page="committees").first()
+def committees_page(request):
+    hero_img = Hero_Image.objects.filter(page="all_committees").first()
     context = {
          'hero_img':hero_img,
          "hero_title":'Committees',
@@ -58,8 +58,8 @@ def committees(request):
          }
     return render(request, 'aboutCCE/committees.html',context=context)
 
-def programs(request):
-    hero_img = Hero_Image.objects.filter(page="programs").first()
+def programs_page(request):
+    hero_img = Hero_Image.objects.filter(page="programs_offered").first()
     context = {
          'hero_img':hero_img,
          "hero_title":'Programs Offered',
@@ -67,7 +67,7 @@ def programs(request):
          }
     return render(request, 'aboutCCE/programs.html',context=context)
 
-def hr_manual(request):
+def hr_manual_page(request):
     hero_img = Hero_Image.objects.filter(page="hr_manual").first()
     context = {
          'hero_img':hero_img,
@@ -76,7 +76,7 @@ def hr_manual(request):
          }
     return render(request, 'aboutCCE/hr_manual.html',context=context)
 
-def vision_2035(request):
+def vision_2035_page(request):
     hero_img = Hero_Image.objects.filter(page="vision_2035").first()
     context = {
          'hero_img':hero_img,
@@ -85,7 +85,7 @@ def vision_2035(request):
          }
     return render(request, 'aboutCCE/vision_2035.html',context=context)
 
-def annual_report(request):
+def annual_report_page(request):
     hero_img = Hero_Image.objects.filter(page="annual_report").first()
     context = {
          'hero_img':hero_img,
@@ -93,4 +93,13 @@ def annual_report(request):
          'gallery':Gallery.objects.all(),
          }
     return render(request, 'aboutCCE/annual_report.html',context=context)
+
+def college_handbook_page(request):
+    hero_img = Hero_Image.objects.filter(page="college_handbook").first()
+    context = {
+         'hero_img':hero_img,
+         "hero_title":'College Handbook',
+         'gallery':Gallery.objects.all(),
+         }
+    return render(request, 'aboutCCE/college_handbook.html',context=context)
 

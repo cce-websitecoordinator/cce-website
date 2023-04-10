@@ -8,12 +8,12 @@ urlpatterns = [
     path('directors_desk', views.directors_desk_page, name='Directors_Desk'),
     path('principals_desk', views.principals_desk_page, name='Principals_Desk'),
     path('cce_in_media', views.cce_in_media_page, name='CCE_in_Media'),
-    path('committees', views.committees, name='Committees'),
-    path('programs', views.programs, name='Programs'),
-    path('hr_manual', views.hr_manual, name='HR_Manual'),
-    path('vision_2035', views.vision_2035, name='Vision_2035'),
-    path('annual_report', views.annual_report, name='Annual_Report'),
-    path('college_handbook', views.college_handbook, name='College_Handbook'),
+    path('committees', views.committees_page, name='Committees'),
+    path('programs', views.programs_page, name='Programs'),
+    path('hr_manual', views.hr_manual_page, name='HR_Manual'),
+    path('vision_2035', views.vision_2035_page, name='Vision_2035'),
+    path('annual_report', views.annual_report_page, name='Annual_Report'),
+    path('college_handbook', views.college_handbook_page, name='College_Handbook'),
 ]
 
 if settings.DEBUG:     
