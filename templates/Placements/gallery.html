@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %} {% block title %} Gallery {% endblock title %}
+{% load static %} {% block title %} Placement {% endblock title %}
 {% block body %}
 {% block 'head'%}
 <style>
@@ -75,46 +75,8 @@
 <main class='md:mx-24 mx-11 relative'>
   <div class="min-h-24">
   </div>
-  <h1 class="text-center w-full py-24 text-6xl font-bold pt-24 ">CCE Gallery </h1>
+  <h1 class="text-center w-full py-24 text-6xl font-bold pt-24 ">Placement Gallery  </h1>
   <div>
-    <form method="get" action="/gallery" class="flex justify-between py-6 items-center">
-      <div class="flex space-x-4 items-center">
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="ALL" checked  />
-          <label for="ALL">ALL</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="CSE" {% ifequal dep 'CSE' %} checked {% endifequal %} />
-          <label for="CSE">CSE</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="ECE" {% ifequal dep 'ECE' %}checked{% endifequal %} />
-          <label for="ECE">ECE</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="EEE" {% ifequal dep 'EEE' %}checked{% endifequal %} />
-          <label for="EEE">EEE</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="MECH" {% ifequal dep 'ME' %}checked{% endifequal %} />
-          <label for="MECH">MECH</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="CIVIL" {% ifequal dep 'CE' %}checked{% endifequal %} />
-          <label for="CIVIL">CE</label>
-        </div>
-        <div class="space-x-2">
-          <input type="radio" name="dep" value="BSH" {% ifequal dep 'BSH' %}checked{% endifequal %} />
-          <label for="BSH">BSH</label>
-        </div>
-        <div class="space-x-2">
-          <button type="submit" class="px-2 py-1 bg-blue-500 rounded-xl">Apply</button>
-        </div>
-
-      </div>
-
-      <input type="text" name="query" placeholder="Search Gallery" class="p-2 bg-gray-300 rounded-xl">
-    </form>
   </div>
 
   {% if error %}
@@ -122,7 +84,7 @@
     <h1 class="md:text-6xl text-2xl font-bold text-center text-blue-600">Oops....{{error}}</h1>
   </div> 
    {% else %}
-    <div id="gallery" class="mb-11">
+    <div id="gallery" class="mb-11 min-h-screen">
 
     {% for item in gallery %}
     {% if 'vdo' in item.type %}
@@ -138,22 +100,18 @@
     {% endfor %}
     </div>
     {% endif %}
-
-
     <div id="myModal" class="fixed inset-0  h-[100vh] w-[100vw] hidden z-[99999]">
       <div class="modal-body p-24 h-full w-full flex justify-center items-center backdrop-blur-lg">
 
       </div>
     </div>
-
-
-
-
 </main>
 {% endblock body %}
 
 {% block script %}
 <script>
+
+
   $(document).ready(function () {
     $("img").click(function () {
       var t = $(this).attr("src");
@@ -163,7 +121,9 @@
     });
     $("#myModal").click(function () {
       $("#myModal").toggleClass("hidden");
+
     });
-  });
+
+  });//EOF Document.ready
 </script>
 {% endblock script %}

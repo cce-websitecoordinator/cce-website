@@ -31,7 +31,10 @@
             <i class="material-icons"
                 lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Recruiters</span>
             {%endifequal%}
-
+            {%ifequal 'gallery' route%}
+            <i class="material-icons"
+                lass="text-gray group-hover:text-[#007FFF]">gallery_thumbnail </i><span>Gallery</span>
+            {%endifequal%}
             
         </div>
     </div>
@@ -95,7 +98,7 @@
         </div> {% endcomment %}
 
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
-            <a href="#gallery" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+            <a href="{% url 'placement_page'  'gallery' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <span class="material-symbols-outlined"> gallery_thumbnail </span><span>Gallery</span>
             </a>
         </div>

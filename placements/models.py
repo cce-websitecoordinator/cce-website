@@ -1,4 +1,5 @@
 from django.db import models
+import datetime 
 
 from website.models import Faculty
 
@@ -47,6 +48,17 @@ class Achivements(models.Model):
 
 class PlacementFaculty(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    role = models.CharField(max_length=10)
     order = models.IntegerField()
     def __str__(self):
         return self.faculty.full_name
+
+class PlacementStatistics(models.Model):
+    graph = models.ImageField(("Graph"), upload_to=None, height_field=None, width_field=None, max_length=None)
+
+class PlacementGallery(models.Model):
+    image = models.ImageField(upload_to="gallery",blank=True)
+    video = models.FileField(upload_to="PlacementGallery",blank=True)
+    TYPE = (("img","IMAGE"),("vdo","VIDEO"))
+    type = models.CharField(max_length=200, choices = TYPE, default="img")
+    date = models.DateField(default=datetime.date.today)

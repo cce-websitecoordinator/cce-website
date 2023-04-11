@@ -30,14 +30,20 @@ def placement_page(request,slug):
             context = {**context_temp,'data':PlacementTraning.objects.all()}
             return render(request, 'Placements/placement_traning.html',context=context)
         case "achivements":
+            context = {**context_temp,"achivements":Achivements.objects.all()}
             return render(request, 'Placements/achivements.html',context=context)
         case "faculty":
+            context = {**context_temp,"faculty":PlacementFaculty.objects.all().order_by('order')}
             return render(request, 'Placements/faculty.html',context=context)
         case "statistics":
+            context = {**context_temp,"data":PlacementStatistics.objects.first()}
             return render(request, 'Placements/statistics.html',context=context)
         case "activities":
             return render(request, 'Placements/activities.html',context=context)
         case "recruiters":
             return render(request, 'Placements/recruiters.html',context=context)
+        case "gallery":
+            context = {**context_temp,"gallery":PlacementGallery.objects.all()}
+            return render(request, 'Placements/gallery.html',context=context)
 
     
