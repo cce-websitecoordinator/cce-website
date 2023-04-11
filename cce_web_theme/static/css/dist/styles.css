@@ -1435,6 +1435,10 @@ select {
   max-width: 320px;
 }
 
+.max-w-\[410px\] {
+  max-width: 410px;
+}
+
 .table-auto {
   table-layout: auto;
 }

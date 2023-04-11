@@ -46,7 +46,7 @@ def cce_in_media_page(request):
     cce_in_media_main =  CCEinMedia.objects.all().first()
     cce_in_media_data = CCEinMedia.objects.all()[1:4]
     more_about_cce_data= MoreAboutCCE.objects.all().order_by('-date')
-    context = {"cce_in_media_main":cce_in_media_main,"cce_in_media_data": cce_in_media_data,"more_about_cce_data": more_about_cce_data,'hero_img':hero_img,"hero_title":'CCE in Media',}
+    context = {"cce_in_media_data": cce_in_media_data,'hero_img':hero_img,"hero_title":'CCE in Media',}
     return render(request, 'aboutCCE/cce_in_media.html',context=context)
 
 def committees_page(request):
