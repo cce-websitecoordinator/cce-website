@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from aboutCCE.models import *
 from website.models import Faculty, Gallery, Hero_Image
 
@@ -85,15 +84,13 @@ def vision_2035_page(request):
          }
     return render(request, 'aboutCCE/vision_2035.html',context=context)
 
-def annual_report_page(request):
-    hero_img = Hero_Image.objects.filter(page="annual_report").first()
-    context = {
-         'hero_img':hero_img,
-         "hero_title":'Annual Report',
-         'gallery':Gallery.objects.all(),
-         }
-    return render(request, 'aboutCCE/annual_report.html',context=context)
 
+def annual_report_page(request):
+    data = AnnualReport.objects.all()
+    hero_img = Hero_Image.objects.filter(page="annual_report").first()
+    return render(request,'aboutCCE/annual_report.html',context={'hero_img':hero_img,'hero_title':'Annual Report','data':data}) 
+
+ 
 def college_handbook_page(request):
     hero_img = Hero_Image.objects.filter(page="college_handbook").first()
     context = {

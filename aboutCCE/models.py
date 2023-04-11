@@ -37,3 +37,12 @@ class MoreAboutCCE(models.Model):
 
     class Meta:
         verbose_name_plural = "More About CCE"
+
+
+class AnnualReport(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AnnualReport")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Annual Report"

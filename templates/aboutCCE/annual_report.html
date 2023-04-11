@@ -1,32 +1,29 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Annual Report 
-{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %}  Annual Report {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
-  <section class="md:px-24 w-full text-center">
-    <h1 class="text-4xl my-11 font-bold">
-      Annual Report
-    </h1>
-    <div class="flex gap-10 md:flex-row flex-col">
-    <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6">
+  <section class="md:px-24 pt-24 px-6 py-11" id="content">
+    <h3 class="text-3xl font-semibold text-center mt-11">Annual Report</h3>
+   
+  
+    <div class="flex gap-10 md:flex-row flex-col items-start">
+      <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
+        {% for item in data  %}
         <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">
-          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center">
-            <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
-              picture_as_pdf
-            </span>
-          </div>
-          <h3 class="mx-4 mt-2">Title</h3>
-          <a
-            href=""
+          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
+            picture_as_pdf
+            </span></div>
+          <h3 class="mx-4 mt-2">{{item.name}}</h3>  
+          <a href="{{item.file.url}}" target="_blank" class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Open<span class="material-symbols-outlined">
             download
-            class="mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center"
-            >Download<span class="material-symbols-outlined"> download </span>
-          </a>
+            </span>
+            
+            </a>
         </div>
-      </div>
+        {% endfor %}
+        
+       </div>
     </div>
-
   </section>
 </main>
 
-{% include 'components/gallery.html' %} {% endblock %}
-
+ {% endblock %}
