@@ -712,8 +712,48 @@ select {
   }
 }
 
+.aspect-w-9 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 9;
+}
+
+.aspect-w-9 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.aspect-h-16 {
+  --tw-aspect-h: 16;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .invisible {
   visibility: hidden;
+}
+
+.collapse {
+  visibility: collapse;
 }
 
 .static {
@@ -871,6 +911,10 @@ select {
   grid-column: span 2 / span 2;
 }
 
+.col-auto {
+  grid-column: auto;
+}
+
 .col-start-1 {
   grid-column-start: 1;
 }
@@ -879,12 +923,20 @@ select {
   grid-column-end: 3;
 }
 
+.float-right {
+  float: right;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
 
 .m-3 {
   margin: 0.75rem;
+}
+
+.m-0 {
+  margin: 0px;
 }
 
 .mx-auto {
@@ -1075,6 +1127,14 @@ select {
   margin-right: 0.25rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1089,6 +1149,10 @@ select {
 
 .grid {
   display: grid;
+}
+
+.contents {
+  display: contents;
 }
 
 .hidden {
@@ -1379,8 +1443,8 @@ select {
   max-width: 90vw;
 }
 
-.max-w-\[200px\] {
-  max-width: 200px;
+.max-w-\[210px\] {
+  max-width: 210px;
 }
 
 .max-w-\[350px\] {
@@ -1411,24 +1475,12 @@ select {
   max-width: 320px;
 }
 
-.max-w-\[250px\] {
-  max-width: 250px;
-}
-
-.max-w-\[150px\] {
-  max-width: 150px;
-}
-
-.max-w-\[100px\] {
-  max-width: 100px;
-}
-
-.max-w-\[10px\] {
-  max-width: 10px;
-}
-
 .table-auto {
   table-layout: auto;
+}
+
+.border-collapse {
+  border-collapse: collapse;
 }
 
 .rotate-180 {
@@ -1774,6 +1826,10 @@ select {
   border-width: 12px;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-x-2 {
   border-left-width: 2px;
   border-right-width: 2px;
@@ -2060,6 +2116,10 @@ select {
   padding: 0.25rem;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2280,6 +2340,14 @@ select {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
 }
 
 .text-left {
@@ -2611,6 +2679,10 @@ select {
   transition-duration: 500ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .duration-100 {
   transition-duration: 100ms;
 }
@@ -2621,10 +2693,6 @@ select {
 
 .duration-700 {
   transition-duration: 700ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
 }
 
 .ease-in-out {
@@ -2861,6 +2929,14 @@ select {
 
   .md\:w-\[700px\] {
     width: 700px;
+  }
+
+  .md\:w-\[3400px\] {
+    width: 3400px;
+  }
+
+  .md\:w-\[400px\] {
+    width: 400px;
   }
 
   .md\:min-w-\[695px\] {
