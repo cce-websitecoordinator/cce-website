@@ -63,3 +63,11 @@ class AuditedStatements(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "Audited Statements"
+
+class CollegeMagazine(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="CollegeMagazine")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "College Magazine"

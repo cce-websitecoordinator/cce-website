@@ -1,8 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% block title %}  Audited Statements {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %}  College Magazine {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 pt-24 px-6 py-11" id="content">
-    <h3 class="text-3xl font-semibold text-center mt-11">Audited Statements</h3>
+    <h3 class="text-3xl font-semibold text-center mt-11">College Magazine</h3>
    
   
     <div class="flex gap-10 md:flex-row flex-col items-start">
@@ -12,7 +12,7 @@
           <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
             picture_as_pdf
             </span></div>
-          <h3 class="mx-4 mt-2 text-center">{{item.name}}</h3>  
+          <h3 class="mx-4 mt-2">{{item.name}}</h3>  
           <a href="{{item.file.url}}" target="_blank" class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Open<span class="material-symbols-outlined">
             download
             </span>

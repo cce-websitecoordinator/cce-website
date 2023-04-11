@@ -16,6 +16,7 @@ urlpatterns = [
     path('college_calendar', views.college_calendar_page, name='College_Calendar'),
     path('college_handbook', views.college_handbook_page, name='College_Handbook'),
     path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
+    path('college_magazine', views.college_magazine_page, name='College_Magazine'),
 ]
 
 if settings.DEBUG:     

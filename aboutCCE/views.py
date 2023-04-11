@@ -90,6 +90,7 @@ def annual_report_page(request):
     hero_img = Hero_Image.objects.filter(page="annual_report").first()
     return render(request,'aboutCCE/annual_report.html',context={'hero_img':hero_img,'hero_title':'Annual Report','data':data}) 
 
+
 def college_calendar_page(request):
     data = CollegeCalendar.objects.all()
     hero_img = Hero_Image.objects.filter(page="college_calendar").first()
@@ -109,3 +110,9 @@ def audited_statements_page(request):
     data = AuditedStatements.objects.all()
     hero_img = Hero_Image.objects.filter(page="audited_statements").first()
     return render(request,'aboutCCE/audited_statements.html',context={'hero_img':hero_img,'hero_title':'Audited Statements','data':data}) 
+
+
+def college_magazine_page(request):
+    data = CollegeMagazine.objects.all()
+    hero_img = Hero_Image.objects.filter(page="college_magazine").first()
+    return render(request,'aboutCCE/college_magazine.html',context={'hero_img':hero_img,'hero_title':'College Magazine','data':data}) 
