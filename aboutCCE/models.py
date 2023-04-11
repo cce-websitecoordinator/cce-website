@@ -38,6 +38,14 @@ class MoreAboutCCE(models.Model):
     class Meta:
         verbose_name_plural = "More About CCE"
 
+class CollegeCalendar(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="CollegeCalendar")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "College Calendar"
+
 
 class AnnualReport(models.Model):
     name = models.CharField(max_length=100)
@@ -46,3 +54,12 @@ class AnnualReport(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "Annual Report"
+
+
+class AuditedStatements(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AuditedStatements")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Audited Statements"

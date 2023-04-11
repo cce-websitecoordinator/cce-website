@@ -13,7 +13,9 @@ urlpatterns = [
     path('hr_manual', views.hr_manual_page, name='HR_Manual'),
     path('vision_2035', views.vision_2035_page, name='Vision_2035'),
     path('annual_report', views.annual_report_page, name='Annual_Report'),
+    path('college_calendar', views.college_calendar_page, name='College_Calendar'),
     path('college_handbook', views.college_handbook_page, name='College_Handbook'),
+    path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
 ]
 
 if settings.DEBUG:     
