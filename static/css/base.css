@@ -1,11 +1,12 @@
-
 @font-face {
-  font-family: 'Kollektif';
-  font-style: normal;
+  font-family: 'Poppins';
+  src:url('../fonts/Poppins.ttf.woff') format('woff'),
+      url('../fonts/Poppins.ttf.svg#Poppins') format('svg'),
+      url('../fonts/Poppins.ttf.eot'),
+      url('../fonts/Poppins.ttf.eot?#iefix') format('embedded-opentype'); 
   font-weight: normal;
-  src: local('Kollektif'), url('../fonts/Kollektif.woff') format('woff');
-
-  }
+  font-style: normal;
+}
 
 /* fallback */
 @font-face {
@@ -56,7 +57,7 @@
 }
 
 *{
-  font-family: 'Kollektif';
+  font-family: 'Poppins';
 
 }
 .cents {
