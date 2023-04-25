@@ -11,7 +11,9 @@ urlpatterns = [
     path('iic', views.iic_page, name='iic'),
     path('womencell', views.womencell_page, name='women_cell'),
     path('union', views.union_page, name='union'),
-    path('<str:slug>', views.central_library_page, name='Central_Library'),
+    # path('<str:slug>', views.central_library_page, name='Central_Library'),
+    path('techies_park', views.techies_park_page, name='techies_park'),
+
     
 
     

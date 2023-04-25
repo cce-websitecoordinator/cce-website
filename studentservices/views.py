@@ -79,5 +79,8 @@ def central_library_page(request,slug):
         case "library_resources":
             return render(request, 'StudentServices/library_resources.html',context=context)
         
-        
-        
+            
+def techies_park_page(request):
+    hero_img = Hero_Image.objects.filter(page="techies_park").first()
+    
+    return render(request,'StudentServices/techies_park.html',context={'hero_img':hero_img,'hero_title':'Techies Park'})
