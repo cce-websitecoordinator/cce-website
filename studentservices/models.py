@@ -17,7 +17,7 @@ class ArtsEvents(models.Model):
     date = models.DateField()
     image = models.ImageField(upload_to='arts/events')
     def __str__(self):
-        return self.title
+        return self.title 
 
 
 class artsTeamStatus(models.Model):
@@ -146,3 +146,27 @@ class UnionCommitee(models.Model):
     def __str__(self):
         return self.name
     
+
+class  CentralLibrary(models.Model):
+    data = models.TextField(max_length=250)
+    CHOICES = (("Vision", "Vision"), ("Mission", "Mission"),("about","about"))
+    name = models.CharField(max_length=10, choices=CHOICES)
+    class Meta:
+        verbose_name = ("Central Library")
+        verbose_name_plural = ("Central Library")
+
+    def __str__(self):
+        return self.name
+    
+class LibraryFaculty(models.Model):
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    role = models.CharField(max_length=10)
+    order = models.IntegerField()
+    def __str__(self):
+        return self.faculty.full_name
+    
+class DigitalLibrary(models.Model):
+    link = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='CentralLibrary/DigitalLibrary/')
+    def __str__(self):
+        return self.title

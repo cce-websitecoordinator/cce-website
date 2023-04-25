@@ -11,7 +11,7 @@ def arts_page(request):
     return render(request, 'StudentServices/arts.html',context=context)
 
 
-
+ 
 def sports_page(request):
     arts_updates = SportsUpdates.objects.all()
     gallery_imgs = SportsGallery.objects.all()
@@ -48,3 +48,36 @@ def union_page(request):
     hero_img = Hero_Image.objects.all().filter(page="college_union").first
     return render(request, 'StudentServices/union.html',context={"union":union,"hero_img":hero_img,"hero_title":union.name,'union_members':union_members})
 
+def central_library_page(request,slug):
+    context_temp = {
+        'title': 'Central Library',
+        'hero_title': 'Central Library',
+        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        'route': slug,
+    }
+    context={**context_temp}
+    match slug:
+        case 'central_library':
+            vision = CentralLibrary.objects.filter(name='Vision').first()
+            mission = CentralLibrary.objects.filter(name='Mission').first()
+            about = CentralLibrary.objects.filter(name="about").first()
+            gallery = Gallery.objects.all()
+            context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery}
+            return render(request, 'StudentServices/central_library.html',context=context)
+        case "faculty_and_staff":
+            context = {**context_temp,'data':LibraryFaculty.objects.all()}
+            return render(request, 'StudentServices/faculty_and_staff.html',context=context)
+        case "library_handbook":
+            return render(request, 'StudentServices/library_handbook.html',context=context)
+        case "library_info":
+            return render(request, 'StudentServices/library_info.html',context=context)
+        case "rules_and_regulations":
+            return render(request, 'StudentServices/rules_and_regulations.html',context=context)
+        case "digital_library":
+            context = {**context_temp,'data':DigitalLibrary.objects.all()}
+            return render(request, 'StudentServices/digital_library.html',context=context)
+        case "library_resources":
+            return render(request, 'StudentServices/library_resources.html',context=context)
+        
+        
+        
