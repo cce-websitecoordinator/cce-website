@@ -134,9 +134,12 @@ def Department(request, route, department):
             case "curriculum_and_syllabus":
                 return render(request, 'Departments/curriculum_and_syllabus.html', context)
             case "newsletters":
-                return render(request, 'Departments/NewsLetters.html', context) 
+                return render(request, 'Departments/NewsLetters.html', context)
+            case "innovative":
+                return render(request, 'Departments/innovative_teaching_learning.html', context) 
             case "research":
                 return redirect('dep_research',department,'index') 
+
             case other:
                 raise Http404("Page Not Found")
 

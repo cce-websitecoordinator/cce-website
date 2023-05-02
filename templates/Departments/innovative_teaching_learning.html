@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Labotories - {{title}}
+{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+{%include 'Departments/Hero.html' %}
+
+<section class="md:px-24 pt-24 px-6" id="content">
+  
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+
+    
+
+    <div class="w-full px-24 md:block hidden">
+        <div>
+        <h3 class="text-2xl font-semibold text-left mt-11 w-full p-2">Innovative Teaching-Learning Methods </h3></div>
+        <table class="w-full top-[100px]  ">
+          <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
+            <tr class="grid grid-cols-2 text-center my-2">
+              <th>Sl No.</th>
+              <th>Innovative Teaching – Learning Methods</th>
+              
+            </tr>
+          </thead>
+       
+          <tbody class=''>
+            <tr class="grid grid-cols-2 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+              <td>I</td>
+              <td>Activity Based Learning</td>
+            </tr>
+            <tr class="grid grid-cols-2 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+              <td>II </td>
+              <td>Act on Technology</td>
+            </tr>
+            <tr class="grid grid-cols-2 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+              <td>III</td>
+              <td>Flipped Classroom</td>
+              
+            </tr>
+            <tr class="grid grid-cols-2 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+              <td>IV</td>
+              <td>Information and Communication Technologies (ICT) based teaching learning</td>
+            </tr>
+            <tr class="grid grid-cols-2 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+              <td>V</td>
+              <td>Add-on trainings/ Hands-on workshops/online workshops based teaching learning</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="w-full flex flex-col justify-center items-left">
+
+            
+    
+            
+            <p class="mt-6 text-left font-bold md:px-16"> <br> The innovative teaching-learning processes each are described in detail below.</p>
+            <p class="mt-6 text-left md:px-16"><span class="font-bold">I.	Activity Based Learning: - </span>The students are encouraged to participate in activity-based learning by project-based learning. Working in a team atmosphere enhances their leadership skills as well as their ability to function as a unit. Additionally, they gain presentation and communication skills through the project presentations they give to faculty and students. Additionally, to help them develop their technical writing skills, students were required to write a report on the project they presented. The details are given in Table 5.5.2.</p>
+            
+    
+          </div>
+
+      </div> 
+
+  </div>
+</section>
+
+
+
+<section class="md:px-24 px-7 mt-11">
+  <div class="flex md:flex-row flex-col gap-10">
+    <div>
+      {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
+    </div>
+    <div class="w-full space-y-6 mt-11 md:mt-0">
+      
+    </div>
+  </div>
+</section>
+
+{% include 'components/gallery.html' %} {% include 'Departments/Contact.html' %}
+{% endblock body %} {% block script %}
+<script></script>
+{% endblock script %}
