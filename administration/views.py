@@ -70,21 +70,6 @@ def organogram_page(request):
     return render(request,'Administration/organogram.html',context={'hero_img':hero_img,'hero_title':'Organogram','gallery':gallery})
 
 
-def mandatory_disclosure_page(request):
-    data = MandatoryDisclosure.objects.all()
-    hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
-    return render(request,'Administration/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data,'route':'mandatory_disclosure'}) 
-
-def ktu_aicte_regulations_page(request):
-    data = KtuAicteRegulations.objects.all()
-    hero_img = Hero_Image.objects.filter(page="ktu_aicte_regulations").first()
-    return render(request,'Administration/ktu_aicte_regulations.html',context={'hero_img':hero_img,'hero_title':'KTU/AICTE Regulations','data':data,'route':'ktu_aicte_regulations'})
-
-def approvals_page(request):
-    data = Approvals.objects.all()
-    hero_img = Hero_Image.objects.filter(page="approvals").first()
-    return render(request,'Administration/approvals.html',context={'hero_img':hero_img,'hero_title':'Approvals','data':data,'route':'approvals'})
-
 
 def academic_administration_page(request):
     hero_img =Hero_Image.objects.filter(page="academic_research").first()

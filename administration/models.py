@@ -103,29 +103,6 @@ class ExaminationCellFaculty(models.Model):
         return self.faculty.full_name + "  " + self.designation
 
 
-class MandatoryDisclosure(models.Model):
-    name = models.CharField(max_length=100)
-    file = models.FileField(upload_to="MandatoryDisclosure")
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name_plural = "Mandatory Disclosure"
-
-class KtuAicteRegulations(models.Model):
-    name = models.CharField(max_length=100)
-    file = models.FileField(upload_to="KtuAicteRegulations")
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name_plural = "KTU/AICTE Regulations"
-
-class Approvals(models.Model):
-    name = models.CharField(max_length=100)
-    file = models.FileField(upload_to="Approvals")
-    def __str__(self):
-        return self.name
-
-
 class AcademicAdministrationDirector(models.Model):
     director_reserch_img = models.ImageField( upload_to='academicAdministraction/faculty')
     director_reserch_name = models.CharField(max_length=200)

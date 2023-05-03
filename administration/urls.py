@@ -12,9 +12,6 @@ urlpatterns = [
     path('sc_st_committee_cell', views.sc_st_monitoring_cell_page, name='sc_st_committee_cell'),
     path('examination_cell', views.examination_cell_page, name='examination_cell'),
     path('organogram',views.organogram_page,name='organogram'),
-    path('mandatory_disclosure',views.mandatory_disclosure_page,name='mandatory_disclosure'),
-    path('ktu_aicte_regulations',views.ktu_aicte_regulations_page,name='ktu_aicte_regulations'),
-    path('approvals',views.approvals_page,name='approvals'),
     path('academic_administration',views.academic_administration_page,name='academic_administration'),
     path("grivence/<str:slug>/<str:page>",views.grivence_redressal_page,name="grivence_redressal"),
 ]

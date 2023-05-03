@@ -6,6 +6,9 @@
    
   
     <div class="flex gap-10 md:flex-row flex-col items-start">
+      <div class="col-span-1 flex justify-center items-center flex-col">
+        {% include 'aboutCCE/documents_sidebar.html' %}
+      </div>
       <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
         {% for item in data  %}
         <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">

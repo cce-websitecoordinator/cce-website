@@ -106,10 +106,27 @@ def college_handbook_page(request):
          }
     return render(request, 'aboutCCE/college_handbook.html',context=context)
 
+def mandatory_disclosure_page(request):
+    data = MandatoryDisclosure.objects.all()
+    hero_img = Hero_Image.objects.filter(page="mandatory_disclosure").first()
+    return render(request,'aboutCCE/mandatory_disclosure.html',context={'hero_img':hero_img,'hero_title':'Mandatory Disclosure','data':data,'route':'mandatory_disclosure'}) 
+
+def ktu_regulations_page(request):
+    data = KtuRegulations.objects.all()
+    hero_img = Hero_Image.objects.filter(page="ktu_aicte_regulations").first()
+    return render(request,'aboutCCE/ktu_regulations.html',context={'hero_img':hero_img,'hero_title':'KTU Regulations','data':data,'route':'ktu_regulations'})
+
+def aicte_approvals_page(request):
+    data = AicteApprovals.objects.all()
+    hero_img = Hero_Image.objects.filter(page="approvals").first()
+    return render(request,'aboutCCE/aicte_approvals.html',context={'hero_img':hero_img,'hero_title':'AICTE Approvals','data':data,'route':'aicte_approvals'})
+
+
+
 def audited_statements_page(request):
     data = AuditedStatements.objects.all()
     hero_img = Hero_Image.objects.filter(page="audited_statements").first()
-    return render(request,'aboutCCE/audited_statements.html',context={'hero_img':hero_img,'hero_title':'Audited Statements','data':data}) 
+    return render(request,'aboutCCE/audited_statements.html',context={'hero_img':hero_img,'hero_title':'Audited Statements','data':data,'route':'audited_statements'}) 
 
 
 def college_magazine_page(request):
