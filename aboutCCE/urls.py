@@ -15,6 +15,9 @@ urlpatterns = [
     path('annual_report', views.annual_report_page, name='Annual_Report'),
     path('college_calendar', views.college_calendar_page, name='College_Calendar'),
     path('college_handbook', views.college_handbook_page, name='College_Handbook'),
+    path('mandatory_disclosure',views.mandatory_disclosure_page,name='Mandatory_Disclosure'),
+    path('ktu_aicte_regulations',views.ktu_regulations_page,name='Ktu_Regulations'),
+    path('approvals',views.aicte_approvals_page,name='Aicte_Approvals'),
     path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
     path('college_magazine', views.college_magazine_page, name='College_Magazine'),
 ]

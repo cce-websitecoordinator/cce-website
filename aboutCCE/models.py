@@ -56,6 +56,30 @@ class AnnualReport(models.Model):
         verbose_name_plural = "Annual Report"
 
 
+class MandatoryDisclosure(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="MandatoryDisclosure")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Mandatory Disclosure"
+
+class KtuRegulations(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="KtuRegulations")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "KTU Regulations"
+
+class AicteApprovals(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AicteApprovals")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "AICTE Approvals"
+
 class AuditedStatements(models.Model):
     name = models.CharField(max_length=100)
     file = models.FileField(upload_to="AuditedStatements")
@@ -71,3 +95,5 @@ class CollegeMagazine(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "College Magazine"
+
+
