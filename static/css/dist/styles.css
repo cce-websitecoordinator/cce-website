@@ -3262,3 +3262,21 @@ select {
     width: 400px;
   }
 }
+
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-\[300px\] {
+      height: 300px;
+  }
+}
+
+
+gap-2 {
+  gap: 0.5rem/* 8px */;
+}
