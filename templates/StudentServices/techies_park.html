@@ -1,0 +1,300 @@
+{% extends 'base.html' %} {% load static %} {% block title %}  {{union.name}}  {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  
+  
+<div id="about" class="about flex gap-4 lg:gap-20 py-8 lg:py-20 px-[10%] flex-col lg:flex-row justify-center items-center">
+    <div class="w-full lg:w-1/2 h-full">
+        <img src="{% static 'images/about-img.png' %}" alt="">
+    </div>
+    <div class="w-full lg:w-1/2">   
+        <h1 class="font-semibold text-4xl pb-4 text-center lg:text-left">About</h1>
+        <p class="text-justify lg:text-lg">isus a mauris. Mi ut tempor cursus etiam velit sem. Quis felis ac amet sem commodo non at. Et a nulla volutpat dui tempus aliquam eu sagittis.Aenean facilisis ornare scelerisque in nascetur. Non hendrerit ac nulla lorem mus. Felis sit quam fermentum in tempus. At pellentesque duis id semper nullam bibendum. Placerat convallis sapien pulvinar arcu viverra faucibus. Faucibus lobortis hendrerit tincidunt cras purus odio purus. Sem ornare ultricies ac facilisis. Habitant vestibulum sit faucibus quam bibendum. Nunc varius iaculis cras nec hendrerit lectus gravida. Amet nunc id tortor malesuada purus fames hendrerit. Purus neque sed convallis urna lorem sit. Est egestas at rhoncus risus mauris volutpat ullamcorper nulla. Feugiat sed mollis et at turpis.</p>
+    </div>
+</div>
+<div class="about flex flex-col xl:flex-row py-4 px-[10%] gap-[4%]">
+    <div class="w-full xl:w-[28%] h-fit lg:m-0 py-4 flex flex-col items-center justify-center">
+        <h1 class="text-2xl font-semibold p-2 text-center lg:text-left">Talrop @ CCE</h1>
+        <div class="p-4 h-fit w-fit bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 justify-center items-center py-2">
+            <ul class="w-full gap-2 flex items-center justify-center flex-col">
+                <li>
+                    <input type="radio" id="techiespark" name="talrop" value="techiespark" class="hidden peer" required>
+                    <label for="techiespark" class="inline-flex items-center justify-between bg-gray-200 border-[3px] border-white rounded-xl cursor-pointer peer-checked:border-blue-600">                           
+                        <div class="w-64 lg:w-72 h-fit flex items-center rounded-xl shadow-sm gap-2 p-4">
+                            <img src="{% static '/images/techiespark-logo.svg' %}" class=""/>
+                            <h1 class="text-gray-600 leading-none">Techies Park</h1>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="tfut" name="talrop" value="tfut" class="hidden peer">
+                    <label for="tfut" class="inline-flex items-center justify-between bg-gray-200 border-[3px] border-white  rounded-xl cursor-pointer peer-checked:border-blue-600">
+                        <div class="w-64 lg:w-72 h-fit flex items-center rounded-xl shadow-sm gap-2 p-4">
+                            <img src="{% static '/images/t-fut-logo.svg' %}" class=""/>
+                            <h1 class="text-gray-600 leading-none">T-Fut (Team Future)</h1>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="jobsmission" name="talrop" value="jobsmission" class="hidden peer">
+                    <label for="jobsmission" class="inline-flex items-center justify-between bg-gray-200  border-[3px] border-white  rounded-xl cursor-pointer peer-checked:border-blue-600">
+                        <div class="w-64 lg:w-72 h-fit flex items-center rounded-xl shadow-sm gap-2 p-4">
+                            <img src="{% static '/images/jobmission-logo.svg' %}" class=""/>
+                            <h1 class="text-gray-600 leading-none">Talrop’s Jobs Mission</h1>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="startupschool" name="talrop" value="startupschool" class="hidden peer">
+                    <label for="startupschool" class="inline-flex items-center justify-between bg-gray-200 border-[3px] border-white  rounded-xl cursor-pointer peer-checked:border-blue-600">
+                        <div class="w-64 lg:w-72 h-fit flex items-center rounded-xl shadow-sm gap-2 p-4">
+                            <img src="{% static '/images/startupschool-logo.svg' %}" class=""/>
+                            <h1 class="text-gray-600 leading-none">Talrop’s Startup School</h1>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="fullstackdev" name="talrop" value="fullstackdev" class="hidden peer">
+                    <label for="fullstackdev" class="inline-flex items-center justify-between bg-gray-200 border-[3px] border-white  rounded-xl cursor-pointer peer-checked:border-blue-600">
+                        <div class="w-64 lg:w-72 h-fit flex items-center rounded-xl shadow-sm gap-2 p-4">
+                            <img src="{% static '/images/webdev-logo.svg' %}" class=""/>
+                            <h1 class="text-gray-600 leading-none">Full Stack Development Training</h1>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="w-full xl:w-[68%] lg:pt-16">
+        <div class="about-inside rounded-2xl bg-white shadow-2xl p-4">
+            <h1 class="text-center text-2xl font-semibold p-2">About</h1>
+            <p class="text-justify px-2 text-md lg:text-lg">Purus ultrices adipiscing risus mi. Placerat non sit ut in tincidunt diam tincidunt eu. Scelerisque gravida morbi morbi nulla scelerisque massa auctor euismod viverra. Cras eu justo nunc at dignissim proin. Sociis nam nisi augue imperdiet lectus bibendum sit. Ullamcorper rhoncus ipsum.</p>
+            <a href="">
+                <div class="flex items-center justify-center p-2 gap-1">
+                    <p class="text-[#3295f7] font-semibold ">View MOU</p>
+                    <img src="{% static '/images/blue-link-logo.svg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        <h1 class="py-12 text-center font-semibold text-3xl">Programme Details</h1>
+        <div class="h-fit flex flex-col-reverse lg:flex-row gap-[4%] items-center justify-center mb-4 lg:mb-16">
+            <div class="w-full lg:w-[58%] flex flex-col gap-2 py-4">
+                <h2 class="font-semibold text-2xl">Laboratory 1</h2>
+                <p class="text-justify md:text:sm leading-tight lg:text-lg lg:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="font-bold leading-tight">Faculty in Charge :<br> Person 1 (Designation) ,<br> Person 2 (Designation)</p>
+            </div>
+            <div class="slideshow-container relative h-64 w-80">
+                <div class="Slides1">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img1.jpeg' %}">
+                </div>
+            
+                <div class="Slides1">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img2.jpeg' %}">
+                </div>
+            
+                <div class="Slides1">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img3.jpeg' %}">
+                </div>
+            
+                <div class="Slides1">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img4.jpeg' %}">
+                </div>
+                <div class="Slides1">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            </div>    
+        </div>
+
+        <div class="h-fit flex flex-col lg:flex-row gap-[4%] items-center justify-center mb-16">
+            <div class="slideshow-container relative h-64 w-80">
+                <div class="Slides2">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img1.jpeg' %}">
+                </div>
+            
+                <div class="Slides2">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img2.jpeg' %}">
+                </div>
+            
+                <div class="Slides2">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img3.jpeg' %}">
+                </div>
+            
+                <div class="Slides2">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img4.jpeg' %}">
+                </div>
+                <div class="Slides2">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            </div>  
+            <div class="w-full lg:w-[58%] flex flex-col gap-2 py-4">
+                <h2 class="font-semibold text-2xl">Laboratory 2</h2>
+                <p class="text-justify md:text:sm leading-tight lg:text-lg lg:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="font-bold leading-tight">Faculty in Charge : <br>Person 1 (Designation) , <br>Person 2 (Designation)</p>
+            </div>  
+        </div>
+
+        <div class="h-fit flex flex-col-reverse lg:flex-row gap-[4%] items-center justify-center mb-16">
+            <div class="w-full lg:w-[58%] flex flex-col gap-2 py-4">
+                <h2 class="font-semibold text-2xl">Laboratory 3</h2>
+                <p class="text-justify md:text:sm leading-tight lg:text-lg lg:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="font-bold leading-tight">Faculty in Charge : <br>Person 1 (Designation) , <br>Person 2 (Designation)</p>
+            </div>
+            <div class="slideshow-container relative h-64 w-80">
+                <div class="Slides3">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img1.jpeg' %}">
+                </div>
+            
+                <div class="Slides3">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img2.jpeg' %}">
+                </div>
+            
+                <div class="Slides3">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img3.jpeg' %}">
+                </div>
+            
+                <div class="Slides3">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img4.jpeg' %}">
+                </div>
+                <div class="Slides3">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            </div>    
+        </div>
+
+        <div class="h-fit flex flex-col lg:flex-row gap-[4%] items-center justify-center mb-16">
+            <div class="slideshow-container relative h-64 w-80">
+                <div class="Slides4">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            
+                <div class="Slides4">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            
+                <div class="Slides4">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            
+                <div class="Slides4">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+                <div class="Slides4">
+                    <img class="object-cover h-64 w-fit rounded-xl" src="{% static '/images/slider-img5.jpeg' %}">
+                </div>
+            </div> 
+            <div class="w-full lg:w-[58%] flex flex-col gap-2 py-4">
+                <h2 class="font-semibold text-2xl">Laboratory 4</h2>
+                <p class="text-justify md:text:sm leading-tight lg:text-lg lg:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="font-bold leading-tight">Faculty in Charge : <br>Person 1 (Designation) , <br>Person 2 (Designation)</p>
+            </div>   
+        </div>
+    </div>
+</div>
+  
+</main>
+
+ {% endblock %}
+
+
+ {% block script %}
+
+<script>
+    let slideIndex1 = 0;
+showSlides1();
+
+function showSlides1() {
+  let i;
+  let slides = document.getElementsByClassName("Slides1");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex1++;
+  if (slideIndex1 > slides.length) {slideIndex1 = 1}
+  slides[slideIndex1-1].style.display = "block";
+  setTimeout(showSlides1, 3000); // Change image every 2 seconds
+}
+
+let slideIndex2 = 0;
+showSlides2();
+
+function showSlides2() {
+  let i;
+  let slides = document.getElementsByClassName("Slides2");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex2++;
+  if (slideIndex2 > slides.length) {slideIndex2 = 1}
+  slides[slideIndex2-1].style.display = "block";
+  setTimeout(showSlides2, 3000); // Change image every 2 seconds
+}
+
+let slideIndex3 = 0;
+showSlides3();
+
+function showSlides3() {
+  let i;
+  let slides = document.getElementsByClassName("Slides3");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex3++;
+  if (slideIndex3 > slides.length) {slideIndex3 = 1}
+  slides[slideIndex3-1].style.display = "block";
+  setTimeout(showSlides3, 3000); // Change image every 2 seconds
+}
+
+let slideIndex4 = 0;
+showSlides4();
+
+function showSlides4() {
+  let i;
+  let slides = document.getElementsByClassName("Slides4");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex4++;
+  if (slideIndex4 > slides.length) {slideIndex4 = 1}
+  slides[slideIndex4-1].style.display = "block";
+  setTimeout(showSlides4, 3000); // Change image every 2 seconds
+}
+
+
+/*
+  function showSlides2() {
+  let i;
+  let slides = document.getElementsByClassName("Slides2");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+function showSlides3() {
+  let i;
+  let slides = document.getElementsByClassName("Slides3");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+function showSlides4() {
+  let i;
+  let slides = document.getElementsByClassName("Slides4");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display="none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+ */
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock script %}

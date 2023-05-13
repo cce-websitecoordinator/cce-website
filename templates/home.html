@@ -12,7 +12,7 @@
 {% block body %}
 
 <main class="relative">
-  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999]  items-start hidden justify-center " id="modal">
+  <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start justify-center " id="modal">
     <div class="w-[90%] md:h-[60%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
       <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2 shadow-inner rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
         close
@@ -29,9 +29,9 @@
 
     <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]" loading="lazy">
   </div>
-  <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description}}</p>
+  <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
   <p>{{anouncement.date}}</p>
-  <a href="{{anouncement.link}}" target="_blank" class="font-black text-blue-500 flex items-center">{{anouncement.link_name}} <span class="material-symbols-outlined mx-4">
+  <a href="{{anouncement.link}}" target="_blank" class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span class="material-symbols-outlined mx-4">
     link
     </span></a>
 </div>
