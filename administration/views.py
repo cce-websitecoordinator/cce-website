@@ -32,7 +32,7 @@ def pta_page(request):
     return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
 
 def office_page(request, slug):
-    gallery = Gallery.objects.all()[:10];
+    gallery = Gallery.objects.all().order_by('?')[:10];
     staff  = Faculty.objects.filter(department=slug)
     hero_img = Hero_Image.objects.filter(page="office").first()
     title = slug.replace("_"," ")
@@ -45,20 +45,20 @@ def office_page(request, slug):
 def  anti_ragging_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="antiraging_cell").first()
     anti_ragging_cell_data = AntiRaggingCommittee.objects.all()
-    gallery = Gallery.objects.all();
+    gallery = Gallery.objects.all().order_by('?')[:6];
     return render(request,'Administration/anti_raging_cell.html',context={'hero_img':hero_img,'hero_title':'Anti Ragging Cell','anti_ragging_cell_data':anti_ragging_cell_data,"gallery":gallery})
 
 
 def sc_st_monitoring_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_commite").first()
     sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
-    gallery = Gallery.objects.all();
+    gallery = Gallery.objects.all().order_by('?')[:6];
     return render(request,'Administration/sc_monitoring_commitee.html',context={'hero_img':hero_img,'hero_title':'SC/ST Monitoring Committee','sc_st_cell_data':sc_st_cell_data,"gallery":gallery})
 
 def examination_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="examination_cell").first()
     faculties = ExaminationCellFaculty.objects.all()
-    gallery = Gallery.objects.all();
+    gallery = Gallery.objects.all().order_by('?')[:6];
     return render(request,'Administration/examination_cell.html',context={'hero_img':hero_img,'hero_title':'Examination Cell',"faculties":faculties,"gallery":gallery})
 
 
@@ -66,7 +66,7 @@ def examination_cell_page(request):
 
 def organogram_page(request):
     hero_img = Hero_Image.objects.filter(page="organogram").first()
-    gallery = Gallery.objects.all()
+    gallery = Gallery.objects.all().order_by('?')[:6]
     return render(request,'Administration/organogram.html',context={'hero_img':hero_img,'hero_title':'Organogram','gallery':gallery})
 
 

@@ -10,7 +10,7 @@ def management_page(request):
         "management_data": management_data,
          'hero_img':hero_img,
          "hero_title":'Management',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/management.html',context=context)
 
@@ -53,7 +53,7 @@ def committees_page(request):
     context = {
          'hero_img':hero_img,
          "hero_title":'Committees',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/committees.html',context=context)
 
@@ -62,7 +62,7 @@ def programs_page(request):
     context = {
          'hero_img':hero_img,
          "hero_title":'Programs Offered',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/programs.html',context=context)
 
@@ -71,7 +71,7 @@ def hr_manual_page(request):
     context = {
          'hero_img':hero_img,
          "hero_title":'HR Manual',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/hr_manual.html',context=context)
 
@@ -80,7 +80,7 @@ def vision_2035_page(request):
     context = {
          'hero_img':hero_img,
          "hero_title":'Vision 2035',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/vision_2035.html',context=context)
 
@@ -102,7 +102,7 @@ def college_handbook_page(request):
     context = {
          'hero_img':hero_img,
          "hero_title":'College Handbook',
-         'gallery':Gallery.objects.all(),
+         'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/college_handbook.html',context=context)
 

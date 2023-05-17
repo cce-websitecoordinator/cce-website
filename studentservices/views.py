@@ -5,7 +5,7 @@ from website.models import Gallery, Hero_Image
 # Create your views here.
 def arts_page(request):
     arts_updates = Artsupdates.objects.all()
-    gallery_imgs = ArtsGallery.objects.all()
+    gallery_imgs = ArtsGallery.objects.all().order_by('?')[:6]
     hero_img = Hero_Image.objects.all().filter(page="arts").first
     context = {'arts_updates':arts_updates,"events":ArtsEvents.objects.all(),"teams":artsTeamStatus.objects.all(),"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Arts"}
     return render(request, 'StudentServices/arts.html',context=context)
@@ -14,7 +14,7 @@ def arts_page(request):
  
 def sports_page(request):
     arts_updates = SportsUpdates.objects.all()
-    gallery_imgs = SportsGallery.objects.all()
+    gallery_imgs = SportsGallery.objects.all().order_by('?')[:6]
     events = SportsEvents.objects.all()
     teams = SportsTeamStatus.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="sports").first
@@ -61,7 +61,7 @@ def central_library_page(request,slug):
             vision = CentralLibrary.objects.filter(name='Vision').first()
             mission = CentralLibrary.objects.filter(name='Mission').first()
             about = CentralLibrary.objects.filter(name="about").first()
-            gallery = Gallery.objects.all()
+            gallery = Gallery.objects.all().order_by('?')[:6]
             context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery}
             return render(request, 'StudentServices/central_library.html',context=context)
         case "faculty_and_staff":

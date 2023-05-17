@@ -16,7 +16,7 @@ def home_page(request):
         testimonials = Testimonials.objects.all()
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by('?')
-        gallery_imgs = Gallery.objects.all()[:6]
+        gallery_imgs = Gallery.objects.all().order_by('?')[:6]
         upcomingEvents = UpcomingEvents.objects.all().filter(
             date__gte=datetime.date.today())
         recruiters = Recruiters.objects.all()

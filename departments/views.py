@@ -203,7 +203,7 @@ def ProfessionalBodie(request,slug):
         'professional_body': ProfessionalBodies.objects.filter(id=slug).first(),
         'events':ProfessionalBodiesEvents.objects.filter(ProfessionalBodies_id=slug),
         'members':ProfessionalBodiesTeamMembers.objects.filter(ProfessionalBodies_id=slug).order_by('priority'),
-        'gallery':Gallery.objects.all()
+        'gallery':Gallery.objects.all().order_by('?')[:6]
 
 
     }
@@ -214,7 +214,7 @@ def Association(request,slug):
         'association':Associations.objects.filter(id=slug).first(),
         'events':AssociationsEvents.objects.filter(assosiation_id=slug),
         'members':AssociationTeamMembers.objects.filter(assosiation_id=slug).order_by('priority'),
-        'gallery':Gallery.objects.all()
+        'gallery':Gallery.objects.all().order_by('?')[:6]
 
     }
     return render(request, 'Departments/association_showcase.html',context)

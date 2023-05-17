@@ -23,7 +23,7 @@ def placement_page(request,slug):
             recruiters3 = recruiters.order_by('?')
             recruiters2 = recruiters.order_by('?')
             side_updates = PlacementUpdates.objects.all().order_by('-date')
-            gallery = Gallery.objects.all()
+            gallery = Gallery.objects.all().order_by('?')[:6]
             context = {**context_temp,'vission':vission,'mission':mission,'objectives':objectives,'testimonials':testimonials,"recruiters": recruiters, "recruiters2": recruiters2, "recruiters3": recruiters3,"side_updates":side_updates,"gallery":gallery}
             return render(request, 'Placements/index.html',context=context)
         case "placement_traning":
@@ -43,7 +43,7 @@ def placement_page(request,slug):
         case "recruiters":
             return render(request, 'Placements/recruiters.html',context=context)
         case "gallery":
-            context = {**context_temp,"gallery":PlacementGallery.objects.all()}
+            context = {**context_temp,"gallery":PlacementGallery.objects.all().order_by('?')[:6]}
             return render(request, 'Placements/gallery.html',context=context)
 
     
