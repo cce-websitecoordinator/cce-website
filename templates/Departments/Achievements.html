@@ -16,7 +16,103 @@
       </div>
     </div>
 
+    
+
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
+
+      <!-- component -->
+
+      <div>
+
+      <div>
+        <ul class="flex items-center gap-2 text-sm font-medium">
+          <li class="flex-1">
+            <a
+              href="#"
+              class="relative flex items-center justify-center gap-2 rounded-lg bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700"
+            >
+              Faculty Achievements</a>
+          </li>
+          <li class="flex-1">
+            <a
+              href="#"
+              class="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+            >
+              Students Achievements</a>
+          </li>
+          
+          
+      
+        </ul>
+      </div>
+
+  <div>
+    <ul class="flex items-center gap-2 text-sm font-medium">
+      <li class="flex-1">
+        <a
+          href="{% url 'Department' dep 'achievements' %}?year=2022-23"
+          class="relative flex items-center justify-center gap-2 rounded-lg bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700"
+        >
+          2022-23</a>
+      </li>
+      <li class="flex-1">
+        <a
+          href="{% url 'Department' dep 'achievements' %}?year=2021-22"
+          class="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+        >
+          2021-22</a>
+      </li>
+      <li class="flex-1">
+        <a
+          href="{% url 'Department' dep 'achievements' %}?year=2020-21"
+          class="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+        >
+         2020-21
+        </a>
+      </li>
+      
+  
+    </ul>
+  </div>
+      </div>
+  
+
+
+      <!-- <div>
+        {% comment %} <form method="get" action="{% url 'Department' dep 'achievements' %}" class="flex justify-between py-6 items-center"> {% endcomment %}
+          <form method="get" action="{% url 'Department' dep 'achievements' %}" class="flex justify-between py-6 items-center">
+          <div class="flex space-x-4 items-center"> 
+            <div class="space-x-2">
+              <input type="radio" name="year" value="ALL" checked  />
+              <label for="ALL">ALL</label>
+            </div>
+            <div class="space-x-2">
+              <input type="radio" name="year" value="2023-24" {% ifequal year '2023-24' %} checked {% endifequal %} />
+              <label for="2023-24">2023-24</label>
+            </div>
+            <div class="space-x-2">
+              <input type="radio" name="year" value="2022-23" {% ifequal year '2022-23' %}checked{% endifequal %} />
+              <label for="2022-23">2022-23</label>
+            </div>
+            <div class="space-x-2">
+              <input type="radio" name="year" value="2021-22" {% ifequal year '2021-22' %}checked{% endifequal %} />
+              <label for="2021-22">2021-22</label>
+            </div>
+            <div class="space-x-2">
+              <input type="radio" name="year" value="2020-21" {% ifequal year '2020-21' %}checked{% endifequal %} />
+              <label for="2020-21">2020-21</label>
+            </div>
+            
+            <div class="space-x-2">
+              <button type="submit" class="px-2 py-1 bg-blue-500 rounded-xl">Apply</button>
+            </div>
+    
+          </div>
+    
+          
+        </form>
+      </div>  -->
+
         {% for achivement in achivements %}
         
         <div class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">

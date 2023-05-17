@@ -171,8 +171,8 @@ class Achivements(models.Model):
     data = models.CharField(max_length=500)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     link = models.URLField()
-    YEAR = (("2021-22","2021-22"),("2022-23","2022-23"),("2023-24","2023-24"))
-    year = models.CharField(max_length=200, choices=YEAR , default = "2023-24")
+    YEAR = (("2020-21","2020-21"),("2021-22","2021-22"),("2022-23","2022-23"))
+    year = models.CharField(max_length=200, choices=YEAR , default = "2022-23")
     class Meta:
         verbose_name = ("Achivement")
         verbose_name_plural = ("Achivements")
