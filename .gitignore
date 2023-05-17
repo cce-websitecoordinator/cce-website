@@ -4,7 +4,8 @@
 *.pyc
 __pycache__
 
-
+#docker volumes
+/data
 
 # Npm#
 /node_modules
