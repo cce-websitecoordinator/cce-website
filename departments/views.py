@@ -134,6 +134,7 @@ def Department(request, route, department):
                     default_type = 'faculty'
                     a_type = request.GET.get('type')
                     context['allYears'] = [nested_tuple[0] for nested_tuple in ACADEMIC_YEARS]
+                    context['defaultYear'] = default_year
                     context["type"]=a_type
                     if year and a_type:
                         context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=year).filter(type=a_type)
@@ -141,6 +142,8 @@ def Department(request, route, department):
                         return render(request, 'Departments/Achievements.html', context=context) 
                     else:
                         context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=default_year).filter(type=default_type)
+                else:
+                    return Http404("Page Not Found")
 
 
             case "events":

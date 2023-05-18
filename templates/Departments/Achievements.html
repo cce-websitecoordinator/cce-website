@@ -27,12 +27,12 @@
         <div>
           <from class="flex items-center gap-2 text-sm font-medium">
             <li>
-              <a href="{% url 'Department' dep 'achievements' %}?year=2021-22&type=faculty#content"
+              <a href="{% url 'Department' dep 'achievements' %}?year={{defaultYear}}&type=faculty#content"
                 class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700">
                 Faculty Achievements</a>
             </li>
             <li>
-              <a href="#"
+              <a href="{% url 'Department' dep 'achievements' %}?year={{defaultYear}}&type=student#content"
                 class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700">
                 Students Achievements</a>
             </li>
