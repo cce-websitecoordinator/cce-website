@@ -129,7 +129,7 @@ def Department(request, route, department):
                 return render(request, 'Departments/Laboratories.html', context)
             case "achievements":
                 if request.method == "GET":
-                    year = request.GET.get('get_year', 'ALL')
+                    year = request.GET.get('year', 'ALL')
                     if year == "ALL":
                         achievements = DepAchievements.objects.all().order_by('?')
                     else:
