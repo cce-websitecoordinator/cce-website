@@ -173,6 +173,8 @@ class Achivements(models.Model):
     link = models.URLField()
     YEAR = (("2020-21","2020-21"),("2021-22","2021-22"),("2022-23","2022-23"))
     year = models.CharField(max_length=200, choices=YEAR , default = "2022-23")
+    TYPE = (("student","Student"),("faculty","Faculty"),)
+    type = models.CharField(max_length=200, choices=TYPE , default = "student")
     class Meta:
         verbose_name = ("Achivement")
         verbose_name_plural = ("Achivements")
