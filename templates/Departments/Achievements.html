@@ -28,12 +28,12 @@
           <from class="flex items-center gap-2 text-sm font-medium">
             <li>
               <a href="{% url 'Department' dep 'achievements' %}?year={{defaultYear}}&type=faculty#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700">
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 {% ifequal type 'faculty' %} bg-gray-200 border-blue-500 text-gray-700 {% endifequal %}">
                 Faculty Achievements</a>
             </li>
             <li>
               <a href="{% url 'Department' dep 'achievements' %}?year={{defaultYear}}&type=student#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700">
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 {% ifequal type 'student' %} bg-gray-200 border-blue-500 text-gray-700 {% endifequal %}">
                 Students Achievements</a>
             </li>
 
