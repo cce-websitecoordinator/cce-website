@@ -128,15 +128,21 @@ def Department(request, route, department):
             case "labs":
                 return render(request, 'Departments/Laboratories.html', context)
             case "achievements":
-                if request.method == "GET":
-                    year = request.GET.get('year', 'ALL')
-                    if year == "ALL":
-                        achievements = DepAchievements.objects.all().order_by('?')
+                if request.method == 'GET':
+                    year = request.GET.get('year')
+                    default_year = ACADEMIC_YEARS[0][0]
+                    default_type = 'faculty'
+                    a_type = request.GET.get('type')
+                    context['allYears'] = [nested_tuple[0] for nested_tuple in ACADEMIC_YEARS]
+                    context["type"]=a_type
+                    if year and a_type:
+                        context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=year).filter(type=a_type)
+                        print(context['achivements'])
+                        return render(request, 'Departments/Achievements.html', context=context) 
                     else:
-                        achievements = DepAchievements.objects.filter(year=year)
-                    context['Achievements'] = achievements
-                    context['year'] = year
-                return render(request, 'Departments/Achievements.html', context=context)
+                        context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=default_year).filter(type=default_type)
+
+
             case "events":
                 return render(request, 'Departments/Events.html', context)
             case "curriculum_and_syllabus":

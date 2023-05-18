@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
 
@@ -24,119 +24,74 @@
 
       <div>
 
-      <div>
-        <ul class="flex items-center gap-2 text-sm font-medium">
-          <li>
-            <a
-              href="#"
-              class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700"
-            >
-              Faculty Achievements</a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700"
-            >
-              Students Achievements</a>
-          </li>
-          
-          
-      
-        </ul>
+        <div>
+          <from class="flex items-center gap-2 text-sm font-medium">
+            <li>
+              <a href="{% url 'Department' dep 'achievements' %}?year=2021-22&type=faculty#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 bg-gray-200 px-3 py-2 text-gray-700 hover:text-gray-700">
+                Faculty Achievements</a>
+            </li>
+            <li>
+              <a href="#"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700">
+                Students Achievements</a>
+            </li>
+
+
+
+          </from>
+        </div>
+        <br>
+
+        <div>
+          <ul class="flex items-center gap-2 text-sm font-medium">
+            <li class="flex-1">
+
+              <a href="{% url 'Department' dep 'achievements' %}#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+                ALL</a>
+            </li>
+
+            {% for yr in allYears %}
+            <li class="flex-1">
+
+              <a href="{% url 'Department' dep 'achievements' %}?year={{yr}}&type={{type}}#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year yr %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+                {{yr}}</a>
+            </li>
+            {% endfor %}
+
+
+          </ul>
+        </div>
       </div>
-    <br>
 
-  <div>
-    <ul class="flex items-center gap-2 text-sm font-medium">
-      <li class="flex-1">
-        <a
-          href="{% url 'Department' dep 'achievements' %}#content"
-          class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700"
-        >
-          ALL</a>
-      </li>
-      <li class="flex-1">
-        <a
-          href="{% url 'Department' dep 'achievements' %}?year=2022-23#content"
-          class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year '2022-23' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700"
-        >
-          2022-23</a>
-      </li>
-      <li class="flex-1">
-        <a
-          href="{% url 'Department' dep 'achievements' %}?year=2021-22#content"
-          class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year '2021-22' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300  px-3 py-2 text-gray-500 hover:text-gray-700"
-        >
-          2021-22</a>
-      </li>
-      <li class="flex-1">
-        <a
-          href="{% url 'Department' dep 'achievements' %}?year=2020-21#content"
-          class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year '2020-21' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700"
-        >
-         2020-21
-        </a>
-      </li>
-      
-  
-    </ul>
-  </div>
+      {% if achivements %}
+
+      {% for achivement in achivements %}
+
+      <div
+        class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">
+        <div class="h-[400px]  md:min-w-[300px] overflow-clip rounded-2xl">
+          <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}"
+            class="w-full h-full scale-110 group-hover:scale-125 transition-all duration-500 object-cover">
+        </div>
+        <div class="space-y-5 flex flex-col group-odd:pr-11 md:px-8 px-1">
+          <h3 class="text-2xl font-bold">{{achivement.name}}</h3>
+          <p>{{achivement.data}}</p>
+          <a href="{{achivement.link}}" class="p-3 px-6 border-2 border-blue-500 w-[150px] text-center rounded-xl">View
+            Image</a>
+        </div>
       </div>
-  
-
-
-      <!-- <div>
-        {% comment %} <form method="get" action="{% url 'Department' dep 'achievements' %}" class="flex justify-between py-6 items-center"> {% endcomment %}
-          <form method="get" action="{% url 'Department' dep 'achievements' %}" class="flex justify-between py-6 items-center">
-          <div class="flex space-x-4 items-center"> 
-            <div class="space-x-2">
-              <input type="radio" name="year" value="ALL" checked  />
-              <label for="ALL">ALL</label>
-            </div>
-            <div class="space-x-2">
-              <input type="radio" name="year" value="2023-24" {% ifequal year '2023-24' %} checked {% endifequal %} />
-              <label for="2023-24">2023-24</label>
-            </div>
-            <div class="space-x-2">
-              <input type="radio" name="year" value="2022-23" {% ifequal year '2022-23' %}checked{% endifequal %} />
-              <label for="2022-23">2022-23</label>
-            </div>
-            <div class="space-x-2">
-              <input type="radio" name="year" value="2021-22" {% ifequal year '2021-22' %}checked{% endifequal %} />
-              <label for="2021-22">2021-22</label>
-            </div>
-            <div class="space-x-2">
-              <input type="radio" name="year" value="2020-21" {% ifequal year '2020-21' %}checked{% endifequal %} />
-              <label for="2020-21">2020-21</label>
-            </div>
-            
-            <div class="space-x-2">
-              <button type="submit" class="px-2 py-1 bg-blue-500 rounded-xl">Apply</button>
-            </div>
-    
-          </div>
-    
-          
-        </form>
-      </div>  -->
-
-        {% for achivement in achivements %}
-        
-        <div class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">
-          <div class="h-[400px]  md:min-w-[300px] overflow-clip rounded-2xl">
-            <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}" class="w-full h-full scale-110 group-hover:scale-125 transition-all duration-500 object-cover">
-            </div>
-            <div class="space-y-5 flex flex-col group-odd:pr-11 md:px-8 px-1">
-              <h3 class="text-2xl font-bold">{{achivement.name}}</h3>
-              <p>{{achivement.data}}</p>
-              <a href="{{achivement.link}}" class="p-3 px-6 border-2 border-blue-500 w-[150px] text-center rounded-xl">View Image</a>
-            </div>
-          </div>
-          <div class="h-[2px] w-full bg-gray-200"></div>
-          {% endfor %}
-     </div>
+      <div class="h-[2px] w-full bg-gray-200"></div>
+      {% endfor %}
+      
+      {% else %}
+      <div class="flex w-full my-11 text-center text-blue-400 font-black text-2xl"> eeee OOOla Colleginu Achivements Illa</div>
+      
+      {% endif %}
     </div>
+  </div>
 </section>
 
 

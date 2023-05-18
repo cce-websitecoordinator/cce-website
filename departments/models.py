@@ -1,9 +1,13 @@
 from django.db import models
 import uuid
 from website.models import Faculty
+import datetime
 
 # Create your models here.
 DEPARTMENTS = (("CSE","CSE"),("ECE","ECE"),("EEE","EEE"),("ME","ME"),("CE","CE"),("BSH","BSH"),("None","None"))
+ACADEMIC_YEARS = [("{}-{}".format(r,r+1),"{}-{}".format(r,r+1)) for r in range(2020, datetime.date.today().year+1)]
+
+
 class DepHero(models.Model):
     image = models.ImageField(upload_to="DEP_Heros_Images",blank=True)
     video = models.FileField(upload_to="DEP_Heros_Videos",blank=True)
@@ -171,8 +175,7 @@ class Achivements(models.Model):
     data = models.CharField(max_length=500)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     link = models.URLField()
-    YEAR = (("2020-21","2020-21"),("2021-22","2021-22"),("2022-23","2022-23"))
-    year = models.CharField(max_length=200, choices=YEAR , default = "2022-23")
+    year = models.CharField(max_length=200, choices=ACADEMIC_YEARS , default = ACADEMIC_YEARS[-2])
     TYPE = (("student","Student"),("faculty","Faculty"),)
     type = models.CharField(max_length=200, choices=TYPE , default = "student")
     class Meta:
