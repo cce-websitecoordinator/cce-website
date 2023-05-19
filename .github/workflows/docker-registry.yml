@@ -1,5 +1,5 @@
 name: Deploy image to AWS ECR
-name: Deploy image to AWS ECR
+
 
 on:
  
