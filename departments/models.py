@@ -235,5 +235,23 @@ class Objectives(models.Model):
 
     def __str__(self):
         return self.department
+    
+
+class InnovativeTLM(models.Model):
+    about = models.TextField()
+    tlm_methods = models.CharField(max_length=200)
+    description =models.TextField()
+    department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.tlm_methods
 
 
+class TLM_table(models.Model):
+    tlm_method = models.ForeignKey(InnovativeTLM,on_delete=models.CASCADE)
+    title = models.CharField(max_length=200,default=tlm_method)
+    goal = models.TextField()
+    activity = models.TextField()
+
+    def __str__(self) -> str:
+        return self.tlm_method.tlm_methods
