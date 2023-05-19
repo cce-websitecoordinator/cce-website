@@ -138,10 +138,10 @@ def Department(request, route, department):
                     context["type"]=a_type
                     if year and a_type:
                         context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=year).filter(type=a_type)
-                        print(context['achivements'])
                         return render(request, 'Departments/Achievements.html', context=context) 
                     else:
                         context['achivements'] = DepAchievements.objects.filter(department=department).filter(year=default_year).filter(type=default_type)
+                        return render(request, 'Departments/Achievements.html', context=context)
                 else:
                     return Http404("Page Not Found")
 
@@ -152,8 +152,10 @@ def Department(request, route, department):
                 return render(request, 'Departments/curriculum_and_syllabus.html', context)
             case "newsletters":
                 return render(request, 'Departments/NewsLetters.html', context)
-            case "innovative":
-                return render(request, 'Departments/innovative_teaching_learning.html', context) 
+            case "innovative_tlm":
+                context['innovative_tlm']=InnovativeTLM.objects.filter(department=department)
+                context['tlm_table']=TLM_table.objects.filter(tlm_method__department=department)
+                return render(request, 'Departments/innovative_tlm.html', context)
             case "research":
                 return redirect('dep_research',department,'index') 
 
