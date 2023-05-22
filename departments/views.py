@@ -103,10 +103,11 @@ class Context:
             case "newsletters":
                 self.newsletters = NewsLetters.objects.filter(department=dep)
             case "DAB":
-                self.dab = DAB.objects.filter(department=dep)
+                self.dab = DAB.objects.filter(department=dep).first()
+                print(self.dab)
                 self.dab_data = DabTable.objects.filter(department=dep)
             case "PAC":
-                self.pac = PAC.objects.filter(department=dep)
+                self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
 
     def data(self):
