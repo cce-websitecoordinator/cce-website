@@ -194,7 +194,29 @@ def Department(request, route, department):
                 return Http404("Page Not Found")
 
         case "events":
-            return render(request, "Departments/Events.html", context)
+            if request.method == "GET":
+                year = request.GET.get("year")
+                context["allYears"] = [
+                    nested_tuple[0] for nested_tuple in ACADEMIC_YEARS[::-1]
+                ]
+                if year :
+                    context["all_events"] = (
+                        Events.objects.filter(department=department)
+                        .filter(year=year).all()
+                    )
+                    print(ACADEMIC_YEARS[-2][0])
+                    return render(
+                        request, "Departments/Events.html", context=context
+                    )
+                else:
+                    context["all_events"] = (
+                        Events.objects.filter(department=department).all()
+                    )
+                    return render(
+                        request, "Departments/Events.html", context=context
+                    )
+            else:
+                return Http404("Page Not Found")
         case "curriculum_and_syllabus":
             return render(request, "Departments/curriculum_and_syllabus.html", context)
         case "newsletters":
