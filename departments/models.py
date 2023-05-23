@@ -249,6 +249,9 @@ class Events(models.Model):
     poster = models.ImageField(upload_to="EventsImages", default="None")
     data = models.CharField(max_length=500)
     date = models.DateField()
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default="None"
+    )
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (
         ("workshops_seminars", "Workshops / Seminars"),
