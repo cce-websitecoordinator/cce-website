@@ -20,7 +20,7 @@ pipeline {
 
       stage('Pull from Git') {
       steps {
-        sh "sh '/usr/bin/git -C ~/cce-website checkout production && /usr/bin/git -C ~/cce-website pull'"
+        sh "/usr/bin/git -C ~/cce-website checkout production && /usr/bin/git -C ~/cce-website pull"
       }
       }
     stage('Deploy') {
