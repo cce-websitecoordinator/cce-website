@@ -1,31 +1,32 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
   agent any
   environment {
-    AWS_ACCOUNT_ID="435034921146"
-    AWS_DEFAULT_REGION="ap-south-1"
-    IMAGE_REPO_NAME="website"
+    AWS_ACCOUNT_ID = '435034921146'
+    AWS_DEFAULT_REGION = 'ap-south-1'
+    IMAGE_REPO_NAME = 'website'
     REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-    registryCredential = "websitecoordinator"
-  
+    registryCredential = 'websitecoordinator'
   }
 
   stages {
-    stage('Build') {
+    stage('Stop Containers and Remove Image') {
       steps {
-        echo 'Building..'
+        sh 'docker stop cce-website-web-1'
+        sh 'docker rm cce-website-web-1'
+        sh 'docker rmi -f  cce-website-web'
       }
     }
-    stage('Test') {
+
+      stage('Pull from Git') {
       steps {
-        echo 'Testing..'
+        sh 'cd cce-website && git checkout production && git pull'
       }
-    }
+      }
     stage('Deploy') {
       steps {
-        echo 'Deploying....'
+        sh 'sudo docker-compose up -d '
       }
     }
   }
 }
-
-
