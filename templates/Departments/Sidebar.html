@@ -16,6 +16,26 @@
                 Syllabus</span>
             {%endifequal%}su
 
+
+
+            {%ifequal 'DAB' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>DAB</span>
+            {%endifequal%}
+
+            {%ifequal 'PAC' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
+            {%endifequal%}
+            
+            {%ifequal 'StreamCommittee' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Stream Committees</span>
+            {%endifequal%}
+            
+            {%ifequal 'innovative_tlm' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Innovative TLM</span>
+            {%endifequal%}
+
+            
+
             {%ifequal 'professionalBodies' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional
                 Bodies</span>
@@ -75,6 +95,27 @@
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Curriculum &
                     Syllabus</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'DAB' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'DAB' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>DAB</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'PAC' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'PAC' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>PAC</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'StreamCommittee' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'StreamCommittee' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Stream Committees</span>
             </a>
         </div>
         <div
