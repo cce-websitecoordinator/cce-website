@@ -250,7 +250,7 @@ class Events(models.Model):
     data = models.CharField(max_length=500)
     date = models.DateField()
     year = models.CharField(
-        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2][0]
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-1][0]
     )
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (

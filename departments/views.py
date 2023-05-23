@@ -200,14 +200,11 @@ def Department(request, route, department):
                     nested_tuple[0] for nested_tuple in ACADEMIC_YEARS[::-1]
                 ]
                 if year :
-                    context["all_events"] = (
-                        Events.objects.filter(department=department)
-                        .filter(year=year).all()
-                    )
-                    print(ACADEMIC_YEARS[-2][0])
-                    return render(
-                        request, "Departments/Events.html", context=context
-                    )
+                    if year == "ALL":
+                        context["all_events"] = Events.objects.filter(department=department).all()
+                    else:
+                        context["all_events"] = Events.objects.filter(department=department).filter(year=year)
+                    return render(request, "Departments/Events.html", context=context)
                 else:
                     context["all_events"] = (
                         Events.objects.filter(department=department).all()
