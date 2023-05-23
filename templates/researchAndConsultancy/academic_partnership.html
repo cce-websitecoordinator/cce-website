@@ -26,9 +26,10 @@ Research & Consultancy {% endblock title %} {%block head %} {% endblock head %}
             <div class="text-center px-2">Year</div>
             <div class="text-center px-2">Name of Client/Organization</div>
             <div class="text-center px-2">Work Done</div>
-            <!-- <div class="text-center px-2">Amount Recieved During The Year</div> -->
+
           </div>
         </div>
+
 
         <div class="space-y-4 xl:space-y-0 xl:table-row-group">
           {% for item in academic_partnership%}
@@ -40,7 +41,7 @@ Research & Consultancy {% endblock title %} {%block head %} {% endblock head %}
               </div>
               <div class="text-center px-2">{{item.name_of_client}}</div>
               <div class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}">{{item.status}}</div>
-              <!-- <div class="text-center px-2">{{item.amount}}</div> -->
+
             </div>
           </div>
 
@@ -65,10 +66,7 @@ Research & Consultancy {% endblock title %} {%block head %} {% endblock head %}
                 </div>
               </div>
               <div class="flex justify-between mt-4 gap-4">
-                <!-- <div class="text-start">
-                  <p class="text-gray-500">Amount Recieved During The Year</p>
-                  <h1>{{item.amount}}</h1>
-                </div> -->
+                
                 <div class="text-end flex flex-row">
                   <p class="text-gray-600">Status</p>
                   <h1
