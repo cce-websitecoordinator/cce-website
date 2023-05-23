@@ -12,6 +12,7 @@ urlpatterns = [
     path('gallery', views.gallery_page, name='gallery'),
     path('research/<str:slug>', views.research_page, name='home_research'),
     path('test', views.test_page, name='test'),
+    path('events', views.events_page, name='events'),
 
 ]
 if settings.DEBUG:

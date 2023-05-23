@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %} {% block title %} DAB - {{dep}}
+{%endblock title %} {% block head %} {% endblock head %} {% block body %}
+
+{% include 'Departments/Hero.html' %}
+
+
+
+
+<section class="md:px-24 pt-24 px-6" id="content">
+    <div class="flex gap-10 md:flex-row flex-col">
+        <div class="col-span-1">
+          <h2 class="font-semibold text-2xl px-4">Departments</h2>
+          <p class="px-4 text-gray-400">Home / Academics / Department / DAB</p>
+    
+          {% include 'Departments/Sidebar.html' %}
+        </div>
+
+    <div class="w-full px-20 md:block hidden">
+        <div>
+          <h3 class="text-3xl font-semibold text-left mt-11 w-full p-2">Department Advisory Board</h3>
+        </div>
+        <div class="w-full flex flex-col justify-center  items-left">
+          <p class="mt-6 text-left p-2 pb-4">
+            {{ dab }}
+          </p>
+          </div>
+          <table class="w-full top-[100px] ">
+            <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
+              <tr class="grid grid-cols-3 text-center my-2">
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+
+            <tbody class=''>
+              {% for item in dab_data %}
+
+
+              <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa]
+                min-h-[40px] my-2 ">
+                <td>{{ item.name }}</td>
+                <td>{{ item.designation }}</td>
+                <td>{{ item.role }}</td>
+              </tr>
+
+
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+
+        </div>
+      
+
+      <div class="w-full px-11 md:hidden space-y-3">
+        {% for item in dab_data%}
+        <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+
+            <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>
+          
+          </div>
+          <div class="flex justify-between  mt-4">
+            <div class="text-start">
+              <p class="text-gray-500">Designation</p>
+              <h1>{{item.designation}}</h1>
+            </div>
+            <div class="text-start">
+              <p class="text-gray-500">Role</p>
+              <h1>{{item.role}}</h1>
+            </div>
+          </div>
+          
+        </div>
+        {% endfor %}
+
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="w-full text-center my-11">    
+  </div>
+
+{% include 'components/gallery.html'%}
+{% include 'Departments/Contact.html'%}
+{% endblock body %} 
