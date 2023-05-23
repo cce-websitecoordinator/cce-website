@@ -1,42 +1,32 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
   agent any
-  def envVars = readEnv('.env')
-  withEnv(envVars) {
   environment {
-    AWS_ACCOUNT_ID="435034921146"
-    AWS_DEFAULT_REGION="ap-south-1"
-    IMAGE_REPO_NAME=website
-    IMAGE_TAG=”${env.BUILD_ID}”
-    REPOSITORY_URI = “${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}”
-    registryCredential = "websitecoordinator"
-  }
+    AWS_ACCOUNT_ID = '435034921146'
+    AWS_DEFAULT_REGION = 'ap-south-1'
+    IMAGE_REPO_NAME = 'website'
+    REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    registryCredential = 'websitecoordinator'
   }
 
   stages {
-    stage('Build') {
+    stage('Stop Containers and Remove Image') {
       steps {
-        echo 'Building..'
+        sh 'docker stop cce-website-web-1'
+        sh 'docker rm cce-website-web-1'
+        sh 'docker rmi -f  cce-website-web'
       }
     }
-    stage('Test') {
+
+      stage('Pull from Git') {
       steps {
-        echo 'Testing..'
+        sh "cd ~/cce-website && git checkout production && git pull origin production"
       }
-    }
+      }
     stage('Deploy') {
       steps {
-        echo 'Deploying....'
+        sh 'sudo docker-compose up -d '
       }
     }
   }
-}
-
-
-def readEnv(envFile) {
-    def properties = readProperties(file: envFile)
-    def envVars = [:]
-    properties.each { key, value ->
-        envVars[key] = value
-    }
-    return envVars
 }
