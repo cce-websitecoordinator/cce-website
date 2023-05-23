@@ -11,22 +11,12 @@ pipeline {
 
   stages {
     stage('Stop Containers and Remove Image') {
-    steps {
-        script {
-            def containerStatus = sh(returnStdout: true, script: 'docker inspect -f {{.State.Status}} cce-website-web-1').trim()
-            if (containerStatus && containerStatus == 'running') {
-                sh 'docker stop cce-website-web-1'
-            }
-            sh 'docker rm -f cce-website-web-1'
-
-            def imageExists = sh(returnStatus: true, script: 'docker image inspect cce-website-web > /dev/null 2>&1').trim()
-            if (imageExists == 0) {
-                sh 'docker rmi -f cce-website-web'
-            }
-        }
+      steps {
+        sh 'docker stop cce-website-web-1'
+        sh 'docker rm cce-website-web-1'
+        sh 'docker rmi -f  cce-website-web'
+      }
     }
-}
-
 
       stage('Pull from Git') {
       steps {
