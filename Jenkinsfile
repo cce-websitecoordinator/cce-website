@@ -20,8 +20,8 @@ pipeline {
 
       stage('Pull from Git') {
       steps {
-        sh "git add .",
-        sh "git commit -m 'Jenkins Commit'",
+        sh "git add ."
+        sh "git commit -m 'Jenkins Commit'"
         sh "cd ~/cce-website  && git pull origin production"
       }
       }
