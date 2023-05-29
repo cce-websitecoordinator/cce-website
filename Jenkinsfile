@@ -14,21 +14,20 @@ pipeline {
       steps {
         sh 'docker stop cce-website-web-1'
         sh 'docker rm cce-website-web-1'
-        sh 'docker rmi -f  cce-website-web'
+        sh 'docker rmi -f cce-website-web'
       }
     }
 
-      stage('Pull from Git') {
+    stage('Pull from Git') {
       steps {
-        sh "git add ."
-        sh "git commit -m 'Jenkins File' " 
-        sh "git stash" // to prevent modifications madeby server causing issue
-        sh "cd ~/cce-website  && git pull origin production"
+        sh "git stash" // to prevent modifications made by server causing issues
+        sh "git pull origin production"
       }
-      }
+    }
+
     stage('Deploy') {
       steps {
-        sh 'docker-compose up -d '
+        sh 'docker-compose up -d'
       }
     }
   }
