@@ -1,3 +1,4 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
   agent any
   environment {
@@ -20,7 +21,7 @@ pipeline {
       stage('Pull from Git') {
       steps {
         sh "git add .",
-        sh "git commit -m 'Jenkins Commit'", // commit to git
+        sh "git commit -m 'Jenkins Commit'",
         sh "cd ~/cce-website  && git pull origin production"
       }
       }
