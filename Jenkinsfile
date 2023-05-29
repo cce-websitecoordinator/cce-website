@@ -21,7 +21,8 @@ pipeline {
       stage('Pull from Git') {
       steps {
         sh "git add ."
-        sh "git stash"
+        sh "git commit -m 'Jenkins File' " 
+        sh "git stash" // to prevent modifications madeby server causing issue
         sh "cd ~/cce-website  && git pull origin production"
       }
       }
