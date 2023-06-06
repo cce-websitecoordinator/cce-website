@@ -172,6 +172,7 @@ class ProfessionalBodiesTeamMembers(models.Model):
     designation = models.CharField(max_length=150)
     image = models.ImageField(upload_to="ProfessionalBodies")
     ProfessionalBodies = models.ForeignKey(ProfessionalBodies, on_delete=models.CASCADE)
+    priority = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
