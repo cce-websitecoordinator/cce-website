@@ -22,7 +22,14 @@ def sports_page(request):
     return render(request, 'StudentServices/sports.html',context=context)
 
 def nss_page(request):
-    return render(request, 'StudentServices/nss.html',context={})
+    about = NssAbout.objects.first
+    faculties = NssFaculty.objects.all()
+    students = NssStudents.objects.all()
+    events = NssEvents.objects.all()
+    gallery_imgs = NssGallery.objects.all()
+    hero_img = Hero_Image.objects.all().filter(page="nss").first
+    context = {'about':about,'faculties':faculties,"students":students,"events":events,"gallery":gallery_imgs,"hero_title":"NSS","hero_img":hero_img}
+    return render(request, 'StudentServices/nss.html',context=context)
 
 def iic_page(request):
     hero_img = Hero_Image.objects.all().filter(page="iic").first

@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
 
   
 <script src="{% static 'leaflet/leaflet.js' %}"></script>
@@ -28,12 +28,12 @@
 <div class="flex flex-col justify-center items-center space-y-3">
 
   <h2 class="text-2xl">{{anouncement.title}}</h2>
-  <div class="max-h-[350px] overflow-clip">
+  <!-- <div class="max-h-[350px] overflow-clip">
 
     <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]" loading="lazy">
-  </div>
+  </div> -->
   <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
-  <p>{{anouncement.date}}</p>
+  <!-- <p>{{anouncement.date}}</p> -->
   <a href="{{anouncement.link}}" target="_blank" class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span class="material-symbols-outlined mx-4">
     link
     </span></a>

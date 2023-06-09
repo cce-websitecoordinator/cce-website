@@ -75,6 +75,13 @@ class SportsGallery(models.Model):
 class NssFaculty(models.Model):
     faculty = models.ManyToManyField(Faculty)
 
+class NssAbout(models.Model):
+    about = models.TextField()
+    image = models.ImageField(upload_to='nss/icon')
+    def __str__(self):
+        return self.about
+
+
 
 class NssStudents(models.Model):
     name = models.CharField(max_length=100)
