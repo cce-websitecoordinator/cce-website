@@ -13,7 +13,7 @@ urlpatterns = [
     path('examination_cell', views.examination_cell_page, name='examination_cell'),
     path('organogram',views.organogram_page,name='organogram'),
     path('academic_administration',views.academic_administration_page,name='academic_administration'),
-    path("grivence/<str:slug>/<str:page>",views.grivence_redressal_page,name="grivence_redressal"),
+    path("grievance/<str:slug>/<str:page>",views.grivence_redressal_page,name="grivence_redressal"),
 ]
 
 if settings.DEBUG:     
