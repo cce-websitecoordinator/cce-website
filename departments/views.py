@@ -110,6 +110,7 @@ class Context:
                 self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
 
+
     def data(self):
         """This method returns the context"""
         return {
@@ -234,6 +235,11 @@ def Department(request, route, department):
 
         case "PAC":
             return render(request, "Departments/PAC.html", context)
+        
+        case "students":
+            context["students"] = Students.objects.filter(department=department).order_by("-year") 
+            return render(request, "Departments/Students.html", context)
+
 
         case "StreamCommittee":
             if request.method == "GET":

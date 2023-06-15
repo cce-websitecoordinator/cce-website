@@ -7,24 +7,28 @@
             {%endifequal%}
 
             {%ifequal 'faculty' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Faculty &
-                Staff</span>
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Peoples</span>
             {%endifequal%}
+
 
             {%ifequal 'curriculum_and_syllabus' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Curriculum &
                 Syllabus</span>
-            {%endifequal%}su
-
-
-
-            {%ifequal 'DAB' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>DAB</span>
             {%endifequal%}
 
-            {%ifequal 'PAC' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
-            {%endifequal%}
+            {%if dep == "BSH" %}
+
+            {% else %}
+
+                {%ifequal 'DAB' route%}
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>DAB</span>
+                {%endifequal%}
+
+                {%ifequal 'PAC' route%}
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
+                {%endifequal%}
+
+            {% endif %}    
             
             {%ifequal 'StreamCommittee' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Stream Committees</span>
@@ -35,15 +39,14 @@
             {%endifequal%}
 
             
-
-            {%ifequal 'professionalBodies' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional
-                Bodies</span>
-            {%endifequal%}
-
             {%if dep == "BSH" %}
 
             {% else %}
+
+                {%ifequal 'professionalBodies' route%}
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional
+                    Bodies</span>
+                {%endifequal%}
 
                 {%ifequal 'associations' route%}
                 <i class="material-icons"
@@ -85,10 +88,10 @@
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'faculty' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'faculty' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Faculty &
-                    Staff</span>
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Peoples</span>
             </a>
         </div>
+        
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'syllabus' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'curriculum_and_syllabus' %}"
@@ -97,6 +100,7 @@
                     Syllabus</span>
             </a>
         </div>
+        {% if dep != 'BSH' %}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'DAB' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'DAB' %}"
@@ -111,6 +115,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>PAC</span>
             </a>
         </div>
+        {% endif %}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'StreamCommittee' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'StreamCommittee' %}"

@@ -378,3 +378,14 @@ class StreamComm(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Students(models.Model):
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    students_pdf = models.FileField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.year+self.department
