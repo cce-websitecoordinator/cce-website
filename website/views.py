@@ -182,8 +182,9 @@ def test_page(request):
 
 
 def server_error_page(request):
-    return render(request, "Errors/500.html")
+    return render(request, "Errors/500.html",status=500)
 
 
 def not_found_error_page(request, exception):
-    return render(request, "Errors/404.html")
+
+    return render(request, "Errors/404.html",status=404)

@@ -24,7 +24,7 @@
           <p class="mt-6 text-left">
             {{ innovative_tlm.about }}
           </p>
-        </div>
+        </div> 
         <table class="w-full top-[100px] ">
           <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
             <tr class="grid grid-cols-4 text-center my-2">
@@ -64,12 +64,17 @@
         {% endfor %}
       </div>
       {% comment %} Mobile table end {% endcomment %}
+      
 
       {% for tlm_methods in innovative_tlm %}
 
       <div class="w-full flex flex-col justify-center md:px-20 items-left">
         <p class="mt-6 text-left"><span class="font-bold">{{ forloop.counter}}.
             {{ tlm_methods }}: - </span>{{ tlm_methods.about }}</p>
+
+
+        
+          
 
         {% comment %} Medium table start {% endcomment %}
         <div class="w-full pt-10 md:block hidden">
@@ -147,6 +152,8 @@
           {% endwith %}
         </div>
         {% comment %} Mobile table end {% endcomment %}
+
+
 
       </div><br><br>
       {% endfor %}

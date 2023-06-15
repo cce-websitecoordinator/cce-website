@@ -221,10 +221,10 @@ def Department(request, route, department):
         case "innovative_tlm":
             context["innovative_tlm"] = InnovativeTLM.objects.filter(
                 department=department
-            )
+            ).all()
             context["tlm_table"] = TLM_table.objects.filter(
                 tlm_method__department=department
-            )
+            ).all()
             return render(request, "Departments/innovative_tlm.html", context)
         case "research":
             return redirect("dep_research", department, "index")
