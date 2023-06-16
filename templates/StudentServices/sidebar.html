@@ -2,39 +2,54 @@
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 lg:hidden text-center"
         id="sidebar-header">
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
-            {%ifequal 'index' route%}
+            {%ifequal 'central_library' route%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
             {%endifequal%}
 
-            {%ifequal 'placement_traning' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Placement Training</span>
+            {%ifequal 'faculty_and_staff' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">diversity_1</i><span>Faculty & Staff</span>
             {%endifequal%}
 
-            {%ifequal 'achivements' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Achievements</span>
+            {%ifequal 'library_handbook' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">book</i><span>Library Handbook</span>
             {%endifequal%}
 
-            {%ifequal 'faculty' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Faculty & Staff</span>
+            {%ifequal 'library_info' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">diversity_2</i><span>Library Info</span>
             {%endifequal%}
 
-            {%ifequal 'statistics' route%}
-            <i class="material-icons"
-                lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Statistics</span>
+            {%ifequal 'rules_and_regulations' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">diversity_3</i><span>Rules & Regulations</span>
             {%endifequal%}
-
-            {%ifequal 'activities' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Activites</span>
+            
+            {%ifequal 'library_resources' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">library_books</i><span>Library Resources</span>
             {%endifequal%}
-
-            {%ifequal 'recruiters' route%}
-            <i class="material-icons"
-                lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Recruiters</span>
+            
+            {%ifequal 'digital_library' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">devices</i><span>Digital Library</span>
             {%endifequal%}
-            {%ifequal 'gallery' route%}
-            <i class="material-icons"
-                lass="text-gray group-hover:text-[#007FFF]">gallery_thumbnail </i><span>Gallery</span>
+            
+            {%ifequal '' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">help</i><span>Ask a Librarian</span>
             {%endifequal%}
+            
+            {%ifequal '' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">checklist</i><span>Online Library Feedback Form</span>
+            {%endifequal%}
+            
+            {%ifequal '' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">newspaper</i><span>Newsletters & Magazines</span>
+            {%endifequal%}
+            
+            {%ifequal '' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">collections</i><span>Gallery</span>
+            {%endifequal%}
+            
+            {%ifequal '' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">contacts</i><span>Contact Us</span>
+            {%endifequal%}
+            
             
         </div>
     </div>
@@ -45,80 +60,74 @@
     </div>
     <div class="space-y-4 lg:block hidden" id="sidebar-content">
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'index' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'central_library' in route%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
             <a href="{% url 'Central_Library' 'central_library' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>About </span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'placement_traning' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page'  'placement_traning' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'faculty_and_staff' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Central_Library' 'faculty_and_staff' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Faculty & Staff</span>
             </a>
         </div>
-        <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'achivements' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page' 'achivements' %}"
-                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">book</i><span>Library Handbook</span>
-            </a>
-        </div>
+        
 
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'faculty' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page' 'faculty' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'library_info' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Central_Library' 'library_info' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Library Info</span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'statistics' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page'  'statistics' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'rules_and_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Central_Library' 'rules_and_regulations' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     class="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Rules & Regulations</span>
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'activities' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page'  'activities' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'library_resources' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Central_Library' 'library_resources' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Library Resources</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">library_books</i><span>Library Resources</span>
             </a>
         </div> 
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'recruiters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page'  'recruiters' %}"
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'digital_library' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Central_Library' 'digital_library' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
-                    class="text-gray group-hover:text-[#007FFF]">biotech</i><span>Digital Library</span>
+                    class="text-gray group-hover:text-[#007FFF]">devices</i><span>Digital Library</span>
             </a>
         </div>
 
-        <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'gallery' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'placement_page'  'gallery' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <span class="material-symbols-outlined"> gallery_thumbnail </span><span>Ask a Librarian</span>
+        <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center  justify-start pl-9">
+            <a href="{% url 'Central_Library' 'central_library' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">help</i><span>Ask a Librarian</span>
             </a>
         </div>
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
-            <a href="{% url 'placement_page'  'index'%}#contact-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Online Library Feedback Form</span>
+            <a href="{% url 'Central_Library' 'central_library' %}"-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">checklist</i><span>Online Library Feedback Form</span>
             </a>
         </div>
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
-            <a href="{% url 'placement_page'  'index'%}#contact-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Newsletters & Magazines</span>
+            <a href="{% url 'Central_Library' 'central_library' %}"-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">newspaper</i><span>Newsletters & Magazines</span>
             </a>
         </div>
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
-            <a href="{% url 'placement_page'  'index'%}#contact-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Gallery</span>
+            <a href="{% url 'Central_Library' 'central_library' %}"-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">collections</i><span>Gallery</span>
             </a>
         </div>
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
-            <a href="{% url 'placement_page'  'index'%}#contact-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+            <a href="{% url 'Central_Library' 'central_library' %}"-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Contact Us</span>
             </a>
         </div>

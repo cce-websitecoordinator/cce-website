@@ -67,15 +67,13 @@ def central_library_page(request,slug):
         case 'central_library':
             vision = CentralLibrary.objects.filter(name='Vision').first()
             mission = CentralLibrary.objects.filter(name='Mission').first()
-            about = CentralLibrary.objects.filter(name="about").first()
+            about = CentralLibrary.objects.filter(name="about").first() 
             gallery = Gallery.objects.all().order_by('?')[:6]
             context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery}
             return render(request, 'StudentServices/central_library.html',context=context)
         case "faculty_and_staff":
             context = {**context_temp,'data':LibraryFaculty.objects.all()}
             return render(request, 'StudentServices/faculty_and_staff.html',context=context)
-        case "library_handbook":
-            return render(request, 'StudentServices/library_handbook.html',context=context)
         case "library_info":
             return render(request, 'StudentServices/library_info.html',context=context)
         case "rules_and_regulations":
@@ -83,7 +81,7 @@ def central_library_page(request,slug):
         case "digital_library":
             context = {**context_temp,'data':DigitalLibrary.objects.all()}
             return render(request, 'StudentServices/digital_library.html',context=context)
-        case "library_resources":
+        case "e_resources":
             return render(request, 'StudentServices/library_resources.html',context=context)
         
             

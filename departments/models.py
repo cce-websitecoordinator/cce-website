@@ -323,7 +323,7 @@ class TLM_table(models.Model):
     activity = models.TextField()
 
     def __str__(self) -> str:
-        return self.tlm_method.tlm_methods
+        return self.tlm_method.department+' - '+self.tlm_method.tlm_methods
 
 
 class DAB(models.Model):

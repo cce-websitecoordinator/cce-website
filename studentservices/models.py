@@ -173,7 +173,9 @@ class LibraryFaculty(models.Model):
         return self.faculty.full_name
     
 class DigitalLibrary(models.Model):
-    link = models.CharField(max_length=100)
+    link = models.CharField(max_length=100,default='www')
+    name = models.CharField(max_length=100,default='name')
+    description = models.TextField(default='nil')
     image = models.ImageField(upload_to='CentralLibrary/DigitalLibrary/')
     def __str__(self):
-        return self.title
+        return self.name

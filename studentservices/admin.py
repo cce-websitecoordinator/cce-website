@@ -27,6 +27,9 @@ admin.site.register(Clubs)
 admin.site.register(WomenCellCommitee)
 admin.site.register(Union)
 admin.site.register(UnionCommitee)
+admin.site.register(CentralLibrary)
+admin.site.register(LibraryFaculty)
+admin.site.register(DigitalLibrary)
 
 
 
