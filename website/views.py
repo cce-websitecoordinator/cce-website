@@ -50,7 +50,9 @@ def events_page(request):
 
 
 def admission_page(request):
-    return render(request, "admission.html")
+    hero_img = Hero_Image.objects.all().filter(page="admissions").first()
+    hero_title = "Admission"
+    return render(request, "admission.html",context={"hero_img":hero_img,"hero_title":hero_title})
 
 
 def nirf_page(request):
