@@ -1,2 +1,2 @@
 cd /home/ubuntu/cce-website
-sudo docker-compose up 
+sudo docker-compose up -d
