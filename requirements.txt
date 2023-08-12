@@ -12,3 +12,6 @@ python-dotenv
 uuid
 django-htmlmin==0.11.0
 django-tailwind
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
