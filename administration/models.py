@@ -106,8 +106,10 @@ class ExaminationCellFaculty(models.Model):
 class AcademicAdministrationDirector(models.Model):
     director_reserch_img = models.ImageField( upload_to='academicAdministraction/faculty')
     director_reserch_name = models.CharField(max_length=200)
+    choices = (("principal","Principal"),("vice_principal","Vice Principal"),("aca_dir","Academic Director"),("res_dir","Research Director"))
+    director_reserch_role = models.CharField(max_length=200,choices=choices,default="principal")
     def __str__(self):
-        return self.director_reserch_name
+        return self.director_reserch_name+" "+self.director_reserch_role
 class AcademicAdministractors(models.Model):
     faculty = models.ForeignKey(Faculty,on_delete=models.CASCADE,default=2)
     order = models.IntegerField()

@@ -2,18 +2,99 @@
 Administration | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+    <h1 class="text-4xl my-11 font-bold">Principal</h1>
+    <div class="w-full ">
+      <img
+        src="{{principal.director_reserch_img.url}}"
+        alt="principal"
+        class="w-full mx-auto object-contain"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{principal.director_reserch_name}}
+      </h1>
+      <!-- <p class="text-2xl text-gray-400 mb-6 text-center">Principal</p> -->
+      <div class="flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
+        <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
+
+          <li>
+            A keen believer of ‘Change Management’, Dr. Sajeev John has fervently steered Christ College of Engineering in becoming a popular destination for undergraduate engineering education
+          </li>
+
+          <li>Dr. Sajeev John holds a Ph.D in the area of Material Science from Karpagam University, Coimbatore</li>
+
+          <li>
+            M.Tech from CUSAT, Kalamassery
+          </li>
+
+          <li>
+            B.Tech with Distinction from Marathwada University, Aurangabad
+          </li>
+
+          <li>He has over 22 years of academic experience and 9 years of industrial experience</li>
+
+        </ol>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+    <h1 class="text-4xl my-11 font-bold">Vice Principal</h1>
+    <div class="w-full ">
+      <img
+        src="{{vice_principal.director_reserch_img.url}}"
+        alt="vice_principal"
+        class="w-full mx-auto object-contain"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{vice_principal.director_reserch_name}}
+      </h1>
+      <!-- <p class="text-2xl text-gray-400 mb-6 text-center">Principal</p> -->
+      <div class="flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
+        <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
+          
+          <li>30 years of Teaching experience at Christ College (Autonomous), Irinjalakuda</li>
+
+          <li>
+            Awarded the prestigious Dr. M.M. Ghani Award for the Best College Teacher by Calicut University in 2011
+          </li>
+
+          <li>
+            Research Guide of Calicut University (Awarded PhD for 4 students)
+          </li>
+
+          <li>
+            2 years of Industrial Experience at Apollo Tyres Ltd, Thrissur
+          </li>
+
+        </ol>
+      </div>
+      
+    </div>
+  </section>
+
+
+
   <section class="md:px-24 px-7 mt-11 w-full" id="content">
     <h1 class="text-4xl my-11 font-bold">Director (Research)</h1>
     <div class="w-full">
       <img
-        src="{{director.director_reserch_img.url}}"
-        alt="executive_director"
+        src="{{res_dir.director_reserch_img.url}}"
+        alt="research_director"
         class="w-full mx-auto"
       />
       <h1 class="text-4xl my-3 font-bold text-center">
-        {{director.director_reserch_name}}
+        {{res_dir.director_reserch_name}}
       </h1>
-      <p class="text-2xl text-gray-400 mb-6 text-center">Research Director</p>
+      <!-- <p class="text-2xl text-gray-400 mb-6 text-center">Research Director</p> -->
       <div class="flex flex-col items-start justify-center">
         <h1 class="md:text-4xl text-2xl font-semibold mb-4">
           Profile Highlights
@@ -66,7 +147,7 @@ Administration | Administration {%endblock title %} {% block head %} {% endblock
           <li>Chairperson of NBA accreditation team from 2019 onwards</li>
         </ol>
       </div>
-      <div class="my-11 flex flex-col items-start justify-center">
+      <!-- <div class="my-11 flex flex-col items-start justify-center">
         <h1 class="md:text-4xl text-2xl font-semibold mb-8">Message</h1>
         <p class="pl-5 border-l-[14px] border-blue-300 text-start">
           The idea of Christ College of Engineering was born out of the
@@ -97,7 +178,65 @@ Administration | Administration {%endblock title %} {% block head %} {% endblock
           story to start taking shape here? Well then, come and join Christ
           College of Engineering.
         </p>
+      </div> -->
+    </div>
+  </section>
+
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+    <h1 class="text-4xl my-11 font-bold">Director (Academics)</h1>
+    <div class="w-full ">
+      <img
+        src="{{aca_dir.director_reserch_img.url}}"
+        alt="academic_director"
+        class="w-full mx-auto object-contain"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{aca_dir.director_reserch_name}}
+      </h1>
+      <!-- <p class="text-2xl text-gray-400 mb-6 text-center">Academic Director</p> -->
+      <div class="flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
+        <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
+          <li>B.Tech- NSS Engineering College, Palakkad, Kerala, India, 1991</li>
+
+          <li>
+            Joined Rajiv Gandhi Institute of Technology, Kottayam, Kerala, India, as Guest Lecturer, 1994
+          </li>
+
+          <li>
+            Joined Rajagiri School of Engineering (RIT), Kakkanad, Kochi, Kerala, India, as Lecturer, 2001
+          </li>
+
+          <li>M.Tech- School of Engineering CUSAT, Cochin, , Kerala, India, 2007</li>
+
+          <li>
+            Former Vice Principal of Mangalam College of Engineering, Ettumanoor, Kerala, India, 2012
+          </li>
+
+          <li>
+            Joined Muthoot Institute of Technology &amp; Science, Kochi, Kerala, India, 2016
+          </li>
+
+          <li>
+            Completed PhD from School of Engineering, CUSAT, Cochin, 2017
+          </li>
+
+          <li>Former Principal of Mangalam College of Engineering, Ettumanoor, Kerala, India, 2019
+          </li>
+
+          <li>
+            Former Principal of Federal Institute of Science And Technology (FISAT), Angamaly, Kerala, India, 2021
+          </li>
+
+          <li>Author of Journal paper indexed in SCI</li>
+
+          <li>Co-Investigator of funded project for DRDO</li>
+
+        </ol>
       </div>
+      
     </div>
   </section>
 

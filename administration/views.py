@@ -73,11 +73,15 @@ def organogram_page(request):
 
 def academic_administration_page(request):
     hero_img =Hero_Image.objects.filter(page="academic_research").first()
-    director = AcademicAdministrationDirector.objects.all().first()
+    principal = AcademicAdministrationDirector.objects.filter(director_reserch_role="principal").first()
+    vice_principal = AcademicAdministrationDirector.objects.filter(director_reserch_role="vice_principal").first()
+    aca_dir = AcademicAdministrationDirector.objects.filter(director_reserch_role="aca_dir").first()
+    res_dir = AcademicAdministrationDirector.objects.filter(director_reserch_role="res_dir").first()
+
     data = AcademicAdministractors.objects.all().order_by('order')
     
     gallery  = Gallery.objects.all().order_by('?')[:10]
-    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'director':director,'gallery':gallery})
+    return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'principal':principal,'vice_principal':vice_principal,'aca_dir':aca_dir,'res_dir':res_dir,'gallery':gallery})
 
 
 
