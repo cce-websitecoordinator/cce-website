@@ -56,7 +56,7 @@
         </div>
 
         <div>
-          <h3 class="text-2xl font-bold z-[1]">Academic Uniqueness</h3>
+          <h3 class="text-2xl font-bold z-[1]">Objectives</h3>
           <ol class="space-y-3">
             {% for objective in objectives %}
             <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span>
@@ -111,10 +111,10 @@
 
 <section class="md:px-24  py-24 px-6 bg-blue-50">
   <div class="flex flex-col lg:flex-row lg:justify-evenly items-center">
-    {% include 'Placements/updates.html' %}
-    <div class="swiper max-w-[500px] lg:max-w-6xl lg:w-[60%] ">
+    <!-- {% include 'Placements/updates.html' %} -->
+    <div class="swiper ">
       <h3 class="text-center text-4xl font-semibold">Our Recruiters</h3>
-      <div class="space-y-6">
+      <div class="">
 
         {%with recruiters=recruiters2%}
         {% include 'Placements/logo_coloured_slider.html' %}
