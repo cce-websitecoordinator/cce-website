@@ -24,7 +24,7 @@ def directors_desk_page(request):
         "joint_director_administration": joint_director_administration,
         "joint_director_finance": joint_director_finance,
         'hero_img':hero_img,
-         "hero_title":'Director\'s Desk',
+         "hero_title":'Executive Director\'s Desk',
     }
     return render(request, 'aboutCCE/directors_desk.html',context) 
 

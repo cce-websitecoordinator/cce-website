@@ -42,8 +42,5 @@ def placement_page(request,slug):
             return render(request, 'Placements/activities.html',context=context)
         case "recruiters":
             return render(request, 'Placements/recruiters.html',context=context)
-        case "gallery":
-            context = {**context_temp,"gallery":PlacementGallery.objects.all().order_by('?')[:6]}
-            return render(request, 'Placements/gallery.html',context=context)
 
     
