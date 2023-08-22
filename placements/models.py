@@ -48,7 +48,7 @@ class Achivements(models.Model):
 
 class PlacementFaculty(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    role = models.CharField(max_length=10)
+    role = models.CharField(max_length=40)
     order = models.IntegerField()
     def __str__(self):
         return self.faculty.full_name
