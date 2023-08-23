@@ -109,17 +109,20 @@
 </section>
 
 
-<section class="md:px-24  py-24 px-6 bg-blue-50">
+<section class="md:px-24  py-24 px-6 bg-white">
   <div class="flex flex-col lg:flex-row lg:justify-evenly items-center">
     <!-- {% include 'Placements/updates.html' %} -->
     <div class="swiper ">
-      <h3 class="text-center text-4xl font-semibold">Our Recruiters</h3>
+      <h3 class="text-center text-4xl md:text-5xl font-semibold">Our Recruiters</h3>
       <div class="">
 
         {%with recruiters=recruiters2%}
         {% include 'Placements/logo_coloured_slider.html' %}
         {%endwith%}
         {%with left=True%}
+        {% include 'Placements/logo_coloured_slider.html' %}
+        {%endwith%}
+        {%with recruiters=recruiters3%}
         {% include 'Placements/logo_coloured_slider.html' %}
         {%endwith%}
        +
