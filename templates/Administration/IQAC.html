@@ -166,5 +166,24 @@
       </ul>
     </div>
   </section>
+
+  <section>
+    <h1 class="text-center text-3xl mt-11">Meeting Minutes</h1>
+    {% for year in years %}
+    
+    
+
+    <div class = "w-full px-11 p-6 my-11 relative gap-10">
+      
+      <h1 class="text-xl pl-2 pb-8 font-bold">{{year}}</h1>
+      {%for item in minutes%}
+      {% if item.year == year %}
+        <a href="{{item.file.url}}" target="_blank" class=" text-lg mt-2 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 w-fit items-center">{{item.name}}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </section>
+
 </main>
 {% endblock %}

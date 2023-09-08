@@ -73,7 +73,7 @@ def hr_manual_page(request):
          "hero_title":'HR Manual',
          'gallery':Gallery.objects.all().order_by('?')[:6],
          }
-    return render(request, 'aboutCCE/hr_manual.html',context=context)
+    return render(request, 'aboutCCE/hr_manual.html',context=context) 
 
 def vision_2035_page(request):
     hero_img = Hero_Image.objects.filter(page="vision_2035").first()

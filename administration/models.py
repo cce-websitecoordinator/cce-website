@@ -2,6 +2,12 @@ from django.db import models
 
 from website.models import Faculty
 
+import datetime
+
+ACADEMIC_YEARS = [
+    ("{}-{}".format(r, r + 1), "{}-{}".format(r, r + 1))
+    for r in range(2020, datetime.date.today().year + 1)
+]
 # Create your models here.
 class GoverningBodyMembers(models.Model):
     name = models.CharField(max_length=100)
@@ -134,3 +140,11 @@ class GrivenceUser(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+
+class IQACMeetingMinutes(models.Model):
+    name = models.CharField(max_length=10)
+    file = models.FileField(upload_to="IQACMeetingMinutes")
+    year = models.CharField(max_length=10,choices=ACADEMIC_YEARS,default="2020-21")
+    def __str__(self) -> str:
+        return f"{self.name} {self.year}"
