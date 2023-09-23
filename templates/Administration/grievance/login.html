@@ -18,7 +18,7 @@ System {%endblock title %} {% block head %} <style>
                 {% csrf_token %}
                 <div class="space-y-3 flex flex-col items-start">
                     <label for="email">UserID</label>
-                    <input type="text" name="email" placeholder="Enter Your UserID" class="border-none rounded-md">
+                    <input type="email" name="email" placeholder="Enter Your UserID" class="border-none rounded-md">
                 </div>
                 <div class="space-y-3 flex flex-col">
                     <label for="password">Password</label>
@@ -32,7 +32,7 @@ System {%endblock title %} {% block head %} <style>
                 <span class="text-sm">dont have a account, <a href="{% url 'grivence_redressal' slug 'signup' %}" class="text-blue-500 underline">SignUp</a></span>
                 
             </form>
-            <div class="text-red-400 my-4 text-center font-serif"></div>
+            <div class="text-red-400 my-4 text-center font-serif">{{error}}</div>
         </div>
     </div>
 

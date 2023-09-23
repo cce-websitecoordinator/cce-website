@@ -1,8 +1,10 @@
 import datetime
 from random import shuffle
+import random
 from django.shortcuts import render
 from website.models import *
 from django.http import Http404, HttpResponse
+from django.core import serializers
 
 
 def home_page(request):
@@ -16,20 +18,22 @@ def home_page(request):
         testimonials = Testimonials.objects.all()
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by("?")
-        gallery_imgs = Gallery.objects.all().order_by("?")[:6]
-        upcomingEvents = UpcomingEvents.objects.all().filter(
-            date__gte=datetime.date.today()
-        )
+        gallery_imgs = Gallery.objects.all().order_by("?")[:20]
+        upcomingEvents = UpcomingEvents.objects.all().order_by("?")[:6]
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by("?")
         recruiters2 = recruiters.order_by("?")
         achivements = Achivements.objects.order_by("?")
+        image_urls = gallery_imgs[:6]
+        gallery_data = Gallery.objects.all().order_by("?")[:20]
         context = {
             "anouncement": anouncement,
             "Testimonials": testimonials,
             "updates": updates,
             "Events": events,
             "gallery": gallery_imgs,
+            "imgs":image_urls,
+            'gallery_data': gallery_data,
             "upcomingEvents": upcomingEvents,
             "recruiters": recruiters,
             "recruiters2": recruiters2,
@@ -57,6 +61,9 @@ def admission_page(request):
 
 def nirf_page(request):
     return render(request, "nirf.html", context={})
+
+def nba_page(request):
+    return render(request, "nba.html", context={})
 
 
 def gallery_page(request):

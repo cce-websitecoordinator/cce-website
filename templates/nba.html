@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %} {% block title %} NBA {% endblock title %} {% block head %}
+<link rel="stylesheet" href="../static/css/nirf.css" />
+{% endblock head %}
+{% block body %}
+  <main class="main-section ">
+            <div class="mainsection-left mainsection-parts">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <p style="font-size: 2.5em; font-weight: 100;">National Board of Accreditation</p>
+                    <span style="font-size: 5em; font-weight: 800;">NBA</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 30px;">
+                    <!-- <p style="font-weight: 600; font-size:2.5em;">Uploaded Documents</p>
+                    <span style="font-size: 1.2em; font-weight:600;">-NIRF 2022</span> -->
+
+                    <p style="font-weight: 600; font-size:2.5em;">Undergoing Accreditation Process</p>
+
+                </div>
+            </div>
+            <div class="mainsection-right mainsection-parts">
+                <a href="https://www.nbaind.org/"><img src="../static/images/nba.png"
+                    alt="image of nba" style="height: 20em;"></a>
+            </div>
+        </main>
+{% endblock  %}

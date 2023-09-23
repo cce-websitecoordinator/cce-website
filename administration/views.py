@@ -99,8 +99,16 @@ def grivence_redressal_page(request, slug=None, page=None):
         case "staff":
             if page == 'login':
                 if request.method == "POST":
-                    return HttpResponse(request.POST.get('email'))
+                    email = request.POST["email"]
+                    password = request.POST["password"]
+                    if '@cce.edu.in' not in email:
+                        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page,"error":"Invalid Email"})
+                    else:
+                        user_data = {"email":email}
+                        request.session['']
+                    return HttpResponse(email)
                 else:
+                    
                     return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
             else:
                 if request.method == "POST":
@@ -115,6 +123,10 @@ def grivence_redressal_page(request, slug=None, page=None):
 
         case "exams":
             return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
+        
+        case "index":
+            return render(request, "Administration/grievance/index.html", context={"slug": slug, "page": page})
+
 
         # You can add more cases if needed
         case _:

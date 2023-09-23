@@ -191,8 +191,8 @@ class Handouts(models.Model):
     course_name = models.CharField(max_length=200)
     course_code = models.IntegerField()
     course_credits = models.IntegerField()
-    course_information_sheet = models.FileField(upload_to="Handouts/InformationSheets")
-    course_notes = models.FileField(upload_to="Handouts/Notes")
+    course_information_sheet = models.URLField(max_length=200)
+    course_notes = models.URLField(max_length=200)
     SEMESTERS = (
         ("S1&S2", "S1&S2"),
         ("S3", "S3"),
