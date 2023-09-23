@@ -48,6 +48,8 @@ class Context:
         self.associations = None
         self.professional_bodies = None
         self.syllabus = None
+        self.semesters = Handouts.SEMESTERS
+        self.handouts = None
         self.labs = None
         self.events = None
         self.achivements = None
@@ -90,6 +92,7 @@ class Context:
                 self.associations = Associations.objects.filter(department=dep)
             case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
+                self.handouts = Handouts.objects.filter(department = dep)
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(
                     department=dep
@@ -133,6 +136,8 @@ class Context:
             "associations": self.associations,
             "professional_bodies": self.professional_bodies,
             "syllabus": self.syllabus,
+            "semesters":self.semesters,
+            "handouts" : self.handouts,
             "labs": self.labs,
             "events": self.events,
             "achivements": self.achivements,

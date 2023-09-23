@@ -148,3 +148,12 @@ class IQACMeetingMinutes(models.Model):
     year = models.CharField(max_length=10,choices=ACADEMIC_YEARS,default="2020-21")
     def __str__(self) -> str:
         return f"{self.name} {self.year}"
+
+class GrievanceBody(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.CharField(max_length=30)
+    type = models.CharField(max_length=30)
+    subject = models.TextField()
+    message = models.TextField()
+    def __str__(self) -> str:
+        return self.email+" "+self.type

@@ -6,6 +6,9 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<script id="gallery-data" type="application/json"> var a = {{ gallery_data|safe }}</script>
+
+
   
 <script src="{% static 'leaflet/leaflet.js' %}"></script>
 {% endblock head %}
@@ -15,6 +18,8 @@
 {% block body %}
 
 <main class="relative">
+  {% if anouncement %}
+    
   <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start justify-center " id="modal">
     <div class="w-[90%] md:max-h-[80%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
       <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2 shadow-inner rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
@@ -44,6 +49,8 @@
 
 
   </div>
+  {% endif %}
+
 
 <section class="home_section relative h-[100vh] overflow-clip ">
   <div class="w-[100vw] h-[100vh] -z-1 " >
@@ -73,15 +80,25 @@
 
 </section>
 
-<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 place-items-center" id="content">
-  <div class="flex flex-col items-center  justify-center text-center h-full col-span-1 ">
+<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 place-items-start" id="content">
+  <div class="flex flex-col text-center  justify-center h-full col-span-1 ">
     <h1 class="text-5xl font-bold mb-11">About Us</h1>
     <p class="px-11 text-justify">Christ College of Engineering (CCE), established in 2015, is affiliated to APJ Abdul Kalam Technological University, Thiruvananthapuram; and is recognized by AICTE, New Delhi. This college was found at a time when starting a new engineering college was not considered as a sensible proposition. In its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of Engineering has managed to create ripples on the academic front in the university, so much so that today the college is being recognized as one of the best self-financing engineering colleges in Kerala.  
       <br />Staff and students are at the center of this success story. No stone is being left unturned in ensuring that along with academics, the students get the right amount of exposure required for tomorrow’s successful global citizen, through the various initiatives held at this campus. With the kind of transformative learning model in place here, the college is well on its way to making a positive impact on our society and nation at large. 
       
   
     </p>
-  
+
+    <div class="py-6 pl-9 grid grid-cols-2 md:grid-cols-3 gap-4" id="imageGrid">
+      {% for item in imgs %}
+      <div>
+        <img class="h-auto max-w-full rounded-lg" src="{{ item.image.url }}" alt="">
+      </div>
+      {% endfor %}
+    </div>
+    
+    
+    {{ gallery.image.url|json_script:'img_datas' }}
    
   </div>
   
@@ -90,9 +107,9 @@
   <div class="relative w-full">
     <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0   flex-col px-6 ">
       <div class=" xl:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
-        <h1 class="text-center mb-4 font-bold text-xl">Upcoming Events</h1>
+        <h1 class="text-center mb-4 font-bold text-xl">Events</h1>
         <div class="upcomming-slider overflow-x-clip">
-          <div class="swiper-wrapper ">
+          <div class="swiper-wrapper">
             {% for event in upcomingEvents %}
 
             <div class="swiper-slide">
@@ -373,6 +390,40 @@
   CounterEngineering = document.getElementById('engineering_counter'),
   CounterMedical = document.getElementById('medical_counter'),
   CounterUniversity = document.getElementById('university_counter')
+
+
+  
+
+
+  function changeImageRandomly() {
+    const images = document.querySelectorAll("#imageGrid img");
+    
+    const imageUrls = img_datas
+    
+    const shuffledImageUrls = imageUrls;
+
+    
+    // Shuffle the gallery array to make it random
+    
+
+    images.forEach((imgElement, index) => {
+      // Set a random index to pick an image from the shuffled gallery
+      const randomIndex = Math.floor(Math.random() * shuffledImageUrls.length);
+      const imageUrl = shuffledImageUrls[randomIndex];
+
+      console.log(imageUrl)
+
+      // Update the image source
+      imgElement.src = imageUrl;
+    });
+
+    // Set a random refresh interval for changing images (between 5 and 15 seconds)
+    const refreshInterval = Math.floor(Math.random() * 10000) + 5000; // Random interval between 5s and 15s
+    setTimeout(changeImageRandomly, refreshInterval);
+  }
+
+  // Call the function to start changing images
+  changeImageRandomly();
   
 
   $("#modal_close").click(function () {
@@ -537,7 +588,9 @@ slidesPerView:3
       }
     }
   });
-  
 
+
+  
+  
 </script>
 {% endblock script %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Grivence Redressal
+System {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-96">
+            <h2 class="text-2xl font-semibold mb-4">Grievance Form</h2>
+            <form action="#" method="POST">
+
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-600">Name</label>
+                    <input type="text" id="name" name="name"
+                        class="form-input">
+                </div>
+
+                <div class="mb-4">
+                    <label for="subject" class="block text-gray-600">Subject</label>
+                    <input type="text" id="subject" name="subject"
+                        class="form-input">
+                </div>
+                <div class="mb-4">
+                    <label for="type">Type</label>
+                    <select name="type" id="type">
+                        <option value="harrasment">Harrasment</option>
+                        <option value="exam">Exam</option>
+                        
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-600">Message</label>
+                    <textarea id="message" name="message" rows="4"
+                        class="form-textarea"></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

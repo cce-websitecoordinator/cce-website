@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    
 
 ]
 
@@ -165,10 +165,17 @@ DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
 MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/media/'
 
+# Use the database to store sessions.
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Set this to True if your website is using HTTPS to secure cookies.
+SESSION_COOKIE_SECURE = True
 
 
 
 TAILWIND_APP_NAME = 'cce_web_theme'
+
+
 # Jazzmin settings
 
 
@@ -224,5 +231,4 @@ JAZZMIN_SETTINGS = {
 
     "related_modal_active": True,
 }
-
 

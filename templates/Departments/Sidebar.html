@@ -28,11 +28,12 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
                 {%endifequal%}
 
-            {% endif %}    
+              
             
             {%ifequal 'StreamCommittee' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Stream Committees</span>
             {%endifequal%}
+            {% endif %}  
             
             {%ifequal 'innovative_tlm' route%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Innovative TLM</span>
@@ -115,7 +116,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>PAC</span>
             </a>
         </div>
-        {% endif %}
+
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'StreamCommittee' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'StreamCommittee' %}"
@@ -123,6 +124,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Stream Committees</span>
             </a>
         </div>
+        
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'innovative_tlm' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'innovative_tlm' %}"
@@ -130,7 +132,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Innovative TLM</span>
             </a>
         </div>
-        {% if dep != 'BSH' %}
+        
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'professionalBodies' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'professionalBodies' %}"
@@ -182,6 +184,7 @@
                     lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Events</span>
             </a>
         </div>
+        {% if dep != 'BSH' %}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'newsletters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'newsletters' %}"
@@ -190,6 +193,7 @@
                     Magazines</span>
             </a>
         </div>
+        {% endif %}
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
             <a href="#gallery" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <span class="material-symbols-outlined"> gallery_thumbnail </span><span>Gallery</span>
