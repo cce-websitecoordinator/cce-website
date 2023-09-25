@@ -189,7 +189,7 @@ class SyllabusPDFS(models.Model):
 
 class Handouts(models.Model):
     course_name = models.CharField(max_length=200)
-    course_code = models.IntegerField()
+    course_code = models.CharField(max_length=30)
     course_credits = models.IntegerField()
     course_information_sheet = models.URLField(max_length=200)
     course_notes = models.URLField(max_length=200)
@@ -204,6 +204,9 @@ class Handouts(models.Model):
     )
     semester = models.CharField(max_length=200, choices=SEMESTERS, default="S1&S2")
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.semester + " " + self.course_name
 
 
 class Laboratories(models.Model):
@@ -389,3 +392,9 @@ class Students(models.Model):
 
     def __str__(self):
         return self.year+self.department
+    
+
+# class AchievementTables(models.Model):
+#     data = models.TextField()
+
+#     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")

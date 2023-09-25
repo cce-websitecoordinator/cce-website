@@ -48,7 +48,10 @@ class Context:
         self.associations = None
         self.professional_bodies = None
         self.syllabus = None
-        self.semesters = Handouts.SEMESTERS
+        self.semesters = [
+                    nested_tuple[0] for nested_tuple in Handouts.SEMESTERS
+                ]
+        self.semin = None
         self.handouts = None
         self.labs = None
         self.events = None
@@ -93,6 +96,7 @@ class Context:
             case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
                 self.handouts = Handouts.objects.filter(department = dep)
+                self.semin = Handouts.objects.filter(department = dep).values_list('semester',flat=True).distinct()
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(
                     department=dep
@@ -138,6 +142,7 @@ class Context:
             "syllabus": self.syllabus,
             "semesters":self.semesters,
             "handouts" : self.handouts,
+            "semin" : self.semin,
             "labs": self.labs,
             "events": self.events,
             "achivements": self.achivements,

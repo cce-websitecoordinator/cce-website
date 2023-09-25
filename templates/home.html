@@ -89,13 +89,13 @@
   
     </p>
 
-    <div class="py-6 pl-9 grid grid-cols-2 md:grid-cols-3 gap-4" id="imageGrid">
+    <!-- <div class="py-6 pl-9 grid grid-cols-2 md:grid-cols-3 gap-4" id="imageGrid">
       {% for item in imgs %}
       <div>
         <img class="h-auto max-w-full rounded-lg" src="{{ item.image.url }}" alt="">
       </div>
       {% endfor %}
-    </div>
+    </div> -->
     
     
     {{ gallery.image.url|json_script:'img_datas' }}
@@ -395,7 +395,7 @@
   
 
 
-  function changeImageRandomly() {
+ /* function changeImageRandomly() {
     const images = document.querySelectorAll("#imageGrid img");
     
     const imageUrls = img_datas
@@ -423,7 +423,7 @@
   }
 
   // Call the function to start changing images
-  changeImageRandomly();
+  changeImageRandomly(); */
   
 
   $("#modal_close").click(function () {
