@@ -178,3 +178,24 @@ class DigitalLibrary(models.Model):
     image = models.ImageField(upload_to='CentralLibrary/DigitalLibrary/')
     def __str__(self):
         return self.name
+    
+class Mentoring(models.Model):
+    data = models.TextField()
+    
+    
+class MentoringEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='mentoring/events')
+    def __str__(self):
+        return self.title
+
+class MentoringTeam(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='mentoring/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"

@@ -1,42 +1,53 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Admission | Statistics {% endblock title %} {% block head %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 {% endblock head %}
 {% block body %}
 {% include 'components/Hero_section.html' %}
 <section class="md:px-24  pt-24 px-6" id="content">
-  
 
-  <div class="flex gap-10 lg:flex-row flex-col">
-    
-    <div class=" w-full space-y-16 mt-11 ">
-        <div class="w-full flex flex-col justify-center items-center">
-          <h1 class="text-4xl my-11 font-bold">Admission Statistics</h1>
-        <div class="py-11">
-          <img src="{{data.graph.url}}" class="rounded-xl aspect-square" alt="" srcset="">
+    <div class="flex  lg:flex-row flex-col">
+
+        <div class=" w-full space-y-16 mt-11 ">
+            <div class="w-full flex flex-col justify-center items-center">
+                <h1 class="text-4xl my-11 font-bold">Admission Statistics</h1>
+            
+
+                <div class="w-4/5">
+                    <table class="w-full">
+                        <thead class="rounded-t-lg bg-[#28AAE1]">
+                            <tr class="text-white">
+                                <th class="p-2">Sl No</th>
+                                <th class="p-2">Department</th>
+                                <th class="p-2">Sanctioned Seats</th>
+                                <th class="p-2">Admitted Seats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in table %}
+                            <tr
+                                class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
+                                <td class="p-2 text-center">{{ forloop.counter }}.</td>
+                                <td class="p-2 text-center">{{ item.dept }}</td>
+                                <td class="p-2 text-center">{{ item.seats }}</td>
+                                <td class="p-2 text-center">{{ item.admitted }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="py-11">
+                    <img src="{{data.graph.url}}"
+                        class="rounded-xl aspect-square" alt srcset>
+                </div>
+            </div>
         </div>
-        </div>
-      </div>
-  </div>
+    </div>
 
 </section>
-
-
-
-
-
 
 {% endblock body %}
 {% block script %}
 
-
 {% endblock script %}
-
-
-
-
-
-
-
-
-
-

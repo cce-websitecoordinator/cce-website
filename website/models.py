@@ -231,3 +231,14 @@ class FacultyStudentPublications(models.Model):
     journal = models.CharField(("Name Of Journal"), max_length=500)
     year = models.CharField(("Year Of Publication"), max_length=50)
     details = models.FileField(("Details of Publictaion"), upload_to='research/publications', max_length=100)
+
+class AdmissionStatistics(models.Model):
+    dept = models.CharField(max_length=100,choices=DEPARTMENTS)
+    seats = models.IntegerField()
+    admitted = models.IntegerField()
+    def __str__(self):
+        return self.dept
+    
+class AdmissionGraph(models.Model):
+    graph  = models.ImageField(upload_to='admission/')
+

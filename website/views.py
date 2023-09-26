@@ -58,6 +58,12 @@ def admission_page(request):
     hero_title = "Admission"
     return render(request, "admission.html",context={"hero_img":hero_img,"hero_title":hero_title})
 
+def admission_stat_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="admissions").first()
+    hero_title = "Admission Statistics"
+    table = AdmissionStatistics.objects.all()
+    graph = AdmissionGraph.objects.all()
+    return render(request, "admission_stats.html",context={"hero_img":hero_img,"hero_title":hero_title,"table":table,"graph":graph})
 
 def nirf_page(request):
     return render(request, "nirf.html", context={})

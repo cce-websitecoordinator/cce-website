@@ -90,24 +90,24 @@
 
             <tbody class>
               {% with loop_counter=0 %}
-              {% for tlm_table in tlm_table %}
+              {% for tlm_tabl in tlm_table %}
 
-              {% if tlm_table.tlm_method == tlm_methods %}
-              {% with loop_counter=loop_counter|add:1 %}
+              {% if tlm_tabl.tlm_method == tlm_methods %}
+              
 
               <tr class="grid grid-cols-12 text-center my-2">
-                <td>{{ loop_counter }}</td>
-                <td class="col-span-3 px-4 ">{{tlm_table.title}}</td>
+                <td>{{ loop_counter|add:1 }}</td>
+                <td class="col-span-3 px-4 ">{{tlm_tabl.title}}</td>
                 <td class="col-span-3 px-4 text-justify">
-                  {{tlm_table.goal | safe}}
+                  {{tlm_tabl.goal | safe}}
                 </td>
                 <td class="col-span-5 px-4 text-justify">
-                  {{tlm_table.activity | safe}}
+                  {{tlm_tabl.activity | safe}}
                   <span class="text-blue">Click here</span>
                 </td>
               </tr>
 
-              {% endwith %}
+              
               {% endif %}
               {% endfor %}
               {% endwith %}
@@ -123,13 +123,13 @@
           {% with loop_counter=0 %}
           {% for item in tlm_table %}
           {% if item.tlm_method == tlm_methods %}
-          {% with loop_counter=loop_counter|add:1 %}
+          
           <div
             class="bg-white p-3 h-auto shadow-md w-full border-gray-50
               border-[0.5px]">
             <div class="flex flex-col justify-between items-center">
               <h1 class="text-xl font-bold">
-                {{ loop_counter }}. {{item.title}}
+                {{ loop_counter|add:1 }}. {{item.title}}
               </h1><br><br>
               <h3 class="text-base font-semibold pt-4">
                 Goal
@@ -146,7 +146,7 @@
 
             </div>
           </div>
-          {% endwith %}
+      
           {% endif %}
           {% endfor %}
           {% endwith %}

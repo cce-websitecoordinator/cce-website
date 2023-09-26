@@ -4,31 +4,14 @@
 {% endblock head %}
 {% block body %}
 {% include 'components/Hero_section.html' %}
-<!-- <section class="home_section relative h-[100vh] overflow-clip ">
-    <div class="w-[100vw] h-[100vh] -z-1  ">
-        <img src="{{association.hero_image.url}}" class= "w-full h-full object-cover object-center absolute" />
-    </div>
-    <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
-    <div class="absolute  inset-0  flex flex-col justify-center items-center space-y-6 ">
-      <div class="w-[180px] h-[180px]">
-  
-        <img src="{{association.image.url}}" alt="cce_Logo" class="w-full h-full">
-      </div>
-        <h1 class="text-3xl font-black text-white md:text-5xl uppercase text-center">{{association.title}}</h1>
-    </div>
-    <a href="#content" class="flex w-full justify-center animate-bounce z-[50]  absolute bottom-24" id="down-icon">
-  
-      <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
-    </a>
-  
-  </section> -->
+
 
   <section class="xl:px-24 px-6  my-11 lg:mx-24  ">
     <div class="flex md:flex-row flex-col items-center lg:w-[80%] mx-auto">
       <div class="w-full">
 
         <h2 class="text-2xl md:text-3xl font-bold my-4 text-center ">About</h2>
-        <p class="text-gray-700 ">{{association.data}}</p>
+        <p class="text-gray-700 ">{{about.data}}</p>
       </div>
       <div>
         <!-- <div class="md:w-[330px] md:h-[330px] h-[280px] w-[280px]">
