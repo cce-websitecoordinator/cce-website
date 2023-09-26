@@ -42,7 +42,12 @@ def clubs_page(request):
     data = Clubs.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="clubs").first
 
-    return render(request, 'StudentServices/clubs.html',context={"data":data,"hero_img":hero_img,"hero_title":"Clubs"})
+    return render(request, 'StudentServices/clubs/clubs.html',context={"data":data,"hero_img":hero_img,"hero_title":"Clubs"})
+
+def clubs_template(request):
+    data = Clubs.objects.all()
+    hero_img = Hero_Image.objects.all().filter(page="clubs").first
+    return render(request, 'StudentServices/clubs/club_template.html',context={"data":data,"hero_img":hero_img,"hero_title":"Clubs"})
 
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
