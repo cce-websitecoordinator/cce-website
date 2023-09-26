@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from studentservices.models import *
 from website.models import Gallery, Hero_Image
+from departments.models import NewsLetters
 
 # Create your views here.
 def arts_page(request):
@@ -110,7 +111,10 @@ def central_library_page(request,slug):
         case "digital_library":
             context = {**context_temp,'data':DigitalLibrary.objects.all()}
             return render(request, 'StudentServices/digital_library.html',context=context)
-        case "e_resources":
-            return render(request, 'StudentServices/library_resources.html',context=context)
+        case "ieee_journals":
+            return render(request, 'StudentServices/ieee_journals.html',context=context)
+        case "newsletters":
+            context = {**context_temp,'data':NewsLetters.objects.all()}
+            return render(request, 'StudentServices/digital_library.html',context=context)
         
             

@@ -4,8 +4,6 @@
   {% block body %}
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24  pt-24 px-6" id="content">
-    <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
-    <p class=" text-sm mt-4 text-justify mb-11">{{about.about}}</p>
 
     <div class="flex gap-10 lg:flex-row flex-col">
       <div class="col-span-1 flex justify-center items-center flex-col">
@@ -15,9 +13,38 @@
       </div>
       <div class=" w-full space-y-16 mt-11 ">
           <div class="w-full flex flex-col justify-center items-center">
-            <h1 class="text-4xl my-11 font-bold">Placements Statistics</h1>
+            <h1 class="text-4xl my-11 font-bold">Placements and Higher Studies Statistics</h1>
       
           <div class="py-11">
+            <table class="w-full">
+              <thead class="rounded-t-lg bg-[#28AAE1]">
+                <tr class="text-white">
+                  <th class="p-2">S.No</th>
+                  <th class="p-2">Course Name</th>
+                  <th class="p-2">Course Code</th>
+                  <th class="p-2">Credits</th>
+                  <th class="p-2">Information Sheet</th>
+                  <th class="p-2">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% with count=0 %}
+                {% for item in handouts %}
+                  {% if item.semester == sem %}
+                    <tr class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
+                      <td class="p-2 text-center">{{ count|add:1 }}.</td>
+                      <td class="p-2 text-center">{{ item.course_name }}</td>  
+                      <td class="p-2 text-center">{{ item.course_code }}</td>  
+                      <td class="p-2 text-center">{{ item.course_credits }}</td>   
+                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_information_sheet }}">Info Sheet</a></td> 
+                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_notes }}">Notes</a></td>
+                    </tr>
+                    
+                  {% endif %}
+                {% endfor %}
+                {% endwith %}
+              </tbody>
+            </table>
             <img src="{{data.graph.url}}" class="rounded-xl aspect-square" alt="" srcset="">
           </div>
           </div>
