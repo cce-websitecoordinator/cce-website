@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Admission | Statistics {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+  
+
+  <div class="flex gap-10 lg:flex-row flex-col">
+    
+    <div class=" w-full space-y-16 mt-11 ">
+        <div class="w-full flex flex-col justify-center items-center">
+          <h1 class="text-4xl my-11 font-bold">Admission Statistics</h1>
+            
+        <div class="py-11">
+          <img src="{{data.graph.url}}" class="rounded-xl aspect-square" alt="" srcset="">
+        </div>
+        </div>
+      </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+{% endblock body %}
+{% block script %}
+
+
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+
