@@ -48,14 +48,13 @@ class Context:
         self.associations = None
         self.professional_bodies = None
         self.syllabus = None
-        self.semesters = [
-                    nested_tuple[0] for nested_tuple in Handouts.SEMESTERS
-                ]
+        self.semesters = [nested_tuple[0] for nested_tuple in Handouts.SEMESTERS]
         self.semin = None
         self.handouts = None
         self.labs = None
         self.events = None
         self.achivements = None
+        self.table = None
         self.newsletters = None
         self.dab = None
         self.dab_data = None
@@ -95,8 +94,12 @@ class Context:
                 self.associations = Associations.objects.filter(department=dep)
             case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
-                self.handouts = Handouts.objects.filter(department = dep)
-                self.semin = Handouts.objects.filter(department = dep).values_list('semester',flat=True).distinct()
+                self.handouts = Handouts.objects.filter(department=dep)
+                self.semin = (
+                    Handouts.objects.filter(department=dep)
+                    .values_list("semester", flat=True)
+                    .distinct()
+                )
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(
                     department=dep
@@ -116,7 +119,6 @@ class Context:
             case "PAC":
                 self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
-
 
     def data(self):
         """This method returns the context"""
@@ -140,12 +142,13 @@ class Context:
             "associations": self.associations,
             "professional_bodies": self.professional_bodies,
             "syllabus": self.syllabus,
-            "semesters":self.semesters,
-            "handouts" : self.handouts,
-            "semin" : self.semin,
+            "semesters": self.semesters,
+            "handouts": self.handouts,
+            "semin": self.semin,
             "labs": self.labs,
             "events": self.events,
             "achivements": self.achivements,
+            "table": self.table,
             "contact": self.contact,
             "newsletters": self.newsletters,
             "dab": self.dab,
@@ -183,18 +186,42 @@ def Department(request, route, department):
                 ]
                 context["defaultYear"] = default_year
                 context["type"] = a_type
+                context["year"] = year
                 if year and a_type:
-                    context["achivements"] = (
-                        DepAchievements.objects.filter(department=department)
-                        .filter(year=year)
-                        .filter(type=a_type)
-                    )
-                    return render(
-                        request, "Departments/Achievements.html", context=context
-                    )
+                    if year == "ALL":
+                        context["achivements"] = (
+                            DepAchievements.objects.filter(department=department)
+                            .filter(type=a_type)
+                        )
+                        context["table"] = (
+                            AchievementTables.objects.filter(department=department)
+                            .filter(type=a_type)
+                        )
+                        return render(
+                            request, "Departments/Achievements.html", context=context
+                        )
+                    else:
+                        context["achivements"] = (
+                            DepAchievements.objects.filter(department=department)
+                            .filter(year=year)
+                            .filter(type=a_type)
+                        )
+                        context["table"] = (
+                            AchievementTables.objects.filter(department=department)
+                            .filter(year=year)
+                            .filter(type=a_type)
+                        )
+                        return render(
+                            request, "Departments/Achievements.html", context=context
+                        )
                 else:
                     context["achivements"] = (
                         DepAchievements.objects.filter(department=department)
+                        .filter(year=default_year)
+                        .filter(type=default_type)
+                    )
+                    context["table"] = (
+                        AchievementTables.objects.filter(department=department)
                         .filter(year=default_year)
                         .filter(type=default_type)
                     )
@@ -210,19 +237,21 @@ def Department(request, route, department):
                 context["allYears"] = [
                     nested_tuple[0] for nested_tuple in ACADEMIC_YEARS[::-1]
                 ]
-                if year :
+                if year:
                     if year == "ALL":
-                        context["all_events"] = Events.objects.filter(department=department).all()
+                        context["all_events"] = Events.objects.filter(
+                            department=department
+                        ).all()
                     else:
-                        context["all_events"] = Events.objects.filter(department=department).filter(year=year)
+                        context["all_events"] = Events.objects.filter(
+                            department=department
+                        ).filter(year=year)
                     return render(request, "Departments/Events.html", context=context)
                 else:
-                    context["all_events"] = (
-                        Events.objects.filter(department=department).all()
-                    )
-                    return render(
-                        request, "Departments/Events.html", context=context
-                    )
+                    context["all_events"] = Events.objects.filter(
+                        department=department
+                    ).all()
+                    return render(request, "Departments/Events.html", context=context)
             else:
                 return Http404("Page Not Found")
         case "curriculum_and_syllabus":
@@ -245,16 +274,19 @@ def Department(request, route, department):
 
         case "PAC":
             return render(request, "Departments/PAC.html", context)
-        
-        case "students":
-            context["students"] = Students.objects.filter(department=department).order_by("-year") 
-            return render(request, "Departments/Students.html", context)
 
+        case "students":
+            context["students"] = Students.objects.filter(
+                department=department
+            ).order_by("-year")
+            return render(request, "Departments/Students.html", context)
 
         case "StreamCommittee":
             if request.method == "GET":
                 stream = request.GET.get("stream")
-                default_stream = Streams.objects.filter(department=department).first().id
+                default_stream = (
+                    Streams.objects.filter(department=department).first().id
+                )
                 context["streams"] = Streams.objects.filter(department=department)
                 context["defaultStream"] = default_stream
                 if stream:
@@ -266,7 +298,9 @@ def Department(request, route, department):
                         request, "Departments/StreamCommittee.html", context=context
                     )
                 else:
-                    context["sel_stream"] = Streams.objects.filter(id=default_stream).first()
+                    context["sel_stream"] = Streams.objects.filter(
+                        id=default_stream
+                    ).first()
                     context["stream_com"] = StreamComm.objects.filter(
                         stream__department=department
                     ).filter(stream=default_stream)

@@ -401,6 +401,14 @@ class AchievementTables(models.Model):
     organizer = models.CharField(max_length=100)
     prize = models.CharField(max_length=50)
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    TYPE = (
+        ("student", "Student"),
+        ("faculty", "Faculty"),
+    )
+    type = models.CharField(max_length=200, choices=TYPE, default="student")
 
     def __str__(self):
         return f"{self.name} {self.event} {self.prize}"
