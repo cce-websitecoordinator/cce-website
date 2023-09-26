@@ -72,8 +72,6 @@ class SportsGallery(models.Model):
         return self.image.name
 
 
-class NssFaculty(models.Model):
-    faculty = models.ManyToManyField(Faculty)
 
 class NssAbout(models.Model):
     about = models.TextField()
@@ -83,12 +81,13 @@ class NssAbout(models.Model):
 
 
 
-class NssStudents(models.Model):
+class NSSMembers(models.Model):
     name = models.CharField(max_length=100)
-    year = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
     image = models.ImageField(upload_to='nss/students')
     def __str__(self):
-        return self.name
+        return f"{self.priority} {self.name} {self.role}"
 
 class NssGallery(models.Model):
     image = models.ImageField(upload_to='nss/gallery')

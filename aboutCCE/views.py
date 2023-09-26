@@ -85,10 +85,10 @@ def vision_2035_page(request):
     return render(request, 'aboutCCE/vision_2035.html',context=context)
 
 
-def annual_report_page(request):
+def result_analysis_page(request):
     data = AnnualReport.objects.all()
-    hero_img = Hero_Image.objects.filter(page="annual_report").first()
-    return render(request,'aboutCCE/annual_report.html',context={'hero_img':hero_img,'hero_title':'Annual Report','data':data}) 
+    hero_img = Hero_Image.objects.filter(page="result_analysis").first()
+    return render(request,'aboutCCE/result_analysis.html',context={'hero_img':hero_img,'hero_title':'Annual Report','data':data}) 
 
 
 def college_calendar_page(request):
