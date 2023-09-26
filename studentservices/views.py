@@ -55,6 +55,35 @@ def union_page(request):
     hero_img = Hero_Image.objects.all().filter(page="college_union").first
     return render(request, 'StudentServices/union.html',context={"union":union,"hero_img":hero_img,"hero_title":union.name,'union_members':union_members})
 
+def techies_park_page(request):
+    hero_img = Hero_Image.objects.filter(page="techies_park").first()
+    
+    return render(request,'StudentServices/techies_park.html',context={'hero_img':hero_img,'hero_title':'Techies Park'})
+
+def study_abroad_page(request):
+    hero_img = Hero_Image.objects.filter(page="study_abroad").first()
+    
+    return render(request,'StudentServices/study_abroad.html',context={'hero_img':hero_img,'hero_title':'Study Abroad'})
+
+
+def mentoring_page(request):
+    context_temp = {
+        'title': 'Mentoring',
+        'hero_title': 'Mentoring',
+    }
+    context={**context_temp}
+
+    return render(request, 'StudentServices/mentoring.html',context=context)
+
+def irc_page(request):
+    context_temp = {
+        'title': 'International Relations Cell',
+        'hero_title': 'International Relations Cell',
+    }
+    context={**context_temp}
+
+    return render(request, 'StudentServices/irc.html',context=context)
+
 def central_library_page(request,slug):
     context_temp = {
         'title': 'Central Library',
@@ -85,12 +114,3 @@ def central_library_page(request,slug):
             return render(request, 'StudentServices/library_resources.html',context=context)
         
             
-def techies_park_page(request):
-    hero_img = Hero_Image.objects.filter(page="techies_park").first()
-    
-    return render(request,'StudentServices/techies_park.html',context={'hero_img':hero_img,'hero_title':'Techies Park'})
-
-def study_abroad_page(request):
-    hero_img = Hero_Image.objects.filter(page="study_abroad").first()
-    
-    return render(request,'StudentServices/study_abroad.html',context={'hero_img':hero_img,'hero_title':'Study Abroad'})
