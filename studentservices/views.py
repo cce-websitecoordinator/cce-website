@@ -54,6 +54,11 @@ def womencell_page(request):
     hero_img = Hero_Image.objects.all().filter(page="womencell").first
     return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
 
+def ieee_page(request):
+    data = IEEE.objects.all()
+    hero_img = Hero_Image.objects.all().filter(page="ieee").first
+    return render(request, 'StudentServices/ieee.html',context={"data":data,"hero_img":hero_img,"hero_title":"Institute of Electrical and Electronics Engineers"})
+
 def union_page(request):
     union = Union.objects.all().first()
     union_members = UnionCommitee.objects.all()
