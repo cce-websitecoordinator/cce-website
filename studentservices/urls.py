@@ -14,6 +14,7 @@ urlpatterns = [
     path('mentoring', views.mentoring_page, name='Mentoring'),
     path('irc', views.irc_page, name='international_relations_cell'),
     path('union', views.union_page, name='union'),
+    path('ieee', views.ieee_page, name='ieee'),
     path('<str:slug>', views.central_library_page, name='Central_Library'),
 
     
