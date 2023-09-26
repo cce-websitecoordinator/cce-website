@@ -397,7 +397,6 @@ class Students(models.Model):
 class AchievementTables(models.Model):
     name = models.CharField(max_length=50)
     event = models.CharField(max_length=100)
-    date = models.DateField()
     organizer = models.CharField(max_length=100)
     prize = models.CharField(max_length=50)
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
