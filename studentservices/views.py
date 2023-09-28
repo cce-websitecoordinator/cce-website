@@ -96,8 +96,12 @@ def irc_page(request):
         'title': 'International Relations Cell',
         'hero_title': 'International Relations Cell',
     }
-    context={**context_temp}
+    about = IRCAbout.objects.all().first()
+    events = IRCEvents.objects.all()
+    members = IRCTeam.objects.all().order_by('priority')
 
+
+    context={**context_temp,"about":about,"events":events,"members":members}
     return render(request, 'StudentServices/irc.html',context=context)
 
 def central_library_page(request,slug):
@@ -127,6 +131,8 @@ def central_library_page(request,slug):
             context = {**context_temp,'data':DigitalLibrary.objects.all()}
             return render(request, 'StudentServices/digital_library.html',context=context)
         case "ieee_journals":
+            journals = IEEEJournals.objects.all()
+            context = {**context_temp,"journals":journals}
             return render(request, 'StudentServices/ieee_journals.html',context=context)
         case "newsletters":
             context = {**context_temp,'data':NewsLetters.objects.all()}

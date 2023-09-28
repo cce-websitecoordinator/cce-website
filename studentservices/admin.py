@@ -32,7 +32,10 @@ admin.site.register(DigitalLibrary)
 admin.site.register(Mentoring)
 admin.site.register(MentoringEvents)
 admin.site.register(MentoringTeam)
-
+admin.site.register(IEEEJournals)
+admin.site.register(IRCAbout)
+admin.site.register(IRCEvents)
+admin.site.register(IRCTeam)
 
 
 

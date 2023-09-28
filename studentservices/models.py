@@ -179,8 +179,18 @@ class DigitalLibrary(models.Model):
     def __str__(self):
         return self.name
     
+class IEEEJournals(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField()
+
+    def __str__(self):
+        return self.name
+    
 class Mentoring(models.Model):
     data = models.TextField()
+
+    def __str__(self):
+        return self.data
     
     
 class MentoringEvents(models.Model):
@@ -197,5 +207,28 @@ class MentoringTeam(models.Model):
     role = models.CharField(max_length=100)
     priority = models.IntegerField()
     image = models.ImageField(upload_to='mentoring/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"
+    
+class IRCAbout(models.Model):
+    data = models.TextField()
+
+    def __str__(self):
+        return self.data
+    
+class IRCEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='IRC/events')
+    def __str__(self):
+        return self.title
+    
+class IRCTeam(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='IRC/members')
     def __str__(self):
         return f"{self.priority} {self.name} {self.role}"
