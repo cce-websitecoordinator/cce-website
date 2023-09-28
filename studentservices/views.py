@@ -81,7 +81,13 @@ def mentoring_page(request):
         'title': 'Mentoring',
         'hero_title': 'Mentoring',
     }
-    context={**context_temp}
+
+    about = Mentoring.objects.all()
+    events = MentoringEvents.objects.all().order_by("-date")
+    members = MentoringTeam.objects.all()
+    gallery = Gallery.objects.all()
+
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
 
     return render(request, 'StudentServices/mentoring.html',context=context)
 

@@ -96,4 +96,14 @@ class CollegeMagazine(models.Model):
     class Meta:
         verbose_name_plural = "College Magazine"
 
+class ResultAnalysis(models.Model):
+    image = models.ImageField(upload_to='results/')
+    def __str__(self):
+        return self.batch
 
+class ResultTable(models.Model):
+    batch = models.IntegerField()
+    api = models.IntegerField()
+    def __str__(self):
+        return self.batch
+    
