@@ -29,6 +29,11 @@ admin.site.register(UnionCommitee)
 admin.site.register(CentralLibrary)
 admin.site.register(LibraryFaculty)
 admin.site.register(DigitalLibrary)
+admin.site.register(Mentoring)
+admin.site.register(MentoringEvents)
+admin.site.register(MentoringTeam)
+
+
 
 
 
