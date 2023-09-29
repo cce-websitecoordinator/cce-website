@@ -117,8 +117,8 @@ def grivence_redressal_page(request, slug=None, page=None):
         if user_data is None:
             return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
         else:
-            form = GrievanceBodyForm()
-            # form.fields['email'] = user_data
+            form = GrievanceBodyForm(initial={"email":user_data})
+            
             if request.method == 'POST':
 
                 form = GrievanceBodyForm(request.POST)
