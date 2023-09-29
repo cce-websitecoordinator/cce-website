@@ -38,6 +38,10 @@ def pta_page(request):
             PTA_executive_commitee = PTAExecutiveCommitee.objects.all().filter(year = yr)
             PTA_members = PTAMembers.objects.all().filter(year = yr)
             context = {**context_temp,"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,"year":yr}
+        else:
+            PTA_executive_commitee = PTAExecutiveCommitee.objects.all().filter(year = years[0])
+            PTA_members = PTAMembers.objects.all().filter(year = years[0])
+            context = {**context_temp,"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,"year":years[0]}            
         
         return render(request, 'Administration/PTA.html',context=context)    
     else:

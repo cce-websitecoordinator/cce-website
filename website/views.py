@@ -69,6 +69,10 @@ def admission_stat_page(request):
             table = AdmissionStatistics.objects.all().filter(year = yr)
             graph = AdmissionGraph.objects.all().filter(year = yr)
             context = {**context_temp,"table":table,"graph":graph,"year":yr}
+        else:
+            table = AdmissionStatistics.objects.all().filter(year = years[0])
+            graph = AdmissionGraph.objects.all().filter(year = years[0])
+            context = {**context_temp,"table":table,"graph":graph,"year":years[0]}
         return render(request, 'admission_stats.html',context=context)    
     else:
         return Http404("Page Not Found")
