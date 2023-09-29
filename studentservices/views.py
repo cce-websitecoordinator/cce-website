@@ -47,9 +47,12 @@ def womencell_page(request):
     return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
 
 def ieee_page(request):
-    data = IEEE.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="ieee").first
-    return render(request, 'StudentServices/ieee.html',context={"data":data,"hero_img":hero_img,"hero_title":"Institute of Electrical and Electronics Engineers"})
+    about = IEEEAbout.objects.all().first()
+    events = IEEEevents.objects.all().order_by('-date')
+    members = IEEEmembers.objects.all().order_by('priority')
+    hero_img = Hero_Image.objects.all().filter(page="ieee").first()
+    gallery = Gallery.objects.all().order_by('?')[:20]
+    return render(request, 'StudentServices/ieee.html',context={"about":about,"hero_img":hero_img,"hero_title":"IEEE","events":events,"members":members,"gallery":gallery})
 
 def union_page(request):
     union = Union.objects.all().first()

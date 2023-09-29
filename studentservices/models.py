@@ -254,3 +254,25 @@ class IRCTeam(models.Model):
     image = models.ImageField(upload_to='IRC/members')
     def __str__(self):
         return f"{self.priority} {self.name} {self.role}"
+    
+class IEEEAbout(models.Model):
+    data = models.TextField()
+    def __str__(self):
+        return slef.data
+    
+class IEEEevents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='IEEE/events')
+    def __str__(self):
+        return self.title
+
+class IEEEmembers(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='IEEE/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"
