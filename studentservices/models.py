@@ -108,9 +108,31 @@ class Clubs(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='clubs/logos')
     description = models.CharField(max_length=100)
-    link  = models.CharField(max_length=100)
+    data = models.TextField(default="none")
+    link  = models.CharField(max_length=100,default='default.com')
     def __str__(self):
         return self.name
+    
+class ClubEvents(models.Model):
+    club = models.ForeignKey(Clubs, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='clubs/events')
+    def __str__(self):
+        return self.title
+    
+
+class ClubMembers(models.Model):
+    club = models.ForeignKey(Clubs, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='nss/students')
+    def __str__(self):
+        return f"{self.club.name} {self.name} {self.role}"
+
 
 class IICCertificate(models.Model):
     name = models.CharField(max_length=100)
@@ -154,7 +176,7 @@ class UnionCommitee(models.Model):
     
 
 class  CentralLibrary(models.Model):
-    data = models.TextField(max_length=250)
+    data = models.TextField()
     CHOICES = (("Vision", "Vision"), ("Mission", "Mission"),("about","about"))
     name = models.CharField(max_length=10, choices=CHOICES)
     class Meta:
