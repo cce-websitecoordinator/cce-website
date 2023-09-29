@@ -99,6 +99,19 @@ def irc_page(request):
     context={**context_temp,"about":about,"events":events,"members":members}
     return render(request, 'StudentServices/irc.html',context=context)
 
+def ccil_page(request):
+    context_temp = {
+        'title': 'Christ Center for Innovation and Open Learning',
+        'hero_title': 'Christ Center for Innovation and Open Learning',
+    }
+    about = CCILAbout.objects.all().first()
+    events = CCILEvents.objects.all()
+    members = CCILTeam.objects.all().order_by('priority')
+
+
+    context={**context_temp,"about":about,"events":events,"members":members}
+    return render(request, 'StudentServices/ccil.html',context=context)
+
 
 
 def central_library_page(request,slug):

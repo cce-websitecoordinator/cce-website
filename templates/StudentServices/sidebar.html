@@ -30,9 +30,9 @@
             <i class="material-icons" class="group-hover:text-[#007FFF]">devices</i><span>Digital Library</span>
             {%endifequal%}
             
-            {%ifequal '' route%}
+            <!-- {%ifequal '' route%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">help</i><span>Ask a Librarian</span>
-            {%endifequal%}
+            {%endifequal%} -->
             
             {%ifequal '' route%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">checklist</i><span>Online Library Feedback Form</span>
@@ -97,11 +97,11 @@
             </a>
         </div>
 
-        <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center  justify-start pl-9">
+        <!-- <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center  justify-start pl-9">
             <a href="{% url 'Central_Library' 'central_library' %}" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">help</i><span>Ask a Librarian</span>
             </a>
-        </div>
+        </div> -->
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
             <a href="{% url 'Central_Library' 'central_library' %}"-us" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">checklist</i><span>Online Library Feedback Form</span>

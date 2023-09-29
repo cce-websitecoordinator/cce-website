@@ -13,6 +13,7 @@ urlpatterns = [
     path('techies_park', views.techies_park_page, name='techies_park'),
     path('mentoring', views.mentoring_page, name='mentoring'),
     path('irc', views.irc_page, name='international_relations_cell'),
+    path('ccil', views.ccil_page, name='ccil'),
     path('union', views.union_page, name='union'),
     path('ieee', views.ieee_page, name='ieee'),
     path('<str:slug>', views.central_library_page, name='Central_Library'),
