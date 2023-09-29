@@ -149,10 +149,21 @@ class IQACMeetingMinutes(models.Model):
     def __str__(self) -> str:
         return f"{self.name} {self.year}"
 
+
+grivence_type = (
+    ("student","Student"),
+    ("faculty","Faculty"),
+    ("staff","Staff"),
+    ("other","Other"),
+)
+grivence_class = (
+    ("women_harrasement","Womwn Harrasement"),
+)
 class GrievanceBody(models.Model):
     name = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
-    type = models.CharField(max_length=30)
+    type = models.CharField( choices=grivence_type,max_length=30,default=0)
+    classs = models.CharField( choices=grivence_class,max_length=30,default=0)
     subject = models.TextField()
     message = models.TextField()
     def __str__(self) -> str:

@@ -1,9 +1,10 @@
 import os
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import Http404, HttpResponse
 
 from administration.models import *
 from website.models import Faculty, Gallery, Hero_Image
+from .forms import GrievanceBodyForm
 
 # Create your views here.
 def governing_body(request):
@@ -92,12 +93,12 @@ def grivence_redressal_index_page(request):
     hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
     data = GrivenceCommitee.objects.all()
     return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"data":data})
+
+
 def grivence_redressal_page(request, slug=None, page=None):
     if slug is None and page is None:
        raise Http404("Page Not Found")
-    match slug:
-        case "staff":
-            if page == 'login':
+    if page == 'login':
                 if request.method == "POST":
                     email = request.POST["email"]
                     password = request.POST["password"]
@@ -105,30 +106,32 @@ def grivence_redressal_page(request, slug=None, page=None):
                         return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page,"error":"Invalid Email"})
                     else:
                         user_data = {"email":email}
-                        request.session['']
-                    return HttpResponse(email)
+                        request.session['email'] = email
+                        redirect_url = "/administration/grievance/{}/{}".format(slug, "dashboard")
+                        return redirect(redirect_url)
                 else:
                     
                     return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
-            else:
-                if request.method == "POST":
-                    return HttpResponse("gjhdfjgh")
-                else:
-                    return render(request, "Administration/grievance/signup.html", context={"slug": slug, "page": page})
-        case "student":
-            return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
+    elif page == 'dashboard':
+        user_data = request.session.get('email')
+        if user_data is None:
+            return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
+        else:
+            form = GrievanceBodyForm(initial={"email":user_data})
+            
+            if request.method == 'POST':
 
-        case "women":
-            return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
-
-        case "exams":
-            return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
+                form = GrievanceBodyForm(request.POST)
+                if form.is_valid():
+                        form.save()
+                        return HttpResponse("Form Submitted")
+            
+            return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page,"form":form})
         
-        case "index":
-            return render(request, "Administration/grievance/index.html", context={"slug": slug, "page": page})
-
-
-        # You can add more cases if needed
-        case _:
-            # Handle cases when slug is not one of the defined cases
-            return HttpResponse("Invalid slug")
+    elif page == 'logout':
+        del request.session['email']
+        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
+   
+        
+            
+        
