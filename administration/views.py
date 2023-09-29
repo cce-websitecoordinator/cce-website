@@ -124,7 +124,8 @@ def grivence_redressal_page(request, slug=None, page=None):
                 form = GrievanceBodyForm(request.POST)
                 if form.is_valid():
                         form.save()
-                        return HttpResponse("Form Submitted")
+                        return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page,"form":form})
+
             
             return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page,"form":form})
         

@@ -1,24 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Grivence Redressal
-System {% endblock title %} {% block head %}
-
-
-{% endblock head %} {% block body %}
-<main class="bg-gray-100 max-w-screen-2xl mx-auto min-h-screen relative" >
-
-
-  <div class="flex items-center justify-center">
+System {% endblock title %} {% block head %} {% endblock head %} 
+{% block body %}
+<section class="bg-gray-50 -100 max-w-screen-2xl mx-auto min-h-screen relative flex w-full justify-center">
+  <div class="flex items-center justify-center relative">
     <div
-      class="max-w-[600px] mx-5 p-4 bg-white rounded-2xl w-full min-h-[60vh] my-11"
-      x-data="Dropdown"
+      class="min- w-[600px] mx-5 p-4 bg-white rounded-2xl  min-h-[60vh] my-11"
     >
-    <form method="post" action="" class=" g-form">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Submit</button>
-  </form>
+      <form method="post" action="" class="g-form">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </div>
-</main>
+</section>
 
 {% endblock %}
-
