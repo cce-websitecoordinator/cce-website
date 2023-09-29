@@ -29,10 +29,20 @@ def iqac_page(request):
 
 
 def pta_page(request):
-    PTA_executive_commitee = PTAExecutiveCommitee.objects.all()
-    PTA_members = PTAMembers.objects.all()
     hero_img = Hero_Image.objects.filter(page="pta").first()
-    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
+    years = [year[0] for year in PTAExecutiveCommitee.objects.values_list('year').distinct()]
+    context_temp = {'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)',"years":years}
+    if request.method == "GET":
+        yr = request.GET.get("year")
+        if yr:
+            PTA_executive_commitee = PTAExecutiveCommitee.objects.all().filter(year = yr)
+            PTA_members = PTAMembers.objects.all().filter(year = yr)
+            context = {**context_temp,"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,"year":yr}
+        
+        return render(request, 'Administration/PTA.html',context=context)    
+    else:
+        return Http404("Page Not Found")
+    
 
 def office_page(request, slug):
     gallery = Gallery.objects.all().order_by('?')[:10];

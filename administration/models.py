@@ -58,6 +58,7 @@ class PTAExecutiveCommitee(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
     def __str__(self):
         return self.name
     class Meta:
@@ -66,6 +67,7 @@ class PTAExecutiveCommitee(models.Model):
 class PTAMembers(models.Model):
     name = models.CharField(max_length=100)
     tudent_name = models.CharField(max_length=100)
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
     phone = models.CharField(max_length=100)
     def __str__(self):
         return self.name
