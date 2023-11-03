@@ -50,7 +50,7 @@ class Achivements(models.Model):
     data = models.TextField()
     date = models.DateField()
     def __str__(self):
-        return self.title
+        return self.image.name
 
 class PlacementFaculty(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)

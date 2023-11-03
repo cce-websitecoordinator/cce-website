@@ -501,12 +501,22 @@ fadeEffect: {
     slidesPerView: 1,
     autoplay: {
       delay: 4000,
+      disableOnInteraction: true,
     },
     effect: 'fade',
   fadeEffect: {
     crossFade: true
   },
 
+  });
+
+  eventsSwiper.el.addEventListener('mouseenter', () => {
+    eventsSwiper.autoplay.stop();
+  });
+  
+  // Add a mouseleave event listener to resume the slider
+  eventsSwiper.el.addEventListener('mouseleave', () => {
+    eventsSwiper.autoplay.start();
   });
 
 
