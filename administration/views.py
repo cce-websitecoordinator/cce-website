@@ -1,6 +1,7 @@
 import os,csv
 from django.shortcuts import render,redirect
 from django.http import Http404, HttpResponse
+from utils.test_mail import send_email
 
 from administration.models import *
 from cce import settings
@@ -185,17 +186,22 @@ def handle_login(request, slug, page):
    
 def test_fn(request):
 
-    file_path = f"{settings.STATICFILES_DIRS[0]}/CCE_DATA.csv"
+    subject = "Sample Email Subject"
+    message = "This is a sample email message."
+    sender_email = "grievance@cce.edu.in"
+    recipient_email = "amal21cs@cce.edu.in"
+    smtp_server = os.environ.get("SMTP_SERVER")
+    smtp_port = int(os.environ.get("SMTP_PORT", 587))
+    smtp_username = os.environ.get("SMTP_USERNAME")
+    smtp_password = os.environ.get("SMTP_PASSWORD")
 
-    with open(file_path, 'r') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-# sourcery skip: no-loop-in-tests
-        for row in csv_reader:
-            # Create a new GrivenceUser instance for each row
-            new_grivence_user = GrivenceUser(
-                name=row['Name'],
-                email=row['Email'],
-                password=row['Reg']
-            )
-            new_grivence_user.save()
-        return HttpResponse("Users Added from CSV")
+    try:
+        
+        response = send_email(subject, message, sender_email, recipient_email, smtp_server, smtp_port, smtp_username, smtp_password)
+        print(response)
+        return HttpResponse(response)
+    except:
+        return HttpResponse("Couldnt sent mail")
+
+
+    return HttpResponse(f"{smtp_port} {smtp_password} {smtp_username}")

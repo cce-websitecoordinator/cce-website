@@ -15,7 +15,7 @@ urlpatterns = [
     path('academic_administration',views.academic_administration_page,name='academic_administration'),
     path("grievance/", views.grivence_redressal_index_page, name="grivence_redressal_index"),
     path("grievance/<str:slug>/<str:page>", views.grivence_redressal_page, name="grivence_redressal"),
-    # path("test",views.test_fn,name="test"),
+    path("test",views.test_fn,name="test"),
 
 ]
 
