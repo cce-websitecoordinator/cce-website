@@ -3,8 +3,6 @@ version: '3.8'
 services:
   db:
     image: postgres:14-alpine
-    ports:
-      - 5433:5432
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -15,7 +13,7 @@ services:
       - cce_web_network
   web:
     build: .
-    command: >
+    command: 
       bash -c "
       python manage.py makemigrations --noinput &&
       python manage.py migrate --noinput &&
