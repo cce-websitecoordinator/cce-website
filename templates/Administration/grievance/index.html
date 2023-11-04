@@ -18,11 +18,11 @@
         <div
           class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
         >
-          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+          <div class="w-auto grid grid-cols-8 justify-evenly min-h-[50px] py-6">
             <div class="text-center px-2">S.NO</div>
-            <div class="text-center px-2">Committee Members</div>
-            <div class="text-center px-2">Status</div>
-            <div class="text-center px-2">Email</div>
+            <div class="text-center px-2 col-span-2">Committee Members</div>
+            <div class="text-center px-2 col-span-2">Status</div>
+            <div class="text-center px-2 col-span-3">Email</div>
             
           </div>
         </div>
@@ -30,13 +30,13 @@
         <div class="space-y-4 xl:space-y-0 xl:table-row-group">
           {% for item in data%}
           <div class="hidden xl:block">
-            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+            <div class="w-auto grid grid-cols-8 min-h-[50px] py-6">
               <div class="text-center px-2">{{forloop.counter}}</div>
-              <div class="text-center px-2">
+              <div class="text-center px-2 col-span-2">
                 {{item.name}}
               </div>
-              <div class="text-center px-2">{{item.status}}</div>
-              <div class="text-center px-2 ">{{item.email}}</div>
+              <div class="text-center px-2 col-span-2">{{item.status}}</div>
+              <div class="text-center px-2 col-span-3 ">{{item.email}}</div>
               
             </div>
           </div>

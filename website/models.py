@@ -4,6 +4,11 @@ from email.policy import default
 from django.db import models
 from utils.compressor import Compress
 
+ACADEMIC_YEARS = [
+    ("{}-{}".format(r, r + 1), "{}-{}".format(r, r + 1))
+    for r in range(2020, datetime.date.today().year + 1)
+]
+
 class Role(models.Model):
     role = models.CharField(max_length=50)
 
@@ -236,9 +241,13 @@ class AdmissionStatistics(models.Model):
     dept = models.CharField(max_length=100,choices=DEPARTMENTS)
     seats = models.IntegerField()
     admitted = models.IntegerField()
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
+
     def __str__(self):
-        return self.dept
+        return self.dept+" "+self.year
     
 class AdmissionGraph(models.Model):
     graph  = models.ImageField(upload_to='admission/')
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
+
 

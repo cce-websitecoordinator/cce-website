@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404, HttpResponse
 from studentservices.models import *
 from website.models import Gallery, Hero_Image
 from departments.models import NewsLetters
@@ -38,16 +39,7 @@ def iic_page(request):
     return render(request, 'StudentServices/iic.html',context={"hero_img":hero_img,"hero_title":"Institution’s Innovation Council","members":members,"certificates":certificates})
 
 
-def clubs_page(request):
-    data = Clubs.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="clubs").first
 
-    return render(request, 'StudentServices/clubs/clubs.html',context={"data":data,"hero_img":hero_img,"hero_title":"Clubs"})
-
-def clubs_template(request):
-    data = Clubs.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="clubs").first
-    return render(request, 'StudentServices/clubs/club_template.html',context={"data":data,"hero_img":hero_img,"hero_title":"Clubs"})
 
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
@@ -55,9 +47,12 @@ def womencell_page(request):
     return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
 
 def ieee_page(request):
-    data = IEEE.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="ieee").first
-    return render(request, 'StudentServices/ieee.html',context={"data":data,"hero_img":hero_img,"hero_title":"Institute of Electrical and Electronics Engineers"})
+    about = IEEEAbout.objects.all().first()
+    events = IEEEevents.objects.all().order_by('-date')
+    members = IEEEmembers.objects.all().order_by('priority')
+    hero_img = Hero_Image.objects.all().filter(page="ieee").first()
+    gallery = Gallery.objects.all().order_by('?')[:20]
+    return render(request, 'StudentServices/ieee.html',context={"about":about,"hero_img":hero_img,"hero_title":"IEEE","events":events,"members":members,"gallery":gallery})
 
 def union_page(request):
     union = Union.objects.all().first()
@@ -82,7 +77,7 @@ def mentoring_page(request):
         'hero_title': 'Mentoring',
     }
 
-    about = Mentoring.objects.all()
+    about = Mentoring.objects.all().first()
     events = MentoringEvents.objects.all().order_by("-date")
     members = MentoringTeam.objects.all()
     gallery = Gallery.objects.all()
@@ -103,6 +98,22 @@ def irc_page(request):
 
     context={**context_temp,"about":about,"events":events,"members":members}
     return render(request, 'StudentServices/irc.html',context=context)
+
+def ccil_page(request):
+    context_temp = {
+        'title': 'Christ Center for Innovation and Open Learning',
+        'hero_title': 'Christ Center for Innovation and Open Learning',
+    }
+    about = CCILAbout.objects.all().first()
+    events = CCILEvents.objects.all()
+    members = CCILTeam.objects.all().order_by('priority')
+    gallery = Gallery.objects.all().order_by('?')[:20]
+
+
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
+    return render(request, 'StudentServices/ccil.html',context=context)
+
+
 
 def central_library_page(request,slug):
     context_temp = {
@@ -139,3 +150,24 @@ def central_library_page(request,slug):
             return render(request, 'StudentServices/digital_library.html',context=context)
         
             
+def clubs_page(request,slug):
+    club_names = [club[0] for club in Clubs.objects.all().values_list('name')]
+    context_temp = {
+        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        'route': slug,
+        'gallery':Gallery.objects.all().order_by('?')
+    }
+    context={**context_temp}
+    if slug == "index":
+        data = Clubs.objects.all()
+        context = {**context_temp,"data":data,"hero_title":"Clubs"}
+        return render(request, 'StudentServices/clubs/index.html',context=context)
+    elif slug in club_names:
+        club = Clubs.objects.filter(name = slug).first()
+        events = ClubEvents.objects.all().filter(club__name = slug).order_by('-date')
+        members = ClubMembers.objects.all().filter(club__name = slug).order_by('priority')
+        context = {**context_temp,"club":club,"hero_title":club.name,"events":events,"members":members}
+        return render(request, 'StudentServices/clubs/club_template.html',context=context)
+    else:
+        return Http404("Page Not Found")
+        

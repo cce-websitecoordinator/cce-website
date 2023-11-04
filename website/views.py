@@ -61,9 +61,21 @@ def admission_page(request):
 def admission_stat_page(request):
     hero_img = Hero_Image.objects.all().filter(page="admissions").first()
     hero_title = "Admission Statistics"
-    table = AdmissionStatistics.objects.all()
-    graph = AdmissionGraph.objects.all()
-    return render(request, "admission_stats.html",context={"hero_img":hero_img,"hero_title":hero_title,"table":table,"graph":graph})
+    years = [year[0] for year in AdmissionStatistics.objects.values_list('year').distinct()]
+    context_temp = {"hero_img":hero_img,"hero_title":hero_title,"years":years}
+    if request.method == "GET":
+        yr = request.GET.get("year")
+        if yr:
+            table = AdmissionStatistics.objects.all().filter(year = yr)
+            graph = AdmissionGraph.objects.all().filter(year = yr)
+            context = {**context_temp,"table":table,"graph":graph,"year":yr}
+        else:
+            table = AdmissionStatistics.objects.all().filter(year = years[0])
+            graph = AdmissionGraph.objects.all().filter(year = years[0])
+            context = {**context_temp,"table":table,"graph":graph,"year":years[0]}
+        return render(request, 'admission_stats.html',context=context)    
+    else:
+        return Http404("Page Not Found")
 
 def nirf_page(request):
     return render(request, "nirf.html", context={})

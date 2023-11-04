@@ -1,8 +1,9 @@
-import os
+import os,csv
 from django.shortcuts import render,redirect
 from django.http import Http404, HttpResponse
 
 from administration.models import *
+from cce import settings
 from website.models import Faculty, Gallery, Hero_Image
 from .forms import GrievanceBodyForm
 
@@ -29,10 +30,23 @@ def iqac_page(request):
 
 
 def pta_page(request):
-    PTA_executive_commitee = PTAExecutiveCommitee.objects.all()
-    PTA_members = PTAMembers.objects.all()
     hero_img = Hero_Image.objects.filter(page="pta").first()
-    return render(request, 'Administration/PTA.html',context={"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)'})
+    years = [year[0] for year in PTAExecutiveCommitee.objects.values_list('year').distinct()]
+    context_temp = {'hero_img':hero_img,'hero_title':'Parent Teacher Association (PTA)',"years":years}
+    if request.method == "GET":
+        if yr := request.GET.get("year"):
+            PTA_executive_commitee = PTAExecutiveCommitee.objects.all().filter(year = yr)
+            PTA_members = PTAMembers.objects.all().filter(year = yr)
+            context = {**context_temp,"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,"year":yr}
+        else:
+            PTA_executive_commitee = PTAExecutiveCommitee.objects.all().filter(year = years[0])
+            PTA_members = PTAMembers.objects.all().filter(year = years[0])
+            context = {**context_temp,"PTA_executive_commitee":PTA_executive_commitee,"PTA_members":PTA_members,"year":years[0]}            
+
+        return render(request, 'Administration/PTA.html',context=context)
+    else:
+        return Http404("Page Not Found")
+    
 
 def office_page(request, slug):
     gallery = Gallery.objects.all().order_by('?')[:10];
@@ -41,7 +55,7 @@ def office_page(request, slug):
     title = slug.replace("_"," ")
     print(title)
     context = {'hero_img':hero_img,"office_data":staff,"slug":slug,'hero_title':title,"gallery":gallery}
-    return render(request,'Administration/office_{}.html'.format(slug),context)
+    return render(request, f'Administration/office_{slug}.html', context)
 
            
         
@@ -80,9 +94,7 @@ def academic_administration_page(request):
     vice_principal = AcademicAdministrationDirector.objects.filter(director_reserch_role="vice_principal").first()
     aca_dir = AcademicAdministrationDirector.objects.filter(director_reserch_role="aca_dir").first()
     res_dir = AcademicAdministrationDirector.objects.filter(director_reserch_role="res_dir").first()
-
     data = AcademicAdministractors.objects.all().order_by('order')
-    
     gallery  = Gallery.objects.all().order_by('?')[:10]
     return render(request,"Administration/academic_administration.html",context={'hero_title':'Academic Administration','hero_img':hero_img,'data':data,'principal':principal,'vice_principal':vice_principal,'aca_dir':aca_dir,'res_dir':res_dir,'gallery':gallery})
 
@@ -95,44 +107,95 @@ def grivence_redressal_index_page(request):
     return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"data":data})
 
 
+
+
 def grivence_redressal_page(request, slug=None, page=None):
+    # sourcery skip: extract-method
+    print(slug)
     if slug is None and page is None:
-       raise Http404("Page Not Found")
+        raise Http404("Page Not Found")
+
     if page == 'login':
-                if request.method == "POST":
-                    email = request.POST["email"]
-                    password = request.POST["password"]
-                    if '@cce.edu.in' not in email:
-                        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page,"error":"Invalid Email"})
-                    else:
-                        user_data = {"email":email}
-                        request.session['email'] = email
-                        redirect_url = "/administration/grievance/{}/{}".format(slug, "dashboard")
-                        return redirect(redirect_url)
-                else:
-                    
-                    return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
+        return handle_login(request, slug, page)  # Use a separate function for login handling
+
     elif page == 'dashboard':
         user_data = request.session.get('email')
+        user_name = request.session.get('name')
+        user_type = request.session.get('type')
         if user_data is None:
             return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
+
+        if request.method == 'POST':
+            form = GrievanceBodyForm(request.POST)  
+            if form.is_valid():
+                grievance_instance = form.save(commit=False)  
+                grievance_instance.email = user_data  
+                grievance_instance.save()
+
+                
+
+                return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page, "form": form})
+
         else:
-            form = GrievanceBodyForm(initial={"email":user_data})
-            
-            if request.method == 'POST':
+            form = GrievanceBodyForm(initial={"email": user_data,"name":user_name,"type":user_type})
 
-                form = GrievanceBodyForm(request.POST)
-                if form.is_valid():
-                        form.save()
-                        return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page,"form":form})
+        return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page, "form": form})
 
-            
-            return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page,"form":form})
-        
     elif page == 'logout':
         del request.session['email']
         return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
+
+def handle_login(request, slug, page):
+    print("slug : ",slug)
+
+
+    if request.method != "POST":
+        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page})
+
+
+    email = request.POST["email"]
+    password = request.POST["password"]
+    user = GrivenceUser.objects.filter(email=email).first()
+
+    print(user.type)
+
+    if user.type != slug:
+        return render(
+            request,
+            "Administration/grievance/login.html",
+            context={
+                "slug": slug,
+                "page": page,
+                "error": f"Not {slug} account.",
+            },
+        )
+
+    if not user:
+        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page, "error": "Invalid Email"})
+
+    if password != user.password:
+        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page, "error": "Wrong Password"})
+
+    request.session['email'] = email
+    request.session['name'] = user.name
+    request.session['type'] = user.type
+    redirect_url = f"/administration/grievance/{slug}/dashboard"
+    return redirect(redirect_url)
+
    
-        
-            
-        
+def test_fn(request):
+
+    file_path = f"{settings.STATICFILES_DIRS[0]}/CCE_DATA.csv"
+
+    with open(file_path, 'r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+# sourcery skip: no-loop-in-tests
+        for row in csv_reader:
+            # Create a new GrivenceUser instance for each row
+            new_grivence_user = GrivenceUser(
+                name=row['Name'],
+                email=row['Email'],
+                password=row['Reg']
+            )
+            new_grivence_user.save()
+        return HttpResponse("Users Added from CSV")

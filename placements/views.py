@@ -36,7 +36,9 @@ def placement_page(request,slug):
             context = {**context_temp,"faculty":PlacementFaculty.objects.all().order_by('order')}
             return render(request, 'Placements/faculty.html',context=context)
         case "statistics":
-            context = {**context_temp,"data":PlacementStatistics.objects.first()}
+            image = PlacementStatistics.objects.all()
+            table = PlacementStatsTable.objects.all()
+            context = {**context_temp,"image":image,"table":table}
             return render(request, 'Placements/statistics.html',context=context)
         case "activities":
             return render(request, 'Placements/activities.html',context=context)

@@ -1,75 +1,66 @@
-  {% extends 'base.html' %} {% load static %} {% block title %} Placements {% endblock title %} {% block head %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  {% endblock head %}
-  {% block body %}
-  {% include 'components/Hero_section.html' %}
-  <section class="md:px-24  pt-24 px-6" id="content">
+{% extends 'base.html' %} {% load static %} {% block title %} Placements {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
 
-    <div class="flex gap-10 lg:flex-row flex-col">
-      <div class="col-span-1 flex justify-center items-center flex-col">
-        <h2 class="font-semibold text-2xl px-4">Placements</h2>
-        <p class="px-4 text-gray-400">Home / Placements / Placement Traning </p>
-        {% include 'Placements/sidebar.html' %}
-      </div>
-      <div class=" w-full space-y-16 mt-11 ">
-          <div class="w-full flex flex-col justify-center items-center">
-            <h1 class="text-4xl my-11 font-bold">Placements and Higher Studies Statistics</h1>
-      
-          <div class="py-11">
-            <table class="w-full">
-              <thead class="rounded-t-lg bg-[#28AAE1]">
-                <tr class="text-white">
-                  <th class="p-2">S.No</th>
-                  <th class="p-2">Course Name</th>
-                  <th class="p-2">Course Code</th>
-                  <th class="p-2">Credits</th>
-                  <th class="p-2">Information Sheet</th>
-                  <th class="p-2">Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% with count=0 %}
-                {% for item in handouts %}
-                  {% if item.semester == sem %}
-                    <tr class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
-                      <td class="p-2 text-center">{{ count|add:1 }}.</td>
-                      <td class="p-2 text-center">{{ item.course_name }}</td>  
-                      <td class="p-2 text-center">{{ item.course_code }}</td>  
-                      <td class="p-2 text-center">{{ item.course_credits }}</td>   
-                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_information_sheet }}">Info Sheet</a></td> 
-                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_notes }}">Notes</a></td>
-                    </tr>
-                    
-                  {% endif %}
-                {% endfor %}
-                {% endwith %}
-              </tbody>
-            </table>
-            <img src="{{data.graph.url}}" class="rounded-xl aspect-square" alt="" srcset="">
-          </div>
+  <div class="flex gap-10 lg:flex-row flex-col items-start">
+    <div class="col-span-1 flex justify-center items-start flex-col">
+      <h2 class="font-semibold text-2xl px-4">Placements</h2>
+      <p class="px-4 text-gray-400">Home / Placements / Placement Traning </p>
+      {% include 'Placements/sidebar.html' %}
+    </div>
+    <div class=" w-full space-y-16 mt-11 ">
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Placements and Higher Studies Statistics</h1>
+
+        <div class="py-11">
+          <table class="w-full">
+            <thead class="rounded-t-lg bg-[#28AAE1]">
+              <tr class="text-white">
+                <th class="p-2">Year</th>
+                <th class="p-2">No. of Students</th>
+                <th class="p-2">Placement</th>
+                <th class="p-2">Higher Studies</th>
+                <th class="p-2">Total</th>
+                <th class="p-2">Highest Salary (in Lakhs/Annum)</th>
+                <th class="p-2">Average Salary (in Lakhs/Annum)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in table %}
+              <tr class="rounded-t-lg {% cycle 'even:bg-[#f2f2f2]' 'odd:bg-white' %}">
+                <td class="p-2 text-center">{{item.year}}</td>
+                <td class="p-2 text-center">{{item.students}}</td>
+                <td class="p-2 text-center">{{item.placement}}</td>
+                <td class="p-2 text-center">{{item.higher_studies}}</td>
+                <td class="p-2 text-center">{{item.total}}</td>
+                <td class="p-2 text-center">{{item.highest}}</td>
+                <td class="p-2 text-center">{{item.avg}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="w-full justify-center flex">
+            {% for img in image %}
+            <img src="{{img.graph.url}}" class="rounded-xl aspect-square object-contain" alt="Placement Graph">
+            {% endfor %}
           </div>
         </div>
+      </div>
     </div>
+  </div>
 
-  </section>
-
-
-
-
-
-
-  {% endblock body %}
-  {% block script %}
-
-
-  {% endblock script %}
+</section>
 
 
 
 
 
 
+{% endblock body %}
+{% block script %}
 
 
-
-
+{% endblock script %}

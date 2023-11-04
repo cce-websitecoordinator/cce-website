@@ -6,7 +6,7 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<script id="gallery-data" type="application/json"> var a = {{ gallery_data|safe }}</script>
+<!-- <script id="gallery-data" type="application/json"> var a = {{ gallery_data|safe }}</script> -->
 
 
   
@@ -55,7 +55,7 @@
 <section class="home_section relative h-[100vh] overflow-clip ">
   <div class="w-[100vw] h-[100vh] -z-1 " >
     <video autoplay loop muted poster="{% static 'images/home.jpg' %}" class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
-      <source  src="{% static 'videos/Website.mp4'%}" type="video/mp4">
+      <source  src="{% static 'videos/HomePagevid.mp4'%}" type="video/mp4">
     </video>
       {% comment %} <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" /> {% endcomment %}
   </div>
@@ -91,7 +91,7 @@
     </div>
     <div class="mt-6 px-11">
       <div class="border-2  p-1 pr-2">
-      <h1 class="text-3xl text-left font-bold pt-4 text-blue-700">Quality Policy</h1>
+      <h1 class="text-3xl  font-bold pt-4 text-center text-blue-700">Quality Policy</h1>
       
       <p class=" text-justify mt-4">Christ College of Engineering is committed to achieve excellence in the higher education by providing a conducive platform for both students and faculty by creating an educational system based on quality education and ethical values. The college is also committed to continually improve its teaching learning practices and implement a holistic development of student community to meet the needs of the industry and society.</p>
     </div>
@@ -501,12 +501,22 @@ fadeEffect: {
     slidesPerView: 1,
     autoplay: {
       delay: 4000,
+      disableOnInteraction: true,
     },
     effect: 'fade',
   fadeEffect: {
     crossFade: true
   },
 
+  });
+
+  eventsSwiper.el.addEventListener('mouseenter', () => {
+    eventsSwiper.autoplay.stop();
+  });
+  
+  // Add a mouseleave event listener to resume the slider
+  eventsSwiper.el.addEventListener('mouseleave', () => {
+    eventsSwiper.autoplay.start();
   });
 
 
