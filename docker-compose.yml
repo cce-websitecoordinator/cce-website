@@ -1,6 +1,5 @@
 version: '3.8'
 
-
 services:
   db:
     image: postgres:14-alpine
@@ -11,10 +10,17 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     volumes:
-       - ./data/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
+    networks:
+      - cce_web_network
   web:
     build: .
-    command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    command: >
+      bash -c "
+      python manage.py makemigrations --noinput &&
+      python manage.py migrate --noinput &&
+      python manage.py collectstatic --noinput &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
@@ -25,3 +31,18 @@ services:
       - DEBUG=1
     depends_on:
       - db
+    networks:
+      - cce_web_network
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - 5050:80
+    networks:
+      - cce_web_network
+
+networks:
+  cce_web_network:
+    driver: bridge
