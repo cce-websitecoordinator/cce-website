@@ -132,9 +132,16 @@ def grivence_redressal_page(request, slug=None, page=None):
                 grievance_instance = form.save(commit=False)  
                 grievance_instance.email = user_data  
                 grievance_instance.save()
-
-                
-
+                subject = "Grievance Submission - CCE"
+                message = "This is a sample email message."
+                recipient_email = grievance_instance.email
+                template_variables = {"name":grievance_instance.name,'date':datetime.date,'email':recipient_email,"data":"Arum enthum Paranjallum Amal Ettan Uyir Annu First Years NNU"}
+                try:
+                    response = send_email(subject,message, recipient_email,template_values=template_variables)
+                    print(response)
+                    return HttpResponse(response)
+                except Exception as e:
+                    return HttpResponse(e)
                 return render(request, "Administration/grievance/form.html", context={"slug": slug, "page": page, "form": form})
 
         else:
@@ -189,19 +196,14 @@ def test_fn(request):
     subject = "Sample Email Subject"
     message = "This is a sample email message."
     sender_email = "grievance@cce.edu.in"
-    recipient_email = "amal21cs@cce.edu.in"
-    smtp_server = os.environ.get("SMTP_SERVER")
-    smtp_port = int(os.environ.get("SMTP_PORT", 587))
-    smtp_username = os.environ.get("SMTP_USERNAME")
-    smtp_password = os.environ.get("SMTP_PASSWORD")
-
+    recipient_email = 'magniyadavis@cce.edu.in'
+    template_variables = {"name":"Amal Ettan Uyir",'date':datetime.date,'email':recipient_email,"data":"Arum enthum Paranjallum Amal Ettan Uyir Annu First Years NNU"}
     try:
-        
-        response = send_email(subject, message, sender_email, recipient_email, smtp_server, smtp_port, smtp_username, smtp_password)
+        response = send_email(subject,message, recipient_email,template_values=template_variables)
         print(response)
         return HttpResponse(response)
-    except:
-        return HttpResponse("Couldnt sent mail")
+    except Exception as e:
+        return HttpResponse(e)
 
 
     return HttpResponse(f"{smtp_port} {smtp_password} {smtp_username}")
