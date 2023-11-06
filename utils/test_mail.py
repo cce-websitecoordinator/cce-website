@@ -17,7 +17,7 @@ def send_email(subject, message, recipient_email,template_values=None):
     # Try to send the email
     # Create a MIME object
     msg = MIMEMultipart()
-    msg["From"] = "Amal Mass <grivance@cce.edu.in>"
+    msg["From"] = "Grievance Cell - CCE <grivance@cce.edu.in>"
     msg["To"] = recipient_email
     msg["Subject"] = subject
 
