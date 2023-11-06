@@ -111,8 +111,7 @@ def grivence_redressal_index_page(request):
 
 
 def grivence_redressal_page(request, slug=None, page=None):
-    # sourcery skip: extract-method
-    print(slug)
+
     if slug is None and page is None:
         raise Http404("Page Not Found")
 
@@ -132,13 +131,15 @@ def grivence_redressal_page(request, slug=None, page=None):
                 grievance_instance = form.save(commit=False)  
                 grievance_instance.email = user_data  
                 grievance_instance.save()
-                subject = "Grievance Submission - CCE"
-                message = "This is a sample email message."
+
+                name = grievance_instance.name
+                subject = grievance_instance.subject
+                message = grievance_instance.message
                 recipient_email = grievance_instance.email
-                template_variables = {"name":grievance_instance.name,'date':datetime.date,'email':recipient_email,"data":"Arum enthum Paranjallum Amal Ettan Uyir Annu First Years NNU"}
+
+                template_variables = {"name":name,'date':datetime.date,'email':recipient_email,"data":message}
                 try:
                     response = send_email(subject,message, recipient_email,template_values=template_variables)
-                    print(response)
                     return HttpResponse(response)
                 except Exception as e:
                     return HttpResponse(e)
@@ -154,7 +155,7 @@ def grivence_redressal_page(request, slug=None, page=None):
         return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": "login"})
 
 def handle_login(request, slug, page):
-    print("slug : ",slug)
+    
 
 
     if request.method != "POST":
@@ -165,7 +166,10 @@ def handle_login(request, slug, page):
     password = request.POST["password"]
     user = GrivenceUser.objects.filter(email=email).first()
 
-    print(user.type)
+
+    if not user:
+        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page, "error": "Invalid Email"})
+
 
     if user.type != slug:
         return render(
@@ -178,9 +182,7 @@ def handle_login(request, slug, page):
             },
         )
 
-    if not user:
-        return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page, "error": "Invalid Email"})
-
+    
     if password != user.password:
         return render(request, "Administration/grievance/login.html", context={"slug": slug, "page": page, "error": "Wrong Password"})
 

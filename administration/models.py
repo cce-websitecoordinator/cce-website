@@ -180,12 +180,6 @@ class GrivenceUser(models.Model):
         return self.name
     
 
-
-
-
-
-
-
 class GrievanceBody(models.Model):
     name = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
