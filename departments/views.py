@@ -12,7 +12,7 @@ from .models import Achivements as DepAchievements
 def getDepartment(department):
     match department:
         case "BSH":
-            return "Basic Science and Humanities"
+            return "Basic Sciences and Humanities"
         case "CSE":
             return "Computer Science and Engineering"
         case "ECE":
@@ -329,15 +329,16 @@ def research_page(request, department, slug):
         "route": "research",
         "slug": slug,
         "hero_img": hero_image,
+        "title":getDepartment(department)
     }
     match slug:
         case "index":
-            hero_title = "Research"
-            context = {"hero_title": hero_title, **context_temp}
+            
+            context = {**context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {
-                "hero_title": "Academic Consultancy",
+                
                 "academic_consultancy": AcademicConsultancy.objects.all().filter(
                     department=department
                 ),
@@ -348,7 +349,7 @@ def research_page(request, department, slug):
             )
         case "parternship":
             context = {
-                "hero_title": "Academic Partnership",
+                
                 "academic_partnership": AcademicPartnerShip.objects.all().filter(
                     department=department
                 ),
@@ -360,19 +361,19 @@ def research_page(request, department, slug):
         case "conference":
             context = {
                 **context_temp,
-                "hero_title": "Conference & Symposium ",
+                
                 "conferences": Conference.objects.all().filter(department=department),
             }
             return render(request, "Departments/research/conference.html", context)
         case "funded_projects":
             context = {
                 **context_temp,
-                "hero_title": "Funded Projects",
+                
                 "funded_projects": FundedProjects.objects.all().filter(
                     department=department
                 ),
             }
-            hero_title = "Funded Projects"
+           
             return render(request, "Departments/research/funded_projects.html", context)
         case "publications":
             publications = FacultyStudentPublications.objects.all().filter(
@@ -380,7 +381,6 @@ def research_page(request, department, slug):
             )
             context = {
                 **context_temp,
-                "hero_title": "Publications",
                 "publications": publications,
             }
             return render(request, "Departments/research/publications.html", context)
@@ -390,7 +390,6 @@ def research_page(request, department, slug):
             )
             context = {
                 **context_temp,
-                "hero_title": "KTU Approved RESEARCH GUIDES",
                 "research_guides": research_guides,
             }
 

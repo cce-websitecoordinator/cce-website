@@ -38,12 +38,13 @@ class DepAbout(models.Model):
         ("associations", "Associations"),
         ("professionalBodies", "Professional Bodies"),
         ("curriculum_and_syllabus", "Sylabus"),
+        ("labs","labs"),
     )
     page = models.CharField(max_length=200, choices=PAGES, default="About")
     about = models.TextField()
 
     def __str__(self):
-        return self.department
+        return f"{self.department} - {self.page}"
 
 
 class POES(models.Model):
