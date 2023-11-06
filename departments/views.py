@@ -61,6 +61,7 @@ class Context:
         self.pac = None
         self.pac_data = None
         self.gallery = Gallery.objects.filter(department=dep)[:10]
+        self.econtent = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -119,6 +120,8 @@ class Context:
             case "PAC":
                 self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
+            case 'e-content':
+                self.econtent = Econtent.objects.filter(department=dep)
 
     def data(self):
         """This method returns the context"""
@@ -155,6 +158,7 @@ class Context:
             "dab_data": self.dab_data,
             "pac": self.pac,
             "pac_data": self.pac_data,
+            "econtent": self.econtent,
         }
 
 
@@ -307,8 +311,12 @@ def Department(request, route, department):
                     return render(
                         request, "Departments/StreamCommittee.html", context=context
                     )
+                
             else:
                 return Http404("Page Not Found")
+        case "e-content":
+            context = context
+            return render(request, "Departments/e-content.html", context)
 
         case other:
             raise Http404("Page Not Found")
@@ -387,6 +395,7 @@ def research_page(request, department, slug):
             }
 
             return render(request, "Departments/research/research_guides.html", context)
+        
         case other:
             raise Http404("Page Kanumanilla")
 

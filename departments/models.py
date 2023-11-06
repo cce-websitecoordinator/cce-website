@@ -411,3 +411,11 @@ class AchievementTables(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.event} {self.prize}"
+    
+
+class Econtent(models.Model):
+    title = models.CharField(max_length=200)
+    iframe = models.TextField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    def __str__(self):
+        return self.title
