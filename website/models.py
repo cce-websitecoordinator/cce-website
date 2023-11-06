@@ -5,7 +5,7 @@ from django.db import models
 from utils.compressor import Compress
 
 ACADEMIC_YEARS = [
-    ("{}-{}".format(r, r + 1), "{}-{}".format(r, r + 1))
+    (f"{r}-{r + 1}", f"{r}-{r + 1}")
     for r in range(2020, datetime.date.today().year + 1)
 ]
 
@@ -80,7 +80,7 @@ class Gallery(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
     def __str__(self):
-        return "("+self.department+')' +self.image.name 
+        return f"({self.department}) {self.image.name}"
 
 
 
@@ -213,6 +213,7 @@ class Conference(models.Model):
     status = models.CharField(max_length=100,choices=STATUS)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     duration = models.CharField(max_length=100)
+    year = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name

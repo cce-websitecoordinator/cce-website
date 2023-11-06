@@ -98,6 +98,9 @@
     <div class='mx-auto'> {% with dep_updates as side_updates %} {% include 'Departments/Updates.html' %}{% endwith %}</div>
     <div class="w-full space-y-6 mt-11 md:mt-0 ">
       <h2 class="text-center font-bold text-5xl">Programme Details</h2>
+      {% ifnotequal dep 'BSH' %}
+        
+      
       <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
         <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
           font-black items-center">Program Educational Objectives (PEOs)<span
@@ -114,6 +117,8 @@
 
         </div>
       </div>
+
+      {% endifnotequal %}
 
 
       <div class="p-6 shadow-xl rounded-[16px] " id="pos">
@@ -136,7 +141,7 @@
         </div>
       </div>
 
-      {% ifnotequal dep 'bsh' %}
+      {% ifnotequal dep 'BSH' %}
         
       
       <div class="p-6 shadow-xl rounded-[16px] " id="psos">
@@ -158,6 +163,7 @@
 
         </div>
       </div>
+
       {% endifnotequal %}
 
 
