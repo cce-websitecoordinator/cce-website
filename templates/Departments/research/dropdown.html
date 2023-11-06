@@ -14,22 +14,42 @@
       {%ifequal 'index' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>About </span>
-      {%endifequal%} {%ifequal 'parternship' slug%}
+      {%endifequal%}
+      
+      {% ifnotequal dep 'BSH' %}
+        
+      
+
+      {%ifequal 'parternship' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>Academic Partnership/Internship </span>
-      {%endifequal%} {%ifequal 'consultancy' slug%}
+      {%endifequal%}
+      
+      {%ifequal 'consultancy' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>Academic Consultancy </span>
-      {%endifequal%} {%ifequal 'funded_projects' slug%}
+      {%endifequal%}
+      
+      {%ifequal 'funded_projects' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>Funded Projects</span>
-      {%endifequal%} {%ifequal 'research_guides' slug%}
+      {%endifequal%}
+      
+      {%ifequal 'research_guides' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>KTU approved Research Guides </span>
-      {%endifequal%} {%ifequal 'publications' slug%}
+      {%endifequal%}
+
+
+      {% endifnotequal %}
+
+      
+      {%ifequal 'publications' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>Faculty & Student Publications </span>
-      {%endifequal%} {%ifequal 'conference' slug%}
+      {%endifequal%}
+      
+      {%ifequal 'conference' slug%}
       <i class="material-icons" class="hover:text-[#007FFF]">info</i
       ><span>Conference & Symposium </span>
       {%endifequal%}
@@ -57,6 +77,10 @@
         ><span>About </span>
       </a>
     </div>
+
+
+    {% ifnotequal dep 'BSH' %}
+      
 
     <div
       class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'parternship' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9"
@@ -102,6 +126,12 @@
         ><span>KTU approved Research Guides </span>
       </a>
     </div>
+
+
+    {% endifnotequal %}
+
+
+
     <div
       class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'publications' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9"
     >
