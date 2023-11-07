@@ -13,6 +13,7 @@
         </div>
 
         <div class=" w-full mt-11 ">
+            <h1 class="text-4xl my-11 font-bold w-full text-center">Placements</h1>
             <div>
                 <div class="flex items-center gap-2 text-sm font-medium">
                   
@@ -25,19 +26,9 @@
                 </div>
               </div>
             <div class="w-full flex flex-col justify-center items-center">
-                
-                <h1 class="text-4xl my-11 font-bold">Placements</h1>
-
-                
-
                 {% for item in students %}
-
                 {% if items %}
-                  
-                
-                
-                <h3 class="text-xl font-semibold w-full text-left mb-4 mt-11 py-1">Batch
-                    {{item.year}}</h3>
+                <h3 class="text-xl font-semibold w-full text-left mb-4 mt-11 py-1">{{item.year}}</h3>
                 <div class="p-1 border-2 w-full border-blue-500 ">
                     <iframe
                         src="{{item.students_pdf.url}}"
@@ -45,9 +36,7 @@
                         class="h-[90vh] w-full aspect-w-9 aspect-h-16">
                     </iframe>
                 </div>
-
                 {% endif %}
-
                 {% endfor %}
             </div>
         </div>

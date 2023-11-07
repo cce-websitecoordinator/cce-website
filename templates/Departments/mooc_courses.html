@@ -18,19 +18,18 @@
               class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
               ALL</a>
           </li>
-
-          {% comment %} {% for yr in allYears %}
+          {% for yr in allYears %}
           <li class="flex-1">
 
             <a href="{% url 'Department' dep 'mooc_courses' %}?year={{yr}}#content"
               class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year yr %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
               {{yr}}</a>
           </li>
-          {% endfor %} {% endcomment %}
+          {% endfor %} 
         </ul>
       </div>
-      {% comment %} <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
-        <!-- {% if events %} -->
+       <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
+        
         {% for item in mooc_courses %}
         <div class="p-1 border-2 border-blue-500 w-full">
           <iframe
@@ -42,10 +41,9 @@
           >
           </iframe>
         </div>
+        {% endfor %}
 
-      {% endfor %}
-
-    </div> {% endcomment %}
+    </div>
   </div>
 </section>
 {% endblock body %}

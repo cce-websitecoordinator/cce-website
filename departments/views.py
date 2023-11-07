@@ -63,6 +63,7 @@ class Context:
         self.gallery = Gallery.objects.filter(department=dep)[:10]
         self.econtent = None
         self.mooc_courses = None
+        self.activity_point = None
         self.fdps = None
         self.products = None
         self.social_activities = None
@@ -127,7 +128,7 @@ class Context:
                 self.pac_data = PacTable.objects.filter(department=dep)
             case "products":
                 self.products = Products.objects.filter(
-                    department=dep).order_by("-date")
+                    department=dep).order_by("-year")
             case 'e-content':
                 self.econtent = Econtent.objects.filter(department=dep)
 
@@ -168,6 +169,7 @@ class Context:
             "pac_data": self.pac_data,
             "econtent": self.econtent,
             "mooc_courses": self.mooc_courses,
+            "activity_point": self.activity_point,
             "fdps": self.fdps,
             "products": self.products,
             "social_activities": self.social_activities,
@@ -219,6 +221,9 @@ def Department(request, route, department):
             raise Http404("Page not found")
         
         case "activity_point":
+            context['activity_point'] = (
+                Activity.objects.first()
+            )
             return render(request, "Departments/activity_point.html", context)
         case "products":
             context['products'] = {
