@@ -11,33 +11,77 @@
     </div>
     <div>
         <div class="pt-6 w-full">
-            <div class="block  xl:table w-full">
-              <div class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
-                <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6">
-                  <div class="text-center px-2">Product Name</div>
-                  <div class="text-center px-2">
-                    Name of Developers
-                  </div>
+          <h3 class='w-full text-center'>Products Developed</h3>
+          <div class="pt-6 pl-9 w-full relative">
+            <h3 class=" text-2xl md:text-5xl font-semibold text-center mt-11 w-full my-6">Academic Consultancy</h3>
+            <div class="block xl:block w-full  p-2  py-1 rounded-xl">
+              <div
+                class="hidden xl:block rounded-md  rounded-xl py-6 sticky top-[10vh]">
+                <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6 bg-blue-300 rounded-md">
+                  <div class="text-center px-2">Product</div>
+                  <div class="text-center px-2">Developers</div>
                   <div class="text-center px-2">Year</div>
                   <div class="text-center px-2">Status</div>
                   <div class="text-center px-2">Reference</div>
                 </div>
               </div>
       
-              <div class=" space-y-4">
-      
+              <div class="space-y-4 xl:space-y-0  bg-white">
                 {% for item in products%}
-                <div class="hidden xl:block my-3 bg-white">
-                  {% include 'components/funded_projects_xl_screen_table.html' %}
+                <div class="hidden xl:block">
+                  <div class="w-auto grid grid-cols-5 min-h-[50px] py-6">
+                    <div class="text-center px-2">{{item.product_name}}</div>
+                    <div class="text-center px-2">
+                      {{item.name_of_developers}}
+                    </div>
+                    <div class="text-center px-2">{{item.year}}</div>
+                    <div class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}">{{item.status}}</div>
+                    <div class="text-center px-2">{{item.reference}}</div>
+                  </div>
                 </div>
+      
+                {% comment %} mobile view  starts {% endcomment %}
                 <div class="xl:hidden w-full">
-                  {% include 'components/funded_projects_mobile_table.html' %}
+                  <div
+                    class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+                  >
+                    <div class="flex justify-between items-center">
+                      <h1 class="text-xl font-bold">
+                        {{forloop.counter}}. {{item.product_name}}
+                      </h1>
+                    </div>
+                    <div class="flex justify-between mt-4 gap-4">
+                      <div class="text-start">
+                        <p class="text-gray-500">Name of Developers</p>
+                        <h1>{{item.name_of_developers}}</h1>
+                      </div>
+                      <div class="text-end">
+                        <p class="text-gray-500">Year</p>
+                        <h1>{{item.year}}</h1>
+                      </div>
+                    </div>
+                    <div class="flex justify-between mt-4 gap-4">
+                      <div class="text-start">
+                        <p class="text-gray-500">Reference</p>
+                        <h1>{{item.reference}}</h1>
+                      </div>
+                      <div class="text-end">
+                        <p class="text-gray-600">Status</p>
+                        <h1
+                          class="{% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
+                        >
+                          {{item.status}}
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                {% comment %} mobile view Ends {% endcomment %}
       
                 {% endfor %}
-      
               </div>
             </div>
+          </div>
           </div>
   </div>
 </section>

@@ -126,9 +126,6 @@ class Context:
             case "PAC":
                 self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
-            case "products":
-                self.products = Products.objects.filter(
-                    department=dep).order_by("-year")
             case 'e-content':
                 self.econtent = Econtent.objects.filter(department=dep)
 
@@ -226,12 +223,7 @@ def Department(request, route, department):
             )
             return render(request, "Departments/activity_point.html", context)
         case "products":
-            context['products'] = {
-                "hero_title": "Products Developed",
-                "products": Products.objects.all().filter(
-                    department=department
-                ),
-            }
+            context['products'] = Products.objects.all().filter(department=department)
             return render(request, "Departments/products.html", context)
         case "fdps":
             if request.method == "GET":

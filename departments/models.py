@@ -489,12 +489,6 @@ class Social_activities(models.Model):
         max_length=200, choices=ACADEMIC_YEARS, default="None"
     )
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
-    TYPE = (
-        ("workshops_seminars", "Workshops / Seminars"),
-        ("addons", "Add-Ons"),
-        ("iv", "Industrial Visits"),
-    )
-    type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
 
     class Meta:
@@ -510,17 +504,8 @@ class Holistics(models.Model):
     poster = models.ImageField(upload_to="EventsImages", default="None")
     data = models.CharField(max_length=500)
     date = models.DateField()
-    year = models.CharField(
-        max_length=200, choices=ACADEMIC_YEARS, default="None"
-    )
+    year = models.CharField(max_length=200, choices=ACADEMIC_YEARS, default="None")
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
-    TYPE = (
-        ("workshops_seminars", "Workshops / Seminars"),
-        ("addons", "Add-Ons"),
-        ("iv", "Industrial Visits"),
-    )
-    type = models.CharField(choices=TYPE, max_length=100, default="iv")
-    link = models.URLField()
 
     class Meta:
         verbose_name = "Holistic"
