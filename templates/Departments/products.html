@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Products Developed
+{% endblock title %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/department.css' %}" />
+{% endblock head %} {% block body %} {% include 'Departments/Hero.html' %}
+<section class="md:px-24 pt-24 px-6" id="content">
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+    <div>
+        <div class="pt-6 w-full">
+            <div class="block  xl:table w-full">
+              <div class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
+                <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6">
+                  <div class="text-center px-2">Product Name</div>
+                  <div class="text-center px-2">
+                    Name of Developers
+                  </div>
+                  <div class="text-center px-2">Year</div>
+                  <div class="text-center px-2">Status</div>
+                  <div class="text-center px-2">Reference</div>
+                </div>
+              </div>
+      
+              <div class=" space-y-4">
+      
+                {% for item in products%}
+                <div class="hidden xl:block my-3 bg-white">
+                  {% include 'components/funded_projects_xl_screen_table.html' %}
+                </div>
+                <div class="xl:hidden w-full">
+                  {% include 'components/funded_projects_mobile_table.html' %}
+                </div>
+      
+                {% endfor %}
+      
+              </div>
+            </div>
+          </div>
+  </div>
+</section>
+{% endblock body %}
