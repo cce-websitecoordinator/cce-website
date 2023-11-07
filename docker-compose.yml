@@ -11,6 +11,8 @@ services:
       - ./data/db:/var/lib/postgresql/data
     networks:
       - cce_web_network
+    ports:
+      - 5432:5432
   web:
     build: .
     command: 
