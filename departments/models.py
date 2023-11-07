@@ -343,6 +343,7 @@ class DabTable(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     designation = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
+    priority = models.IntegerField(default=10)
 
     def __str__(self):
         return self.name
@@ -420,3 +421,123 @@ class Econtent(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     def __str__(self):
         return self.title
+
+
+class Mooc_courses(models.Model):
+    course_pdf = models.FileField(default="None",upload_to="pdfs/mooc_course")
+    title = models.TextField(max_length=30)
+    year = models.TextField(max_length=30,choices=ACADEMIC_YEARS)
+    TYPE = (
+        ("student", "student"),
+        ("faculty", "faculty"),
+    )
+
+    type = models.CharField(max_length=200, choices=TYPE, default="student")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    def __str__(self):
+        return f"{self.department} {self.title} {self.year}"
+    
+    class Meta:
+        verbose_name = "Mooc Course"
+        verbose_name_plural = "Mooc Courses"
+
+class Fdps(models.Model):
+    topic=models.CharField(max_length=200)
+    year = models.TextField(max_length=30)
+    duration = models.TextField(max_length=30)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.topic
+    
+    class Meta:
+        verbose_name = "FDP"
+        verbose_name_plural = "FDPs"
+        
+class Products(models.Model):
+    product_name = models.CharField(max_length=200)
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    name_of_developers = models.CharField(max_length=200)
+    date = models.DateField()
+    options = (
+        ("ongoing", "Ongoing"),
+        ("completed", "Completed"),
+    )
+    status = models.CharField(max_length=200,choices=options, default="None")
+    reference = models.URLField()
+
+    def __str__(self):
+        return self.product_name
+    class Meta:
+        verbose_name = "Product developed"
+        verbose_name_plural = "Products developed"
+
+class Social_activities(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="Social_activitiesImages")
+    poster = models.ImageField(upload_to="EventsImages", default="None")
+    data = models.CharField(max_length=500)
+    date = models.DateField()
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default="None"
+    )
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    TYPE = (
+        ("workshops_seminars", "Workshops / Seminars"),
+        ("addons", "Add-Ons"),
+        ("iv", "Industrial Visits"),
+    )
+    type = models.CharField(choices=TYPE, max_length=100, default="iv")
+    link = models.URLField()
+
+    class Meta:
+        verbose_name = "Social Activity"
+        verbose_name_plural = "Social Activities"
+
+    def __str__(self):
+        return self.title
+
+class Holistics(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="EventsImages")
+    poster = models.ImageField(upload_to="EventsImages", default="None")
+    data = models.CharField(max_length=500)
+    date = models.DateField()
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default="None"
+    )
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    TYPE = (
+        ("workshops_seminars", "Workshops / Seminars"),
+        ("addons", "Add-Ons"),
+        ("iv", "Industrial Visits"),
+    )
+    type = models.CharField(choices=TYPE, max_length=100, default="iv")
+    link = models.URLField()
+
+    class Meta:
+        verbose_name = "Holistic"
+        verbose_name_plural = "Holistics"
+
+    def __str__(self):
+        return self.title
+    
+class Placements(models.Model):
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    students_pdf = models.FileField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.year+self.department
+
+class Higher(models.Model):
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    students_pdf = models.FileField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.year+self.department

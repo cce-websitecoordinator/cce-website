@@ -20,40 +20,42 @@
 
             {% else %}
 
-                {%ifequal 'DAB' route%}
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>DAB</span>
-                {%endifequal%}
+            {%ifequal 'DAB' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>DAB</span>
+            {%endifequal%}
 
-                {%ifequal 'PAC' route%}
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
-                {%endifequal%}
+            {%ifequal 'PAC' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>PAC</span>
+            {%endifequal%}
 
-              
-            
+
+
             {%ifequal 'StreamCommittee' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Stream Committees</span>
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Stream
+                Committees</span>
             {%endifequal%}
-            {% endif %}  
-            
+            {% endif %}
+
             {%ifequal 'innovative_tlm' route%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Innovative TLM</span>
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Innovative
+                TLM</span>
             {%endifequal%}
 
-            
+
             {%if dep == "BSH" %}
 
             {% else %}
 
-                {%ifequal 'professionalBodies' route%}
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional
-                    Bodies</span>
-                {%endifequal%}
+            {%ifequal 'professionalBodies' route%}
+            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Professional
+                Bodies</span>
+            {%endifequal%}
 
-                {%ifequal 'associations' route%}
-                <i class="material-icons"
-                    lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
-                {%endifequal%}
-            
+            {%ifequal 'associations' route%}
+            <i class="material-icons"
+                lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
+            {%endifequal%}
+
             {%endif%}
 
             {%ifequal 'research' route%}
@@ -92,7 +94,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>People</span>
             </a>
         </div>
-        
+
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'syllabus' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'curriculum_and_syllabus' %}"
@@ -121,18 +123,20 @@
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'StreamCommittee' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'StreamCommittee' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Stream Committees</span>
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Stream
+                    Committees</span>
             </a>
         </div>
-        
+
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'innovative_tlm' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'innovative_tlm' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Innovative TLM</span>
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">rocket_launch</i><span>Innovative
+                    TLM</span>
             </a>
         </div>
-        
+
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'professionalBodies' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'professionalBodies' %}"
@@ -141,11 +145,10 @@
                     Bodies</span>
             </a>
         </div>
-        
+
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'associations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'associations' %}"
-
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     lass="text-gray group-hover:text-[#007FFF]">diversity_3</i><span>Associations</span>
@@ -182,6 +185,54 @@
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
                     lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Events</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'activity_point' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'activity_point' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Activity
+                    Points</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'mooc_courses' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'mooc_courses' %}?year=ALL&type=student"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">language</i><span>MOOC
+                    Courses</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'social_activities' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'social_activities' %}?year=ALL"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Social
+                    Activities</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'placements' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'placements' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">school</i><span>Placements /
+                    Higher Studies</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'holistics' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'holistics' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">spa</i><span>Holistic
+                    Events</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{% if 'products' in route %} border-[#007FFF] border-2{% endif%} j ustify-start pl-9">
+            <a href="{% url 'Department' dep 'products' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">build</i><span>Products
+                    Developed</span>
             </a>
         </div>
         <div
