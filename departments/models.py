@@ -443,10 +443,15 @@ class Mooc_courses(models.Model):
 
 class Fdps(models.Model):
     topic=models.CharField(max_length=200)
-    year = models.TextField(max_length=30)
-    duration = models.TextField(max_length=30)
-    name = models.CharField(max_length=200)
-
+    year = models.CharField(max_length=30)
+    duration = models.CharField(max_length=100)
+    name = models.CharField(max_length=200,default="Everyone")
+    TYPE = (
+        ("attended", "Attended"),
+        ("organised", "Organised"),
+    )
+    type = models.CharField(max_length=200, choices=TYPE, default="attended")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     def __str__(self):
         return self.topic
     
@@ -533,3 +538,17 @@ class Higher(models.Model):
 
     def __str__(self):
         return self.year+self.department
+    
+class Alumni(models.Model):
+    name=models.CharField(max_length=200)
+    description=models.TextField(max_length=200)
+    url=models.URLField()
+    image = models.ImageField(upload_to="alumni", blank=True)
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Alumni"
+        verbose_name_plural = "Alumnus"
+
+    def __str__(self):
+        return self.name

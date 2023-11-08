@@ -36,7 +36,8 @@ class Context:
         self.dep_updates = DepUpdates.objects.filter(department=dep)
         self.contact = Contact.objects.filter(department=dep)
         self.route = route
-        self.about = DepAbout.objects.filter(department=dep).filter(page=route).first()
+        self.about = DepAbout.objects.filter(
+            department=dep).filter(page=route).first()
         self.faculties = None
         self.HOD = None
         self.vission = None
@@ -48,7 +49,8 @@ class Context:
         self.associations = None
         self.professional_bodies = None
         self.syllabus = None
-        self.semesters = [nested_tuple[0] for nested_tuple in Handouts.SEMESTERS]
+        self.semesters = [nested_tuple[0]
+                          for nested_tuple in Handouts.SEMESTERS]
         self.semin = None
         self.handouts = None
         self.labs = None
@@ -92,11 +94,6 @@ class Context:
                     .exclude(role__role="HOD")
                     .order_by("priorities")
                 )
-                self.HOD = (
-                    Faculty.objects.filter(department=dep)
-                    .filter(role__role="HOD")
-                    .first()
-                )
             case "associations":
                 self.associations = Associations.objects.filter(department=dep)
             case "curriculum_and_syllabus":
@@ -114,15 +111,18 @@ class Context:
             case "labs":
                 self.labs = Laboratories.objects.filter(department=dep)
             case "events":
-                self.events = Events.objects.filter(department=dep).order_by("-date")
+                self.events = Events.objects.filter(
+                    department=dep).order_by("-date")
             case "achievements":
-                self.achivements = DepAchievements.objects.filter(department=dep)
+                self.achivements = DepAchievements.objects.filter(
+                    department=dep)
             case "newsletters":
                 self.newsletters = NewsLetters.objects.filter(department=dep)
             case "DAB":
                 self.dab = DAB.objects.filter(department=dep).first()
                 print(self.dab)
-                self.dab_data = DabTable.objects.filter(department=dep).order_by('priority')
+                self.dab_data = DabTable.objects.filter(
+                    department=dep).order_by('priority')
             case "PAC":
                 self.pac = PAC.objects.filter(department=dep).first()
                 self.pac_data = PacTable.objects.filter(department=dep)
@@ -170,7 +170,7 @@ class Context:
             "fdps": self.fdps,
             "products": self.products,
             "social_activities": self.social_activities,
-            "alumni":self.alumni,
+            "alumni": self.alumni,
         }
 
 
@@ -216,40 +216,34 @@ def Department(request, route, department):
                 else:
                     raise Http404("Page Not Found")
             raise Http404("Page not found")
-        
+
         case "activity_point":
             context['activity_point'] = (
                 Activity.objects.first()
             )
             return render(request, "Departments/activity_point.html", context)
         case "products":
-            context['products'] = Products.objects.all().filter(department=department)
+            context['products'] = Products.objects.all().filter(
+                department=department)
             return render(request, "Departments/products.html", context)
         case "fdps":
             if request.method == "GET":
-                year = request.GET.get("year")
-                default_year = "ALL"
                 default_type = "attended"
                 a_type = request.GET.get("type")
-                context["allYears"] = [
-                    nested_tuple[0] for nested_tuple in ACADEMIC_YEARS
-                ]
-                context["defaultYear"] = default_year
+
                 context["type"] = a_type
-                context["year"] = year
 
-                if year and a_type:
-                    if year == "ALL":
-                        context["fdps"] = (Fdps.objects.all().filter(
-                            department=department).filter(type=a_type).all())
-                    else:
-                        context["fdps"] = (Fdps.objects.all().filter(
-                            department=department).filter(year=year).filter(type=a_type).all())
+                if a_type:
+                    context["fdps"] = (Fdps.objects.all().filter(
+                        department=department).filter(type=a_type).all())
 
-                    return render(request, "Departments/fdps.html", context)
                 else:
-                    raise Http404("Page Not Found")
-            raise Http404("Page not found")
+                    context["fdps"] = (Fdps.objects.all().filter(
+                        department=department).filter(type=default_type).all())
+
+                return render(request, "Departments/fdps.html", context)
+
+            return Http404("Page not found")
 
         case "achievements":
             if request.method == "GET":
@@ -266,11 +260,13 @@ def Department(request, route, department):
                 if year and a_type:
                     if year == "ALL":
                         context["achivements"] = (
-                            DepAchievements.objects.filter(department=department)
+                            DepAchievements.objects.filter(
+                                department=department)
                             .filter(type=a_type)
                         )
                         context["table"] = (
-                            AchievementTables.objects.filter(department=department)
+                            AchievementTables.objects.filter(
+                                department=department)
                             .filter(type=a_type)
                         )
                         return render(
@@ -278,12 +274,14 @@ def Department(request, route, department):
                         )
                     else:
                         context["achivements"] = (
-                            DepAchievements.objects.filter(department=department)
+                            DepAchievements.objects.filter(
+                                department=department)
                             .filter(year=year)
                             .filter(type=a_type)
                         )
                         context["table"] = (
-                            AchievementTables.objects.filter(department=department)
+                            AchievementTables.objects.filter(
+                                department=department)
                             .filter(year=year)
                             .filter(type=a_type)
                         )
@@ -306,7 +304,7 @@ def Department(request, route, department):
                     )
             else:
                 return Http404("Page Not Found")
-            
+
         case "social_activities":
             if request.method == "GET":
                 year = request.GET.get("year")
@@ -354,7 +352,7 @@ def Department(request, route, department):
                     return render(request, "Departments/Holistics.html", context=context)
             else:
                 return Http404("Page Not Found")
-            
+
         case "placements":
             context["students"] = Students.objects.filter(
                 department=department
@@ -390,7 +388,7 @@ def Department(request, route, department):
                     return render(request, "Departments/Events.html", context=context)
             else:
                 return Http404("Page Not Found")
-            
+
         case "curriculum_and_syllabus":
             return render(request, "Departments/curriculum_and_syllabus.html", context)
         case "newsletters":
@@ -405,7 +403,6 @@ def Department(request, route, department):
             return render(request, "Departments/innovative_tlm.html", context)
         case "research":
             return redirect("dep_research", department, "index")
-        
 
         case "DAB":
             return render(request, "Departments/DAB.html", context)
@@ -425,10 +422,12 @@ def Department(request, route, department):
                 default_stream = (
                     Streams.objects.filter(department=department).first().id
                 )
-                context["streams"] = Streams.objects.filter(department=department)
+                context["streams"] = Streams.objects.filter(
+                    department=department)
                 context["defaultStream"] = default_stream
                 if stream:
-                    context["sel_stream"] = Streams.objects.filter(id=stream).first()
+                    context["sel_stream"] = Streams.objects.filter(
+                        id=stream).first()
                     context["stream_com"] = StreamComm.objects.filter(
                         stream__department=department
                     ).filter(stream=stream)
@@ -445,15 +444,20 @@ def Department(request, route, department):
                     return render(
                         request, "Departments/StreamCommittee.html", context=context
                     )
-                
+
             else:
                 return Http404("Page Not Found")
         case "e-content":
             context = context
             return render(request, "Departments/e-content.html", context)
+        
+        case "alumni":
+            context['alumni'] = Alumni.objects.filter(department=department).all()
+            return render(request, "Departments/Alumni.html", context)
 
         case other:
             raise Http404("Page Not Found")
+        
 
 
 def research_page(request, department, slug):
@@ -463,16 +467,16 @@ def research_page(request, department, slug):
         "route": "research",
         "slug": slug,
         "hero_img": hero_image,
-        "title":getDepartment(department)
+        "title": getDepartment(department)
     }
     match slug:
         case "index":
-            
+
             context = {**context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {
-                
+
                 "academic_consultancy": AcademicConsultancy.objects.all().filter(
                     department=department
                 ),
@@ -483,7 +487,7 @@ def research_page(request, department, slug):
             )
         case "parternship":
             context = {
-                
+
                 "academic_partnership": AcademicPartnerShip.objects.all().filter(
                     department=department
                 ),
@@ -495,19 +499,19 @@ def research_page(request, department, slug):
         case "conference":
             context = {
                 **context_temp,
-                
+
                 "conferences": Conference.objects.all().filter(department=department),
             }
             return render(request, "Departments/research/conference.html", context)
         case "funded_projects":
             context = {
                 **context_temp,
-                
+
                 "funded_projects": FundedProjects.objects.all().filter(
                     department=department
                 ),
             }
-           
+
             return render(request, "Departments/research/funded_projects.html", context)
         case "publications":
             publications = FacultyStudentPublications.objects.all().filter(
@@ -528,7 +532,7 @@ def research_page(request, department, slug):
             }
 
             return render(request, "Departments/research/research_guides.html", context)
-        
+
         case other:
             raise Http404("Page Kanumanilla")
 
