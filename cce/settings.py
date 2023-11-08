@@ -85,6 +85,8 @@ TEMPLATES = [
     },
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
     'default': {

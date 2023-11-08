@@ -453,12 +453,19 @@ class Fdps(models.Model):
     class Meta:
         verbose_name = "FDP"
         verbose_name_plural = "FDPs"
-        
+
+class Activity(models.Model):
+    activity_pdfs = models.FileField(default="None",upload_to="pdfs/activity")
+    
+    class Meta:
+        verbose_name = "Activity Point"
+        verbose_name_plural = "Activity Points"
+
 class Products(models.Model):
     product_name = models.CharField(max_length=200)
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     name_of_developers = models.CharField(max_length=200)
-    date = models.DateField()
+    year = models.CharField(default=None,max_length=10)
     options = (
         ("ongoing", "Ongoing"),
         ("completed", "Completed"),
