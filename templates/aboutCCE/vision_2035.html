@@ -1,5 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Vision 2035
-{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% endblock title %}
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://viewlicense.adobe.io">
+
+{% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 w-full text-center">
