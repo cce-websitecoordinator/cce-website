@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
-from website.models import *
+import website.models
 from .models import Achivements as DepAchievements
 
 # Create your views here.
@@ -31,7 +31,7 @@ class Context:
     def __init__(self, dep, route):
         self.dep = dep
         self.title = getDepartment(dep)
-        self.updates = HomeUpdates.objects.all()
+        self.updates = website.models.HomeUpdates.objects.all()
         self.hero_image = DepHero.objects.all().filter(department=dep).first()
         self.dep_updates = DepUpdates.objects.filter(department=dep)
         self.contact = Contact.objects.filter(department=dep)
@@ -62,7 +62,7 @@ class Context:
         self.dab_data = None
         self.pac = None
         self.pac_data = None
-        self.gallery = Gallery.objects.filter(department=dep)[:10]
+        self.gallery = website.models.Gallery.objects.filter(department=dep)[:10]
         self.econtent = None
         self.mooc_courses = None
         self.activity_point = None
@@ -128,6 +128,9 @@ class Context:
                 self.pac_data = PacTable.objects.filter(department=dep)
             case 'e-content':
                 self.econtent = Econtent.objects.filter(department=dep)
+            case "alumni":
+                 self.alumni = Alumni.objects.filter(dep=dep)
+                 print(self.alumni)
 
     def data(self):
         """This method returns the context"""
@@ -452,7 +455,7 @@ def Department(request, route, department):
             return render(request, "Departments/e-content.html", context)
         
         case "alumni":
-            context['alumni'] = Alumni.objects.filter(department=department).all()
+            
             return render(request, "Departments/Alumni.html", context)
 
         case other:
@@ -477,7 +480,7 @@ def research_page(request, department, slug):
         case "consultancy":
             context = {
 
-                "academic_consultancy": AcademicConsultancy.objects.all().filter(
+                "academic_consultancy": website.models.AcademicConsultancy.objects.all().filter(
                     department=department
                 ),
                 **context_temp,
@@ -488,7 +491,7 @@ def research_page(request, department, slug):
         case "parternship":
             context = {
 
-                "academic_partnership": AcademicPartnerShip.objects.all().filter(
+                "academic_partnership": website.models.AcademicPartnerShip.objects.all().filter(
                     department=department
                 ),
                 **context_temp,
@@ -500,21 +503,21 @@ def research_page(request, department, slug):
             context = {
                 **context_temp,
 
-                "conferences": Conference.objects.all().filter(department=department),
+                "conferences": website.models.Conference.objects.all().filter(department=department),
             }
             return render(request, "Departments/research/conference.html", context)
         case "funded_projects":
             context = {
                 **context_temp,
 
-                "funded_projects": FundedProjects.objects.all().filter(
+                "funded_projects": website.models.FundedProjects.objects.all().filter(
                     department=department
                 ),
             }
 
             return render(request, "Departments/research/funded_projects.html", context)
         case "publications":
-            publications = FacultyStudentPublications.objects.all().filter(
+            publications = website.models.FacultyStudentPublications.objects.all().filter(
                 dep=department
             )
             context = {
@@ -523,7 +526,7 @@ def research_page(request, department, slug):
             }
             return render(request, "Departments/research/publications.html", context)
         case "research_guides":
-            research_guides = ResearchGuides.objects.all().filter(
+            research_guides = website.models.ResearchGuides.objects.all().filter(
                 faculty__department=department
             )
             context = {
@@ -544,7 +547,7 @@ def ProfessionalBodie(request, slug):
         "members": ProfessionalBodiesTeamMembers.objects.filter(
             ProfessionalBodies_id=slug
         ).order_by("priority"),
-        "gallery": Gallery.objects.all().order_by("?")[:6],
+        "gallery": website.models.Gallery.objects.all().order_by("?")[:6],
     }
     return render(
         request, "Departments/professsionalbody_showcase.html", context=context
@@ -558,6 +561,6 @@ def Association(request, slug):
         "members": AssociationTeamMembers.objects.filter(assosiation_id=slug).order_by(
             "priority"
         ),
-        "gallery": Gallery.objects.all().order_by("?")[:6],
+        "gallery": website.models.Gallery.objects.all().order_by("?")[:6],
     }
     return render(request, "Departments/association_showcase.html", context)

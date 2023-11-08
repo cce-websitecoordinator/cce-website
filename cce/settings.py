@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "django.middleware.security.SecurityMiddleware",
@@ -50,9 +51,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-
 ]
 
 
@@ -65,6 +63,7 @@ if os.getenv('PRODUCTION') != 'True':
 
 
 ROOT_URLCONF = 'cce.urls'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {
@@ -233,4 +232,7 @@ JAZZMIN_SETTINGS = {
 
     "related_modal_active": True,
 }
+
+
+
 

@@ -258,7 +258,7 @@ class IRCTeam(models.Model):
 class IEEEAbout(models.Model):
     data = models.TextField()
     def __str__(self):
-        return slef.data
+        return self.data
     
 class IEEEevents(models.Model):
     title = models.CharField(max_length=100)
