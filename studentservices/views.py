@@ -107,9 +107,10 @@ def ccil_page(request):
     about = CCILAbout.objects.all().first()
     events = CCILEvents.objects.all()
     members = CCILTeam.objects.all().order_by('priority')
+    gallery = Gallery.objects.all().order_by('?')[:20]
 
 
-    context={**context_temp,"about":about,"events":events,"members":members}
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
     return render(request, 'StudentServices/ccil.html',context=context)
 
 
