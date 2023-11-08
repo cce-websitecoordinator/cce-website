@@ -19,22 +19,7 @@
         
         <div class="w-full flex flex-col justify-center items-center">
           <h1 class="text-4xl my-11 font-bold">Distinguished Alumni</h1>
-          <div class="w-full flex items-center justify-center mb-11">
-            <a class="bg-white shadow-md px-4 py-1 rounded-xl w-fit group " href='{{HOD.profile.url}}' target="_blank">
-              <div class="overflow-clip h-[280px]  rounded-xl">
-              <img
-                src="{{HOD.image.url}}"
-                alt="hero_img"
-                class="h-[350px] bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out "
-              />
-              </div>
-              <div class="space-y-1 mt-1 text-center">
-                <h1 class="text-xl font-bold">{{HOD.full_name}}</h1>
-                <p class="text-xs text-gray-500">HOD</p>
-              </div>
-            </a>
           </div>
-        
           <div
             class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
           >
@@ -51,8 +36,8 @@
               />
             </div>
               <div class="space-y-1 mt-1 text-center">
-                <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
-                <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
+                <h1 class="text-xl font-bold">{{faculty.name}}</h1>
+                <p class="text-xs text-gray-500">{{faculty.description}}</p>
               </div>
             </a>
             {%endfor%}

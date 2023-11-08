@@ -12,10 +12,6 @@
       {% include 'Departments/Sidebar.html' %}
     </div>
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
-
-      <!-- component -->
-        
-      <!-- {% if events %} -->
       {% for event in all_events %}
       <div class="w-[350px] group" >
         <div class="h-[400px] w-full overflow-clip rounded-xl">
@@ -25,16 +21,9 @@
           <p class="text-xs">{{event.date}}</p>
             <h3 class="font-bold text-3xl">{{event.title}}</h3>
             <p>{{event.data}}</p>
-            
         </div>
       </div>
- 
       {% endfor %}
-      
-      <!-- {% else %}
-      <div class="flex w-full my-11 text-center text-blue-400 font-black text-2xl">No Events to show</div>
-      
-      {% endif %} -->
      </div>
   </div>
 </section>
