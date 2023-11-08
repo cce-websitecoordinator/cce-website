@@ -12,31 +12,154 @@
     <div class="flex flex-col justify-start items-center w-full gap-10 space-y-16 ">
       <h1 class="text-4xl my-11 font-bold">Faculty Attended Porgrams</h1>
       <div class="pt-6 w-full">
-        <div class="block  xl:table w-full">
-          <div class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
-            <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6">
-              <div class="text-center px-2">Sl No.</div>
-              <div class="text-center px-2">
-                Topic
+        <div>
+          <div class="flex items-center gap-2 text-sm font-medium mb-10">
+            
+              <a href="{% url 'Department' dep 'fdps' %}?year=ALL&type=attended#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  {% ifequal type 'faculty' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
+                Attended</a>
+              <a href="{% url 'Department' dep 'fdps' %}?year=ALL&type=organised#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 {% ifequal type 'student' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
+                Organised</a>
+
+          </div>
+        </div>
+        <div class="pt-6 pl-9 w-full relative">
+
+
+          {% ifequal type 'attended' %}
+          <div class="block xl:block w-full  p-2  py-1 rounded-xl">
+            <div
+              class="hidden xl:block  rounded-xl py-6 sticky top-[10vh]">
+              <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6 bg-blue-300 rounded-md">
+                <div class="text-center px-2">Sl No</div>
+                <div class="text-center px-2">Topic</div>
+                <div class="text-center px-2">Year</div>
+                <div class="text-center px-2">Duration</div>
               </div>
-              <div class="text-center px-2">Year</div>
-              <div class="text-center px-2">Duration</div>
+            </div>
+    
+            <div class="space-y-4 xl:space-y-0  bg-white">
+              {% for item in fdps %}
+              <div class="hidden xl:block">
+                <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+                  <div class="text-center px-2">{{ forloop.counter }}</div>
+                  <div class="text-center px-2">{{item.topic}}</div>
+                  <div class="text-center px-2">{{item.year}}</div>
+                  <div class="text-center px-2">{{item.duration}}</div>
+                </div>
+              </div>
+    
+              {% comment %} mobile view  starts {% endcomment %}
+              <div class="xl:hidden w-full">
+                <div
+                  class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
+                >
+                  <div class="flex justify-between items-center">
+                    <h1 class="text-xl font-bold">
+                      {{forloop.counter}}. {{item.product_name}}
+                    </h1>
+                  </div>
+                  <div class="flex justify-between mt-4 gap-4">
+                    <div class="text-start">
+                      <p class="text-gray-500">Sl No</p>
+                      <h1>{{ forloop.counter }}</h1>
+                    </div>
+                    <div class="text-end">
+                      <p class="text-gray-500">Topic</p>
+                      <h1>{{item.topic}}</h1>
+                    </div>
+                  </div>
+                  <div class="flex justify-between mt-4 gap-4">
+                    <div class="text-start">
+                      <p class="text-gray-500">Year</p>
+                      <h1>{{item.year}}</h1>
+                    </div>
+                    <div class="text-start">
+                      <p class="text-gray-500">Duration</p>
+                      <h1>{{item.duration}}</h1>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              {% comment %} mobile view Ends {% endcomment %}
+    
+              {% endfor %}
+              
+
+
             </div>
           </div>
-  
-          <div class=" space-y-4">
-  
-            {% for item in products %}
-            <div class="hidden xl:block my-3 bg-white">
-              {% include 'components/funded_projects_xl_screen_table.html' %}
+          {% endifequal %}
+          {% ifequal type 'organised' %}
+          <div class="block xl:block w-full  p-2  py-1 rounded-xl">
+            <div
+              class="hidden xl:block  rounded-xl py-6 sticky top-[10vh]">
+              <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6 bg-blue-300 rounded-md">
+                <div class="text-center px-2">Sl No</div>
+                <div class="text-center px-2">Topic</div>
+                <div class="text-center px-2">Name</div>
+                <div class="text-center px-2">Year</div>
+                <div class="text-center px-2">Duration</div>
+              </div>
             </div>
-            <div class="xl:hidden w-full">
-              {% include 'components/funded_projects_mobile_table.html' %}
+    
+            <div class="space-y-4 xl:space-y-0  bg-white">
+              {% for item in fdps %}
+              <div class="hidden xl:block">
+                <div class="w-auto grid grid-cols-5 min-h-[50px] py-6">
+                  <div class="text-center px-2">{{ forloop.counter }}</div>
+                  <div class="text-center px-2">{{item.topic}}</div>
+                  <div class="text-center px-2">{{item.name}}</div>
+                  <div class="text-center px-2">{{item.year}}</div>
+                  <div class="text-center px-2">{{item.duration}}</div>
+                </div>
+              </div>
+    
+              {% comment %} mobile view  starts {% endcomment %}
+              <div class="xl:hidden w-full">
+                <div class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]">
+                  <div class="flex justify-between items-center">
+                    <h1 class="text-xl font-bold">
+                      {{forloop.counter}}. {{item.product_name}}
+                    </h1>
+                  </div>
+                  <div class="flex justify-between mt-4 gap-4">
+                    <div class="text-start">
+                      <p class="text-gray-500">Sl No</p>
+                      <h1>{{ forloop.counter }}</h1>
+                    </div>
+                    <div class="text-end">
+                      <p class="text-gray-500">Name</p>
+                      <h1>{{item.name}}</h1>
+                    </div>
+                  </div>
+                  <div class="flex justify-between mt-4 gap-4">
+                    <div class="text-start">
+                      <p class="text-gray-500">Year</p>
+                      <h1>{{item.year}}</h1>
+                    </div>
+                    <div class="text-start">
+                      <p class="text-gray-500">Year</p>
+                      <h1>{{item.year}}</h1>
+                    </div>
+                    <div class="text-start">
+                      <p class="text-gray-500">Duration</p>
+                      <h1>{{item.duration}}</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% comment %} mobile view Ends {% endcomment %}
+    
+              {% endfor %}
+              
+
+
             </div>
-  
-            {% endfor %}
-  
           </div>
+          {% endifequal %}
         </div>
       </div>
   </div>

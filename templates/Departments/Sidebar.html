@@ -243,6 +243,14 @@
                     lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>E-Content</span>
             </a>
         </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'e-content' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'fdps' %}?year=ALL&type=attended#content"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons"
+                    lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>FDPS</span>
+            </a>
+        </div>
         {% if dep != 'BSH' %}
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'newsletters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
@@ -263,6 +271,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Contact</span>
             </a>
         </div>
+        
     </div>
 </aside>
 {% block script %}
