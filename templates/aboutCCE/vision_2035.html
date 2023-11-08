@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Vision 2035
 {% endblock title %}
 
-<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://viewlicense.adobe.io">
+<meta http-equiv="Content-Security-Policy"
+  content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://viewlicense.adobe.io">
 
 {% block head %} {% endblock head %} {% block body %}
 <main>
@@ -21,31 +22,12 @@
         class="h-[90vh] aspect-w-9 aspect-h-16">
       </iframe> -->
 
-      <div id="adobe-dc-view"></div>
+      <div class="p-1 border-2 border-blue-500 h-[90vh] ">
+        <object data='{%static ' pdfs/Vision2035.pdf'%}' type="application/pdf" width="100%" height="100%">
+        </object>
+      </div>
 
-      <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
 
-      <script type="text/javascript">
-
-        document.addEventListener("adobe_dc_view_sdk.ready", function () {
-
-          var adobeDCView = new AdobeDC.View({ clientId: "19b2fbf4e2ca44b9aac4d4963c1b84cf", divId: "adobe-dc-view" });
-
-          adobeDCView.previewFile(
-
-            {
-
-              content: { location: { url: "{%static 'pdfs/Vision2035.pdf'%}" } },
-
-              metaData: { fileName: "Bodea Brochure.pdf" }
-
-            });
-
-        });
-
-      </script>
-
-      
     </div>
   </section>
 </main>
