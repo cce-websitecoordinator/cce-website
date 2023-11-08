@@ -245,7 +245,7 @@ class AdmissionStatistics(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
 
     def __str__(self):
-        return self.dept+" "+self.year
+        return self.dept
     
 class AdmissionGraph(models.Model):
     graph  = models.ImageField(upload_to='admission/')

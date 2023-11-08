@@ -36,9 +36,6 @@ admin.site.register(IEEEJournals)
 admin.site.register(IRCAbout)
 admin.site.register(IRCEvents)
 admin.site.register(IRCTeam)
-admin.site.register(CCILAbout)
-admin.site.register(CCILEvents)
-admin.site.register(CCILTeam)
 
 
 
