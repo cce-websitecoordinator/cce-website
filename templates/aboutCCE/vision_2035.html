@@ -6,10 +6,44 @@
     <h1 class="text-4xl my-11 font-bold">
       Vision 2035
     </h1>
-    <div class="p-1 border-2 border-blue-500 "><iframe src="{%static 'pdfs/Vision2035.pdf'%}" frameborder="0" width="100%" height="100%" class="h-[90vh] aspect-w-9 aspect-h-16">
-    </iframe>
-  </div>
+
+
+
+    <div class="p-1 border-2 border-blue-500 h-[90vh] aspect-w-9 aspect-h-16">
+
+      <!-- <iframe src="{%static 'pdfs/Vision2035.pdf'%}" frameborder="0" width="100%" height="100%"
+        class="h-[90vh] aspect-w-9 aspect-h-16">
+      </iframe> -->
+
+      <div id="adobe-dc-view"></div>
+
+      <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+
+      <script type="text/javascript">
+
+        document.addEventListener("adobe_dc_view_sdk.ready", function () {
+
+          var adobeDCView = new AdobeDC.View({ clientId: "<YOUR_CLIENT_ID>", divId: "adobe-dc-view" });
+
+          adobeDCView.previewFile(
+
+            {
+
+              content: { location: { url: "{%static 'pdfs/Vision2035.pdf'%}" } },
+
+              metaData: { fileName: "Bodea Brochure.pdf" }
+
+            });
+
+        });
+
+      </script>
+
+      
+    </div>
   </section>
 </main>
+
+
 
 {% include 'components/gallery.html' %} {% endblock %}
