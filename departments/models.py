@@ -262,6 +262,7 @@ class Events(models.Model):
         ("workshops_seminars", "Workshops / Seminars"),
         ("addons", "Add-Ons"),
         ("iv", "Industrial Visits"),
+        ("competitions","competetions"),
     )
     type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
