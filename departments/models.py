@@ -260,9 +260,9 @@ class Events(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (
         ("workshops_seminars", "Workshops / Seminars"),
-        ("addons", "Add-Ons"),
+        ("value_added", "Value Added"),
         ("iv", "Industrial Visits"),
-        ("competitions","competetions"),
+        ("competitions","Competetions"),
     )
     type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
