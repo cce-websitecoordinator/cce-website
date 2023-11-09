@@ -180,11 +180,19 @@
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'events' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'events' == route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Department' dep 'events' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons"
-                    lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Events</span>
+                    lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Co Curricular Events</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'extra_curricular_events' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'extra_curricular_events' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons"
+                    lass="text-gray group-hover:text-[#007FFF]">local_activity</i><span>Extra Curricular Events</span>
             </a>
         </div>
         <div
@@ -271,7 +279,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">contacts</i><span>Contact</span>
             </a>
         </div>
-        
+
     </div>
 </aside>
 {% block script %}

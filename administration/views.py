@@ -51,7 +51,7 @@ def pta_page(request):
 
 def office_page(request, slug):
     gallery = Gallery.objects.all().order_by('?')[:10];
-    staff  = Faculty.objects.filter(department=slug)
+    staff  = Faculty.objects.filter(department=slug).order_by('priorities')
     hero_img = Hero_Image.objects.filter(page="office").first()
     title = slug.replace("_"," ")
     print(title)

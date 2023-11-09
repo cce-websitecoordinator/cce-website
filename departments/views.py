@@ -379,7 +379,7 @@ def Department(request, route, department):
                 department=department
             ).order_by("-year")
             return render(request, "Departments/Higher.html", context)
-
+        
         case "events":
             if request.method == "GET":
                 TYPE_LABELS = {
@@ -387,6 +387,78 @@ def Department(request, route, department):
                     "addons": "Add-Ons",
                     "iv": "Industrial Visits",
                     "competitions": "Competitions",
+                }
+                year = request.GET.get("year")
+                if year == "":
+                    year = "ALL"
+                a_type = request.GET.get("type")
+                if a_type == "":
+                    a_type = "ALL"
+                context["event_types"] = TYPE_LABELS
+                context["type"] = "ALL"
+                context["year"] = "ALL"
+                context["allYears"] = [
+                    nested_tuple[0] for nested_tuple in ACADEMIC_YEARS[::-1]
+                ]
+                if year and a_type:
+                    if year == "ALL" and a_type == "ALL":
+                        context["all_events"] = Events.objects.filter(
+                            department=department
+                        ).all()
+                    elif year == "ALL":
+                        context["all_events"] = (
+                            Events.objects.filter(department=department)
+                            .filter(type=a_type)
+                            .all()
+                        )
+                        context["type"] = a_type
+                    elif a_type == "ALL":
+                        context["all_events"] = (
+                            Events.objects.filter(department=department)
+                            .filter(year=year)
+                            .all()
+                        )
+                        context["year"] = year
+                    else:
+                        context["all_events"] = (
+                            Events.objects.filter(department=department)
+                            .filter(year=year)
+                            .filter(type=a_type)
+                            .all()
+                        )
+                        context["type"] = a_type
+                        context["year"] = year
+                elif year:
+                    context["all_events"] = (
+                        Events.objects.filter(department=department)
+                        .filter(year=year)
+                        .all()
+                    )
+                    context["type"] = "ALL"
+                    context["year"] = year
+                elif a_type:
+                    context["all_events"] = (
+                        Events.objects.filter(department=department)
+                        .filter(type=a_type)
+                        .all()
+                    )
+                    context["type"] = a_type
+                    context["year"] = "ALL"
+                else:
+                    context["all_events"] = Events.objects.filter(
+                        department=department
+                    ).all()
+                    context["type"] = "ALL"
+                    context["year"] = "ALL"
+                return render(request, "Departments/Events.html", context=context)
+            else:
+                return Http404("Page Not Found")
+
+        case "extra_curricular_events":
+            if request.method == "GET":
+                TYPE_LABELS = {
+                    "arts": "Arts",
+                    "sports": "Sports",
                 }
 
                 year = request.GET.get("year")
@@ -407,72 +479,55 @@ def Department(request, route, department):
 
                 if year and a_type:
                     if year == "ALL" and a_type == "ALL":
-                        context["all_events"] = Events.objects.filter(
+                        context["all_events"] = ExtraEvents.objects.filter(
                             department=department
                         ).all()
-                        
                     elif year == "ALL":
                         context["all_events"] = (
-                            Events.objects.filter(department=department)
+                            ExtraEvents.objects.filter(department=department)
                             .filter(type=a_type)
                             .all()
                         )
                         context["type"] = a_type
-                
-
                     elif a_type == "ALL":
                         context["all_events"] = (
-                            Events.objects.filter(department=department)
+                            ExtraEvents.objects.filter(department=department)
                             .filter(year=year)
                             .all()
                         )
                         context["year"] = year
-
                     else:
                         context["all_events"] = (
-                            Events.objects.filter(department=department)
+                            ExtraEvents.objects.filter(department=department)
                             .filter(year=year)
                             .filter(type=a_type)
                             .all()
                         )
                         context["type"] = a_type
                         context["year"] = year
-
-                    
-                    return render(request, "Departments/Events.html", context=context)
                 elif year:
-                    context["all_events"] = Events.objects.filter(
-                        department=department
-                    ).filter(year=year).all()
-
+                    context["all_events"] = (
+                        ExtraEvents.objects.filter(department=department)
+                        .filter(year=year)
+                        .all()
+                    )
                     context["type"] = "ALL"
                     context["year"] = year
-
-                    
-                    return render(request, "Departments/Events.html", context=context)
-                
                 elif a_type:
-
-                    context["all_events"] = Events.objects.filter(
-                        department=department
-                    ).filter(type=a_type).all()
-
+                    context["all_events"] = (
+                        ExtraEvents.objects.filter(department=department)
+                        .filter(type=a_type)
+                        .all()
+                    )
                     context["type"] = a_type
                     context["year"] = "ALL"
-
-                    
-                    return render(request, "Departments/Events.html", context=context)
-
                 else:
-                    context["all_events"] = Events.objects.filter(
+                    context["all_events"] = ExtraEvents.objects.filter(
                         department=department
                     ).all()
-
                     context["type"] = "ALL"
                     context["year"] = "ALL"
-
-                    
-                    return render(request, "Departments/Events.html", context=context)
+                return render(request, "Departments/Extra_Events.html", context=context)
             else:
                 return Http404("Page Not Found")
 
@@ -555,7 +610,7 @@ def research_page(request, department, slug):
     match slug:
         case "index":
             about = ResearchAbout.objects.filter(department=department).first()
-            context = {"about":about,**context_temp}
+            context = {"about": about, **context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {

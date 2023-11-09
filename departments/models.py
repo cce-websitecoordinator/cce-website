@@ -268,8 +268,32 @@ class Events(models.Model):
     link = models.URLField()
 
     class Meta:
-        verbose_name = "Event"
-        verbose_name_plural = "Events"
+        verbose_name = "Co Curricular Event"
+        verbose_name_plural = "Co Curricular Events"
+
+    def __str__(self):
+        return self.title
+    
+class ExtraEvents(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="ExtraEventsImages")
+    poster = models.ImageField(upload_to="ExtraEventsImages", default="None")
+    data = models.CharField(max_length=500)
+    date = models.DateField()
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default="None"
+    )
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    TYPE = (
+        ("sports", "Sports"),
+        ("arts", "Arts"),
+    )
+    type = models.CharField(choices=TYPE, max_length=100, default="sports")
+    link = models.URLField()
+
+    class Meta:
+        verbose_name = "Extra Curricular Event"
+        verbose_name_plural = "Extra Curricular Events"
 
     def __str__(self):
         return self.title
