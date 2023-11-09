@@ -35,7 +35,7 @@
                     </div>
                     <div class="text-center px-2">{{item.year}}</div>
                     <div class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}">{{item.status}}</div>
-                    <div class="text-center px-2">{{item.reference}}</div>
+                    <div class="text-center px-2 text-blue-500 underline"> <a href="{{item.reference}}"> Click here</a> </div>
                   </div>
                 </div>
       
@@ -62,7 +62,7 @@
                     <div class="flex justify-between mt-4 gap-4">
                       <div class="text-start">
                         <p class="text-gray-500">Reference</p>
-                        <h1>{{item.reference}}</h1>
+                        <a href="{{item.reference}}">Click Here</a>
                       </div>
                       <div class="text-end">
                         <p class="text-gray-600">Status</p>

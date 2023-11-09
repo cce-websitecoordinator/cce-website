@@ -544,7 +544,7 @@ class Alumni(models.Model):
     description=models.TextField(max_length=200)
     url=models.URLField()
     image = models.ImageField(upload_to="alumni", blank=True)
-    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    dep = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     class Meta:
         verbose_name = "Alumni"
