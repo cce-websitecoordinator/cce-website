@@ -262,6 +262,7 @@ class Events(models.Model):
         ("workshops_seminars", "Workshops / Seminars"),
         ("addons", "Add-Ons"),
         ("iv", "Industrial Visits"),
+        ("competitions","competetions"),
     )
     type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
@@ -544,7 +545,7 @@ class Alumni(models.Model):
     description=models.TextField(max_length=200)
     url=models.URLField()
     image = models.ImageField(upload_to="alumni", blank=True)
-    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    dep = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     class Meta:
         verbose_name = "Alumni"
@@ -552,3 +553,14 @@ class Alumni(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ResearchAbout(models.Model):
+    data = models.TextField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Research About"
+        verbose_name_plural = "Research Abouts"
+
+    def __str__(self):
+        return self.department

@@ -188,7 +188,7 @@ class  CentralLibrary(models.Model):
     
 class LibraryFaculty(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    role = models.CharField(max_length=10)
+    role = models.CharField(max_length=100)
     order = models.IntegerField()
     def __str__(self):
         return self.faculty.full_name
@@ -258,7 +258,7 @@ class IRCTeam(models.Model):
 class IEEEAbout(models.Model):
     data = models.TextField()
     def __str__(self):
-        return slef.data
+        return self.data
     
 class IEEEevents(models.Model):
     title = models.CharField(max_length=100)

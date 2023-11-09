@@ -105,7 +105,7 @@ def academic_administration_page(request):
 def grivence_redressal_index_page(request):
     hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
     data = GrivenceCommitee.objects.all()
-    return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance Redressal','hero_img':hero_img,"data":data})
+    return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance/Suggestions','hero_img':hero_img,"data":data})
 
 
 

@@ -13,53 +13,76 @@
     </div>
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
 
+      <div>
+        <ul class="flex items-center gap-2 text-sm font-medium">
+
+          <li class="">
+
+            <a href="{% url 'Department' dep 'events' %}?year={{yr}}&type=ALL#content"
+              class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal type 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+              ALL</a>
+          </li>
+
+          {% for event_type_key, event_type_value in event_types.items %}
+          <li class="">
+
+            <a href="{% url 'Department' dep 'events' %}?year={{yr}}&type={{event_type_key}}#content"
+              class=" capitalize relative flex items-center justify-center gap-2 rounded-lg {% ifequal event_type_key type %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+              {{event_type_value}}</a>
+          </li>
+          {% endfor %}
+
+
+        </ul>
+      </div>
       <!-- component -->
-        <div>
-          <ul class="flex items-center gap-2 text-sm font-medium">
-            <li class="flex-1">
+      <div>
+        <ul class="flex items-center gap-2 text-sm font-medium">
+          <li class="">
 
-              <a href="{% url 'Department' dep 'events' %}?year=ALL#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
-                ALL</a>
-            </li>
+            <a href="{% url 'Department' dep 'events' %}?year=ALL&type={{type}}#content"
+              class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year 'ALL' %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+              ALL</a>
+          </li>
 
-            {% for yr in allYears %}
-            <li class="flex-1">
+          {% for yr in allYears %}
+          <li class="">
 
-              <a href="{% url 'Department' dep 'events' %}?year={{yr}}#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year yr %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
-                {{yr}}</a>
-            </li>
-            {% endfor %}
+            <a href="{% url 'Department' dep 'events' %}?year={{yr}}&type={{type}}#content"
+              class="relative flex items-center justify-center gap-2 rounded-lg {% ifequal year yr %} bg-blue-500 border-blue-500 text-gray-700 {% endifequal %} border-solid border-2 border-blue-300 px-3 py-2 text-gray-500 hover:text-gray-700">
+              {{yr}}</a>
+          </li>
+          {% endfor %}
 
 
-          </ul>
-        </div>
-      
+        </ul>
+      </div>
 
-    <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
-      <!-- {% if events %} -->
-      {% for event in all_events %}
-      <div class="w-[350px] group" >
-        <div class="h-[400px] w-full overflow-clip rounded-xl">
-        <img src="{{event.image.url}}" alt="{{event.image.name}}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-        </div>
-        <div class="space-y-6 mt-5">
-          <p class="text-xs">{{event.date}}</p>
+
+      <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
+        {% if all_events %}
+        {% for event in all_events %}
+        <div class="w-[350px] group">
+          <div class="h-[400px] w-full overflow-clip rounded-xl">
+            <img src="{{event.image.url}}" alt="{{event.image.name}}"
+              class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+          </div>
+          <div class="space-y-6 mt-5">
+            <p class="text-xs">{{event.date}}</p>
             <h3 class="font-bold text-3xl">{{event.title}}</h3>
             <p>{{event.data}}</p>
-            
+
+          </div>
         </div>
+
+        {% endfor %}
+
+        {% else %}
+        <div class="flex w-full my-11 text-center text-blue-400 font-black text-2xl">No Events to show</div>
+
+        {% endif %}
       </div>
- 
-      {% endfor %}
-      
-      <!-- {% else %}
-      <div class="flex w-full my-11 text-center text-blue-400 font-black text-2xl">No Events to show</div>
-      
-      {% endif %} -->
-     </div>
-  </div>
+    </div>
 </section>
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
@@ -67,12 +90,12 @@
       {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
     </div>
     <div class="w-full space-y-6 mt-11 md:mt-0">
-      
+
     </div>
   </div>
 </section>
 
-{% include 'components/gallery.html' %}  {% include 'Departments/Contact.html' %}
+{% include 'components/gallery.html' %} {% include 'Departments/Contact.html' %}
 {% endblock body %} {% block script %}
 <script></script>
 {% endblock script %}
