@@ -92,6 +92,11 @@ class Context:
                     .exclude(role__role="HOD")
                     .order_by("priorities")
                 )
+                self.HOD = (
+                    Faculty.objects.filter(department=dep)
+                    .filter(role__role="HOD")
+                    .first()
+                )
             case "associations":
                 self.associations = Associations.objects.filter(department=dep)
             case "curriculum_and_syllabus":

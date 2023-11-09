@@ -22,7 +22,7 @@
             <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
         
                 {% for item in nptel_data %}
-                <div class="p-1 border-2 border-blue-500 w-full">
+                <!-- <div class="p-1 border-2 border-blue-500 w-full">
                   <iframe
                     src="{{item.file.url}}"
                     frameborder="0"
@@ -31,7 +31,16 @@
                     class="h-[90vh] aspect-w-9 aspect-h-16"
                   >
                   </iframe>
-                </div>
+                </div> -->
+                <div class="p-1 border-2 border-blue-500 h-[90vh] w-[50rem] ">
+                    <object
+                      
+                      data='{{item.file.url}}'
+                      type="application/pdf"
+                      class="w-full"
+                      height="100%">
+                    </object>
+                </div>
                 {% endfor %}
         
             </div>
