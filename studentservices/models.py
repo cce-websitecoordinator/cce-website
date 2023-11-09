@@ -185,6 +185,17 @@ class  CentralLibrary(models.Model):
 
     def __str__(self):
         return self.name
+
+class LibraryInfo(models.Model):
+    type = models.CharField(max_length=50)
+    value = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = ("Library Info")
+        verbose_name_plural = ("Library Infos'")
+
+    def __str__(self):
+        return f"{self.type} - {self.value}"
     
 class LibraryFaculty(models.Model):
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)

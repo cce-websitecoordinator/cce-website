@@ -135,6 +135,8 @@ def central_library_page(request,slug):
             context = {**context_temp,'data':LibraryFaculty.objects.all()}
             return render(request, 'StudentServices/faculty_and_staff.html',context=context)
         case "library_info":
+            data = LibraryInfo.objects.all()
+            context = {'data':data,**context_temp}
             return render(request, 'StudentServices/library_info.html',context=context)
         case "rules_and_regulations":
             return render(request, 'StudentServices/rules_and_regulations.html',context=context)

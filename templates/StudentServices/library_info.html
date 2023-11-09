@@ -23,56 +23,14 @@
                 <table class="w-full top-[100px] sticky ">
 
                     <tbody class>
+                        {% for item in data %}
                         <tr
                             class="grid grid-cols-2 text-center items-center  odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Area</td>
-                            <td>482.77 sq mtrs</td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.value}}</td>
                         </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center  odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Seating Capacity</td>
-                            <td>290</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Books</td>
-                            <td>13,000</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Titles</td>
-                            <td>3301</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Journals</td>
-                            <td>34</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Magazines</td>
-                            <td>5</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Newspapers</td>
-                            <td>5</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Internet</td>
-                            <td>300 Mbps</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Wifi availability</td>
-                            <td>24 hr</td>
-                        </tr>
-                        <tr
-                            class="grid grid-cols-2 text-center items-center odd:bg-[#f5f5f5] min-h-[40px] my-2 ">
-                            <td>Computers</td>
-                            <td>18+1 server</td>
-                        </tr>
+                        {% endfor %}
+                        
                     </tbody>
                 </table>
             </div>
