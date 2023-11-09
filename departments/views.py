@@ -554,7 +554,8 @@ def research_page(request, department, slug):
     }
     match slug:
         case "index":
-            context = {**context_temp}
+            about = ResearchAbout.objects.filter(department=department).first()
+            context = {"about":about,**context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {

@@ -553,3 +553,14 @@ class Alumni(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ResearchAbout(models.Model):
+    data = models.TextField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Research About"
+        verbose_name_plural = "Research Abouts"
+
+    def __str__(self):
+        return self.department
