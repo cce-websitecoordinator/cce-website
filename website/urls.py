@@ -15,6 +15,7 @@ urlpatterns = [
     path('research/<str:slug>', views.research_page, name='home_research'),
     path('test', views.test_page, name='test'),
     path('events', views.events_page, name='events'),
+    path('library/<str:slug>', views.library, name='library'),
 
 ]
 if settings.DEBUG:

@@ -252,3 +252,11 @@ class AdmissionGraph(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
 
 
+class Nptel(models.Model):
+
+    title_year = models.CharField(max_length=100)
+    file = models.FileField(upload_to="nptel")
+    
+    def __str__(self):
+        return self.title_year
+    
