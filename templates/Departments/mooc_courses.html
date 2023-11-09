@@ -61,7 +61,17 @@
        <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">
         
         {% for mooc in mooc_courses %}
-        <div class="p-1 border-2 border-blue-500 w-full">
+
+        <div class="p-1 border-2 border-blue-500 h-[90vh] ">
+          <object
+            
+            data='{{mooc.course_pdfs.url}}'
+            type="application/pdf"
+            class="w-full"
+            height="100%">
+          </object>
+      </div>
+        <!-- <div class="p-1 border-2 border-blue-500 w-full">
           <iframe
             src="{{mooc.course_pdfs.url}}"
             frameborder="0"
@@ -70,7 +80,7 @@
             class="h-[90vh] aspect-w-9 aspect-h-16"
           >
           </iframe>
-        </div>
+        </div> -->
         {% endfor %}
 
     </div>
