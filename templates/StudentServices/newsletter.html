@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Central Library 
+{% extends 'base.html' %} {% load static %} {% block title %} Central Library
 {% endblock title %} {% block head %}
 
 {% endblock head %}
@@ -6,34 +6,53 @@
 {% include 'components/Hero_section.html' %}
 <section class="md:px-24  pt-24 px-6" id="content">
   <div class="flex gap-10 lg:flex-row flex-col">
-    <div class="col-span-1 flex justify-center items-center flex-col">
+    <div class="col-span-1 flex justify-start items-center flex-col">
       <h2 class="font-semibold text-2xl px-4">Library</h2>
 
       {% include 'StudentServices/sidebar.html' %}
     </div>
-    <div class="col-span-2 gap-10 space-y-16 mt-11 w-full">
+    <div class="col-span-2 gap-10 mt-11 w-full">
 
       <div>
-        <h3 class="text-3xl font-semibold text-left mt-11">About Central
-          Library</h3>
-          <div class="w-full gap-10  mt-11 flex flex-wrap">
-            {% for item in newsletters %}
-            <a href="{{item.file.url}}" target="_blank">
-              <div class="w-[350px] h-[350px] overflow-clip">
-                <img
-                  src="{{item.image.url}}"
-                  alt="{{item.image.name}}"
-                  class=" rounded-t-xl h-full"
-                />
-                <div class="bg-gray-100 p-4">
-                  <h3 class="text-xl font-semibold">{{item.title}}</h3>
-                  <p class="text-sm text-gray-400">{{item.date}}</p>
-                </div>
-              </div>
+        <h3 class="text-3xl font-semibold text-left ">Newsletters and Magazines</h3>
+        <div class="w-full gap-10 mt-11 flex flex-wrap">
+
+          {% for item in college_data %}
+          <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+            <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+              <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+                alt="{{item.image.name}}">
             </a>
-            {% endfor %}
+            <div class="p-5">
+              <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
+            </div>
           </div>
-        <p class=" text-sm mt-4 text-justify mb-11">{{about.data}}</p>
+          {% endfor %}
+
+          {% for item in data %}
+          <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+            <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+              <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+                alt="{{item.image.name}}">
+            </a>
+            <div class="p-5">
+              <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for item in data1 %}
+          <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+            <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+              <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+                alt="{{item.image.name}}">
+            </a>
+            <div class="p-5">
+              <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
 
     </div>

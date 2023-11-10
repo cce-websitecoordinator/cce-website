@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %} College Newsletters & Magazine {%endblock title %} {%block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} College Newsletters & Magazine {%endblock title %} {%block
+head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 pt-24 px-6 py-11" id="content">
@@ -11,15 +12,15 @@
       <div class="w-full gap-10 my-10 flex flex-wrap">
 
         {% for item in data %}
-        <a href="{{item.file.url}}" target="_blank">
-          <div class="w-[350px] h-[350px] overflow-clip">
-            <img src="{{item.image.url}}" alt="{{item.image.name}}" class=" rounded-t-xl h-full" />
-            <div class="bg-gray-100 p-4">
-              <h3 class="text-xl font-semibold">{{item.title}}</h3>
-              <p class="text-sm text-gray-400">{{item.date}}</p>
-            </div>
+        <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+          <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+            <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+              alt="{{item.image.name}}">
+          </a>
+          <div class="p-5">
+            <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
           </div>
-        </a>
+        </div>
         {% endfor %}
 
 

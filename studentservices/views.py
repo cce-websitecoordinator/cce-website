@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from studentservices.models import *
 from website.models import Gallery, Hero_Image
-from departments.models import NewsLetters
+from departments.models import NewsLetters,Magazines
+import aboutCCE.models
+
 
 # Create your views here.
 def arts_page(request):
@@ -115,7 +117,7 @@ def ccil_page(request):
 
 
 
-def central_library_page(request,slug):
+def central_library_page(request,slug):  # sourcery skip: extract-method
     context_temp = {
         'title': 'Central Library',
         'hero_title': 'Central Library',
@@ -148,7 +150,7 @@ def central_library_page(request,slug):
             context = {**context_temp,"journals":journals}
             return render(request, 'StudentServices/ieee_journals.html',context=context)
         case "newsletters":
-            context = {**context_temp,'data':NewsLetters.objects.all()}
+            context = {**context_temp,'data':NewsLetters.objects.all(),"data1":Magazines.objects.all(),"college_data":aboutCCE.models.CollegeMagazine.objects.all()}
             return render(request, 'StudentServices/newsletter.html',context=context)
         
             
