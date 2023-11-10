@@ -269,6 +269,13 @@
             </a>
         </div>
         {% endif %}
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'newsletters' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Department' dep 'clubs' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">newspaper</i><span>Clubs</span>
+            </a>
+        </div>
         <div class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center justify-start pl-9">
             <a href="#gallery" class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <span class="material-symbols-outlined"> gallery_thumbnail </span><span>Gallery</span>

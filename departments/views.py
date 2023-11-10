@@ -390,7 +390,7 @@ def Department(request, route, department):
             if request.method == "GET":
                 TYPE_LABELS = {
                     "workshops_seminars": "Workshops / Seminars",
-                    "addons": "Add-Ons",
+                    "value_added": "Value Added",
                     "iv": "Industrial Visits",
                     "competitions": "Competitions",
                 }
@@ -563,6 +563,9 @@ def Department(request, route, department):
                 department=department
             ).order_by("-year")
             return render(request, "Departments/Students.html", context)
+        
+        case "clubs":
+            return render(request, "Departments/Students.html",context)
 
         case "StreamCommittee":
             if request.method == "GET":
