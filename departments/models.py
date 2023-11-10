@@ -320,11 +320,25 @@ class NewsLetters(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     class Meta:
-        verbose_name = "NewsLetters"
-        verbose_name_plural = "NewsLetterss"
+        verbose_name = "NewsLetter"
+        verbose_name_plural = "NewsLetters"
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.department}"
+
+    
+class Magazines(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="MagazineImages", default="None")
+    file = models.FileField(upload_to="Magazines")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Magazine"
+        verbose_name_plural = "Magazines"
+
+    def __str__(self):
+        return f"{self.title} - {self.department}"
 
 
 class Objectives(models.Model):

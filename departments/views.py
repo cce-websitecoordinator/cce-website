@@ -56,6 +56,7 @@ class Context:
         self.achivements = None
         self.table = None
         self.newsletters = None
+        self.magazines = None
         self.dab = None
         self.dab_data = None
         self.pac = None
