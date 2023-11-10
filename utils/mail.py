@@ -1,5 +1,3 @@
-
-
 from dotenv import load_dotenv
 
 import base64
@@ -56,7 +54,7 @@ def msg_send(recepients,name,email,message_data):
         dict: A dictionary containing the response received after sending the message.
     """
     subject = "Grievance confirmation"
-    with open('mail.html','r') as file:
+    with open('templates/utils/mail.html','r') as file:
         data = file.read()
     data = data.replace("_namedata_",name)
     data = data.replace("_datedata_",str(date.today()))
@@ -87,14 +85,24 @@ def create_otp():
     
     return otp
 
-def send_otp(recepients,otp):
-
-    subject = "OTP for verification"
-    recepients = str(recepients+"grievance@cce.edu.in,grievance@cce.edu.in")
-    with open('code.html','r') as file:
-        data = file.read()
+def send_otp(recepients, otp):
+    """
+    The function `send_otp` sends an email containing an OTP (One-Time Password) to the specified
+    recipients.
     
-    data = data.replace("_otpdata_",otp)
+    :param recepients: The `recepients` parameter is a string that represents the email address of the
+    recipient(s) to whom the OTP (One-Time Password) will be sent. It can be a single email address or
+    multiple email addresses separated by commas
+    :param otp: The `otp` parameter is the One-Time Password that will be sent to the recipients for
+    verification
+    :return: The function `send_otp` returns the result of the `send_message` method call, which is the
+    response from the Gmail API after sending the email message.
+    """
+    subject = "OTP for verification"
+    with open('code.html', 'r') as file:
+        data = file.read()
+
+    data = data.replace("_otpdata_", otp)
     message = MIMEMultipart()
     message.attach(MIMEText(data, "html"))
 
@@ -102,29 +110,32 @@ def send_otp(recepients,otp):
     message['From'] = 'grievance@cce.edu.in'
     message['Subject'] = subject
 
-
     encoded_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
     create_message = {
-            'raw': encoded_message
-        }
+        'raw': encoded_message
+    }
 
-    send_message = (service.users().messages().send(userId="me", body=create_message).execute())
+    send_message = service.users().messages().send(userId="me", body=create_message).execute()
     return send_message
 
+
 def main():
-    recepients = 'amalmanoj02@gmail.com'
+    import os
+    print("Current working directory:", os.getcwd())
+    recepients = 'amalmanoj02@gmail.com,sai.prasad.1603@gmail.com'
     name = "Sai"
-    email = "sai@cce.edu.in"
+    email = "grievance@cce.edu.in"
     message = "Grievance is grievance and the good things"
 
     message_sent = msg_send(recepients,name,email,message)
 
     print(message_sent)
 
-    otp = create_otp()
+    # otp = create_otp()
 
-    otp_Sent = send_otp(recepients,otp)
+    # otp_Sent = send_otp(recepients,otp)
 
-    print(otp_Sent)
+    # print(otp_Sent)
 
+main()

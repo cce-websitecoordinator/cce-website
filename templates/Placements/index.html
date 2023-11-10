@@ -56,7 +56,7 @@
         </div>
 
         <div>
-          <h3 class="text-2xl font-bold z-[1]">Academic Uniqueness</h3>
+          <h3 class="text-2xl font-bold z-[1]">Objectives</h3>
           <ol class="space-y-3">
             {% for objective in objectives %}
             <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span>
@@ -109,17 +109,20 @@
 </section>
 
 
-<section class="md:px-24  py-24 px-6 bg-blue-50">
+<section class="md:px-24  py-24 px-6 bg-white">
   <div class="flex flex-col lg:flex-row lg:justify-evenly items-center">
-    {% include 'Placements/updates.html' %}
-    <div class="swiper max-w-[500px] lg:max-w-6xl lg:w-[60%] ">
-      <h3 class="text-center text-4xl font-semibold">Our Recruiters</h3>
-      <div class="space-y-6">
+    <!-- {% include 'Placements/updates.html' %} -->
+    <div class="swiper ">
+      <h3 class="text-center text-4xl md:text-5xl font-semibold">Our Recruiters</h3>
+      <div class="">
 
         {%with recruiters=recruiters2%}
         {% include 'Placements/logo_coloured_slider.html' %}
         {%endwith%}
         {%with left=True%}
+        {% include 'Placements/logo_coloured_slider.html' %}
+        {%endwith%}
+        {%with recruiters=recruiters3%}
         {% include 'Placements/logo_coloured_slider.html' %}
         {%endwith%}
        +
@@ -135,17 +138,17 @@
   <div class="flex md:flex-row flex-col text-xl md:items-end md:justify-evenly   md:gap-10 w-full">
       <div class="space-y-4 ">
           <h1 class="md:text-6xl text-4xl font-semibold md:my-11 mb-4 ">Contact us</h1>
-          <p class="text-sm md:text-base">For all doubts, queries regarding the department, <br> contact Placement Officer </p>
+          <p class="text-sm md:text-base">For the queries regarding Placement and Training, <br> Contact Placement Officer </p>
           <h3 class="uppercase md:text-2xl text-xl font-bold">Roshan David</h3>
           <h4 class="md:text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
               call
               </span class="text-sm md:text-xl ">+91 98090 55360</h4>
           <h5 class="text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
               mail
-              </span class="text-sm md:text-xl ">roshandavid@cce.edu.in</h5>
+              </span class="text-sm md:text-xl ">placement@cce.edu.in</h5>
       </div>
       <div class="space-y-4 mt-6 md:mt-0">
-          <p class="text-sm md:text-base">For all doubts, queries regarding the department, <br> contact Training & Placement Officer. </p>
+          <p class="text-sm md:text-base">For queries regarding Higher studies opportunities abroad, <br> contact International Relations Officer. </p>
           <h3 class="uppercase text-xl md:text-2xl font-bold">Hingston Xavier</h3>
           <h4 class="text-xl flex"><span class="material-symbols-outlined font-bold mr-3">
               call

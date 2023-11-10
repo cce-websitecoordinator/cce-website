@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Result Analysis {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 pt-24 px-6 py-11" id="content">
+    <h3 class="text-3xl font-semibold text-center my-11">Result Analysis</h3>
+
+    <div class="w-full text-center">
+      <table class="w-3/5 mx-auto">
+        <thead class="rounded-t-lg bg-[#28AAE1]">
+          <tr class="text-white">
+            <th class="p-2">Batch</th>
+            <th class="p-2">Academic Performance Index (API)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in table %}
+          <tr
+            class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
+            <td class="p-2 text-center">{{ item.batch }}.</td>
+            <td class="p-2 text-center">{{ item.api }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% for item in graph %}
+      
+    <div class="py-11">
+      <img src="{{item.image.url}}"
+        class="rounded-xl aspect-square" alt srcset>
+    </div>
+
+    {% endfor %}
+
+    
+  </section>
+</main>
+
+{% endblock %}

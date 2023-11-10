@@ -1,13 +1,14 @@
-{% extends 'base.html' %} {% load static %} {% block title %} About - Research &
-Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {%include 'components/Hero_section.html' %}
+{% extends 'base.html' %} {% load static %} {% block title %} Conference & Symposium - Research &
+Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {% include 'Departments/Hero.html' %}
+
 <main class='bg-gray-50'>
 <section class="md:px-24 pt-24 px-6 my-11" id="content">
-  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research</h3>
+  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research & Consultancy</h3>
 
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
-      <p class="px-4 text-gray-400">Home / Research & Consultancy / About</p>
+      <p class="px-4 text-gray-400">Home / Research & Consultancy / Conference & Symposium</p>
 
       {%include 'Departments/Sidebar.html'%}
     </div>
@@ -29,11 +30,12 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
           >
             <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
               <div class="text-center px-2">Duration</div>
-              <div class="text-center px-2">Name of the Project</div>
+              <div class="text-center px-2">Name of Conference / Symposium</div>
               <div class="text-center px-2">
-                Name of the Principal Investigator
+                Name of Faculty / Student
               </div>
-              <div class="text-center px-2">Status</div>
+              <div class="text-center px-2">Year</div>
+              
             </div>
           </div>
   
@@ -44,12 +46,9 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
                 <div class="text-center px-2">{{item.duration}}</div>
                 <div class="text-center px-2">{{item.name}}</div>
                 <div class="text-center px-2">{{item.investor}}</div>
+                <div class="text-center px-2">{{item.year}}</div>
   
-                <div
-                  class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
-                >
-                  {{item.status}}
-                </div>
+                
               </div>
             </div>
   

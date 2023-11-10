@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Events
+{% endblock title %} {% block head %}
+{% endblock head %} {% block body %}
+{% include 'components/Hero_section.html' %}
+
+<section class="md:px-24 pt-24 px-6" id="content">
+    <h3 class="text-5xl font-semibold text-center mt-11 w-full">Events</h3>
+
+    <div class="flex gap-10 md:flex-row flex-col">
+        <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-center">
+            {% for event in events %}
+            <div class="w-[350px] p-2 border-2 border-gray-200 rounded-xl group">
+                <div class="h-[400px] w-full overflow-clip rounded-xl">
+                    <img src="{{event.img.url}}" alt="{{event.img.name}}"
+                        class="w-full h-full  group-hover:scale-110 transition-all duration-500">
+                </div>
+                <div class="space-y-6 mt-5">
+                    <p class="text-xs">{{event.date}}</p>
+                    <h3 class="font-bold text-3xl">{{event.title}}</h3>
+                    <p>{{event.sub_title}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+{% include 'components/gallery.html' %} {% include 'Departments/Contact.html' %}
+{% endblock body %} {% block script %}
+<script></script>
+{% endblock script %}

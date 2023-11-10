@@ -7,8 +7,6 @@ class MediaStorage(S3Boto3Storage):
 
     def url(self, name, parameters=None, expire=None):
         url = super().url(name, parameters, expire)
-        if self.custom_domain:
-            url = url.replace('https://', 'http://')
         return url
 
     def get_available_name(self, name, max_length=None):

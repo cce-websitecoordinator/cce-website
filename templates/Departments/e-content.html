@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Econtent - {{dep}}
+{%endblock title %} {% block head %} {% endblock head %} {% block body %}
+
+{% include 'Departments/Hero.html' %}
+
+<section class="md:px-24 pt-24 px-6" id="content">
+    <div class="flex gap-10 md:flex-row flex-col">
+        <div class="col-span-1">
+          <h2 class="font-semibold text-2xl px-4">Departments</h2>
+          <p class="px-4 text-gray-400">Home / Academics / Department / Econtent</p>
+    
+          {% include 'Departments/Sidebar.html' %}
+        </div>
+
+    <div class="w-full px-20 relative">
+        <div>
+          <h3 class="text-3xl font-semibold text-left mt-11 w-full p-2">Our Courses</h3>
+        </div>
+
+        <div class="w-full grid grid-cols-1 lg:grid-cols-3 relative justify-center gap-10 items-left">
+
+          {% for item in econtent %}
+          <div class="max-w-[400px] overflow-clip">
+            {{item.iframe | safe}}
+            <h2 class="text-blue-400 text-xl">{{item.title}}</h2>
+          </div>
+          {% endfor %}
+          
+
+
+
+        </div>
+      
+
+      
+    </div>
+  </section>
+
+  <div class="w-full text-center my-11">    
+  </div>
+
+{% include 'components/gallery.html'%}
+{% include 'Departments/Contact.html'%}
+{% endblock body %} 
+
+
+

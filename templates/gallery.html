@@ -154,8 +154,6 @@
 
 {% block script %}
 <script>
-
-
   $(document).ready(function () {
     $("img").click(function () {
       var t = $(this).attr("src");
@@ -165,9 +163,7 @@
     });
     $("#myModal").click(function () {
       $("#myModal").toggleClass("hidden");
-
     });
-
-  });//EOF Document.ready
+  });
 </script>
 {% endblock script %}

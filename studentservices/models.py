@@ -17,7 +17,7 @@ class ArtsEvents(models.Model):
     date = models.DateField()
     image = models.ImageField(upload_to='arts/events')
     def __str__(self):
-        return self.title
+        return self.title 
 
 
 class artsTeamStatus(models.Model):
@@ -72,16 +72,22 @@ class SportsGallery(models.Model):
         return self.image.name
 
 
-class NssFaculty(models.Model):
-    faculty = models.ManyToManyField(Faculty)
+
+class NssAbout(models.Model):
+    about = models.TextField()
+    image = models.ImageField(upload_to='nss/icon')
+    def __str__(self):
+        return self.about
 
 
-class NssStudents(models.Model):
+
+class NSSMembers(models.Model):
     name = models.CharField(max_length=100)
-    year = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
     image = models.ImageField(upload_to='nss/students')
     def __str__(self):
-        return self.name
+        return f"{self.priority} {self.name} {self.role}"
 
 class NssGallery(models.Model):
     image = models.ImageField(upload_to='nss/gallery')
@@ -102,9 +108,31 @@ class Clubs(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='clubs/logos')
     description = models.CharField(max_length=100)
-    link  = models.CharField(max_length=100)
+    data = models.TextField(default="none")
+    link  = models.CharField(max_length=100,default='default.com')
     def __str__(self):
         return self.name
+    
+class ClubEvents(models.Model):
+    club = models.ForeignKey(Clubs, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='clubs/events')
+    def __str__(self):
+        return self.title
+    
+
+class ClubMembers(models.Model):
+    club = models.ForeignKey(Clubs, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='nss/students')
+    def __str__(self):
+        return f"{self.club.name} {self.name} {self.role}"
+
 
 class IICCertificate(models.Model):
     name = models.CharField(max_length=100)
@@ -146,3 +174,139 @@ class UnionCommitee(models.Model):
     def __str__(self):
         return self.name
     
+
+class  CentralLibrary(models.Model):
+    data = models.TextField()
+    CHOICES = (("Vision", "Vision"), ("Mission", "Mission"),("about","about"))
+    name = models.CharField(max_length=10, choices=CHOICES)
+    class Meta:
+        verbose_name = ("Central Library")
+        verbose_name_plural = ("Central Library")
+
+    def __str__(self):
+        return self.name
+
+class LibraryInfo(models.Model):
+    type = models.CharField(max_length=50)
+    value = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = ("Library Info")
+        verbose_name_plural = ("Library Infos'")
+
+    def __str__(self):
+        return f"{self.type} - {self.value}"
+    
+class LibraryFaculty(models.Model):
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100)
+    order = models.IntegerField()
+    def __str__(self):
+        return self.faculty.full_name
+    
+class DigitalLibrary(models.Model):
+    link = models.CharField(max_length=100,default='www')
+    name = models.CharField(max_length=100,default='name')
+    description = models.TextField(default='nil')
+    image = models.ImageField(upload_to='CentralLibrary/DigitalLibrary/')
+    def __str__(self):
+        return self.name
+    
+class IEEEJournals(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField()
+
+    def __str__(self):
+        return self.name
+    
+class Mentoring(models.Model):
+    data = models.TextField()
+
+    def __str__(self):
+        return self.data
+    
+    
+class MentoringEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='mentoring/events')
+    def __str__(self):
+        return self.title
+
+class MentoringTeam(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='mentoring/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"
+    
+class IRCAbout(models.Model):
+    data = models.TextField()
+
+    def __str__(self):
+        return self.data
+    
+class IRCEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='IRC/events')
+    def __str__(self):
+        return self.title
+    
+class IRCTeam(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='IRC/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"
+    
+class IEEEAbout(models.Model):
+    data = models.TextField()
+    def __str__(self):
+        return self.data
+    
+class IEEEevents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='IEEE/events')
+    def __str__(self):
+        return self.title
+
+class IEEEmembers(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='IEEE/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"
+
+class CCILAbout(models.Model):
+    data = models.TextField()
+
+    def __str__(self):
+        return self.data
+    
+class CCILEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='CCIL/events')
+    def __str__(self):
+        return self.title
+    
+class CCILTeam(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    priority = models.IntegerField()
+    image = models.ImageField(upload_to='CCIL/members')
+    def __str__(self):
+        return f"{self.priority} {self.name} {self.role}"

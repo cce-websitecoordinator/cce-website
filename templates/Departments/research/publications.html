@@ -1,13 +1,14 @@
-{% extends 'base.html' %} {% load static %} {% block title %} About - Research &
-Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {%include 'components/Hero_section.html' %}
+{% extends 'base.html' %} {% load static %} {% block title %} Publications - Research &
+Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} {% include 'Departments/Hero.html' %}
+
 <main class='relative bg-gray-50'>
 <section class="md:px-24 pt-24 px-6 my-11" id="content">
-  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research</h3>
+  <h3 class="text-5xl font-semibold text-center mt-11 w-full">Research & Consultancy</h3>
 
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
-      <p class="px-4 text-gray-400">Home / Research & Consultancy / About</p>
+      <p class="px-4 text-gray-400">Home / Research & Consultancy / Publications</p>
 
       {%include 'Departments/Sidebar.html'%}
     </div>
@@ -18,25 +19,25 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
 
       </div>
       <div class="pt-6 w-full pl-9">
-        <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">KTU APPROVAL RESEARCH GUIDES</h3>
+        <h3 class="text-2xl md:text-5xl  font-semibold text-center mt-11 w-full my-6">Publications</h3>
         <div class="block xl:table w-full">
           <div
             class="hidden xl:block  bg-blue-300 rounded-t-xl  sticky top-[10vh]"
           >
-            <div class="w-auto grid grid-cols-6 justify-evenly min-h-[50px] py-6">
-              <div class="text-center px-2">Title of Project</div>
+            <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6">
+              <div class="text-center px-2">Title of Paper</div>
               <div class="text-center px-2">Name of the Author</div>
               <div class="text-center px-2">Dept. of the faculty/student</div>
               <div class="text-center px-2">Name of the Journal</div>
               <div class="text-center px-2">Year of Publication</div>
-              <div class="text-center px-2">Publication details</div>
+              <!-- <div class="text-center px-2">Publication details</div> -->
             </div>
           </div>
   
           <div class="space-y-4 ">
             {% for item in publications%}
             <div class="hidden xl:block bg-white my-3">
-              <div class="w-auto grid grid-cols-6 min-h-[50px] py-6">
+              <div class="w-auto grid grid-cols-5 min-h-[50px] py-6">
                 <div class="text-center px-2">{{item.title}}</div>
                 <div class="text-center px-2">
                   {{item.name}}
@@ -45,9 +46,9 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
                
                 <div class="text-center px-2">{{item.journal}}</div>
                 <div class="text-center px-2">{{item.year}}</div>
-                <div class="text-center px-2">
+                <!-- <div class="text-center px-2">
                   <a href="{{item.publictaion_details.url}}" target="_blank" class='text-blue-700'>Open File</a>
-                </div>
+                </div> -->
               </div>
             </div>
   

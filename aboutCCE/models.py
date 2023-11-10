@@ -37,3 +37,73 @@ class MoreAboutCCE(models.Model):
 
     class Meta:
         verbose_name_plural = "More About CCE"
+
+class CollegeCalendar(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="CollegeCalendar")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "College Calendar"
+
+
+class AnnualReport(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AnnualReport")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Annual Report"
+
+
+class MandatoryDisclosure(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="MandatoryDisclosure")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Mandatory Disclosure"
+
+class KtuRegulations(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="KtuRegulations")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "KTU Regulations"
+
+class AicteApprovals(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AicteApprovals")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "AICTE Approvals"
+
+class AuditedStatements(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="AuditedStatements")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Audited Statements"
+
+class CollegeMagazine(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="CollegeMagazine")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "College Magazine"
+
+class ResultAnalysis(models.Model):
+    image = models.ImageField(upload_to='results/')
+    def __str__(self):
+        return self.batch
+
+class ResultTable(models.Model):
+    batch = models.IntegerField()
+    api = models.IntegerField()
+    def __str__(self):
+        return self.batch
+    

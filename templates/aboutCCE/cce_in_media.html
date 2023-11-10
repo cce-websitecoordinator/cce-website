@@ -8,9 +8,9 @@
     {% include 'components/Hero_section.html' %}
 
 <section class="px-24" id='content'>
-    <h1 class="text-center w-full text-4xl my-11 font-bold">More on CCE</h1>
+    <h1 class="text-center w-full text-4xl my-11 font-bold">CCE in Media</h1>
     <div class="flex flex-wrap lg:gap-16 gap-8 mb-24 items justify-center">
-     {% for item in more_about_cce_data%}
+     {% for item in cce_in_media_data%}
         <div class="bg-white p-3 shadow-xl w-[330px] border-[0.5px] border-gray-100 rounded-xl group">
             <div class="rounded-xl h-64 relative w-[300px] overflow-hidden">
 
@@ -20,7 +20,7 @@
                 <p class="text-sm text-gray-400 mt-2">{{item.date}}</p>
                 <h1 class="font-bold">{{item.title}}</h1>
                 <p class="text-xs text-gray-400 mb-3">{{item.description}}</p>
-                <a href="{{item.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a>
+                <!-- <a href="{{item.link}}" target="_blank" class="text-blue-400 font-bold mt-3">View More<i class="fa-solid fa-arrow-right ml-2 my-auto"></i></a> -->
             </div>
         </div>
         {% endfor %}

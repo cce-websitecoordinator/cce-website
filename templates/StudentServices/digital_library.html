@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Digital Library 
+{% endblock title %} {% block head %}
+
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Library</h2>
+
+      {% include 'StudentServices/sidebar.html' %}
+    </div>
+    <div class="col-span-2 gap-10 space-y-16 mt-11 w-full">
+        <section class=" w-full text-left">
+            <h1 class="text-4xl my-11 font-bold">
+                Digital Library
+            </h1>
+
+        </section>
+
+        <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
+            {% for item in data  %}
+            <div class="max-w-[350px]  shadow-xl rounded-md p-4 space-y-3 flex flex-col items-center justify-between bg-white">
+              <img src="{{item.image.url}}" alt="club_image" class=" w-[150px] max-h-[150px] " >
+    
+              <h2 class="text-2xl font-black text-gray-800">{{item.name}}</h2>
+              <h6 class="text-center text-sm text-gray-500 px-6">{{item.description}}</h6>
+              <a href="{{item.link}}" class="bg-blue-500 text-white px-5 py-2">View Site</a>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% include 'components/gallery.html' %}
+
+{% endblock body %}

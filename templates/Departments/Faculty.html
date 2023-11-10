@@ -16,6 +16,24 @@
       </div>
 
       <div class=" w-full space-y-16 mt-11 ">
+        {%ifnotequal 'BSH' dep%}
+
+        <div>
+          <div class="flex items-center gap-2 text-sm font-medium">
+            
+              <a href="{% url 'Department' dep 'faculty' %}#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 bg-blue-500 border-blue-500">
+                Faculty & Staff</a>
+                
+
+              <a href="{% url 'Department' dep 'students' %}#content"
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700  ">
+                Students</a>      
+
+          </div>
+        </div>
+        {% endifnotequal %}
+
         <div class="w-full flex flex-col justify-center items-center">
           <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
           <div class="w-full flex items-center justify-center mb-11">

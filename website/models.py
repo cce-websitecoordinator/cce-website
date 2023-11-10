@@ -4,8 +4,13 @@ from email.policy import default
 from django.db import models
 from utils.compressor import Compress
 
+ACADEMIC_YEARS = [
+    (f"{r}-{r + 1}", f"{r}-{r + 1}")
+    for r in range(2020, datetime.date.today().year + 1)
+]
+
 class Role(models.Model):
-    role = models.CharField(max_length=20)
+    role = models.CharField(max_length=50)
 
     def __str__(self):
         return self.role
@@ -50,7 +55,7 @@ class HomeEvents(models.Model):
 class UpcomingEvents(models.Model):
     img = models.ImageField(upload_to="UpcomingEvents",null=False,blank=False,default="UpcomingEvents/1.jpg")
     title = models.CharField(max_length=80)
-    sub_title = models.TextField(max_length=150)
+    sub_title = models.TextField()
     date = models.DateField()
     
 
@@ -75,7 +80,7 @@ class Gallery(models.Model):
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
 
     def __str__(self):
-        return "("+self.department+')' +self.image.name 
+        return f"({self.department}) {self.image.name}"
 
 
 
@@ -142,7 +147,7 @@ class Hero_Image(models.Model):
     video = models.FileField(upload_to="Heros_Videos",blank=True)
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
-    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("pta","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"),("placements","Placements"),("admissions","Admissions"),("academic_research","Academic Research"),("womencell","Women Cell"),("clubs","Clubs"),("iic","IIC"))
+    PAGE = (("management","Management"),("directors_desk","Directors Desk"),("facilities","Facilities"),("principals_desk","Principal's Desk"),("cce_in_media","CCE In Media"),("governing_body","Governing Body"),("organogram","Organogram"),("mandatory_disclosure","Mandatory Disclosure"),("antiraging_cell","AntiRaging Cell"),("grivence_redressal_sysytem","Grivence Redressal System"),("sc_st_monitoring_commite","Sc/St Monitoring Commitee"),("iqac","IQAC"),("examination_cell","Examination Cell"),("pta","PTA"),("office","office"),("nss","NSS"),("college_union","College Union"),("facilities","Facilities"),("pta","PTA"),("None","None"),("research","Research"),("arts","Arts"),("sports","Sports"),("placements","Placements"),("admissions","Admissions"),("academic_research","Academic Research"),("womencell","Women Cell"),("clubs","Clubs"),("iic","IIC"),("all_committees","All Committees"),("programs_offered","Progrmas Offered"),("hr_manual","HR Manual"),("vision_2035","Vision 2035"),("annual_report","Annual Report"),("college_handbook","College Handbook"),("college_calendar","College Calendar"),("audited_statements","Audited Statements"),("college_magazine","College Magazine"),("ktu_aicte_regulations","KTU AICTE Regulations"),("approvals","Approvals"),("techies_park","Techies Park"),("events","Events"),("study_abroad","Study Abroad"))
     page = models.CharField(max_length=200, choices = PAGE, default="None") 
     def __str__(self):
         return self.page+"---"+self.image.name + self.video.name
@@ -208,6 +213,7 @@ class Conference(models.Model):
     status = models.CharField(max_length=100,choices=STATUS)
     department = models.CharField(max_length=200, choices = DEPARTMENTS, default="None")
     duration = models.CharField(max_length=100)
+    year = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
@@ -231,3 +237,26 @@ class FacultyStudentPublications(models.Model):
     journal = models.CharField(("Name Of Journal"), max_length=500)
     year = models.CharField(("Year Of Publication"), max_length=50)
     details = models.FileField(("Details of Publictaion"), upload_to='research/publications', max_length=100)
+
+class AdmissionStatistics(models.Model):
+    dept = models.CharField(max_length=100,choices=DEPARTMENTS)
+    seats = models.IntegerField()
+    admitted = models.IntegerField()
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
+
+    def __str__(self):
+        return self.dept+" "+self.year
+    
+class AdmissionGraph(models.Model):
+    graph  = models.ImageField(upload_to='admission/')
+    year = models.CharField(choices=ACADEMIC_YEARS,max_length=20,default="none")
+
+
+class Nptel(models.Model):
+
+    title_year = models.CharField(max_length=100)
+    file = models.FileField(upload_to="nptel")
+    
+    def __str__(self):
+        return self.title_year
+    

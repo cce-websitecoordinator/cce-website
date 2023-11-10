@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django.core.paginator',
     'website',
     'departments',
     'aboutCCE',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "django.middleware.security.SecurityMiddleware",
@@ -49,9 +51,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-
 ]
 
 
@@ -64,6 +63,7 @@ if os.getenv('PRODUCTION') != 'True':
 
 
 ROOT_URLCONF = 'cce.urls'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {
@@ -83,6 +83,8 @@ TEMPLATES = [
         
     },
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 WSGI_APPLICATION = 'cce.wsgi.application'
 DATABASES = {
@@ -164,10 +166,17 @@ DEFAULT_FILE_STORAGE = 'cce.storage_backends.MediaStorage'
 
 MEDIA_URL = 'https://dnbca6q7do6n.cloudfront.net/media/'
 
+# Use the database to store sessions.
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Set this to True if your website is using HTTPS to secure cookies.
+SESSION_COOKIE_SECURE = True
 
 
 
 TAILWIND_APP_NAME = 'cce_web_theme'
+
+
 # Jazzmin settings
 
 
@@ -223,5 +232,7 @@ JAZZMIN_SETTINGS = {
 
     "related_modal_active": True,
 }
+
+
 
 

@@ -1,0 +1,75 @@
+<aside class="p-8 shadow-2xl rounded-2xl flex space-y-1 mt-4 flex-col lg:w-[380px] font-medium w-full bg-white">
+    <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 lg:hidden text-center"
+        id="sidebar-header">
+        <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
+
+
+            {%ifequal 'mandatory_disclosure' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Mandatory Disclosure </span>
+            {%endifequal%}
+
+            {%ifequal 'faculty' route%}
+            <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
+            {%endifequal%}
+
+            {%ifequal 'curriculum_and_syllabus' route%}
+            <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>AICTE Approvals</span>
+            {%endifequal%}
+
+            {%ifequal 'mandatory_disclosure' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Audited Statements </span>
+            {%endifequal%}
+
+            
+        </div>
+    </div>
+    <div class="w-full flex items-center justify-center lg:hidden">
+        <span class="material-symbols-outlined text-4xl hover:text-[#007FFF]" id="icon-sidebar-expand">
+            expand_more
+        </span>
+    </div>
+    <div class="space-y-4 lg:block hidden" id="sidebar-content">
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'mandatory_disclosure' in route%}border-[#007FFF] border-2{% endif %} flex items-center justify-start pl-9">
+            <a href="{% url 'Mandatory_Disclosure' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF] ">description</i><span>Mandatory Disclosure</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'ktu_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Ktu_Regulations' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'aicte_approvals' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Aicte_Approvals' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>AICTE Approvals</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'audited_statements' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Audited_Statements' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>Audited Statements</span>
+            </a>
+        </div>
+        
+    </div>
+</aside>
+{% block script %}
+<script>
+    $('#icon-sidebar-expand').click(
+        function () {
+            $('#sidebar-header').toggleClass('hidden');
+            $('#sidebar-content').toggleClass('hidden');
+            $("#icon-sidebar-expand").toggleClass("rotate-180");
+        }
+    )
+
+</script>
+
+{% endblock script %}

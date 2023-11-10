@@ -1,0 +1,167 @@
+{% extends 'base.html' %} {% load static %} {% block title %} TLM - {{title}}
+{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+{%include 'Departments/Hero.html' %}
+
+
+<section class="md:px-24 pt-24 px-6" id="content">
+
+  <div class="flex gap-10 md:flex-row flex-col">
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+
+    <div class="flex flex-col w-full">
+      {% comment %} Medium table start {% endcomment %}
+      <div class="w-full px-20 md:block hidden">
+        <div>
+          <h3 class="text-2xl font-semibold text-left mt-11 w-full p-2">Innovative
+            Teaching-Learning Methods </h3>
+        </div>
+        <div class="w-full flex flex-col justify-center  items-left">
+          <p class="mt-6 text-left">
+            {{ innovative_tlm.about }}
+          </p>
+        </div> 
+        <table class="w-full top-[100px] ">
+          <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
+            <tr class="grid grid-cols-4 text-center my-2">
+              <th>Sl No.</th>
+              <th class="col-span-3">Innovative Teaching – Learning Methods</th>
+            </tr>
+          </thead>
+
+          <tbody class>
+            {% for tlm_methods in innovative_tlm %}
+
+            <tr class="grid grid-cols-4 text-center odd:bg-[#fafafa]
+                min-h-[40px] my-2 ">
+              <td>{{ forloop.counter }}</td>
+              <td class="col-span-3">{{tlm_methods}}</td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+      {% comment %} Medium table end {% endcomment %}
+
+      {% comment %} Mobile table start {% endcomment %}
+      <div class="w-full px-11 md:hidden space-y-3">
+        {% for tlm_methods in innovative_tlm %}
+
+        <div
+          class="bg-white p-3 h-auto w-full shadow-md border-gray-50 border-[0.5px]">
+          <div class="flex justify-between items-center">
+            <h1 class="text-xl font-bold">
+              {{ forloop.counter }}. {{tlm_methods}}
+            </h1>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% comment %} Mobile table end {% endcomment %}
+      
+
+      {% for tlm_methods in innovative_tlm %}
+
+      <div class="w-full flex flex-col justify-center md:px-20 items-left">
+        <p class="mt-6 text-left"><span class="font-bold">{{ forloop.counter}}.
+            {{ tlm_methods }}: - </span>{{ tlm_methods.about }}</p>
+
+
+        
+          
+
+        {% comment %} Medium table start {% endcomment %}
+        <div class="w-full pt-10 md:block hidden">
+          <table class="w-full top-[100px] ">
+            <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
+              <tr class="grid grid-cols-12 text-center my-2">
+                <th>Sl No.</th>
+                <th class="col-span-3">Innovative Teaching Learning Method</th>
+                <th class="col-span-3">Goal</th>
+                <th class="col-span-5">Method</th>
+              </tr>
+            </thead>
+
+            <tbody class>
+              {% with loop_counter=0 %}
+              {% for tlm_tabl in tlm_table %}
+
+              {% if tlm_tabl.tlm_method == tlm_methods %}
+              
+
+              <tr class="grid grid-cols-12 text-center my-2">
+                <td>{{ loop_counter|add:1 }}</td>
+                <td class="col-span-3 px-4 ">{{tlm_tabl.title}}</td>
+                <td class="col-span-3 px-4 text-justify">
+                  {{tlm_tabl.goal | safe}}
+                </td>
+                <td class="col-span-5 px-4 text-justify">
+                  {{tlm_tabl.activity | safe}}
+                  <span class="text-blue">Click here</span>
+                </td>
+              </tr>
+
+              
+              {% endif %}
+              {% endfor %}
+              {% endwith %}
+
+            </tbody>
+          </table>
+
+        </div>
+        {% comment %} Medium table end {% endcomment %}
+
+        {% comment %} Mobile table start {% endcomment %}
+        <div class="w-full  md:hidden space-y-3">
+          {% with loop_counter=0 %}
+          {% for item in tlm_table %}
+          {% if item.tlm_method == tlm_methods %}
+          
+          <div
+            class="bg-white p-3 h-auto shadow-md w-full border-gray-50
+              border-[0.5px]">
+            <div class="flex flex-col justify-between items-center">
+              <h1 class="text-xl font-bold">
+                {{ loop_counter|add:1 }}. {{item.title}}
+              </h1><br><br>
+              <h3 class="text-base font-semibold pt-4">
+                Goal
+              </h3><br>
+              <p class="mt-6 text-left">
+                {{item.goal | safe}}
+              </p><br>
+              <h3 class="text-base font-semibold">
+                Activity
+              </h3><br>
+              <p class="mt-6 text-left">
+                {{item.activity | safe}}
+              </p><br>
+
+            </div>
+          </div>
+      
+          {% endif %}
+          {% endfor %}
+          {% endwith %}
+        </div>
+        {% comment %} Mobile table end {% endcomment %}
+
+      </div><br><br>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include 'components/gallery.html' %} {% include 'Departments/Contact.html'
+%}
+{% endblock body %} {% block script %}
+<script src="https://cdn.tailwindcss.com"></script>
+<script></script>
+{% endblock script %}

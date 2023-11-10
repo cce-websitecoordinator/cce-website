@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/cce-website
+    # filter: ["- /public/"]
+    overwrite: true
+file_exists_behavior: OVERWRITE
+
+hooks:
+  ApplicationStop:
+    - location: deployment_scripts/application_stop.sh
+      runas: ubuntu
+  BeforeInstall:
+    - location: deployment_scripts/before_install.sh
+      runas: ubuntu
+  AfterInstall:
+    - location: deployment_scripts/after_install.sh
+      runas: ubuntu
+  ApplicationStart:
+    - location: deployment_scripts/application_start.sh
+      runas: ubuntu

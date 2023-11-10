@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Central Library 
+{% endblock title %} {% block head %}
+
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Library</h2>
+
+      {% include 'StudentServices/sidebar.html' %}
+    </div>
+    <div class="col-span-2 gap-10 space-y-16 mt-11 w-full">
+
+      <div>
+        <h3 class="text-3xl font-semibold text-left mt-11">About Central
+          Library</h3>
+          <div class="w-full gap-10  mt-11 flex flex-wrap">
+            {% for item in newsletters %}
+            <a href="{{item.file.url}}" target="_blank">
+              <div class="w-[350px] h-[350px] overflow-clip">
+                <img
+                  src="{{item.image.url}}"
+                  alt="{{item.image.name}}"
+                  class=" rounded-t-xl h-full"
+                />
+                <div class="bg-gray-100 p-4">
+                  <h3 class="text-xl font-semibold">{{item.title}}</h3>
+                  <p class="text-sm text-gray-400">{{item.date}}</p>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        <p class=" text-sm mt-4 text-justify mb-11">{{about.data}}</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% include 'components/gallery.html' %}
+
+{% endblock body %}

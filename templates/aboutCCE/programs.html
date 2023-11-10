@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Programs Offered {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+
+    <section class="md:px-24 w-full text-center">
+        <h1 class="text-4xl my-11 font-bold">
+          Programs Offered
+        </h1>
+        
+      </section>
+
+    <div class="w-full px-24 md:block hidden">
+      <table class="w-full top-[100px] sticky ">
+        <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
+          <tr class="grid grid-cols-3 text-center my-2">
+            <th>Programs</th>
+            <th>Code</th>
+            <th>Intake</th>
+          </tr>
+        </thead>
+     
+        <tbody class=''>
+          <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td><a href="{% url 'Department' 'CE' 'about' %}">Civil Engineering</a></td>
+            <td>CE</td>
+            <td>60</td>
+          </tr>
+          <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td><a href="{% url 'Department' 'CSE' 'about' %}"></a>Computer Science & Engineering</a></td>
+            <td>CSE</td>
+            <td>120</td>
+          </tr>
+          <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td><a href="{% url 'Department' 'ECE' 'about' %}"></a>Electronics & Communication Engineering</a></td>
+            <td>ECE</td>
+            <td>60</td>
+          </tr>
+          <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td><a href="{% url 'Department' 'EEE' 'about' %}"></a>Electrical & Electronics Engineering</a></td>
+            <td>EEE</td>
+            <td>60</td>
+          </tr>
+          <tr class="grid grid-cols-3 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
+            <td><a href="{% url 'Department' 'ME' 'about' %}"></a>Mechanical Engineering</a></td>
+            <td>ME</td>
+            <td>60</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+    
+  </section>
+
+  
+</main>
+
+{% include 'components/gallery.html' %} {% endblock %}

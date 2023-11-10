@@ -1,329 +1,358 @@
-{% extends 'base.html' %} {% load static %} {% block title %} About - {{title}}  {% endblock title %} {% block head %}
-<link rel="stylesheet" href="{%  static  'css/department.css'  %}" />
+{% extends 'base.html' %} {% load static %} {% block title %} About - {{title}}
+{% endblock title %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/department.css' %}" />
 {% endblock head %}
 {% block body %}
-    {% include 'Departments/Hero.html' %}
-    <section class="md:px-24  pt-24 px-6" id="content" >
-        <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
-        <p class="text-center text-sm mt-4  mb-11">{{about.about}}</p>
+{% include 'Departments/Hero.html' %}
+<section class="md:px-24 pt-24 px-6" id="content">
+  <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+  <p class="text-justify text-sm mt-4 mb-11">{{about.about}}</p>
 
-        <div class="flex gap-10 lg:flex-row flex-col">
-            <div class="col-span-1 flex justify-center items-center flex-col">
-                <h2 class="font-semibold text-2xl px-4">Departments</h2>
-                <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
-                {% include 'Departments/Sidebar.html' %}
-            </div>
-            <div class="col-span-2 gap-10 space-y-16 mt-11 ">
-                <div
-                class="bg-[#D9FFA8] flex flex-col lg:flex-row justify-center  space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
-                <div class="lg:bg-[#8BC53F] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
-                    <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
-                            assistant_navigation
-                        </span>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold">Vision</h3>
-                        <p>{{vission.vission}}</p>
-                    </div>
-                </div>
-                <div
-                class="bg-[#D4F2FF] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
-                <div class="lg:bg-[#28AAE1] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
-                    <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
-                
+  <div class="flex gap-10 lg:flex-row flex-col">
+    <div class="col-span-1 flex justify-center items-center flex-col">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+    <div class="col-span-2 gap-10 space-y-16 mt-11 ">
+      <div
+        class="bg-[#D9FFA8] flex flex-col lg:flex-row justify-center space-y-4
+        z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl
+        relative">
+        <div class="lg:bg-[#8BC53F] p-4 py-6 flex items-center justify-center
+          text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative
+          absolute inset-0">
+          <span class="material-symbols-outlined text-gray-400 lg:text-white
+            lg:text-[50px] text-[200px] lg:z-0 z-[-1] opacity-[0.8]
+            lg:opacity-[1]">
+            assistant_navigation
+          </span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold">Vision</h3>
+          <p>{{vission.vission}}</p>
+        </div>
+      </div>
+      <div
+        class="bg-[#D4F2FF] flex flex-col lg:flex-row justify-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6
+        md:items-start rounded-xl relative">
+        <div class="lg:bg-[#28AAE1] p-4 py-6 flex items-center justify-center
+          text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative
+          absolute inset-0">
+          <span class="material-symbols-outlined text-gray-400 lg:text-white
+            lg:text-[50px] text-[200px] lg:z-0 z-[-1] opacity-[0.8]
+            lg:opacity-[1]">
 
-                            thunderstorm
 
-                    </span>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold">Mission</h3>
-                        <ol class="space-y-3">
-                            {% for mission in mission %}
-                            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{mission.Mission}}</p></li>
-                            {% endfor %}
-                            
-                        </ol>
-                    </div>
-                </div>
-                <div
-                    class="bg-[#D9D9D9] flex flex-col lg:flex-row justify-center md:items-center space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6 md:items-start rounded-xl relative">
-                    <div class="lg:bg-[#515151] p-4 py-6 flex items-center justify-center text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative absolute inset-0">
-                        <span class="material-symbols-outlined text-gray-400 lg:text-white lg:text-[50px] text-[200px] lg:z-0 z-[-1]  opacity-[0.8] lg:opacity-[1]" >
-                            casino
-                        </span>
-                    </div>
+            thunderstorm
 
-                    <div>
-                        <h3 class="text-2xl font-bold z-[1]">Academic Uniqueness</h3>
-                        <ol class="space-y-3">
-                            {% for objective in objectives %}
-                            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{objective.data}}</p></li>
-                            {% endfor %}
-                            
-                        </ol>
-                        
-                    </div>
-                </div>
+          </span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold">Mission</h3>
+          <ol class="space-y-3">
+            {% for mission in mission %}
+            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{mission.Mission}}</p></li>
+            {% endfor %}
 
-            </div>
+          </ol>
+        </div>
+      </div>
+      <div
+        class="bg-[#D9D9D9] flex flex-col lg:flex-row justify-center
+        space-y-4 z-[-2] md:space-y-0 p-11 lg:space-x-6
+        md:items-start rounded-xl relative">
+        <div class="lg:bg-[#515151] p-4 py-6 flex items-center justify-center
+          text-gray rounded-[12px] lg:w-auto lg:h-auto w-full h-full lg:relative
+          absolute inset-0">
+          <span class="material-symbols-outlined text-gray-400 lg:text-white
+            lg:text-[50px] text-[200px] lg:z-0 z-[-1] opacity-[0.8]
+            lg:opacity-[1]">
+            casino
+          </span>
         </div>
 
-    </section>
+        <div>
+          <h3 class="text-2xl font-bold z-[1]">Academic Uniqueness</h3>
+          <ol class="space-y-3">
+            {% for objective in objectives %}
+            <li class="flex"><span class="font-bold mr-2">{{forloop.counter}}.</span><p>{{objective.data}}</p></li>
+            {% endfor %}
+
+          </ol>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
 
 
 
 
 
 <section class="md:px-24 px-7 mt-11">
-    <div class="flex lg:flex-row flex-col gap-10">
-        <div class='mx-auto'> {% with dep_updates as side_updates  %} {% include 'Departments/Updates.html' %}{% endwith %}</div>
-        <div class="w-full space-y-6 mt-11 md:mt-0 ">
-            <h2 class="text-center font-bold text-5xl">Programme Details</h2>
-            <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
-                <h2 class="flex justify-between  text-xl md:text-2xl md:font-medium font-black items-center">Program Educational Objectives (PEOs)<span
-                        class="material-symbols-outlined" style="font-size:35px ;">
-                        expand_more
-                    </span></h2>
-                <div class="hidden  pl-3 space-y-4 " id='peos-data'>
-                    {% for item in poes %}
-                    <div >
-                        <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
-                        <p class="text-gray-600 pl-4">{{item.data}}</p>
-                    </div>
-                    {% endfor %}
-                    
-                </div>
-            </div>
-
-
-            <div class="p-6 shadow-xl rounded-[16px] " id="pos">
-                <h2 class="flex justify-between text-xl md:text-2xl md:font-medium font-black items-center">Program Outcomes (POs)<span
-                        class="material-symbols-outlined" style="font-size:35px ;">
-                        expand_more
-                    </span></h2>
-                <div class="  pl-3 " >
-                    <div class="hidden pl-3 space-y-4 " id="pos-data">
-                        {% for item in pos %}
-                        <div >
-                            <h3 class="text-xl font-semibold">PO-{{forloop.counter}}</h3>
-                            <p class="text-gray-600 pl-4">{{item.data}}</p>
-                        </div>
-                        {% endfor %}
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-
-            <div class="p-6 shadow-xl rounded-[16px] " id = "psos">
-                <h2 class="flex justify-between text-xl md:text-2xl md:font-medium font-black items-center">Program Specific Outcomes (PSOs)<span
-                        class="material-symbols-outlined" style="font-size:35px ;">
-                        expand_more
-                    </span></h2>
-                <div class=" pl-3 ">
-                    <div class="hidden  pl-3 space-y-4 " id="psos-data">
-                        {% for item in psos %}
-                        <div >
-                            <h3 class="md:text-xl font-semibold">PSO-{{forloop.counter}}</h3>
-                            <p class="text-gray-600 pl-4">{{item.data}}</p>
-                        </div>
-                        {% endfor %}
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
+  <div class="flex lg:flex-row flex-col gap-10">
+    <div class='mx-auto'> {% with dep_updates as side_updates %} {% include 'Departments/Updates.html' %}{% endwith %}</div>
+    <div class="w-full space-y-6 mt-11 md:mt-0 ">
+      <h2 class="text-center font-bold text-5xl">Programme Details</h2>
+      {% ifnotequal dep 'BSH' %}
+        
+      
+      <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
+        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+          font-black items-center">Program Educational Objectives (PEOs)<span
+            class="material-symbols-outlined" style="font-size:35px ;">
+            expand_more
+          </span></h2>
+        <div class="hidden pl-3 space-y-4 " id='peos-data'>
+          {% for item in poes %}
+          <div>
+            <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
+            <p class="text-gray-600 pl-4">{{item.data}}</p>
+          </div>
+          {% endfor %}
 
         </div>
+      </div>
+
+      {% endifnotequal %}
+
+
+      <div class="p-6 shadow-xl rounded-[16px] " id="pos">
+        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+          font-black items-center">Program Outcomes (POs)<span
+            class="material-symbols-outlined" style="font-size:35px ;">
+            expand_more
+          </span></h2>
+        <div class=" pl-3 ">
+          <div class="hidden pl-3 space-y-4 " id="pos-data">
+            {% for item in pos %}
+            <div>
+              <h3 class="text-xl font-semibold">PO-{{forloop.counter}}</h3>
+              <p class="text-gray-600 pl-4">{{item.data}}</p>
+            </div>
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </div>
+
+      {% ifnotequal dep 'BSH' %}
+        
+      
+      <div class="p-6 shadow-xl rounded-[16px] " id="psos">
+        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+          font-black items-center">Program Specific Outcomes (PSOs)<span
+            class="material-symbols-outlined" style="font-size:35px ;">
+            expand_more
+          </span></h2>
+        <div class=" pl-3 ">
+          <div class="hidden pl-3 space-y-4 " id="psos-data">
+            {% for item in psos %}
+            <div>
+              <h3 class="md:text-xl font-semibold">PSO-{{forloop.counter}}</h3>
+              <p class="text-gray-600 pl-4">{{item.data}}</p>
+            </div>
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </div>
+
+      {% endifnotequal %}
+
+
     </div>
+  </div>
 
 
 </section>
 {% comment %} <section class="md:px-24 pt-24 px-6 my-11" id="content">
-    <div class="flex gap-10 md:flex-row flex-col">
-      
-  
-      <div class="pt-6 w-full">
-        <h3
-          class="text-2xlmd:text-5xl font-semibold text-center mt-11 w-full my-6"
-        >
-          DBA
-        </h3>
-        <div class="block xl:table w-full">
-          <div
-            class="hidden xl:block bg-blue-300 rounded-t-xl  sticky top-[10vh]"
-          >
-            <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
-              <div class="text-center px-2">Duration</div>
-              <div class="text-center px-2">Name of the Project</div>
-              <div class="text-center px-2">
-                Name of the Principal Investigator
-              </div>
-              <div class="text-center px-2">Status</div>
+  <div class="flex gap-10 md:flex-row flex-col">
+
+
+    <div class="pt-6 w-full">
+      <h3
+        class="text-2xlmd:text-5xl font-semibold text-center mt-11 w-full my-6">
+        DBA
+      </h3>
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
+          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+            <div class="text-center px-2">Duration</div>
+            <div class="text-center px-2">Name of the Project</div>
+            <div class="text-center px-2">
+              Name of the Principal Investigator
             </div>
-          </div>
-  
-          <div class="space-y-4 ">
-            {% for item in conferences%}
-            <div class="hidden xl:block bg-white my-3">
-              <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
-                <div class="text-center px-2">{{item.duration}}</div>
-                <div class="text-center px-2">{{item.name}}</div>
-                <div class="text-center px-2">{{item.investor}}</div>
-  
-                <div
-                  class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
-                >
-                  {{item.status}}
-                </div>
-              </div>
-            </div>
-  
-            
-            <div class="xl:hidden w-full">
-              <div
-                class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
-              >
-                <div class="flex justify-between items-center">
-                  <h1 class="text-xl font-bold">
-                    {{forloop.counter}}. {{item.name}}
-                  </h1>
-                </div>
-                <div class="flex justify-between mt-4 gap-4">
-                  <div class="text-start">
-                    <p class="text-gray-500">Duration</p>
-                    <h1>{{item.duration}}</h1>
-                  </div>
-                  <div class="text-end">
-                    <p class="text-gray-600">Status</p>
-                    <h1
-                      class="{% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
-                    >
-                      {{item.status}}
-                    </h1>
-                  </div>
-                </div>
-                <div class="flex justify-between mt-4 gap-4">
-                  <div class="text-start">
-                    <p class="text-gray-500"> Name of the Principal Investigator</p>
-                    <h1>{{item.investor}}</h1>
-                  </div>
-                  
-                </div>
-                
-              </div>
-            </div>
-            {% endfor %}
+            <div class="text-center px-2">Status</div>
           </div>
         </div>
 
-        <div class="block xl:table w-full">
-            <div
-              class="hidden xl:block bg-blue-300 rounded-t-xl  sticky top-[10vh]"
-            >
-              <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
-                <div class="text-center px-2">Duration</div>
-                <div class="text-center px-2">Name of the Project</div>
-                <div class="text-center px-2">
-                  Name of the Principal Investigator
-                </div>
-                <div class="text-center px-2">Status</div>
+        <div class="space-y-4 ">
+          {% for item in conferences%}
+          <div class="hidden xl:block bg-white my-3">
+            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+              <div class="text-center px-2">{{item.duration}}</div>
+              <div class="text-center px-2">{{item.name}}</div>
+              <div class="text-center px-2">{{item.investor}}</div>
+
+              <div
+                class="text-center px-2 {% if item.status == 'completed' %}
+                text-green-400{% else %}text-blue-500 {% endif %}">
+                {{item.status}}
               </div>
-            </div>
-    
-            <div class="space-y-4 ">
-              {% for item in conferences%}
-              <div class="hidden xl:block bg-white my-3">
-                <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
-                  <div class="text-center px-2">{{item.duration}}</div>
-                  <div class="text-center px-2">{{item.name}}</div>
-                  <div class="text-center px-2">{{item.investor}}</div>
-    
-                  <div
-                    class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
-                  >
-                    {{item.status}}
-                  </div>
-                </div>
-              </div>
-    
-              
-              <div class="xl:hidden w-full">
-                <div
-                  class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
-                >
-                  <div class="flex justify-between items-center">
-                    <h1 class="text-xl font-bold">
-                      {{forloop.counter}}. {{item.name}}
-                    </h1>
-                  </div>
-                  <div class="flex justify-between mt-4 gap-4">
-                    <div class="text-start">
-                      <p class="text-gray-500">Duration</p>
-                      <h1>{{item.duration}}</h1>
-                    </div>
-                    <div class="text-end">
-                      <p class="text-gray-600">Status</p>
-                      <h1
-                        class="{% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}"
-                      >
-                        {{item.status}}
-                      </h1>
-                    </div>
-                  </div>
-                  <div class="flex justify-between mt-4 gap-4">
-                    <div class="text-start">
-                      <p class="text-gray-500"> Name of the Principal Investigator</p>
-                      <h1>{{item.investor}}</h1>
-                    </div>
-                    
-                  </div>
-                  
-                </div>
-              </div>
-             {% endfor %}
             </div>
           </div>
+
+
+          <div class="xl:hidden w-full">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50
+              border-[0.5px]">
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Duration</p>
+                  <h1>{{item.duration}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-600">Status</p>
+                  <h1
+                    class="{% if item.status == 'completed' %} text-green-400{%
+                    else %}text-blue-500 {% endif %}">
+                    {{item.status}}
+                  </h1>
+                </div>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500"> Name of the Principal Investigator</p>
+                  <h1>{{item.investor}}</h1>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="block xl:table w-full">
+        <div
+          class="hidden xl:block bg-blue-300 rounded-t-xl sticky top-[10vh]">
+          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+            <div class="text-center px-2">Duration</div>
+            <div class="text-center px-2">Name of the Project</div>
+            <div class="text-center px-2">
+              Name of the Principal Investigator
+            </div>
+            <div class="text-center px-2">Status</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 ">
+          {% for item in conferences%}
+          <div class="hidden xl:block bg-white my-3">
+            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+              <div class="text-center px-2">{{item.duration}}</div>
+              <div class="text-center px-2">{{item.name}}</div>
+              <div class="text-center px-2">{{item.investor}}</div>
+
+              <div
+                class="text-center px-2 {% if item.status == 'completed' %}
+                text-green-400{% else %}text-blue-500 {% endif %}">
+                {{item.status}}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="xl:hidden w-full">
+            <div
+              class="bg-white p-3 h-auto shadow-md border-gray-50
+              border-[0.5px]">
+              <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">
+                  {{forloop.counter}}. {{item.name}}
+                </h1>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500">Duration</p>
+                  <h1>{{item.duration}}</h1>
+                </div>
+                <div class="text-end">
+                  <p class="text-gray-600">Status</p>
+                  <h1
+                    class="{% if item.status == 'completed' %} text-green-400{%
+                    else %}text-blue-500 {% endif %}">
+                    {{item.status}}
+                  </h1>
+                </div>
+              </div>
+              <div class="flex justify-between mt-4 gap-4">
+                <div class="text-start">
+                  <p class="text-gray-500"> Name of the Principal Investigator</p>
+                  <h1>{{item.investor}}</h1>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </section> {% endcomment %}
+  </div>
+</section> {% endcomment %}
 
 
 <section class="relative block overflow-x-clip bg-gray-50 py-6 my-11 ">
-    
-    <div class="fac">
-        <h1 class="text-center text-4xl font-bold mt-16">Faculty</h1>
-        <div class="slider slider_circle_10 -mt-11">
-            <div>
-                <div class="img"><img src="{{HOD.image.url}}"></div>
-                <div class="slider-desc">
-                    <h3>{{HOD.full_name}}</h3>
-                    <P>HOD</P>
-                </div>
-            </div>
 
-
-            {% for faculty in faculties %}
-            <div>
-                <div class="img"><img src="{{faculty.image.url}}"></div>
-                <div class="slider-desc">
-                    <h3>{{faculty.full_name}}</h3>
-                    <P>{{faculty.role.all|join:", "}}</P>
-                </div>
-            </div>
-            {% endfor %}
-
-
-
-
-            <div class="next_button text-black left-full text-xl"><i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </div>
-            <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+  <div class="fac">
+    <h1 class="text-center text-4xl font-bold mt-16">Faculty</h1>
+    <div class="slider slider_circle_10 -mt-11">
+      <div>
+        <div class="img"><img src="{{HOD.image.url}}"></div>
+        <div class="slider-desc">
+          <h3>{{HOD.full_name}}</h3>
+          <P>HOD</P>
         </div>
-    </div> 
+      </div>
+
+
+      {% for faculty in faculties %}
+      <div>
+        <div class="img"><img src="{{faculty.image.url}}"></div>
+        <div class="slider-desc">
+          <h3>{{faculty.full_name}}</h3>
+          <P>{{faculty.role.all|join:", "}}</P>
+        </div>
+      </div>
+      {% endfor %}
+
+
+
+
+      <div class="next_button text-black left-full text-xl"><i class="fa
+          fa-chevron-right" aria-hidden="true"></i>
+      </div>
+      <div class="prev_button text-black text-xl"><i class="fa fa-chevron-left"
+          aria-hidden="true"></i></div>
+    </div>
+  </div>
 </section>
 
 
@@ -337,7 +366,7 @@
 
 
 {% block script %}
-<script src="http://nicesnippets.com/demo/easy_slide.js"></script>
+<script src="https://nicesnippets.com/demo/easy_slide.js"></script>
 <script>
    
     $('#peos').click(() => {

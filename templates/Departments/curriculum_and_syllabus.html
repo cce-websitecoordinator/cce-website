@@ -38,16 +38,22 @@
   </div>
 </section>
 
+{% if semin %}
+
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
     <div class="w-full space-y-6 mt-11 md:mt-0">
       <h2 class="text-center text-5xl font-semibold">Handouts</h2>
 
-      <!-- Table for s1&s2 -->
+      {% for sem in semesters %}
+
+      {% if sem in semin %}
+
       <div class="w-full">
+        <h2 class="p-3 font-bold text-xl">{{sem}}</h2>
         <table class="w-full">
           <thead class="rounded-t-lg bg-[#28AAE1]">
-            <tr class=" text-white ">
+            <tr class="text-white">
               <th class="p-2">S.No</th>
               <th class="p-2">Course Name</th>
               <th class="p-2">Course Code</th>
@@ -56,29 +62,37 @@
               <th class="p-2">Notes</th>
             </tr>
           </thead>
+          <tbody>
+            {% with count=0 %}
+            {% for item in handouts %}
+              {% if item.semester == sem %}
+                <tr class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
+                  <td class="p-2 text-center">{{ count|add:1 }}.</td>
+                  <td class="p-2 text-center">{{ item.course_name }}</td>  
+                  <td class="p-2 text-center">{{ item.course_code }}</td>  
+                  <td class="p-2 text-center">{{ item.course_credits }}</td>   
+                  <td class="p-2 text-center text-blue-800"><a href="{{ item.course_information_sheet }}">Info Sheet</a></td> 
+                  <td class="p-2 text-center text-blue-800"><a href="{{ item.course_notes }}">Notes</a></td>
+                </tr>
+                
+              {% endif %}
+            {% endfor %}
+            {% endwith %}
+          </tbody>
         </table>
       </div>
+      {% endif %}
+    {% endfor %}
+    
+    
 
-      <!-- Table for s3 -->
-      <div class="w-full">
-        <table class="w-full">
-          <thead class="rounded-t-lg">
-            <tr class="bg-[#28AAE1] text-white rounded-t-xl">
-              <th class="p-2">S.No</th>
-              <th class="p-2">Course Name</th>
-              <th class="p-2">Course Code</th>
-              <th class="p-2">Credits</th>
-              <th class="p-2">Information Sheet</th>
-              <th class="p-2">Notes</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
 
 
     </div>
   </div>
 </section>
+
+{% endif %}
 
 {% include 'components/gallery.html' %} {% include 'Departments/Contact.html' %}
 {% endblock body %} {% block script %}

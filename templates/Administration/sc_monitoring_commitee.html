@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} SC/ST Monitoring committee| Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} SC/ST Monitoring committee | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 px-7 mt-11 w-full" id="content">
@@ -79,7 +79,7 @@
   </section>
 
   <div class="w-full text-center my-11 text-[#007FFF] flex justify-center items-center">
-    <a class="text-2xl font-semibold">Click Here to enter Grivence
+    <a class="text-2xl font-semibold" href="{% url 'grivence_redressal' 'student' 'login' %}">Click Here to enter Grievance
      <span class="material-symbols-outlined">
       link
       </span>
