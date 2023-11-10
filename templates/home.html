@@ -251,9 +251,9 @@
       <div class="swiper-wrapper ">
         {% for item in achivements %}
         <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
-          <div class="swiper-slide w-full  flex justify-center items-center mx-auto max-w-[410px] p-2  overflow-clip group rounded-xl ">
+          <div class="swiper-slide w-full flex justify-center items-center mx-auto  p-2  overflow-clip group rounded-xl ">
             
-            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]  box-shadow rounded-xl group-hover:scale-110 transition-all duration-300" >
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px] w-auto object-fill shadow-md border-2 border-gray-400 rounded-xl group-hover:scale-105 transition-all " >
           </div>
         </div>
         {% endfor %}
