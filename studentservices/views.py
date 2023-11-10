@@ -149,7 +149,7 @@ def central_library_page(request,slug):
             return render(request, 'StudentServices/ieee_journals.html',context=context)
         case "newsletters":
             context = {**context_temp,'data':NewsLetters.objects.all()}
-            return render(request, 'StudentServices/digital_library.html',context=context)
+            return render(request, 'StudentServices/newsletter.html',context=context)
         
             
 def clubs_page(request,slug):

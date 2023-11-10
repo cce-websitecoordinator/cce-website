@@ -2,7 +2,7 @@
 {{dep}} {%endblock title %} {% block head %} {% endblock head %} {% block body %} {% include 'Departments/Hero.html' %}
 
 <section class="md:px-24 pt-24 px-6" id="content">
-  <h3 class="text-3xl font-semibold text-center mt-11">Newsletters & Magazines</h3>
+  <h3 class="text-4xl font-semibold text-center my-11">Newsletters & Magazines</h3>
   <p class="text-center text-sm mt-4">{{about.about}}</p>
 
   <div class="flex gap-10 md:flex-row flex-col">
@@ -14,43 +14,46 @@
 
       {% include 'Departments/Sidebar.html' %}
     </div>
-    <h1 class="text-4xl font-bold">Newsletters</h1>
-    <div class="w-full gap-10  mt-11 flex flex-wrap">
-      {% for item in newsletters %}
-      <a href="{{item.file.url}}" target="_blank">
-        <div class="w-[350px] h-[350px] overflow-clip">
-          <img
-            src="{{item.image.url}}"
-            alt="{{item.image.name}}"
-            class=" rounded-t-xl h-full"
-          />
-          <div class="bg-gray-100 p-4">
-            <h3 class="text-xl font-semibold">{{item.title}}</h3>
-            <p class="text-sm text-gray-400">{{item.date}}</p>
+
+    <div class="w-full flex-col">
+
+      <!-- <h1 class="text-3xl my-10 font-bold ">Newsletters</h1> -->
+      <div class="w-full gap-10 flex flex-wrap">
+
+        {% for item in newsletters %}
+        <a href="{{item.file.url}}" target="_blank">
+          <div class="w-[350px] h-[350px] overflow-clip">
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class=" rounded-t-xl h-full" />
+            <div class="bg-gray-100 p-4">
+              <h3 class="text-xl font-semibold">{{item.title}}</h3>
+              <p class="text-sm text-gray-400">{{item.date}}</p>
+            </div>
           </div>
-        </div>
-      </a>
-      {% endfor %}
+        </a>
+        {% endfor %}
+
+
+      </div>
+      <!-- <h1 class="text-3xl my-10 font-bold">Magazines</h1>
+      <div class="w-full gap-10 flex flex-wrap">
+
+        {% for item in magazines %}
+        <a href="{{item.file.url}}" target="_blank">
+          <div class="w-[350px] h-[350px] overflow-clip">
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class=" rounded-t-xl h-full" />
+            <div class="bg-gray-100 p-4">
+              <h3 class="text-xl font-semibold">{{item.title}}</h3>
+              <p class="text-sm text-gray-400">{{item.date}}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+
+
+      </div> -->
+
     </div>
 
-    <h1 class="text-4xl font-bold">Magazines</h1>
-    <div class="w-full gap-10  mt-11 flex flex-wrap">
-      {% for item in magazines %}
-      <a href="{{item.file.url}}" target="_blank">
-        <div class="w-[350px] h-[350px] overflow-clip">
-          <img
-            src="{{item.image.url}}"
-            alt="{{item.image.name}}"
-            class=" rounded-t-xl h-full"
-          />
-          <div class="bg-gray-100 p-4">
-            <h3 class="text-xl font-semibold">{{item.title}}</h3>
-            <p class="text-sm text-gray-400">{{item.date}}</p>
-          </div>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
   </div>
 </section>
 
