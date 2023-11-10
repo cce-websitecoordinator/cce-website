@@ -69,6 +69,8 @@ class Context:
         self.products = None
         self.social_activities = None
         self.alumni = None
+        self.placement = None
+        self.Higher = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -133,7 +135,10 @@ class Context:
                 self.econtent = Econtent.objects.filter(department=dep)
             case "alumni":
                 self.alumni = Alumni.objects.filter(dep=dep)
-                print(self.alumni)
+            case "placements":
+                self.placement = Placements.objects.filter(department = dep).all()
+            case "higher":
+                self.Higher = Higher.objects.filter(department = dep).all()
 
     def data(self):
         """This method returns the context"""
@@ -178,6 +183,8 @@ class Context:
             "products": self.products,
             "social_activities": self.social_activities,
             "alumni": self.alumni,
+            "placement":self.placement,
+            "higher":self.Higher,
         }
 
 
@@ -377,15 +384,9 @@ def Department(request, route, department):
                 return Http404("Page Not Found")
 
         case "placements":
-            context["students"] = Students.objects.filter(
-                department=department
-            ).order_by("-year")
             return render(request, "Departments/Placements.html", context)
 
         case "higher":
-            context["students"] = Students.objects.filter(
-                department=department
-            ).order_by("-year")
             return render(request, "Departments/Higher.html", context)
         
         case "events":

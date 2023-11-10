@@ -157,20 +157,22 @@ def central_library_page(request,slug):  # sourcery skip: extract-method
 def clubs_page(request,slug):
     club_names = [club[0] for club in Clubs.objects.all().values_list('name')]
     context_temp = {
-        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        
         'route': slug,
         'gallery':Gallery.objects.all().order_by('?')
     }
     context={**context_temp}
     if slug == "index":
         data = Clubs.objects.all()
-        context = {**context_temp,"data":data,"hero_title":"Clubs"}
+        hero_img = Hero_Image.objects.filter(page="clubs").first()
+        context = {**context_temp,"data":data,"hero_title":"Clubs","hero_img":hero_img}
         return render(request, 'StudentServices/clubs/index.html',context=context)
     elif slug in club_names:
-        club = Clubs.objects.filter(name = slug).first()
+        club = Clubs.objects.filter(name=slug).first()
         events = ClubEvents.objects.all().filter(club__name = slug).order_by('-date')
         members = ClubMembers.objects.all().filter(club__name = slug).order_by('priority')
-        context = {**context_temp,"club":club,"hero_title":club.name,"events":events,"members":members}
+        hero_img = ClubsHeroImage.objects.filter(club__name = slug).first()
+        context = {**context_temp,"club":club,"hero_title":club.name,"events":events,"members":members,"hero_img":hero_img}
         return render(request, 'StudentServices/clubs/club_template.html',context=context)
     else:
         return Http404("Page Not Found")

@@ -260,9 +260,9 @@ class Events(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (
         ("workshops_seminars", "Workshops / Seminars"),
-        ("value_added", "Value Added"),
+        ("addons", "Add-Ons"),
         ("iv", "Industrial Visits"),
-        ("competitions","Competetions"),
+        ("competitions","competetions"),
     )
     type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
@@ -566,7 +566,7 @@ class Placements(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     def __str__(self):
-        return self.year+self.department
+        return self.year+" "+self.department
 
 class Higher(models.Model):
     year = models.CharField(
@@ -576,7 +576,7 @@ class Higher(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     def __str__(self):
-        return self.year+self.department
+        return self.year+" "+self.department
     
 class Alumni(models.Model):
     name=models.CharField(max_length=200)

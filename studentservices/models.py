@@ -113,6 +113,18 @@ class Clubs(models.Model):
     def __str__(self):
         return self.name
     
+class ClubsHeroImage(models.Model):
+    club = models.OneToOneField(Clubs,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="Clubs_Heros_Images",blank=True)
+    video = models.FileField(upload_to="Clubs_Heros_Videos",blank=True)
+    TYPE = (("img","IMAGE"),("vdo","VIDEO"))
+    type = models.CharField(max_length=200, choices = TYPE, default="img")
+    def __str__(self):
+        return self.club.name
+    class Meta:
+        verbose_name_plural = "Clubs Hero Images"
+
+    
 class ClubEvents(models.Model):
     club = models.ForeignKey(Clubs, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -175,7 +187,7 @@ class UnionCommitee(models.Model):
         return self.name
     
 
-class  CentralLibrary(models.Model):
+class CentralLibrary(models.Model):
     data = models.TextField()
     CHOICES = (("Vision", "Vision"), ("Mission", "Mission"),("about","about"))
     name = models.CharField(max_length=10, choices=CHOICES)
