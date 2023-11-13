@@ -20,6 +20,7 @@ urlpatterns = [
     path('approvals',views.aicte_approvals_page,name='Aicte_Approvals'),
     path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
     path('college_magazine', views.college_magazine_page, name='College_Magazine'),
+    path('ktu_affiliations',views.ktu_affiliation_page,name='Ktu_Affiliations'),
 ]
 
 if settings.DEBUG:     
