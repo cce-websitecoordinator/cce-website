@@ -4,25 +4,25 @@
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
 
 
-            {% if 'mandatory_disclosure' == route %}
+            {% ifequal 'mandatory_disclosure' route %}
             <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Mandatory Disclosure </span>
-            {% endif %}
+            {% endifequal %}
 
-            {% if 'faculty' == route %}
+            {% ifequal 'faculty' route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
-            {% endif %}
+            {% endifequal %}
 
-            {% if 'faculty' == route %}
+            {% ifequal 'faculty' route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
-            {% endif %}
+            {% endifequal %}
 
-            {% if 'curriculum_and_syllabus' == route %}
+            {% ifequal 'curriculum_and_syllabus' route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>AICTE Approvals</span>
-            {% endif %}
+            {% endifequal %}
 
-            {% if 'mandatory_disclosure' == route %}
+            {% ifequal 'mandatory_disclosure' route %}
             <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Audited Statements </span>
-            {% endif %}
+            {% endifequal %}
 
             
         </div>
