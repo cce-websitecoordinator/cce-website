@@ -94,7 +94,7 @@ def result_analysis_page(request):
 def college_calendar_page(request):
     data = CollegeCalendar.objects.all()
     hero_img = Hero_Image.objects.filter(page="college_calendar").first()
-    return render(request,'aboutCCE/college_calendar.html',context={'hero_img':hero_img,'hero_title':'College Calendar','data':data}) 
+    return render(request,'aboutCCE/college_calendar.html',context={'hero_img':hero_img,'hero_title':'Institute Calendar','data':data}) 
 
 
 def college_handbook_page(request):

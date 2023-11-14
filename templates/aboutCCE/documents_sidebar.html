@@ -4,25 +4,25 @@
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]   items-center flex  mx-auto">
 
 
-            {%ifequal 'mandatory_disclosure' route%}
+            {% if 'mandatory_disclosure' == route %}
             <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Mandatory Disclosure </span>
-            {%endifequal%}
+            {% endif %}
 
-            {%ifequal 'faculty' route%}
+            {% if 'faculty' == route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
-            {%endifequal%}
+            {% endif %}
 
-            {%ifequal 'faculty' route%}
+            {% if 'faculty' == route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
-            {%endifequal%}
+            {% endif %}
 
-            {%ifequal 'curriculum_and_syllabus' route%}
+            {% if 'curriculum_and_syllabus' == route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>AICTE Approvals</span>
-            {%endifequal%}
+            {% endif %}
 
-            {%ifequal 'mandatory_disclosure' route%}
+            {% if 'mandatory_disclosure' == route %}
             <i class="material-icons" class="group-hover:text-[#007FFF]">description</i><span>Audited Statements </span>
-            {%endifequal%}
+            {% endif %}
 
             
         </div>
@@ -59,6 +59,13 @@
             <a href="{% url 'Audited_Statements' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>Audited Statements</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'ktu_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Ktu_Affiliations' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
             </a>
         </div>
         

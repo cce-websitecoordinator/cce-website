@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from .models import *
 import website.models
 from .models import Achivements as DepAchievements
-
+from studentservices.models import Clubs
 # Create your views here.
 
 
@@ -70,6 +70,7 @@ class Context:
         self.products = None
         self.social_activities = None
         self.alumni = None
+        self.clubs = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -455,8 +456,11 @@ def Department(request, route, department):
             return render(request, "Departments/e-content.html", context)
         
         case "alumni":
-            
             return render(request, "Departments/Alumni.html", context)
+        
+        case "clubs":
+            context["clubs"] = Clubs.objects.filter(department=department)
+            return render(request, "Departments/clubs.html", context)
 
         case other:
             raise Http404("Page Not Found")
