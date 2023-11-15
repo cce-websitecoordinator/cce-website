@@ -16,10 +16,10 @@
           <div class="flex items-center gap-2 text-sm font-medium mb-10">
             
               <a href="{% url 'Department' dep 'fdps' %}?year=ALL&type=attended#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  {% ifequal type 'faculty' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  {% ifequal type 'attended' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
                 Attended</a>
               <a href="{% url 'Department' dep 'fdps' %}?year=ALL&type=organised#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 {% ifequal type 'student' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
+                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 {% ifequal type 'organised' %} bg-blue-500 border-blue-500 text-gray-100 {% else %} text-gray-700 {% endifequal %}  ">
                 Organised</a>
 
           </div>
@@ -34,6 +34,7 @@
               <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6 bg-blue-300 rounded-md">
                 <div class="text-center px-2">Sl No</div>
                 <div class="text-center px-2">Topic</div>
+                <div class="text-center px-2">Faculty Name</div>
                 <div class="text-center px-2">Year</div>
                 <div class="text-center px-2">Duration</div>
               </div>
@@ -45,6 +46,7 @@
                 <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
                   <div class="text-center px-2">{{ forloop.counter }}</div>
                   <div class="text-center px-2">{{item.topic}}</div>
+                  <div class="text-center px-2">{{item.name}}</div>
                   <div class="text-center px-2">{{item.year}}</div>
                   <div class="text-center px-2">{{item.duration}}</div>
                 </div>
@@ -68,6 +70,10 @@
                     <div class="text-end">
                       <p class="text-gray-500">Topic</p>
                       <h1>{{item.topic}}</h1>
+                    </div>
+                    <div class="text-end">
+                      <p class="text-gray-500">Faculty Name</p>
+                      <h1>{{item.name}}</h1>
                     </div>
                   </div>
                   <div class="flex justify-between mt-4 gap-4">
@@ -99,7 +105,7 @@
               <div class="w-auto grid grid-cols-5 justify-evenly min-h-[50px] py-6 bg-blue-300 rounded-md">
                 <div class="text-center px-2">Sl No</div>
                 <div class="text-center px-2">Topic</div>
-                <div class="text-center px-2">Name</div>
+                <div class="text-center px-2">Faculty Coordinator</div>
                 <div class="text-center px-2">Year</div>
                 <div class="text-center px-2">Duration</div>
               </div>
@@ -131,14 +137,14 @@
                       <h1>{{ forloop.counter }}</h1>
                     </div>
                     <div class="text-end">
-                      <p class="text-gray-500">Name</p>
-                      <h1>{{item.name}}</h1>
+                      <p class="text-gray-500">Topic</p>
+                      <h1>{{item.topic}}</h1>
                     </div>
                   </div>
                   <div class="flex justify-between mt-4 gap-4">
                     <div class="text-start">
-                      <p class="text-gray-500">Year</p>
-                      <h1>{{item.year}}</h1>
+                      <p class="text-gray-500">Faculty Coordinator</p>
+                      <h1>{{item.name}}</h1>
                     </div>
                     <div class="text-start">
                       <p class="text-gray-500">Year</p>

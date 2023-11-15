@@ -215,3 +215,8 @@ def server_error_page(request):
 def not_found_error_page(request, exception):
 
     return render(request, "Errors/404.html",status=404)
+
+def websiteteam(request):
+    return render(request,'webteam.html' , context={
+        "data": WebsiteTeam.objects.all(),
+    })
