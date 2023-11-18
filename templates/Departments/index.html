@@ -83,6 +83,79 @@
 
         </div>
       </div>
+      <section class="w-full mt-11">
+        <div class="flex lg:flex-row flex-col gap-10"><div class="w-full space-y-6 mt-11 md:mt-0 ">
+            <h2 class="text-center font-bold text-5xl">Programme Details</h2>
+            {% ifnotequal dep 'BSH' %}
+              
+            
+            <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
+              <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+                font-black items-center">Program Educational Objectives (PEOs)<span
+                  class="material-symbols-outlined" style="font-size:35px ;">
+                  expand_more
+                </span></h2>
+              <div class="hidden pl-3 space-y-4 " id='peos-data'>
+                {% for item in poes %}
+                <div>
+                  <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
+                  <p class="text-gray-600 pl-4">{{item.data}}</p>
+                </div>
+                {% endfor %}
+      
+              </div>
+            </div>
+      
+            {% endifnotequal %}
+      
+      
+            <div class="p-6 shadow-xl rounded-[16px] " id="pos">
+              <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+                font-black items-center">Program Outcomes (POs)<span
+                  class="material-symbols-outlined" style="font-size:35px ;">
+                  expand_more
+                </span></h2>
+              <div class=" pl-3 ">
+                <div class="hidden pl-3 space-y-4 " id="pos-data">
+                  {% for item in pos %}
+                  <div>
+                    <h3 class="text-xl font-semibold">PO-{{forloop.counter}}</h3>
+                    <p class="text-gray-600 pl-4">{{item.data}}</p>
+                  </div>
+                  {% endfor %}
+      
+                </div>
+      
+              </div>
+            </div>
+      
+            {% ifnotequal dep 'BSH' %}
+              
+            
+            <div class="p-6 shadow-xl rounded-[16px] " id="psos">
+              <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+                font-black items-center">Program Specific Outcomes (PSOs)<span
+                  class="material-symbols-outlined" style="font-size:35px ;">
+                  expand_more
+                </span></h2>
+              <div class=" pl-3 ">
+                <div class="hidden pl-3 space-y-4 " id="psos-data">
+                  {% for item in psos %}
+                  <div>
+                    <h3 class="md:text-xl font-semibold">PSO-{{forloop.counter}}</h3>
+                    <p class="text-gray-600 pl-4">{{item.data}}</p>
+                  </div>
+                  {% endfor %}
+      
+                </div>
+      
+              </div>
+            </div>
+      
+            {% endifnotequal %}
+          </div>
+        </div>
+      </section>
 
     </div>
   </div>
@@ -93,85 +166,7 @@
 
 
 
-<section class="md:px-24 px-7 mt-11">
-  <div class="flex lg:flex-row flex-col gap-10">
-    <div class='mx-auto'> {% with dep_updates as side_updates %} {% include 'Departments/Updates.html' %}{% endwith %}</div>
-    <div class="w-full space-y-6 mt-11 md:mt-0 ">
-      <h2 class="text-center font-bold text-5xl">Programme Details</h2>
-      {% ifnotequal dep 'BSH' %}
-        
-      
-      <div class="p-6 shadow-xl rounded-[16px] group" id="peos">
-        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
-          font-black items-center">Program Educational Objectives (PEOs)<span
-            class="material-symbols-outlined" style="font-size:35px ;">
-            expand_more
-          </span></h2>
-        <div class="hidden pl-3 space-y-4 " id='peos-data'>
-          {% for item in poes %}
-          <div>
-            <h3 class="text-xl font-semibold">PEO-{{forloop.counter}}</h3>
-            <p class="text-gray-600 pl-4">{{item.data}}</p>
-          </div>
-          {% endfor %}
 
-        </div>
-      </div>
-
-      {% endifnotequal %}
-
-
-      <div class="p-6 shadow-xl rounded-[16px] " id="pos">
-        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
-          font-black items-center">Program Outcomes (POs)<span
-            class="material-symbols-outlined" style="font-size:35px ;">
-            expand_more
-          </span></h2>
-        <div class=" pl-3 ">
-          <div class="hidden pl-3 space-y-4 " id="pos-data">
-            {% for item in pos %}
-            <div>
-              <h3 class="text-xl font-semibold">PO-{{forloop.counter}}</h3>
-              <p class="text-gray-600 pl-4">{{item.data}}</p>
-            </div>
-            {% endfor %}
-
-          </div>
-
-        </div>
-      </div>
-
-      {% ifnotequal dep 'BSH' %}
-        
-      
-      <div class="p-6 shadow-xl rounded-[16px] " id="psos">
-        <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
-          font-black items-center">Program Specific Outcomes (PSOs)<span
-            class="material-symbols-outlined" style="font-size:35px ;">
-            expand_more
-          </span></h2>
-        <div class=" pl-3 ">
-          <div class="hidden pl-3 space-y-4 " id="psos-data">
-            {% for item in psos %}
-            <div>
-              <h3 class="md:text-xl font-semibold">PSO-{{forloop.counter}}</h3>
-              <p class="text-gray-600 pl-4">{{item.data}}</p>
-            </div>
-            {% endfor %}
-
-          </div>
-
-        </div>
-      </div>
-
-      {% endifnotequal %}
-
-
-    </div>
-  </div>
-
-
-</section>
 {% comment %} <section class="md:px-24 pt-24 px-6 my-11" id="content">
   <div class="flex gap-10 md:flex-row flex-col">
 
