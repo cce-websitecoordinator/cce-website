@@ -189,3 +189,13 @@ class GrievanceBody(models.Model):
     message = models.TextField()
     def __str__(self) -> str:
         return f"{self.name}  ({self.type.capitalize()})"
+    
+class DisciplinaryCommittee(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    email = models.EmailField()
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Disciplinary Committee"
