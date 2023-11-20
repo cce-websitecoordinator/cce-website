@@ -121,7 +121,7 @@ def central_library_page(request,slug):  # sourcery skip: extract-method
     context_temp = {
         'title': 'Central Library',
         'hero_title': 'Central Library',
-        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        'hero_img': Hero_Image.objects.filter(page='library').first(),
         'route': slug,
     }
     context={**context_temp}
