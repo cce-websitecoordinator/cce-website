@@ -244,6 +244,7 @@ class Hero_Image(models.Model):
         ("internal_audit_page", "Internal Audit"),
         ("external_audit_page", "External Audit"),
         ("ieee", "IEEE"),
+        ("website_team", "Website Team"),
 
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")

@@ -236,6 +236,9 @@ def not_found_error_page(request, exception):
     return render(request, "Errors/404.html",status=404)
 
 def websiteteam(request):
+    hero_img = Hero_Image.objects.all().filter(page="website_team").first()
     return render(request,'webteam.html' , context={
         "data": WebsiteTeam.objects.all(),
+        "hero_title": "Website Team",
+        "hero_img":hero_img,
     })
