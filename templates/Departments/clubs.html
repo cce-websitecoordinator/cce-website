@@ -11,29 +11,34 @@
 
 
   <div class="flex gap-10 md:flex-row flex-col">
-      <div class="col-span-1">
-          <h2 class="font-semibold text-2xl px-4">Departments</h2>
-          <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
 
-          {% include 'Departments/Sidebar.html' %}
+      {% include 'Departments/Sidebar.html' %}
+    </div>
+
+    <div class="flex gap-10 md:flex-row flex-col"></div>
+
+    <div class="col-span-2 h-fit  mt-11 pt-6 flex w-full flex-wrap justify-center">
+      {% for item in clubs %}
+      <div
+        class="max-w-[350px] shadow-xl rounded-md p-4 space-y-3 flex flex-col items-center justify-between bg-gray-100">
+        <img src="{{item.logo.url}}" alt="club_image" class=" w-[150px] max-h-[150px] ">
+
+        <h2 class="text-3xl font-black text-gray-800">{{item.name}}</h2>
+        <h6 class="text-center text-sm text-gray-500 px-6">{{item.description}}</h6>
+        <a href=" {% if item.link == 'default.com' %} {% url 'clubs' item.name %} {% else %} {{item.link}} {% endif %}"
+          class="bg-blue-500 text-white px-5 py-2">View Site</a>
       </div>
+      {% endfor %}
 
-      <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
-        {% for item in clubs %}
-        <div class="max-w-[350px]  shadow-xl rounded-md p-4 space-y-3 flex flex-col items-center justify-between bg-gray-100">
-          <img src="{{item.logo.url}}" alt="club_image" class=" w-[150px] max-h-[150px] " >
-
-          <h2 class="text-3xl font-black text-gray-800">{{item.name}}</h2>
-          <h6 class="text-center text-sm text-gray-500 px-6">{{item.description}}</h6>
-          <a href=" {% if item.link == 'default.com' %} {% url 'clubs' item.name %} {% else %} {{item.link}} {% endif %}" class="bg-blue-500 text-white px-5 py-2">View Site</a>
-        </div>
-        {% endfor %}
-        
-       </div>
+    </div>
+  </div>
   </div>
 
 </section>
 
 {% include 'components/gallery.html'%}
 {% include 'Departments/Contact.html'%}
-{% endblock body %} 
+{% endblock body %}
