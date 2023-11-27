@@ -103,7 +103,7 @@ def academic_administration_page(request):
 
 
 def grivence_redressal_index_page(request):
-    hero_img = Hero_Image.objects.filter(page="grivence_redressal").first()
+    hero_img = Hero_Image.objects.filter(page="grivence_redressal_sysytem").first()
     data = GrivenceCommitee.objects.all()
     return render(request,"Administration/grievance/index.html",context={'hero_title':'Grievance/Suggestions','hero_img':hero_img,"data":data})
 
@@ -213,10 +213,15 @@ def test_fn(request):
 def disciplinary_committee_page(request):
     hero_img = Hero_Image.objects.filter(page="disciplinary_committee").first()
     disciplinary_committee_data = DisciplinaryCommittee.objects.all()
+    hero_img = Hero_Image.objects.all().filter(page="disciplinary_committee").first()
     gallery = Gallery.objects.all().order_by('?')[:6];
     return render(request,'Administration/disciplinary_committee.html',context={'hero_img':hero_img,'hero_title':'Disciplinary Committee','disciplinary_committee_data':disciplinary_committee_data,"gallery":gallery})
 
 def  internal_audit_page(request):
-    hero_img = Hero_Image.objects.filter(page="internal_audit").first()
+    hero_img = Hero_Image.objects.all().filter(page="internal_audit_page").first()
     internal_audit_data = InternalAudit.objects.all()
     return render(request,'Administration/internal_audit.html',context={'hero_img':hero_img,'hero_title':'Internal Audit','internal_audit_data':internal_audit_data})
+
+def  external_audit_page(request):
+    hero_img = Hero_Image.objects.filter(page="external_audit_page").first()
+    return render(request,'Administration/external_audit.html',context={'hero_img':hero_img,'hero_title':'Internal Audit'})

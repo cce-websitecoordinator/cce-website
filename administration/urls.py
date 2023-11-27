@@ -18,6 +18,7 @@ urlpatterns = [
     path("test",views.test_fn,name="test"),
     path('disciplinary_committee', views.disciplinary_committee_page, name='disciplinary_committee'),
     path('internal_audit', views.internal_audit_page, name='internal_audit'),
+    path('external_audit', views.external_audit_page, name='external_audit'),
 
 ]
 

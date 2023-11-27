@@ -211,11 +211,11 @@ class DisciplinaryCommittee(models.Model):
         verbose_name_plural = "Disciplinary Committee"
 
 class InternalAudit(models.Model):
-    auditors_1 = models.CharField(max_length=200),
-    designation_1 = models.CharField(max_length=200),
-    auditors_2 = models.CharField(max_length=200),
-    designation_2 = models.CharField(max_length=200),
-    department = models.CharField(max_length=200 , choices=DEPARTMENTS)
+    auditors_1 = models.CharField(max_length=200,default=None)
+    designation_1 = models.CharField(max_length=200,default=None)
+    auditors_2 = models.CharField(max_length=200,default=None)
+    designation_2 = models.CharField(max_length=200,default=None)
+    department = models.CharField(max_length=200,choices=DEPARTMENTS)
     def __str__(self):
         return self.department
     class Meta:
