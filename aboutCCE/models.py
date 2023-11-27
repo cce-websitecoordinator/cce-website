@@ -1,5 +1,5 @@
 from django.db import models
-
+from departments.models import ACADEMIC_YEARS 
 from utils.compressor import Compress
 
 # Create your models here.
@@ -118,3 +118,15 @@ class KtuAffiliations(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = "KTU Affiliations"
+
+class Committee(models.Model):
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    pdf = models.FileField(upload_to='Committee')
+
+    def __str__(self):
+        return self.year
+    class Meta:
+        verbose_name = "Committee"
+        verbose_name_plural = "Committees"
