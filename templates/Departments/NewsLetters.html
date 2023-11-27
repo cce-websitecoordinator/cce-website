@@ -1,37 +1,50 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Newsletters |
+{% extends 'base.html' %} {% load static %} {% block title %} Newsletters & Magazines |
 {{dep}} {%endblock title %} {% block head %} {% endblock head %} {% block body %} {% include 'Departments/Hero.html' %}
 
 <section class="md:px-24 pt-24 px-6" id="content">
-  <h3 class="text-3xl font-semibold text-center mt-11">Newsletters and Magazines</h3>
+  <h3 class="text-4xl font-semibold text-center my-11">Newsletters & Magazines</h3>
   <p class="text-center text-sm mt-4">{{about.about}}</p>
 
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
       <p class="px-4 text-gray-400">
-        Home / Academics / Department / Newsletters
+        Home / Academics / Department / Newsletters & Magazines
       </p>
 
       {% include 'Departments/Sidebar.html' %}
     </div>
 
-    <div class="w-full gap-10  mt-11 flex flex-wrap">
-      {% for item in newsletters %}
-      <a href="{{item.file.url}}" target="_blank">
-        <div class="w-[350px] h-[350px] overflow-clip">
-          <img
-            src="{{item.image.url}}"
-            alt="{{item.image.name}}"
-            class=" rounded-t-xl h-full"
-          />
-          <div class="bg-gray-100 p-4">
-            <h3 class="text-xl font-semibold">{{item.title}}</h3>
-            <p class="text-sm text-gray-400">{{item.date}}</p>
+    <div class="w-full flex-col">
+
+      <div class="w-full gap-10 flex flex-wrap">
+
+        {% for item in newsletters %}
+        <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+          <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+            <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+              alt="{{item.image.name}}">
+          </a>
+          <div class="p-5">
+            <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
           </div>
         </div>
-      </a>
-      {% endfor %}
+        {% endfor %}
+
+        {% for item in magazines %}
+        <div class="w-[350px] bg-gray-50 border border-gray-300 rounded-xl shadow-lg overflow-hidden">
+          <a href="{{item.file.url}}" target="_blank" class="overflow-hidden">
+            <img class="rounded-t-lg h-[350px] w-full object-cover transition hover:scale-105" src="{{item.image.url}}"
+              alt="{{item.image.name}}">
+          </a>
+          <div class="p-5">
+            <h5 class="mb-2 text-base font-semibold tracking-normal text-gray-700">{{item.title}}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
   </div>
 </section>
 

@@ -203,6 +203,25 @@ def research_page(request, slug):
         case other:
             raise Http404("Page Kanumanilla")
 
+def library(request, slug):
+    hero_img = Hero_Image.objects.all().filter(page="library").first()
+    context_temp = {"hero_img": hero_img, "slug": slug}
+    match slug:
+        case "nptel":
+            hero_title = "NPTEL"
+            pdfs = Nptel.objects.all()
+            context = {"hero_title": hero_title,'pdfs':pdfs, **context_temp}
+            return render(request, "library/nptel.html", context)
+        case "e-resources":
+            context = {
+                "hero_title": "E-Resources",
+                
+                **context_temp,
+            }
+            return render(
+                request, "researchAndConsultancy/academic_consultancy.html", context
+            )
+
 
 def test_page(request):
     return render(request, "Test.html")

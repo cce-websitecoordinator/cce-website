@@ -19,7 +19,16 @@
         for the B.Tech degree.</p>
       <h1 class="text-4xl my-11 font-bold">Rules and Regulations</h1>
       {% if activity_point %}
-      <div class="p-1 border-2 border-blue-500 w-full flex ">
+      <div class="p-1 border-2 border-blue-500 h-[90vh] w-[50rem]">
+        <object
+          
+          data='{{activity_point.activity_pdfs.url}}'
+          type="application/pdf"
+          class="w-full"
+          height="100%">
+        </object>
+    </div>
+      <!-- <div class="p-1 border-2 border-blue-500 w-full flex ">
         <iframe
           src="{{activity_point.activity_pdfs.url}}"
           frameborder="0"
@@ -29,7 +38,7 @@
           type="application/pdf"
         >
         </iframe>
-      </div>
+      </div> -->
       {% endif %}
     </div>
   </section>

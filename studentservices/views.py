@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from studentservices.models import *
 from website.models import Gallery, Hero_Image
-from departments.models import NewsLetters
+from departments.models import NewsLetters,Magazines
+import aboutCCE.models
+
 
 # Create your views here.
 def arts_page(request):
@@ -115,11 +117,11 @@ def ccil_page(request):
 
 
 
-def central_library_page(request,slug):
+def central_library_page(request,slug):  # sourcery skip: extract-method
     context_temp = {
         'title': 'Central Library',
         'hero_title': 'Central Library',
-        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        'hero_img': Hero_Image.objects.filter(page='library').first(),
         'route': slug,
     }
     context={**context_temp}
@@ -135,6 +137,8 @@ def central_library_page(request,slug):
             context = {**context_temp,'data':LibraryFaculty.objects.all()}
             return render(request, 'StudentServices/faculty_and_staff.html',context=context)
         case "library_info":
+            data = LibraryInfo.objects.all()
+            context = {'data':data,**context_temp}
             return render(request, 'StudentServices/library_info.html',context=context)
         case "rules_and_regulations":
             return render(request, 'StudentServices/rules_and_regulations.html',context=context)
@@ -146,27 +150,29 @@ def central_library_page(request,slug):
             context = {**context_temp,"journals":journals}
             return render(request, 'StudentServices/ieee_journals.html',context=context)
         case "newsletters":
-            context = {**context_temp,'data':NewsLetters.objects.all()}
-            return render(request, 'StudentServices/digital_library.html',context=context)
+            context = {**context_temp,'data':NewsLetters.objects.all(),"data1":Magazines.objects.all(),"college_data":aboutCCE.models.CollegeMagazine.objects.all()}
+            return render(request, 'StudentServices/newsletter.html',context=context)
         
             
 def clubs_page(request,slug):
     club_names = [club[0] for club in Clubs.objects.all().values_list('name')]
     context_temp = {
-        'hero_img': Hero_Image.objects.filter(page='central_library').first(),
+        
         'route': slug,
         'gallery':Gallery.objects.all().order_by('?')
     }
     context={**context_temp}
     if slug == "index":
         data = Clubs.objects.all()
-        context = {**context_temp,"data":data,"hero_title":"Clubs"}
+        hero_img = Hero_Image.objects.filter(page="clubs").first()
+        context = {**context_temp,"data":data,"hero_title":"Clubs","hero_img":hero_img}
         return render(request, 'StudentServices/clubs/index.html',context=context)
     elif slug in club_names:
-        club = Clubs.objects.filter(name = slug).first()
+        club = Clubs.objects.filter(name=slug).first()
         events = ClubEvents.objects.all().filter(club__name = slug).order_by('-date')
         members = ClubMembers.objects.all().filter(club__name = slug).order_by('priority')
-        context = {**context_temp,"club":club,"hero_title":club.name,"events":events,"members":members}
+        hero_img = ClubsHeroImage.objects.filter(club__name = slug).first()
+        context = {**context_temp,"club":club,"hero_title":club.name,"events":events,"members":members,"hero_img":hero_img}
         return render(request, 'StudentServices/clubs/club_template.html',context=context)
     else:
         return Http404("Page Not Found")

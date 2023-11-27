@@ -89,12 +89,16 @@ class AuditedStatements(models.Model):
         verbose_name_plural = "Audited Statements"
 
 class CollegeMagazine(models.Model):
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=200, default="None")
+    image = models.ImageField(upload_to="CollegeMagazineImages", default="None")
     file = models.FileField(upload_to="CollegeMagazine")
-    def __str__(self):
-        return self.name
+
     class Meta:
-        verbose_name_plural = "College Magazine"
+        verbose_name = "Magazine / Newsletter"
+        verbose_name_plural = "Magazines / Newsletters"
+
+    def __str__(self):
+        return self.title
 
 class ResultAnalysis(models.Model):
     image = models.ImageField(upload_to='results/')

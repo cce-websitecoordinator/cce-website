@@ -262,13 +262,38 @@ class Events(models.Model):
         ("workshops_seminars", "Workshops / Seminars"),
         ("addons", "Add-Ons"),
         ("iv", "Industrial Visits"),
+        ("competitions","competetions"),
     )
     type = models.CharField(choices=TYPE, max_length=100, default="iv")
     link = models.URLField()
 
     class Meta:
-        verbose_name = "Event"
-        verbose_name_plural = "Events"
+        verbose_name = "Co Curricular Event"
+        verbose_name_plural = "Co Curricular Events"
+
+    def __str__(self):
+        return self.title
+    
+class ExtraEvents(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="ExtraEventsImages")
+    poster = models.ImageField(upload_to="ExtraEventsImages", default="None")
+    data = models.CharField(max_length=500)
+    date = models.DateField()
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default="None"
+    )
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    TYPE = (
+        ("sports", "Sports"),
+        ("arts", "Arts"),
+    )
+    type = models.CharField(choices=TYPE, max_length=100, default="sports")
+    link = models.URLField()
+
+    class Meta:
+        verbose_name = "Extra Curricular Event"
+        verbose_name_plural = "Extra Curricular Events"
 
     def __str__(self):
         return self.title
@@ -295,11 +320,25 @@ class NewsLetters(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     class Meta:
-        verbose_name = "NewsLetters"
-        verbose_name_plural = "NewsLetterss"
+        verbose_name = "NewsLetter"
+        verbose_name_plural = "NewsLetters"
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.department}"
+
+    
+class Magazines(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="MagazineImages", default="None")
+    file = models.FileField(upload_to="Magazines")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Magazine"
+        verbose_name_plural = "Magazines"
+
+    def __str__(self):
+        return f"{self.title} - {self.department}"
 
 
 class Objectives(models.Model):
@@ -527,7 +566,7 @@ class Placements(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     def __str__(self):
-        return self.year+self.department
+        return self.year+" "+self.department
 
 class Higher(models.Model):
     year = models.CharField(
@@ -537,7 +576,7 @@ class Higher(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
 
     def __str__(self):
-        return self.year+self.department
+        return self.year+" "+self.department
     
 class Alumni(models.Model):
     name=models.CharField(max_length=200)
@@ -552,3 +591,14 @@ class Alumni(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ResearchAbout(models.Model):
+    data = models.TextField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    class Meta:
+        verbose_name = "Research About"
+        verbose_name_plural = "Research Abouts"
+
+    def __str__(self):
+        return self.department

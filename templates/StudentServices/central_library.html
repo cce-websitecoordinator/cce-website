@@ -16,23 +16,7 @@
       <div>
         <h3 class="text-3xl font-semibold text-left mt-11">About Central
           Library</h3>
-          <div class="w-full gap-10  mt-11 flex flex-wrap">
-            {% for item in newsletters %}
-            <a href="{{item.file.url}}" target="_blank">
-              <div class="w-[350px] h-[350px] overflow-clip">
-                <img
-                  src="{{item.image.url}}"
-                  alt="{{item.image.name}}"
-                  class=" rounded-t-xl h-full"
-                />
-                <div class="bg-gray-100 p-4">
-                  <h3 class="text-xl font-semibold">{{item.title}}</h3>
-                  <p class="text-sm text-gray-400">{{item.date}}</p>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
+          
         <p class=" text-sm mt-4 text-justify mb-11">{{about.data}}</p>
       </div>
 

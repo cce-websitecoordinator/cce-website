@@ -22,7 +22,7 @@
     
   <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start justify-center " id="modal">
     <div class="w-[90%] md:max-h-[80%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
-      <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2 shadow-inner rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
+      <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2  rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
         close
         </span></button>
       <div class="flex items-center justify-center absolute inset-0">
@@ -90,10 +90,10 @@
       </p>
     </div>
     <div class="mt-6 px-11">
-      <div class="border-2  p-1 pr-2">
-      <h1 class="text-3xl  font-bold pt-4 text-center text-blue-700">Quality Policy</h1>
+      <div class=" py-6 rounded-lg">
+      <h1 class="text-4xl font-bold text-center">Quality Policy</h1>
       
-      <p class=" text-justify mt-4">Christ College of Engineering is committed to achieve excellence in the higher education by providing a conducive platform for both students and faculty by creating an educational system based on quality education and ethical values. The college is also committed to continually improve its teaching learning practices and implement a holistic development of student community to meet the needs of the industry and society.</p>
+      <p class="text-justify mt-4 ">Christ College of Engineering is committed to achieve excellence in the higher education by providing a conducive platform for both students and faculty by creating an educational system based on quality education and ethical values. The college is also committed to continually improve its teaching learning practices and implement a holistic development of student community to meet the needs of the industry and society.</p>
     </div>
   </div>
   </div>
@@ -111,7 +111,7 @@
             <div class="swiper-slide">
               <div class="relative">
                 <div class="w-full  flex items-center justify-center">
-                  <img src="{{event.img.url}}" class="max-h-[500px]"  />
+                  <img src="{{event.img.url}}" class="h-[500px]"  />
                 </div>
 
                 <div class='w-full flex pt-3 items-center'>
@@ -251,9 +251,9 @@
       <div class="swiper-wrapper ">
         {% for item in achivements %}
         <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
-          <div class="swiper-slide w-full  flex justify-center items-center mx-auto max-w-[410px] p-2  overflow-clip group rounded-xl ">
+          <div class="swiper-slide w-full flex justify-center items-center mx-auto  p-2  overflow-clip group rounded-xl ">
             
-            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px]  box-shadow rounded-xl group-hover:scale-110 transition-all duration-300" >
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px] w-auto object-fill shadow-md border-2 border-gray-400 rounded-xl group-hover:scale-105 transition-all " >
           </div>
         </div>
         {% endfor %}
@@ -391,35 +391,7 @@
   
 
 
- /* function changeImageRandomly() {
-    const images = document.querySelectorAll("#imageGrid img");
-    
-    const imageUrls = img_datas
-    
-    const shuffledImageUrls = imageUrls;
 
-    
-    // Shuffle the gallery array to make it random
-    
-
-    images.forEach((imgElement, index) => {
-      // Set a random index to pick an image from the shuffled gallery
-      const randomIndex = Math.floor(Math.random() * shuffledImageUrls.length);
-      const imageUrl = shuffledImageUrls[randomIndex];
-
-      console.log(imageUrl)
-
-      // Update the image source
-      imgElement.src = imageUrl;
-    });
-
-    // Set a random refresh interval for changing images (between 5 and 15 seconds)
-    const refreshInterval = Math.floor(Math.random() * 10000) + 5000; // Random interval between 5s and 15s
-    setTimeout(changeImageRandomly, refreshInterval);
-  }
-
-  // Call the function to start changing images
-  changeImageRandomly(); */
   
 
   $("#modal_close").click(function () {
