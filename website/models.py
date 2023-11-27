@@ -379,3 +379,8 @@ class Nptel(models.Model):
 
     def __str__(self):
         return self.title_year
+class WebsiteTeam(models.Model):
+    name = models.CharField(max_length=100),
+    img = models.ImageField(upload_to="websiteteam",null=False,blank=False),
+    role = models.CharField(max_length=100),
+    batch = models.CharField(max_length=100 ,choices=ACADEMIC_YEARS),

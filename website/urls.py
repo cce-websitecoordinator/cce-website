@@ -16,7 +16,7 @@ urlpatterns = [
     path('test', views.test_page, name='test'),
     path('events', views.events_page, name='events'),
     path('library/<str:slug>', views.library, name='library'),
-
+    path('websiteteam', views.websiteteam, name='websiteteam'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

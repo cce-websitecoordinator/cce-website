@@ -228,7 +228,7 @@ class Laboratories(models.Model):
 class Achivements(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to="AchivementsImages")
-    data = models.CharField(max_length=500)
+    data = models.TextField()
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     link = models.URLField()
     year = models.CharField(

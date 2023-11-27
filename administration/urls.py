@@ -16,6 +16,8 @@ urlpatterns = [
     path("grievance/", views.grivence_redressal_index_page, name="grivence_redressal_index"),
     path("grievance/<str:slug>/<str:page>", views.grivence_redressal_page, name="grivence_redressal"),
     path("test",views.test_fn,name="test"),
+    path('disciplinary_committee', views.disciplinary_committee_page, name='disciplinary_committee'),
+    path('internal_audit', views.internal_audit_page, name='internal_audit'),
 
 ]
 

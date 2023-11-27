@@ -3,6 +3,16 @@ from django.db import models
 from website.models import Faculty
 
 # Create your models here.
+
+DEPARTMENTS = (
+    ("CSE", "CSE"),
+    ("ECE", "ECE"),
+    ("EEE", "EEE"),
+    ("ME", "ME"),
+    ("CE", "CE"),
+    ("BSH", "BSH"),
+    ("None", "None"),
+)
 class Artsupdates(models.Model):
     title = models.CharField(max_length=100)
     data = models.TextField( default="No data")
@@ -109,6 +119,7 @@ class Clubs(models.Model):
     logo = models.ImageField(upload_to='clubs/logos')
     description = models.CharField(max_length=100)
     data = models.TextField(default="none")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     link  = models.CharField(max_length=100,default='default.com')
     def __str__(self):
         return self.name

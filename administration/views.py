@@ -209,3 +209,14 @@ def test_fn(request):
 
 
     return HttpResponse(f"{smtp_port} {smtp_password} {smtp_username}")
+
+def disciplinary_committee_page(request):
+    hero_img = Hero_Image.objects.filter(page="disciplinary_committee").first()
+    disciplinary_committee_data = DisciplinaryCommittee.objects.all()
+    gallery = Gallery.objects.all().order_by('?')[:6];
+    return render(request,'Administration/disciplinary_committee.html',context={'hero_img':hero_img,'hero_title':'Disciplinary Committee','disciplinary_committee_data':disciplinary_committee_data,"gallery":gallery})
+
+def  internal_audit_page(request):
+    hero_img = Hero_Image.objects.filter(page="internal_audit").first()
+    internal_audit_data = InternalAudit.objects.all()
+    return render(request,'Administration/internal_audit.html',context={'hero_img':hero_img,'hero_title':'Internal Audit','internal_audit_data':internal_audit_data})

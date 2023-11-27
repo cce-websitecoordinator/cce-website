@@ -70,7 +70,7 @@ def hr_manual_page(request):
     hero_img = Hero_Image.objects.filter(page="hr_manual").first()
     context = {
          'hero_img':hero_img,
-         "hero_title":'HR Manual',
+         "hero_title":'HR Policy',
          'gallery':Gallery.objects.all().order_by('?')[:6],
          }
     return render(request, 'aboutCCE/hr_manual.html',context=context) 
@@ -94,7 +94,7 @@ def result_analysis_page(request):
 def college_calendar_page(request):
     data = CollegeCalendar.objects.all()
     hero_img = Hero_Image.objects.filter(page="college_calendar").first()
-    return render(request,'aboutCCE/college_calendar.html',context={'hero_img':hero_img,'hero_title':'College Calendar','data':data}) 
+    return render(request,'aboutCCE/college_calendar.html',context={'hero_img':hero_img,'hero_title':'Institute Calendar','data':data}) 
 
 
 def college_handbook_page(request):
@@ -132,4 +132,9 @@ def audited_statements_page(request):
 def college_magazine_page(request):
     data = CollegeMagazine.objects.all()
     hero_img = Hero_Image.objects.filter(page="college_magazine").first()
-    return render(request,'aboutCCE/college_magazine.html',context={'hero_img':hero_img,'hero_title':'College Magazine','data':data}) 
+    return render(request,'aboutCCE/college_magazine.html',context={'hero_img':hero_img,'hero_title':'College Magazine &  Newsletters','data':data}) 
+
+def ktu_affiliation_page(request):
+    data = KtuAffiliations.objects.all()
+    hero_img = Hero_Image.objects.filter(page="ktu_affiliation").first()
+    return render(request,'aboutCCE/ktu_affiliation.html',context={'hero_img':hero_img,'hero_title':'KTU Affiliations','data':data,'route':'ktu_affiliation'})

@@ -31,6 +31,16 @@ grievance_category = (
     ("other","Other Grievances"),
 )
 
+DEPARTMENTS = (
+    ("CSE", "CSE"),
+    ("ECE", "ECE"),
+    ("EEE", "EEE"),
+    ("ME", "ME"),
+    ("CE", "CE"),
+    ("BSH", "BSH"),
+    ("None", "None"),
+)
+
 ACADEMIC_YEARS = [
     (f"{r}-{r + 1}", f"{r}-{r + 1}")
     for r in range(2020, datetime.date.today().year + 1)
@@ -189,3 +199,25 @@ class GrievanceBody(models.Model):
     message = models.TextField()
     def __str__(self) -> str:
         return f"{self.name}  ({self.type.capitalize()})"
+    
+class DisciplinaryCommittee(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    email = models.EmailField()
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Disciplinary Committee"
+
+class InternalAudit(models.Model):
+    auditors_1 = models.CharField(max_length=200),
+    designation_1 = models.CharField(max_length=200),
+    auditors_2 = models.CharField(max_length=200),
+    designation_2 = models.CharField(max_length=200),
+    department = models.CharField(max_length=200 , choices=DEPARTMENTS)
+    def __str__(self):
+        return self.department
+    class Meta:
+        verbose_name_plural = "Internal Audit"
+    

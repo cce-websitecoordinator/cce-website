@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Website Team
+{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 w-full text-center">
+    <h1 class="text-4xl my-11 font-bold">
+      Website Team
+    </h1>
+    <div
+      class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
+    >
+      {%for item in data%}
+      <div class="bg-white shadow-md px-4 py-1 rounded-xl max-w-[320px] w-fit group">
+        <div class="max-w-[300px] overflow-clip max-h-[300px] rounded-xl">
+          <img
+            src="{{item.img.url}}"
+            alt="hero_img"
+            class="w-full object-center bg-gray-300 group-hover:scale-105 transition-all duration-500"
+          />
+        </div>
+        <div class="space-y-1 mt-6">
+          <h1 class="text-xl font-bold">{{item.name}}</h1>
+          <p class="text-sm text-gray-500">{{item.role}}</p>
+          <p class="text-sm text-gray-500">"("{{item.batch}}")"</p>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </section>
+</main>
+ {% endblock %}

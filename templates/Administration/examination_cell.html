@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Examiniation Cell|
+{% extends 'base.html' %} {% load static %} {% block title %} Examiniation Cell |
 Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
@@ -42,7 +42,7 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
         </span>
         
         Rules And Regulation</a>
-      <a href="" class="bg-[#007FFF] text-white font-bold p-2 rounded-xl">Grievance Redressal for Exams</a>
+      <a href="{% url 'grivence_redressal' 'student' 'login' %}" class="bg-[#007FFF] text-white font-bold p-2 rounded-xl">Grievance Redressal for Exams</a>
     </div>
   </section>
 </main>

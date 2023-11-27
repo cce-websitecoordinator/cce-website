@@ -1,13 +1,14 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Anti Ragging Cell Staff | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} Disciplinary Committee |
+Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 px-7 mt-11 w-full" id="content">
 
     <div class="flex md:flex-row flex-col w-full items-center justify-center md:px-24 px-6 my-16 gap-10">
       <div class="md:w-1/2 ">
-        <h2 class="font-bold text-4xl mb-6">Anti Ragging Cell</h2>
+        <h2 class="font-bold text-4xl mb-6">Disciplinary Committee</h2>
         <p class="text-gray-600">
-          Anti-Ragging Committee will be the Supervisory and Advisory Committee in preserving a Culture of Ragging Free Environment in the college Campus. The Anti-Ragging Squad- office bearers will work under the Supervision of Anti Ragging Committee and to engage in the works of checking places like Canteens, Classrooms, Common rooms and other places of student congregation. Anti-Ragging Committee will be involved in designing strategies and action plan for curbing the Menace of Ragging in the college by adopting array of activities.
+            The Disciplinary Committee is a vital component of our campus community, dedicated to fostering a calm and peaceful academic atmosphere. Our primary objectives include developing and refining norms to regulate student behavior, reducing conflicts and violence, and encouraging positive practices. The committee actively maintains strict discipline within the campus, monitors students' punctuality, handles complaints impartially, and administers appropriate punishments when rules are violated. By upholding these functions, we aim to create a conducive environment for learning and personal development, ensuring the well-being and success of our students.
         </p>
       </div>
       <div class="md:w-1/2 ">
@@ -62,21 +63,7 @@
       </div>
       {% endfor %}
     </div>
-
-    
-
-
-    
-    
   </section>
-
-  <div class="w-full text-center my-11 text-[#007FFF] flex justify-center items-center">
-    <a class="text-2xl font-semibold" href="{% url 'grivence_redressal' 'student' 'login' %}">Click Here to enter Grivence
-     <span class="material-symbols-outlined">
-      link
-      </span>
-    </a>
-  </div>
 </main>
 
 {% include 'components/gallery.html' %} {% endblock %}
