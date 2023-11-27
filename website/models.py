@@ -9,6 +9,16 @@ ACADEMIC_YEARS = [
     for r in range(2020, datetime.date.today().year + 1)
 ]
 
+DEPARTMENTS = (
+    ("CSE", "CSE"),
+    ("ECE", "ECE"),
+    ("EEE", "EEE"),
+    ("ME", "ME"),
+    ("CE", "CE"),
+    ("BSH", "BSH"),
+    ("None", "None"),
+)
+
 
 class Role(models.Model):
     role = models.CharField(max_length=50)
@@ -216,8 +226,8 @@ class Hero_Image(models.Model):
         ("clubs", "Clubs"),
         ("iic", "IIC"),
         ("all_committees", "All Committees"),
-        ("programs_offered", "Progrmas Offered"),
-        ("hr_manual", "HR Manual"),
+        ("programs_offered", "Programs Offered"),
+        ("hr_manual", "HR Policy"),
         ("vision_2035", "Vision 2035"),
         ("annual_report", "Annual Report"),
         ("college_handbook", "College Handbook"),
@@ -230,6 +240,11 @@ class Hero_Image(models.Model):
         ("events", "Events"),
         ("study_abroad", "Study Abroad"),
         ("library", "Library"),
+        ("disciplinary_committee", "Disciplinary Committee"),
+        ("internal_audit_page", "Internal Audit"),
+        ("external_audit_page", "External Audit"),
+        ("ieee", "IEEE"),
+
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -270,16 +285,6 @@ class HomeAnouncement(models.Model):
     def __str__(self):
         return self.title
 
-
-DEPARTMENTS = (
-    ("CSE", "CSE"),
-    ("ECE", "ECE"),
-    ("EEE", "EEE"),
-    ("ME", "ME"),
-    ("CE", "CE"),
-    ("BSH", "BSH"),
-    ("None", "None"),
-)
 
 
 class FundedProjects(models.Model):
@@ -380,7 +385,13 @@ class Nptel(models.Model):
     def __str__(self):
         return self.title_year
 class WebsiteTeam(models.Model):
-    name = models.CharField(max_length=100),
-    img = models.ImageField(upload_to="websiteteam",null=False,blank=False),
-    role = models.CharField(max_length=100),
-    batch = models.CharField(max_length=100 ,choices=ACADEMIC_YEARS),
+    name = models.CharField(max_length=100,default=None)
+    img = models.ImageField(upload_to="websiteteam", blank=True)
+    role = models.CharField(max_length=100,default=None)
+    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS,default=None)
+
+    class Meta:
+        verbose_name_plural = "Website Team"
+
+    def __str__(self):
+        return self.name

@@ -364,13 +364,9 @@ def Department(request, route, department):
                 ]
                 if year:
                     if year == "ALL":
-                        context["all_events"] = Holistics.objects.filter(
-                            department=department
-                        ).all()
+                        context["all_events"] = Holistics.objects.all()
                     else:
-                        context["all_events"] = Holistics.objects.filter(
-                            department=department
-                        ).filter(year=year)
+                        context["all_events"] = Holistics.objects.filter(year=year)
                     return render(
                         request, "Departments/Holistics.html", context=context
                     )

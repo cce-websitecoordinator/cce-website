@@ -25,6 +25,7 @@ admin.site.register(AcademicPartnerShip)
 admin.site.register(FacultyStudentPublications)
 admin.site.register(AdmissionGraph)
 admin.site.register(AdmissionStatistics)
+admin.site.register(WebsiteTeam)
 
 
 
