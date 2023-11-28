@@ -3,7 +3,7 @@
 <div
   class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[999]  hidden topbar">
   <div class="hidden md:block space-x-2">
-    <a onclick="scrollToSection('map')" ><i class="fa-solid fa-map-location-dot fa-lg"></i><a/>
+    <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i><a/>
     <a href="tel:123456789" ><i class="fa-solid fa-phone mr-1 fa-lg"></i><a/>
     <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i><a/>
   </div>
@@ -97,12 +97,6 @@
       }
     });
   });
-  function scrollToSection(id) {
-    var section = document.getElementById(id);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
 
 </script>
 {% endblock %}
