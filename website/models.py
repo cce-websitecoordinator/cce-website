@@ -34,17 +34,19 @@ class Testimonials(models.Model):
     quote = models.CharField(max_length=500)
     image = models.ImageField(upload_to="testimonials")
 
-    def save(self, *args, **kwargs):
-        new_image = Compress(self.image)
-        self.image = new_image
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.full_name
 
 
 class HomeUpdates(models.Model):
     data = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.data
+
+
+class QualityPolicy(models.Model):
+    data = models.TextField()
 
     def __str__(self):
         return self.data
@@ -244,7 +246,8 @@ class Hero_Image(models.Model):
         ("internal_audit_page", "Internal Audit"),
         ("external_audit_page", "External Audit"),
         ("ieee", "IEEE"),
-
+        ("quality_policy", "Quality Policy"),
+        ("webteam","webteam"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -284,7 +287,6 @@ class HomeAnouncement(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 class FundedProjects(models.Model):
@@ -384,11 +386,13 @@ class Nptel(models.Model):
 
     def __str__(self):
         return self.title_year
+
+
 class WebsiteTeam(models.Model):
-    name = models.CharField(max_length=100,default=None)
+    name = models.CharField(max_length=100, default=None)
     img = models.ImageField(upload_to="websiteteam", blank=True)
-    role = models.CharField(max_length=100,default=None)
-    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS,default=None)
+    role = models.CharField(max_length=100, default=None)
+    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS, default=None)
 
     class Meta:
         verbose_name_plural = "Website Team"
