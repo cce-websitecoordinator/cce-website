@@ -26,7 +26,6 @@ admin.site.register(FacultyStudentPublications)
 admin.site.register(AdmissionGraph)
 admin.site.register(AdmissionStatistics)
 admin.site.register(WebsiteTeam)
-admin.site.register(QualityPolicy)
 
 
 

@@ -1,15 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block head %}
 <link rel="stylesheet" href="{%  static  'css/home.css'  %}" />
 <link rel="stylesheet" href="{% static 'leaflet/leaflet.css' %}" />
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- <script id="gallery-data" type="application/json"> var a = {{ gallery_data|safe }}</script> -->
 
 
-
+  
 <script src="{% static 'leaflet/leaflet.js' %}"></script>
 {% endblock head %}
 {% block topbar %}
@@ -19,33 +19,30 @@
 
 <main class="relative">
   {% if anouncement %}
-
+    
   <div class="fixed inset-0 h-[100vh] w-[100vw] backdrop-blur-sm z-[999] flex items-start justify-center " id="modal">
-    <div class="w-[90%] md:max-h-[80%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 ">
-      <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2  rounded-2xl z-[9999]"><span
-          class="material-symbols-outlined font-black text-3xl cursor-pointer">
-          close
+    <div class="w-[90%] md:max-h-[80%] h-[80%] text-center  md:w-[50%] rounded-xl shadow-xl bg-white relative mt-11 " >
+      <button id="modal_close" class="p-2 shadow-2xl absolute right-2 top-2  rounded-2xl z-[9999]"><span class="material-symbols-outlined font-black text-3xl cursor-pointer">
+        close
         </span></button>
       <div class="flex items-center justify-center absolute inset-0">
 
         <img src="{% static 'images/cce_square.png'%}" alt="logo" class="md:h-full w-full md:w-auto opacity-[0.2]">
       </div>
       <h2 class="text-center my-5 text-4xl font-black text-blue-700 mt-16 md:mt-6">Announcements</h2>
-      <div class="flex flex-col justify-center items-center space-y-3">
+<div class="flex flex-col justify-center items-center space-y-3">
 
-        <h2 class="text-2xl">{{anouncement.title}}</h2>
-        <!-- <div class="max-h-[350px] overflow-clip">
+  <h2 class="text-2xl">{{anouncement.title}}</h2>
+  <!-- <div class="max-h-[350px] overflow-clip">
 
     <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]" loading="lazy">
   </div> -->
-        <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
-        <!-- <p>{{anouncement.date}}</p> -->
-        <a href="{{anouncement.link}}" target="_blank"
-          class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span
-            class="material-symbols-outlined mx-4">
-            link
-          </span></a>
-      </div>
+  <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
+  <!-- <p>{{anouncement.date}}</p> -->
+  <a href="{{anouncement.link}}" target="_blank" class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span class="material-symbols-outlined mx-4">
+    link
+    </span></a>
+</div>
 
     </div>
 
@@ -55,334 +52,320 @@
   {% endif %}
 
 
-  <section class="home_section relative h-[100vh] overflow-clip ">
-    <div class="w-[100vw] h-[100vh] -z-1 ">
-      <video autoplay loop muted poster="{% static 'images/home.jpg' %}"
-        class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
-        <source src="{% static 'videos/HomePagevid.mp4'%}" type="video/mp4">
-      </video>
-      {% comment %} <img src="{% static 'images/home.jpg' %}"
-        class="w-full h-full object-cover object-center absolute" /> {% endcomment %}
+<section class="home_section relative h-[100vh] overflow-clip ">
+  <div class="w-[100vw] h-[100vh] -z-1 " >
+    <video autoplay loop muted poster="{% static 'images/home.jpg' %}" class="w-full absolute bottom-0 top-0 min-w-full min-h-full object-cover object-center">
+      <source  src="{% static 'videos/HomePagevid.mp4'%}" type="video/mp4">
+    </video>
+      {% comment %} <img src="{% static 'images/home.jpg' %}" class= "w-full h-full object-cover object-center absolute" /> {% endcomment %}
+  </div>
+  <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
+  <div class="absolute  inset-0  flex flex-col justify-end mb-24 items-start space-y-6 ">
+    <div class="md:w-full flex justify-start pl-16">
+   <h3 class="text-3xl md:text-5xl font-  text-white leading-5 space-y-4 font-sans "><p>We Transform</p>
+    <div class="border-l-[15px] border-blue-400 pl-4 text-2xl">
+      <p class="italic">Knowledge into Wisdom </p>
+      <p class="italic">Flair into Excellence</p>
+      <p class="italic">Passion into Innovation</p>
     </div>
-    <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
-    <div class="absolute  inset-0  flex flex-col justify-end mb-24 items-start space-y-6 ">
-      <div class="md:w-full flex justify-start pl-16">
-        <h3 class="text-3xl md:text-5xl font-  text-white leading-5 space-y-4 font-sans ">
-          <p>We Transform</p>
-          <div class="border-l-[15px] border-blue-400 pl-4 text-2xl">
-            <p class="italic">Knowledge into Wisdom </p>
-            <p class="italic">Flair into Excellence</p>
-            <p class="italic">Passion into Innovation</p>
-          </div>
-        </h3>
-      </div>
+ </h3>
+</div>
+    
+  </div>
+  <a href="#content" class=" w-full justify-center animate-bounce z-[50]  absolute bottom-24 hidden lg:flex" id="down-icon">
 
+    <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
+  </a>
+
+</section>
+
+<section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 place-items-start" id="content">
+  <div class="flex flex-col text-center  justify-center h-full col-span-1 ">
+    <div>
+      <h1 class="text-5xl font-bold mb-11">About Us</h1>
+      <p class="px-11 text-justify">Christ College of Engineering (CCE), established in 2015, is affiliated to APJ Abdul Kalam Technological University, Thiruvananthapuram; and is recognized by AICTE, New Delhi. This college was found at a time when starting a new engineering college was not considered as a sensible proposition. In its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of Engineering has managed to create ripples on the academic front in the university, so much so that today the college is being recognized as one of the best self-financing engineering colleges in Kerala.  
+        <br />Staff and students are at the center of this success story. No stone is being left unturned in ensuring that along with academics, the students get the right amount of exposure required for tomorrow’s successful global citizen, through the various initiatives held at this campus. With the kind of transformative learning model in place here, the college is well on its way to making a positive impact on our society and nation at large. 
+      
+  
+      </p>
     </div>
-    <a href="#content" class=" w-full justify-center animate-bounce z-[50]  absolute bottom-24 hidden lg:flex"
-      id="down-icon">
-
-      <img src="{%  static  'images/chevrons-down.svg'  %}" alt="chevrons-down" class="" />
-    </a>
-
-  </section>
-
-  <section class="grid grid-cols-1 md:grid-cols-2 h-auto min-h-[100vh] lg:px-11 mt-11 place-items-start" id="content">
-    <div class="flex flex-col text-center  justify-center h-full col-span-1 ">
-      <div>
-        <h1 class="text-5xl font-bold mb-11">About Us</h1>
-        <p class="px-11 text-justify">Christ College of Engineering (CCE), established in 2015, is affiliated to APJ
-          Abdul Kalam Technological University, Thiruvananthapuram; and is recognized by AICTE, New Delhi. This college
-          was found at a time when starting a new engineering college was not considered as a sensible proposition. In
-          its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of
-          Engineering has managed to create ripples on the academic front in the university, so much so that today the
-          college is being recognized as one of the best self-financing engineering colleges in Kerala.
-          <br />Staff and students are at the center of this success story. No stone is being left unturned in ensuring
-          that along with academics, the students get the right amount of exposure required for tomorrow’s successful
-          global citizen, through the various initiatives held at this campus. With the kind of transformative learning
-          model in place here, the college is well on its way to making a positive impact on our society and nation at
-          large.
-
-
-        </p>
-      </div>
-      <div class="mt-6 px-11">
-        <div class=" py-6 rounded-lg">
-          <h1 class="text-4xl font-bold text-center">Quality Policy</h1>
-
-          <p class="text-justify mt-4 ">Christ College of Engineering is committed to achieve excellence in the higher
-            education by providing a conducive platform for both students and faculty by creating an educational system
-            based on quality education and ethical values. The college is also committed to continually improve its
-            teaching learning practices and implement a holistic development of student community to meet the needs of
-            the industry and society.</p>
-        </div>
-      </div>
+    <div class="mt-6 px-11">
+      <div class=" py-6 rounded-lg">
+      <h1 class="text-4xl font-bold text-center">Quality Policy</h1>
+      
+      <p class="text-justify mt-4 ">Christ College of Engineering is committed to achieve excellence in the higher education by providing a conducive platform for both students and faculty by creating an educational system based on quality education and ethical values. The college is also committed to continually improve its teaching learning practices and implement a holistic development of student community to meet the needs of the industry and society.</p>
     </div>
+  </div>
+  </div>
+  
+  
 
+  <div class="relative w-full">
+    <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0   flex-col px-6 ">
+      <div class=" xl:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
+        <h1 class="text-center mb-4 font-bold text-xl">Events</h1>
+        <div class="upcomming-slider overflow-x-clip">
+          <div class="swiper-wrapper">
+            {% for event in upcomingEvents %}
 
+            <div class="swiper-slide">
+              <div class="relative">
+                <div class="w-full  flex items-center justify-center">
+                  <img src="{{event.img.url}}" class="h-[500px]"  />
+                </div>
 
-    <div class="relative w-full">
-      <div class="w-full h-auto flex items-center justify-center lg:p-11 pr-0   flex-col px-6 ">
-        <div class=" xl:w-[70%] w-full h-full bg-white shadow-xl rounded-md p-8">
-          <h1 class="text-center mb-4 font-bold text-xl">Events</h1>
-          <div class="upcomming-slider overflow-x-clip">
-            <div class="swiper-wrapper">
-              {% for event in upcomingEvents %}
-
-              <div class="swiper-slide">
-                <div class="relative">
-                  <div class="w-full  flex items-center justify-center">
-                    <img src="{{event.img.url}}" class="h-[500px]" />
+                <div class='w-full flex pt-3 items-center'>
+                  <div cla-ss='border-2 border-blue-300 h-full w-[50px] text-center  rounded-md'>
+                    <h1 class='font-bold text-xl px-1'>
+                      {{event.date.day}}
+                    </h1>
+                    <h2 class='border-t-2 border-blue-500 px-1 font-bold' id='upcomingMonth'>
+                      {{event.date.month}}
+                    </h2>
                   </div>
-
-                  <div class='w-full flex pt-3 items-center'>
-                    <div cla-ss='border-2 border-blue-300 h-full w-[50px] text-center  rounded-md'>
-                      <h1 class='font-bold text-xl px-1'>
-                        {{event.date.day}}
-                      </h1>
-                      <h2 class='border-t-2 border-blue-500 px-1 font-bold' id='upcomingMonth'>
-                        {{event.date.month}}
-                      </h2>
-                    </div>
-                    <div class="mx-3 w-[4px] bg-blue-500 mt-3"></div>
-                    <div class='pl-1'>
-                      <h1 class='font-bold'>{{event.title}}</h1>
-                      <p class='text-xs pb-4'>{{event.sub_title}}</p>
-                    </div>
+                  <div class="mx-3 w-[4px] bg-blue-500 mt-3"></div>
+                  <div class='pl-1'>
+                    <h1 class='font-bold'>{{event.title}}</h1>
+                    <p class='text-xs pb-4'>{{event.sub_title}}</p>
                   </div>
                 </div>
               </div>
-
-
-              {% endfor %}
-
-
             </div>
+
+
+            {% endfor %}
+
+
           </div>
-          <div class="pt-6 w-full flex justify-end">
-            <a href="{% url 'events' %}" class="bg-blue-500 text-white rounded-lg border-blue-500 px-2 py-1">More
-              Events</a>
-          </div>
+        </div>
+        <div class="pt-6 w-full flex justify-end">
+          <a href="{% url 'events' %}" class="bg-blue-500 text-white rounded-lg border-blue-500 px-2 py-1">More Events</a>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    </div>
-  </section>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
 
 
-  <section>
-    <div class="flex justify-center md:px-24 px-4">
-      <div class="grid md:grid-cols-3 grid-cols-1 w-screen place-items-center gap-2 space-x-3">
-        <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D9FFA8] group rounded-md">
-          <h1 class="text-center font-bold text-2xl ">Vision</h1>
-          <p class="text-center md:hidden group-hover:block">To be a premier technical institution that nurtures
-            professionally competent and socially responsible engineers through quality education, training and
-            research.</p>
-        </div>
-        <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D4F2FF] group rounded-md">
-          <h1 class="text-center font-bold text-2xl">Mission</h1>
-          <ol class="text-center md:hidden group-hover:block">
-            <li>Implement state-of-the-art teaching-learning practices with qualified faculty and supportive
-              infrastructure to impart knowledge in modern technologies.</li>
-            <li>Create a quality education system that encourages faculty and students to involve in meaningful research
-              for the benefit of society.
-            </li>
-            <li>Inculcate leadership qualities, ethical values and foster professionalism with the spirit of innovation
-              and lifelong learning.</li>
-          </ol>
-        </div>
-        <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D9D9D9] group rounded-md">
-          <h1 class="text-center font-bold text-2xl">Core Values</h1>
-          <ol class="text-center md:hidden group-hover:block">
-            <li>Faith in God</li>
-            <li>Moral uprightness</li>
-            <li>Integrity and Teamwork</li>
-            <li>Empathy and Compassion</li>
-            <li>Innovation and Professionalism</li>
-          </ol>
-        </div>
+<section>
+  <div class="flex justify-center md:px-24 px-4">
+    <div class="grid md:grid-cols-3 grid-cols-1 w-screen place-items-center gap-2 space-x-3" >
+      <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D9FFA8] group rounded-md">
+        <h1 class="text-center font-bold text-2xl ">Vision</h1>
+        <p class="text-center md:hidden group-hover:block">To be a premier technical institution that nurtures professionally competent and socially responsible engineers through quality education, training and research.</p>
+      </div>
+      <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D4F2FF] group rounded-md">
+        <h1 class="text-center font-bold text-2xl">Mission</h1>
+        <ol class="text-center md:hidden group-hover:block">
+          <li>Implement state-of-the-art teaching-learning practices with qualified faculty and supportive infrastructure to impart knowledge in modern technologies.</li>
+          <li>Create a quality education system that encourages faculty and students to involve in meaningful research for the benefit of society.
+          </li>
+          <li>Inculcate leadership qualities, ethical values and foster professionalism with the spirit of innovation and lifelong learning.</li>
+        </ol>   
+      </div>
+      <div class="w-full md:h-[300px]  p-4 space-y-4 flex flex-col justify-center bg-[#D9D9D9] group rounded-md">
+        <h1 class="text-center font-bold text-2xl">Core Values</h1>
+        <ol class="text-center md:hidden group-hover:block">
+          <li>Faith in God</li>
+          <li>Moral uprightness</li>
+          <li>Integrity and Teamwork</li>
+          <li>Empathy and Compassion</li>
+          <li>Innovation and Professionalism</li> 
+          </ol>  
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
-  {% comment %} Events Section Start{% endcomment %}
+{% comment %} Events Section  Start{% endcomment %}
 
-  <section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6 snap-start my-16 relative bg-gray-50">
-    <div class="md:w-[80%] w-full overflow-x-clip">
-      <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
-        <h1 class="font-black text-5xl">Highlights</h1>
-        <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
-      </div>
-      <div class="events-slider">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          {% for item in Events %}
-          <div class="swiper-slide">
-            <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
-              <img src="{{item.img1.url}}" class=" " alt="happenings-img" />
-              <img src="{{item.img2.url}}" class="hidden lg:block" alt="happenings-img" srcset="" />
-              <img src="{{item.img3.url}}" alt="happenings-img" class="" />
-
-              <img src="{{item.img4.url}}" class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1"
-                alt="happenings-img" srcset="" />
-
-              <div
-                class="p-5 md:col-start-2 md:col-end-3 lg:col-end-4 col-start-1 col-end-3 w-full md:bg-transparent bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white">
-                <h1 class="text-3xl font-black">{{item.heading}}</h1>
-                <p class="text-xl font-semibold">{{item.sub_heading}}</p>
-                <p>{{item.sub_text}}</p>
-
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-
-
-
-          {% endfor %}
-        </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-
-
+<section class="w-[100vw] h-auto flex justify-center items-center flex-col p-6 snap-start my-16 relative bg-gray-50">
+  <div class="md:w-[80%] w-full overflow-x-clip">
+    <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
+      <h1 class="font-black text-5xl">Highlights</h1>
+      <a href="/gallery" class="bg-[#007FFF] p-2 md:pl-6 md:pr-6 rounded-md font-bold text-white">Explore More</a>
     </div>
-
-  </section>
-
-  {% comment %} Events Section End{% endcomment %}
-
-
-  {% comment %} Achivements section Start {% endcomment %}
-  <section>
-    <div class="md:w-[80%] w-full mx-auto  my-24 overflow-x-clip">
-      <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
-        <h1 class="font-black text-5xl">Achievements</h1>
-      </div>
-
-      <div class="swiper-container w-[90%] md:min-h-[70vh] min-h-[60vh] h-fit">
-        <div class="swiper-wrapper ">
-          {% for item in achivements %}
-          <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
-            <div
-              class="swiper-slide w-full flex justify-center items-center mx-auto  p-2  overflow-clip group rounded-xl ">
-
-              <img src="{{item.image.url}}" alt="{{item.image.name}}"
-                class="h-[400px] w-auto object-fill shadow-md border-2 border-gray-400 rounded-xl group-hover:scale-105 transition-all ">
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        <div class="swiper-pagination "></div>
-        <div class="swiper-button-prev invisible  "></div>
-        <div class="swiper-button-next invisible "></div>
-
-      </div>
-
-
-
-    </div>
-  </section>
-  {% comment %} Achivements section End {% endcomment %}
-
-
-
-  {% comment %} Counter Section Start {% endcomment %}
-  <section class="bg-[#F9F9F9] py-6">
-    <h2 class="text-2xl md:text-4xl text-center font-bold mb-8">Institutions run by CMI fathers</h2>
-    <div class="w-[100vw] h-auto pt-11 pb-11  flex items-center justify-center " id="counterSection">
-      <div class="w-full flex items-center justify-between lg:flex-row flex-col lg:space-y-0 space-y-24 md:px-11">
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="schools_counter">0</h1>
-          <p class="text-[#007FFF]">Schools</p>
-        </div>
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="degree_counter">0</h1>
-          <p class=" text-[#007FFF]"> Degree Colleges</p>
-        </div>
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="technical_counter">0</h1>
-          <p class=" text-[#007FFF]"> Technical Institutions</p>
-        </div>
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="engineering_counter">0</h1>
-          <p class=" text-[#007FFF]"> Engineering Colleges</p>
-        </div>
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="medical_counter">0</h1>
-          <p class=" text-[#007FFF]"> Medical Colleges</p>
-        </div>
-        <div class="flex-col justify-center flex items-center">
-          <h1 class="text-5xl font-black" id="university_counter">0</h1>
-          <p class=" text-[#007FFF]"> University</p>
-        </div>
+    <div class="events-slider">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+    {% for item in Events %}
+    <div class="swiper-slide">
+    <div class="w-full grid gap-4 grid-cols-2 lg:grid-cols-3 place-items-center">
+      <img src="{{item.img1.url}}" class=" " alt="happenings-img"  />
+      <img
+        src="{{item.img2.url}}"
+        class="hidden lg:block"
+        alt="happenings-img"
+        srcset=""
+      />
+      <img src="{{item.img3.url}}" alt="happenings-img" class="" />
+    
+      <img
+        src="{{item.img4.url}}"
+        class="col-start-1 col-end-3 w-full md:w-auto md:col-start-0 md:col-end-1"
+        alt="happenings-img"
+        srcset=""
+        
+      />
+    
+      <div
+        class="p-5 md:col-start-2 md:col-end-3 lg:col-end-4 col-start-1 col-end-3 w-full md:bg-transparent bg-[#0973B9] md:mt-0 mt-[-10%] md:text-black text-white"
+      >
+        <h1 class="text-3xl font-black">{{item.heading}}</h1>
+        <p class="text-xl font-semibold">{{item.sub_heading}}</p>
+        <p>{{item.sub_text}}</p>
+        
       </div>
     </div>
-  </section>
-  {% comment %} Counter Section End {% endcomment %}
+    <div class="swiper-pagination"></div>
+  </div>
+    
+
+    
+      {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
 
 
+  </div>
 
-  {% comment %} Recuriters Section Start {% endcomment %}
-  <section class="recruiters bg-white pt-11 pb-11 flex flex-col justify-center items-center">
-    <h1 class="text-4xl md:text-5xl font-bold"> Our Top Recruiters</h1>
-    <div class="space-y-6">
+</section>
 
-      {%with recruiters=recruiters2%}
-      {% include 'components/logo_marquee.html' %}
-      {%endwith%}
-      {%with left=True%}
-      {% include 'components/logo_marquee.html' %}
-      {%endwith%}
-      {%with recruiters=recruiters3%}
-      {% include 'components/logo_marquee.html' %}
-      {%endwith%}
+{% comment %} Events Section  End{% endcomment %}
 
+
+{% comment %} Achivements section  Start {% endcomment %}
+<section>
+  <div class="md:w-[80%] w-full mx-auto  my-24 overflow-x-clip">
+    <div class="flex md:flex-row flex-col space-y-3 md:space-y-0 items-center justify-between mb-4">
+      <h1 class="font-black text-5xl">Achievements</h1>
     </div>
 
-  </section>
-  {% comment %} Recuriters Section End {% endcomment %}
-
-
-
-  {% include 'components/gallery.html' %}
-
-  {% comment %} Testimonial Section Start {% endcomment %}
-
-  <section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
-    <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
-
-    <div class="testimonialsSwiper w-[90%] min-h-[90vh] h-fit">
+    <div class="swiper-container w-[90%] md:min-h-[70vh] min-h-[60vh] h-fit">
       <div class="swiper-wrapper ">
-        {% for item in Testimonials %}
-        <div class="swiper-slide">
-          <div class="w-full  h-full flex justify-center items-start ">
-            <div class="w-full flex justify-start items-center flex-col">
-              <div class="w-[150px]  h-[150px] overflow-clip rounded-full">
-                <img src="{{item.image.url}}" alt="studentImage " class=" w-full">
-              </div>
-              <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
-              <p class="font-thin">{{item.role}}</p>
-
-              <h2 class="text-xl mt-11 font-bold text-[#205072] text-center">{{item.department}}</h2>
-              <p class="w-[70%] text-[#787070] text-center mt-2">" {{item.quote}} "</p>
-
-            </div>
-
+        {% for item in achivements %}
+        <div class="swiper-slide w-full  flex justify-center items-center mx-auto">
+          <div class="swiper-slide w-full flex justify-center items-center mx-auto  p-2  overflow-clip group rounded-xl ">
+            
+            <img src="{{item.image.url}}" alt="{{item.image.name}}" class="h-[400px] w-auto object-fill shadow-md border-2 border-gray-400 rounded-xl group-hover:scale-105 transition-all " >
           </div>
         </div>
         {% endfor %}
       </div>
       <div class="swiper-pagination "></div>
-
-
+      <div class="swiper-button-prev invisible  "></div>
+      <div class="swiper-button-next invisible "></div>
+  
     </div>
 
-  </section>
 
-  {% comment %} Testimonial Section End {% endcomment %}
+
+  </div>
+</section>
+{% comment %} Achivements section End  {% endcomment %}
+
+
+
+{% comment %} Counter Section Start  {% endcomment %}
+<section class="bg-[#F9F9F9] py-6">
+  <h2 class="text-2xl md:text-4xl text-center font-bold mb-8">Institutions run by CMI fathers</h2>
+<div class="w-[100vw] h-auto pt-11 pb-11  flex items-center justify-center " id="counterSection">
+  <div class="w-full flex items-center justify-between lg:flex-row flex-col lg:space-y-0 space-y-24 md:px-11">
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="schools_counter">0</h1>
+      <p class= "text-[#007FFF]">Schools</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="degree_counter">0</h1>
+      <p class=" text-[#007FFF]"> Degree Colleges</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="technical_counter">0</h1>
+      <p class=" text-[#007FFF]"> Technical Institutions</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="engineering_counter">0</h1>
+      <p class=" text-[#007FFF]"> Engineering Colleges</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="medical_counter">0</h1>
+      <p class=" text-[#007FFF]"> Medical Colleges</p>
+    </div>
+    <div class="flex-col justify-center flex items-center">
+      <h1 class="text-5xl font-black" id="university_counter">0</h1>
+      <p class=" text-[#007FFF]"> University</p>
+    </div>
+  </div>
+</div>
+</section>
+{% comment %} Counter Section End {% endcomment %}
+
+
+
+{% comment %} Recuriters Section  Start {% endcomment %}
+<section class="recruiters bg-white pt-11 pb-11 flex flex-col justify-center items-center">
+  <h1 class="text-4xl md:text-5xl font-bold"> Our Top Recruiters</h1>
+  <div class="space-y-6">
+
+    {%with recruiters=recruiters2%}
+    {% include 'components/logo_marquee.html' %}
+    {%endwith%}
+    {%with left=True%}
+    {% include 'components/logo_marquee.html' %}
+    {%endwith%}
+    {%with recruiters=recruiters3%}
+    {% include 'components/logo_marquee.html' %}
+    {%endwith%}
+
+  </div>
+
+</section>
+{% comment %} Recuriters Section  End {% endcomment %}
+
+
+
+{% include 'components/gallery.html' %}
+
+{% comment %} Testimonial Section Start {% endcomment %}
+
+<section class="testimonials w-[100vw] min-h-[80vh] flex flex-col justify-center items-center">
+  <h1 class="md:text-6xl text-5xl font-bold mt-6 p-4">Testimonials</h1>
+
+  <div class="testimonialsSwiper w-[90%] min-h-[90vh] h-fit">
+    <div class="swiper-wrapper ">
+      {% for item in Testimonials %}
+      <div class="swiper-slide">
+        <div class="w-full  h-full flex justify-center items-start ">
+          <div class="w-full flex justify-start items-center flex-col">
+            <div class="w-[150px]  h-[150px] overflow-clip rounded-full">
+              <img src="{{item.image.url}}" alt="studentImage " class=" w-full" >
+            </div>
+            <h1 class="text-2xl font-bold mt-3">{{item.full_name}}</h1>
+            <p class="font-thin">{{item.role}}</p>
+
+            <h2 class="text-xl mt-11 font-bold text-[#205072] text-center">{{item.department}}</h2>
+            <p class="w-[70%] text-[#787070] text-center mt-2">" {{item.quote}} "</p>
+            
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination "></div>
+
+
+  </div>
+
+</section>
+
+{% comment %} Testimonial Section End {% endcomment %}
 
 </main>
 
@@ -399,17 +382,17 @@
   const counterSection = document.getElementById('counterSection');
   const counterSchools = document.getElementById('schools_counter');
   const counterDegree = document.getElementById('degree_counter');
-  const counterTechnical = document.getElementById('technical_counter'),
-    CounterEngineering = document.getElementById('engineering_counter'),
-    CounterMedical = document.getElementById('medical_counter'),
-    CounterUniversity = document.getElementById('university_counter')
+  const counterTechnical = document.getElementById('technical_counter'), 
+  CounterEngineering = document.getElementById('engineering_counter'),
+  CounterMedical = document.getElementById('medical_counter'),
+  CounterUniversity = document.getElementById('university_counter')
+
+
+  
 
 
 
-
-
-
-
+  
 
   $("#modal_close").click(function () {
     $("#modal").addClass("hidden");
@@ -433,13 +416,13 @@
       increment(counterTechnical, 9, 5)
       increment(CounterEngineering, 4, 1)
       increment(CounterMedical, 1, 1),
-        increment(CounterUniversity, 1, 1)
-
+      increment(CounterUniversity, 1, 1)
+  
     }
   })
-
-
-
+  
+  
+  
   function increment(element, finalValue, time) {
     const count = parseInt(element.innerHTML);
     if (count < finalValue) {
@@ -451,7 +434,7 @@
     else if (count > finalValue) {
       element.innerHTML = finalValue;
     }
-  };
+  }
 
 
 
@@ -460,35 +443,25 @@
       top: getOffset(counterSection).top,
       behavior: 'smooth'
     })
-  });
+  })
 
-  const upcommingSwiper = new Swiper('.upcomming-slider', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    speed: 400,
-    spaceBetween: 100,
-    slidesPerView: 1,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: true,
-    },
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
+const upcommingSwiper = new Swiper('.upcomming-slider', {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  speed: 400,
+  spaceBetween: 100,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 4000,
+  },
+  effect: 'fade',
+fadeEffect: {
+  crossFade: true
+},
 
-  });
-
-  upcommingSwiper.el.addEventListener('mouseenter', () => {
-    upcommingSwiper.autoplay.stop();
-  });
-
-  // Add a mouseleave event listener to resume the slider
-  upcommingSwiper.el.addEventListener('mouseleave', () => {
-    upcommingSwiper.autoplay.start();
-  });
+})
 
   const eventsSwiper = new Swiper('.events-slider', {
     loop: true,
@@ -503,16 +476,16 @@
       disableOnInteraction: true,
     },
     effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
+  fadeEffect: {
+    crossFade: true
+  },
 
   });
 
   eventsSwiper.el.addEventListener('mouseenter', () => {
     eventsSwiper.autoplay.stop();
   });
-
+  
   // Add a mouseleave event listener to resume the slider
   eventsSwiper.el.addEventListener('mouseleave', () => {
     eventsSwiper.autoplay.start();
@@ -559,7 +532,7 @@
     spaceBetween: 30,
     autoplay: {
       delay: 3000,
-      disableOnInteraction: true,
+      disableOnInteraction: false
     },
     breakpoints: {
       768: {
@@ -571,17 +544,6 @@
     }
   });
   
-  // Pause on hover
-  achivementsswiper.el.addEventListener('mouseenter', function () {
-    achivementsswiper.autoplay.stop();
-  });
-  
-  // Resume on mouse leave
-  achivementsswiper.el.addEventListener('mouseleave', function () {
-    achivementsswiper.autoplay.start();
-  });
-  
-
 
 
 
@@ -590,11 +552,11 @@
     spaceBetween: 30,
     autoplay: {
       delay: 3000,
-      disableOnInteraction: true,
+      disableOnInteraction: false
     },
     breakpoints: {
-      1260: {
-        slidesPerView: 3
+      1260:{
+slidesPerView:3
       },
       768: {
         slidesPerView: 2
@@ -605,17 +567,8 @@
     }
   });
 
-  testimonialsSwiper.el.addEventListener('mouseenter', function () {
-    testimonialsSwiper.autoplay.stop();
-  });
+
   
-  // Resume on mouse leave
-  testimonialsSwiper.el.addEventListener('mouseleave', function () {
-    testimonialsSwiper.autoplay.start();
-  });
-
-
-
-
+  
 </script>
 {% endblock script %}
