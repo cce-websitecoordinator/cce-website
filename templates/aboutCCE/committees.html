@@ -6,46 +6,19 @@
     <h1 class="text-4xl my-11 font-bold">
       Committees
     </h1>
-    <h3 class="text-xl font-semibold text-left mt-11 py-1">Committees & Members 2022-2023</h3>
+
+    {% for items in data %}
+
+    <h3 class="text-xl font-semibold text-left mt-11 py-1">Committees & Members {{ items.year }}</h3>
     <div class="p-1 border-2 border-blue-500 h-[90vh] ">
       <object
         
-        data='{%static 'pdfs/Committees & Members(2022-2023).pdf'%}'
+        data={{items.pdf.url}}
         type="application/pdf"
         class="w-full"
         height="100%">
       </object>
   </div>
-    <!-- <div class="p-1 border-2 border-blue-500 ">
-      <iframe src="{%static 'pdfs/Committees & Members(2022-2023).pdf'%}" frameborder="0" width="100%" height="100%" class="h-[90vh] aspect-w-9 aspect-h-16">
-    </iframe>
-  </div> -->
-  <h3 class="text-xl font-semibold text-left mt-11 py-1">Committees & Members 2021-2022</h3>
-  <div class="p-1 border-2 border-blue-500 h-[90vh] ">
-    <object
-      
-      data='{%static 'pdfs/Committees & Members(2021-2022).pdf'%}'
-      type="application/pdf"
-      class="w-full"
-      height="100%">
-    </object>
-  </div>
-  <!-- <div class="p-1 border-2 border-blue-500 "><iframe src="{%static 'pdfs/Committees & Members(2021-2022).pdf'%}" frameborder="0" width="100%" height="100%" class="h-[90vh] aspect-w-9 aspect-h-16">
-  </iframe>
-</div> -->
-<h3 class="text-xl font-semibold text-left mt-11 py-1">Committees & Members 2020-2021</h3>
-<div class="p-1 border-2 border-blue-500 h-[90vh] ">
-  <object
-    
-    data='{%static 'pdfs/Committees & Members(2020-2021).pdf'%}'
-    type="application/pdf"
-    class="w-full"
-    height="100%">
-  </object>
-  </div>
-<!-- <div class="p-1 border-2 border-blue-500 "><iframe src="{%static 'pdfs/Committees & Members(2020-2021).pdf'%}" frameborder="0" width="100%" height="100%" class="h-[90vh] aspect-w-9 aspect-h-16">
-</iframe>
-</div> -->
   </section>
 </main>
 

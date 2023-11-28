@@ -50,10 +50,12 @@ def cce_in_media_page(request):
 
 def committees_page(request):
     hero_img = Hero_Image.objects.filter(page="all_committees").first()
+    data = Committee.objects.all()
     context = {
          'hero_img':hero_img,
          "hero_title":'Committees',
          'gallery':Gallery.objects.all().order_by('?')[:6],
+         "data":data
          }
     return render(request, 'aboutCCE/committees.html',context=context)
 
