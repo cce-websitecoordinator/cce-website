@@ -364,6 +364,8 @@ class TLM_table(models.Model):
     title = models.CharField(max_length=200, default=tlm_method)
     goal = models.TextField()
     activity = models.TextField()
+    link = models.CharField(max_length=100,blank=True)
+    image = models.ImageField(upload_to="tlm_table_data",blank=True)
 
     def __str__(self) -> str:
         return self.tlm_method.department+' - '+self.tlm_method.tlm_methods
