@@ -13,3 +13,5 @@ admin.site.register(AuditedStatements)
 admin.site.register(CollegeCalendar)
 admin.site.register(CollegeMagazine)
 admin.site.register(KtuAffiliations)
+admin.site.register(ResultTable)
+

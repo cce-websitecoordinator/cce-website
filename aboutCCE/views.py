@@ -88,7 +88,7 @@ def vision_2035_page(request):
 
 
 def result_analysis_page(request):
-    data = AnnualReport.objects.all()
+    data = ResultTable.objects.all().order_by('batch')
     hero_img = Hero_Image.objects.filter(page="result_analysis").first()
     return render(request,'aboutCCE/result_analysis.html',context={'hero_img':hero_img,'hero_title':'Result Analysis','data':data}) 
 
