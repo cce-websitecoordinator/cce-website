@@ -106,8 +106,8 @@ class ResultAnalysis(models.Model):
         return self.batch
 
 class ResultTable(models.Model):
-    batch = models.IntegerField()
-    api = models.IntegerField()
+    batch = models.CharField(max_length=100)
+    api = models.CharField(max_length=100)
     def __str__(self):
         return self.batch
     

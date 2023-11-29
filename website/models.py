@@ -53,6 +53,8 @@ class QualityPolicy(models.Model):
 
 
 class HomeEvents(models.Model):
+    # has_video = models.BooleanField(default=False);
+    # video = models.FileField(upload_to="Heros_Videos", blank=True, default="")
     img1 = models.ImageField(
         upload_to="HomeEvents", null=False, blank=False, default="HomeEvents/1.jpg"
     )
