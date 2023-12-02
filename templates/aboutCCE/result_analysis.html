@@ -5,9 +5,9 @@
     <h3 class="text-3xl font-semibold text-center my-11">Result Analysis</h3>
 
     <div class="w-full text-center">
-      <table class="w-3/5 mx-auto">
+      <table class="w-3/5 mx-auto border-2">
         <thead class="rounded-t-lg bg-[#28AAE1]">
-          <tr class="text-white">
+          <tr class="text-white ">
             <th class="p-2">Batch</th>
             <th class="p-2">Academic Performance Index (API)</th>
           </tr>
@@ -16,8 +16,8 @@
           {% for item in data %}
           <tr
             class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
-            <td class="p-2 text-center">{{ item.batch }}.</td>
-            <td class="p-2 text-center">{{ item.api }}</td>
+            <td class="p-2 text-center ">{{ item.batch }}</td>
+            <td class="p-2 text-center ">{{ item.api }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -26,7 +26,7 @@
 
     {% for item in graph %}
       
-    <div class="py-11">
+    <div class="px-[20%] pt-20">
       <img src="{{item.image.url}}"
         class="rounded-xl aspect-square" alt srcset>
     </div>

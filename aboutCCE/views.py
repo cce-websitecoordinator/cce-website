@@ -63,7 +63,7 @@ def cce_in_media_page(request):
 
 def committees_page(request):
     hero_img = Hero_Image.objects.filter(page="all_committees").first()
-    data = Committee.objects.all()
+    data = Committee.objects.all().order_by('-year')
     context = {
         "hero_img": hero_img,
         "hero_title": "Committees",
@@ -104,7 +104,7 @@ def vision_2035_page(request):
 
 
 def result_analysis_page(request):
-    data = ResultTable.objects.all().order_by("batch")
+    data = ResultTable.objects.all().order_by("-batch")
     graph = ResultAnalysis.objects.all()
     hero_img = Hero_Image.objects.filter(page="result_analysis").first()
     return render(
@@ -119,16 +119,18 @@ def result_analysis_page(request):
     )
 
 
-def college_calendar_page(request):
-    data = CollegeCalendar.objects.all()
-    hero_img = Hero_Image.objects.filter(page="college_calendar").first()
+def academic_calendar_page(request):
+    academic_calendars = AcademicCalendar.objects.all()
+    institute_calendars = InstituteCalendar.objects.all()
+    hero_img = Hero_Image.objects.filter(page="academic_calendar").first()
     return render(
         request,
-        "aboutCCE/college_calendar.html",
+        "aboutCCE/academic_calendar.html",
         context={
             "hero_img": hero_img,
-            "hero_title": "Institute Calendar",
-            "data": data,
+            "hero_title": "Academic & Institute Calendars",
+            "academic_calendars": academic_calendars,
+            "institute_calendars":institute_calendars,
         },
     )
 

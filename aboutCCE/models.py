@@ -38,13 +38,23 @@ class MoreAboutCCE(models.Model):
     class Meta:
         verbose_name_plural = "More About CCE"
 
-class CollegeCalendar(models.Model):
+class AcademicCalendar(models.Model):
     name = models.CharField(max_length=100)
-    file = models.FileField(upload_to="CollegeCalendar")
+    file = models.FileField(upload_to="AcademicCalendar")
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name_plural = "College Calendar"
+        verbose_name_plural = "Academic Calendars"
+
+class InstituteCalendar(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="InstituteCalendar")
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Institute Calendars"
+
+        
 
 
 class AnnualReport(models.Model):
@@ -103,7 +113,7 @@ class CollegeMagazine(models.Model):
 class ResultAnalysis(models.Model):
     image = models.ImageField(upload_to='results/')
     def __str__(self):
-        return self.batch
+        return self.image.name
 
 class ResultTable(models.Model):
     batch = models.CharField(max_length=100)

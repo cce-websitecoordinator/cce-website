@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'storages',
     'tailwind',
     'cce_web_theme'
-
 ]
 
 

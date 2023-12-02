@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Committees 
+{% extends 'base.html' %} {% load static %} {% block title %} Committees
 {% endblock title %} {% block head %} {% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
@@ -11,14 +11,12 @@
 
     <h3 class="text-xl font-semibold text-left mt-11 py-1">Committees & Members {{ items.year }}</h3>
     <div class="p-1 border-2 border-blue-500 h-[90vh] ">
-      <object
-        
-        data={{items.pdf.url}}
-        type="application/pdf"
-        class="w-full"
-        height="100%">
+      <object data={{items.pdf.url}} type="application/pdf" class="w-full" height="100%">
       </object>
-  </div>
+    </div>
+
+    {% endfor %}
+    
   </section>
 </main>
 

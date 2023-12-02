@@ -21,11 +21,11 @@ Research & Consultancy {% endblock title %} {%block head %} {% endblock head %}
         <div
           class="hidden xl:table-header-group bg-blue-300 rounded-t-xl py-6 sticky top-[10vh]"
         >
-          <div class="w-auto grid grid-cols-4 justify-evenly min-h-[50px] py-6">
+          <div class="w-auto grid grid-cols-3 justify-evenly min-h-[50px] py-6">
             <div class="text-center px-2">Name</div>
             <div class="text-center px-2">Year</div>
             <div class="text-center px-2">Name of Client/Organization</div>
-            <div class="text-center px-2">Work Done</div>
+            <!-- <div class="text-center px-2">Work Done</div> -->
 
           </div>
         </div>
@@ -34,13 +34,13 @@ Research & Consultancy {% endblock title %} {%block head %} {% endblock head %}
         <div class="space-y-4 xl:space-y-0 xl:table-row-group">
           {% for item in academic_partnership%}
           <div class="hidden xl:block">
-            <div class="w-auto grid grid-cols-4 min-h-[50px] py-6">
+            <div class="w-auto grid grid-cols-3 min-h-[50px] py-6">
               <div class="text-center px-2">{{item.name}}</div>
               <div class="text-center px-2">
                 {{item.year}}
               </div>
               <div class="text-center px-2">{{item.name_of_client}}</div>
-              <div class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}">{{item.status}}</div>
+              <!-- <div class="text-center px-2 {% if item.status == 'completed' %} text-green-400{% else %}text-blue-500 {% endif %}">{{item.status}}</div> -->
 
             </div>
           </div>

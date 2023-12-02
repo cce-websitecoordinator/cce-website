@@ -48,6 +48,13 @@
             </a>
         </div>
         <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'ktu_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Ktu_Affiliations' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
+            </a>
+        </div>
+        <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'aicte_approvals' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Aicte_Approvals' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
@@ -61,13 +68,7 @@
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>Audited Statements</span>
             </a>
         </div>
-        <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'ktu_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Ktu_Affiliations' %}"
-                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
-            </a>
-        </div>
+        
         
     </div>
 </aside>

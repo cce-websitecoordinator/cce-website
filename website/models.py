@@ -235,7 +235,7 @@ class Hero_Image(models.Model):
         ("vision_2035", "Vision 2035"),
         ("annual_report", "Annual Report"),
         ("college_handbook", "College Handbook"),
-        ("college_calendar", "College Calendar"),
+        ("academic_calendar", "academic Calendar"),
         ("audited_statements", "Audited Statements"),
         ("college_magazine", "College Magazine"),
         ("ktu_aicte_regulations", "KTU AICTE Regulations"),
