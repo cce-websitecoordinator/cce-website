@@ -45,7 +45,7 @@ def iic_page(request):
 
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="mentoring").first
+    hero_img = Hero_Image.objects.all().filter(page="womencell").first
     return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
 
 def ieee_page(request):
@@ -74,9 +74,11 @@ def study_abroad_page(request):
 
 
 def mentoring_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="mentoring").first
     context_temp = {
         'title': 'Mentoring',
         'hero_title': 'Mentoring',
+        'hero_img':hero_img,
     }
 
     about = Mentoring.objects.all().first()
