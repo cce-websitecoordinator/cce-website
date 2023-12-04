@@ -37,10 +37,9 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
 
 
     <div class="w-full md:flex justify-center items-center my-11 gap-10">
-      <a href="" class="border-[1px] border-[#007FFF] text-[#007FFF]  px-4 p-2 rounded-xl flex items-center"><span class="material-symbols-outlined mx-2">
+      <a href="{{rules.file.url}}" class="border-[1px] border-[#007FFF] text-[#007FFF]  px-4 p-2 rounded-xl flex items-center"><span class="material-symbols-outlined mx-2">
         description
         </span>
-        
         Rules And Regulation</a>
       <a href="{% url 'grivence_redressal_index'%}" class="bg-[#007FFF] text-white font-bold p-2 rounded-xl">Grievance Redressal for Exams</a>
     </div>
