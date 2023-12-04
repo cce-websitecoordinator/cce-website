@@ -31,11 +31,8 @@
               {{event_type_value}}</a>
           </li>
           {% endfor %}
-
-
         </ul>
       </div>
-      <!-- component -->
       <div>
         <ul class="flex items-center gap-2 text-sm font-medium">
           <li class="">
@@ -81,14 +78,12 @@
         <div class="flex w-full my-11 text-center text-blue-400 font-black text-2xl">No Events to show</div>
 
         {% endif %}
+        <div>{{all_events_count}}</div>
       </div>
     </div>
 </section>
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
-    <div>
-      {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
-    </div>
     <div class="w-full space-y-6 mt-11 md:mt-0">
 
     </div>

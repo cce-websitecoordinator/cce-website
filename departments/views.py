@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from .models import *
 import website.models
 from .models import Achivements as DepAchievements
-from studentservices.models import Clubs
+from studentservices.models import Clubs,ArtsEvents,SportsEvents
 # Create your views here.
 
 
@@ -72,6 +72,8 @@ class Context:
         self.clubs = None
         self.placement = None
         self.Higher = None
+        self.extra_events = None
+        self.all_events_count = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -186,6 +188,8 @@ class Context:
             "alumni": self.alumni,
             "placement":self.placement,
             "higher":self.Higher,
+            "extra_events":self.extra_events,
+            "all_events_count":self.all_events_count,
         }
 
 
@@ -411,6 +415,9 @@ def Department(request, route, department):
                         context["all_events"] = Events.objects.filter(
                             department=department
                         ).all()
+                        context["all_events_count"] = Events.objects.filter(
+                            department=department
+                        ).all().count()
                     elif year == "ALL":
                         context["all_events"] = (
                             Events.objects.filter(department=department)
@@ -462,77 +469,8 @@ def Department(request, route, department):
 
         case "extra_curricular_events":
             if request.method == "GET":
-                TYPE_LABELS = {
-                    "arts": "Arts",
-                    "sports": "Sports",
-                }
-
-                year = request.GET.get("year")
-                if year == "":
-                    year = "ALL"
-                a_type = request.GET.get("type")
-                if a_type == "":
-                    a_type = "ALL"
-
-                context["event_types"] = TYPE_LABELS
-
-                context["type"] = "ALL"
-                context["year"] = "ALL"
-
-                context["allYears"] = [
-                    nested_tuple[0] for nested_tuple in ACADEMIC_YEARS[::-1]
-                ]
-
-                if year and a_type:
-                    if year == "ALL" and a_type == "ALL":
-                        context["all_events"] = ExtraEvents.objects.filter(
-                            department=department
-                        ).all()
-                    elif year == "ALL":
-                        context["all_events"] = (
-                            ExtraEvents.objects.filter(department=department)
-                            .filter(type=a_type)
-                            .all()
-                        )
-                        context["type"] = a_type
-                    elif a_type == "ALL":
-                        context["all_events"] = (
-                            ExtraEvents.objects.filter(department=department)
-                            .filter(year=year)
-                            .all()
-                        )
-                        context["year"] = year
-                    else:
-                        context["all_events"] = (
-                            ExtraEvents.objects.filter(department=department)
-                            .filter(year=year)
-                            .filter(type=a_type)
-                            .all()
-                        )
-                        context["type"] = a_type
-                        context["year"] = year
-                elif year:
-                    context["all_events"] = (
-                        ExtraEvents.objects.filter(department=department)
-                        .filter(year=year)
-                        .all()
-                    )
-                    context["type"] = "ALL"
-                    context["year"] = year
-                elif a_type:
-                    context["all_events"] = (
-                        ExtraEvents.objects.filter(department=department)
-                        .filter(type=a_type)
-                        .all()
-                    )
-                    context["type"] = a_type
-                    context["year"] = "ALL"
-                else:
-                    context["all_events"] = ExtraEvents.objects.filter(
-                        department=department
-                    ).all()
-                    context["type"] = "ALL"
-                    context["year"] = "ALL"
+                context["sports_events"] = SportsEvents.objects.all()
+                context["arts_events"] = ArtsEvents.objects.all()
                 return render(request, "Departments/Extra_Events.html", context=context)
             else:
                 return Http404("Page Not Found")
@@ -602,6 +540,7 @@ def Department(request, route, department):
         
         case "clubs":
             context["clubs"] = Clubs.objects.filter(department=department)
+            print(context['clubs'])
             return render(request, "Departments/clubs.html", context)
 
         case other:
