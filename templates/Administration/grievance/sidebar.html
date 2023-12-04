@@ -2,8 +2,8 @@
     <div class="bg-[#F9F9F9] p-3 rounded-[16px] group  flex items-center justify-start pl-9 md:hidden text-center"
         id="sidebar-header">
         <div class="space-x-6 text-gray-600 group-hover:text-[#007FFF]  items-center flex  mx-auto">
-            {%ifequal 'faculty'  slug%}
-            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Faculty</span>
+            {%ifequal 'staff'  slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Staff</span>
             {%endifequal%}
 
             {%ifequal 'faculty'  slug%}
@@ -33,9 +33,9 @@
     <div class="space-y-6 md:block hidden" id="sidebar-content">
         <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'faculty' in  slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
-            <a href="{% url 'grivence_redressal' 'faculty' 'login' %}"
+            <a href="{% url 'grivence_redressal' 'staff' 'login' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
-                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Faculty</span>
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Grievance Redressal Cell For Staff</span>
             </a>
         </div>
         <div
