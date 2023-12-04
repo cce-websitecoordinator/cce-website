@@ -380,7 +380,7 @@ def disciplinary_committee_page(request):
         context={
             "hero_img": hero_img,
             "hero_title": "Disciplinary Committee",
-            "disciplinary_committee_data": disciplinary_committee_data,
+            "data": disciplinary_committee_data,
             "gallery": gallery,
         },
     )
