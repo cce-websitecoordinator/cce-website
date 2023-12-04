@@ -224,4 +224,4 @@ def  internal_audit_page(request):
 
 def  external_audit_page(request):
     hero_img = Hero_Image.objects.filter(page="external_audit_page").first()
-    return render(request,'Administration/external_audit.html',context={'hero_img':hero_img,'hero_title':'Internal Audit'})
+    return render(request,'Administration/external_audit.html',context={'hero_img':hero_img,'hero_title':'External Audit'})
