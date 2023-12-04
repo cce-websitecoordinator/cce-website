@@ -45,7 +45,7 @@ def iic_page(request):
 
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="womencell").first
+    hero_img = Hero_Image.objects.all().filter(page="mentoring").first
     return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
 
 def ieee_page(request):
@@ -89,9 +89,11 @@ def mentoring_page(request):
     return render(request, 'StudentServices/mentoring.html',context=context)
 
 def irc_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="international_relations").first
     context_temp = {
         'title': 'International Relations Cell',
         'hero_title': 'International Relations Cell',
+        'hero_img': hero_img,
     }
     about = IRCAbout.objects.all().first()
     events = IRCEvents.objects.all()
@@ -102,9 +104,11 @@ def irc_page(request):
     return render(request, 'StudentServices/irc.html',context=context)
 
 def ccil_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="ccil").first
     context_temp = {
         'title': 'Christ Center for Innovation and Open Learning',
         'hero_title': 'Christ Center for Innovation and Open Learning',
+        'hero_img': hero_img,
     }
     about = CCILAbout.objects.all().first()
     events = CCILEvents.objects.all()
