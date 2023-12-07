@@ -20,6 +20,13 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
       </div>
       <div class="pt-6 pl-9 w-full relative">
         <h3 class=" text-2xl md:text-5xl font-semibold text-center mt-11 w-full my-6">Academic Consultancy</h3>
+        <div class="w-full flex items-center justify-center">
+          <a href={% static "pdfs/consultancy_policy.pdf" %} target="_blank"
+              class="relative text-white flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  bg-blue-500 border-blue-500">
+              Consultancy Policy <span class="material-symbols-outlined">
+                link
+                </span></a>
+        </div>
         <div class="block xl:block w-full  p-2  py-1 rounded-xl">
           <div
             class="hidden xl:block rounded-md  rounded-xl py-6 sticky top-[10vh]">

@@ -22,7 +22,7 @@
           <div class="flex items-center gap-2 text-sm font-medium">
             
               <a href="{% url 'Department' dep 'faculty' %}#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 bg-blue-500 border-blue-500">
+                class="relative text-white flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  bg-blue-500 border-blue-500">
                 Faculty & Staff</a>
                 
 
@@ -34,13 +34,12 @@
         </div>
         {% endifnotequal %}
         {% for item in faculty_pdf %}
-        <div>
-          {% if item.year %}
+        <div class="flex items-center justify-start">
           <a target="_blank" href={{item.pdf.url}}
-                class="relative w-fit flex items-center text-white justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 bg-blue-500 border-blue-500">
-                {{ item.year }}</a>
-          {% endif %}
-          
+                class="relative w-fit flex items-center  text-white justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 bg-blue-500 border-blue-500">
+                {{ item.year }} <span class="material-symbols-outlined">
+                  download
+                  </span></a>
         </div>
         {% endfor %}
 

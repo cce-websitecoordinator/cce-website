@@ -356,3 +356,6 @@ class CCEVRTeam(models.Model):
     image = models.ImageField(upload_to='CCEVR/members')
     def __str__(self):
         return f"{self.priority} {self.name} {self.role}"
+
+class LibraryImages(models.Model):
+    img = models.ImageField(("central_library Image"), upload_to="union/Central_library")

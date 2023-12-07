@@ -16,28 +16,30 @@
         <h1 class="text-4xl my-11 font-bold">Placements and Higher Studies Statistics</h1>
 
         <div class="py-11">
-          <table class="w-full">
-            <thead class="rounded-t-lg bg-[#28AAE1]">
-              <tr class="text-white border-solid border-1">
-                <th class="p-2">Year</th>
-                <th class="p-2">No. of Students</th>
-                <th class="p-2">Placement</th>
-                <th class="p-2">Higher Studies</th>
-                <th class="p-2">Total</th>
-                <th class="p-2">Highest Salary <br/>(in Lakhs/Annum)</th>
-                <th class="p-2">Average Salary <br/>(in Lakhs/Annum)</th>
+          <table class="w-full border border-solid border-1">
+            <thead class="rounded-t-lg bg-[#28AAE1] ">
+              <tr class="text-white border-solid border-1 border-grey">
+                <th class="p-2 border-solid border-1 border-grey">Year</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students<br/>(Final Year)</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students placed</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Higher Studies</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Entrepreneurship</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Total</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Placement Percentage</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Highest Salary <br/>(in Lakhs/Annum)</th>
               </tr>
             </thead>
             <tbody>
               {% for item in table %}
-              <tr class="rounded-t-lg {% cycle 'even:bg-[#f2f2f2]' 'odd:bg-white' %}">
-                <td class="p-2 text-center">{{item.year}}</td>
-                <td class="p-2 text-center">{{item.students}}</td>
-                <td class="p-2 text-center">{{item.placement}}</td>
-                <td class="p-2 text-center">{{item.higher_studies}}</td>
-                <td class="p-2 text-center">{{item.total}}</td>
-                <td class="p-2 text-center">{{item.highest}}</td>
-                <td class="p-2 text-center">{{item.avg}}</td>
+              <tr class="rounded-t-lg even:bg-[#e4e4e4] odd:bg-white ">
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.year}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.students}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.placement}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.higher_studies}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.entrepreneurship}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.total}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.percentage}}%</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{item.highest}}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -48,6 +50,7 @@
             {% endfor %}
           </div>
         </div>
+        
       </div>
     </div>
   </div>

@@ -66,10 +66,11 @@ class PlacementStatsTable(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS,default="None",max_length=30)
     students = models.IntegerField()
     placement = models.IntegerField()
+    entrepreneurship = models.IntegerField()
     higher_studies = models.IntegerField()
     total = models.IntegerField()
+    percentage = models.IntegerField()
     highest = models.DecimalField(max_digits=5,decimal_places=2)
-    avg = models.DecimalField(max_digits=5,decimal_places=2)
     def __str__(self):
         return self.year
 
@@ -87,4 +88,5 @@ class PlacementList(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS,default="None",max_length=30)
     def __str__(self):
         return self.year
+
 
