@@ -50,6 +50,7 @@ admin.site.register(CCILTeam)
 admin.site.register(CCEVRAbout)
 admin.site.register(CCEVREvents)
 admin.site.register(CCEVRTeam)
+admin.site.register(LibraryImages)
 
 
 

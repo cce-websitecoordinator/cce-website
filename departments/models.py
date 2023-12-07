@@ -262,7 +262,7 @@ class Events(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (
         ("workshops_seminars", "Workshops / Seminars"),
-        ("addons", "Add-Ons"),
+        ("addons", "Value Added Courses"),
         ("iv", "Industrial Visits"),
         ("competitions","competetions"),
     )

@@ -128,7 +128,7 @@ def academic_calendar_page(request):
         "aboutCCE/academic_calendar.html",
         context={
             "hero_img": hero_img,
-            "hero_title": "Academic & Institute Calendars",
+            "hero_title": "Institute Academic Calendars",
             "academic_calendars": academic_calendars,
             "institute_calendars":institute_calendars,
         },

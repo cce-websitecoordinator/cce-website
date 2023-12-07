@@ -47,7 +47,7 @@ def iic_page(request):
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="womencell").first
-    return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
+    return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Empowerment Cell"})
 
 def ieee_page(request):
     about = IEEEAbout.objects.all().first()
@@ -165,8 +165,9 @@ def central_library_page(request,slug):  # sourcery skip: extract-method
             vision = CentralLibrary.objects.filter(name='Vision').first()
             mission = CentralLibrary.objects.filter(name='Mission').first()
             about = CentralLibrary.objects.filter(name="about").first() 
+            img = LibraryImages.objects.all()
             gallery = Gallery.objects.all().order_by('?')[:6]
-            context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery}
+            context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery,"img":img}
             return render(request, 'StudentServices/central_library.html',context=context)
         case "faculty_and_staff":
             context = {**context_temp,'data':LibraryFaculty.objects.all()}

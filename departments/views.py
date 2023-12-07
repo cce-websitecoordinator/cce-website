@@ -194,6 +194,7 @@ class Context:
             "higher":self.Higher,
             "extra_events":self.extra_events,
             "all_events_count":self.all_events_count,
+            "faculty_pdf":self.faculty_pdf,
         }
 
 
@@ -398,7 +399,7 @@ def Department(request, route, department):
             if request.method == "GET":
                 TYPE_LABELS = {
                     "workshops_seminars": "Workshops / Seminars",
-                    "addons": "Add-Ons",
+                    "addons": "Value Added Courses",
                     "iv": "Industrial Visits",
                     "competitions": "Competitions",
                 }
