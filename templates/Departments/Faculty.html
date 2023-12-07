@@ -33,6 +33,16 @@
           </div>
         </div>
         {% endifnotequal %}
+        {% for item in faculty_pdf %}
+        <div>
+          {% if item.year %}
+          <a target="_blank" href={{item.pdf.url}}
+                class="relative w-fit flex items-center text-white justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 bg-blue-500 border-blue-500">
+                {{ item.year }}</a>
+          {% endif %}
+          
+        </div>
+        {% endfor %}
 
         <div class="w-full flex flex-col justify-center items-center">
           <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>

@@ -250,6 +250,7 @@ class Hero_Image(models.Model):
         ("ieee", "IEEE"),
         ("quality_policy", "Quality Policy"),
         ("webteam","webteam"),
+        ("ccevr","ccevr"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 

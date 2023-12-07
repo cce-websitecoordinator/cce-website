@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from studentservices.models import *
+import website.models
 from website.models import Gallery, Hero_Image
-from departments.models import NewsLetters,Magazines
+from departments.models import NewsLetters,Magazines, ProfessionalBodies, ProfessionalBodiesEvents, ProfessionalBodiesTeamMembers
 import aboutCCE.models
 
 
@@ -55,6 +56,21 @@ def ieee_page(request):
     hero_img = Hero_Image.objects.all().filter(page="ieee").first()
     gallery = Gallery.objects.all().order_by('?')[:20]
     return render(request, 'StudentServices/ieee.html',context={"about":about,"hero_img":hero_img,"hero_title":"IEEE","events":events,"members":members,"gallery":gallery})
+
+
+def pmi_page(request):
+    slug = '8'
+    context = {
+        "professional_body": ProfessionalBodies.objects.filter(id=slug).first(),
+        "events": ProfessionalBodiesEvents.objects.filter(ProfessionalBodies_id=slug),
+        "members": ProfessionalBodiesTeamMembers.objects.filter(
+            ProfessionalBodies_id=slug
+        ).order_by("priority"),
+        "gallery": website.models.Gallery.objects.all().order_by("?")[:6],
+    }
+    return render(
+        request, "Departments/professsionalbody_showcase.html", context=context
+    )
 
 def union_page(request):
     union = Union.objects.all().first()
@@ -115,6 +131,19 @@ def ccil_page(request):
     context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
     return render(request, 'StudentServices/ccil.html',context=context)
 
+def ccevr_page(request):
+    context_temp = {
+        'title': 'Christ Center for Electric Vehicle Research',
+        'hero_title': 'Christ Center for Electric Vehicle Research',
+    }
+    about = CCEVRAbout.objects.all().first()
+    events = CCEVREvents.objects.all()
+    members = CCEVRTeam.objects.all().order_by('priority')
+    gallery = Gallery.objects.all().order_by('?')[:20]
+
+
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
+    return render(request, 'StudentServices/ccevr.html',context=context)
 
 
 def central_library_page(request,slug):  # sourcery skip: extract-method

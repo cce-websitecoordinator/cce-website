@@ -74,6 +74,7 @@ class Context:
         self.Higher = None
         self.extra_events = None
         self.all_events_count = None
+        self.faculty_pdf = None
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
@@ -102,6 +103,9 @@ class Context:
                     Faculty.objects.filter(department=dep)
                     .filter(role__role="HOD")
                     .first()
+                )
+                self.faculty_pdf=(
+                    Facultypdf.objects.filter(department=dep).order_by('-year')
                 )
             case "associations":
                 self.associations = Associations.objects.filter(department=dep)

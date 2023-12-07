@@ -26,7 +26,11 @@
 
         <h2 class="uppercase  text-2xl md:text-4xl font-semibold mt-5 text-center">{{item.title}}</h2>
         <p class="mt-6 text-center md:px-16">{{item.data}}</p>
-        <a href="{% url 'dep_professionalbodies' item.id %}" class="text-[#007FFF] font-bold mt-11">{{item.linkname}}</a>
+        <a href="{% url 'dep_professionalbodies' item.id %}" class="text-[#007FFF] font-bold mt-11 flex items-center justify-center gap-2">{{item.linkname}}<span
+          class="material-symbols-outlined">
+          link
+        </span></a>
+        
 
       </div>
       {% endfor %}
