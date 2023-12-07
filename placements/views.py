@@ -27,7 +27,7 @@ def placement_page(request,slug):
             context = {**context_temp,'vission':vission,'mission':mission,'objectives':objectives,'testimonials':testimonials,"recruiters": recruiters, "recruiters2": recruiters2, "recruiters3": recruiters3,"side_updates":side_updates,"gallery":gallery}
             return render(request, 'Placements/index.html',context=context)
         case "placement_traning":
-            context = {**context_temp,'data':PlacementTraning.objects.all()}
+            context = {**context_temp,'data':PlacementTraning.objects.all(),"list":PlacementList.objects.all().order_by('-year')}
             return render(request, 'Placements/placement_traning.html',context=context)
         case "achivements":
             context = {**context_temp,"achivements":Achivements.objects.all()}

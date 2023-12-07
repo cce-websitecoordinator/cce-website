@@ -121,9 +121,6 @@ class Context:
                 self.professional_bodies = ProfessionalBodies.objects.filter(
                     department=dep
                 )
-            case "labs":
-                self.labs = Laboratories.objects.filter(department=dep)
-
             case "achievements":
                 self.achivements = DepAchievements.objects.filter(department=dep)
             case "newsletters":
@@ -214,6 +211,10 @@ def Department(request, route, department):
         case "professionalBodies":
             return render(request, "Departments/ProfessionalBodies.html", context)
         case "labs":
+            labs = Laboratories.objects.filter(department=department)
+            for lab in labs:
+                lab.faculties.set(lab.faculties.all().order_by('priorities'))
+            context["labs"] = labs
             return render(request, "Departments/Laboratories.html", context)
         case "mooc_courses":
             if request.method == "GET":
