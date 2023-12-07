@@ -42,12 +42,11 @@ def iic_page(request):
     return render(request, 'StudentServices/iic.html',context={"hero_img":hero_img,"hero_title":"Institution’s Innovation Council","members":members,"certificates":certificates})
 
 
-
-
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
+    events = WomenEvents.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="womencell").first
-    return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Empowerment Cell"})
+    return render(request, 'StudentServices/womencell.html',context={"data":data,"events":events,"hero_img":hero_img,"hero_title":"Women Empowerment Cell"})
 
 def ieee_page(request):
     about = IEEEAbout.objects.all().first()

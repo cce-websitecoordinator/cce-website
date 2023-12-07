@@ -359,3 +359,12 @@ class CCEVRTeam(models.Model):
 
 class LibraryImages(models.Model):
     img = models.ImageField(("central_library Image"), upload_to="union/Central_library")
+
+class WomenEvents(models.Model):
+    title = models.CharField(max_length=100)
+    sub_title = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='women_cell/events')
+    def __str__(self):
+        return self.title
