@@ -1,6 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Women Cell {%endblock title %} {% block head %}
+{% extends 'base.html' %} {% load static %} {% block title %} Women Cell {% endblock title %} {% block head %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
 {% endblock head %}
 {% block body %}
 <main>
@@ -120,57 +119,58 @@
           {% endfor %}
         </div>
 
-        <section class='my-11 relative bg-gray-50 p-6'>
-          <h1 class="text-center text-4xl font-bold pt-[10px] pb-8 overflow-hidden">
-            Events
-          </h1>
-          <div class="swiper3 relative">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper ">
-              <!-- Slides -->
-              {% for event in events %}
-              <div class="swiper-slide ">
+        
+      </div>
+    </div>
+  </section>
+  <section class='my-11 relative bg-gray-50 p-6'>
+    <h1 class="text-center text-4xl font-bold pt-[10px] pb-8 overflow-hidden">
+      Events
+    </h1>
+    <div class="swiper3 relative">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper ">
+        <!-- Slides -->
+        {% for event in events %}
+        <div class="swiper-slide ">
 
-                <div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center">
-                  <div class="img-event">
-                    <img class=" md:max-w-[400px] h-[400px] ml-auto mr-auto p-4 object-contain"
-                      src="{{event.image.url}}" />
-                  </div>
-                  <div class="px-4">
-                    <h1 class="text-center lg:text-left text-2xl py-2 font-semibold">
-                      {{event.title}}
-                    </h1>
-                    <h2 class="text-center lg:text-left text-xl py-2 font-medium">
-                      {{event.sub_title}}
-                    </h2>
-
-                    <h2 class="text-justify lg:text-left text-gray-600 py-2">
-                      {{event.description|safe}}
-                    </h2>
-                    <p class='text-blue-500'>
-
-                      {{event.date|date:"d M Y"}}
-                    </p>
-                  </div>
-
-                </div>
-
-
-
-              </div>
-              {% endfor %}
-
-
+          <div class="flex flex-col lg:flex-row md:text-left md:px-[150px] justify-center">
+            <div class="img-event">
+              <img class=" md:max-w-[400px] h-[400px] ml-auto mr-auto p-4 object-contain"
+                src="{{event.image.url}}" />
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination "></div>
+            <div class="px-4">
+              <h1 class="text-center lg:text-left text-2xl py-2 font-semibold">
+                {{event.title}}
+              </h1>
+              <h2 class="text-center lg:text-left text-xl py-2 font-medium">
+                {{event.sub_title}}
+              </h2>
+
+              <h2 class="text-justify lg:text-left text-gray-600 py-2">
+                {{event.description|safe}}
+              </h2>
+              <p class='text-blue-500'>
+
+                {{event.date|date:"d M Y"}}
+              </p>
+            </div>
 
           </div>
 
 
-        </section>
+
+        </div>
+        {% endfor %}
+
+
       </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination "></div>
+
     </div>
+
+
   </section>
 
 
@@ -183,10 +183,10 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.swiper3', {
-    speed: 400,
+    speed: 200,
     spaceBetween: 100,
     autoplay: {
-      delay: 2500,
+      delay: 40000,
       disableOnInteraction: false,
     },
     slidesPerView: 1,
