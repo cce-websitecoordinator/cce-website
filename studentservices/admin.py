@@ -26,7 +26,6 @@ admin.site.register(Clubs)
 admin.site.register(ClubEvents)
 admin.site.register(ClubMembers)
 admin.site.register(ClubsHeroImage)
-
 admin.site.register(WomenCellCommitee)
 admin.site.register(Union)
 admin.site.register(UnionCommitee)
