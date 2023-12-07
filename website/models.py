@@ -249,6 +249,10 @@ class Hero_Image(models.Model):
         ("external_audit_page", "External Audit"),
         ("ieee", "IEEE"),
         ("quality_policy", "Quality Policy"),
+
+        ("mentoring","Mentoring"),
+        ("ccil","CCIL"),
+        ("international_relations","International Relations Cell"),
         ("webteam","webteam"),
         ("ccevr","ccevr"),
     )

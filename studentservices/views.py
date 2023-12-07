@@ -90,9 +90,11 @@ def study_abroad_page(request):
 
 
 def mentoring_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="mentoring").first
     context_temp = {
         'title': 'Mentoring',
         'hero_title': 'Mentoring',
+        'hero_img':hero_img,
     }
 
     about = Mentoring.objects.all().first()
@@ -105,9 +107,11 @@ def mentoring_page(request):
     return render(request, 'StudentServices/mentoring.html',context=context)
 
 def irc_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="international_relations").first
     context_temp = {
         'title': 'International Relations Cell',
         'hero_title': 'International Relations Cell',
+        'hero_img': hero_img,
     }
     about = IRCAbout.objects.all().first()
     events = IRCEvents.objects.all()
@@ -118,9 +122,11 @@ def irc_page(request):
     return render(request, 'StudentServices/irc.html',context=context)
 
 def ccil_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="ccil").first
     context_temp = {
         'title': 'Christ Center for Innovation and Open Learning',
         'hero_title': 'Christ Center for Innovation and Open Learning',
+        'hero_img': hero_img,
     }
     about = CCILAbout.objects.all().first()
     events = CCILEvents.objects.all()

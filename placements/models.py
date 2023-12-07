@@ -81,3 +81,10 @@ class PlacementGallery(models.Model):
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
     date = models.DateField(default=datetime.date.today)
+
+class PlacementList(models.Model):
+    pdf = models.FileField()
+    year = models.CharField(choices=ACADEMIC_YEARS,default="None",max_length=30)
+    def __str__(self):
+        return self.year
+
