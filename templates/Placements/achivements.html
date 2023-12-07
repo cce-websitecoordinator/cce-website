@@ -4,9 +4,9 @@
 {% block body %}
 {% include 'components/Hero_section.html' %}
 <section class="md:px-24  pt-24 px-6" id="content">
-  <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
-  <p class=" text-sm mt-4 text-justify mb-11">{{about.about}}</p>
- 
+  <!-- <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
+  <p class=" text-sm mt-4 text-justify mb-11">{{about.about}}</p> -->
+
   <div class="flex gap-10 lg:flex-row flex-col">
     <div class="col-span-1 flex justify-start items-center flex-col">
       <h2 class="font-semibold text-2xl px-4">Placements</h2>
@@ -14,30 +14,47 @@
       {% include 'Placements/sidebar.html' %}
     </div>
     <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6 ">
-        <h3 class="text-2xl font-semibold text-center md:text-4xl w-full">Achievements</h3>
+      <section>
+        <div class="flex flex-row gap-3">
+          {% for item in deps %}
+          <a href="{% url 'placement_page' 'achivements' %}?dep={{item}}#content"
+            class="relative flex items-center justify-center rounded-lg border-solid border-2 px-3 py-1  {% ifequal item dep %} text-gray-100 bg-blue-500 {% else %} text-gray-500 {% endifequal %} border-blue-500">
+            {{item}} </a>
+          {% endfor %}
+        </div>
+        <div class="flex flex-row gap-2 mt-8 ml-4">
+          {% for item in placement %}
+          <a target="_blank" href="{{item.students_pdf.url}}"
+            class="relative w-fit flex items-center text-white text-base justify-center rounded-lg border-solid border-2  px-3 py-2 bg-blue-500 border-blue-500">
+            {{ item.year }} <span class="material-symbols-outlined pl-2">
+              download
+            </span></a>
+          {% endfor %}
 
-        <div class="flex gap-10 md:flex-row flex-col">
-          <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-center">
-            
-        {% for achivement in achivements %}
+        </div>
+      </section>
+      <h3 class="text-2xl font-semibold text-center md:text-4xl w-full">Achievements</h3>
+
+      <div class="flex gap-10 md:flex-row flex-col">
+        <div class="gap-10 flex flex-wrap  mt-11 pt-6 items-start justify-start">          
+
+          {% for achivement in achivements %}
 
 
-        <div class="w-[350px] p-2 border-2 border-gray-200 rounded-xl group">
-          <div class="h-[400px] w-full overflow-clip rounded-xl">
+          <div class="w-[350px] p-2 border-2 border-gray-200 rounded-xl group">
+            <div class="h-[400px] w-full overflow-clip rounded-xl">
               <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}"
-                  class="w-full h-full  group-hover:scale-110 transition-all duration-500">
-          </div>
-          <div class=" mt-5">
+                class="w-full h-full  group-hover:scale-110 transition-all duration-500">
+            </div>
+            <div class=" mt-5">
               <p class="text-xs">{{achivement.date}}</p>
               <p class="pt-2 text-xl">{{achivement.title}}</p>
               <p class="font-bold text-2xl">{{achivement.data}}</p>
+            </div>
           </div>
-      </div>
 
 
-        
-        
-        <!-- <div class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">
+          <!-- <div class="flex md:flex-row flex-col justify-center items-center md:items-start  space-y-11 md:space-y-0 w-full px-6 md:space-x-6 h-auto group">
           <div class="h-[400px]  md:min-w-[300px] overflow-clip rounded-2xl">
             <img src="{{achivement.image.url}}" alt="{{achivement.image.name}}" class="w-full h-full scale-110 group-hover:scale-125 transition-all duration-500 object-cover">
             </div>
@@ -49,11 +66,11 @@
           </div>
           <div class="h-[2px] w-full bg-gray-200"></div> -->
           {% endfor %}
-          </div>
-          </div>
+        </div>
+      </div>
 
-     </div>
     </div>
+  </div>
   </div>
 
 </section>
@@ -68,13 +85,3 @@
 
 
 {% endblock script %}
-
-
-
-
-
-
-
-
-
-
