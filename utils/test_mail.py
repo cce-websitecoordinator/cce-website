@@ -22,7 +22,7 @@ def send_email(subject, message, recipient_email, template_values=None):
         msg["Subject"] = subject
 
         # Attach text message
-        msg.attach(MIMEText(message, "plain"))
+        # msg.attach(MIMEText(message, "plain"))
         path = os.getcwd()
         html_template = path + '/utils/mail.html'
 
@@ -41,7 +41,7 @@ def send_email(subject, message, recipient_email, template_values=None):
         # Try to send the email
         response = ses.send_raw_email(
             Source='grivance@cce.edu.in',
-            Destinations=[recipient_email],
+            Destinations=[recipient_email,"grievance@cce.edu.in"],
             RawMessage={'Data': msg.as_string()}
         )
 
@@ -54,3 +54,5 @@ def send_email(subject, message, recipient_email, template_values=None):
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
         return None, error_message
+
+

@@ -47,6 +47,9 @@ admin.site.register(IRCTeam)
 admin.site.register(CCILAbout)
 admin.site.register(CCILEvents)
 admin.site.register(CCILTeam)
+admin.site.register(CCEVRAbout)
+admin.site.register(CCEVREvents)
+admin.site.register(CCEVRTeam)
 
 
 
