@@ -399,7 +399,7 @@ class WebsiteTeam(models.Model):
     name = models.CharField(max_length=100, default=None)
     img = models.ImageField(upload_to="websiteteam", blank=True)
     role = models.CharField(max_length=100, default=None)
-    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS, default=None)
+    batch = models.CharField(max_length=100, default=None)
 
     class Meta:
         verbose_name_plural = "Website Team"
