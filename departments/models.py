@@ -620,3 +620,4 @@ class Facultypdf(models.Model):
     class Meta:
         verbose_name = "Faculty PDF"
         verbose_name_plural = "Faculty PDFs"
+

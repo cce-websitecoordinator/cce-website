@@ -129,17 +129,19 @@ def ccil_page(request):
     }
     about = CCILAbout.objects.all().first()
     events = CCILEvents.objects.all()
+    sepgallery = CCILGallery.objects.all()
     members = CCILTeam.objects.all().order_by('priority')
     gallery = Gallery.objects.all().order_by('?')[:20]
 
 
-    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery,"sepgallery":sepgallery}
     return render(request, 'StudentServices/ccil.html',context=context)
 
 def ccevr_page(request):
     context_temp = {
         'title': 'Christ Center for Electric Vehicle Research',
         'hero_title': 'Christ Center for Electric Vehicle Research',
+        'hero_img': Hero_Image.objects.filter(page='ccevr').first(),
     }
     about = CCEVRAbout.objects.all().first()
     events = CCEVREvents.objects.all()

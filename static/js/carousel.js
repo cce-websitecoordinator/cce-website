@@ -7,19 +7,19 @@ class Carousel {
     this.carouselData = [
       {
         'id': 'Pegasus',
+        'src': '../static/images/Arts/pegasus.jpg',
+      },
+      {
+        'id': 'Lupus',
+        'src': '../static/images/Arts/lupus.webp',
+      },
+      {
+        'id': 'Cetus',
         'src': '../static/images/Arts/Cetus-logo.png',
       },
       {
-        'id': '2',
-        'src': 'http://fakeimg.pl/300/?text=2',
-      },
-      {
-        'id': '3',
-        'src': 'http://fakeimg.pl/300/?text=3',
-      },
-      {
-        'id': '4',
-        'src': 'http://fakeimg.pl/300/?text=4',
+        'id': 'Taurus',
+        'src': '../static/images/Arts/taurus.png',
       },
     ];
     this.carouselInView = [1, 2, 3, 4];

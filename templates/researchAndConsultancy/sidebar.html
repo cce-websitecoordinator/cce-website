@@ -27,8 +27,21 @@
             {%ifequal 'publications' slug%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty & Student Publications </span>
             {%endifequal%}
+
             {%ifequal 'conference' slug%}
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Conference & Symposium  </span>
+            {%endifequal%}
+
+            {%ifequal 'awarded' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty awarded PHD </span>
+            {%endifequal%}
+
+            {%ifequal 'scholars' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Research Scholars</span>
+            {%endifequal%}
+
+            {%ifequal 'phd' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty Pursuing PHD</span>
             {%endifequal%}
 
            
@@ -88,6 +101,30 @@
             <a href="{% url 'home_research'  'conference' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Conference & Symposium </span>
+            </a>
+        </div>
+
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'conference' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'phd' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty Pursuing PHD</span>
+            </a>
+        </div>
+
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'conference' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'awarded' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty awarded PHD </span>
+            </a>
+        </div>
+
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'conference' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'scholars' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Research Scholars </span>
             </a>
         </div>
         

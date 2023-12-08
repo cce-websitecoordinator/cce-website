@@ -368,3 +368,8 @@ class WomenEvents(models.Model):
     image = models.ImageField(upload_to='women_cell/events')
     def __str__(self):
         return self.title
+
+class CCILGallery(models.Model):
+    image = models.ImageField(upload_to='cciol/gallery')
+    def __str__(self):
+        return self.image.name
