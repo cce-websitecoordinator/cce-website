@@ -51,6 +51,7 @@ admin.site.register(CCEVREvents)
 admin.site.register(CCEVRTeam)
 admin.site.register(LibraryImages)
 admin.site.register(WomenEvents)
+admin.site.register(CCILGallery)
 
 
 

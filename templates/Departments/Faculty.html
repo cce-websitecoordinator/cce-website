@@ -8,27 +8,27 @@
 
 <section class="md:px-24 px-7 mt-11" id="content">
   <div class="flex gap-10 md:flex-row flex-col">
-      <div class="col-span-1">
-          <h2 class="font-semibold text-2xl px-4">Departments</h2>
-          <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+    <div class="col-span-1">
+      <h2 class="font-semibold text-2xl px-4">Departments</h2>
+      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
 
-          {% include 'Departments/Sidebar.html' %}
-      </div>
+      {% include 'Departments/Sidebar.html' %}
+    </div>
 
-      <div class=" w-full space-y-16 mt-11 ">
-        {%ifnotequal 'BSH' dep%}
+    <div class=" w-full space-y-16 mt-11 ">
+      {%ifnotequal 'BSH' dep%}
 
-        <div>
-          <div class="flex items-center gap-2 text-sm font-medium">
-            
-              <a href="{% url 'Department' dep 'faculty' %}#content"
-                class="relative text-white flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  bg-blue-500 border-blue-500">
-                Faculty & Staff</a>
-                
+      <div>
+        <div class="flex items-center gap-2 text-sm font-medium">
 
-              <a href="{% url 'Department' dep 'students' %}#content"
-                class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700  ">
-                Students</a>      
+          <a href="{% url 'Department' dep 'faculty' %}#content"
+            class="relative text-white flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2  bg-blue-500 border-blue-500">
+            Faculty & Staff</a>
+
+
+          <a href="{% url 'Department' dep 'students' %}#content"
+            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700  ">
+            Students</a>
 
           </div>
         </div>
@@ -45,48 +45,38 @@
         </div>
         
 
-        <div class="w-full flex flex-col justify-center items-center">
-          <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
-          <div class="w-full flex items-center justify-center mb-11">
-            <a class="bg-white shadow-md px-4 py-1 rounded-xl w-fit group " href='{{HOD.profile.url}}' target="_blank">
-              <div class="overflow-clip h-[280px]  rounded-xl">
-              <img
-                src="{{HOD.image.url}}"
-                alt="hero_img"
-                class="h-[350px] bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out "
-              />
-              </div>
-              <div class="space-y-1 mt-1 text-center">
-                <h1 class="text-xl font-bold">{{HOD.full_name}}</h1>
-                <p class="text-xs text-gray-500">HOD</p>
-              </div>
-            </a>
-          </div>
-        
-          <div
-            class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center"
-          >
-            {%for faculty in faculties%}
-            <a
-              class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
-              href='{{faculty.profile.url}}' target="_blank"
-            >
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl my-11 font-bold">Faculty & Staff</h1>
+        <div class="w-full flex items-center justify-center mb-11">
+          <a class="bg-white shadow-md px-4 py-1 rounded-xl w-fit group " href='{{HOD.profile.url}}' target="_blank">
             <div class="overflow-clip h-[280px]  rounded-xl">
-              <img
-                src="{{faculty.image.url}}"
-                alt="hero_img"
-                class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out "
-              />
+              <img src="{{HOD.image.url}}" alt="hero_img"
+                class="h-[350px] bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out " />
             </div>
-              <div class="space-y-1 mt-1 text-center">
-                <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
-                <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
-              </div>
-            </a>
-            {%endfor%}
-          </div>
+            <div class="space-y-1 mt-1 text-center">
+              <h1 class="text-xl font-bold">{{HOD.full_name}}</h1>
+              <p class="text-xs text-gray-500">HOD</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center">
+          {%for faculty in faculties%}
+          <a class="bg-white shadow-md px-4 py-1 group rounded-xl w-[350px] flex flex-col items-center"
+            href='{{faculty.profile.url}}' target="_blank">
+            <div class="overflow-clip h-[280px]  rounded-xl">
+              <img src="{{faculty.image.url}}" alt="hero_img"
+                class="h-[350px] w-full bg-gray-300 group-hover:scale-110 transition-all duration-500 ease-in-out " />
+            </div>
+            <div class="space-y-1 mt-1 text-center">
+              <h1 class="text-xl font-bold">{{faculty.full_name}}</h1>
+              <p class="text-xs text-gray-500">{{faculty.role.all|join:", "}}</p>
+            </div>
+          </a>
+          {%endfor%}
         </div>
       </div>
+    </div>
   </div>
 
 </section>

@@ -564,7 +564,7 @@ class Holistics(models.Model):
     
 class Placements(models.Model):
     year = models.CharField(
-        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+        max_length=200, default="None"
     )
     students_pdf = models.FileField()
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
@@ -620,3 +620,4 @@ class Facultypdf(models.Model):
     class Meta:
         verbose_name = "Faculty PDF"
         verbose_name_plural = "Faculty PDFs"
+

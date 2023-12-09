@@ -21,6 +21,19 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
       </div>
       <div class="pl-9">{{about.data}}
       </div>
+      <div class="w-full flex items-center justify-center flex-col gap-5">
+        <h1 class="text-4xl font-semibold text-center mt-11 w-full">Research labs</h1>
+        <div class="w-full flex items-center justify-evenly gap-3">
+            <a target="_blank" href="{%url 'ccil'%}" class="relative w-fit flex items-center text-white  text-xl justify-center gap-2 rounded-lg border-solid border-2 px-3 py-2 bg-blue-500 border-blue-500">
+                CCIOL
+                <span class="material-symbols-outlined">link</span>
+            </a>
+            <a target="_blank" href="{%url 'ccevr'%}" class="relative w-fit flex items-center text-white text-xl justify-center gap-2 rounded-lg border-solid border-2 px-3 py-2 bg-blue-500 border-blue-500">
+                CCEVR
+                <span class="material-symbols-outlined">link</span>
+            </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

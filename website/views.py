@@ -2,6 +2,7 @@ import datetime
 from random import shuffle
 import random
 from django.shortcuts import render
+import website
 from website.models import *
 from django.http import Http404, HttpResponse
 from django.core import serializers
@@ -203,6 +204,36 @@ def research_page(request, slug):
                 "publications": publications,
             }
             return render(request, "researchAndConsultancy/publications.html", context)
+        case "phd":
+            context = {
+                **context_temp,
+                "hero_title": "Faculty pursing PHD",
+                "phd": PHD_Faculty.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/phd_faculty.html", context
+            )
+        case "scholars":
+            context = {
+                **context_temp,
+                "hero_title": "Research Scholars",
+                "phd": ResearchScholar.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/research_scholars.html", context
+            )
+        case "awarded":
+            context = {
+                **context_temp,
+                "hero_title": "Faculty awarded PHD",
+                "phd": AwardedPHD.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/awarded_phd.html", context
+            )
         case "research_guides":
             research_guides = ResearchGuides.objects.all()
             context = {

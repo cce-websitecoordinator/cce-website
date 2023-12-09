@@ -27,6 +27,9 @@ admin.site.register(AdmissionGraph)
 admin.site.register(AdmissionStatistics)
 admin.site.register(WebsiteTeam)
 admin.site.register(QualityPolicy)
+admin.site.register(PHD_Faculty)
+admin.site.register(ResearchScholar)
+admin.site.register(AwardedPHD)
 
 
 

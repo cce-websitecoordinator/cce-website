@@ -56,6 +56,14 @@
 
           </div>
           {% endfor %}
+          <div class="w-full grid grid-cols-2 gap-2">
+            {% for item in sepgallery %}
+            <div class="h-500px w-500px col-span-1">
+              <img src="{{item.image.url}}" class="w-full h-full object-cover"/>
+            </div>
+            
+            {% endfor %}
+          </div>
           
          
         </div>

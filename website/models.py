@@ -254,6 +254,7 @@ class Hero_Image(models.Model):
         ("international_relations","International Relations Cell"),
         ("webteam","webteam"),
         ("ccevr","ccevr"),
+        ("result_analysis","Result Analysis"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -398,10 +399,55 @@ class WebsiteTeam(models.Model):
     name = models.CharField(max_length=100, default=None)
     img = models.ImageField(upload_to="websiteteam", blank=True)
     role = models.CharField(max_length=100, default=None)
-    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS, default=None)
+    batch = models.CharField(max_length=100, default=None)
 
     class Meta:
         verbose_name_plural = "Website Team"
 
     def __str__(self):
         return self.name
+
+class PHD_Faculty(models.Model):
+    name = models.CharField(max_length=100)
+    institute = models.CharField(max_length=100)
+    year = models.CharField(max_length=20)
+    researchArea = models.CharField(max_length=100)
+    options = (
+        ("pursuing", "Pursuing"),
+        ("awarded", "Awarded"),
+    )
+    status = models.CharField(choices=options,default=None,max_length=100)
+
+    def __str__(self):
+        return self.name+"-"+self.department
+
+    class Meta:
+        verbose_name = "PHD_Faulty"
+        verbose_name_plural = "PHD_Faultys"
+
+class ResearchScholar(models.Model):
+    name = models.CharField(max_length=100)
+    institute = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    researchArea = models.CharField(max_length=100)
+    guideName = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "ResearchScholar"
+        verbose_name_plural = "ResearchScholars"
+
+class AwardedPHD(models.Model):
+    name = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+    designation = models.CharField(max_length=100)
+    researchArea = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "AwardedPHD"
+        verbose_name_plural = "AwardedPHDs"
