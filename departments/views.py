@@ -606,7 +606,7 @@ def research_page(request, department, slug):
             return render(request, "Departments/research/funded_projects.html", context)
         case "phd":
             context = {
-                "phd": website.models.PHD_Faculty.objects.all(),
+                "phd": website.models.PHD_Faculty.objects.filter(dept = department).all(),
                 **context_temp,
             }
             return render(
@@ -614,7 +614,7 @@ def research_page(request, department, slug):
             )
         case "scholars":
             context = {
-                "phd": website.models.ResearchScholar.objects.all(),
+                "scholar": website.models.ResearchScholar.objects.filter(dept=department).all(),
                 **context_temp,
             }
             return render(
@@ -622,7 +622,7 @@ def research_page(request, department, slug):
             )
         case "awarded":
             context = {
-                "phd": website.models.AwardedPHD.objects.all(),
+                "phd": website.models.AwardedPHD.objects.filter(dept = department).all(),
                 **context_temp,
             }
             return render(

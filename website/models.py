@@ -259,7 +259,7 @@ class Hero_Image(models.Model):
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
     def __str__(self):
-        return self.page + "---" + self.image.name + self.video.name
+        return f"{self.page}---{self.image.name}{self.video.name}"
 
     class Meta:
         verbose_name_plural = "Hero Images"
@@ -379,7 +379,7 @@ class AdmissionStatistics(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS, max_length=20, default="none")
 
     def __str__(self):
-        return self.dept + " " + self.year
+        return f"{self.dept} {self.year}"
 
 
 class AdmissionGraph(models.Model):
@@ -410,6 +410,7 @@ class WebsiteTeam(models.Model):
 class PHD_Faculty(models.Model):
     name = models.CharField(max_length=100)
     institute = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
     year = models.CharField(max_length=20)
     researchArea = models.CharField(max_length=100)
     options = (
@@ -417,9 +418,10 @@ class PHD_Faculty(models.Model):
         ("awarded", "Awarded"),
     )
     status = models.CharField(choices=options,default=None,max_length=100)
+    
 
     def __str__(self):
-        return self.name+"-"+self.department
+        return f"{self.name}-{self.department}"
 
     class Meta:
         verbose_name = "PHD_Faulty"
@@ -431,6 +433,8 @@ class ResearchScholar(models.Model):
     designation = models.CharField(max_length=100)
     researchArea = models.CharField(max_length=100)
     guideName = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+
 
     def __str__(self):
         return self.name
