@@ -49,7 +49,8 @@ def placement_page(request,slug):
         case "statistics":
             image = PlacementStatistics.objects.all()
             table = PlacementStatsTable.objects.all()
-            context = {**context_temp,"image":image,"table":table}
+            batchtable = Tables.objects.all()
+            context = {**context_temp,"image":image,"table":table,"batch":batchtable}
             return render(request, 'Placements/statistics.html',context=context)
         case "activities":
             return render(request, 'Placements/activities.html',context=context)
