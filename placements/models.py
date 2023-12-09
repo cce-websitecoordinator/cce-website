@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 
-
+from departments.models import DEPARTMENTS
 from website.models import Faculty
 
 ACADEMIC_YEARS = [
@@ -89,4 +89,20 @@ class PlacementList(models.Model):
     def __str__(self):
         return self.year
 
+class Tables(models.Model):
+    batch = models.CharField(max_length=100)
+    def __str__(self):
+        return self.batch
+class Batchstat(models.Model):
+    table = models.ForeignKey(Tables,on_delete=models.CASCADE,default=None)
+    Dep = models.CharField(max_length=100,choices=DEPARTMENTS,default=None)
+    strength = models.CharField(max_length=100)
+    placements = models.CharField(max_length=100)
+    higher_studies = models.CharField(max_length=100)
+    entrepreneurship = models.CharField(max_length=100)
+    total = models.CharField(max_length=100)
+    percentage = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.Dep
 

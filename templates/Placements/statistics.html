@@ -21,7 +21,7 @@
               <tr class="text-white border-solid border-1 border-grey">
                 <th class="p-2 border-solid border-1 border-grey">Year</th>
                 <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students<br/>(Final Year)</th>
-                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students placed</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Placed</th>
                 <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Higher Studies</th>
                 <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Entrepreneurship</th>
                 <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Total</th>
@@ -49,6 +49,35 @@
             <img src="{{img.graph.url}}" class="rounded-xl aspect-square object-contain" alt="Placement Graph">
             {% endfor %}
           </div>
+          {% for item in batch %}
+          <h1 class="text-4xl my-11 font-bold">{{item.title}}</h1>
+          <table class="w-full border border-solid border-1">
+            <thead class="rounded-t-lg bg-[#28AAE1] ">
+              <tr class="text-white border-solid border-1 border-grey">
+                <th class="p-2 border-solid border-1 border-grey">Branch</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Final Year Students</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Placed</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Higher Studies</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">No. of Students - Entrepreneurship</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Total</th>
+                <th class="p-2 border-solid border-1 border-grey border-l-2 border-white">Placement Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in item.table %}
+              <tr class="rounded-t-lg even:bg-[#e4e4e4] odd:bg-white ">
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.dept}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.strength}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.placements}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.higher_studies}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.entrepreneurship}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.total}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.percentage}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% endfor %}
         </div>
         
       </div>
