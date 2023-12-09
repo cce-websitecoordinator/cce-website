@@ -89,12 +89,7 @@ class PlacementList(models.Model):
     def __str__(self):
         return self.year
 
-class Tables(models.Model):
-    batch = models.CharField(max_length=100)
-    def __str__(self):
-        return self.batch
 class Batchstat(models.Model):
-    table = models.ForeignKey(Tables,on_delete=models.CASCADE,default=None)
     Dep = models.CharField(max_length=100,choices=DEPARTMENTS,default=None)
     strength = models.CharField(max_length=100)
     placements = models.CharField(max_length=100)
@@ -105,4 +100,10 @@ class Batchstat(models.Model):
 
     def __str__(self):
         return self.Dep
+
+class Tables(models.Model):
+    batch = models.CharField(max_length=100)
+    data = models.ManyToManyField(Batchstat, blank=True)
+    def __str__(self):
+        return self.batch
 
