@@ -49,8 +49,9 @@
             <img src="{{img.graph.url}}" class="rounded-xl aspect-square object-contain" alt="Placement Graph">
             {% endfor %}
           </div>
+          <h1 class="text-4xl my-11  text-center font-bold">Batchwise Statistics</h1>
           {% for item in batch %}
-          <h1 class="text-4xl my-11 font-bold">{{item.title}}</h1>
+          <h1 class="text-3xl my-11 font-bold">Batch {{item.batch}}</h1>
           <table class="w-full border border-solid border-1">
             <thead class="rounded-t-lg bg-[#28AAE1] ">
               <tr class="text-white border-solid border-1 border-grey">
@@ -64,9 +65,9 @@
               </tr>
             </thead>
             <tbody>
-              {% for row in item.table %}
+              {% for row in item.data.all %}
               <tr class="rounded-t-lg even:bg-[#e4e4e4] odd:bg-white ">
-                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.dept}}</td>
+                <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.Dep}}</td>
                 <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.strength}}</td>
                 <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.placements}}</td>
                 <td class="p-2 text-center border-solid border-r-2 border-[#e4e4e4]">{{row.higher_studies}}</td>
