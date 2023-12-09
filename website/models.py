@@ -421,11 +421,11 @@ class PHD_Faculty(models.Model):
     
 
     def __str__(self):
-        return f"{self.name}-{self.department}"
+        return f"{self.name}-{self.dept}"
 
     class Meta:
-        verbose_name = "PHD_Faulty"
-        verbose_name_plural = "PHD_Faultys"
+        verbose_name = "PHD Faculty"
+        verbose_name_plural = "PHD Facultys"
 
 class ResearchScholar(models.Model):
     name = models.CharField(max_length=100)
@@ -440,8 +440,8 @@ class ResearchScholar(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "ResearchScholar"
-        verbose_name_plural = "ResearchScholars"
+        verbose_name = "Research Scholar"
+        verbose_name_plural = "Research Scholars"
 
 class AwardedPHD(models.Model):
     name = models.CharField(max_length=100)
