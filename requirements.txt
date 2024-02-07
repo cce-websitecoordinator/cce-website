@@ -1,4 +1,4 @@
-Django==3.2.23
+Django==3.2.24
 django-browser-reload==1.5.0
 Pillow==10.0.1
 whitenoise==6.2.0
