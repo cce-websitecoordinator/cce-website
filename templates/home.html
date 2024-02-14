@@ -34,9 +34,9 @@
       <div class="flex flex-col justify-center items-center space-y-3">
 
         <h2 class="text-2xl">{{anouncement.title}}</h2>
-        <div class="max-h-[350px] overflow-clip">
+        <div class="max-h-[500px] overflow-clip">
 
-          <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-[210px]" loading="lazy">
+          <img src="{{anouncement.image.url}}" alt="anouncemnet" class="w-full" loading="lazy">
         </div>
         <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
         <!-- <p>{{anouncement.date}}</p> -->
