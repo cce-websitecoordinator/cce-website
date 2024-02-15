@@ -455,3 +455,16 @@ class AwardedPHD(models.Model):
     class Meta:
         verbose_name = "AwardedPHD"
         verbose_name_plural = "AwardedPHDs"
+
+
+
+class Techletics24(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="techletics24",blank=False)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Techletics 24 Image"
+        verbose_name_plural = "Tecletics Images"
