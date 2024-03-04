@@ -249,12 +249,12 @@ class Hero_Image(models.Model):
         ("external_audit_page", "External Audit"),
         ("ieee", "IEEE"),
         ("quality_policy", "Quality Policy"),
-        ("mentoring","Mentoring"),
-        ("ccil","CCIL"),
-        ("international_relations","International Relations Cell"),
-        ("webteam","webteam"),
-        ("ccevr","ccevr"),
-        ("result_analysis","Result Analysis"),
+        ("mentoring", "Mentoring"),
+        ("ccil", "CCIL"),
+        ("international_relations", "International Relations Cell"),
+        ("webteam", "webteam"),
+        ("ccevr", "ccevr"),
+        ("result_analysis", "Result Analysis"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -407,6 +407,7 @@ class WebsiteTeam(models.Model):
     def __str__(self):
         return self.name
 
+
 class PHD_Faculty(models.Model):
     name = models.CharField(max_length=100)
     institute = models.CharField(max_length=100)
@@ -417,8 +418,7 @@ class PHD_Faculty(models.Model):
         ("pursuing", "Pursuing"),
         ("awarded", "Awarded"),
     )
-    status = models.CharField(choices=options,default=None,max_length=100)
-    
+    status = models.CharField(choices=options, default=None, max_length=100)
 
     def __str__(self):
         return f"{self.name}-{self.dept}"
@@ -426,6 +426,7 @@ class PHD_Faculty(models.Model):
     class Meta:
         verbose_name = "PHD Faculty"
         verbose_name_plural = "PHD Facultys"
+
 
 class ResearchScholar(models.Model):
     name = models.CharField(max_length=100)
@@ -435,13 +436,13 @@ class ResearchScholar(models.Model):
     guideName = models.CharField(max_length=100)
     dept = models.CharField(max_length=100, choices=DEPARTMENTS)
 
-
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Research Scholar"
         verbose_name_plural = "Research Scholars"
+
 
 class AwardedPHD(models.Model):
     name = models.CharField(max_length=100)
@@ -455,3 +456,16 @@ class AwardedPHD(models.Model):
     class Meta:
         verbose_name = "AwardedPHD"
         verbose_name_plural = "AwardedPHDs"
+
+
+class Techletics24(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="techletics24", blank=False)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Techletics 24 Image"
+        verbose_name_plural = "Tecletics Images"
