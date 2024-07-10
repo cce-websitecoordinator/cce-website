@@ -9,8 +9,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    # networks:
-    #   - cce_web_network
+    networks:
+      - cce_web_network
     ports:
       - 5433:5432
   web:
