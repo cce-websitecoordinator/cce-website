@@ -18,8 +18,8 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
 
     <div class="w-full px-24 md:block hidden">
       <table class="w-full top-[100px] sticky ">
-        <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full">
-          <tr class="grid grid-cols-4">
+        <thead class="bg-[#28AAE199] rounded-t-xl w-full">
+          <tr class="grid grid-cols-4 p-4">
             <th>NAME</th>
             <th>DESIGNATION</th>
             <th>ROLE</th>
@@ -27,7 +27,7 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
           </tr>
         </thead>
         <tbody class=''>
-          {% for item in anti_ragging_cell_data%}
+          {% for item in data%}
           <tr class="grid grid-cols-4 text-center odd:bg-[#fafafa] min-h-[40px] my-2 ">
             <td>{{item.name}}</td>
             <td>{{item.designation}}</td>
@@ -39,7 +39,7 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
       </table>
     </div>
     <div class="w-full px-6 md:hidden space-y-3">
-      {% for item in anti_ragging_cell_data%}
+      {% for item in data%}
       <div class="bg-white p-3  h-auto shadow-md border-gray-50 border-[0.5px]">
         <div class="flex justify-between items-center">
           <h1 class="text-xl font-bold  ">{{forloop.counter}}. {{item.name}}</h1>

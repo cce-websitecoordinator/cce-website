@@ -5,7 +5,7 @@
 {% block body %}
 {% include 'components/Hero_section.html' %}
 <section class="md:px-24  pt-24 px-6" id="content">
-  <div class="flex gap-10 lg:flex-row flex-col">
+  <div class="flex gap-10 lg:flex-row flex-col items-start">
     <div class="col-span-1 flex justify-center items-center flex-col">
       <h2 class="font-semibold text-2xl px-4">Library</h2>
 
@@ -18,6 +18,21 @@
           Library</h3>
           
         <p class=" text-sm mt-4 text-justify mb-11">{{about.data}}</p>
+          
+          <div class="w-full grid grid-cols-2 gap-2">
+            {% for item in img %}
+            <div class="h-500px w-500px col-span-1">
+              <img src="{{item.img.url}}" class="w-full h-full object-cover"/>
+            </div>
+            
+            {% endfor %}
+          </div>
+          
+      </div>
+
+      <div>
+        
+        
       </div>
 
     </div>

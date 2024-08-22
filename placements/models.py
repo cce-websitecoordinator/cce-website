@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 
-
+from departments.models import DEPARTMENTS
 from website.models import Faculty
 
 ACADEMIC_YEARS = [
@@ -66,10 +66,11 @@ class PlacementStatsTable(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS,default="None",max_length=30)
     students = models.IntegerField()
     placement = models.IntegerField()
+    entrepreneurship = models.IntegerField()
     higher_studies = models.IntegerField()
     total = models.IntegerField()
+    percentage = models.IntegerField()
     highest = models.DecimalField(max_digits=5,decimal_places=2)
-    avg = models.DecimalField(max_digits=5,decimal_places=2)
     def __str__(self):
         return self.year
 
@@ -81,3 +82,28 @@ class PlacementGallery(models.Model):
     TYPE = (("img","IMAGE"),("vdo","VIDEO"))
     type = models.CharField(max_length=200, choices = TYPE, default="img")
     date = models.DateField(default=datetime.date.today)
+
+class PlacementList(models.Model):
+    pdf = models.FileField()
+    year = models.CharField(choices=ACADEMIC_YEARS,default="None",max_length=30)
+    def __str__(self):
+        return self.year
+
+class Batchstat(models.Model):
+    Dep = models.CharField(max_length=100,choices=DEPARTMENTS,default=None)
+    strength = models.CharField(max_length=100)
+    placements = models.CharField(max_length=100)
+    higher_studies = models.CharField(max_length=100)
+    entrepreneurship = models.CharField(max_length=100)
+    total = models.CharField(max_length=100)
+    percentage = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.Dep
+
+class Tables(models.Model):
+    batch = models.CharField(max_length=100)
+    data = models.ManyToManyField(Batchstat, blank=True)
+    def __str__(self):
+        return self.batch
+

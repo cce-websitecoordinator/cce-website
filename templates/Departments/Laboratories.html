@@ -22,17 +22,16 @@
       <div
         class="flex w-full px-0 md:space-x-0  flex-col md:flex-row md:odd:flex-row-reverse justify-center items-center md:items-start group h-auto">
         <div class="max-w-[300px] h-[300px] overflow-clip rounded-2xl mb-4">
-          <img src="{{lab.image.url}}" alt="{{lab.image.name}}"
-            class="w-[400px] object-cover h-full rounded-2xl">
-            
+          <img src="{{lab.image.url}}" alt="{{lab.image.name}}" class="w-[400px] object-cover h-full rounded-2xl">
+
         </div>
-        <div
-          class="space-y-5 md:group-odd:text-left flex flex-col md:group-odd:pr-11 px-2 md:w-[70%]">
+        <div class="space-y-5 md:group-odd:text-left flex flex-col md:group-odd:pr-11 px-2 md:w-[70%]">
           <h3 class="text-2xl font-bold">{{lab.name}}</h3>
           <p>{{lab.data}}</p>
-          <div class="font-bold">Faculties In Charge: {% for faculty in lab.faculties.all %} 
+          <div class="font-bold">Faculties In Charge: {% for faculty in lab.faculties.all %}
             {% if forloop.counter != 1 %},<br> {% endif %}
-            {{faculty.full_name}} ({{faculty.role.first}}){% endfor %}</div>
+            {{faculty.full_name}} ({{faculty.role.first}}){% endfor %}
+          </div>
         </div>
       </div>
 
@@ -43,9 +42,6 @@
 
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
-    <div>
-      {% with dep_updates as side_updates %}{% include 'Departments/Updates.html' %}{% endwith %}
-    </div>
     <div class="w-full space-y-6 mt-11 md:mt-0">
 
     </div>

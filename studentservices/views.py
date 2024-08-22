@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from studentservices.models import *
+import website.models
 from website.models import Gallery, Hero_Image
-from departments.models import NewsLetters,Magazines
+from departments.models import NewsLetters,Magazines, ProfessionalBodies, ProfessionalBodiesEvents, ProfessionalBodiesTeamMembers
 import aboutCCE.models
 
 
 # Create your views here.
 def arts_page(request):
     arts_updates = Artsupdates.objects.all()
-    gallery_imgs = ArtsGallery.objects.all().order_by('?')[:6]
+    gallery_imgs = Gallery.objects.all().order_by('?')[:6]
     hero_img = Hero_Image.objects.all().filter(page="arts").first
     context = {'arts_updates':arts_updates,"events":ArtsEvents.objects.all(),"teams":artsTeamStatus.objects.all(),"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Arts"}
     return render(request, 'StudentServices/arts.html',context=context)
@@ -18,7 +19,7 @@ def arts_page(request):
  
 def sports_page(request):
     arts_updates = SportsUpdates.objects.all()
-    gallery_imgs = SportsGallery.objects.all().order_by('?')[:6]
+    gallery_imgs = Gallery.objects.all().order_by('?')[:6]
     events = SportsEvents.objects.all()
     teams = SportsTeamStatus.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="sports").first
@@ -41,12 +42,11 @@ def iic_page(request):
     return render(request, 'StudentServices/iic.html',context={"hero_img":hero_img,"hero_title":"Institution’s Innovation Council","members":members,"certificates":certificates})
 
 
-
-
 def womencell_page(request):
     data = WomenCellCommitee.objects.all()
+    events = WomenEvents.objects.all()
     hero_img = Hero_Image.objects.all().filter(page="womencell").first
-    return render(request, 'StudentServices/womencell.html',context={"data":data,"hero_img":hero_img,"hero_title":"Women Development Cell"})
+    return render(request, 'StudentServices/womencell.html',context={"data":data,"events":events,"hero_img":hero_img,"hero_title":"Women Empowerment Cell"})
 
 def ieee_page(request):
     about = IEEEAbout.objects.all().first()
@@ -55,6 +55,21 @@ def ieee_page(request):
     hero_img = Hero_Image.objects.all().filter(page="ieee").first()
     gallery = Gallery.objects.all().order_by('?')[:20]
     return render(request, 'StudentServices/ieee.html',context={"about":about,"hero_img":hero_img,"hero_title":"IEEE","events":events,"members":members,"gallery":gallery})
+
+
+def pmi_page(request):
+    slug = '8'
+    context = {
+        "professional_body": ProfessionalBodies.objects.filter(id=slug).first(),
+        "events": ProfessionalBodiesEvents.objects.filter(ProfessionalBodies_id=slug),
+        "members": ProfessionalBodiesTeamMembers.objects.filter(
+            ProfessionalBodies_id=slug
+        ).order_by("priority"),
+        "gallery": website.models.Gallery.objects.all().order_by("?")[:6],
+    }
+    return render(
+        request, "Departments/professsionalbody_showcase.html", context=context
+    )
 
 def union_page(request):
     union = Union.objects.all().first()
@@ -74,9 +89,11 @@ def study_abroad_page(request):
 
 
 def mentoring_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="mentoring").first
     context_temp = {
         'title': 'Mentoring',
         'hero_title': 'Mentoring',
+        'hero_img':hero_img,
     }
 
     about = Mentoring.objects.all().first()
@@ -89,9 +106,11 @@ def mentoring_page(request):
     return render(request, 'StudentServices/mentoring.html',context=context)
 
 def irc_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="international_relations").first
     context_temp = {
         'title': 'International Relations Cell',
         'hero_title': 'International Relations Cell',
+        'hero_img': hero_img,
     }
     about = IRCAbout.objects.all().first()
     events = IRCEvents.objects.all()
@@ -102,19 +121,36 @@ def irc_page(request):
     return render(request, 'StudentServices/irc.html',context=context)
 
 def ccil_page(request):
+    hero_img = Hero_Image.objects.all().filter(page="ccil").first
     context_temp = {
         'title': 'Christ Center for Innovation and Open Learning',
         'hero_title': 'Christ Center for Innovation and Open Learning',
+        'hero_img': hero_img,
     }
     about = CCILAbout.objects.all().first()
     events = CCILEvents.objects.all()
+    sepgallery = CCILGallery.objects.all()
     members = CCILTeam.objects.all().order_by('priority')
     gallery = Gallery.objects.all().order_by('?')[:20]
 
 
-    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery,"sepgallery":sepgallery}
     return render(request, 'StudentServices/ccil.html',context=context)
 
+def ccevr_page(request):
+    context_temp = {
+        'title': 'Christ Center for Electric Vehicle Research',
+        'hero_title': 'Christ Center for Electric Vehicle Research',
+        'hero_img': Hero_Image.objects.filter(page='ccevr').first(),
+    }
+    about = CCEVRAbout.objects.all().first()
+    events = CCEVREvents.objects.all()
+    members = CCEVRTeam.objects.all().order_by('priority')
+    gallery = Gallery.objects.all().order_by('?')[:20]
+
+
+    context={**context_temp,"about":about,"events":events,"members":members,"gallery":gallery}
+    return render(request, 'StudentServices/ccevr.html',context=context)
 
 
 def central_library_page(request,slug):  # sourcery skip: extract-method
@@ -130,8 +166,9 @@ def central_library_page(request,slug):  # sourcery skip: extract-method
             vision = CentralLibrary.objects.filter(name='Vision').first()
             mission = CentralLibrary.objects.filter(name='Mission').first()
             about = CentralLibrary.objects.filter(name="about").first() 
+            img = LibraryImages.objects.all()
             gallery = Gallery.objects.all().order_by('?')[:6]
-            context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery}
+            context = {**context_temp,'vision':vision,'mission':mission,'about':about,"gallery":gallery,"img":img}
             return render(request, 'StudentServices/central_library.html',context=context)
         case "faculty_and_staff":
             context = {**context_temp,'data':LibraryFaculty.objects.all()}

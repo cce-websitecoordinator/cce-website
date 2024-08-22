@@ -3,14 +3,14 @@
 <div
   class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[999]  hidden topbar">
   <div class="hidden md:block space-x-2">
-    <a onclick="scrollToSection('map')" ><i class="fa-solid fa-map-location-dot fa-lg"></i><a/>
+    <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i><a/>
     <a href="tel:123456789" ><i class="fa-solid fa-phone mr-1 fa-lg"></i><a/>
     <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i><a/>
   </div>
   <div class="space-x-6 lg:flex  justify-center items-center hidden  w-auto">
     <a href="{%url 'home_research' 'index'%}">Research</a>
     
-    {% comment %} <a href="/about">Alumni</a> {% endcomment %}
+    <a href="https://alumni.cce.edu.in/">Alumni</a>
    
    
     <a href="{%url 'admission'%}">Admissions</a>
@@ -27,7 +27,7 @@
 
     <a href="/student_services/central_library">Central Library</a>
     
-    <a href="/">Techletics</a>
+    <a href="https://techletics.cce.edu.in">Techletics</a>
     <div  class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
       <div class="group-hover:flex space-x-4 hidden duration-700">
 
@@ -57,20 +57,25 @@
   </div>
 
     <a href="{%url 'home_research' 'index' %}">Research</a>
-    {% comment %} <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
-    <a href="/about">Alumni</a> {% endcomment %}
+
+    <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
+    <a href="https://alumni.cce.edu.in/">Alumni</a>
    
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Admission</a>
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Cells</a>
   
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/nirf">NIRF</a>
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a target="_blank" href="https://docs.google.com/forms/d/1HDf0pJrkBTXZxqb36K3GDw-lN3fC8tr92OAgtjnKi2g/viewform?edit_requested=true">Careers</a>
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Techletics</a>
+    
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
 
     <a href="https://cce.linways.com/staff/">Faculty Login</a>
@@ -97,12 +102,6 @@
       }
     });
   });
-  function scrollToSection(id) {
-    var section = document.getElementById(id);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
 
 </script>
 {% endblock %}

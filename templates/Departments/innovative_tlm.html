@@ -3,9 +3,9 @@
 {%include 'Departments/Hero.html' %}
 
 
-<section class="md:px-24 pt-24 px-6" id="content">
+<section class="md:pl-16 pt-24 px-6" id="content">
 
-  <div class="flex gap-10 md:flex-row flex-col">
+  <div class="flex  md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
       <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
@@ -13,9 +13,9 @@
       {% include 'Departments/Sidebar.html' %}
     </div>
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full text-base leading-loose">
       {% comment %} Medium table start {% endcomment %}
-      <div class="w-full px-20 md:block hidden">
+      <div class="w-full px-12 md:block hidden">
         <div>
           <h3 class="text-2xl font-semibold text-left mt-11 w-full p-2">Innovative
             Teaching-Learning Methods </h3>
@@ -24,22 +24,22 @@
           <p class="mt-6 text-left">
             {{ innovative_tlm.about }}
           </p>
-        </div> 
-        <table class="w-full top-[100px] ">
-          <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
-            <tr class="grid grid-cols-4 text-center my-2">
+        </div>
+        <table class="w-fit top-[100px] border-2">
+          <thead class="bg-[#28AAE199] rounded-t-xl w-full">
+            <tr class="grid grid-cols-6 text-center my-2">
               <th>Sl No.</th>
-              <th class="col-span-3">Innovative Teaching – Learning Methods</th>
+              <th class="col-span-5">Innovative Teaching – Learning Methods</th>
             </tr>
           </thead>
 
-          <tbody class>
+          <tbody>
             {% for tlm_methods in innovative_tlm %}
 
-            <tr class="grid grid-cols-4 text-center odd:bg-[#fafafa]
+            <tr class="grid grid-cols-6 text-center odd:bg-[#fafafa]
                 min-h-[40px] my-2 ">
               <td>{{ forloop.counter }}</td>
-              <td class="col-span-3">{{tlm_methods}}</td>
+              <td class="col-span-5 mr-4">{{tlm_methods}}</td>
             </tr>
 
             {% endfor %}
@@ -53,8 +53,7 @@
       <div class="w-full px-11 md:hidden space-y-3">
         {% for tlm_methods in innovative_tlm %}
 
-        <div
-          class="bg-white p-3 h-auto w-full shadow-md border-gray-50 border-[0.5px]">
+        <div class="bg-white p-3 h-auto w-full shadow-md border-gray-50 border-[0.5px]">
           <div class="flex justify-between items-center">
             <h1 class="text-xl font-bold">
               {{ forloop.counter }}. {{tlm_methods}}
@@ -64,72 +63,77 @@
         {% endfor %}
       </div>
       {% comment %} Mobile table end {% endcomment %}
-      
+
 
       {% for tlm_methods in innovative_tlm %}
 
-      <div class="w-full flex flex-col justify-center md:px-20 items-left">
-        <p class="mt-6 text-left"><span class="font-bold">{{ forloop.counter}}.
+      <div class="w-full flex flex-col justify-center p-12 items-left">
+        <p class="mt-6 text-justify"><span class="font-bold">{{ forloop.counter}}.
             {{ tlm_methods }}: - </span>{{ tlm_methods.about }}</p>
 
 
-        
-          
+
+
 
         {% comment %} Medium table start {% endcomment %}
-        <div class="w-full pt-10 md:block hidden">
-          <table class="w-full top-[100px] ">
-            <thead class="bg-[#28AAE199] h-[50px] rounded-t-xl w-full ">
-              <tr class="grid grid-cols-12 text-center my-2">
-                <th>Sl No.</th>
-                <th class="col-span-3">Innovative Teaching Learning Method</th>
-                <th class="col-span-3">Goal</th>
-                <th class="col-span-5">Method</th>
-              </tr>
+        <div class="w-full pt-10 md:block hidden text-base tracking-wider leading-loose">
+          <table class="w-full top-[100px] border-2">
+            <thead class="bg-[#28AAE199] rounded-t-xl text-[0.9rem] w-full">
+                <tr class="grid grid-cols-12 text-center my-2">
+                    <th class="my-auto">Sl No.</th>
+                    <th class="col-span-2 my-auto">Innovative TLM</th>
+                    <th class="col-span-4 my-auto">Goal</th>
+                    <th class="col-span-5 my-auto">Method</th>
+                </tr>
             </thead>
-
-            <tbody class>
-              {% with loop_counter=0 %}
-              {% for tlm_tabl in tlm_table %}
-
-              {% if tlm_tabl.tlm_method == tlm_methods %}
-              
-
-              <tr class="grid grid-cols-12 text-center my-2">
-                <td>{{ loop_counter|add:1 }}</td>
-                <td class="col-span-3 px-4 ">{{tlm_tabl.title}}</td>
-                <td class="col-span-3 px-4 text-justify">
-                  {{tlm_tabl.goal | safe}}
-                </td>
-                <td class="col-span-5 px-4 text-justify">
-                  {{tlm_tabl.activity | safe}}
-                  <span class="text-blue">Click here</span>
-                </td>
-              </tr>
-
-              
-              {% endif %}
-              {% endfor %}
-              {% endwith %}
-
+        
+            <tbody>
+                {% with loop_count=0 %}
+                    {% for tlm_tabl in tlm_table %}
+                        {% if tlm_tabl.tlm_method == tlm_methods %}
+                            <tr class="grid grid-cols-12 text-center text-sm my-2">
+                                <td>{{ loop_count|add:"1" }}</td>
+                                <td class="col-span-2">{{ tlm_tabl.title }}</td>
+                                <td class="col-span-4 px-2 text-justify">
+                                    {{ tlm_tabl.goal | safe }}
+                                </td>
+                                <td class="col-span-5 px-4 text-justify">
+                                    {{ tlm_tabl.activity | safe }}
+        
+                                    {% if tlm_tabl.image %}
+                                        <div class="w-full mt-4">
+                                            <img src="{{ tlm_tabl.image.url }}" alt="Image" class="w-full h-auto ">
+                                        </div>
+                                    {% endif %}
+        
+                                    {% if tlm_tabl.link %}
+                                        <p class="w-full my-4 pt-2 text-justify"><span>Link : </span><a
+                                                href="{{ tlm_tabl.link }}" target="_blank"
+                                                class="text-blue-500 text-sm ">{{ tlm_tabl.link }}</a></p>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
             </tbody>
-          </table>
-
+        </table>
+        
         </div>
         {% comment %} Medium table end {% endcomment %}
 
         {% comment %} Mobile table start {% endcomment %}
         <div class="w-full  md:hidden space-y-3">
-          {% with loop_counter=0 %}
+          {% with loop_counter1=0 %}
           {% for item in tlm_table %}
           {% if item.tlm_method == tlm_methods %}
-          
-          <div
-            class="bg-white p-3 h-auto shadow-md w-full border-gray-50
+
+          <div class="bg-white p-3 h-auto shadow-md w-full border-gray-50
               border-[0.5px]">
             <div class="flex flex-col justify-between items-center">
               <h1 class="text-xl font-bold">
-                {{ loop_counter|add:1 }}. {{item.title}}
+                {{ loop_counter1|add:1 }}. {{item.title}}
               </h1><br><br>
               <h3 class="text-base font-semibold pt-4">
                 Goal
@@ -146,7 +150,7 @@
 
             </div>
           </div>
-      
+
           {% endif %}
           {% endfor %}
           {% endwith %}

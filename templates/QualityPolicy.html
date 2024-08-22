@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Quality Policy {% endblock title %} {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+<section class="md:px-24  pt-24 px-6" id="content">
+
+    <div class="flex  lg:flex-row flex-col">
+
+        <div class=" w-full space-y-16 mb-10 ">
+            <div class="w-full flex flex-col justify-center items-start">
+                <h1 class="text-5xl mb-8 font-bold text-blue-700">Quality Policy</h1>
+
+                <div class="mx-auto p-10 border-2 border-blue-500">
+                    <div class=" rounded-lg">
+              
+                        <p class="text-justify ">{{data.data}}</p>
+
+                      </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock body %}
+{% block script %}
+
+{% endblock script %}

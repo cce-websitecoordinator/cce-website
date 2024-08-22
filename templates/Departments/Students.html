@@ -20,7 +20,7 @@
                       class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 ">
                       Faculty & Staff</a>
                     <a href="{% url 'Department' dep 'students' %}#content"
-                      class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-gray-700 bg-blue-500 border-blue-500 ">
+                      class="relative flex text-white items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 bg-blue-500 border-blue-500 ">
                       Students</a>      
                 </div>
               </div>
@@ -30,7 +30,7 @@
 
                 {% for item in students %}
                 
-                <h3 class="text-xl font-semibold w-full text-left mb-4 mt-11 py-1">Batch
+                <h3 class="text-xl font-semibold w-full text-left mb-4 mt-11 py-1">Academic Year
                     {{item.year}}</h3>
                     <div class="p-1 border-2 border-blue-500 h-[90vh] w-[50rem]">
                         <object

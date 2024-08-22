@@ -2,6 +2,7 @@ import datetime
 from random import shuffle
 import random
 from django.shortcuts import render
+import website
 from website.models import *
 from django.http import Http404, HttpResponse
 from django.core import serializers
@@ -32,8 +33,8 @@ def home_page(request):
             "updates": updates,
             "Events": events,
             "gallery": gallery_imgs,
-            "imgs":image_urls,
-            'gallery_data': gallery_data,
+            "imgs": image_urls,
+            "gallery_data": gallery_data,
             "upcomingEvents": upcomingEvents,
             "recruiters": recruiters,
             "recruiters2": recruiters2,
@@ -48,7 +49,12 @@ def events_page(request):
     hero_img = Hero_Image.objects.all().filter(page="events").first()
     hero_title = "Events"
     gallery_imgs = Gallery.objects.all().order_by("?")[:6]
-    context = {"events" : events, "hero_img": hero_img, "hero_title": hero_title,"gallery": gallery_imgs}
+    context = {
+        "events": events,
+        "hero_img": hero_img,
+        "hero_title": hero_title,
+        "gallery": gallery_imgs,
+    }
 
     return render(request, "Events.html", context=context)
 
@@ -56,29 +62,38 @@ def events_page(request):
 def admission_page(request):
     hero_img = Hero_Image.objects.all().filter(page="admissions").first()
     hero_title = "Admission"
-    return render(request, "admission.html",context={"hero_img":hero_img,"hero_title":hero_title})
+    return render(
+        request,
+        "admission.html",
+        context={"hero_img": hero_img, "hero_title": hero_title},
+    )
+
 
 def admission_stat_page(request):
     hero_img = Hero_Image.objects.all().filter(page="admissions").first()
     hero_title = "Admission Statistics"
-    years = [year[0] for year in AdmissionStatistics.objects.values_list('year').distinct()]
-    context_temp = {"hero_img":hero_img,"hero_title":hero_title,"years":years}
+    years = [
+        year[0] for year in AdmissionStatistics.objects.values_list("year").distinct()
+    ]
+    context_temp = {"hero_img": hero_img, "hero_title": hero_title, "years": years}
     if request.method == "GET":
         yr = request.GET.get("year")
         if yr:
-            table = AdmissionStatistics.objects.all().filter(year = yr)
-            graph = AdmissionGraph.objects.all().filter(year = yr)
-            context = {**context_temp,"table":table,"graph":graph,"year":yr}
+            table = AdmissionStatistics.objects.all().filter(year=yr)
+            graph = AdmissionGraph.objects.all().filter(year=yr)
+            context = {**context_temp, "table": table, "graph": graph, "year": yr}
         else:
-            table = AdmissionStatistics.objects.all().filter(year = years[0])
-            graph = AdmissionGraph.objects.all().filter(year = years[0])
-            context = {**context_temp,"table":table,"graph":graph,"year":years[0]}
-        return render(request, 'admission_stats.html',context=context)    
+            table = AdmissionStatistics.objects.all().filter(year=years[0])
+            graph = AdmissionGraph.objects.all().filter(year=years[0])
+            context = {**context_temp, "table": table, "graph": graph, "year": years[0]}
+        return render(request, "admission_stats.html", context=context)
     else:
         return Http404("Page Not Found")
 
+
 def nirf_page(request):
     return render(request, "nirf.html", context={})
+
 
 def nba_page(request):
     return render(request, "nba.html", context={})
@@ -189,6 +204,36 @@ def research_page(request, slug):
                 "publications": publications,
             }
             return render(request, "researchAndConsultancy/publications.html", context)
+        case "phd":
+            context = {
+                **context_temp,
+                "hero_title": "Faculty pursing PHD",
+                "phd": PHD_Faculty.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/phd_faculty.html", context
+            )
+        case "scholars":
+            context = {
+                **context_temp,
+                "hero_title": "Research Scholars",
+                "phd": ResearchScholar.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/research_scholars.html", context
+            )
+        case "awarded":
+            context = {
+                **context_temp,
+                "hero_title": "Faculty awarded PHD",
+                "phd": AwardedPHD.objects.all(),
+            }
+
+            return render(
+                request, "researchAndConsultancy/awarded_phd.html", context
+            )
         case "research_guides":
             research_guides = ResearchGuides.objects.all()
             context = {
@@ -203,6 +248,7 @@ def research_page(request, slug):
         case other:
             raise Http404("Page Kanumanilla")
 
+
 def library(request, slug):
     hero_img = Hero_Image.objects.all().filter(page="library").first()
     context_temp = {"hero_img": hero_img, "slug": slug}
@@ -210,12 +256,11 @@ def library(request, slug):
         case "nptel":
             hero_title = "NPTEL"
             pdfs = Nptel.objects.all()
-            context = {"hero_title": hero_title,'pdfs':pdfs, **context_temp}
+            context = {"hero_title": hero_title, "pdfs": pdfs, **context_temp}
             return render(request, "library/nptel.html", context)
         case "e-resources":
             context = {
                 "hero_title": "E-Resources",
-                
                 **context_temp,
             }
             return render(
@@ -228,15 +273,32 @@ def test_page(request):
 
 
 def server_error_page(request):
-    return render(request, "Errors/500.html",status=500)
+    return render(request, "Errors/500.html", status=500)
 
 
 def not_found_error_page(request, exception):
+    return render(request, "Errors/404.html", status=404)
 
-    return render(request, "Errors/404.html",status=404)
 
 def websiteteam(request):
-    return render(request,'webteam.html' ,
-    context={
-        "data": WebsiteTeam.objects.all(), "hero_title": "Website Team"
-    })
+    return render(
+        request,
+        "webteam.html",
+        context={
+            "data": WebsiteTeam.objects.all(),
+            "hero_title": "Website Team",
+            "hero_img": Hero_Image.objects.filter(page="webteam").first(),
+        },
+    )
+
+
+def quality_policy(request):
+    return render(
+        request,
+        "QualityPolicy.html",
+        context={
+            "data": QualityPolicy.objects.first(),
+            "hero_title": "Quality Policy",
+            "hero_img": Hero_Image.objects.filter(page="quality_policy").first(),
+        },
+    )

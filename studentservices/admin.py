@@ -26,7 +26,6 @@ admin.site.register(Clubs)
 admin.site.register(ClubEvents)
 admin.site.register(ClubMembers)
 admin.site.register(ClubsHeroImage)
-
 admin.site.register(WomenCellCommitee)
 admin.site.register(Union)
 admin.site.register(UnionCommitee)
@@ -47,6 +46,12 @@ admin.site.register(IRCTeam)
 admin.site.register(CCILAbout)
 admin.site.register(CCILEvents)
 admin.site.register(CCILTeam)
+admin.site.register(CCEVRAbout)
+admin.site.register(CCEVREvents)
+admin.site.register(CCEVRTeam)
+admin.site.register(LibraryImages)
+admin.site.register(WomenEvents)
+admin.site.register(CCILGallery)
 
 
 

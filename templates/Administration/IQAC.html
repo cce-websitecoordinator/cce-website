@@ -4,13 +4,13 @@
 <main class="w-[100vw]">
   {% include 'components/Hero_section.html' %}
 
-  <section class="max-w-screen-2xl mx-auto px-11 mt-11">
+  <section class="max-w-screen-2xl  px-16 mx-12 mt-10" id="content">
     <div class="w-full text-center">
       <div class="">
-        <h1 class="text-center font-semibold lg:text-5xl text-4xl mb-6">
+        <h1 class="text-center font-semibold text-4xl mb-6">
           About
         </h1>
-        <p>
+        <p class="text-justify">
           To bring forth high quality standards and to maintain quality
           consciousness, Internal Quality Assurance Cell (IQAC) has been
           constituted at Christ College of Engineering. Internal Quality
@@ -22,36 +22,26 @@
           helps the institution to set benchmarks. It assesses the performance
           of the institute periodically and conducts internal audits.
         </p>
-        <div class="flex items-center justify-evenly gap-2 text-lg w-full flex-wrap font-medium mt-8">
+        <div class="flex items-center justify-center gap-2 text-lg w-full flex-wrap  font-medium mt-16">
 
           <a href="/nba"
-            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-white hover:bg-blue-500 hover:border-blue-500 ">
+            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 text-base px-3 py-1 text-white bg-blue-500 border-blue-500 ">
             NBA</a>
           <a href="/nirf"
-            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-white hover:bg-blue-500 hover:border-blue-500">
-            NIRF</a>  
-            
+            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 text-base px-3 py-1 text-white bg-blue-500 border-blue-500 ">
+            NIRF</a>
           <a href="{% url 'external_audit' %}"
-            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-white hover:bg-blue-500 hover:border-blue-500">
+            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 text-base px-3 py-1 text-white bg-blue-500 border-blue-500 ">
             External Audit</a>
-
           <a href="{% url 'internal_audit' %}"
-            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2  px-3 py-2 text-gray-700 hover:text-white hover:bg-blue-500 hover:border-blue-500">
-            Internal Audit</a>
-      </div>
+            class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 text-base px-3 py-1 text-white bg-blue-500 border-blue-500 ">
+            Internal Audit</a>        </div>
       </div>
     </div>
-    <div
-      class="w-full flex justify-evenly px-11 bg-[#F4FFE7] p-6 items-center mt-11 relative"
-    >
-      <div
-        class="lg:w-[300px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1"
-      >
-        <img
-          src="{%  static  'images/iqac/objectives.png'  %}"
-          alt="iqac_objecctives"
-          class="lg:opacity-[1] opacity-[0.5]"
-        />
+    <div class="w-full flex justify-evenly px-11 bg-[#F4FFE7] p-6 items-center mt-11 relative">
+      <div class="lg:w-[300px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1">
+        <img src="{%  static  'images/iqac/objectives.png'  %}" alt="iqac_objecctives"
+          class="lg:opacity-[1] opacity-[0.5]" />
       </div>
       <div class="z-0">
         <h2 class="mb-4 font-semibold text-4xl">Objectives</h2>
@@ -73,17 +63,10 @@
         </ol>
       </div>
     </div>
-    <div
-      class="w-full flex justify-evenly px-11 bg-[#DBF4FF] p-6 items-center mt-11 relative gap-10"
-    >
-      <div
-        class="lg:w-[380px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1"
-      >
-        <img
-          src="{%  static  'images/iqac/functions.png'  %}"
-          alt="iqac_objecctives"
-          class="lg:opacity-[1] opacity-[0.5]"
-        />
+    <div class="w-full flex justify-evenly px-11 bg-[#DBF4FF] p-6 items-center mt-11 relative gap-10">
+      <div class="lg:w-[380px] lg:relative absolute inset-0 w-full flex items-center justify-center -z-1">
+        <img src="{%  static  'images/iqac/functions.png'  %}" alt="iqac_objecctives"
+          class="lg:opacity-[1] opacity-[0.5]" />
       </div>
       <div class="z-0">
         <h2 class="mb-4 font-semibold text-4xl">Functions</h2>
@@ -121,7 +104,7 @@
     </div>
   </section>
 
-  <section class="max-w-screen-2xl mx-auto px-11">
+  <section class="max-w-screen-2xl  px-16 mx-12 mt-10">
     <h1 class="my-11 font-semibold text-4xl text-center">
       Executive Committee
     </h1>
@@ -150,9 +133,7 @@
       mobile view starts {% endcomment %}
       <div class="w-full px-11 md:hidden space-y-3">
         {% for item in IQAC_executive_commitee%}
-        <div
-          class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]"
-        >
+        <div class="bg-white p-3 h-auto shadow-md border-gray-50 border-[0.5px]">
           <div class="flex justify-between items-center">
             <h1 class="text-xl font-bold">
               {{forloop.counter}}. {{item.name}}
@@ -175,27 +156,26 @@
       {% comment %} mobile view for table ends {% endcomment %}
     </div>
     <h1 class="text-center text-3xl mt-11">IQAC Formation Notices</h1>
-    <div class="w-full px-11 bg-[#f7f7ea] p-6 my-11 relative gap-10">
-      <ul class="text-xl">
+    <div class="w-full px-11 border-2 p-6 my-11 relative gap-10">
+      <ul class="text-lg">
         {% for item in formation_notice %}
-        <li><a href="{{item.notice.url}}" target="_blank">{{item.name}}</a></li>
+        <li class="py-2 text-blue-600"><a href="{{item.notice.url}}" target="_blank">{{item.name}}</a></li>
         {% endfor %}
       </ul>
     </div>
   </section>
 
-  <section>
+  <section class="max-w-screen-2xl  px-16 mx-12 mt-10">
     <h1 class="text-center text-3xl mt-11">Meeting Minutes</h1>
     {% for year in years %}
-    
-    
 
-    <div class = "w-full px-11 p-6 my-11 relative gap-10">
-      
+    <div class="w-full px-11 p-6 my-2 relative gap-10">
+
       <h1 class="text-xl pl-2 pb-8 font-bold">{{year}}</h1>
       {%for item in minutes%}
       {% if item.year == year %}
-        <a href="{{item.file.url}}" target="_blank" class=" text-lg mt-2 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 w-fit items-center">{{item.name}}</a>
+      <a href="{{item.file.url}}" target="_blank"
+        class=" text-sm rounded-xl text-white bg-[#007FFF] mx-4 justify-center py-1 px-4 w-fit items-center">{{item.name}}</a>
       {% endif %}
       {% endfor %}
     </div>

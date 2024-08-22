@@ -128,7 +128,7 @@ class AssociationsEvents(models.Model):
     image = models.ImageField(upload_to="AssociationsImagesEvents")
 
     def __str__(self):
-        return self.title
+        return f"{self.assosiation.title} - {self.title}"
 
 
 class AssociationTeamMembers(models.Model):
@@ -139,7 +139,8 @@ class AssociationTeamMembers(models.Model):
     priority = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return f"{self.assosiation.title} - {self.name} - {self.designation}"
+
 
 
 class ProfessionalBodies(models.Model):
@@ -165,7 +166,7 @@ class ProfessionalBodiesEvents(models.Model):
     image = models.ImageField(upload_to="ProfessionalBodiesImagesEvents")
 
     def __str__(self):
-        return self.title
+        return f"{self.ProfessionalBodies.title} - {self.title}"
 
 
 class ProfessionalBodiesTeamMembers(models.Model):
@@ -176,7 +177,8 @@ class ProfessionalBodiesTeamMembers(models.Model):
     priority = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return f"{self.ProfessionalBodies.title} - {self.name} - {self.designation}"
+
 
 
 class SyllabusPDFS(models.Model):
@@ -260,7 +262,7 @@ class Events(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     TYPE = (
         ("workshops_seminars", "Workshops / Seminars"),
-        ("addons", "Add-Ons"),
+        ("addons", "Value Added Courses"),
         ("iv", "Industrial Visits"),
         ("competitions","competetions"),
     )
@@ -364,6 +366,8 @@ class TLM_table(models.Model):
     title = models.CharField(max_length=200, default=tlm_method)
     goal = models.TextField()
     activity = models.TextField()
+    link = models.CharField(max_length=100,blank=True)
+    image = models.ImageField(upload_to="tlm_table_data",blank=True)
 
     def __str__(self) -> str:
         return self.tlm_method.department+' - '+self.tlm_method.tlm_methods
@@ -560,7 +564,7 @@ class Holistics(models.Model):
     
 class Placements(models.Model):
     year = models.CharField(
-        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+        max_length=200, default="None"
     )
     students_pdf = models.FileField()
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
@@ -602,3 +606,18 @@ class ResearchAbout(models.Model):
 
     def __str__(self):
         return self.department
+    
+class Facultypdf(models.Model):
+    year = models.CharField(
+        max_length=200, choices=ACADEMIC_YEARS, default=ACADEMIC_YEARS[-2]
+    )
+    pdf = models.FileField()
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+
+    def __str__(self):
+        return self.year+" "+self.department
+    
+    class Meta:
+        verbose_name = "Faculty PDF"
+        verbose_name_plural = "Faculty PDFs"
+

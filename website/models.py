@@ -34,11 +34,6 @@ class Testimonials(models.Model):
     quote = models.CharField(max_length=500)
     image = models.ImageField(upload_to="testimonials")
 
-    def save(self, *args, **kwargs):
-        new_image = Compress(self.image)
-        self.image = new_image
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.full_name
 
@@ -50,7 +45,16 @@ class HomeUpdates(models.Model):
         return self.data
 
 
+class QualityPolicy(models.Model):
+    data = models.TextField()
+
+    def __str__(self):
+        return self.data
+
+
 class HomeEvents(models.Model):
+    # has_video = models.BooleanField(default=False);
+    # video = models.FileField(upload_to="Heros_Videos", blank=True, default="")
     img1 = models.ImageField(
         upload_to="HomeEvents", null=False, blank=False, default="HomeEvents/1.jpg"
     )
@@ -231,7 +235,7 @@ class Hero_Image(models.Model):
         ("vision_2035", "Vision 2035"),
         ("annual_report", "Annual Report"),
         ("college_handbook", "College Handbook"),
-        ("college_calendar", "College Calendar"),
+        ("academic_calendar", "academic Calendar"),
         ("audited_statements", "Audited Statements"),
         ("college_magazine", "College Magazine"),
         ("ktu_aicte_regulations", "KTU AICTE Regulations"),
@@ -244,12 +248,18 @@ class Hero_Image(models.Model):
         ("internal_audit_page", "Internal Audit"),
         ("external_audit_page", "External Audit"),
         ("ieee", "IEEE"),
-
+        ("quality_policy", "Quality Policy"),
+        ("mentoring", "Mentoring"),
+        ("ccil", "CCIL"),
+        ("international_relations", "International Relations Cell"),
+        ("webteam", "webteam"),
+        ("ccevr", "ccevr"),
+        ("result_analysis", "Result Analysis"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
     def __str__(self):
-        return self.page + "---" + self.image.name + self.video.name
+        return f"{self.page}---{self.image.name}{self.video.name}"
 
     class Meta:
         verbose_name_plural = "Hero Images"
@@ -284,7 +294,6 @@ class HomeAnouncement(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 class FundedProjects(models.Model):
@@ -370,7 +379,7 @@ class AdmissionStatistics(models.Model):
     year = models.CharField(choices=ACADEMIC_YEARS, max_length=20, default="none")
 
     def __str__(self):
-        return self.dept + " " + self.year
+        return f"{self.dept} {self.year}"
 
 
 class AdmissionGraph(models.Model):
@@ -384,14 +393,79 @@ class Nptel(models.Model):
 
     def __str__(self):
         return self.title_year
+
+
 class WebsiteTeam(models.Model):
-    name = models.CharField(max_length=100,default=None)
+    name = models.CharField(max_length=100, default=None)
     img = models.ImageField(upload_to="websiteteam", blank=True)
-    role = models.CharField(max_length=100,default=None)
-    batch = models.CharField(max_length=100, choices=ACADEMIC_YEARS,default=None)
+    role = models.CharField(max_length=100, default=None)
+    batch = models.CharField(max_length=100, default=None)
 
     class Meta:
         verbose_name_plural = "Website Team"
 
     def __str__(self):
         return self.name
+
+
+class PHD_Faculty(models.Model):
+    name = models.CharField(max_length=100)
+    institute = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+    year = models.CharField(max_length=20)
+    researchArea = models.CharField(max_length=100)
+    options = (
+        ("pursuing", "Pursuing"),
+        ("awarded", "Awarded"),
+    )
+    status = models.CharField(choices=options, default=None, max_length=100)
+
+    def __str__(self):
+        return f"{self.name}-{self.dept}"
+
+    class Meta:
+        verbose_name = "PHD Faculty"
+        verbose_name_plural = "PHD Facultys"
+
+
+class ResearchScholar(models.Model):
+    name = models.CharField(max_length=100)
+    institute = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    researchArea = models.CharField(max_length=100)
+    guideName = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Research Scholar"
+        verbose_name_plural = "Research Scholars"
+
+
+class AwardedPHD(models.Model):
+    name = models.CharField(max_length=100)
+    dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+    designation = models.CharField(max_length=100)
+    researchArea = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "AwardedPHD"
+        verbose_name_plural = "AwardedPHDs"
+
+
+# class Techletics24(models.Model):
+#     name = models.CharField(max_length=100)
+#     image = models.ImageField(upload_to="techletics24", blank=False)
+#     dept = models.CharField(max_length=100, choices=DEPARTMENTS)
+
+#     def __str__(self):
+#         return self.name
+
+#     class Meta:
+#         verbose_name = "Techletics 24 Image"
+#         verbose_name_plural = "Tecletics Images"
