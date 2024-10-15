@@ -20,7 +20,7 @@ def home_page(request):
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by("?")
         gallery_imgs = Gallery.objects.all().order_by("?")[:20]
-        upcomingEvents = UpcomingEvents.objects.all()[:6]
+        upcomingEvents = UpcomingEvents.objects.all().order_by("-date")[:6]
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by("?")
         recruiters2 = recruiters.order_by("?")
