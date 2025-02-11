@@ -69,7 +69,7 @@ nav ul li ul li a {
   display: none;
   z-index: 9999;
   min-width: 390px !important;
-  max-height: 0.6vh;
+  max-height: 60vh;
   overflow-y: auto;
   padding: 10px;
   background: rgba(0, 0, 0, 0.51) !important;
