@@ -255,6 +255,7 @@ class Hero_Image(models.Model):
         ("webteam", "webteam"),
         ("ccevr", "ccevr"),
         ("result_analysis", "Result Analysis"),
+        ("campus_tour","Campus Tour"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 

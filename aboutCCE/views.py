@@ -102,6 +102,15 @@ def vision_2035_page(request):
     }
     return render(request, "aboutCCE/vision_2035.html", context=context)
 
+def campus_tour_page(request):
+    hero_img = Hero_Image.objects.filter(page="campus_tour").first()
+    context = {
+        "hero_img": hero_img,
+        "hero_title": "Campus Tour",
+        "gallery": Gallery.objects.all().order_by("?")[:6],
+    }
+    return render(request, "aboutCCE/campus_tour.html", context=context)
+
 
 def result_analysis_page(request):
     data = ResultTable.objects.all().order_by("-batch")
