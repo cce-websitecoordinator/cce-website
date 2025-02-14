@@ -92,7 +92,8 @@ def admission_stat_page(request):
 
 
 def nirf_page(request):
-    return render(request, "nirf.html", context={})
+    pdfs = NirfPDFs.objects.all().order_by("-year")
+    return render(request, "nirf.html", context={"pdfs":pdfs})
 
 
 def nba_page(request):
