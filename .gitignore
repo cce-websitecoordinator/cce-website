@@ -96,6 +96,8 @@ coverage.xml
 # pyenv 
 .python-version 
 
+cce-test/
+
 # celery 
 celerybeat-schedule.* 
 

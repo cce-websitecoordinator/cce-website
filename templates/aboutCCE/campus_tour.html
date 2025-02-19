@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Campus Tour
+{% endblock title %}
+
+
+{% block head %} {% endblock head %} {% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+  <section class="md:px-24 w-full text-center" id="content">
+    <h1 class="text-4xl my-11 font-bold">
+      Campus Tour
+    </h1>
+
+    <!-- sd -->
+
+
+
+    <div class="p-1 border-2 border-blue-500 h-[90vh] aspect-w-9 aspect-h-16">
+
+        <iframe width="1513" height="569" src="https://www.youtube.com/embed/eY_46HiGDvo" title="Christ College of Engineering" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+    </div>
+  </section>
+</main>
+
+
+
+{% include 'components/gallery.html' %} {% endblock %}

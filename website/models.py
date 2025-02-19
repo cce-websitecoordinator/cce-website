@@ -255,6 +255,7 @@ class Hero_Image(models.Model):
         ("webteam", "webteam"),
         ("ccevr", "ccevr"),
         ("result_analysis", "Result Analysis"),
+        ("campus_tour","Campus Tour"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -457,6 +458,13 @@ class AwardedPHD(models.Model):
         verbose_name = "AwardedPHD"
         verbose_name_plural = "AwardedPHDs"
 
+class NirfPDFs(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to="NIRF_PDF")
+    year = models.IntegerField(default=0)
+
+    def __str__(self) -> str:
+        return self.title
 
 # class Techletics24(models.Model):
 #     name = models.CharField(max_length=100)

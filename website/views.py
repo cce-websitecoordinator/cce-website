@@ -20,7 +20,7 @@ def home_page(request):
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by("?")
         gallery_imgs = Gallery.objects.all().order_by("?")[:20]
-        upcomingEvents = UpcomingEvents.objects.all().order_by("?")[:6]
+        upcomingEvents = UpcomingEvents.objects.all().order_by("-date")[:15]
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by("?")
         recruiters2 = recruiters.order_by("?")
@@ -92,7 +92,8 @@ def admission_stat_page(request):
 
 
 def nirf_page(request):
-    return render(request, "nirf.html", context={})
+    pdfs = NirfPDFs.objects.all().order_by("-year")
+    return render(request, "nirf.html", context={"pdfs":pdfs})
 
 
 def nba_page(request):
