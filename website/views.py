@@ -7,6 +7,8 @@ from website.models import *
 from django.http import Http404, HttpResponse
 from django.core import serializers
 
+from .forms import AdmissionForm
+
 
 def home_page(request):
     """

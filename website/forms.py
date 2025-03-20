@@ -1,9 +1,9 @@
 from django import forms
-from .models import AdmissionForm
+from .models import Admission
 
-class AdmissionForm1(forms.ModelForm):
+class AdmissionForm(forms.ModelForm):
     class Meta:
-        model = AdmissionForm
+        model = Admission
         fields = '__all__'  # Include all fields from the model
         widgets = {
             'name': forms.TextInput(attrs={'class': 'input-field', 'placeholder': 'Full Name'}),

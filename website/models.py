@@ -479,7 +479,7 @@ class NirfPDFs(models.Model):
 #         verbose_name_plural = "Tecletics Images"
 
 
-class AdmissionForm(models.Model):
+class Admission(models.Model):
     # Personal Details
     name = models.CharField(max_length=255)
     address = models.TextField()
