@@ -1,7 +1,7 @@
 import datetime
 from random import shuffle
 import random
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import website
 from website.models import *
 from django.http import Http404, HttpResponse
@@ -303,3 +303,14 @@ def quality_policy(request):
             "hero_img": Hero_Image.objects.filter(page="quality_policy").first(),
         },
     )
+
+
+def admission_form(request):
+    if request.method == 'POST':
+        form = AdmissionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Redirect to a success page
+    else:
+        form = AdmissionForm()
+    return render(request, 'admission_form.html', {'form': form})
