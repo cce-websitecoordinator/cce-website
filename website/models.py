@@ -373,7 +373,7 @@ class FacultyStudentPublications(models.Model):
     )
 
 
-class AdmissionFormStatistics(models.Model):
+class AdmissionStatistics(models.Model):
     dept = models.CharField(max_length=100, choices=DEPARTMENTS)
     seats = models.IntegerField()
     admitted = models.IntegerField()
@@ -383,7 +383,7 @@ class AdmissionFormStatistics(models.Model):
         return f"{self.dept} {self.year}"
 
 
-class AdmissionFormGraph(models.Model):
+class AdmissionGraph(models.Model):
     graph = models.ImageField(upload_to="admissionForm/")
     year = models.CharField(choices=ACADEMIC_YEARS, max_length=20, default="none")
 
