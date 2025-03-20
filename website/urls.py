@@ -20,5 +20,6 @@ urlpatterns = [
     path('quality_policy', views.quality_policy, name='quality_policy'),
     path('admission_form', views.admission_form, name='admission_form'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
