@@ -491,7 +491,7 @@ class Admission(models.Model):
     BOARD_CHOICES = [
         ('CBSE', 'CBSE'),
         ('ICSE', 'ICSE'),
-        ('State Board', 'State Board'),
+        ('Kerala State Board', 'Kerala State Board'),
         ('Other', 'Other'),
     ]
     board = models.CharField(max_length=50, choices=BOARD_CHOICES)
@@ -503,13 +503,13 @@ class Admission(models.Model):
 
     # Course Preferences
     COURSE_CHOICES = [
-        ('B.Tech CSE', 'B.Tech CSE'),
-        ('B.Tech ECE', 'B.Tech ECE'),
-        ('B.Tech ME', 'B.Tech ME'),
-        ('B.Tech Civil', 'B.Tech Civil'),
-        ('B.Sc Physics', 'B.Sc Physics'),
-        ('B.Sc Chemistry', 'B.Sc Chemistry'),
-        ('B.Sc Mathematics', 'B.Sc Mathematics'),
+        ('Civil Engineering', 'Civil Engineering'),
+        ('Computer Science & Engineering', 'Computer Science & Engineering'),
+        ('Electrical & Electronics Engineering', 'Electrical & Electronics Engineering'),
+        ('Electronics & Communication Engineering', 'Electronics & Communication Engineering'),
+        ('Mechanical Engineering', 'Mechanical Engineering'),
+        ('Computer Science & Engineering (Data Science)', 'Computer Science & Engineering (Data Science)'),
+        
     ]
     preference_1 = models.CharField(max_length=100, choices=COURSE_CHOICES)
     preference_2 = models.CharField(max_length=100, choices=COURSE_CHOICES)
