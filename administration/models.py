@@ -36,6 +36,7 @@ DEPARTMENTS = (
     ("EEE", "EEE"),
     ("ME", "ME"),
     ("CE", "CE"),
+    ("DS", "DS"),
     ("BSH", "BSH"),
     ("None", "None"),
 )
