@@ -1,8 +1,8 @@
 {% load static %}
 {% block head %}
-<link href="{% static 'css/navbar.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
 <style>
-    .fixed_nav{
+    .fixed_nav {
         position: fixed;
         top: 0%;
         left: 0;
@@ -13,8 +13,7 @@
 {% block body %}
 {% with request.resolver_match.url_name as url_name %}
 
-<nav class=" glass  relative w-full  max-h-[100px] z-[99999] "
-    id="main-nav">
+<nav class=" glass  relative w-full  max-h-[100px] z-[99999] " id="main-nav">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl ">
         <a href="{% url 'home' %}" class="flex items-center absolute xl:relative top-3  md:top-0 ">
             <img src="{% static '/images/cce.png' %}" class="mr-3 lg:h-[100px] p-2 h-[80px]" alt="CCE Logo" />
@@ -25,7 +24,7 @@
                 <li>
                     <a href="{% url 'home' %}">Home</a>
                 </li>
-                
+
                 <li>
                     <a href="#!">About</a>
                     <ul class="nav-dropdown ">
@@ -56,9 +55,6 @@
                         <li>
                             <a href="{% url 'Result_Analysis'%}">Result Analysis</a>
                         </li>
-                         <li>
-                            <a href="{% url 'College_Calendar'%}">Institute Academic Calendars</a>
-                        </li>
                         <li>
                             <a href="{% url 'College_Handbook'%}">College Handbook</a>
                         </li>
@@ -71,6 +67,10 @@
                         <li>
                             <a href="{% url 'College_Magazine'%}">College Magazine</a>
                         </li>
+                        <li>
+                            <a href="{% url 'home_research'  'parternship' %}">Academic Collaboration</a>
+                        </li>
+
 
                     </ul>
                 </li>
@@ -80,70 +80,81 @@
                         <li>
                             <a href="{% url 'Governing_Body'%}">Governing Body</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{% url 'organogram'%}">Organogram</a>
                         </li>
                         <li>
                             <a href="{% url 'academic_administration'%}">Academic Administration</a>
                         </li>
                         <li>
-                            <a href="{% url 'iqac'%}">IQAC</a>
-                        </li>
-                         <li>
                             <a href="{% url 'anti_ragging_cell' %}">Anti-Ragging Cell</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{% url 'grivence_redressal_index'%}">Grievance / Suggestions</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{%url 'sc_st_committee_cell'%}">SC/ST Monitoring Committee</a>
                         </li>
                         <li>
                             <a href="{% url 'disciplinary_committee' %}">Disciplinary Committee</a>
                         </li>
-                         
-                         <li>
+
+                        <li>
                             <a href="{%url  'examination_cell'%}">Examination Cell</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{% url 'PTA' %}">PTA</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{% url 'Office' 'administrative_staff' %}">Office</a>
                         </li>
-                        
+                        <li>
+                            <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
                     <a href="#!">Academics</a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="{% url 'Department' 'CSE' 'about' %}">Department Of Computer Science And Engineering</a>
+                            <a href="{% url 'Department' 'CSE' 'about' %}">Department Of Computer Science And
+                                Engineering</a>
                         </li>
                         <li>
-                            <a href="{% url 'Department' 'DS' 'about' %}">Department Of Computer Science And Engineering (Data Science)</a>
+                            <a href="{% url 'Department' 'DS' 'about' %}">Department Of Computer Science And Engineering
+                                (Data Science)</a>
                         </li>
-                            <li>
-                                <a href="{% url 'Department' 'ECE' 'about' %}">Department Of Electronics And Communication Engineering</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'Department' 'EEE' 'about' %}">Department Of Electrical And Electronics Engineering</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'Department' 'ME' 'about' %}">Department Of Mechanical Engineering</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'Department' 'CE' 'about' %}">Department Of Civil Engineering</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'Department' 'BSH' 'about' %}">Department Of Basic Sciences and Humanities</a>
-                            </li>
-                            <!-- <li>
+                        <li>
+                            <a href="{% url 'Department' 'ECE' 'about' %}">Department Of Electronics And Communication
+                                Engineering</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Department' 'EEE' 'about' %}">Department Of Electrical And Electronics
+                                Engineering</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Department' 'ME' 'about' %}">Department Of Mechanical Engineering</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Department' 'CE' 'about' %}">Department Of Civil Engineering</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Department' 'BSH' 'about' %}">Department Of Basic Sciences and
+                                Humanities</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'iqac'%}">IQAC</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'College_Calendar'%}">Institute Academic Calendars</a>
+                        </li>
+                        <!-- <li>
                                 <a href="https://ciba.co.in">MBA</a>
                             </li> -->
                     </ul>
                 </li>
-                 <li>
+                <li>
                     <a href="{%url 'placement_page' 'index' %}">Placements</a>
                 </li>
                 <li>
@@ -166,17 +177,17 @@
                         </li>
                         <li>
                             <a href="{%url 'ccil'%}">CCIOL</a>
-                        </li>                       
+                        </li>
                         <li>
                             <a href="{%url 'ccevr'%}">CCEVR</a>
-                        </li>  
+                        </li>
                         <li>
                             <a href="{%url 'iic'%}">IIC</a>
                         </li>
                         <li>
                             <a href="{%url 'mentoring'%}">Mentoring</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{%url 'arts'%}">Arts</a>
                         </li>
                         <li>
@@ -197,7 +208,16 @@
                         <li>
                             <a href="{% url 'techies_park'%}">Techies Park</a>
                         </li>
-                        
+                        <li>
+                            <a href="#">Health Facilities</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'grivence_redressal_index'%}">Grievance</a>
+                        </li>
+                        <li>
+                            <a href="#">Facilities for differently abled</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -206,34 +226,34 @@
             </ul>
         </nav>
     </div>
-</nav> 
+</nav>
 {% endwith %}
 {%endblock body %}
 {% block script %}
 <script>
-    (function ($) { 
-        $(function () { 
-           
+    (function ($) {
+        $(function () {
+
             $('nav ul li a:not(:only-child)').click(function (e) {
                 $(this).siblings('.nav-dropdown').toggle();
-               
+
                 $('.nav-dropdown').not($(this).siblings()).hide();
                 e.stopPropagation();
             });
-          
+
             $('html').click(function () {
                 $('.nav-dropdown').hide();
             });
-           
+
             $('#nav-toggle').click(function () {
                 $('nav ul').slideToggle();
             });
-           
+
             $('#nav-toggle').on('click', function () {
                 this.classList.toggle('active');
             });
-        }); 
-    })(jQuery); 
+        });
+    })(jQuery);
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#main-nav').addClass('fixed_nav');

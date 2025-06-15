@@ -415,3 +415,102 @@ def external_audit_page(request):
 def seed_grievance_users(request):
     response = seed_database()
     return HttpResponse(response)
+
+
+def ugc_compliance_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_compliance").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    return render(
+        request,
+        "Administration/ugc_compliance.html",  
+        context={
+            "hero_img": hero_img,
+            "hero_title": "UGC Compliance",
+            "gallery": gallery,
+        },
+    )
+def ugc_icc_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_icc").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    members = [
+        {"name": "Dr Dhanya S", "designation": "Professor & Dean - Student Affairs", "phone": "", "role": "Chairperson"},
+        {"name": "Dr Shiney Thomas", "designation": "Associate Professor, BS&H", "phone": "9446817255", "role": "Member"},
+        {"name": "Ms. Asha Raj", "designation": "Assistant Professor, CSE", "phone": "9633291997", "role": "Member"},
+        {"name": "Mr. Prisly Varghese Mathew", "designation": "Assistant Professor, ME", "phone": "9744891402", "role": "Member"},
+        {"name": "Mr. Joseph Zacharia", "designation": "Librarian", "phone": "9947997767", "role": "Member"},
+        {"name": "Mr. P K Binoy", "designation": "Lab Instructor, ME", "phone": "9446717178", "role": "Member"},
+        {"name": "Ms. Parvathy Aravind", "designation": "Student (S8, CSE-A)", "role": "Student Member"},
+        {"name": "Mr. Abhiraj Dinesh", "designation": "Student (S8, ME)", "role": "Student Member"},
+        {"name": "Ms. Megha Suresh", "designation": "Student (S5, ECE)", "role": "Student Member"},
+        {"name": "Ms. Sheela Baji", "designation": "People’s Council for Social Justice", "role": "NGO Member"},
+    ]
+
+    return render(
+        request,
+        "Administration/ugc_icc.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Internal Complaints Commitee(ICC)",
+            "gallery": gallery,
+            "members": members,
+        },
+    )
+
+def ugc_grievance_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_grievance").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    return render(
+        request,
+        "Administration/ugc_grievance.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Student Grievance & Redressal Cell",
+            "gallery": gallery,
+        },
+    )
+
+def ugc_antiragging_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_antiragging").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    return render(
+        request,
+        "Administration/ugc_antiragging.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Anti-Ragging Committee",
+            "gallery": gallery,
+        },
+    )
+
+def ugc_eoc_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_eoc").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # optional, if used in the template
+
+    return render(
+        request,
+        "Administration/ugc_eoc.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Equal Opportunity Cell",
+            "gallery": gallery,  # optional
+        },
+    )
+
+def ugc_sedg_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_sedg").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # optional, use only if gallery is in template
+
+    return render(
+        request,
+        "Administration/ugc_sedg.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "SEDG Cell",
+            "gallery": gallery,  # optional
+        },
+    )
+

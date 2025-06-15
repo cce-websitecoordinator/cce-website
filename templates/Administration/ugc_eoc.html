@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Equal Opportunity Cell{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto">
+
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-10">
+        Equal Opportunity Cell
+      </h2>
+
+      <!-- Objectives Section -->
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Objectives</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4">
+          <p>
+            The Equal Opportunity Cell is established to address concerns of staff and students from Scheduled Castes/Tribes, Other Backward Classes, minorities, and Persons with Disabilities (PwDs), ensuring continuous support and inclusive policies.
+          </p>
+          <p>
+            It aims to empower individuals with disabilities to participate fully and equally in all aspects of college life, including academic, intellectual, social, and cultural domains.
+          </p>
+        </div>
+      </section>
+
+      <!-- Functions Section -->
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Functions</h3>
+        <ul class="list-disc list-inside space-y-3 text-gray-700 text-base md:text-lg pl-2">
+          <li>Ensure equity and equal opportunity to all, promoting social inclusion within the college.</li>
+          <li>Increase diversity among students, faculty, and staff while eliminating discriminatory perceptions.</li>
+          <li>Provide psychological counseling and support for Persons with Disabilities (PwDs).</li>
+          <li>Identify avenues to assist SC/ST, OBC, minority groups, and PwDs in meaningful ways.</li>
+          <li>Develop barrier-free admission and registration procedures for disadvantaged students.</li>
+          <li>Address grievances of marginalized communities and provide appropriate resolutions.</li>
+          <li>Coordinate with government and external agencies to mobilize academic and financial support.</li>
+        </ul>
+      </section>
+
+      <!-- Circular Section -->
+      <section class="flex justify-center mt-16">
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
+            <span class="material-symbols-outlined text-6xl text-red-600">
+              description
+            </span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">EOC</h3>
+            <a href=https://drive.google.com/file/d/1Jh_5XJetgOD3DM47hSNPgJxwwL9-DkVJ/view?usp=sharing target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white transition duration-200">
+              Open
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}
