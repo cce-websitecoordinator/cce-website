@@ -213,4 +213,14 @@ def clubs_page(request,slug):
         return render(request, 'StudentServices/clubs/club_template.html',context=context)
     else:
         return Http404("Page Not Found")
-        
+    
+def health_facility_page(request):
+    hero_img = Hero_Image.objects.filter(page="health_facility").first()
+    return render(
+        request,
+        "StudentServices/health.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Health Facilities",
+        },
+    )
