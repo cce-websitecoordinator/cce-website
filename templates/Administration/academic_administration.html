@@ -231,6 +231,50 @@ Administration | Administration {%endblock title %} {% block head %} {% endblock
       
     </div>
   </section>
+  <section class="md:px-24 px-7 mt-11 w-full" id="content">
+    <h1 class="text-4xl my-11 font-bold">Director (Outreach)</h1>
+    <div class="w-full ">
+      {% load static %}
+      <img
+        src="{% static 'images/directors/sudha.jpeg' %}"
+        alt="Outreach_Director"
+        class="w-full mx-auto object-contain"
+      />
+      <h1 class="text-4xl my-3 font-bold text-center">
+        {{aca_dir.director_reserch_name}}
+      </h1>
+      <!-- <p class="text-2xl text-gray-400 mb-6 text-center">Academic Director</p> -->
+      <div class="flex flex-col items-start justify-center">
+        <h1 class="md:text-4xl text-2xl font-semibold mb-4">
+          Profile Highlights
+        </h1>
+        <ol class="space-y-6 text-start border-l-[10px] border-red-600 pl-5">
+          <li>B.Tech- NSS Engineering College, Palakkad, Kerala, India</li>
+
+          <li>M.Tech- School of Engineering CUSAT, Cochin, , Kerala, India</li>
+
+          <li>
+            Completed PhD from School of Engineering, CUSAT, Cochin
+          </li>
+
+          <li>Former Principal of Mangalam College of Engineering, Ettumanoor, Kerala, India
+          </li>
+
+          <li>
+            Former Principal of Federal Institute of Science And Technology (FISAT), Angamaly, Kerala, India
+          </li>
+
+          <li>28 years of Teaching Experience</li>
+
+          <li>Author of Journal paper indexed in SCI</li>
+
+          <li>Co-Investigator of funded project for DRDO</li>
+
+        </ol>
+      </div>
+      
+    </div>
+  </section>
 
   <section>
     <div class="w-full space-y-16 mt-11">

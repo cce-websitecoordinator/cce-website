@@ -514,3 +514,14 @@ def ugc_sedg_page(request):
         },
     )
 
+def ugc_idp_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_idp").first()
+
+    return render(
+        request,
+        "Administration/ugc_idp.html",  
+        context={
+            "hero_img": hero_img,
+            "hero_title": "UGC IDP Document",
+        },
+    )
