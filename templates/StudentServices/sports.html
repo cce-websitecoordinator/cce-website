@@ -28,7 +28,8 @@
           </p>
           <p>
             The college boasts <strong>20 acres</strong> dedicated to outdoor games and <strong>1 acre</strong> for
-            indoor sports and gymnasium activities. Students have access to modern infrastructure that supports recreational and competitive sports across multiple disciplines.
+            indoor sports and gymnasium activities. Students have access to modern infrastructure that supports
+            recreational and competitive sports across multiple disciplines.
           </p>
         </div>
       </section>
@@ -63,17 +64,52 @@
       </section>
 
 
-      <!-- Conclusion -->
-      <section>
-        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
-          <p>
-            These well-maintained facilities enable students to train, compete, and participate in diverse sporting
-            events, contributing to their holistic development.
-          </p>
-        </div>
-      </section>
+   <!-- Facilities Gallery Slider -->
+<section class="bg-white py-20 px-4 overflow-hidden">
+  <h3 class="text-3xl font-bold text-center text-gray-900 mb-14">Our Sports Facilities</h3>
+  <div class="swiper-facilities w-full max-w-3xl mx-auto">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide flex justify-center items-center h-[320px]">
+        <img src="https://github.com/cce-websitecoordinator/cce-website/blob/production/static/sports/20210313_104512AM.jpg?raw=true"
+             alt="Ground 1"
+             class="max-h-full max-w-full object-contain rounded-xl shadow-md" />
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide flex justify-center items-center h-[320px]">
+        <img src="https://github.com/cce-websitecoordinator/cce-website/blob/production/static/sports/20210317_32044PM.jpg?raw=true"
+             alt="Ground 2"
+             class="max-h-full max-w-full object-contain rounded-xl shadow-md" />
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide flex justify-center items-center h-[320px]">
+        <img src="https://github.com/cce-websitecoordinator/cce-website/blob/production/static/sports/20210317_34749PM.jpg?raw=true"
+             alt="Indoor Court"
+             class="max-h-full max-w-full object-contain rounded-xl shadow-md" />
+      </div>
+      <!-- Slide 4 -->
+      <div class="swiper-slide flex justify-center items-center h-[320px]">
+        <img src="https://github.com/cce-websitecoordinator/cce-website/blob/production/static/sports/Copy%20of%2020210317_35944PM.jpg?raw=true"
+             alt="Gym"
+             class="max-h-full max-w-full object-contain rounded-xl shadow-md" />
+      </div>
     </div>
-  </section>
+    <div class="swiper-pagination mt-6"></div>
+  </div>
+</section>
+
+<!-- Conclusion -->
+<section>
+  <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
+    <p>
+      These well-maintained facilities enable students to train, compete, and participate in diverse sporting
+      events, contributing to their holistic development.
+    </p>
+  </div>
+</section>
+</div>
+</section>
+
 
   <div class="overall lg:flex py-4 lg:px-[150px] mb-12 px-4">
     {% with sports_updates as side_updates %}
@@ -171,6 +207,19 @@
     loop: true,
     pagination: {
       el: ".swiper-pagination",
+    },
+  });
+  const swiperFacilities = new Swiper(".swiper-facilities", {
+    speed: 500,
+    loop: true,
+    spaceBetween: 30,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
     },
   });
 </script>
