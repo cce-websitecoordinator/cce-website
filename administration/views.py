@@ -170,6 +170,9 @@ def academic_administration_page(request):
     res_dir = AcademicAdministrationDirector.objects.filter(
         director_reserch_role="res_dir"
     ).first()
+    out_dir = AcademicAdministrationDirector.objects.filter(
+        director_reserch_role="out_dir"
+    ).first()
     data = AcademicAdministractors.objects.all().order_by("order")
     gallery = Gallery.objects.all().order_by("?")[:10]
     return render(
@@ -423,7 +426,7 @@ def ugc_compliance_page(request):
 
     return render(
         request,
-        "Administration/ugc_compliance.html",  
+        "Administration/ugc_compliance.html",  # 👈 Make sure path is correct
         context={
             "hero_img": hero_img,
             "hero_title": "UGC Compliance",
@@ -523,5 +526,19 @@ def ugc_idp_page(request):
         context={
             "hero_img": hero_img,
             "hero_title": "UGC IDP Document",
+        },
+    )
+
+def ugc_fee_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_fee").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # Optional
+
+    return render(
+        request,
+        "Administration/ugc_fee.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Fee Refund Policy",
+            "gallery": gallery,  # Optional
         },
     )

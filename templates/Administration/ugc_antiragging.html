@@ -6,87 +6,98 @@
 <main>
   {% include 'components/Hero_section.html' %}
 
-  <section class="md:px-24 pt-24 px-6 py-16 bg-gray-50 min-h-screen" id="content">
-    <div class="max-w-6xl mx-auto">
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-6xl mx-auto space-y-16">
 
-      <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+      <!-- Title -->
+      <h2 class="text-4xl font-bold text-center text-gray-800">
         Anti-Ragging Committee
       </h2>
 
-      <div class="text-gray-700 text-lg leading-relaxed space-y-5 mb-12">
+      <!-- Introduction -->
+      <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4">
         <p><strong>(As per UGC Regulations on Curbing the Menace of Ragging in Higher Educational Institutions, 2009)</strong></p>
         <p>
           To ensure a ragging-free campus environment by preventing and addressing incidents of ragging in compliance with UGC Regulations and relevant legal provisions, thereby ensuring the physical and emotional well-being of all students, especially newcomers.
         </p>
       </div>
 
-      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Functions of the Anti-Ragging Committee</h3>
-      <ul class="list-disc list-inside text-gray-700 pl-4 mb-12 space-y-2">
-        <li><strong>Policy Implementation:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Ensure strict implementation of UGC Regulations.</li>
-            <li>Frame and revise anti-ragging policies and code of conduct.</li>
-          </ul>
-        </li>
-        <li><strong>Prevention Measures:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Create awareness through seminars, workshops, orientation programs, and posters.</li>
-            <li>Ensure anti-ragging affidavits are submitted by students and parents.</li>
-          </ul>
-        </li>
-        <li><strong>Campus Surveillance:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Maintain vigilance in hostels, canteens, classrooms, and other areas.</li>
-            <li>Conduct regular inspections by faculty or staff.</li>
-          </ul>
-        </li>
-        <li><strong>Complaint Handling:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Receive and investigate complaints (written, oral, anonymous).</li>
-            <li>Forward serious cases to the Anti-Ragging Squad.</li>
-          </ul>
-        </li>
-        <li><strong>Disciplinary Action:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Recommend actions like suspension, expulsion, or legal proceedings.</li>
-          </ul>
-        </li>
-        <li><strong>Coordination and Reporting:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Act as the nodal body for UGC's Anti-Ragging Helpline/portal.</li>
-            <li>Submit regular reports to UGC and affiliating university.</li>
-          </ul>
-        </li>
-        <li><strong>Support for Victims:</strong>
-          <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-            <li>Provide counseling and psychological support.</li>
-            <li>Ensure confidentiality and protection of complainants.</li>
-          </ul>
-        </li>
-      </ul>
+      <!-- Functions -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-red-600 pl-3 mb-4">
+          Functions of the Anti-Ragging Committee
+        </h3>
+        <ul class="text-gray-700 text-base md:text-lg leading-relaxed pl-4 border-l-4 border-gray-200 space-y-3">
+          <li><strong>Policy Implementation:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Ensure strict implementation of UGC Regulations.</li>
+              <li>Frame and revise anti-ragging policies and code of conduct.</li>
+            </ul>
+          </li>
+          <li><strong>Prevention Measures:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Create awareness through seminars, workshops, orientation programs, and posters.</li>
+              <li>Ensure anti-ragging affidavits are submitted by students and parents.</li>
+            </ul>
+          </li>
+          <li><strong>Campus Surveillance:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Maintain vigilance in hostels, canteens, classrooms, and other areas.</li>
+              <li>Conduct regular inspections by faculty or staff.</li>
+            </ul>
+          </li>
+          <li><strong>Complaint Handling:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Receive and investigate complaints (written, oral, anonymous).</li>
+              <li>Forward serious cases to the Anti-Ragging Squad.</li>
+            </ul>
+          </li>
+          <li><strong>Disciplinary Action:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Recommend actions like suspension, expulsion, or legal proceedings.</li>
+            </ul>
+          </li>
+          <li><strong>Coordination and Reporting:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Act as the nodal body for UGC's Anti-Ragging Helpline/portal.</li>
+              <li>Submit regular reports to UGC and affiliating university.</li>
+            </ul>
+          </li>
+          <li><strong>Support for Victims:</strong>
+            <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+              <li>Provide counseling and psychological support.</li>
+              <li>Ensure confidentiality and protection of complainants.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
 
-      <div class="text-gray-800 text-lg mb-12">
-        <strong>All students are advised to strictly adhere to the anti-ragging guidelines. Any violation will invite strict disciplinary and legal action.</strong><br />
-        <span class="block mt-2">Ragging in any form is a punishable offense and is strictly prohibited on and off campus.</span>
+      <!-- Note -->
+      <div class="text-gray-800 text-base md:text-lg leading-relaxed border-l-4 border-yellow-500 pl-4">
+        <p><strong>All students are advised to strictly adhere to the anti-ragging guidelines. Any violation will invite strict disciplinary and legal action.</strong></p>
+        <p class="mt-2">Ragging in any form is a punishable offense and is strictly prohibited on and off campus.</p>
       </div>
 
-      <section class="md:px-24 px-6 py-12 bg-gray-50 mt-10">
-        <div class="min-w-[300px] h-[300px] shadow-xl rounded-md bg-white mt-10">
-          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center rounded-t-md">
-            <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
+      <!-- PDF Download Card -->
+      <section class="flex justify-center">
+        <div class="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-44 flex items-center justify-center rounded-t-xl">
+            <span class="material-symbols-outlined text-5xl text-red-600">
               description
             </span>
           </div>
-          <h3 class="mx-4 mt-2 text-center text-gray-800 font-semibold">Anti-Ragging Regulations PDF</h3>
-          <a href="https://drive.google.com/file/d/1-2SayfYp5gkUnYgPwFVb-wmJqX4L9bhV/view?usp=sharing" target="_blank"
-             class="mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center hover:bg-[#005FCC] transition duration-200">
-            View PDF
-            <span class="material-symbols-outlined ml-2">
-              download
-            </span>
-          </a>
+          <div class="p-6 text-center">
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">Anti-Ragging Regulations PDF</h4>
+            <a href="https://drive.google.com/file/d/1-2SayfYp5gkUnYgPwFVb-wmJqX4L9bhV/view?usp=sharing"
+               target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition duration-200">
+              View PDF
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
         </div>
       </section>
+
     </div>
   </section>
 </main>

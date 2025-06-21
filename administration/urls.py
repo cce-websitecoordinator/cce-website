@@ -27,6 +27,8 @@ urlpatterns = [
      path('ugc_eoc/', views.ugc_eoc_page, name='ugc_eoc'),
      path('sedg-cell/', views.ugc_sedg_page, name='ugc_sedg'),
      path('ugc-idp/', views.ugc_idp_page, name='ugc_idp'),
+     path("ugc_fee/", views.ugc_fee_page, name="ugc_fee"),
+
 
 
 
