@@ -2,41 +2,44 @@
 
 <div
   class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[999]  hidden topbar">
-  <div class="hidden md:block space-x-2">
-    <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i><a/>
-    <a href="tel:04802825355" ><i class="fa-solid fa-phone mr-1 fa-lg"></i><a/>
-    <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i><a/>
+  <div class="hidden md:flex items-center space-x-4">
+    <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
+    <a href="tel:04802825355" ><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
+    <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i></a>
+    <div class="relative wrapper z-[9999999]">
+      <input type="text" name="search" id="search" placeholder="Search..." class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-48 transition-all duration-300 focus:w-64">
+      <button class="absolute right-3 top-1/2 -translate-y-1/2">
+        <i class="fa-solid fa-search text-white/70 hover:text-white"></i>
+      </button>
+      <div id="desktop-results" class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto">
+        <ul class="divide-y divide-white/10">       
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="space-x-6 lg:flex  justify-center items-center hidden  w-auto">
+  <div class="space-x-6 lg:flex justify-center items-center hidden w-auto">
 
     <a href="https://ciba.co.in">MBA</a>
 
-    <a href="{%url 'home_research' 'index'%}">Research</a>
+    <a href="{%url 'home_research' 'index'%}">Research and Development</a>
     
     <a href="https://alumni.cce.edu.in/">Alumni</a>
    
-   
     <a href="{%url 'admission'%}">Admissions</a>
-   
-   
-
- 
+    
+    <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
     
     <a href="/nirf">NIRF</a>
 
     <a href="/nba">NBA</a>
-    
-    <!-- <a target="_blank" href="https://forms.gle/6J822kEsqQ6PeuVn6">Careers</a> -->
 
-    <div  class='group flex duration-700'> <span class="group-hover:hidden duration-700">Careers</span>
+    <div class="group flex duration-700"> <span class="group-hover:hidden duration-700">Careers</span>
       <div class="group-hover:flex space-x-4 hidden duration-700">
 
         | <a href="https://forms.gle/Wpu18tjHtNDi1Q4d7">Technical Staff</a> | <a href="https://forms.gle/6J822kEsqQ6PeuVn6">Faculty</a> |
       </div>
     </div>
-
     <a href="/student_services/central_library">Central Library</a>
-    
     <a href="https://techletics.cce.edu.in">Techletics</a>
     <div  class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
       <div class="group-hover:flex space-x-4 hidden duration-700">
@@ -49,30 +52,42 @@
 
 <div
   class="p-2 flex pl-4 lg:hidden flex-col justify-center items-center pr-4 bg-[#205072] shadow-lg w-[100vw] md:justify-between text-white space-y-11 md:space-y-0 topbar text-sm z-[999] topbar">
-  <div class="w-full flex  justify-between px-6 flex-row-reverse">
-    <div class="space-x-6">
-        <i class="fa-solid fa-map-location-dot fa-lg"></i>
-        <i class="fa-solid fa-phone mr-1 fa-lg"></i>
-        <i class="fa-solid fa-envelope fa-lg"></i>
-
-
+  <div class="w-full flex justify-between px-6 flex-row-reverse">
+    <div class="flex items-center space-x-4">
+      <div class="relative wrapper">
+        <input type="text" id="search-mobile" placeholder="Search..." class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-32 transition-all duration-300 focus:w-40">
+        <button class="absolute right-3 top-1/2 -translate-y-1/2">
+          <i class="fa-solid fa-search text-white/70 hover:text-white"></i>
+        </button>
+        <div id="mobile-results" class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto z-[10000]">
+          <ul class="divide-y divide-white/10 z-[10000]">
+          </ul>
+        </div>
+      </div>
+      <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
+      <a href="tel:04802825355" ><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
+      <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i></a>
     </div>
-    <i class="fa-solid fa-bars fa-2x topmenu" ></i>
+    <button class="topmenu" >
+      <i class="fa-solid fa-bars fa-2x"></i>
+    </button>
   </div>
+
   <div class="space-x-1 hidden flex flex-col justify-center items-center space-y-5 md:space-y-0 w-full md:w-auto topbar-mobile relative z-[9]">
-  <div class="w-full h-full z-[-1] absolute top-0 left-0 flex justify-center items-center">
-    <img src="{%  static  'favicons/apple-touch-icon.png'  %}" alt="logo" class="w-[200px] opacity-[0.3]">
+    <div class="w-full h-full z-[-1] absolute top-0 left-0 flex justify-center items-center">
+      <img src="{% static 'favicons/apple-touch-icon.png' %}" alt="logo" class="w-[200px] opacity-[0.3]">
+    </div>
 
-
-  </div>
-
-    <a href="{%url 'home_research' 'index' %}">Research</a>
+    <a href="{%url 'home_research' 'index'%}">Research and Development</a> 
 
     <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
     <a href="https://alumni.cce.edu.in/">Alumni</a>
    
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Admission</a>
+
+    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
+    <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Cells</a>
@@ -95,24 +110,315 @@
   </div>
 </div>
 
-
-
 {% block script %}
-
 <script>
-  $(document).ready(function() {
-    $(".topmenu").click(function() {
-      $(".topbar-mobile").toggleClass("hidden");
-      if($(".topmenu").hasClass('fa-bars')){
-        $(".topmenu").removeClass('fa-bars');
-        $(".topmenu").addClass('fa-times');
-      }else{
-        $(".topmenu").removeClass('fa-times');
-        $(".topmenu").addClass('fa-bars');
+
+  const searchable = [
+    {
+      text: 'Management',
+      url: 'https://cce.edu.in/aboutCCE/management'
+    },
+    {
+      text: 'Directors',
+      url: 'https://cce.edu.in/aboutCCE/directors_desk'
+    },
+    {
+      text: 'Principal',
+      url: 'https://cce.edu.in/aboutCCE/principals_desk'
+    },
+    {
+      text: 'Programs Offered',
+      url: 'https://cce.edu.in/aboutCCE/programs'
+    },
+    {
+      text: 'Governing Body',
+      url: 'https://cce.edu.in/administration/governing_body'
+    },
+    {
+      text: 'Academic Administration',
+      url: 'https://cce.edu.in/administration/academic_administration'
+    },
+    {
+      text: 'Examination Cell',
+      url: 'https://cce.edu.in/administration/examination_cell'
+    },
+    {
+      text: 'Result Analysis',
+      url: 'https://cce.edu.in/aboutCCE/result_analysis'
+    },
+    {
+      text: 'Committees',
+      url: 'https://cce.edu.in/aboutCCE/committees'
+    },
+    {
+      text: 'Anti Ragging Cell',
+      url: 'https://cce.edu.in/administration/anti_ragging_cell'
+    },
+    {
+      text: 'Diciplinary Committee',
+      url: 'https://cce.edu.in/administration/disciplinary_committee'
+    },
+    {
+      text: 'Office',
+      url: 'https://cce.edu.in/administration/office/administrative_staff'
+    },
+    {
+      text: 'PTA',
+      url: 'https://cce.edu.in/administration/pta'
+    },
+    {
+      text: 'Grievance',
+      url: 'https://cce.edu.in/administration/grievance/'
+    },
+    {
+      text: 'Facilities',
+      url: 'https://cce.edu.in/facilities'
+    },
+    {
+      text: 'Clubs',
+      url: 'https://cce.edu.in/student_services/clubs/index'
+    },
+    {
+      text: 'Manadatory Disclosure',
+      url: 'https://cce.edu.in/aboutCCE/mandatory_disclosure'
+    },
+    {
+      text: 'Placements',
+      url: 'https://cce.edu.in/placements/index'
+    },
+    {
+      text: 'CSE',
+      url: 'https://cce.edu.in/department/CSE/about'
+    },
+    {
+      text: 'CSE DS',
+      url: 'https://cce.edu.in/department/DS/about'
+    },
+    {
+      text: 'ECE',
+      url: 'https://cce.edu.in/department/ECE/about'
+    },
+    {
+      text: 'EEE',
+      url: 'https://cce.edu.in/department/ECE/about'
+    },
+    {
+      text: 'ME',
+      url: 'https://cce.edu.in/department/ME/about'
+    },
+    {
+      text: 'CE',
+      url: 'https://cce.edu.in/department/CE/about'
+    },
+    {
+      text: 'BSH',
+      url: 'https://cce.edu.in/department/BSH/about'
+    },
+    {
+      text: 'Sports',
+      url: 'https://cce.edu.in/student_services/sports'
+    },
+    {
+      text: 'Arts',
+      url: 'https://cce.edu.in/student_services/arts'
+    },
+    {
+      text: 'College Union',
+      url: 'https://cce.edu.in/student_services/union'
+    },
+    {
+      text: 'Gallery',
+      url:'https://cce.edu.in/gallery'
+    },
+    {
+      text: 'IQAC',
+      url: 'https://cce.edu.in/administration/iqac'
+    },
+    {
+      text: 'NSS',
+      url: 'https://cce.edu.in/student_services/nss'
+    },
+    {
+      text: 'Hostel',
+      url: 'https://cce.edu.in/facilities'
+    },
+    {
+      text: 'Alumini',
+      url: 'https://alumni.cce.edu.in/'
+    },
+    {
+      text: 'Admission',
+      url: 'https://cce.edu.in/admission'
+    },
+    {
+      text: 'Fee Details',
+      url: 'https://cce.edu.in/admission'
+    },
+    {
+      text: 'Central Library',
+      url: 'https://cce.edu.in/student_services/central_library'
+    },
+    {
+      text: 'Research',
+      url: 'https://cce.edu.in/research/index'
+    },
+    {
+      text: 'NIRF',
+      url: 'https://cce.edu.in/nirf'
+    },
+    {
+      text: 'NBA',
+      url: 'https://cce.edu.in/nba'
+    },
+    {
+      text: 'Incubation Cell',
+      url: 'https://www.iedc.cce.edu.in/tbi.html'
+    },
+    {
+      text: 'Academic Calendar',
+      url: 'https://cce.edu.in/aboutCCE/college_calendar'
+    },
+    {
+      text: 'Magazine and Newsletter',
+      url: 'https://cce.edu.in/aboutCCE/college_magazine'
+    },
+    {
+      text: 'UGC Compliance',
+      url: 'https://cce.edu.in/administration/ugc_compliance'
+    },
+    {
+      text: 'Internal Complaints Committee (ICC)',
+      url: 'https://cce.edu.in/administration/ugc-icc/'
+    },
+    {
+      text: 'Student Grievance and Redressal',
+      url: 'https://cce.edu.in/administration/ugc_grievance/'
+    },
+    {
+      text: 'Institutional Development Plan',
+      url: 'https://cce.edu.in/administration/ugc-idp/'
+    },
+    {
+      text: 'Recognition 2(f)',
+      url: 'https://drive.google.com/file/d/1jo9nRE_ptueeafBAJzgKPkJEk-UqVQ_S/view?usp=sharing'
+    },
+    {
+      text: 'Anti Ragging Committee',
+      url: 'https://cce.edu.in/administration/ugc_antiragging/'
+    },
+    {
+      text: 'Equal Opportunity Cell',
+      url: 'https://cce.edu.in/administration/ugc_eoc/'
+    },
+    {
+      text: 'SEDG Cell',
+      url: 'https://cce.edu.in/administration/sedg-cell/'
+    },
+    {
+      text: 'UGC Act and Statutes',
+      url: 'https://cce.edu.in/aboutCCE/hr_policy'
+    },
+    {
+      text: 'Act and Statutes',
+      url: 'https://cce.edu.in/aboutCCE/hr_policy'
+    },
+    {
+      text: 'Health and facility',
+      url: 'https://cce.edu.in/student_services/health-facility'
+    },
+    {
+      text: 'Facilities for differently abled',
+      url: 'https://cce.edu.in/facilities'
+    },
+    {
+      text: 'Accessibility',
+      url: 'https://cce.edu.in/facilities'
+    },
+    {
+      text: 'Fee Refund Policy',
+      url: 'https://cce.edu.in/administration/ugc_fee/'
+    }
+  ];
+
+
+  function handleSearch(input, resultsId) {
+    const resultsWrapper = document.getElementById(resultsId);
+    if (!resultsWrapper) return;
+
+    const inputValue = input.value.toLowerCase();
+    if (!inputValue) {
+      resultsWrapper.classList.add('hidden');
+      return;
+    }
+
+    const results = searchable.filter(item => 
+      item.text.toLowerCase().includes(inputValue)
+    );
+
+    if (results.length === 0) {
+      resultsWrapper.classList.add('hidden');
+      return;
+    }
+
+    const content = results
+      .map(item => `
+        <li class="p-2 hover:bg-white/10 transition-colors">
+          <a href="${item.url}" class="block">${item.text}</a>
+        </li>
+      `)
+      .join('');
+
+    resultsWrapper.innerHTML = `<ul class="divide-y divide-white/10">${content}</ul>`;
+    resultsWrapper.classList.remove('hidden');
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const desktopSearch = document.getElementById('search');
+    const mobileSearch = document.getElementById('search-mobile');
+    const topMenu = document.querySelector('.topmenu');
+    const topbarMobile = document.querySelector('.topbar-mobile');
+
+
+    if (topMenu && topbarMobile) {
+      topMenu.addEventListener('click', () => {
+        topbarMobile.classList.toggle('hidden');
+        const icon = topMenu.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        }
+      });
+    }
+
+
+    if (desktopSearch) {
+      desktopSearch.addEventListener('input', () => {
+        handleSearch(desktopSearch, 'desktop-results');
+      });
+    }
+
+    if (mobileSearch) {
+      mobileSearch.addEventListener('input', () => {
+        handleSearch(mobileSearch, 'mobile-results');
+      });
+    }
+
+
+    document.addEventListener('click', (e) => {
+      const desktopResults = document.getElementById('desktop-results');
+      const mobileResults = document.getElementById('mobile-results');
+      const desktopWrapper = desktopSearch?.closest('.wrapper');
+      const mobileWrapper = mobileSearch?.closest('.wrapper');
+
+      if (desktopResults && desktopWrapper && !desktopWrapper.contains(e.target)) {
+        desktopResults.classList.add('hidden');
+      }
+
+      if (mobileResults && mobileWrapper && !mobileWrapper.contains(e.target)) {
+        mobileResults.classList.add('hidden');
       }
     });
   });
-
 </script>
 {% endblock %}
-
