@@ -1,17 +1,26 @@
+# Django Core
 Django==3.2.25
-django-browser-reload==1.5.0
-Pillow==10.3.0
+
+# Production Web Server
+gunicorn
+
+# Database Connector
+psycopg2-binary
+
+# Static & Media Files
 whitenoise==6.2.0
+Pillow==10.3.0
 boto3==1.18.49
 django-storages==1.13.1
-psycopg2-binary
-psycopg2
+
+# Admin and Utilities
 django-jazzmin==2.6.0
 django-environ==0.9.0
 python-dotenv
-uuid
 django-htmlmin==0.11.0
 django-tailwind
+
+# Google APIs
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib

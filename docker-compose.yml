@@ -3,46 +3,27 @@ version: '3.8'
 services:
   db:
     image: postgres:14-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    networks:
-      - cce_web_network
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     ports:
-      - 5433:5432
-  web:
+      - "5433:5432"
+
+  app:
     build: .
-    command: 
-      bash -c "
-      python manage.py makemigrations --noinput &&
-      python manage.py migrate --noinput &&
-      python manage.py collectstatic --noinput &&
-      python manage.py runserver 0.0.0.0:8000"
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      # Mounts your local code into the container for live-reloading
+      - .:/app
     ports:
-      - 8000:8000
+      - "8000:8000"
     env_file:
       - .env
-    environment:
-      - DEBUG=1
     depends_on:
       - db
-    networks:
-      - cce_web_network
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-    ports:
-      - 5050:80
-    networks:
-      - cce_web_network
 
-networks:
-  cce_web_network:
-    driver: bridge
+volumes:
+  postgres_data:

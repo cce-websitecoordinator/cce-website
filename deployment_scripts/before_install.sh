@@ -1,1 +1,6 @@
-docker builder prune -f
+#!/bin/bash
+set -e
+
+echo "Pruning old, unused Docker images..."
+
+sudo docker image prune -f
