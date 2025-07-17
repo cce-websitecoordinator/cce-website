@@ -43,6 +43,7 @@ services:
       - DOMAIN=${DOMAIN}
 
   certbot:
+    platform: linux/amd64
     build:
       context: ./docker/certbot
     command: echo "Skipping..."
