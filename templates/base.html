@@ -70,17 +70,18 @@
   
 
 <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
-  <header>
-    <div class="relative">
+ <header>
+  <div class="relative">
+    {% include 'components/topbar.html' %}
+    
+  </div>
 
-      {% block topbar %}{% endblock topbar %}
-    </div>
-    {% with request.resolver_match.url_name as url_name %}
-    {# Navbar Segment #}
-    <div class="relative">
-      {% include 'components/navbar.html'%} {% endwith %}
-    </div>
-  </header>
+  {% with request.resolver_match.url_name as url_name %}
+  <div class="relative">
+    {% include 'components/navbar.html' %}
+  </div>
+  {% endwith %}
+</header>
 
   {% block body %} {% endblock body %} {% include 'components/infoScroller.html'%} {# Footer Segment #}
 
@@ -169,7 +170,7 @@
             <a href="{%  url 'Ktu_Regulations' %}">KTU Regulations</a>
             <a href="{%  url 'Aicte_Approvals' %}">AICTE Approvals</a>
 
-            <a href="https://docs.google.com/forms/d/1HDf0pJrkBTXZxqb36K3GDw-lN3fC8tr92OAgtjnKi2g/viewform?edit_requested=true">Career</a>
+            <a href="https://forms.gle/6J822kEsqQ6PeuVn6">Career</a>  
           </div>
         </div>
 

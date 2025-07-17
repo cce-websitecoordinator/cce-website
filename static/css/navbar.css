@@ -67,8 +67,10 @@ nav ul li ul li a {
   position: absolute;
   top: 80px;
   display: none;
-  z-index: 1;
+  z-index: 9999;
   min-width: 390px !important;
+  max-height: 80vh;
+  overflow-y: auto;
   padding: 10px;
   background: rgba(0, 0, 0, 0.51) !important;
   backdrop-filter: blur(9.5px);

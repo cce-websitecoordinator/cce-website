@@ -30,6 +30,12 @@ admin.site.register(QualityPolicy)
 admin.site.register(PHD_Faculty)
 admin.site.register(ResearchScholar)
 admin.site.register(AwardedPHD)
+admin.site.register(NirfPDFs)
+admin.site.register(Admission)
+
+
+
+
 # admin.site.register(Techletics24)
 
 

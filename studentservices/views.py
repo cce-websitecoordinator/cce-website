@@ -22,9 +22,56 @@ def sports_page(request):
     gallery_imgs = Gallery.objects.all().order_by('?')[:6]
     events = SportsEvents.objects.all()
     teams = SportsTeamStatus.objects.all()
-    hero_img = Hero_Image.objects.all().filter(page="sports").first
-    context = {'arts_updates':arts_updates,"events":events,"teams":teams,"gallery":gallery_imgs,"hero_img":hero_img,"hero_title":"Sports"}
-    return render(request, 'StudentServices/sports.html',context=context)
+    hero_img = Hero_Image.objects.filter(page="sports").first()
+
+    outdoor_items = [
+        "Football ground (1)",
+        "Volleyball courts (3)",
+        "Kabaddi court (1) with mat facility",
+        "Handball court (1)",
+        "Cricket ground (1)",
+        "Basketball courts (3)",
+        "Synthetic Tennis Court (1)",
+        "Soft Tennis Court (1)",
+        "Kho-Kho grounds (2)",
+        "Netball court (1)",
+        "Hockey ground (1)",
+        "Korfball court (1)",
+        "Athletic Stadium with 400m track (1)",
+        "Synthetic Jumping Pit (1)",
+        "Indoor Pole Vault Area (1)",
+        "Open Gym"
+    ]
+
+    indoor_items = [
+        "Gymnasium",
+        "Table Tennis Boards (4)",
+        "Badminton courts (2)",
+        "Carrom Board",
+        "Chess",
+        "Weight Lifting",
+        "Power Lifting",
+        "Boxing",
+        "Wrestling",
+        "Gymnastics",
+        "Judo",
+        "Kabaddi",
+        "Yoga",
+        "Karate"
+    ]
+
+    context = {
+        'arts_updates': arts_updates,
+        "events": events,
+        "teams": teams,
+        "gallery": gallery_imgs,
+        "hero_img": hero_img,
+        "hero_title": "Sports",
+        "outdoor_items": outdoor_items,
+        "indoor_items": indoor_items,
+    }
+
+    return render(request, 'StudentServices/sports.html', context=context)
 
 def nss_page(request):
     about = NssAbout.objects.first
@@ -213,4 +260,14 @@ def clubs_page(request,slug):
         return render(request, 'StudentServices/clubs/club_template.html',context=context)
     else:
         return Http404("Page Not Found")
-        
+    
+def health_facility_page(request):
+    hero_img = Hero_Image.objects.filter(page="health_facility").first()
+    return render(
+        request,
+        "StudentServices/health.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Health Facilities",
+        },
+    )
