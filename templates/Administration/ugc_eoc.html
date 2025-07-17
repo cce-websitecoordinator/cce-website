@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Equitable Opportunity Cell{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-10">
+        Equitable Opportunity Cell (EOC)
+      </h2>
+
+      <!-- Objectives -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-3 mb-4">Objectives</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
+          <p>a) Improving equitable access to quality education for SEDGs through bridge courses, earn-while-learn, and outreach programme;</p>
+          <p>b) Extending and ensuring basic facilities and amenities to SEDGs for inclusive, healthy, safe, and secure environments on campuses;</p>
+          <p>c) Setting up SEDGs Cell for sensitization of all stakeholders, policy implementation, monitoring, equalizing access to inclusive quality higher education, ensuring respectful dignity, promoting egalitarian and constitutional values, and grievance redressal in HEIs.</p>
+        </div>
+      </section>
+
+      <!-- Bridge Courses -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-green-600 pl-3 mb-4">1.1 Bridge Courses</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
+          <p>• Bridge courses are helpful, especially for newly admitted students in the transition to studying in higher education institutions.</p>
+          <p>• The bridge courses are intended to help the students of SEDGs category perform academically at par with other category students.</p>
+
+          <h4 class="text-xl font-medium text-gray-800 mt-6">Objectives of Bridge Courses</h4>
+          <ul class="list-decimal list-inside space-y-2 mt-2">
+            <li>To facilitate the students to overcome challenges in their learning process.</li>
+            <li>To assist students with different learning abilities and multiple challenges to perform at optimal level.</li>
+            <li>To act as a buffer for the new students.</li>
+            <li>To provide adequate time to the SEDGs students for smooth transition.</li>
+            <li>To provide knowledge on core courses and prepare the students for the identified courses which will commence in the forthcoming sessions/semesters.</li>
+            <li>To equip the students with the necessary knowledge and confidence to take on more challenges.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Earn While Learn -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-purple-600 pl-3 mb-4">1.2 Earn-while-Learn Scheme</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
+          <p>• The Earn-while-Learn (EwL) scheme is a means to help the SEDGs students earn and support their education and acquire skills and capabilities that would enhance their employability.</p>
+          <p>• Under this scheme, opportunities for part-time engagement are provided to needy students.</p>
+          <p>• The indicative list of such engagement opportunities may include working on research projects, assistantship, Library assignments, Computer services, Data entry, laboratory assistance, etc.</p>
+
+          <h4 class="text-xl font-medium text-gray-800 mt-6">Benefits of the Scheme</h4>
+          <ul class="list-decimal list-inside space-y-2 mt-2">
+            <li>Enhances employability skills and career preparedness.</li>
+            <li>Reduces parents’ economic burden through financial support.</li>
+            <li>Enables students to earn extra money.</li>
+            <li>Provides work experience and hands-on training while studying.</li>
+            <li>Offers practical experience during learning.</li>
+            <li>Provides education opportunities to socio-economically disadvantaged students.</li>
+            <li>Expands networking opportunities.</li>
+            <li>Helps students acquire competence and a professional attitude.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Outreach Programme -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-red-600 pl-3 mb-4">1.3 Outreach Programme</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pl-4 border-l-4 border-gray-300">
+          <p>• An outreach program aims to help, uplift, and support those who are in need of certain services. It involves learning, social planning, health support, and other projects for their empowerment.</p>
+        </div>
+      </section>
+
+      <!-- Download Link -->
+      <section class="flex justify-center mt-16">
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
+            <span class="material-symbols-outlined text-6xl text-red-600">description</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">EOC Circular</h3>
+            <a href="https://drive.google.com/file/d/1Jh_5XJetgOD3DM47hSNPgJxwwL9-DkVJ/view?usp=sharing" target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white transition duration-200">
+              Open
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

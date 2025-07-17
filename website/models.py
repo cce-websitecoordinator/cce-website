@@ -224,7 +224,7 @@ class Hero_Image(models.Model):
         ("arts", "Arts"),
         ("sports", "Sports"),
         ("placements", "Placements"),
-        ("admissions", "Admissions"),
+        ("admissionForms", "AdmissionForms"),
         ("academic_research", "Academic Research"),
         ("womencell", "Women Cell"),
         ("clubs", "Clubs"),
@@ -384,7 +384,7 @@ class AdmissionStatistics(models.Model):
 
 
 class AdmissionGraph(models.Model):
-    graph = models.ImageField(upload_to="admission/")
+    graph = models.ImageField(upload_to="admissionForm/")
     year = models.CharField(choices=ACADEMIC_YEARS, max_length=20, default="none")
 
 
@@ -477,3 +477,43 @@ class NirfPDFs(models.Model):
 #     class Meta:
 #         verbose_name = "Techletics 24 Image"
 #         verbose_name_plural = "Tecletics Images"
+
+
+class Admission(models.Model):
+    # Personal Details
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+    student_mobile = models.CharField(max_length=15)
+    parent_mobile = models.CharField(max_length=15)
+    email = models.EmailField(unique=True)
+
+    # Academic Details
+    BOARD_CHOICES = [
+        ('CBSE', 'CBSE'),
+        ('ICSE', 'ICSE'),
+        ('Kerala State Board', 'Kerala State Board'),
+        ('Other', 'Other'),
+    ]
+    board = models.CharField(max_length=50, choices=BOARD_CHOICES)
+    physics_mark = models.IntegerField()
+    chemistry_mark = models.IntegerField()
+    mathematics_mark = models.IntegerField()
+    pcm_percentage = models.FloatField()
+    higher_secondary_percentage = models.FloatField()
+
+    # Course Preferences
+    COURSE_CHOICES = [
+        ('Civil Engineering', 'Civil Engineering'),
+        ('Computer Science & Engineering', 'Computer Science & Engineering'),
+        ('Electrical & Electronics Engineering', 'Electrical & Electronics Engineering'),
+        ('Electronics & Communication Engineering', 'Electronics & Communication Engineering'),
+        ('Mechanical Engineering', 'Mechanical Engineering'),
+        ('Computer Science & Engineering (Data Science)', 'Computer Science & Engineering (Data Science)'),
+        
+    ]
+    preference_1 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+    preference_2 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+    preference_3 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+
+    def __str__(self):
+        return f"{self.name} - {self.preference_1}"

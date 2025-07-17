@@ -23,6 +23,8 @@ def getDepartment(department):
             return "Mechanical Engineering"
         case "CE":
             return "Civil Engineering"
+        case "DS":
+            return "Computer Science and Engineering (Data Science)"
 
 
 class Context:

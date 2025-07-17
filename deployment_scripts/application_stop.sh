@@ -1,7 +1,8 @@
+#!/bin/bash
+set -e
 
+echo "Stopping all services defined in docker-compose.prod.yml..."
+cd /home/ubuntu/cce-website/
 
-docker stop cce-website-web-1
-docker rm cce-website-web-1
-docker rmi -f cce-website-web 
-
-
+# Add the --env-file flag here as well
+sudo docker-compose -f docker-compose.prod.yml --env-file .env down --remove-orphans

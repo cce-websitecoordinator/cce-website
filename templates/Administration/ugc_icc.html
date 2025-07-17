@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Internal Complaints Committee{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-6xl mx-auto space-y-16">
+
+      <!-- Title -->
+      <h2 class="text-4xl font-bold text-center text-gray-900">
+        Internal Complaints Committee (ICC)
+      </h2>
+
+      <!-- Objectives Section -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-3 mb-4">Objectives</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-3 pl-4 border-l-4 border-gray-200">
+          <ul class="list-disc list-inside space-y-2">
+            <li>To create a safe working environment for women by preventing any act of sexual harassment at the workplace.</li>
+            <li>To receive and redress complaints of sexual harassment in a time-bound and fair manner, maintaining confidentiality and sensitivity.</li>
+            <li>To organize awareness programs and workshops to sensitize employees regarding the provisions of the POSH Act and promote gender-sensitive behaviour at the workplace.</li>
+            <li>To ensure that the organization complies with all legal provisions related to the prevention of sexual harassment, including reporting and training.</li>
+            <li>To recommend to the employer the action to be taken against the respondent if allegations are proved.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Functions Section -->
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-purple-600 pl-3 mb-4">Key Functions</h3>
+        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-3 pl-4 border-l-4 border-gray-200">
+          <ul class="list-disc list-inside space-y-2">
+            <li>Accept and register complaints of sexual harassment from any woman employee (including faculty, non-teaching staff, and students) through ICC mail <strong>internalcomplaint@cce.edu.in</strong>.</li>
+            <li>Acknowledge receipt and ensure confidentiality of the complainant and the complaint.</li>
+            <li>Conduct a fair and impartial inquiry into complaints of sexual harassment within the prescribed time frame and complete inquiry within 90 days.</li>
+            <li>Follow the principles of natural justice, ensuring both complainant and respondent are heard, involving witnesses and reviewing evidence if needed.</li>
+            <li>After inquiry, submit a report with findings to the employer within 10 days.</li>
+            <li>If allegations are proven, recommend appropriate action (disciplinary, compensation, etc.). If found false/malicious, recommend action against the complainant.</li>
+            <li>Maintain strict confidentiality throughout the complaint and inquiry process.</li>
+            <li>Present an annual report (number of complaints, resolutions, pending cases, actions taken) to the Management.</li>
+            <li>Conduct regular sensitization programs and workshops to raise awareness about sexual harassment and the ICC.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Circular Download Card -->
+      <section class="flex justify-center mt-10">
+        <div class="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-44 flex items-center justify-center rounded-t-xl">
+            <span class="material-symbols-outlined text-5xl text-red-600">
+              description
+            </span>
+          </div>
+          <div class="p-6 text-center">
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">ICC Circular</h4>
+            <a href="https://drive.google.com/file/d/1ZM9eORHMtYe68cqmXBFm_bSexx0HzjT4/view?usp=sharing"
+               target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition duration-200">
+              Open
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

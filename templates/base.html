@@ -70,17 +70,18 @@
   
 
 <body class="overflow-x-hidden relative snap-y snap-mandatory font-poppins">
-  <header>
-    <div class="relative">
+ <header>
+  <div class="relative">
+    {% include 'components/topbar.html' %}
+    
+  </div>
 
-      {% block topbar %}{% endblock topbar %}
-    </div>
-    {% with request.resolver_match.url_name as url_name %}
-    {# Navbar Segment #}
-    <div class="relative">
-      {% include 'components/navbar.html'%} {% endwith %}
-    </div>
-  </header>
+  {% with request.resolver_match.url_name as url_name %}
+  <div class="relative">
+    {% include 'components/navbar.html' %}
+  </div>
+  {% endwith %}
+</header>
 
   {% block body %} {% endblock body %} {% include 'components/infoScroller.html'%} {# Footer Segment #}
 

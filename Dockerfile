@@ -1,12 +1,20 @@
-FROM python:3.10
+# Use a slim version of the official Python image for a smaller footprint
+FROM python:3.10-slim
 
-WORKDIR /webapp
+# Set environment variables for Python
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-ADD . /webapp
+# Set the working directory inside the container
+WORKDIR /app
 
-COPY ./requirements.txt /webapp/requirements.txt
+# Copy only the requirements file first to leverage caching
+COPY requirements.txt .
 
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-COPY . /webapp/
+# Copy the rest of the application source code
+COPY . .
+
+RUN chmod +x /app/entrypoint.prod.sh

@@ -36,6 +36,7 @@ DEPARTMENTS = (
     ("EEE", "EEE"),
     ("ME", "ME"),
     ("CE", "CE"),
+    ("DS", "DS"),
     ("BSH", "BSH"),
     ("None", "None"),
 )
@@ -181,6 +182,7 @@ class AcademicAdministrationDirector(models.Model):
         ("vice_principal", "Vice Principal"),
         ("aca_dir", "Academic Director"),
         ("res_dir", "Research Director"),
+        ("out_dir", "OutReach Director"),
     )
     director_reserch_role = models.CharField(
         max_length=200, choices=choices, default="principal"

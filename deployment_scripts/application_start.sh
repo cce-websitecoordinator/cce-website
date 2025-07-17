@@ -1,2 +1,8 @@
-cd /home/ubuntu/cce-website
-sudo docker-compose up -d
+#!/bin/bash
+set -e
+
+echo "Building and starting all services..."
+cd /home/ubuntu/cce-website/
+
+# Add the --env-file flag to load your variables
+sudo docker-compose -f docker-compose.prod.yml --env-file .env up --build -d
