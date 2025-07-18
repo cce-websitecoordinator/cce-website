@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -8,9 +8,12 @@ if [ ! -f "/vol/proxy/ssl-dhparams.pem" ]; then
   openssl dhparam -out /vol/proxy/ssl-dhparams.pem 2048
 fi
 
-# Avoid replacing these with envsubst
+# Avoid replacing nginx variables with envsubst
 export host=\$host
 export request_uri=\$request_uri
+export scheme=\$scheme
+export remote_addr=\$remote_addr
+export proxy_add_x_forwarded_for=\$proxy_add_x_forwarded_for
 
 echo "Checking for fullchain.pem"
 if [ ! -f "/etc/letsencrypt/live/${DOMAIN}/fullchain.pem" ]; then
