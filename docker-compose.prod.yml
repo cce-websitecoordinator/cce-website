@@ -13,16 +13,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # Use the entrypoint script to run migrations and start gunicorn
     entrypoint: /app/entrypoint.prod.sh
     restart: always
     expose:
       - 8000
     environment:
+      # --- Django Settings ---
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=${DOMAIN}
-      # Make sure DEBUG is set to 0 in production
       - DEBUG=0
+      - DATABASE_USER=${DB_USERNAME}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
     depends_on:
       - db
 
