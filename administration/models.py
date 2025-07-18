@@ -235,7 +235,13 @@ class GrivenceUser(models.Model):
         verbose_name = 'Grievance User'
         verbose_name_plural = 'Grievance Users'
     
-    
+
+class GrievanceUserCSVUpload(models.Model):
+    csv_file = models.FileField(upload_to="grievance_users_csv/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"CSV Uploaded at {self.uploaded_at}"    
 
 
 class GrievanceBody(models.Model):
