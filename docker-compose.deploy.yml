@@ -1,17 +1,50 @@
 version: "3.9"
 
 services:
+  db:
+    image: postgres:14-alpine
+    platform: linux/arm64
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    restart: always
+
   app:
     build:
       context: .
+    platform: linux/arm64
+    entrypoint: /app/entrypoint.prod.sh
     restart: always
+    expose:
+      - 8000
     environment:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=${DOMAIN}
+      - DEBUG=0
+      - DATABASE_USER=${DB_USERNAME}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - PRODUCTION=True
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=db
+      - DB_PORT=5432
+      - SECRET_KEY=${DJANGO_SECRET_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    depends_on:
+      - db
 
   proxy:
     build:
       context: ./docker/proxy
+    platform: linux/arm64
     restart: always
     depends_on:
       - app
@@ -28,6 +61,7 @@ services:
   certbot:
     build:
       context: ./docker/certbot
+    platform: linux/arm64
     command: echo "Skipping..."
     environment:
       - EMAIL=${ACME_DEFAULT_EMAIL}
@@ -39,6 +73,7 @@ services:
       - proxy
 
 volumes:
+  postgres_data:
   certbot-web:
   proxy-dhparams:
   certbot-certs:

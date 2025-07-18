@@ -1,26 +1,20 @@
-# Filename: Dockerfile
+# Use a slim version of the official Python image for a smaller footprint
+FROM --platform=linux/arm64 python:3.10-slim
 
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
-
-# Set environment variables
+# Set environment variables for Python
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Install dependencies
-# Copy the requirements file first to leverage Docker cache
+# Copy only the requirements file first to leverage caching
 COPY requirements.txt .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application's code
+# Copy the rest of the application source code
 COPY . .
 
-# Make the entrypoint script executable
 RUN chmod +x /app/entrypoint.prod.sh
-
-# The command to run when the container starts
-# This will be overridden by docker-compose, but it's good practice
-CMD ["/app/entrypoint.prod.sh"]
