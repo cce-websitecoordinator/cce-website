@@ -12,9 +12,9 @@ check_services() {
         echo "Checking services health (attempt $((retries + 1))/$max_retries)..."
         
         # Check if all expected containers are running
-        if sudo docker-compose -f docker-compose.prod.yml --env-file .env ps | grep -q "Up.*app" && \
-           sudo docker-compose -f docker-compose.prod.yml --env-file .env ps | grep -q "Up.*db" && \
-           sudo docker-compose -f docker-compose.prod.yml --env-file .env ps | grep -q "Up.*proxy"; then
+        if sudo docker-compose -f docker-compose.deploy.yml --env-file .env ps | grep -q "Up.*app" && \
+           sudo docker-compose -f docker-compose.deploy.yml --env-file .env ps | grep -q "Up.*db" && \
+           sudo docker-compose -f docker-compose.deploy.yml --env-file .env ps | grep -q "Up.*proxy"; then
             
             # Check if the app is actually responding
             if sudo docker exec cce-website-proxy-1 wget -qO- http://app:8000 >/dev/null 2>&1; then
@@ -34,18 +34,18 @@ check_services() {
 
 # Start services
 echo "Starting all services..."
-sudo docker-compose -f docker-compose.prod.yml --env-file .env up -d
+sudo docker-compose -f docker-compose.deploy.yml --env-file .env up -d
 
 # Check if services are healthy
 if check_services; then
     echo "Deployment successful! All services are running and healthy."
     # Show final status
-    sudo docker-compose -f docker-compose.prod.yml --env-file .env ps
+    sudo docker-compose -f docker-compose.deploy.yml --env-file .env ps
     exit 0
 else
     echo "Deployment failed! Services are not healthy."
     echo "Container status:"
-    sudo docker-compose -f docker-compose.prod.yml --env-file .env ps
+    sudo docker-compose -f docker-compose.deploy.yml --env-file .env ps
     echo "App logs:"
     sudo docker logs cce-website-app-1 --tail 50
     echo "Proxy logs:"
