@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from utils.seed_users import seed_database
 from utils.test_mail import send_email
+from django.contrib.auth.hashers import check_password
 
 from administration.models import *
 from cce import settings
@@ -335,7 +336,7 @@ def handle_login(request, slug, page):
             },
         )
 
-    if password != user.password:
+    if not check_password(password, user.password):
         return render(
             request,
             "Administration/grievance/login.html",
