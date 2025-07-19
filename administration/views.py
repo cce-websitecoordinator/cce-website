@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from utils.seed_users import seed_database
 from utils.test_mail import send_email
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 
 from administration.models import *
 from cce import settings
@@ -336,13 +336,18 @@ def handle_login(request, slug, page):
             },
         )
 
-    if not check_password(password, user.password):
+    if check_password(password, user.password):
+        pass  # valid hashed password
+    elif user.password == password:
+        # legacy plain-text match: re-hash and save
+        user.password = make_password(password)
+        user.save()
+    else:
         return render(
             request,
             "Administration/grievance/login.html",
             context={"slug": slug, "page": page, "error": "Wrong Password"},
         )
-
     request.session["email"] = email
     request.session["name"] = user.name
     request.session["type"] = user.type
