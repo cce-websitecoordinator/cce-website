@@ -548,3 +548,16 @@ def ugc_fee_page(request):
             "gallery": gallery,  # Optional
         },
     )
+
+def committee_accessibility_page(request):
+    hero_img = Hero_Image.objects.filter(page="committee_accessibility").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    return render(
+        request,
+        "Administration/committee_accessibility.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Committee for Accessibility Standards and Inclusive Practices",
+            "gallery": gallery,
+        },
+    )

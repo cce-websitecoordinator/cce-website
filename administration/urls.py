@@ -28,9 +28,7 @@ urlpatterns = [
      path('sedg-cell/', views.ugc_sedg_page, name='ugc_sedg'),
      path('ugc-idp/', views.ugc_idp_page, name='ugc_idp'),
      path("ugc_fee/", views.ugc_fee_page, name="ugc_fee"),
-
-
-
+     path('committee-accessibility/', views.committee_accessibility_page, name='committee_accessibility'),
 
 
 ]
