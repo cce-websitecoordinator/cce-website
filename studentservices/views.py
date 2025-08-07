@@ -273,7 +273,7 @@ def health_facility_page(request):
     )
 
 def cphr_page(request):
-    hero_img = Hero_Image.objects.filter(page="cphr_accessibility").first()
+    hero_img = Hero_Image.objects.filter(page="cphr").first()
     gallery = Gallery.objects.all().order_by("?")[:6]
     return render(
         request,
