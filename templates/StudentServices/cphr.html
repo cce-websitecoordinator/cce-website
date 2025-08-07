@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Center for Pneumatic and Hydraulic Research (CPHR){% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <h2 class="text-5xl font-bold text-center text-blue-800 mb-12">
+        Center for Pneumatic and Hydraulic Research (CPHR)
+      </h2>
+
+      <!-- About Section -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">About</h3>
+        <p class="text-gray-700 text-lg leading-relaxed space-y-4">
+          The Center for Pneumatic and Hydraulic Research (CPHR) is a dedicated research and training division under Christ College of Engineering. It aims to advance education and innovation in the fields of industrial pneumatics, medical pneumatics, and fluid power systems.
+        </p>
+        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+          CPHR serves as a unique platform where <strong>“Engineering Meets Medical Innovation”</strong>, promoting interdisciplinary learning and real-world applications. The center is equipped with advanced pneumatic trainers and dental equipment simulators, enabling hands-on experience and industry-relevant skill development.
+        </p>
+      </div>
+
+      <!-- Objectives Section -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-green-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Key Objectives of CPHR</h3>
+        <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+          <li>Offer certification programs in General and Dental Pneumatic Technology (GDPT)</li>
+          <li>Facilitate research projects, workshops, and industrial collaborations</li>
+          <li>Provide technical consultancy and product development support</li>
+          <li>Train students and professionals in smart pneumatics, automation, and medical equipment servicing</li>
+        </ul>
+      </div>
+
+      <!-- Why Choose -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-yellow-500">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Why Choose GDPT @ CPHR – Christ College of Engineering?</h3>
+        <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+          <li>Industry-aligned curriculum with practical applications</li>
+          <li>Access to advanced pneumatic lab and dental equipment</li>
+          <li>Expert trainers from engineering and healthcare domains</li>
+          <li>Certification with high employment value in both general and medical fields</li>
+          <li>Gateway to careers in medical device servicing, dental clinics, automation industries, and technical sales/support</li>
+        </ul>
+        <p class="mt-4 text-blue-800 font-semibold text-lg italic">
+          “Shape your future in the world of intelligent pneumatics and medical technology only @ Christ College of Engineering, Irinjalakuda.”
+        </p>
+      </div>
+
+      <!-- Courses -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-indigo-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Courses Offered</h3>
+        <ol class="list-decimal list-inside text-gray-700 text-lg space-y-2">
+          <li>Six-Month Certification Course</li>
+          <li>Three-Month Advanced Certification Course</li>
+          <li>Hands-on Training Program in Dental Pneumatics</li>
+        </ol>
+      </div>
+
+      <!-- Coordinator -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-pink-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Course Coordinator</h3>
+        <p class="text-gray-700 text-lg">
+          <strong>Jayachandran. P.P.</strong><br>
+          BSc, DET<br>
+          Patent Nos.: 3
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-red-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Contact</h3>
+        <p class="text-gray-700 text-lg mb-2">
+          For more information, eligibility criteria, batch start dates, or registration details, please contact:
+        </p>
+        <ul class="text-gray-700 text-lg list-disc list-inside space-y-2">
+          <li><strong>Jayachandran.P.P.</strong></li>
+          <li>📧 Email: <a href="mailto:cphr@cce.edu.in" class="text-blue-600 underline">cphr@cce.edu.in</a></li>
+          <li>📞 Phone: <a href="tel:8281290141" class="text-blue-600 underline">8281290141</a>, <a href="tel:8921171940" class="text-blue-600 underline">8921171940</a></li>
+          <li>🌐 Visit: <a href="#" class="text-blue-600 underline">Christ College of Engineering website link to CPHR section</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -271,3 +271,16 @@ def health_facility_page(request):
             "hero_title": "Health Facilities",
         },
     )
+
+def cphr_page(request):
+    hero_img = Hero_Image.objects.filter(page="cphr_accessibility").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    return render(
+        request,
+        "StudentServices/cphr.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "CPHR",
+            "gallery": gallery,
+        },
+    )

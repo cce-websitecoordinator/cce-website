@@ -19,6 +19,7 @@ urlpatterns = [
     path('ieee', views.ieee_page, name='ieee'),
     path('pmi', views.pmi_page, name='pmi'),
     path('health-facility', views.health_facility_page, name='health_facility'),
+    path('cphr', views.cphr_page, name='cphr'),
     path('<str:slug>', views.central_library_page, name='Central_Library'),
 
 
