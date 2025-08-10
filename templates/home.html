@@ -45,7 +45,9 @@
             link
           </span></a>
         {% if anouncement.links.all %}
-        <p>Link is there</p>
+         {% for link in anouncement.links.all %}
+            <p>Link is there</p>
+          {% endfor %}
         {% endif %}
 
 
