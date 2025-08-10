@@ -39,24 +39,7 @@
         </div>
         <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
         <!-- <p>{{anouncement.date}}</p> -->
-        <div class="font-black z-[9999]">
-          {% if anouncement.links.all %}
-          <div class="flex flex-col md:flex-row md:items-center gap-3">
-            {% for link in anouncement.links.all %}
-            <div class="flex flex-col md:flex-row md:items-center">
-              <a href="{{ link.url }}" {% if link.open_in_new_tab %} target="_blank" rel="noopener noreferrer" {% endif
-                %} class="font-black z-[9999] text-blue-500 flex items-center">
-                {{ link.name }}
-                <span class="material-symbols-outlined mx-4">link</span>
-              </a>
-              {% if link.description %}
-              <p class="text-sm md:ml-2 text-gray-600">{{ link.description }}</p>
-              {% endif %}
-            </div>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
+        
 
 
       </div>
