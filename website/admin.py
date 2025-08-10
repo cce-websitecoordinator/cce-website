@@ -35,7 +35,7 @@ admin.site.register(Admission)
 class HomeAnnouncementLinkInline(admin.TabularInline):
     model = HomeAnnouncementLink
     extra = 1
-    fields = ("order", "name", "url", "open_in_new_tab", "description")
+    fields = ("name", "url","description")
     show_change_link = False
 
 @admin.register(HomeAnouncement)

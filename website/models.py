@@ -304,14 +304,11 @@ class HomeAnnouncementLink(models.Model):
         related_name="links",
         on_delete=models.CASCADE
     )
-    name = models.CharField("Link text", max_length=150)
-    url = models.URLField("URL", max_length=300)
+    name = models.CharField("Link name", max_length=150)
+    url = models.URLField("Link", max_length=300)
     description = models.TextField("Description", blank=True, default="")
-    order = models.PositiveIntegerField(default=0, help_text="Lower numbers show first")
-    open_in_new_tab = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ["order"]
         verbose_name = "Announcement Link"
         verbose_name_plural = "Announcement Links"
 
