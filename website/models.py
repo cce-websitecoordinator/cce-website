@@ -297,6 +297,7 @@ class HomeAnouncement(models.Model):
         return self.title
 
 
+
 class HomeAnnouncementLink(models.Model):
     announcement = models.ForeignKey(
         HomeAnouncement,
@@ -316,7 +317,6 @@ class HomeAnnouncementLink(models.Model):
 
     def __str__(self):
         return f"{self.name} — {self.announcement.title}"
-
 
 
 class FundedProjects(models.Model):
