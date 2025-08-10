@@ -290,8 +290,8 @@ class HomeAnouncement(models.Model):
     )
     description = models.TextField()
     date = models.DateField(default=datetime.date.today)
-    link_name = models.CharField(max_length=100, default="")
-    link = models.URLField(max_length=100, default="")
+    link_name = models.CharField(max_length=100, blank=True, null=True)
+    link = models.URLField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.title
