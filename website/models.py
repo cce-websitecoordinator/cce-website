@@ -297,6 +297,28 @@ class HomeAnouncement(models.Model):
         return self.title
 
 
+class HomeAnnouncementLink(models.Model):
+    announcement = models.ForeignKey(
+        HomeAnouncement,
+        related_name="links",
+        on_delete=models.CASCADE
+    )
+    name = models.CharField("Link text", max_length=150)
+    url = models.URLField("URL", max_length=300)
+    description = models.TextField("Description", blank=True, default="")
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers show first")
+    open_in_new_tab = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Announcement Link"
+        verbose_name_plural = "Announcement Links"
+
+    def __str__(self):
+        return f"{self.name} — {self.announcement.title}"
+
+
+
 class FundedProjects(models.Model):
     name = models.CharField(max_length=100)
     principal_investigator = models.CharField(max_length=100)

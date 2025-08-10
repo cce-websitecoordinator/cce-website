@@ -16,7 +16,6 @@ admin.site.register(Recruiters)
 admin.site.register(Hero_Image)
 admin.site.register(Facilities)
 admin.site.register(Achivements)
-admin.site.register(HomeAnouncement)
 admin.site.register(FundedProjects)
 admin.site.register(AcademicConsultancy)
 admin.site.register(ResearchGuides)
@@ -33,9 +32,19 @@ admin.site.register(AwardedPHD)
 admin.site.register(NirfPDFs)
 admin.site.register(Admission)
 
+class HomeAnnouncementLinkInline(admin.TabularInline):
+    model = HomeAnnouncementLink
+    extra = 1
+    fields = ("order", "name", "url", "open_in_new_tab", "description")
+    show_change_link = False
+
+@admin.register(HomeAnouncement)
+class HomeAnouncementAdmin(admin.ModelAdmin):
+    list_display = ("title", "date")
+    inlines = [HomeAnnouncementLinkInline]
 
 
-
+#admin.site.register(HomeAnouncement)
 # admin.site.register(Techletics24)
 
 
