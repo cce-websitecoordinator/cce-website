@@ -40,17 +40,23 @@
         <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
         <!-- <p>{{anouncement.date}}</p> -->
         <a href="{{anouncement.link}}" target="_blank"
-          class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span
-            class="material-symbols-outlined mx-4">
-            link
-          </span></a>
-        {% if anouncement.links.all %}
-         {% for link in anouncement.links.all %}
+        class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span
+        class="material-symbols-outlined mx-4">
+        link
+      </span></a>
+      {% if anouncement.links.all %}
+      {% for link in anouncement.links.all %}
+        {% if link.description %}
+          <p class="md:px-24 px-7 text-justify my-3">{{link.description | safe}}</p>
+        {% endif %}
+          <a href="{{link.url}}" target="_blank"
+            class="font-black z-[9999] text-blue-500 flex items-center">{{link.name}} <span
+              class="material-symbols-outlined mx-4">
+              link
+            </span></a>
             <p>Link is there</p>
           {% endfor %}
         {% endif %}
-
-
       </div>
 
     </div>
