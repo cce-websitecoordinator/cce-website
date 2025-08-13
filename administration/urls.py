@@ -30,6 +30,7 @@ urlpatterns = [
      path("ugc_fee/", views.ugc_fee_page, name="ugc_fee"),
      path('committee-accessibility/', views.committee_accessibility_page, name='committee_accessibility'),
      path('merit-admission/', views.merit_admission_page, name='merit_admission'),
+     path('cpio/', views.cpio_page, name='cpio'),
 
 
 ]

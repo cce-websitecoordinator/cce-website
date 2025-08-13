@@ -571,3 +571,12 @@ def merit_admission_page(request):
         "hero_img": hero_img,
         "hero_title": "Merit Admission",
     })
+
+def cpio_page(request):
+    hero_img = Hero_Image.objects.filter(page="cpio").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    return render(request, "Administration/cpio.html", {
+        "hero_img": hero_img,
+        "hero_title": "Central Public Information Officer",
+        "gallery": gallery,
+    })
