@@ -580,3 +580,15 @@ def cpio_page(request):
         "hero_title": "Central Public Information Officer",
         "gallery": gallery,
     })
+
+def audited_statements_page(request):
+    hero_img = Hero_Image.objects.filter(page="audited_statements").first()
+
+    return render(
+        request,
+        "Administration/audited_statements.html",  
+        context={
+            "hero_img": hero_img,
+            "hero_title": "AUDITED STATEMENTS",
+        },
+    )

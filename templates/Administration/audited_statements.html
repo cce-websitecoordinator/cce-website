@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}UGC IDP Document{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-10">
+        AUDITED STATEMENTS
+      </h2>
+
+      <!-- PDF Open Button Section -->
+      <section class="flex justify-center mt-16">
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
+            <span class="material-symbols-outlined text-6xl text-red-600">
+              description
+            </span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">AUDITED STATEMENTS</h3>
+            <a href="https://drive.google.com/file/d/1WQQhXqlIu7-8UksD45uGmZChnPnYuFtZ/view?usp=sharing" 
+               target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white transition duration-200">
+              Open
+              <span class="material-symbols-outlined ml-2">open_in_new</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

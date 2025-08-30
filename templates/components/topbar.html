@@ -30,6 +30,8 @@
     <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
 
     <a href="{% url 'cpio' %}">CPIO</a>
+
+    <a href="{% url 'audited_statements' %}">AUDITED STATEMENTS</a>
     
     <a href="/nirf">NIRF</a>
 
@@ -90,6 +92,12 @@
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
+
+    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
+     <a href="{% url 'cpio' %}">CPIO</a>
+
+    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
+    <a href="{% url 'audited_statements' %}">AUDITED STATEMENTS</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Cells</a>
@@ -351,6 +359,10 @@
     {
       text: 'Central Public Information Officer (CPIO)',
       url: 'https://cce.edu.in/administration/cpio/'
+    },
+    {
+      text: 'Audited statements',
+      url: 'https://cce.edu.in/administration/audited_statements/'
     }
   ];
 

@@ -31,6 +31,7 @@ urlpatterns = [
      path('committee-accessibility/', views.committee_accessibility_page, name='committee_accessibility'),
      path('merit-admission/', views.merit_admission_page, name='merit_admission'),
      path('cpio/', views.cpio_page, name='cpio'),
+     path('audited_statements/', views.audited_statements_page, name='audited_statements'),
 
 
 ]
