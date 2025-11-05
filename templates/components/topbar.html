@@ -3,16 +3,18 @@
 <div
   class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[999]  hidden topbar">
   <div class="hidden md:flex items-center space-x-4">
-    <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
-    <a href="tel:04802825355" ><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
-    <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i></a>
+    <a href="#map"><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
+    <a href="tel:04802825355"><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
+    <a href="mailto:contact@cce.edu.in"><i class="fa-solid fa-envelope fa-lg"></i></a>
     <div class="relative wrapper z-[9999999]">
-      <input type="text" name="search" id="search" placeholder="Search..." class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-48 transition-all duration-300 focus:w-64">
+      <input type="text" name="search" id="search" placeholder="Search..."
+        class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-48 transition-all duration-300 focus:w-64">
       <button class="absolute right-3 top-1/2 -translate-y-1/2">
         <i class="fa-solid fa-search text-white/70 hover:text-white"></i>
       </button>
-      <div id="desktop-results" class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto">
-        <ul class="divide-y divide-white/10">       
+      <div id="desktop-results"
+        class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto">
+        <ul class="divide-y divide-white/10">
         </ul>
       </div>
     </div>
@@ -22,33 +24,43 @@
     <a href="https://ciba.co.in">MBA</a>
 
     <a href="{%url 'home_research' 'index'%}">Research and Development</a>
-    
+
     <a href="https://alumni.cce.edu.in/">Alumni</a>
-   
+
     <a href="{%url 'admission'%}">Admissions</a>
-    
+
     <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
 
     <a href="{% url 'cpio' %}">CPIO</a>
 
     <a href="{% url 'audited_statements' %}">AUDITED STATEMENTS</a>
-    
+
     <a href="/nirf">NIRF</a>
 
     <a href="/nba">NBA</a>
-
-    <div class="group flex duration-700"> <span class="group-hover:hidden duration-700">Careers</span>
-      <div class="group-hover:flex space-x-4 hidden duration-700">
-
-        | <a href="https://forms.gle/Wpu18tjHtNDi1Q4d7">Technical Staff</a> | <a href="https://forms.gle/6J822kEsqQ6PeuVn6">Faculty</a> |
+    <div class="relative group flex duration-700 cursor-pointer" onmouseenter="openCareersDropdown()"
+      onmouseleave="closeCareersDropdown()">
+      <span class="duration-700">Careers</span>
+      <div id="careers-dropdown"
+        class="absolute hidden flex-col bg-[#205072] shadow-lg rounded-lg top-full mt-2 w-56 text-left z-[1000] opacity-0 translate-y-2 transition-all duration-300 ease-out"
+        onmouseenter="cancelCloseDropdown()" onmouseleave="closeCareersDropdown()">
+        <a href="https://forms.gle/Wpu18tjHtNDi1Q4d7" class="px-4 py-2 hover:bg-white/10">Technical Staff</a>
+        <a href="https://forms.gle/6J822kEsqQ6PeuVn6" class="px-4 py-2 hover:bg-white/10">Faculty</a>
+        <a href="#" class="px-4 py-2 hover:bg-white/10">Principal</a>
+        <a href="#" class="px-4 py-2 hover:bg-white/10">Librarian</a>
       </div>
     </div>
+
+
+
+
     <a href="/student_services/central_library">Central Library</a>
     <a href="https://techletics.cce.edu.in">Techletics</a>
-    <div  class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
+    <div class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
       <div class="group-hover:flex space-x-4 hidden duration-700">
 
-        <a href="https://cce.linways.com/student/">Student Login</a> <a href="https://cce.linways.com/staff/">Faculty Login</a>
+        <a href="https://cce.linways.com/student/">Student Login</a> <a href="https://cce.linways.com/staff/">Faculty
+          Login</a>
       </div>
     </div>
   </div>
@@ -59,34 +71,37 @@
   <div class="w-full flex justify-between px-6 flex-row-reverse">
     <div class="flex items-center space-x-4">
       <div class="relative wrapper">
-        <input type="text" id="search-mobile" placeholder="Search..." class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-32 transition-all duration-300 focus:w-40">
+        <input type="text" id="search-mobile" placeholder="Search..."
+          class="bg-white/10 text-white placeholder-white/70 rounded-full px-4 py-1 focus:outline-none focus:bg-white/20 w-32 transition-all duration-300 focus:w-40">
         <button class="absolute right-3 top-1/2 -translate-y-1/2">
           <i class="fa-solid fa-search text-white/70 hover:text-white"></i>
         </button>
-        <div id="mobile-results" class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto z-[10000]">
+        <div id="mobile-results"
+          class="absolute left-0 right-0 mt-2 bg-[#205072] shadow-lg rounded-lg overflow-hidden hidden max-h-[300px] overflow-y-auto z-[10000]">
           <ul class="divide-y divide-white/10 z-[10000]">
           </ul>
         </div>
       </div>
-      <a href="#map" ><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
-      <a href="tel:04802825355" ><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
-      <a href="mailto:contact@cce.edu.in" ><i class="fa-solid fa-envelope fa-lg"></i></a>
+      <a href="#map"><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
+      <a href="tel:04802825355"><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
+      <a href="mailto:contact@cce.edu.in"><i class="fa-solid fa-envelope fa-lg"></i></a>
     </div>
-    <button class="topmenu" >
+    <button class="topmenu">
       <i class="fa-solid fa-bars fa-2x"></i>
     </button>
   </div>
 
-  <div class="space-x-1 hidden flex flex-col justify-center items-center space-y-5 md:space-y-0 w-full md:w-auto topbar-mobile relative z-[9]">
+  <div
+    class="space-x-1 hidden flex flex-col justify-center items-center space-y-5 md:space-y-0 w-full md:w-auto topbar-mobile relative z-[9]">
     <div class="w-full h-full z-[-1] absolute top-0 left-0 flex justify-center items-center">
       <img src="{% static 'favicons/apple-touch-icon.png' %}" alt="logo" class="w-[200px] opacity-[0.3]">
     </div>
 
-    <a href="{%url 'home_research' 'index'%}">Research and Development</a> 
+    <a href="{%url 'home_research' 'index'%}">Research and Development</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden "></div>
     <a href="https://alumni.cce.edu.in/">Alumni</a>
-   
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Admission</a>
 
@@ -94,23 +109,36 @@
     <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
-     <a href="{% url 'cpio' %}">CPIO</a>
+    <a href="{% url 'cpio' %}">CPIO</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="{% url 'audited_statements' %}">AUDITED STATEMENTS</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Cells</a>
-  
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/nirf">NIRF</a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
-    <a target="_blank" href="https://docs.google.com/forms/d/1HDf0pJrkBTXZxqb36K3GDw-lN3fC8tr92OAgtjnKi2g/viewform?edit_requested=true">Careers</a>
+    <div class="w-full flex flex-col items-center space-y-2">
+      <button id="career-toggle" class="flex items-center justify-center space-x-2 focus:outline-none">
+        <span>Careers</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+      <div id="career-submenu" class="hidden flex flex-col space-y-2 text-center">
+        <a href="https://forms.gle/Wpu18tjHtNDi1Q4d7">Technical Staff</a>
+        <a href="https://forms.gle/6J822kEsqQ6PeuVn6">Faculty</a>
+        <a href="#">Principal</a>
+        <a href="#">Librarian</a>
+      </div>
+    </div>
+
+
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/">Techletics</a>
-    
+
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
 
     <a href="https://cce.linways.com/staff/">Faculty Login</a>
@@ -238,7 +266,7 @@
     },
     {
       text: 'Gallery',
-      url:'https://cce.edu.in/gallery'
+      url: 'https://cce.edu.in/gallery'
     },
     {
       text: 'IQAC',
@@ -377,7 +405,7 @@
       return;
     }
 
-    const results = searchable.filter(item => 
+    const results = searchable.filter(item =>
       item.text.toLowerCase().includes(inputValue)
     );
 
@@ -446,5 +474,39 @@
       }
     });
   });
+  const careerToggle = document.getElementById('career-toggle');
+  const careerSubmenu = document.getElementById('career-submenu');
+  if (careerToggle && careerSubmenu) {
+    careerToggle.addEventListener('click', () => {
+      careerSubmenu.classList.toggle('hidden');
+    });
+  }
+  let closeTimer;
+
+  function openCareersDropdown() {
+    clearTimeout(closeTimer);
+    const dropdown = document.getElementById("careers-dropdown");
+    dropdown.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      dropdown.classList.remove("opacity-0", "translate-y-2");
+    });
+  }
+
+  function closeCareersDropdown() {
+    const dropdown = document.getElementById("careers-dropdown");
+    closeTimer = setTimeout(() => {
+      dropdown.classList.add("opacity-0", "translate-y-2");
+      setTimeout(() => dropdown.classList.add("hidden"), 200);
+    }, 150);
+  }
+
+  function cancelCloseDropdown() {
+    clearTimeout(closeTimer);
+  }
+
+
+
+
+
 </script>
 {% endblock %}
