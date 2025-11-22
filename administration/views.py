@@ -592,3 +592,42 @@ def audited_statements_page(request):
             "hero_title": "AUDITED STATEMENTS",
         },
     )
+
+def exam_circulars_page(request):
+    hero_img = Hero_Image.objects.filter(page="examination_cell").first()
+    circulars = [
+        {
+            "title": "Examination Timetable for MBA S1 (R) Examination Dec. 2025",
+            "date": "22/11/2025",
+            "ref_no": "CCE/EX3/301/#1",
+            "link": "https://drive.google.com/file/d/1SEynS0fiV0KZib24p-MuJ2np2NbRH4qP/view?usp=drivesdk" 
+        },
+        {
+            "title": "Lab Examination Schedule for B. Tech S1 (R) Examination Nov. 2025",
+            "date": "18/11/2025",
+            "ref_no": "CCE/EX4/101/#1",
+            "link": "https://drive.google.com/file/d/11uPCi7FJ-m4RsVVdRlzVuo4TdosXpHZM/view?usp=drivesdk"
+        },
+        {
+            "title": "Examination Registrations for MBA S1 (R) Exam Dec 2025",
+            "date": "17/11/2025",
+            "ref_no": "CCE/EX2/301/#1",
+            "link": "https://drive.google.com/file/d/1HGTOgyqykPNFU2neTC96VKCOPkGn1THS/view?usp=drivesdk"
+        },
+        { 
+            "title": "Slot for MBA S1 (R) Examination Dec. 2025",
+            "date": "14/11/2025",
+            "ref_no": "CCE/EX1/301/#1",
+            "link": "https://drive.google.com/file/d/1y7oePR_qUd-yo_pHOJm9y2nebHg8-ln_/view?usp=drivesdk"
+        },
+    ]
+
+    return render(
+        request,
+        "Administration/exam_circulars.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Examination Circulars",
+            "circulars": circulars,
+        },
+    )
