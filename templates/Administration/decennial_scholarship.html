@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Decennial Scholarship{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-12">
+
+      <div class="text-center space-y-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#205072]">
+          Decennial Scholarship
+        </h2>
+        <p class="text-gray-600 text-lg">Empowering the future through excellence.</p>
+        <div class="h-1 w-24 bg-yellow-400 mx-auto rounded"></div>
+      </div>
+
+      <section class="flex justify-center">
+        <div class="p-2 bg-white rounded-xl shadow-lg border border-gray-200">
+            <img src="{% static 'images/scholarship_poster.jpeg' %}" 
+                 alt="Decennial Scholarship Notice Poster" 
+                 class="max-w-full h-auto rounded-lg max-h-[80vh]">
+        </div>
+      </section>
+
+      <section class="bg-blue-50 border-l-4 border-[#205072] p-8 rounded-r-lg shadow-sm">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Scholarship Guidelines</h3>
+                <p class="text-gray-600">Please read the eligibility criteria and instructions carefully before applying.</p>
+            </div>
+            
+            <a href="{% static 'pdfs/ScholarshipGuidelines.pdf' %}" target="_blank"
+               class="flex items-center gap-2 px-6 py-3 bg-white border border-[#205072] text-[#205072] font-semibold rounded-lg hover:bg-[#205072] hover:text-white transition duration-300">
+                <span class="material-symbols-outlined">description</span>
+                Download Guidelines
+            </a>
+        </div>
+      </section>
+
+      <section class="flex flex-col items-center justify-center pt-8 space-y-4">
+        <p class="text-gray-600 font-medium">Ready to apply?</p>
+        
+        <a href="https://forms.gle/uswPFihVhy5HEZJN9" 
+           target="_blank"
+           class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300 overflow-hidden">
+            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+            <span class="relative flex items-center">
+                Apply Now 
+                <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+        </a>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -39,6 +39,10 @@
 
     <a href="/nba">NBA</a>
     
+    <a href="{% url 'decennial_scholarship' %}" 
+       class="bg-yellow-400 text-[#205072] px-3 py-1 rounded-md font-bold hover:bg-yellow-300 hover:scale-105 transition duration-300 shadow-md flex items-center animate-pulse-slow">
+       <i class="fa-solid fa-graduation-cap mr-2"></i> Decennial Scholarship
+    </a>
     <div class="relative group flex duration-500 cursor-pointer text-white font-semibold">
       <span class="duration-500 py-2 px-3 hover:text-cyan-300">Careers</span>
       
@@ -124,6 +128,11 @@
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="/nirf">NIRF</a>
+    
+    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
+    <a href="{% url 'decennial_scholarship' %}" class="text-yellow-400 font-bold tracking-wider">
+        <i class="fa-solid fa-graduation-cap mr-2"></i> Decennial Scholarship
+    </a>
 
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <div class="w-full flex flex-col items-center space-y-2">
@@ -508,10 +517,6 @@
   function cancelCloseDropdown() {
     clearTimeout(closeTimer);
   }
-
-
-
-
 
 </script>
 {% endblock %}

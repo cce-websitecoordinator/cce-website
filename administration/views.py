@@ -631,3 +631,15 @@ def exam_circulars_page(request):
             "circulars": circulars,
         },
     )
+
+def decennial_scholarship_page(request):
+    hero_img = Hero_Image.objects.filter(page="decennial_scholarship").first()
+    
+    return render(
+        request,
+        "Administration/decennial_scholarship.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Decennial Scholarship",
+        },
+    )
