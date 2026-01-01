@@ -23,26 +23,32 @@
 
     <a href="https://ciba.co.in">MBA</a>
 
-    <a href="{%url 'home_research' 'index'%}">Research and Development</a>
+    <a href="{%url 'home_research' 'index'%}">Research</a>
 
     <a href="https://alumni.cce.edu.in/">Alumni</a>
 
     <a href="{%url 'admission'%}">Admissions</a>
 
-    <a href="{% url 'ugc_compliance' %}">UGC Compliance</a>
+    <a href="{% url 'ugc_compliance' %}">UGC</a>
 
     <a href="{% url 'cpio' %}">CPIO</a>
 
-    <a href="{% url 'audited_statements' %}">AUDITED STATEMENTS</a>
+    <a href="{% url 'audited_statements' %}">AUDITED</a>
 
     <a href="/nirf">NIRF</a>
 
     <a href="/nba">NBA</a>
     
+    <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank"
+       class="bg-yellow-400 text-[#205072] px-3 py-1 rounded-md font-bold hover:bg-yellow-300 hover:scale-105 transition duration-300 shadow-md flex items-center animate-pulse-slow">
+       <i class="fa-solid fa-pen-to-square mr-2"></i> Admission Enquiry
+    </a>
+
     <a href="{% url 'decennial_scholarship' %}" 
        class="bg-yellow-400 text-[#205072] px-3 py-1 rounded-md font-bold hover:bg-yellow-300 hover:scale-105 transition duration-300 shadow-md flex items-center animate-pulse-slow">
        <i class="fa-solid fa-graduation-cap mr-2"></i> Decennial Scholarship
     </a>
+
     <div class="relative group flex duration-500 cursor-pointer text-white font-semibold">
       <span class="duration-500 py-2 px-3 hover:text-cyan-300">Careers</span>
       
@@ -63,13 +69,12 @@
         </a>
       </div>
     </div>
-    <a href="/student_services/central_library">Central Library</a>
+    <a href="/student_services/central_library">Library</a>
     <a href="https://techletics.cce.edu.in">Techletics</a>
     <div class='group flex duration-700'> <span class="group-hover:hidden duration-700">Login</span>
       <div class="group-hover:flex space-x-4 hidden duration-700">
 
-        <a href="https://cce.linways.com/student/">Student Login</a> <a href="https://cce.linways.com/staff/">Faculty
-          Login</a>
+        <a href="https://cce.linways.com/student/">Student</a> <a href="https://cce.linways.com/staff/">Faculty</a>
       </div>
     </div>
   </div>
@@ -130,6 +135,11 @@
     <a href="/nirf">NIRF</a>
     
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
+    <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank" class="text-yellow-400 font-bold tracking-wider">
+        <i class="fa-solid fa-pen-to-square mr-2"></i> Admission Enquiry
+    </a>
+
+    <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
     <a href="{% url 'decennial_scholarship' %}" class="text-yellow-400 font-bold tracking-wider">
         <i class="fa-solid fa-graduation-cap mr-2"></i> Decennial Scholarship
     </a>
@@ -166,6 +176,10 @@
 <script>
 
   const searchable = [
+    {
+      text: 'Admission Enquiry',
+      url: 'https://forms.gle/YwVrueW1iy5ZTsyX7'
+    },
     {
       text: 'Management',
       url: 'https://cce.edu.in/aboutCCE/management'
