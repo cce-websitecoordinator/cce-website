@@ -18,8 +18,9 @@ services:
     platform: linux/arm64
     entrypoint: /app/entrypoint.prod.sh
     restart: always
-    expose:
-      - 8000
+    # CHANGE 1: We use 'ports' instead of 'expose' to lock it to localhost:8000
+    ports:
+      - "8000:8000"
     environment:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=${DOMAIN}
@@ -41,36 +42,9 @@ services:
     depends_on:
       - db
 
-  proxy:
-    build:
-      context: ./docker/proxy
-    platform: linux/arm64
-    restart: always
-    depends_on:
-      - app
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - certbot-web:/vol/www
-      - proxy-dhparams:/vol/proxy
-      - certbot-certs:/etc/letsencrypt
-    environment:
-      - DOMAIN=${DOMAIN}
-
-  certbot:
-    build:
-      context: ./docker/certbot
-    platform: linux/arm64
-    command: echo "Skipping..."
-    environment:
-      - EMAIL=${ACME_DEFAULT_EMAIL}
-      - DOMAIN=${DOMAIN}
-    volumes:
-      - certbot-web:/vol/www
-      - certbot-certs:/etc/letsencrypt/
-    depends_on:
-      - proxy
+  # CHANGE 2: The 'proxy' and 'certbot' services are REMOVED.
+  # Your Host Nginx is now acting as the proxy.
+  # If we leave them here, they will crash your server by fighting for Port 80.
 
 volumes:
   postgres_data:
