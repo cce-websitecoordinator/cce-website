@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     ports:
-      - "5435:5432"
+      - "5433:5432"
 
   app:
     build: .
@@ -19,7 +19,7 @@ services:
       # Mounts your local code into the container for live-reloading
       - .:/app
     ports:
-      - "8001:8000"
+      - "8000:8000"
     env_file:
       - .env
     depends_on:
