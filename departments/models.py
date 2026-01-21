@@ -622,3 +622,36 @@ class Facultypdf(models.Model):
         verbose_name = "Faculty PDF"
         verbose_name_plural = "Faculty PDFs"
 
+class AutonomousCurriculum(models.Model):
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    
+    # B.Tech Tab Data
+    btech_s1_syllabus = models.FileField(
+        upload_to="Autonomous/BTech", 
+        blank=True, 
+        verbose_name="B.Tech S1 Syllabus"
+    )
+    btech_s2_syllabus = models.FileField(
+        upload_to="Autonomous/BTech", 
+        blank=True, 
+        verbose_name="B.Tech S2 Syllabus"
+    )
+    
+    # M.Tech Tab Data
+    mtech_s1_syllabus = models.FileField(
+        upload_to="Autonomous/MTech", 
+        blank=True, 
+        verbose_name="M.Tech S1 Syllabus"
+    )
+    mtech_s2_syllabus = models.FileField(
+        upload_to="Autonomous/MTech", 
+        blank=True, 
+        verbose_name="M.Tech S2 Syllabus"
+    )
+
+    class Meta:
+        verbose_name = "Autonomous Curriculum"
+        verbose_name_plural = "Autonomous Curriculums"
+
+    def __str__(self):
+        return f"{self.department} - Autonomous Curriculum"

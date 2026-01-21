@@ -53,6 +53,7 @@ class Context:
         self.semesters = [nested_tuple[0] for nested_tuple in Handouts.SEMESTERS]
         self.semin = None
         self.handouts = None
+        self.autonomous_curriculum = None
         self.labs = None
         self.events = None
         self.achivements = None
@@ -114,6 +115,7 @@ class Context:
             case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
                 self.handouts = Handouts.objects.filter(department=dep)
+                self.autonomous_curriculum = AutonomousCurriculum.objects.filter(department=dep).first()
                 self.semin = (
                     Handouts.objects.filter(department=dep)
                     .values_list("semester", flat=True)
@@ -169,6 +171,7 @@ class Context:
             "professional_bodies": self.professional_bodies,
             "syllabus": self.syllabus,
             "semesters": self.semesters,
+            "autonomous_curriculum": self.autonomous_curriculum,
             "handouts": self.handouts,
             "semin": self.semin,
             "labs": self.labs,

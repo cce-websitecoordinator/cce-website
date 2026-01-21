@@ -1,5 +1,5 @@
 # Use a slim version of the official Python image for a smaller footprint
-FROM --platform=linux/arm64 python:3.10-slim
+FROM python:3.10-slim
 
 # Set environment variables for Python
 ENV PYTHONDONTWRITEBYTECODE 1

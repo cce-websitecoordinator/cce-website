@@ -1,5 +1,20 @@
 {% extends 'base.html' %} {% load static %} {% block title %} About - {{title}}
-{% endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% endblock title %} {% block head %} 
+<style>
+  /* Simple transition for the tabs */
+  .tab-content {
+    display: none;
+    animation: fadeEffect 1s;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+{% endblock head %} {% block body %}
 {%include 'Departments/Hero.html' %}
 
 <section class="md:px-24 pt-24 px-6" id="content">
@@ -12,86 +27,201 @@
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
       <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
-
       {% include 'Departments/Sidebar.html' %}
     </div>
 
-    <div class="col-span-2 gap-10 space-y-16 mt-11 pt-6">
-      {% for item in syllabus  %}
-      <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">
-        <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
-          picture_as_pdf
-          </span></div>
-        <h3 class="mx-4 mt-2">{{item.title}}</h3>
-        <a href="{{item.file.url}}" download class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Download<span class="material-symbols-outlined">
-          download
-          </span>
+    <div class="col-span-2 w-full mt-11 pt-6">
+      
+      {% if autonomous_curriculum %}
+      <div class="mb-10">
+        <button onclick="toggleAutonomous()" class="w-full md:w-auto px-6 py-3 bg-[#28AAE1] text-white font-bold rounded-lg shadow-md hover:bg-[#1c8bbd] transition flex items-center justify-between gap-2">
+          <span>Autonomous Curriculum</span>
+          <span id="auto-icon" class="material-symbols-outlined">expand_more</span>
+        </button>
+
+        <div id="autonomous-container" class="hidden mt-6 border rounded-lg p-6 bg-gray-50 shadow-inner">
           
-          </a>
+          <div class="flex border-b border-gray-300 mb-6">
+            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none active-tab" onclick="openTab(event, 'BTech')">
+              B.Tech
+            </button>
+            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'MTech')">
+              M.Tech
+            </button>
+          </div>
+
+          <div id="BTech" class="tab-content active">
+            <div class="grid md:grid-cols-2 gap-6">
+              {% if autonomous_curriculum.btech_s1_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+              
+              {% if autonomous_curriculum.btech_s2_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% if not autonomous_curriculum.btech_s1_syllabus and not autonomous_curriculum.btech_s2_syllabus %}
+              <p class="text-gray-500 italic">No B.Tech documents available yet.</p>
+            {% endif %}
+          </div>
+
+          <div id="MTech" class="tab-content">
+            <div class="grid md:grid-cols-2 gap-6">
+              {% if autonomous_curriculum.mtech_s1_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.mtech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+              
+              {% if autonomous_curriculum.mtech_s2_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.mtech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% if not autonomous_curriculum.mtech_s1_syllabus and not autonomous_curriculum.mtech_s2_syllabus %}
+              <p class="text-gray-500 italic">No M.Tech documents available yet.</p>
+            {% endif %}
+          </div>
+
+        </div>
       </div>
-      {% endfor %}
+      {% endif %}
+      <div class="flex flex-wrap gap-10">
+        {% for item in syllabus  %}
+        <div class="min-w-[300px] h-[300px] shadow-xl rounded-md bg-white">
+          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> 
+            <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">picture_as_pdf</span>
+          </div>
+          <h3 class="mx-4 mt-2 font-semibold">{{item.title}}</h3>
+          <a href="{{item.file.url}}" download class="mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center hover:bg-blue-700 transition">
+            Download <span class="material-symbols-outlined ml-2">download</span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
       
      </div>
   </div>
 </section>
 
 {% if semin %}
-
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
     <div class="w-full space-y-6 mt-11 md:mt-0">
       <h2 class="text-center text-5xl font-semibold">Handouts</h2>
-
       {% for sem in semesters %}
-
-      {% if sem in semin %}
-
-      <div class="w-full">
-        <h2 class="p-3 font-bold text-xl">{{sem}}</h2>
-        <table class="w-full">
-          <thead class="rounded-t-lg bg-[#28AAE1]">
-            <tr class="text-white">
-              <th class="p-2">S.No</th>
-              <th class="p-2">Course Name</th>
-              <th class="p-2">Course Code</th>
-              <th class="p-2">Credits</th>
-              <th class="p-2">Information Sheet</th>
-              <th class="p-2">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% with count=0 %}
-            {% for item in handouts %}
-              {% if item.semester == sem %}
-                <tr class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %}">
-                  <td class="p-2 text-center">{{ count|add:1 }}.</td>
-                  <td class="p-2 text-center">{{ item.course_name }}</td>  
-                  <td class="p-2 text-center">{{ item.course_code }}</td>  
-                  <td class="p-2 text-center">{{ item.course_credits }}</td>   
-                  <td class="p-2 text-center text-blue-800"><a href="{{ item.course_information_sheet }}">Info Sheet</a></td> 
-                  <td class="p-2 text-center text-blue-800"><a href="{{ item.course_notes }}">Notes</a></td>
+        {% if sem in semin %}
+        <div class="w-full">
+          <h2 class="p-3 font-bold text-xl">{{sem}}</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="rounded-t-lg bg-[#28AAE1]">
+                <tr class="text-white">
+                  <th class="p-2 whitespace-nowrap">S.No</th>
+                  <th class="p-2 whitespace-nowrap">Course Name</th>
+                  <th class="p-2 whitespace-nowrap">Course Code</th>
+                  <th class="p-2 whitespace-nowrap">Credits</th>
+                  <th class="p-2 whitespace-nowrap">Information Sheet</th>
+                  <th class="p-2 whitespace-nowrap">Notes</th>
                 </tr>
-                
-              {% endif %}
-            {% endfor %}
-            {% endwith %}
-          </tbody>
-        </table>
-      </div>
-      {% endif %}
-    {% endfor %}
-    
-    
-
-
-
+              </thead>
+              <tbody>
+                {% with count=0 %}
+                {% for item in handouts %}
+                  {% if item.semester == sem %}
+                    <tr class="rounded-t-lg {% cycle 'even:bg-[#fafafa]' 'odd:bg-white' %} border-b">
+                      <td class="p-2 text-center">{{ count|add:1 }}.</td>
+                      <td class="p-2 text-center">{{ item.course_name }}</td>  
+                      <td class="p-2 text-center">{{ item.course_code }}</td>  
+                      <td class="p-2 text-center">{{ item.course_credits }}</td>   
+                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_information_sheet }}">Info Sheet</a></td> 
+                      <td class="p-2 text-center text-blue-800"><a href="{{ item.course_notes }}">Notes</a></td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
+                {% endwith %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
-
 {% endif %}
 
 {% include 'components/gallery.html' %} {% include 'Departments/Contact.html' %}
-{% endblock body %} {% block script %}
-<script></script>
+{% endblock body %} 
+
+{% block script %}
+<script>
+  function toggleAutonomous() {
+    const container = document.getElementById('autonomous-container');
+    const icon = document.getElementById('auto-icon');
+    
+    if (container.classList.contains('hidden')) {
+      container.classList.remove('hidden');
+      icon.innerText = "expand_less";
+    } else {
+      container.classList.add('hidden');
+      icon.innerText = "expand_more";
+    }
+  }
+
+  function openTab(evt, tabName) {
+    // 1. Hide all tab contents
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].classList.remove("active");
+    }
+
+    // 2. Remove "active" visual style from all buttons
+    tablinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("border-[#28AAE1]", "text-[#28AAE1]");
+      tablinks[i].classList.add("border-transparent", "text-gray-600");
+    }
+
+    // 3. Show current tab content
+    document.getElementById(tabName).classList.add("active");
+
+    // 4. Add "active" visual style to clicked button
+    evt.currentTarget.classList.remove("border-transparent", "text-gray-600");
+    evt.currentTarget.classList.add("border-[#28AAE1]", "text-[#28AAE1]");
+  }
+  
+  // Initialize the first tab as active styling manually if needed, 
+  // though HTML class 'active-tab' handles the initial look locally.
+  document.addEventListener("DOMContentLoaded", function() {
+      // Ensure visual state matches the default "active" class
+      const defaultTab = document.querySelector('.tab-link.active-tab');
+      if(defaultTab) {
+          defaultTab.classList.remove("border-transparent", "text-gray-600");
+          defaultTab.classList.add("border-[#28AAE1]", "text-[#28AAE1]");
+      }
+  });
+</script>
 {% endblock script %}
