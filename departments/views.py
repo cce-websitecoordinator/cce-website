@@ -579,7 +579,7 @@ def research_page(request, department, slug):
             context = {
                 "academic_consultancy": website.models.AcademicConsultancy.objects.all().filter(
                     department=department
-                ),g
+                ),  # <--- FIXED: Removed the stray 'g' here
                 **context_temp,
             }
             return render(
@@ -660,8 +660,6 @@ def research_page(request, department, slug):
 
         case other:
             raise Http404("Page Kanumanilla")
-
-
 def ProfessionalBodie(request, slug):
     context = {
         "professional_body": ProfessionalBodies.objects.filter(id=slug).first(),
