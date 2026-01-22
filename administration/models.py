@@ -298,3 +298,32 @@ class ExternalAudit(models.Model):
 
     class Meta:
         verbose_name_plural = "External Audits"
+
+
+class MeetingMinutes(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to="MeetingMinutes")
+    date = models.DateField(default=datetime.date.today)
+    
+    # Categories matched to your UGC Compliance Page tabs
+    CATEGORY_CHOICES = (
+        ("icc", "Internal Complaints Committee (ICC)"),
+        ("grievance", "Student Grievance & Redressal"),
+        ("anti_ragging", "Anti-Ragging Committee"),
+        ("eoc", "Equal Opportunity Cell"),
+        ("sedg", "SEDG Cell"),
+        ("accessibility", "Accessibility Committee"),
+        ("sc_st", "SC/ST Committee"),
+        ("minority", "Minority Cell"),
+        ("obc", "OBC Cell"),
+        ("idp", "Institutional Development Plan"), 
+        ("other", "Other"),
+    )
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default="other")
+
+    def __str__(self):
+        return f"{self.title} - {self.get_category_display()}"
+
+    class Meta:
+        verbose_name = "Meeting Minute / UGC Document"
+        verbose_name_plural = "Meeting Minutes & UGC Documents"

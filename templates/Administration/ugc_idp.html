@@ -2,6 +2,20 @@
 {% load static %}
 {% block title %}UGC IDP Document{% endblock title %}
 
+{% block head %}
+<style>
+  /* Smooth fade in for the cards */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock head %}
+
 {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
@@ -12,7 +26,6 @@
         Institutional Development Plan (IDP)
       </h2>
 
-      <!-- PDF Open Button Section -->
       <section class="flex justify-center mt-16">
         <div class="w-full max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
           <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
@@ -32,7 +45,36 @@
         </div>
       </section>
 
-    </div>
+      {% if minutes %}
+      <section class="mt-16 border-t pt-10">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">Related Documents & Minutes</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {% for doc in minutes %}
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+            <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+              <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-grow text-center">
+              <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ doc.title }}">
+                {{ doc.title }}
+              </h4>
+              <p class="text-xs text-gray-500 mb-4">{{ doc.date }}</p>
+              
+              <div class="mt-auto">
+                <a href="{{ doc.file.url }}" target="_blank"
+                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                   Download <span class="material-symbols-outlined text-sm ml-2">download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+      </div>
   </section>
 </main>
 {% endblock %}

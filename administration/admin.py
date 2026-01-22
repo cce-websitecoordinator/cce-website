@@ -1,7 +1,6 @@
-from django.contrib import admin
-from administration.models import *
 from django.contrib import admin, messages
 from django.contrib.auth.hashers import make_password
+from administration.models import * # Ensure MeetingMinutes is imported here
 from .models import GrivenceUser, GrievanceUserCSVUpload
 import csv
 import io
@@ -27,6 +26,14 @@ admin.site.register(DisciplinaryCommittee)
 admin.site.register(InternalAudit)
 admin.site.register(InternalAuditAbout)
 admin.site.register(ExternalAudit)
+
+# === NEW: Meeting Minutes Admin ===
+@admin.register(MeetingMinutes)
+class MeetingMinutesAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'date')
+    list_filter = ('category', 'date') # This adds the sidebar filter
+    search_fields = ('title',)
+# ==================================
 
 @admin.register(GrievanceUserCSVUpload)
 class GrievanceUserCSVUploadAdmin(admin.ModelAdmin):
