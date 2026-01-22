@@ -9,6 +9,9 @@ from django.core import serializers
 
 from .forms import AdmissionForm
 
+# === ADDED IMPORT ===
+from administration.models import MeetingMinutes 
+# ====================
 
 def home_page(request):
     """
@@ -149,7 +152,11 @@ def research_page(request, slug):
     match slug:
         case "index":
             hero_title = "Research"
-            context = {"hero_title": hero_title, **context_temp}
+            
+            # === ADDED LOGIC ===
+            minutes = MeetingMinutes.objects.filter(category="rnd").order_by('-date')
+            context = {"hero_title": hero_title, "minutes": minutes, **context_temp}
+            # ===================
 
             return render(request, "researchAndConsultancy/index.html", context)
         case "consultancy":
