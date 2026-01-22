@@ -26,6 +26,10 @@ def getDepartment(department):
             return "Civil Engineering"
         case "DS":
             return "Computer Science and Engineering (Data Science)"
+        case "BS":  # Match the code used in navbar.html
+            return "Department of Computer Science and Engineering (Business Systems)"
+        case "MBA": # Match the code used in navbar.html
+            return "Master of Business Administration"
 
 
 class Context:
@@ -578,7 +582,7 @@ def research_page(request, department, slug):
             context = {
                 "academic_consultancy": website.models.AcademicConsultancy.objects.all().filter(
                     department=department
-                ),
+                ),g
                 **context_temp,
             }
             return render(
