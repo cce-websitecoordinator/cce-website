@@ -124,6 +124,7 @@ class Faculty(models.Model):
     role = models.ManyToManyField(Role)
     email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default="faculty.jpeg")
+    
     DEPARTMENTS = (
         ("CSE", "CSE"),
         ("ECE", "ECE"),
@@ -131,12 +132,15 @@ class Faculty(models.Model):
         ("ME", "ME"),
         ("CE", "CE"),
         ("BSH", "BSH"),
+        ("BS", "Computer Science (Business Systems)"), 
+        ("MBA", "Master of Business Administration"),
         ("None", "None"),
         ("administrative_staff", "Administrative Staff"),
         ("wardens", "Wardens "),
         ("supporting_staff", "Supporting Staff"),
         ("security_staff", "Security Staff"),
     )
+    
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     profile = models.FileField(
         upload_to="faculty_profile", default="faculty_profile.pdf"
@@ -147,6 +151,7 @@ class Faculty(models.Model):
     aicte_id = models.CharField(max_length=100, blank=True, default="", verbose_name="AICTE ID")
     def __str__(self):
         return self.full_name
+
 
 
 class GoverningBody(models.Model):
