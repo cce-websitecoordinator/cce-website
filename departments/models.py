@@ -12,6 +12,8 @@ DEPARTMENTS = (
     ("CE", "CE"),
     ("BSH", "BSH"),
     ("DS","DS"),
+    ("BS", "BS"),   
+    ("MBA", "MBA"),
     ("None", "None"),
 )
 ACADEMIC_YEARS = [

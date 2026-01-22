@@ -26,8 +26,10 @@ def getDepartment(department):
             return "Civil Engineering"
         case "DS":
             return "Computer Science and Engineering (Data Science)"
-        
-
+        case "BS":
+            return "Department of Computer Science and Engineering (Business Systems)"
+        case "MBA":
+            return "Master of Business Administration"
 
 class Context:
     """This class is used to pass context to the templates"""
