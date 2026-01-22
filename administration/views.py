@@ -5,7 +5,10 @@ from utils.seed_users import seed_database
 from utils.test_mail import send_email
 from django.contrib.auth.hashers import check_password, make_password
 
+# Ensure MeetingMinutes is imported
 from administration.models import *
+from administration.models import MeetingMinutes 
+
 from cce import settings
 from website.models import Faculty, Gallery, Hero_Image
 from .forms import GrievanceBodyForm
@@ -117,6 +120,10 @@ def sc_st_monitoring_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_commite").first()
     sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
     gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="sc_st").order_by('-date')
+    
     return render(
         request,
         "Administration/sc_monitoring_commitee.html",
@@ -125,6 +132,7 @@ def sc_st_monitoring_cell_page(request):
             "hero_title": "SC/ST Monitoring Committee",
             "sc_st_cell_data": sc_st_cell_data,
             "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
@@ -455,6 +463,9 @@ def ugc_icc_page(request):
         {"name": "Ms. Megha Suresh", "designation": "Student (S5, ECE)", "role": "Student Member"},
         {"name": "Ms. Sheela Baji", "designation": "People’s Council for Social Justice", "role": "NGO Member"},
     ]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="icc").order_by('-date')
 
     return render(
         request,
@@ -464,12 +475,16 @@ def ugc_icc_page(request):
             "hero_title": "Internal Complaints Commitee(ICC)",
             "gallery": gallery,
             "members": members,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
 def ugc_grievance_page(request):
     hero_img = Hero_Image.objects.filter(page="ugc_grievance").first()
     gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="grievance").order_by('-date')
 
     return render(
         request,
@@ -478,12 +493,16 @@ def ugc_grievance_page(request):
             "hero_img": hero_img,
             "hero_title": "Student Grievance & Redressal Cell",
             "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
 def ugc_antiragging_page(request):
     hero_img = Hero_Image.objects.filter(page="ugc_antiragging").first()
     gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="anti_ragging").order_by('-date')
 
     return render(
         request,
@@ -492,12 +511,16 @@ def ugc_antiragging_page(request):
             "hero_img": hero_img,
             "hero_title": "Anti-Ragging Committee",
             "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
 def ugc_eoc_page(request):
     hero_img = Hero_Image.objects.filter(page="ugc_eoc").first()
     gallery = Gallery.objects.all().order_by("?")[:6]  # optional, if used in the template
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="eoc").order_by('-date')
 
     return render(
         request,
@@ -506,12 +529,16 @@ def ugc_eoc_page(request):
             "hero_img": hero_img,
             "hero_title": "Equal Opportunity Cell",
             "gallery": gallery,  # optional
+            "minutes": minutes, # <--- Added to context
         },
     )
 
 def ugc_sedg_page(request):
     hero_img = Hero_Image.objects.filter(page="ugc_sedg").first()
     gallery = Gallery.objects.all().order_by("?")[:6]  # optional, use only if gallery is in template
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="sedg").order_by('-date')
 
     return render(
         request,
@@ -520,11 +547,15 @@ def ugc_sedg_page(request):
             "hero_img": hero_img,
             "hero_title": "SEDG Cell",
             "gallery": gallery,  # optional
+            "minutes": minutes, # <--- Added to context
         },
     )
 
 def ugc_idp_page(request):
     hero_img = Hero_Image.objects.filter(page="ugc_idp").first()
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="idp").order_by('-date')
 
     return render(
         request,
@@ -532,6 +563,7 @@ def ugc_idp_page(request):
         context={
             "hero_img": hero_img,
             "hero_title": "UGC IDP Document",
+            "minutes": minutes, # <--- Added to context
         },
     )
 
@@ -552,6 +584,10 @@ def ugc_fee_page(request):
 def committee_accessibility_page(request):
     hero_img = Hero_Image.objects.filter(page="committee_accessibility").first()
     gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="accessibility").order_by('-date')
+    
     return render(
         request,
         "Administration/committee_accessibility.html",
@@ -559,6 +595,7 @@ def committee_accessibility_page(request):
             "hero_img": hero_img,
             "hero_title": "Committee for Accessibility Standards and Inclusive Practices",
             "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
