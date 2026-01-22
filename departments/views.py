@@ -6,6 +6,7 @@ from .models import *
 import website.models
 from .models import Achivements as DepAchievements
 from studentservices.models import Clubs,ArtsEvents,SportsEvents
+from administration.models import MeetingMinutes
 # Create your views here.
 
 
@@ -570,7 +571,8 @@ def research_page(request, department, slug):
     match slug:
         case "index":
             about = ResearchAbout.objects.filter(department=department).first()
-            context = {"about": about, **context_temp}
+            minutes = MeetingMinutes.objects.filter(category="rnd").order_by('-date')
+            context = {"about": about, "minutes": minutes, **context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {

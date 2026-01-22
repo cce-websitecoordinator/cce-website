@@ -317,6 +317,11 @@ class MeetingMinutes(models.Model):
         ("minority", "Minority Cell"),
         ("obc", "OBC Cell"),
         ("idp", "Institutional Development Plan"), 
+        
+        # === ADD THIS NEW LINE ===
+        ("rnd", "Research & Development"), 
+        # =========================
+        
         ("other", "Other"),
     )
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default="other")
