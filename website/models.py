@@ -144,6 +144,7 @@ class Faculty(models.Model):
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null=True)
 
+    aicte_id = models.CharField(max_length=100, blank=True, default="", verbose_name="AICTE ID")
     def __str__(self):
         return self.full_name
 
