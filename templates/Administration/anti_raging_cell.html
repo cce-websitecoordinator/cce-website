@@ -70,13 +70,23 @@
     
   </section>
 
-  <div class="w-full text-center my-11 text-[#007FFF] flex justify-center items-center">
-    <a class="text-2xl font-semibold" href="{% url 'grivence_redressal' 'student' 'login' %}">Click Here to enter Grivence
-     <span class="material-symbols-outlined">
-      link
-      </span>
+  <div class="w-full text-center my-11 text-[#007FFF] flex flex-col gap-4 justify-center items-center">
+    
+    <a class="text-2xl font-semibold inline-flex items-center gap-2" 
+       href="{% static 'pdfs/53.1 antiragging.pdf' %}" 
+       target="_blank">
+      View Anti-Ragging Committee Constitution (2025-26)
+      <span class="material-symbols-outlined">picture_as_pdf</span>
     </a>
+
+    <a class="text-lg font-medium text-gray-500 hover:text-[#007FFF] transition" 
+       href="{% url 'grivence_redressal' 'student' 'login' %}">
+      Click Here to enter Grievance
+      <span class="material-symbols-outlined align-middle text-base">link</span>
+    </a>
+    
   </div>
+</main>
 </main>
 
 {% include 'components/gallery.html' %} {% endblock %}
