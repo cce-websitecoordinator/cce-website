@@ -4,7 +4,6 @@
 
 {% block head %}
 <style>
-  /* Optional: Smooth fade in for the cards */
   .fade-in-up {
     animation: fadeInUp 0.5s ease-out forwards;
     opacity: 0;
@@ -12,6 +11,12 @@
   }
   @keyframes fadeInUp {
     to { opacity: 1; transform: translateY(0); }
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>
 {% endblock head %}
@@ -27,85 +32,115 @@
         Internal Complaints Committee (ICC)
       </h2>
 
-      <section>
-        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-3 mb-4">Objectives</h3>
-        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-3 pl-4 border-l-4 border-gray-200">
-          <ul class="list-disc list-inside space-y-2">
-            <li>To create a safe working environment for women by preventing any act of sexual harassment at the workplace.</li>
-            <li>To receive and redress complaints of sexual harassment in a time-bound and fair manner, maintaining confidentiality and sensitivity.</li>
-            <li>To organize awareness programs and workshops to sensitize employees regarding the provisions of the POSH Act and promote gender-sensitive behaviour at the workplace.</li>
-            <li>To ensure that the organization complies with all legal provisions related to the prevention of sexual harassment, including reporting and training.</li>
-            <li>To recommend to the employer the action to be taken against the respondent if allegations are proved.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-purple-600 pl-3 mb-4">Key Functions</h3>
-        <div class="text-gray-700 text-base md:text-lg leading-relaxed space-y-3 pl-4 border-l-4 border-gray-200">
-          <ul class="list-disc list-inside space-y-2">
-            <li>Accept and register complaints of sexual harassment from any woman employee (including faculty, non-teaching staff, and students) through ICC mail <strong>internalcomplaint@cce.edu.in</strong>.</li>
-            <li>Acknowledge receipt and ensure confidentiality of the complainant and the complaint.</li>
-            <li>Conduct a fair and impartial inquiry into complaints of sexual harassment within the prescribed time frame and complete inquiry within 90 days.</li>
-            <li>Follow the principles of natural justice, ensuring both complainant and respondent are heard, involving witnesses and reviewing evidence if needed.</li>
-            <li>After inquiry, submit a report with findings to the employer within 10 days.</li>
-            <li>If allegations are proven, recommend appropriate action (disciplinary, compensation, etc.). If found false/malicious, recommend action against the complainant.</li>
-            <li>Maintain strict confidentiality throughout the complaint and inquiry process.</li>
-            <li>Present an annual report (number of complaints, resolutions, pending cases, actions taken) to the Management.</li>
-            <li>Conduct regular sensitization programs and workshops to raise awareness about sexual harassment and the ICC.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="flex justify-center mt-10">
-        <div class="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition duration-300">
-          <div class="bg-gray-100 h-44 flex items-center justify-center rounded-t-xl">
-            <span class="material-symbols-outlined text-5xl text-red-600">
-              description
-            </span>
+      <div class="grid md:grid-cols-2 gap-12">
+        <section>
+          <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-3 mb-6">Objectives</h3>
+          <div class="text-gray-700 text-base leading-relaxed space-y-3 pl-4 border-l border-gray-200">
+            <ul class="list-disc list-inside space-y-2">
+              <li>Create a safe working environment for women.</li>
+              <li>Redress complaints in a time-bound, fair, and confidential manner.</li>
+              <li>Sensitize employees regarding POSH Act provisions.</li>
+              <li>Ensure legal compliance with prevention protocols.</li>
+              <li>Recommend disciplinary actions based on inquiry findings.</li>
+            </ul>
           </div>
-          <div class="p-6 text-center">
-            <h4 class="text-lg font-semibold text-gray-800 mb-4">ICC Circular</h4>
-            <a href="https://drive.google.com/file/d/1ZM9eORHMtYe68cqmXBFm_bSexx0HzjT4/view?usp=sharing"
-               target="_blank"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition duration-200">
-              Open
-              <span class="material-symbols-outlined ml-2">download</span>
-            </a>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-purple-600 pl-3 mb-6">Key Functions</h3>
+          <div class="text-gray-700 text-base leading-relaxed space-y-3 pl-4 border-l border-gray-200">
+            <ul class="list-disc list-inside space-y-2">
+              <li>Register complaints via <strong>internalcomplaint@cce.edu.in</strong>.</li>
+              <li>Conduct impartial inquiries within 90 days.</li>
+              <li>Maintain strict confidentiality throughout the process.</li>
+              <li>Submit reports with findings to the employer within 10 days.</li>
+              <li>Present annual status reports to Management.</li>
+            </ul>
           </div>
+        </section>
+      </div>
+
+      {% if members %}
+      <section class="mt-16">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">Committee Members</h3>
+        <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-700 uppercase text-sm">
+                <th class="px-6 py-4 font-semibold">Name</th>
+                <th class="px-6 py-4 font-semibold">Designation</th>
+                <th class="px-6 py-4 font-semibold">Role</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {% for member in members %}
+              <tr class="hover:bg-gray-50 transition">
+                <td class="px-6 py-4 font-medium text-gray-900">{{ member.name }}</td>
+                <td class="px-6 py-4 text-gray-600">{{ member.designation }}</td>
+                <td class="px-6 py-4">
+                  <span class="px-3 py-1 text-xs font-bold rounded-full {% if 'Chair' in member.role %}bg-blue-100 text-blue-700{% else %}bg-gray-100 text-gray-600{% endif %}">
+                    {{ member.role }}
+                  </span>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </section>
+      {% endif %}
 
-      {% if minutes %}
-      <section class="mt-16 border-t pt-10">
-        <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">Minutes of Meeting</h3>
+      <section class="mt-16 border-t pt-16">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-10">Documents & Minutes</h3>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up">
+            <div class="bg-blue-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+              <span class="material-symbols-outlined text-4xl text-blue-600">description</span>
+            </div>
+            <div class="p-5 flex flex-col flex-grow text-center">
+              <h4 class="text-md font-semibold text-gray-800 mb-2">ICC Circular</h4>
+              <p class="text-xs text-gray-500 mb-4">Official Notification</p>
+              <div class="mt-auto">
+                <a href="https://drive.google.com/file/d/1ZM9eORHMtYe68cqmXBFm_bSexx0HzjT4/view?usp=sharing" 
+                   target="_blank"
+                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                  Open Circular <span class="material-symbols-outlined text-sm ml-2">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
           {% for doc in minutes %}
-          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
-            <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" 
+               style="animation-delay: {{ forloop.counter }}00ms;">
+            <div class="bg-red-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
               <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
             </div>
             
             <div class="p-5 flex flex-col flex-grow text-center">
-              <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ doc.title }}">
+              <h4 class="text-md font-semibold text-gray-800 mb-1 line-clamp-2" title="{{ doc.title }}">
                 {{ doc.title }}
               </h4>
               <p class="text-xs text-gray-500 mb-4">{{ doc.date }}</p>
               
               <div class="mt-auto">
+                {% if doc.file.url %}
                 <a href="{{ doc.file.url }}" target="_blank"
-                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-gray-800 hover:bg-black text-white text-sm font-medium transition">
                    Download <span class="material-symbols-outlined text-sm ml-2">download</span>
                 </a>
+                {% endif %}
               </div>
             </div>
           </div>
           {% endfor %}
+
         </div>
       </section>
-      {% endif %}
-      </div>
+
+    </div>
   </section>
 </main>
 {% endblock %}

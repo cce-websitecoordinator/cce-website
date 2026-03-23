@@ -464,8 +464,23 @@ def ugc_icc_page(request):
         {"name": "Ms. Sheela Baji", "designation": "People’s Council for Social Justice", "role": "NGO Member"},
     ]
     
-    # === ADDED MINUTES FETCH ===
-    minutes = MeetingMinutes.objects.filter(category="icc").order_by('-date')
+    # Hardcoded minutes pointing to the static folder
+    minutes = [
+        {
+            "title": "ICC review and planning of activities",
+            "date": "27/11/2025",
+            "file": {
+                "url": static("pdfs/ICC minutes2.pdf")
+            }
+        },
+        {
+            "title": "ICC constitution cum first level of discussions",
+            "date": "10/07/2025",
+            "file": {
+                "url": static("pdfs/ICC minutes1.pdf")
+            }
+        }
+    ]
 
     return render(
         request,
@@ -475,7 +490,7 @@ def ugc_icc_page(request):
             "hero_title": "Internal Complaints Commitee(ICC)",
             "gallery": gallery,
             "members": members,
-            "minutes": minutes, # <--- Added to context
+            "minutes": minutes, 
         },
     )
 
