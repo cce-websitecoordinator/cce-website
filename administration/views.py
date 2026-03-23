@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse
 from utils.seed_users import seed_database
 from utils.test_mail import send_email
 from django.contrib.auth.hashers import check_password, make_password
+from django.templatetags.static import static
 
 # Ensure MeetingMinutes is imported
 from administration.models import *
