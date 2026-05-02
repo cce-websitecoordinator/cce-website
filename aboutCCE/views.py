@@ -241,3 +241,12 @@ def ktu_affiliation_page(request):
             "route": "ktu_affiliation",
         },
     )
+
+def cce_safety_manual_page(request):
+    hero_img = Hero_Image.objects.filter(page="cce_safety_manual").first()
+    context = {
+        "hero_img": hero_img,
+        "hero_title": "CCE Safety Manual",
+        "gallery": Gallery.objects.all().order_by("?")[:6],
+    }
+    return render(request, "aboutCCE/Cce_Safety_Manual.html", context=context)

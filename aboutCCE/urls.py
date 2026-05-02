@@ -22,6 +22,7 @@ urlpatterns = [
     path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
     path('college_magazine', views.college_magazine_page, name='College_Magazine'),
     path('ktu_affiliations',views.ktu_affiliation_page,name='Ktu_Affiliations'),
+    path('cce_safety_manual', views.cce_safety_manual_page, name='CCE_Safety_Manual'),
 ]
 
 if settings.DEBUG:     
