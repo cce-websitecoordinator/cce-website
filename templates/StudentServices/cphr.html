@@ -3,7 +3,7 @@
 {% block title %}Center for Pneumatic and Hydraulic Research (CPHR){% endblock title %}
 
 {% block body %}
-<main>
+<main> 
   {% include 'components/Hero_section.html' %}
 
   <section class="md:px-24 pt-20 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
@@ -80,5 +80,33 @@
 
     </div>
   </section>
+
+  <div class="w-full bg-blue-900 text-white py-3 overflow-hidden shadow-lg border-t border-blue-800 tracking-wide select-none group relative z-10">
+    <div class="flex whitespace-nowrap min-w-full animate-marquee group-hover:[animation-play-state:paused]">
+      <span class="text-base font-semibold px-8 flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        Applications are now invited for the 6-month Certification Course in General and Dental Pneumatics Technology (GDPT) for the July 2026 intake.
+      </span>
+      <span class="text-base font-semibold px-8 flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        Applications are now invited for the 6-month Certification Course in General and Dental Pneumatics Technology (GDPT) for the July 2026 intake.
+      </span>
+      <span class="text-base font-semibold px-8 flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+        Applications are now invited for the 6-month Certification Course in General and Dental Pneumatics Technology (GDPT) for the July 2026 intake.
+      </span>
+    </div>
+  </div>
+
+  <style>
+    @keyframes marqueeLoop {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-33.333%); }
+    }
+    .animate-marquee {
+      display: inline-flex;
+      animation: marqueeLoop 25s linear infinite;
+    }
+  </style>
 </main>
 {% endblock %}
