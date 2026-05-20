@@ -4,9 +4,16 @@
 
 {% block body %}
 <main> 
-  {% include 'components/Hero_section.html' %}
+  
+  <div class="w-full bg-white border-b border-gray-200 overflow-hidden">
+    <div class="w-full relative group">
+      <img src="{% static 'images/CPHR_Hero.jpeg' %}" alt="CPHR Hero Banner" 
+           class="w-full h-auto object-contain opacity-80 transform transition-transform duration-700 ease-out group-hover:scale-105 animate-fade-in-scale">
+      <div class="absolute inset-0 bg-blue-900/10 transition-opacity duration-300 group-hover:opacity-0"></div>
+    </div>
+  </div>
 
-  <section class="md:px-24 pt-20 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+  <section class="md:px-24 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
     <div class="max-w-5xl mx-auto space-y-16">
 
       <h2 class="text-5xl font-bold text-center text-blue-800 mb-12">
@@ -72,6 +79,7 @@
         <ul class="text-gray-700 text-lg list-disc list-inside space-y-2">
           <li><strong>Jayachandran.P.P.</strong></li>
           <li>📄 <a href="{% static 'pdfs/CPHRbrochure.pdf' %}" target="_blank" class="text-blue-600 underline font-semibold hover:text-blue-800">Brochure</a></li>
+          <li>📝 <a href="https://forms.gle/8iEHPWMgKwC4XePi7" target="_blank" class="text-blue-600 underline font-semibold hover:text-blue-800">Registration Link</a></li>
           <li>📧 Email: <a href="mailto:cphr@cce.edu.in" class="text-blue-600 underline">cphr@cce.edu.in</a></li>
           <li>📞 Phone: <a href="tel:8281290141" class="text-blue-600 underline">8281290141</a>, <a href="tel:8921171940" class="text-blue-600 underline">8921171940</a></li>
           <li>🌐 Visit: <a href="#" class="text-blue-600 underline">Christ College of Engineering (Autonomous) website link to CPHR section</a></li>
@@ -103,9 +111,16 @@
       0% { transform: translateX(0%); }
       100% { transform: translateX(-33.333%); }
     }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.98); }
+      100% { opacity: 0.8; transform: scale(1); }
+    }
     .animate-marquee {
       display: inline-flex;
       animation: marqueeLoop 25s linear infinite;
+    }
+    .animate-fade-in-scale {
+      animation: fadeInScale 1s ease-out forwards;
     }
   </style>
 </main>
