@@ -1,7 +1,7 @@
 {% load static %}
 
 <div
-  class="p-2 lg:flex pl-4  items-center pr-4 bg-[#205072] shadow-lg w-[100vw] justify-between text-white text-sm z-[999]  hidden topbar">
+  class="p-2 lg:flex flex-wrap pl-4 items-center pr-4 bg-[#205072] shadow-lg w-full justify-between gap-2 text-white text-sm z-[999] hidden topbar">
   <div class="hidden md:flex items-center space-x-4">
     <a href="#map"><i class="fa-solid fa-map-location-dot fa-lg"></i></a>
     <a href="tel:04802825355"><i class="fa-solid fa-phone mr-1 fa-lg"></i></a>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class="space-x-6 lg:flex justify-center items-center hidden w-auto">
+  <div class="lg:flex flex-wrap justify-end items-center gap-6 hidden w-auto">
 
     <a href="https://ciba.co.in">MBA</a>
 
@@ -39,7 +39,7 @@
 
     <a href="/nba">NBA</a>
     
-    <a href="" target="_blank"
+    <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank"
        class="bg-yellow-400 text-[#205072] px-3 py-1 rounded-md font-bold hover:bg-yellow-300 hover:scale-105 transition duration-300 shadow-md flex items-center animate-pulse-slow">
        <i class="fa-solid fa-pen-to-square mr-2"></i> Admission Enquiry
     </a>
@@ -78,7 +78,7 @@
 </div>
 
 <div
-  class="p-2 flex pl-4 lg:hidden flex-col justify-center items-center pr-4 bg-[#205072] shadow-lg w-[100vw] md:justify-between text-white space-y-11 md:space-y-0 topbar text-sm z-[999] topbar">
+  class="p-2 flex pl-4 lg:hidden flex-col justify-center items-center pr-4 bg-[#205072] shadow-lg w-full md:justify-between text-white space-y-11 md:space-y-0 topbar text-sm z-[999] topbar">
   <div class="w-full flex justify-between px-6 flex-row-reverse">
     <div class="flex items-center space-x-4">
       <div class="relative wrapper">
@@ -132,7 +132,7 @@
     <a href="/nirf">NIRF</a>
     
     <div class="h-[1px] bg-black w-[90%] md:hidden"></div>
-    <a href="" target="_blank" class="text-yellow-400 font-bold tracking-wider">
+    <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank" class="text-yellow-400 font-bold tracking-wider">
         <i class="fa-solid fa-pen-to-square mr-2"></i> Admission Enquiry
     </a>
 
@@ -179,7 +179,7 @@
   const searchable = [
     {
       text: 'Admission Enquiry',
-      url: ''
+      url: 'https://forms.gle/YwVrueW1iy5ZTsyX7'
     },
     {
       text: 'Management',
@@ -539,3 +539,4 @@
 
 </script>
 {% endblock %}
+
