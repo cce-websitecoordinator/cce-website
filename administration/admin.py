@@ -27,6 +27,12 @@ admin.site.register(InternalAudit)
 admin.site.register(InternalAuditAbout)
 admin.site.register(ExternalAudit)
 
+@admin.register(Policy)
+class PolicyAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date')
+    search_fields = ('title',)
+
+
 # === NEW: Meeting Minutes Admin ===
 @admin.register(MeetingMinutes)
 class MeetingMinutesAdmin(admin.ModelAdmin):

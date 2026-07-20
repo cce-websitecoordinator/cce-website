@@ -687,12 +687,26 @@ def exam_circulars_page(request):
 
 def decennial_scholarship_page(request):
     hero_img = Hero_Image.objects.filter(page="decennial_scholarship").first()
-    
+
     return render(
         request,
         "Administration/decennial_scholarship.html",
         context={
             "hero_img": hero_img,
             "hero_title": "Decennial Scholarship",
+        },
+    )
+
+def policies_page(request):
+    hero_img = Hero_Image.objects.filter(page="policies").first()
+    policies = Policy.objects.all()
+
+    return render(
+        request,
+        "Administration/policies.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Policies",
+            "policies": policies,
         },
     )

@@ -300,6 +300,20 @@ class ExternalAudit(models.Model):
         verbose_name_plural = "External Audits"
 
 
+class Policy(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to="Policies")
+    date = models.DateField(default=datetime.date.today)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Policy"
+        verbose_name_plural = "Policies"
+        ordering = ["-date"]
+
+
 class MeetingMinutes(models.Model):
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to="MeetingMinutes")
