@@ -314,6 +314,123 @@ class Policy(models.Model):
         ordering = ["-date"]
 
 
+class MeritAdmissionScheduleSlot(models.Model):
+    date_label = models.CharField(max_length=100, help_text="e.g. July 21st")
+    departments = models.CharField(max_length=300, help_text="e.g. CS-DS, CS-BS, EEE")
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.date_label} - {self.departments}"
+
+    class Meta:
+        verbose_name = "Merit Admission Schedule Slot"
+        verbose_name_plural = "Merit Admission Schedule Slots"
+        ordering = ["order"]
+
+
+class MeritAdmissionDocument(models.Model):
+    DOCUMENT_TYPE = (
+        ("original", "Original"),
+        ("copy", "Copy"),
+    )
+    type = models.CharField(max_length=10, choices=DOCUMENT_TYPE, default="original")
+    name = models.CharField(max_length=300)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"[{self.get_type_display()}] {self.name}"
+
+    class Meta:
+        verbose_name = "Merit Admission Required Document"
+        verbose_name_plural = "Merit Admission Required Documents"
+        ordering = ["type", "order"]
+
+
+class MeritAdmissionDocumentNote(models.Model):
+    text = models.CharField(max_length=500)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = "Merit Admission Document Note"
+        verbose_name_plural = "Merit Admission Document Notes"
+        ordering = ["order"]
+
+
+class MeritAdmissionBankDetail(models.Model):
+    name = models.CharField(max_length=300)
+    account_no = models.CharField(max_length=100)
+    ifsc_code = models.CharField(max_length=50)
+    bank = models.CharField(max_length=100)
+    branch = models.CharField(max_length=100)
+    note = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return f"{self.bank} - {self.account_no}"
+
+    class Meta:
+        verbose_name = "Merit Admission Bank Detail"
+        verbose_name_plural = "Merit Admission Bank Details"
+
+
+class MeritAdmissionUniformFee(models.Model):
+    boys_fee = models.CharField(max_length=50, help_text="e.g. ₹11,000")
+    girls_fee = models.CharField(max_length=50, help_text="e.g. ₹12,000")
+    note = models.CharField(max_length=300, blank=True, default="*Cash only*")
+
+    def __str__(self):
+        return f"Boys: {self.boys_fee}, Girls: {self.girls_fee}"
+
+    class Meta:
+        verbose_name = "Merit Admission Uniform Fee"
+        verbose_name_plural = "Merit Admission Uniform Fees"
+
+
+class MeritAdmissionFormLink(models.Model):
+    warning_1 = models.TextField(blank=True)
+    warning_2 = models.TextField(blank=True)
+    form_url = models.URLField()
+
+    def __str__(self):
+        return self.form_url
+
+    class Meta:
+        verbose_name = "Merit Admission Form Link"
+        verbose_name_plural = "Merit Admission Form Links"
+
+
+class MeritAdmissionTutorial(models.Model):
+    video_url = models.URLField()
+
+    def __str__(self):
+        return self.video_url
+
+    class Meta:
+        verbose_name = "Merit Admission Tutorial"
+        verbose_name_plural = "Merit Admission Tutorials"
+
+
+class MeritAdmissionContact(models.Model):
+    CATEGORY = (
+        ("general", "General Admission Queries"),
+        ("form", "Data Entry Form Queries"),
+    )
+    category = models.CharField(max_length=20, choices=CATEGORY, default="general")
+    label = models.CharField(max_length=200)
+    phone = models.CharField(max_length=100)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.label}: {self.phone}"
+
+    class Meta:
+        verbose_name = "Merit Admission Contact"
+        verbose_name_plural = "Merit Admission Contacts"
+        ordering = ["category", "order"]
+
+
 class MeetingMinutes(models.Model):
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to="MeetingMinutes")

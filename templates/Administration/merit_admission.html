@@ -18,22 +18,12 @@
     Date for joining after Second Allotment
   </h3>
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {% for slot in schedule_slots %}
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
-      <p class="text-blue-700 font-bold text-lg">July 21st</p>
-      <p class="text-gray-700 mt-1">CS-DS, CS-BS, EEE</p>
+      <p class="text-blue-700 font-bold text-lg">{{ slot.date_label }}</p>
+      <p class="text-gray-700 mt-1">{{ slot.departments }}</p>
     </div>
-    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
-      <p class="text-blue-700 font-bold text-lg">July 22nd</p>
-      <p class="text-gray-700 mt-1">ECE, VLSI, CS (Rank below 18000)</p>
-    </div>
-    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
-      <p class="text-blue-700 font-bold text-lg">July 23rd</p>
-      <p class="text-gray-700 mt-1">CS (Rank above 18000)</p>
-    </div>
-    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
-      <p class="text-blue-700 font-bold text-lg">July 24th</p>
-      <p class="text-gray-700 mt-1">ME, CE</p>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -48,30 +38,21 @@
     <div>
       <h4 class="text-xl font-medium text-gray-800 mb-2">Originals</h4>
       <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
-        <li>Print out of the data entry form</li>
-        <li>Higher Secondary mark list</li>
-        <li>Pass Certificate (CBSE / ISC)</li>
-        <li>Allotment Memo (CEE)</li>
-        <li>Candidate's Data Sheet (CEE)</li>
-        <li>Fee Receipt</li>
-        <li>10th Mark list & Certificate (CBSE / ICSE)</li>
-        <li>Transfer & Conduct Certificates</li>
-        <li>Equivalence Certificate (if applicable)</li>
-        <li>Fitness Certificate</li>
-        <li>Migration Certificate</li>
-        <li>3 Passport Size Photos</li>
+        {% for doc in original_documents %}
+        <li>{{ doc.name }}</li>
+        {% endfor %}
       </ul>
     </div>
     <div>
       <h4 class="text-xl font-medium text-gray-800 mb-2">Copies</h4>
       <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
-        <li>10th Certificate (3 copies)</li>
-        <li>HSE Mark list (3 copies)</li>
-        <li>Aadhar (1 copy)</li>
+        {% for doc in copy_documents %}
+        <li>{{ doc.name }}</li>
+        {% endfor %}
       </ul>
-      <p class="text-red-600 font-semibold mt-4">*Soft copy of 10th Certificate, 12th Certificate, Aadhar etc in pdf format for completing the data entry form.</p>
-      <p class="text-red-600 font-semibold mt-4">*Soft copy of photo and Signature in JPEG format for uploading in the portal*</p>
-      <p class="text-red-600 font-semibold mt-4">*Everyone must bring the originals of all the documents uploaded on the CEE Portal during the application process (e.g., Income certificate, Minority certificate, Birth certificate, etc.)*</p>  
+      {% for note in document_notes %}
+      <p class="text-red-600 font-semibold mt-4">{{ note.text }}</p>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -83,23 +64,31 @@
       <span class="material-symbols-outlined text-yellow-500">account_balance</span>
       Bank Details
     </h3>
+    {% if bank_detail %}
     <div class="text-gray-700 text-lg space-y-2">
-      <p><strong>Name:</strong> Christ College of Engineering (Autonomous) - ADMISSION FEE COLLECTION</p>
-      <p><strong>Account No:</strong> 924010069315255</p>
-      <p><strong>IFSC Code:</strong> UTIB0000879</p>
-      <p><strong>Bank:</strong> Axis Bank</p>
-      <p><strong>Branch:</strong> Irinjalakuda</p>
-      <p class="text-red-600 font-semibold mt-4">*Account should be added as beneficiary atleast 24 hour before for Bank transfer*</p>
+      <p><strong>Name:</strong> {{ bank_detail.name }}</p>
+      <p><strong>Account No:</strong> {{ bank_detail.account_no }}</p>
+      <p><strong>IFSC Code:</strong> {{ bank_detail.ifsc_code }}</p>
+      <p><strong>Bank:</strong> {{ bank_detail.bank }}</p>
+      <p><strong>Branch:</strong> {{ bank_detail.branch }}</p>
+      {% if bank_detail.note %}
+      <p class="text-red-600 font-semibold mt-4">{{ bank_detail.note }}</p>
+      {% endif %}
     </div>
+    {% endif %}
   </div>
   <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-pink-500">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
             <span class="material-symbols-outlined text-pink-500">checkroom</span>
             Uniform Fee Details
           </h3>
-          <p class="text-gray-700 text-lg"><strong>Boys:</strong> ₹11,000</p>
-          <p class="text-gray-700 text-lg"><strong>Girls:</strong> ₹12,000</p>
-          <p class="text-red-600 font-semibold mt-4">*Cash only*</p>
+          {% if uniform_fee %}
+          <p class="text-gray-700 text-lg"><strong>Boys:</strong> {{ uniform_fee.boys_fee }}</p>
+          <p class="text-gray-700 text-lg"><strong>Girls:</strong> {{ uniform_fee.girls_fee }}</p>
+          {% if uniform_fee.note %}
+          <p class="text-red-600 font-semibold mt-4">{{ uniform_fee.note }}</p>
+          {% endif %}
+          {% endif %}
         </div>
       </div>
 
@@ -110,24 +99,32 @@
             <span class="material-symbols-outlined text-indigo-600">edit</span>
             Link for Data Entry Form
           </h3>
+          {% if form_link %}
           <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4 space-y-1">
+            {% if form_link.warning_1 %}
             <p class="text-amber-800 font-semibold flex items-start gap-2">
               <span class="material-symbols-outlined text-amber-600 text-base leading-6">warning</span>
-              <span>To be filled in, upload all documents mentioned.</span>
+              <span>{{ form_link.warning_1 }}</span>
             </p>
+            {% endif %}
+            {% if form_link.warning_2 %}
             <p class="text-amber-800 font-semibold flex items-start gap-2">
               <span class="material-symbols-outlined text-amber-600 text-base leading-6">warning</span>
-              <span>No need for the submission of a new application for those who already submitted an application form for the Management/NRI quota admission process.</span>
+              <span>{{ form_link.warning_2 }}</span>
             </p>
+            {% endif %}
           </div>
-          <p class="text-gray-700 text-lg">Form Link: <a href="https://christ.etlab.app/newregistration/default/signup?reg_type=1" target="_blank" class="text-blue-600 underline">Click Here</a></p>
+          <p class="text-gray-700 text-lg">Form Link: <a href="{{ form_link.form_url }}" target="_blank" class="text-blue-600 underline">Click Here</a></p>
+          {% endif %}
         </div>
         <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-red-600">
           <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
             <span class="material-symbols-outlined text-red-600">play_circle</span>
             How to Fill (Data Entry Form)
           </h3>
-          <p class="text-gray-700 text-lg">Watch Tutorial: <a href="https://drive.google.com/file/d/1g5HrxfpJ2ZnLykTY2424Dw-B4e13s1EE/view?usp=drive_link" target="_blank" class="text-blue-600 underline">Watch Now</a></p>
+          {% if tutorial %}
+          <p class="text-gray-700 text-lg">Watch Tutorial: <a href="{{ tutorial.video_url }}" target="_blank" class="text-blue-600 underline">Watch Now</a></p>
+          {% endif %}
         </div>
       </div>
 
@@ -138,7 +135,9 @@
           For Any Queries
         </h3>
         <ul class="text-gray-700 text-lg list-disc list-inside space-y-1">
-          <li>General Admission Queries: <strong>9497707439</strong></li>
+          {% for contact in general_contacts %}
+          <li>{{ contact.label }}: <strong>{{ contact.phone }}</strong></li>
+          {% endfor %}
         </ul>
       </div>
 
@@ -149,7 +148,9 @@
           For Queries Related to Data Entry Form
         </h3>
         <ul class="text-gray-700 text-lg list-disc list-inside space-y-1">
-          <li>Form Assistance: <strong>+91 94963 47313</strong>, <strong>+91 96560 42842</strong></li>
+          {% for contact in form_contacts %}
+          <li>{{ contact.label }}: <strong>{{ contact.phone }}</strong></li>
+          {% endfor %}
         </ul>
       </div>
 

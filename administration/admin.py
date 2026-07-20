@@ -33,6 +33,52 @@ class PolicyAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+@admin.register(MeritAdmissionScheduleSlot)
+class MeritAdmissionScheduleSlotAdmin(admin.ModelAdmin):
+    list_display = ('date_label', 'departments', 'order')
+    ordering = ('order',)
+
+
+@admin.register(MeritAdmissionDocument)
+class MeritAdmissionDocumentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'order')
+    list_filter = ('type',)
+    ordering = ('type', 'order')
+
+
+@admin.register(MeritAdmissionDocumentNote)
+class MeritAdmissionDocumentNoteAdmin(admin.ModelAdmin):
+    list_display = ('text', 'order')
+    ordering = ('order',)
+
+
+@admin.register(MeritAdmissionBankDetail)
+class MeritAdmissionBankDetailAdmin(admin.ModelAdmin):
+    list_display = ('name', 'bank', 'account_no', 'ifsc_code', 'branch')
+
+
+@admin.register(MeritAdmissionUniformFee)
+class MeritAdmissionUniformFeeAdmin(admin.ModelAdmin):
+    list_display = ('boys_fee', 'girls_fee', 'note')
+
+
+@admin.register(MeritAdmissionFormLink)
+class MeritAdmissionFormLinkAdmin(admin.ModelAdmin):
+    list_display = ('form_url',)
+
+
+@admin.register(MeritAdmissionTutorial)
+class MeritAdmissionTutorialAdmin(admin.ModelAdmin):
+    list_display = ('video_url',)
+
+
+@admin.register(MeritAdmissionContact)
+class MeritAdmissionContactAdmin(admin.ModelAdmin):
+    list_display = ('label', 'phone', 'category', 'order')
+    list_filter = ('category',)
+    ordering = ('category', 'order')
+
+
 # === NEW: Meeting Minutes Admin ===
 @admin.register(MeetingMinutes)
 class MeetingMinutesAdmin(admin.ModelAdmin):

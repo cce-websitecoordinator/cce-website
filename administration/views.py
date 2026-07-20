@@ -619,10 +619,20 @@ def committee_accessibility_page(request):
 def merit_admission_page(request):
     hero_img = Hero_Image.objects.filter(page="merit_admission").first()
     gallery = Gallery.objects.all().order_by("?")[:6]
-    return render(request, "Administration/merit_admission.html", 
+    return render(request, "Administration/merit_admission.html",
             context={
         "hero_img": hero_img,
         "hero_title": "Merit Admission",
+        "schedule_slots": MeritAdmissionScheduleSlot.objects.all(),
+        "original_documents": MeritAdmissionDocument.objects.filter(type="original"),
+        "copy_documents": MeritAdmissionDocument.objects.filter(type="copy"),
+        "document_notes": MeritAdmissionDocumentNote.objects.all(),
+        "bank_detail": MeritAdmissionBankDetail.objects.first(),
+        "uniform_fee": MeritAdmissionUniformFee.objects.first(),
+        "form_link": MeritAdmissionFormLink.objects.first(),
+        "tutorial": MeritAdmissionTutorial.objects.first(),
+        "general_contacts": MeritAdmissionContact.objects.filter(category="general"),
+        "form_contacts": MeritAdmissionContact.objects.filter(category="form"),
     })
 
 def cpio_page(request):
