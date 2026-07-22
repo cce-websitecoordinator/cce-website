@@ -12,9 +12,9 @@
     <section class="md:px-44 px-3 w-full text-center " id="content">
         <h1 class="text-4xl my-11 font-bold">Principal</h1>
         <div class="w-full">
-            <div class=" max-h-[500px] mx-auto overflow-clip">
-                <img src="{{principal.image.url}}" alt="hero_img" class=" mx-auto">
-
+            <!-- Principal Image Container (Contained) -->
+            <div class="h-[500px] w-full mx-auto flex items-center justify-center overflow-hidden">
+                <img src="{{principal.image.url}}" alt="{{principal.full_name}}" class="h-full w-full object-contain mx-auto">
             </div>
 
             <h1 class="text-4xl my-6 font-bold">{{principal.full_name}}</h1>
