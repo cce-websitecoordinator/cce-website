@@ -6,7 +6,13 @@ import csv
 import io
 
 # Register your models here.
-admin.site.register(GoverningBodyMembers)
+@admin.register(GoverningBodyMembers)
+class GoverningBodyMembersAdmin(admin.ModelAdmin):
+    list_display = ('name', 'designation', 'role', 'order')
+    list_editable = ('order',)
+    ordering = ('order', 'id')
+
+
 admin.site.register(GoverningBodyOrderFile)
 admin.site.register(IQACExecutiveCommitee)
 admin.site.register(IQACFormationNotice)

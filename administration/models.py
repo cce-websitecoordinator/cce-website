@@ -52,12 +52,14 @@ class GoverningBodyMembers(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
+    order = models.PositiveIntegerField(default=0, help_text="Lower numbers appear first")
 
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name_plural = "Governing Body"
+        ordering = ["order", "id"]
 
 
 class GoverningBodyOrderFile(models.Model):

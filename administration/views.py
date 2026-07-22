@@ -17,7 +17,7 @@ from .forms import GrievanceBodyForm
 
 # Create your views here.
 def governing_body(request):
-    governing_body_data = GoverningBodyMembers.objects.all()
+    governing_body_data = GoverningBodyMembers.objects.all().order_by("order", "id")
     hero_img = Hero_Image.objects.filter(page="governing_body").first()
     context = {
         "governing_body_data": governing_body_data,
