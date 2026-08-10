@@ -635,6 +635,18 @@ def merit_admission_page(request):
         "form_contacts": MeritAdmissionContact.objects.filter(category="form"),
     })
 
+
+def mca_admission_page(request):
+    hero_img = Hero_Image.objects.filter(page="admissions").first()
+    return render(
+        request,
+        "Administration/mca_admission.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "MCA Admission",
+        },
+    )
+
 def cpio_page(request):
     hero_img = Hero_Image.objects.filter(page="cpio").first()
     gallery = Gallery.objects.all().order_by("?")[:6]

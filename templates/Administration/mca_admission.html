@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}MCA Admission{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <h2 class="text-5xl font-bold text-center text-blue-800 mb-12">MCA Admission</h2>
+
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-blue-600">folder</span>
+          Required Documents for Admission
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+              <li>Print out of the CCE data entry form.</li>
+              <li>Admit Card of the Entrance Examination.</li>
+              <li>Allotment Memo and Fee receipt.</li>
+              <li>SSLC or any relevant records to prove date of birth.</li>
+              <li>Plus Two Certificate.</li>
+              <li>Originals of Certificate and Mark list of the qualifying exam.</li>
+              <li>Nativity proof, wherever applicable/as required.</li>
+              <li>Transfer certificate and conduct certificate from the institution where the candidate studied last.</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+              <li>Relieving order and certificate of good conduct for candidates in Government service, Scheduled Bank, etc.</li>
+              <li>Migration Certificate for students who qualify from other universities.</li>
+              <li>Non Creamy Layer Certificate issued for state education purpose if applicable.</li>
+              <li>Community Certificate if applicable.</li>
+              <li>Medical Board certificate for Persons with Disabilities and fitness certificate for MCA course, if applicable.</li>
+              <li>Income &amp; Community Certificates for SC/ST and OEC reservation, if applicable.</li>
+              <li>EWS Certificate issued by Village Officer, if applicable.</li>
+              <li>Four copies of passport size photograph, Copy of Aadhar, and original certificates enclosed with the application printout.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-red-600 font-semibold mt-6">All certificates must be valid on the admission date and produced for verification at the time of admission.</p>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-green-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-green-600">event</span>
+          Certificate Validity Notes
+        </h3>
+        <ul class="list-disc list-inside text-gray-700 text-base space-y-2">
+          <li>Non-Creamy Layer Certificate – valid for one year.</li>
+          <li>Community Certificate and Minority Certificate – valid for three years.</li>
+          <li>Income Certificate – valid for one year.</li>
+          <li>Conduct Certificate – should be issued within the last six months.</li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-blue-900 to-blue-700 text-white shadow-xl rounded-xl p-6 border-l-4 border-blue-400">
+        <h3 class="text-2xl font-semibold mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-blue-200">payments</span>
+          Program Fee Details
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white/10 rounded-lg p-4">
+            <span class="block text-blue-100 text-sm mb-2">Tuition Fee per year</span>
+            <span class="text-2xl font-extrabold">₹50,000</span>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <span class="block text-blue-100 text-sm mb-2">Caution Deposit</span>
+            <span class="text-2xl font-extrabold">₹5,000</span>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <span class="block text-blue-100 text-sm mb-2">Miscellaneous Fees</span>
+            <span class="text-2xl font-extrabold">₹28,110</span>
+          </div>
+        </div>
+        <p class="text-blue-100 text-sm mt-4">Miscellaneous fees include examination-related fees, placement training fees, etc.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-pink-500">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-pink-500">checkroom</span>
+            Uniform Fee Details
+          </h3>
+          <p class="text-gray-700 text-lg"><strong>Boys:</strong> ₹12,000</p>
+          <p class="text-gray-700 text-lg"><strong>Girls:</strong> ₹12,000</p>
+          <p class="text-red-600 font-semibold mt-4">Uniform fee is payable in cash only.</p>
+        </div>
+
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-gray-600">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-gray-600">support_agent</span>
+            Contact
+          </h3>
+          <p class="text-gray-700 text-lg">For any clarification, please contact:</p>
+          <p class="text-2xl font-bold text-blue-800 mt-2">8547106203</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+{% endblock %}
