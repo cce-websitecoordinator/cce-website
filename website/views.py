@@ -102,7 +102,18 @@ def nirf_page(request):
 
 
 def nba_page(request):
-    return render(request, "nba.html", context={})
+    # Fetch all compliance links and group them by department label
+    all_links = NBAComplianceLink.objects.all()
+    # Build an ordered dict: {dept_label: [link, ...]}
+    from collections import OrderedDict
+    dept_links = OrderedDict()
+    for link in all_links:
+        label = link.get_department_display()
+        if label not in dept_links:
+            dept_links[label] = []
+        dept_links[label].append(link)
+
+    return render(request, "nba.html", context={"dept_links": dept_links})
 
 
 def gallery_page(request):

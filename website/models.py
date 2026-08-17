@@ -542,3 +542,50 @@ class Admission(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.preference_1}"
+
+
+NBA_DEPARTMENT_CHOICES = (
+    ("CSE", "Computer Science and Engineering"),
+    ("ECE", "Electronics and Communication Engineering"),
+    ("EEE", "Electrical and Electronics Engineering"),
+    ("ME", "Mechanical Engineering"),
+    ("CE", "Civil Engineering"),
+    ("BSH", "Basic Sciences and Humanities"),
+    ("General", "General / College-Wide"),
+)
+
+
+class NBAComplianceLink(models.Model):
+    """
+    Stores compliance document links (e.g. Google Drive) for different
+    departments. Admins add these from the Django admin panel; they are
+    shown on the public-facing NBA page.
+    """
+    name = models.CharField(
+        "Link Title",
+        max_length=300,
+        help_text="Display label shown on the NBA page, e.g. 'CSE SAR 2024'"
+    )
+    url = models.URLField(
+        "Drive / Document URL",
+        max_length=500,
+        help_text="Paste the full URL of the compliance document"
+    )
+    department = models.CharField(
+        "Department",
+        max_length=50,
+        choices=NBA_DEPARTMENT_CHOICES,
+        default="General",
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Lower numbers appear first within each department"
+    )
+
+    class Meta:
+        verbose_name = "NBA Compliance Link"
+        verbose_name_plural = "NBA Compliance Links"
+        ordering = ["department", "order", "name"]
+
+    def __str__(self):
+        return f"[{self.department}] {self.name}"

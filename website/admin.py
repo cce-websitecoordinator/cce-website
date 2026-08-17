@@ -52,4 +52,13 @@ class HomeAnouncementAdmin(admin.ModelAdmin):
 
 
 
+@admin.register(NBAComplianceLink)
+class NBAComplianceLinkAdmin(admin.ModelAdmin):
+    list_display = ("name", "department", "order", "url")
+    list_editable = ("order",)
+    list_filter = ("department",)
+    search_fields = ("name",)
+    ordering = ("department", "order", "name")
+
+
 admin.site.site_header = 'CCE Web Administration'
