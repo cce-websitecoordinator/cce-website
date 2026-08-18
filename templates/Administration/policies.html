@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Policies{% endblock title %}
+
+{% block head %}
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-6xl mx-auto space-y-10">
+      <h2 class="text-4xl font-bold text-center text-gray-900">
+        Policies
+      </h2>
+
+      {% if policies %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for policy in policies %}
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+          <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+            <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
+          </div>
+
+          <div class="p-5 flex flex-col flex-grow text-center">
+            <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ policy.title }}">
+              {{ policy.title }}
+            </h4>
+            <p class="text-xs text-gray-500 mb-4">{{ policy.date }}</p>
+
+            <div class="mt-auto">
+              <a href="{{ policy.file.url }}" target="_blank"
+                 class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                 View / Download <span class="material-symbols-outlined text-sm ml-2">download</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-center text-gray-500 text-lg">No policies have been published yet.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock %}

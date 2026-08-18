@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Committee for Accessibility Standards and Inclusive Practices{% endblock title %}
+
+{% block head %}
+<style>
+  /* Smooth fade in for the cards */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-10">
+        Committee for Accessibility Standards and Inclusive Practices
+      </h2>
+
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-blue-600 pl-3 mb-4">Objectives</h3>
+        <ul class="list-disc list-inside text-gray-700 text-base md:text-lg leading-relaxed space-y-2 pl-4 border-l-4 border-gray-300">
+          <li>Ensure the Accessibility Guidelines and Standards for HEIs and Universities from UGC is followed in the Institution.</li>
+          <li>Ensure inclusive campus life for all students.</li>
+          <li>Ensure all buildings and infrastructure facilities are accessible and disabled‑friendly for all.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="text-2xl font-semibold text-gray-800 border-l-4 border-green-600 pl-3 mb-4">Committee Constituting</h3>
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed pl-4 border-l-4 border-gray-300">
+          To ensure the Accessibility Guidelines and Standards for HEIs and Universities from UGC is followed in the Institution, a Committee for Accessibility Standards and Inclusive Practices is constituted.
+        </p>
+      </section>
+
+      <section class="flex flex-wrap justify-center gap-8 mt-16">
+        <div class="w-full sm:w-1/2 max-w-md bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
+            <span class="material-symbols-outlined text-6xl text-red-600">description</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Guidelines and Standards</h3>
+            <a href="https://drive.google.com/file/d/15-1p45QakyE4dJWJuP5IPLyhOIVMeTYo/view?usp=sharing" target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white transition duration-200">
+              Open PDF
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-1/2 max-w-md bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-gray-100 h-48 flex items-center justify-center rounded-t-lg">
+            <span class="material-symbols-outlined text-6xl text-red-600">description</span>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">AIP constitution</h3>
+            <a href="https://drive.google.com/file/d/1OwHCo0-DZeBGT2da0A8rSnqQm7uBu66Q/view?usp=sharing" target="_blank"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-md bg-[#007FFF] hover:bg-[#005FCC] text-white transition duration-200">
+              Open PDF
+              <span class="material-symbols-outlined ml-2">download</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {% if minutes %}
+      <section class="mt-16 border-t pt-10">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">Minutes of Meeting</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {% for doc in minutes %}
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+            <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+              <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-grow text-center">
+              <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ doc.title }}">
+                {{ doc.title }}
+              </h4>
+              <p class="text-xs text-gray-500 mb-4">{{ doc.date }}</p>
+              
+              <div class="mt-auto">
+                <a href="{{ doc.file.url }}" target="_blank"
+                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                   Download <span class="material-symbols-outlined text-sm ml-2">download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+      </div>
+  </section>
+</main>
+{% endblock %}

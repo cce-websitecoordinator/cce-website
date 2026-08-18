@@ -17,10 +17,15 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      run: |
+        docker buildx create --use --name cce-builder
+        docker buildx inspect --bootstrap
     
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -35,17 +40,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: cce-website
         IMAGE_TAG: cce_website_image
-        DB_USERNAME: ${{ secrets.DB_USERNAME }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_HOST: ${{ secrets.DB_HOST }}
-        DB_NAME: ${{ secrets.DB_NAME }}
-        DB_PORT: ${{ secrets.DB_PORT }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        PRODUCTION: ${{ secrets.PRODUCTION }}
-
-        
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg $DB_USERNAME --build-arg $DB_PASSWORD --build-arg $DB_HOST --build-arg $DB_NAME --build-arg $DB_PORT --build-arg $SECRET_KEY --build-arg $AWS_ACCESS_KEY_ID --build-arg $AWS_SECRET_ACCESS_KEY --build-arg $PRODUCTION . 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker buildx build --platform linux/arm64 \
+          -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+          --push .

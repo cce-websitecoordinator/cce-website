@@ -13,7 +13,7 @@
         <p class="text-justify">
           To bring forth high quality standards and to maintain quality
           consciousness, Internal Quality Assurance Cell (IQAC) has been
-          constituted at Christ College of Engineering. Internal Quality
+          constituted at Christ College of Engineering (Autonomous) . Internal Quality
           Assurance Cell gives necessary advice and guidelines to the
           administration to uphold high quality work in academics and
           administration of the college. The IQAC is responsible to take
@@ -35,7 +35,8 @@
             External Audit</a>
           <a href="{% url 'internal_audit' %}"
             class="relative flex items-center justify-center gap-2 rounded-lg border-solid border-2 text-base px-3 py-1 text-white bg-blue-500 border-blue-500 ">
-            Internal Audit</a>        </div>
+            Internal Audit</a>
+        </div>
       </div>
     </div>
     <div class="w-full flex justify-evenly px-11 bg-[#F4FFE7] p-6 items-center mt-11 relative">
@@ -158,8 +159,17 @@
     <h1 class="text-center text-3xl mt-11">IQAC Formation Notices</h1>
     <div class="w-full px-11 border-2 p-6 my-11 relative gap-10">
       <ul class="text-lg">
+        <li class="py-2 text-blue-600 font-semibold">
+          <a href="{% static 'pdfs/56.1 IQAC.pdf' %}" target="_blank" class="flex items-center gap-2">
+            IQAC Committee Constitution 2025-2026
+            <span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+          </a>
+        </li>
+
         {% for item in formation_notice %}
-        <li class="py-2 text-blue-600"><a href="{{item.notice.url}}" target="_blank">{{item.name}}</a></li>
+        <li class="py-2 text-blue-600">
+          <a href="{{item.notice.url}}" target="_blank">{{item.name}}</a>
+        </li>
         {% endfor %}
       </ul>
     </div>

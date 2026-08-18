@@ -12,6 +12,7 @@ urlpatterns = [
     path('programs', views.programs_page, name='Programs'),
     path('hr_policy', views.hr_manual_page, name='HR_Manual'),
     path('vision_2035', views.vision_2035_page, name='Vision_2035'),
+    path('Campus_Tour', views.campus_tour_page, name='Campus_Tour'),
     path('result_analysis', views.result_analysis_page, name='Result_Analysis'),
     path('college_calendar', views.academic_calendar_page, name='College_Calendar'),
     path('college_handbook', views.college_handbook_page, name='College_Handbook'),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('audited_statements', views.audited_statements_page, name='Audited_Statements'),
     path('college_magazine', views.college_magazine_page, name='College_Magazine'),
     path('ktu_affiliations',views.ktu_affiliation_page,name='Ktu_Affiliations'),
+    path('cce_safety_manual', views.cce_safety_manual_page, name='CCE_Safety_Manual'),
 ]
 
 if settings.DEBUG:     

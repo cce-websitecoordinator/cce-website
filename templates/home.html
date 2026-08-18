@@ -40,12 +40,22 @@
         <p class="md:px-24 px-7 text-justify my-3">{{anouncement.description | safe}}</p>
         <!-- <p>{{anouncement.date}}</p> -->
         <a href="{{anouncement.link}}" target="_blank"
-          class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span
-            class="material-symbols-outlined mx-4">
-            link
-          </span></a>
-          
-          
+        class="font-black z-[9999] text-blue-500 flex items-center">{{anouncement.link_name}} <span
+        class="material-symbols-outlined mx-4">
+        link
+      </span></a>
+      {% if anouncement.links.all %}
+      {% for link in anouncement.links.all %}
+        {% if link.description %}
+          <p class="md:px-24 px-7 text-justify my-3">{{link.description | safe}}</p>
+        {% endif %}
+          <a href="{{link.url}}" target="_blank"
+            class="font-black z-[9999] text-blue-500 flex items-center">{{link.name}} <span
+              class="material-symbols-outlined mx-4">
+              link
+            </span></a>
+          {% endfor %}
+        {% endif %}
       </div>
 
     </div>
@@ -54,6 +64,7 @@
 
   </div>
   {% endif %}
+
 
 
   <section class="home_section relative h-[100vh] overflow-clip ">
@@ -65,7 +76,7 @@
       {% comment %} <img src="{% static 'images/home.jpg' %}"
         class="w-full h-full object-cover object-center absolute" /> {% endcomment %}
     </div>
-    <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh] bg-[#11111d8c] img-overlay"></div>
+    <div class="absolute top-0 left-0 w-[100vw] md:h-[100vh] h-[100vh]  img-overlay"></div>
     <div class="absolute  inset-0  flex  items-end mb-24  space-y-6 ">
       <div class="md:w-full flex justify-start pl-16">
         <h3 class="text-3xl md:text-5xl font-  text-white leading-5 space-y-4 font-sans ">
@@ -79,6 +90,12 @@
       </div>
 
     </div>
+
+    <!-- <a href="https://www.beachhack.in"
+          class="absolute bottom-24 right-16 z-[999] bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 hover:bg-blue-600">
+          Learn More
+        </a> -->
+
     <a href="#content" class=" w-full justify-center animate-bounce z-[50]  absolute bottom-24 hidden lg:flex"
       id="down-icon">
 
@@ -91,11 +108,11 @@
     <div class="flex flex-col text-center  justify-center h-full col-span-1 ">
       <div>
         <h1 class="text-5xl font-bold mb-11">About Us</h1>
-        <p class="px-11 text-justify">Christ College of Engineering (CCE), established in 2015, is affiliated to APJ
+        <p class="px-11 text-justify"> Christ College of Engineering (Autonomous) (CCE), established in 2015, is affiliated to APJ
           Abdul Kalam Technological University, Thiruvananthapuram; and is recognized by AICTE, New Delhi. This college
-          was found at a time when starting a new engineering college was not considered as a sensible proposition. In
-          its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of
-          Engineering has managed to create ripples on the academic front in the university, so much so that today the
+          was founded at a time when starting a new engineering college was not considered as a sensible proposition. In
+          its short span of existence, exceeding all expectations and proving all critics wrong, Christ College of Engineering (Autonomous)
+          has managed to create ripples on the academic front in the university, so much so that today the
           college is being recognized as one of the best self-financing engineering colleges in Kerala.
           <br />Staff and students are at the center of this success story. No stone is being left unturned in ensuring
           that along with academics, the students get the right amount of exposure required for tomorrow’s successful
@@ -110,7 +127,7 @@
         <div class=" py-6 rounded-lg">
           <h1 class="text-4xl font-bold text-center">Quality Policy</h1>
 
-          <p class="text-justify mt-4 ">Christ College of Engineering is committed to achieve excellence in the higher
+          <p class="text-justify mt-4 ">Christ College of Engineering (Autonomous) is committed to achieve excellence in the higher
             education by providing a conducive platform for both students and faculty by creating an educational system
             based on quality education and ethical values. The college is also committed to continually improve its
             teaching learning practices and implement a holistic development of student community to meet the needs of

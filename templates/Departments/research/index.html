@@ -1,5 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block title %} About - Research &
-Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block body %} 
+Consultancy {% endblock title %} {% block head %} 
+<style>
+  /* Smooth fade in for the cards */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock head %} {% block body %} 
 {% include 'Departments/Hero.html' %}
 
 
@@ -14,14 +26,16 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
       {%include 'Departments/Sidebar.html'%}
     </div>
 
-    <div class="relative">
+    <div class="relative w-full">
       <div class="">
         {%include 'Departments/research/dropdown.html'%}
+      </div>
+      
+      <div class="pl-9 mt-6 text-gray-700 leading-relaxed">
+        {{about.data}}
+      </div>
 
-      </div>
-      <div class="pl-9">{{about.data}}
-      </div>
-      <div class="w-full flex items-center justify-center flex-col gap-5">
+      <div class="w-full flex items-center justify-center flex-col gap-5 border-b pb-10">
         <h1 class="text-4xl font-semibold text-center mt-11 w-full">Research labs</h1>
         <div class="w-full flex items-center justify-evenly gap-3">
             <a target="_blank" href="{%url 'ccil'%}" class="relative w-fit flex items-center text-white  text-xl justify-center gap-2 rounded-lg border-solid border-2 px-3 py-2 bg-blue-500 border-blue-500">
@@ -34,7 +48,37 @@ Consultancy {% endblock title %} {% block head %} {% endblock head %} {% block b
             </a>
         </div>
       </div>
-    </div>
+
+      {% if minutes %}
+      <div class="w-full mt-10 pt-5">
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">Minutes of Meeting</h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for doc in minutes %}
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+            <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+              <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-grow text-center">
+              <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ doc.title }}">
+                {{ doc.title }}
+              </h4>
+              <p class="text-xs text-gray-500 mb-4">{{ doc.date }}</p>
+              
+              <div class="mt-auto">
+                <a href="{{ doc.file.url }}" target="_blank"
+                   class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                   Download <span class="material-symbols-outlined text-sm ml-2">download</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      </div>
   </div>
 </section>
 {% endblock body %} {% block script %}

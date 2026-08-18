@@ -1,4 +1,16 @@
-{% extends 'base.html' %} {% load static %} {% block title %} SC/ST Monitoring committee | Administration {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %} {% load static %} {% block title %} SC/ST Monitoring committee | Administration {%endblock title %} {% block head %} 
+<style>
+  /* Smooth fade in for the cards */
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock head %} {% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 px-7 mt-11 w-full" id="content">
@@ -68,21 +80,50 @@
         
       </div>
       {% endfor %}
-
     </div>
 
-    
+    {% if minutes %}
+    <div class="w-full md:px-24 px-6 mt-16 mb-10 pt-10 border-t">
+      <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">Minutes of Meeting</h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for doc in minutes %}
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition duration-300 flex flex-col fade-in-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+          <div class="bg-gray-50 h-32 flex items-center justify-center rounded-t-xl border-b border-gray-100">
+            <span class="material-symbols-outlined text-4xl text-red-500">picture_as_pdf</span>
+          </div>
+          
+          <div class="p-5 flex flex-col flex-grow text-center">
+            <h4 class="text-md font-semibold text-gray-800 mb-2 line-clamp-2" title="{{ doc.title }}">
+              {{ doc.title }}
+            </h4>
+            <p class="text-xs text-gray-500 mb-4">{{ doc.date }}</p>
+            
+            <div class="mt-auto">
+              <a href="{{ doc.file.url }}" target="_blank"
+                 class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#007FFF] hover:bg-[#005FCC] text-white text-sm font-medium transition">
+                 Download <span class="material-symbols-outlined text-sm ml-2">download</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    </section>
 
+  <div class="w-full text-center my-11 text-[#007FFF] flex flex-col gap-4 justify-center items-center">
+    <a class="text-2xl font-semibold inline-flex items-center gap-2" 
+       href="{% static 'pdfs/55.1 SC ST.pdf' %}" 
+       target="_blank">
+      View Committee Constitution (2025-26)
+      <span class="material-symbols-outlined">picture_as_pdf</span>
+    </a>
 
-    
-    
-  </section>
-
-  <div class="w-full text-center my-11 text-[#007FFF] flex justify-center items-center">
-    <a class="text-2xl font-semibold" href="{% url 'grivence_redressal_index' %}">Click Here to enter Grievance
-     <span class="material-symbols-outlined">
-      link
-      </span>
+    <a class="text-lg font-medium text-gray-500 hover:text-[#007FFF] transition" 
+       href="{% url 'grivence_redressal_index' %}">
+      Click Here to enter Grievance
     </a>
   </div>
 </main>

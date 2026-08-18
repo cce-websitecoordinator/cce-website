@@ -22,6 +22,13 @@
       </div>
   
       <div class="col-span-2 gap-10 space-y-16 my-11 pt-6 ">
+
+        <a href="https://drive.google.com/file/d/1FmhXaR6uN-omIEmUOoPry4Kcu3MECsCa/view" target="_blank">
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+            College Video <i class="material-icons">link</i>
+          </button>
+        </a>
+        
         {% for item in facilities %}
         <div class="flex lg:flex-row flex-col w-full px-6 md:space-x-6  lg:odd:flex-row-reverse group h-auto items-center "  id="{{item.link_name}}">
           <img src="{{item.image.url}}" alt="{{item.image.name}}" class="w-[400px] h-full rounded-2xl">

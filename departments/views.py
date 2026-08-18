@@ -6,6 +6,7 @@ from .models import *
 import website.models
 from .models import Achivements as DepAchievements
 from studentservices.models import Clubs,ArtsEvents,SportsEvents
+from administration.models import MeetingMinutes
 # Create your views here.
 
 
@@ -23,7 +24,12 @@ def getDepartment(department):
             return "Mechanical Engineering"
         case "CE":
             return "Civil Engineering"
-
+        case "DS":
+            return "Computer Science and Engineering (Data Science)"
+        case "BS":
+            return "Department of Computer Science and Engineering (Business Systems)"
+        case "MBA":
+            return "Master of Business Administration"
 
 class Context:
     """This class is used to pass context to the templates"""
@@ -51,6 +57,7 @@ class Context:
         self.semesters = [nested_tuple[0] for nested_tuple in Handouts.SEMESTERS]
         self.semin = None
         self.handouts = None
+        self.autonomous_curriculum = None
         self.labs = None
         self.events = None
         self.achivements = None
@@ -112,6 +119,7 @@ class Context:
             case "curriculum_and_syllabus":
                 self.syllabus = SyllabusPDFS.objects.filter(department=dep)
                 self.handouts = Handouts.objects.filter(department=dep)
+                self.autonomous_curriculum = AutonomousCurriculum.objects.filter(department=dep).first()
                 self.semin = (
                     Handouts.objects.filter(department=dep)
                     .values_list("semester", flat=True)
@@ -167,6 +175,7 @@ class Context:
             "professional_bodies": self.professional_bodies,
             "syllabus": self.syllabus,
             "semesters": self.semesters,
+            "autonomous_curriculum": self.autonomous_curriculum,
             "handouts": self.handouts,
             "semin": self.semin,
             "labs": self.labs,
@@ -565,13 +574,14 @@ def research_page(request, department, slug):
     match slug:
         case "index":
             about = ResearchAbout.objects.filter(department=department).first()
-            context = {"about": about, **context_temp}
+            minutes = MeetingMinutes.objects.filter(category="rnd").order_by('-date')
+            context = {"about": about, "minutes": minutes, **context_temp}
             return render(request, "Departments/research/index.html", context)
         case "consultancy":
             context = {
                 "academic_consultancy": website.models.AcademicConsultancy.objects.all().filter(
                     department=department
-                ),
+                ),  # <--- FIXED: Removed the stray 'g' here
                 **context_temp,
             }
             return render(
@@ -652,8 +662,6 @@ def research_page(request, department, slug):
 
         case other:
             raise Http404("Page Kanumanilla")
-
-
 def ProfessionalBodie(request, slug):
     context = {
         "professional_body": ProfessionalBodies.objects.filter(id=slug).first(),

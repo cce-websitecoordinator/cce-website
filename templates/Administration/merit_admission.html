@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Merit Admission{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <h2 class="text-5xl font-bold text-center text-blue-800 mb-12">Merit Admission</h2>
+
+      <!-- Schedule -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-blue-600">event</span>
+          Date of joining for Third allotment
+        </h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {% for slot in schedule_slots %}
+          <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 text-center">
+            <p class="text-blue-700 font-bold text-lg">{{ slot.date_label }}</p>
+            <p class="text-gray-700 mt-1">{{ slot.departments }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <!-- Required Documents -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-green-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-green-600">folder</span>
+          Required Documents for Admission
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-xl font-medium text-gray-800 mb-2">Originals</h4>
+            <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+              {% for doc in original_documents %}
+              <li>{{ doc.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-medium text-gray-800 mb-2">Copies</h4>
+            <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+              {% for doc in copy_documents %}
+              <li>{{ doc.name }}</li>
+              {% endfor %}
+            </ul>
+            {% for note in document_notes %}
+            <p class="text-red-600 font-semibold mt-4">{{ note.text }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Program Fee Details -->
+      <div class="bg-gradient-to-br from-blue-900 to-blue-700 text-white shadow-xl rounded-xl p-6 border-l-4 border-blue-400">
+        <h3 class="text-2xl font-semibold mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-blue-200">payments</span>
+          Program Fee Details
+        </h3>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-blue-400 pb-6 lg:pb-0 lg:pr-6">
+            <div class="flex items-center mb-4">
+              <span class="material-symbols-outlined text-yellow-300 mr-2 text-2xl">engineering</span>
+              <h4 class="text-xl font-bold text-yellow-300">B.TECH</h4>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center border-b border-blue-400 pb-2">
+                <span class="text-blue-100 text-sm">Tuition Fee</span>
+                <span class="text-lg font-bold">Rs. 1,05,525</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-blue-400 pb-2">
+                <span class="text-blue-100 text-sm">Special Fee</span>
+                <span class="text-lg font-bold">Rs. 10,000</span>
+              </div>
+              <div class="flex justify-between items-center bg-white/10 p-3 rounded-lg">
+                <span class="text-white text-sm font-bold uppercase">Total</span>
+                <span class="text-xl font-extrabold">Rs. 1,15,525</span>
+              </div>
+              <div class="bg-white/10 rounded-lg p-3 text-center mt-2">
+                <span class="block text-blue-200 text-xs mb-1">Refundable Deposit</span>
+                <span class="block text-lg font-bold">Rs. 1,00,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-blue-400 pb-6 lg:pb-0 lg:pr-6">
+            <div class="flex items-center mb-4">
+              <span class="material-symbols-outlined text-green-300 mr-2 text-2xl">business_center</span>
+              <h4 class="text-xl font-bold text-green-300">MBA</h4>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center bg-white/10 p-4 rounded-lg">
+                <div class="flex flex-col">
+                  <span class="text-blue-100 text-sm mb-1">Tuition Fee</span>
+                  <span class="text-2xl font-extrabold">Rs. 1,20,000</span>
+                  <span class="text-blue-300 text-xs mt-1">Per Year</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-1">
+            <div class="flex items-center mb-4">
+              <span class="material-symbols-outlined text-purple-300 mr-2 text-2xl">school</span>
+              <h4 class="text-xl font-bold text-purple-300">M.TECH</h4>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center bg-white/10 p-4 rounded-lg">
+                <div class="flex flex-col">
+                  <span class="text-blue-100 text-sm mb-1">Tuition Fee</span>
+                  <span class="text-2xl font-extrabold">Rs. 60,000</span>
+                  <span class="text-blue-300 text-xs mt-1">Per Year</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank & Uniform -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-yellow-500">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-yellow-500">account_balance</span>
+            Bank Details
+          </h3>
+          {% if bank_detail %}
+          <div class="text-gray-700 text-lg space-y-2">
+            <p><strong>Name:</strong> {{ bank_detail.name }}</p>
+            <p><strong>Account No:</strong> {{ bank_detail.account_no }}</p>
+            <p><strong>IFSC Code:</strong> {{ bank_detail.ifsc_code }}</p>
+            <p><strong>Bank:</strong> {{ bank_detail.bank }}</p>
+            <p><strong>Branch:</strong> {{ bank_detail.branch }}</p>
+            {% if bank_detail.note %}
+            <p class="text-red-600 font-semibold mt-4">{{ bank_detail.note }}</p>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+        
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-pink-500">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-pink-500">checkroom</span>
+            Uniform Fee Details
+          </h3>
+          {% if uniform_fee %}
+          <p class="text-gray-700 text-lg"><strong>Boys:</strong> {{ uniform_fee.boys_fee }}</p>
+          <p class="text-gray-700 text-lg"><strong>Girls:</strong> {{ uniform_fee.girls_fee }}</p>
+          {% if uniform_fee.note %}
+          <p class="text-red-600 font-semibold mt-4">{{ uniform_fee.note }}</p>
+          {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Application & How To -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-indigo-600">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-indigo-600">edit</span>
+            Link for Data Entry Form
+          </h3>
+          {% if form_link %}
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4 space-y-1">
+            {% if form_link.warning_1 %}
+            <p class="text-amber-800 font-semibold flex items-start gap-2">
+              <span class="material-symbols-outlined text-amber-600 text-base leading-6">warning</span>
+              <span>{{ form_link.warning_1 }}</span>
+            </p>
+            {% endif %}
+            {% if form_link.warning_2 %}
+            <p class="text-amber-800 font-semibold flex items-start gap-2">
+              <span class="material-symbols-outlined text-amber-600 text-base leading-6">warning</span>
+              <span>{{ form_link.warning_2 }}</span>
+            </p>
+            {% endif %}
+          </div>
+          <p class="text-gray-700 text-lg">Form Link: <a href="{{ form_link.form_url }}" target="_blank"
+              class="text-blue-600 underline">Click Here</a></p>
+          {% endif %}
+        </div>
+        <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-red-600">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-red-600">play_circle</span>
+            How to Fill (Data Entry Form)
+          </h3>
+          {% if tutorial %}
+          <p class="text-gray-700 text-lg">Watch Tutorial: <a href="{{ tutorial.video_url }}" target="_blank"
+              class="text-blue-600 underline">Watch Now</a></p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-gray-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <span class="material-symbols-outlined text-gray-600">support_agent</span>
+          For Any Queries
+        </h3>
+        <ul class="text-gray-700 text-lg list-disc list-inside space-y-1">
+          {% for contact in general_contacts %}
+          <li>{{ contact.label }}: <strong>{{ contact.phone }}</strong></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Form Queries -->
+      <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-teal-600">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <span class="material-symbols-outlined text-teal-600">assignment</span>
+          For Queries Related to Data Entry Form
+        </h3>
+        <ul class="text-gray-700 text-lg list-disc list-inside space-y-1">
+          {% for contact in form_contacts %}
+          <li>{{ contact.label }}: <strong>{{ contact.phone }}</strong></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</main>
+{% endblock %}

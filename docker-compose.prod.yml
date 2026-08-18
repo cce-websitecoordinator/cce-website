@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:14-alpine
+    platform: linux/arm64
     volumes:
       - production_postgres_data:/var/lib/postgresql/data/
     environment:
@@ -8,12 +9,12 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     restart: always
-
+  
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    # Use the entrypoint script to run migrations and start gunicorn
+    platform: linux/arm64
     entrypoint: /app/entrypoint.prod.sh
     restart: always
     expose:
@@ -21,14 +22,19 @@ services:
     environment:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=${DOMAIN}
-      # Make sure DEBUG is set to 0 in production
       - DEBUG=0
+      - DATABASE_USER=${DB_USERNAME}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
     depends_on:
       - db
-
+  
   proxy:
     build:
       context: ./docker/proxy
+    platform: linux/arm64
     restart: always
     depends_on:
       - app
@@ -41,11 +47,12 @@ services:
       - certbot-certs:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
-
+  
   certbot:
+    platform: linux/arm64
     build:
       context: ./docker/certbot
-    command: echo "Skipping..."
+    command: echo "Skipping certbot for now..."  # Uncomment this line to skip certbot
     environment:
       - EMAIL=${ACME_DEFAULT_EMAIL}
       - DOMAIN=${DOMAIN}

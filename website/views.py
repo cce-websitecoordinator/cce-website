@@ -1,12 +1,17 @@
 import datetime
 from random import shuffle
 import random
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import website
 from website.models import *
 from django.http import Http404, HttpResponse
 from django.core import serializers
 
+from .forms import AdmissionForm
+
+# === ADDED IMPORT ===
+from administration.models import MeetingMinutes 
+# ====================
 
 def home_page(request):
     """
@@ -20,7 +25,7 @@ def home_page(request):
         updates = HomeUpdates.objects.all()
         events = HomeEvents.objects.all().order_by("?")
         gallery_imgs = Gallery.objects.all().order_by("?")[:20]
-        upcomingEvents = UpcomingEvents.objects.all().order_by("?")[:6]
+        upcomingEvents = UpcomingEvents.objects.all().order_by("-date")[:15]
         recruiters = Recruiters.objects.all()
         recruiters3 = recruiters.order_by("?")
         recruiters2 = recruiters.order_by("?")
@@ -92,11 +97,23 @@ def admission_stat_page(request):
 
 
 def nirf_page(request):
-    return render(request, "nirf.html", context={})
+    pdfs = NirfPDFs.objects.all().order_by("-year")
+    return render(request, "nirf.html", context={"pdfs":pdfs})
 
 
 def nba_page(request):
-    return render(request, "nba.html", context={})
+    # Fetch all compliance links and group them by department label
+    all_links = NBAComplianceLink.objects.all()
+    # Build an ordered dict: {dept_label: [link, ...]}
+    from collections import OrderedDict
+    dept_links = OrderedDict()
+    for link in all_links:
+        label = link.get_department_display()
+        if label not in dept_links:
+            dept_links[label] = []
+        dept_links[label].append(link)
+
+    return render(request, "nba.html", context={"dept_links": dept_links})
 
 
 def gallery_page(request):
@@ -146,7 +163,11 @@ def research_page(request, slug):
     match slug:
         case "index":
             hero_title = "Research"
-            context = {"hero_title": hero_title, **context_temp}
+            
+            # === ADDED LOGIC ===
+            minutes = MeetingMinutes.objects.filter(category="rnd").order_by('-date')
+            context = {"hero_title": hero_title, "minutes": minutes, **context_temp}
+            # ===================
 
             return render(request, "researchAndConsultancy/index.html", context)
         case "consultancy":
@@ -302,3 +323,14 @@ def quality_policy(request):
             "hero_img": Hero_Image.objects.filter(page="quality_policy").first(),
         },
     )
+
+
+def admission_form(request):
+    if request.method == 'POST':
+        form = AdmissionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Redirect to a success page
+    else:
+        form = AdmissionForm()
+    return render(request, 'admission_form.html', {'form': form})

@@ -1,17 +1,18 @@
+# Filename: ~/cce-website/docker/proxy/Dockerfile
+
 FROM nginx:1.23.0-alpine
 
-COPY ./nginx/* /etc/nginx/
+# Copy the intelligent startup script
 COPY ./run.sh /run.sh
 
-ENV APP_HOST=app
-ENV APP_PORT=9000
+# Copy the Nginx configuration templates and SSL options
+COPY ./nginx/default.conf.tpl /etc/nginx/default.conf.tpl
+COPY ./nginx/default-ssl.conf.tpl /etc/nginx/default-ssl.conf.tpl
+COPY ./nginx/options-ssl-nginx.conf /etc/nginx/options-ssl-nginx.conf
 
-USER root
-
-RUN apk add --no-cache openssl bash
+# Make the startup script executable
 RUN chmod +x /run.sh
 
-VOLUME /vol/static
-VOLUME /vol/www
-
+# The CMD instruction tells the container to run this script when it starts.
+# This replaces the default Nginx command.
 CMD ["/run.sh"]

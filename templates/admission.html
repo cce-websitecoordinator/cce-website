@@ -1,268 +1,647 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Admission {% endblock title %} {% block head %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Admission {% endblock title %}
+
+{% block head %}
 <link rel="stylesheet" href="/static/css/admission.css" />
-{% endblock head %} {% block body %} {% include 'components/Hero_section.html' %}
-<div class="overflow-x-clip">
-  <div class="adm-timeline-wrapper md">
-    <div class="adm-details-wrapper">
-      <h2>Admission<br />Details</h2>
-      <div>
-        <img
-          class="adm-details-img"
-          src="./static/images/Admission/graduation-hat.png"
-          alt="" />
-      </div>
-    </div>
-    <div class="adm-course-wrapper">
-      <div>
-        <img
-          class="adm-course-img"
-          src="./static/images/Admission/bookshelf.png"
-          alt="" />
-      </div>
-      <div class="adm-course-offer">
-        <h2>Courses we offer</h2>
-        <ul>
-          <li>Civil Engineering (CE)</li>
-          <li>Computer Science & Engineering (CSE)</li>
-          <li>Computer Science & Engineering (Data Science)</li>
-          <li>Electrical & Electronics Engineering (EEE)</li>
-          <li>Electronics & Communication Engineering (ECE)</li>
-          <li>Mechanical Engineering (ME)</li>
-        </ul>
-      </div>
-      <div class="adm-course-rect"></div>
-    </div>
-    <div class="adm-timeline">
-      <div class="adm-timeline-single relative">
-        <ul>
-          <b
-            ><li>Seats for CSE Branch - 180</li>
-            <li>Government Seats - 90</li>
-            <li>Management Seats - 90 :</li></b
-        >
-        <li>
-          <ul style="width: fit-content; margin-left: 60px">
-            <li>Open Category Seats - 30</li>
-            <li>All Christian Communities Seats - 33</li>
-            <li>NRI Category Seats - 27</li>
-          </ul>
-        </li>
-        </ul>
-        <ul class="pt-4">
-          <b
-            ><li>Seats for Other Branches - 60</li>
-            <li>Government Seats - 30</li>
-            <li>Management Seats - 30 :</li></b
-          >
-          <li>
-            <ul style="width: fit-content; margin-left: 60px">
-              <li>Open Category Seats - 10</li>
-              <li>All Christian Communities Seats - 11</li>
-              <li>NRI Category Seats - 9</li>
-            </ul>
-          </li>
-        </ul>
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock head %}
 
-        <div class="adm-timeline-single-line">
-          <div class="adm-timeline-single-outercircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
-          <div class="adm-timeline-single-title-odd">
-            <h3>Seat<br />Allotment</h3>
-          </div>
-        </div>
-      </div>
+{% block body %}
+{% include 'components/Hero_section.html' %}
 
-      <!-- evn classes -->
-      <div class="adm-timeline-single adm-timeline-single-even">
-        <div class="adm-fee-details-align-right">
-          <div>
-            <div>
-              <h4>Tution Fee</h4>
-              <span>Rs. 1,00,500 per year *</span>
+<div class="bg-gray-50 min-h-screen py-12 font-sans overflow-x-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Admission <span
+                    class="text-blue-600">Details</span></h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Join our vibrant community of learners. Below you will find all
+                the details regarding courses, seat allocation, fees, and required documents.</p>
+            <div class="mt-8 flex justify-center">
+                <img class="h-32 w-auto object-contain drop-shadow-lg animate-bounce-slow"
+                    src="./static/images/Admission/graduation-hat.png" alt="Graduation Hat" />
             </div>
-            <div>
-              <h4>Special Fee</h4>
-              <span>Rs. 10,000 *</span>
+        </div>
+
+        <div
+            class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 transform hover:scale-[1.01] transition duration-300">
+            <div
+                class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 transform hover:scale-[1.01] transition duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/3 bg-blue-50 p-8 flex flex-col items-center justify-center text-center relative">
+                        <img class="h-48 w-auto object-contain mix-blend-multiply relative z-10"
+                            src="./static/images/Admission/bookshelf.png" alt="Courses" />
+                        <div class="mt-6 relative z-10">
+                            <h3 class="text-blue-900 font-bold text-lg leading-tight">Empowering Innovators<br>for
+                                Tomorrow</h3>
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-100 rounded-full opacity-50"></div>
+                    </div>
+
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:items-center justify-between mb-6 border-b border-gray-100 pb-2">
+                            <h2 class="text-2xl font-bold text-gray-800">Courses Offered</h2>
+                            <span class="text-xs text-gray-500 italic mt-1 md:mt-0">* Subject to approval</span>
+                        </div>
+
+                        <div class="space-y-8">
+
+                            <div>
+                                <div class="flex items-center mb-3">
+                                    <div class="bg-yellow-100 p-1.5 rounded-lg mr-3">
+                                        <span
+                                            class="material-symbols-outlined text-yellow-700 text-xl">engineering</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-gray-800">B.TECH</h3>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Civil Engineering</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Computer Science &
+                                            Engineering</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Computer Science & Engg. (Data
+                                            Science)</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Computer Science & Business
+                                            Systems</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Electronics & Communication
+                                            Engineering</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Electronics Engineering (VLSI
+                                            Design & Technology)*</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Electrical & Electronics</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                        <span class="text-yellow-500 mt-1">●</span>
+                                        <span class="text-sm text-gray-700 font-medium">Mechanical Engineering</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-green-100 p-1.5 rounded-lg mr-3">
+                                            <span class="material-symbols-outlined text-green-700 text-xl">school</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-800">M.TECH</h3>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                            <span class="text-green-500 mt-1">●</span>
+                                            <span class="text-sm text-gray-700 font-medium">Computer Science &
+                                                Engineering</span>
+                                        </div>
+                                        <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                            <span class="text-green-500 mt-1">●</span>
+                                            <span class="text-sm text-gray-700 font-medium">Structural Engineering &
+                                                Construction Management</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center mb-3">
+                                        <div class="bg-lime-100 p-1.5 rounded-lg mr-3">
+                                            <span
+                                                class="material-symbols-outlined text-lime-700 text-xl">terminal</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-800">MCA <span
+                                                class="text-xs font-normal text-gray-500 ml-1">*</span></h3>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="flex items-start space-x-2 p-2 rounded hover:bg-gray-50 transition">
+                                            <span class="text-lime-500 mt-1">●</span>
+                                            <span class="text-sm text-gray-700 font-medium">Master of Computer
+                                                Applications</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t border-gray-100">
+                                <div class="flex items-center mb-3">
+                                    <div class="bg-green-100 p-1.5 rounded-lg mr-3">
+                                        <span
+                                            class="material-symbols-outlined text-green-800 text-xl">business_center</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-gray-800">MBA <span
+                                            class="text-sm font-normal text-gray-500 ml-1">(Specializations)</span></h3>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">Human
+                                        Resources</span>
+                                    <span
+                                        class="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">Marketing</span>
+                                    <span
+                                        class="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">Finance</span>
+                                    <span
+                                        class="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">Operations</span>
+                                    <span
+                                        class="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100">Systems</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <!-- <div>
-            <h4>Special Fee</h4>
-            <span>Rs. 10,000 per year</span>
-          </div> -->
-        </div>
-        <div class="adm-fee-details-align-left">
-          <div>
-            <h4>Total</h4>
-            <span>Rs. 1,10,500</span>
-          </div>
-          <div>
-            <h4>Refundable Deposit</h4>
-            <span>Rs. 1,00,000</span>
-          </div>
-        </div>
-        <!-- <div style="width: 100%; text-align: right">
-          <small>*Subjected to the approval of Government</small><br>
-          <small>**Fee to be remitted at the time of admission</small>
-        </div> -->
+            <div class="relative border-l-4 border-blue-200 ml-4 md:ml-8 space-y-16 pl-8 md:pl-12 my-12">
 
-        <div class="adm-timeline-single-line adm-timeline-single-line-even">
-          <div class="adm-timeline-single-outercircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
-          <div class="adm-timeline-single-title-even">
-            <h3>Fee Details</h3>
-          </div>
-        </div>
-      </div>
+                <div class="relative">
+                    <span
+                        class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                        <span class="material-symbols-outlined text-white text-sm">chair</span>
+                    </span>
 
-      <div class="adm-timeline-single">
-        <ul>
-          <li><b>Academic Eligibility Criteria</b></li>
-          <li><h5>Eligibility Criteria for admission.</h5></li>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Seat Allotment</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          <a
-            href="{%static 'pdfs/criteria.pdf'%}"
-            class="adm-timeline-button"
-            target="blank"
-            >View</a
-          >
-        </ul>
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="text-lg font-bold text-blue-800">CSE Branch</h4>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Total:
+                                    240</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex justify-between border-b border-gray-100 pb-2"><span>Government
+                                        Seats</span> <span class="font-bold text-gray-800">120</span></li>
+                                <li class="flex justify-between pt-1"><span>Management Seats</span> <span
+                                        class="font-bold text-gray-800">120</span></li>
+                            </ul>
+                        </div>
 
-        <div class="adm-timeline-single-line">
-          <div class="adm-timeline-single-outercircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
-          <div class="adm-timeline-single-title-odd">
-            <h3>Academic<br />Eligibility</h3>
-          </div>
-        </div>
-      </div>
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="text-lg font-bold text-green-800">Other Branches</h4>
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Total:
+                                    60 (Each)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex justify-between border-b border-gray-100 pb-2"><span>Government
+                                        Seats</span> <span class="font-bold text-gray-800">30</span></li>
+                                <li class="flex justify-between pt-1"><span>Management Seats</span> <span
+                                        class="font-bold text-gray-800">30</span></li>
+                            </ul>
+                            <p class="text-xs text-gray-400 mt-3 italic">* Includes CE, ECE, EEE, ME</p>
+                        </div>
 
-      <!-- evn classes -->
-      <div class="adm-timeline-single adm-timeline-single-even">
-        <ul>
-          <li><b>Original Documents :</b></li>
-          <li><b>Transfer Certificate</b></li>
-          <li><b>Conduct Certificate</b></li>
-          <li><b>Admit Card issued by the CEE**</b></li>
-          <li><b>10th Certificate</b> (Original)</li>
-          <li><b>Higher Secondary mark lists</b> (Original)</li>
-          <li><b>Candidate's Data Sheet issued by the CEE</b></li>
-          <li><b>Allotment Memo issued by the CEE**</b></li>
-          <li>
-            <b>Equivalance/Eligibility certificate</b> (boards other than
-            HSE/VHSE/ THSE/ CBSE/ CISCE)
-          </li>
-          <li><b>Migration Certificate</b> (boards other than HSE/VHSE)</li>
-          <li><b>Passport size photo</b> (2)</li>
-          <li><b>Scanned copy of photo</b></li>
-          <li><b>Scanned copy of signature</b></li>
-          <li><b>Receipt of fee remitted in the Bank**</b></li>
-          <li><b>Physical Fitness Certificate</b> (in given format) :</li>
-          <div
-            style="
-              width: 100%;
-              display: flex;
-              align-items: center;
-              flex-direction: column;
-            ">
-            <a
-              href="{%static 'pdfs/fitness_certificate.pdf'%}"
-              class="adm-timeline-button">
-              Download Certificate
-            </a>
-          </div>
-          <br />
-          <div class="adm-document-required-align-left">
-            <ul>
-              <li><b>Document Copies :</b></li>
-              <li><b>Aadhar</b> (1)</li>
-              <li><b>Higher Secondary mark lists</b> (2)</li>
-              <li><b>10th Certificate</b> (2)</li>
-            </ul>
-          </div>
-          <div style="width: 100%; text-align: right">
-            <small>**Documents are mandatory</small>
-          </div>
-        </ul>
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="text-lg font-bold text-purple-800 leading-tight">Electronics (VLSI)</h4>
+                                <span
+                                    class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded whitespace-nowrap">Total:
+                                    30</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex justify-between border-b border-gray-100 pb-2"><span>Government
+                                        Seats</span> <span class="font-bold text-gray-800">15</span></li>
+                                <li class="flex justify-between pt-1"><span>Management Seats</span> <span
+                                        class="font-bold text-gray-800">15</span></li>
+                            </ul>
+                        </div>
 
-        <div class="adm-timeline-single-line adm-timeline-single-line-even">
-          <div class="adm-timeline-single-outercircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
-          <div class="adm-timeline-single-title-even">
-            <h3>Documents Required</h3>
-          </div>
-        </div>
-      </div>
+                    </div>
+                </div>
 
-      {% comment %} <div class="adm-timeline-single">
-        <div>
-          <div>
-            <ol class="space-y-5">
-              <li>Scholarship Applicable Branches : CE, EC, EE, ME</li>
-              <li>Rank 1-5000 :- Rs 95,000/- waived every year</li>
-              <li>Rank 5001-10000 :- Rs 25,000/- waived at the time of admission</li>
-              <li>Rank 10001-20000 :- Rs 10,000/- waived at the time of admission</li>
-            </ol>
+                <div class="relative">
+                    <span
+                        class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                        <span class="material-symbols-outlined text-white text-sm">payments</span>
+                    </span>
 
-          </div>
-          <br />
-          <h5>For more details, Contact Office</h5>
-          <br />
-        </div>
-        <div class="adm-timeline-single-line">
-          <div class="adm-timeline-single-outercircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Fee Details</h3>
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-lg p-6 md:p-8 text-white">
 
-          <div class="adm-timeline-single-title-odd">
-            <h3>Scholarship<br />Details</h3>
-          </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          <div class="adm-timeline-single-outercircle adm-timeline-lastcircle">
-            <div class="adm-timeline-innercircle"></div>
-          </div>
-        </div>
-      </div> {% endcomment %}
+                            <div
+                                class="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-blue-400 pb-6 lg:pb-0 lg:pr-6">
+                                <div class="flex items-center mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-yellow-300 mr-2 text-2xl">engineering</span>
+                                    <h4 class="text-xl font-bold text-yellow-300">B.TECH</h4>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center border-b border-blue-400 pb-2">
+                                        <span class="text-blue-100 text-sm">Tuition Fee</span>
+                                        <span class="text-lg font-bold">Rs. 1,05,525</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-b border-blue-400 pb-2">
+                                        <span class="text-blue-100 text-sm">Special Fee</span>
+                                        <span class="text-lg font-bold">Rs. 10,000</span>
+                                    </div>
+                                    <div class="flex justify-between items-center bg-white/10 p-3 rounded-lg">
+                                        <span class="text-white text-sm font-bold uppercase">Total</span>
+                                        <span class="text-xl font-extrabold">Rs. 1,15,525</span>
+                                    </div>
+                                    <div class="bg-white/10 rounded-lg p-3 text-center mt-2">
+                                        <span class="block text-blue-200 text-xs mb-1">Refundable Deposit</span>
+                                        <span class="block text-lg font-bold">Rs. 1,00,000</span>
+                                    </div>
+                                </div>
+                            </div>
 
-      <div class="adm-contact-us-wrapper">
-        <h3>Contact Us</h3>
-        <div class="adm-contact-us">
-          <h4>For further enquiries, contact :</h4>
-          <div class="adm-contact-us-outer">
-            <div class="adm-contact-us-names">
-              <ul>
-                <li>Mr. Sanjesh K S</li>
-                <li>(Asst. Prof. ME)</li>
-                <li>Mr. Prabhasankar V P</li>
-                <li>(Asst. Prof. CE)</li>
-                <li>Ms. Vinitha Sharon</li>
-                <li>(Asst. Prof. CE)</li>
-              </ul>
+                            <div
+                                class="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-blue-400 pb-6 lg:pb-0 lg:pr-6">
+                                <div class="flex items-center mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-green-300 mr-2 text-2xl">business_center</span>
+                                    <h4 class="text-xl font-bold text-green-300">MBA</h4>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center bg-white/10 p-4 rounded-lg">
+                                        <div class="flex flex-col">
+                                            <span class="text-blue-100 text-sm mb-1">Tuition Fee</span>
+                                            <span class="text-2xl font-extrabold">Rs. 1,20,000</span>
+                                            <span class="text-blue-300 text-xs mt-1">Per Year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-1">
+                                <div class="flex items-center mb-4">
+                                    <span class="material-symbols-outlined text-purple-300 mr-2 text-2xl">school</span>
+                                    <h4 class="text-xl font-bold text-purple-300">M.TECH</h4>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center bg-white/10 p-4 rounded-lg">
+                                        <div class="flex flex-col">
+                                            <span class="text-blue-100 text-sm mb-1">Tuition Fee</span>
+                                            <span class="text-2xl font-extrabold">Rs. 60,000</span>
+                                            <span class="text-blue-300 text-xs mt-1">Per Year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="mt-8 pt-4 border-t border-blue-400/30 text-xs text-blue-200 flex flex-col md:flex-row justify-between gap-2">
+                            <p>* Fees are subjected to the approval of Government</p>
+                            <p>* For assistance regarding transportation, hostel accommodation, hostel fees, or any
+                                other admission-related matters, our team will be happy to assist you. Please contact us
+                                at the following mobile numbers:
+
+                                Mobile: 9497707439, 8137049355</p>
+                            <p>** Fees to be remitted at the time of admission</p>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-6 flex flex-col md:flex-row gap-4">
+                        <div
+                            class="bg-white border border-gray-200 rounded-lg p-4 flex items-center shadow-sm hover:shadow-md transition w-full md:w-auto">
+                            <div class="h-12 w-12 bg-red-50 rounded-full flex items-center justify-center mr-4">
+                                <span class="material-symbols-outlined text-red-600">description</span>
+                            </div>
+                            <div class="flex-1">
+                                <h5 class="font-semibold text-gray-800">Fee Refund Policy</h5>
+                                <p class="text-xs text-gray-500">Read the guidelines carefully</p>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1UzrlNTCIK-1diLPkbxxEVNRpQTR08Cz9/view?usp=drive_link"
+                                target="_blank"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition flex items-center">
+                                Open <span class="material-symbols-outlined text-sm ml-1">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <span
+                        class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                        <span class="material-symbols-outlined text-white text-sm">assignment_ind</span>
+                    </span>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Management Admission Procedure</h3>
+
+                    <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-blue-600">
+                        <div class="space-y-8 relative">
+                            <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">1</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Admission Enquiry</h4>
+                                <p class="text-gray-600 text-sm mb-2">Initiate your admission process either offline at
+                                    the campus or online.</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank"
+                                        class="inline-flex items-center text-sm px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                        Online Enquiry Form <span
+                                            class="material-symbols-outlined text-xs ml-2">open_in_new</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">2</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Exam Registration</h4>
+                                <p class="text-gray-600 text-sm mb-3">Register for the admission test. Prepare using the
+                                    resources below.</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="{% static 'pdfs/Model_Question_Paper.pdf' %}" target="_blank"
+                                        class="inline-flex items-center text-sm px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                                        <span class="material-symbols-outlined text-sm mr-2">description</span> Model
+                                        Question Paper
+                                    </a>
+                                    <a href="{% static 'pdfs/Syllabus.pdf' %}" target="_blank"
+                                        class="inline-flex items-center text-sm px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                                        <span class="material-symbols-outlined text-sm mr-2">menu_book</span> Syllabus
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">3</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Exam Conduction</h4>
+                                <p class="text-gray-600 text-sm">Attend the admission test on the scheduled date.</p>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">4</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Academic Counselling</h4>
+                                <p class="text-gray-600 text-sm">Participate in counselling sessions to choose your
+                                    preferred branch.</p>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">5</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Provisional Admission</h4>
+                                <p class="text-gray-600 text-sm">Secure your seat provisionally.</p>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="text-blue-600 font-bold text-sm">6</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Submission of Results</h4>
+                                <p class="text-gray-600 text-sm">Submit your KEAM results and 12th standard marks once
+                                    announced.</p>
+                            </div>
+
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center border-2 border-white shadow-sm z-10">
+                                    <span class="material-symbols-outlined text-green-600 text-sm">check</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800">Confirmation of Admission</h4>
+                                <p class="text-gray-600 text-sm">Finalize your admission process.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <span
+                        class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                        <span class="material-symbols-outlined text-white text-sm">school</span>
+                    </span>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Merit Admission (2026-27)</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">
+                        <h4 class="text-lg font-bold text-gray-800 mb-2">Merit Admission Schedule</h4>
+                        <p class="text-gray-600 text-sm mb-4">Check the complete details and schedule for merit-based
+                            admission.</p>
+                        <a href="{% url 'merit_admission' %}"
+                            class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+                            View Complete Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <span
+                        class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                        <span class="material-symbols-outlined text-white text-sm">folder_open</span>
+                    </span>
+
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[3.2rem] md:-left-[3.7rem] top-0 bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+                            <span class="material-symbols-outlined text-white text-sm">folder_open</span>
+                        </span>
+
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Documents Required</h3>
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                            <div class="p-6 md:p-8">
+                                <div class="grid md:grid-cols-2 gap-8">
+
+                                    <div>
+                                        <h4
+                                            class="font-bold text-blue-800 mb-4 flex items-center border-b border-blue-100 pb-2">
+                                            <span class="material-symbols-outlined mr-2">verified</span> Original
+                                            Documents
+                                        </h4>
+                                        <ul class="space-y-3 text-sm text-gray-700">
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Transfer Certificate
+                                            </li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Conduct Certificate
+                                            </li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Admit Card issued by
+                                                CEE **</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> 10th Certificate
+                                                (Original)</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Higher Secondary mark
+                                                lists (Original)</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Candidate's Data
+                                                Sheet issued by CEE</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Allotment Memo issued
+                                                by CEE **</li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2 font-bold">✓</span>
+                                                <span>
+                                                    Equivalence/Eligibility certificate
+                                                    <span class="block text-xs text-gray-500 mt-0.5">(boards other than
+                                                        HSE/VHSE/ THSE/ CBSE/ CISCE)</span>
+                                                </span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2 font-bold">✓</span>
+                                                <span>
+                                                    Migration Certificate
+                                                    <span class="block text-xs text-gray-500 mt-0.5">(boards other than
+                                                        HSE/VHSE)</span>
+                                                </span>
+                                            </li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Passport size photo
+                                                (2)</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Scanned copy of photo
+                                            </li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Scanned copy of
+                                                signature</li>
+                                            <li class="flex items-start"><span
+                                                    class="text-green-500 mr-2 font-bold">✓</span> Receipt of fee
+                                                remitted in the Bank **</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="flex flex-col">
+                                        <div class="mb-8">
+                                            <h4
+                                                class="font-bold text-blue-800 mb-4 flex items-center border-b border-blue-100 pb-2">
+                                                <span class="material-symbols-outlined mr-2">content_copy</span>
+                                                Document Copies
+                                            </h4>
+                                            <ul class="space-y-3 text-sm text-gray-700">
+                                                <li class="flex items-start"><span class="text-gray-400 mr-2">●</span>
+                                                    Aadhar (1)</li>
+                                                <li class="flex items-start"><span class="text-gray-400 mr-2">●</span>
+                                                    Higher Secondary mark lists (2)</li>
+                                                <li class="flex items-start"><span class="text-gray-400 mr-2">●</span>
+                                                    10th Certificate (2)</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="bg-orange-50 p-5 rounded-lg border border-orange-100 mt-auto">
+                                            <div class="flex items-start">
+                                                <span
+                                                    class="material-symbols-outlined text-orange-600 mr-3 text-2xl">health_and_safety</span>
+                                                <div>
+                                                    <h5 class="font-bold text-orange-900 text-sm mb-1">Physical Fitness
+                                                        Certificate</h5>
+                                                    <p class="text-xs text-orange-800 mb-3 opacity-90">Required in the
+                                                        prescribed format.</p>
+                                                    <a href="{% static 'pdfs/fitness_certificate.pdf' %}"
+                                                        class="inline-flex items-center text-white bg-orange-600 hover:bg-orange-700 text-xs font-semibold px-4 py-2 rounded shadow transition">
+                                                        Download Format <span
+                                                            class="material-symbols-outlined text-sm ml-1">download</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-blue-50 p-5 rounded-lg border border-blue-100 mt-4">
+                                            <div class="flex items-start">
+                                                <span
+                                                    class="material-symbols-outlined text-blue-600 mr-3 text-2xl">checklist</span>
+                                                <div class="w-full">
+                                                    <h5 class="font-bold text-blue-900 text-sm mb-1">Quota-Specific
+                                                        Checklists</h5>
+                                                    <p class="text-xs text-blue-800 mb-3 opacity-90">Download the
+                                                        complete document lists.</p>
+                                                    <div class="flex flex-col gap-2">
+                                                        <a href="{% static 'pdfs/Management Quota.pdf' %}"
+                                                            target="_blank"
+                                                            class="inline-flex items-center justify-between text-white bg-blue-600 hover:bg-blue-700 text-xs font-semibold px-4 py-2 rounded shadow transition">
+                                                            <span>Management Quota</span> <span
+                                                                class="material-symbols-outlined text-sm ml-1">download</span>
+                                                        </a>
+                                                        <a href="{% static 'pdfs/NRI Quota.pdf' %}" target="_blank"
+                                                            class="inline-flex items-center justify-between text-white bg-blue-600 hover:bg-blue-700 text-xs font-semibold px-4 py-2 rounded shadow transition">
+                                                            <span>NRI Quota</span> <span
+                                                                class="material-symbols-outlined text-sm ml-1">download</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div
+                                    class="mt-6 pt-4 border-t border-gray-100 text-right text-xs text-red-500 font-medium">
+                                    ** Documents are mandatory
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="adm-contact-us-no">
-              <li>+91 9497707438</li>
-              <li>+91 9497707439</li>
-              <li>+91 8330875640</li>
-            </div>
-          </div>
-          <span><b>Email :</b> contact@cce.edu.in </span>
-          <center>
-            <a class="text-blue-500  text-center w-full" href="https://forms.gle/gP8bzXNfF8MzVZY68" target="_blank">Click Here For Admission Enquiry Form</a>
+            <div
+                class="mt-16 bg-gray-900 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white opacity-5 rounded-full"></div>
 
-            </center>
+                <h3 class="text-3xl font-bold mb-6">Contact Us</h3>
+                <p class="text-gray-400 mb-8">For further enquiries, our team is here to help.</p>
+
+                <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
+                    <div class="bg-gray-800 p-4 rounded-xl">
+                        <span class="material-symbols-outlined text-blue-400 text-3xl mb-2">call</span>
+                        <div class="flex flex-col space-y-1">
+                            <a href="tel:+917560941402" class="hover:text-blue-400 transition">+91 8137049355</a>
+                            <a href="tel:+919497707439" class="hover:text-blue-400 transition">+91 9497707439</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 p-4 rounded-xl flex flex-col justify-center items-center">
+                        <span class="material-symbols-outlined text-blue-400 text-3xl mb-2">mail</span>
+                        <a href="mailto:contact@cce.edu.in"
+                            class="hover:text-blue-400 transition text-lg">contact@cce.edu.in</a>
+                    </div>
+
+                    <div class="bg-gray-800 p-4 rounded-xl flex flex-col justify-center items-center">
+                        <span class="material-symbols-outlined text-blue-400 text-3xl mb-2">assignment</span>
+                        <a href="https://forms.gle/YwVrueW1iy5ZTsyX7" target="_blank"
+                            class="text-blue-400 font-semibold hover:text-white transition">Admission Enquiry Form</a>
+                    </div>
+                </div>
+
+                <a href="{% url 'admission_statistics' %}"
+                    class="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg transition transform hover:-translate-y-1">
+                    View Admission Statistics
+                    <span class="material-symbols-outlined ml-2">bar_chart</span>
+                </a>
+            </div>
+
         </div>
-      </div>
     </div>
-    <div class="w-full text-center">
-      <a href="{% url 'admission_statistics' %}">
-      <button type="button" class="text-white bg-blue-600 hover:bg-blue-700  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Admission Statistics</button>
-    </a>
-    </div>
-  </div>
-
-</div>
-{% endblock body %}
+    {% endblock body %}

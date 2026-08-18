@@ -1,5 +1,59 @@
 {% extends 'base.html' %} {% load static %} {% block title %} NBA {% endblock title %} {% block head %}
 <link rel="stylesheet" href="../static/css/nirf.css" />
+<style>
+    .nba-links-section {
+        margin-top: 2.5rem;
+    }
+    .nba-links-section h2 {
+        font-size: 1.6em;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        color: #1a3a6b;
+        border-bottom: 3px solid #1a3a6b;
+        padding-bottom: 0.4rem;
+        display: inline-block;
+    }
+    .nba-dept-group {
+        margin-bottom: 2rem;
+    }
+    .nba-dept-title {
+        font-size: 1.1em;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.02em;
+    }
+    .nba-link-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+    .nba-link-list li a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #f0f4ff;
+        border: 1px solid #c7d7fb;
+        border-radius: 6px;
+        padding: 0.45rem 1rem;
+        color: #1a3a6b;
+        font-weight: 600;
+        font-size: 0.97em;
+        text-decoration: none;
+        transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .nba-link-list li a:hover {
+        background: #2563eb;
+        color: #fff;
+        border-color: #2563eb;
+    }
+    .nba-link-list li a svg {
+        flex-shrink: 0;
+    }
+</style>
 {% endblock head %}
 {% block body %}
 <main class="main-section ">
@@ -9,17 +63,38 @@
             <span style="font-size: 5em; font-weight: 800;">NBA</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 30px;">
-            <!-- <p style="font-weight: 600; font-size:2.5em;">Uploaded Documents</p>
-                    <span style="font-size: 1.2em; font-weight:600;">-NIRF 2022</span> -->
-
             <p style="font-weight: 600; font-size:2.5em;">NBA accredited for all 5 programmes</p>
             <ul>
                 <li>Civil Engineering</li>
                 <li>Computer Science and Engineering</li>
-                <li>Electonics and Communication Engineering</li>
+                <li>Electronics and Communication Engineering</li>
                 <li>Electrical and Electronics Engineering</li>
                 <li>Mechanical Engineering</li>
             </ul>
+
+            {% if dept_links %}
+            <div class="nba-links-section">
+                <h2>Compliance Documents</h2>
+                {% for dept_label, links in dept_links.items %}
+                <div class="nba-dept-group">
+                    <div class="nba-dept-title">{{ dept_label }}</div>
+                    <ul class="nba-link-list">
+                        {% for link in links %}
+                        <li>
+                            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                                </svg>
+                                {{ link.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
         </div>
     </div>
     <div class="mainsection-right mainsection-parts">

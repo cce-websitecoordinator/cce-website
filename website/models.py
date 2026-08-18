@@ -1,5 +1,4 @@
 import datetime
-from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
 from utils.compressor import Compress
@@ -125,6 +124,7 @@ class Faculty(models.Model):
     role = models.ManyToManyField(Role)
     email = models.EmailField(default="faculty@cce.edu.in")
     image = models.ImageField(upload_to="faculty", default="faculty.jpeg")
+    
     DEPARTMENTS = (
         ("CSE", "CSE"),
         ("ECE", "ECE"),
@@ -132,12 +132,15 @@ class Faculty(models.Model):
         ("ME", "ME"),
         ("CE", "CE"),
         ("BSH", "BSH"),
+        ("BS", "Computer Science (Business Systems)"), 
+        ("MBA", "Master of Business Administration"),
         ("None", "None"),
         ("administrative_staff", "Administrative Staff"),
         ("wardens", "Wardens "),
         ("supporting_staff", "Supporting Staff"),
         ("security_staff", "Security Staff"),
     )
+    
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     profile = models.FileField(
         upload_to="faculty_profile", default="faculty_profile.pdf"
@@ -145,8 +148,10 @@ class Faculty(models.Model):
     priorities = models.IntegerField(default=10)
     doj = models.DateField(null=True)
 
+    aicte_id = models.CharField(max_length=100, blank=True, default="", verbose_name="AICTE ID")
     def __str__(self):
         return self.full_name
+
 
 
 class GoverningBody(models.Model):
@@ -224,7 +229,7 @@ class Hero_Image(models.Model):
         ("arts", "Arts"),
         ("sports", "Sports"),
         ("placements", "Placements"),
-        ("admissions", "Admissions"),
+        ("admissionForms", "AdmissionForms"),
         ("academic_research", "Academic Research"),
         ("womencell", "Women Cell"),
         ("clubs", "Clubs"),
@@ -255,6 +260,8 @@ class Hero_Image(models.Model):
         ("webteam", "webteam"),
         ("ccevr", "ccevr"),
         ("result_analysis", "Result Analysis"),
+        ("campus_tour","Campus Tour"),
+        ("policies", "Policies"),
     )
     page = models.CharField(max_length=200, choices=PAGE, default="None")
 
@@ -289,11 +296,30 @@ class HomeAnouncement(models.Model):
     )
     description = models.TextField()
     date = models.DateField(default=datetime.date.today)
-    link_name = models.CharField(max_length=100, default="")
-    link = models.URLField(max_length=100, default="")
+    link_name = models.CharField(max_length=100, blank=True, null=True)
+    link = models.URLField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+
+
+class HomeAnnouncementLink(models.Model):
+    announcement = models.ForeignKey(
+        HomeAnouncement,
+        related_name="links",
+        on_delete=models.CASCADE
+    )
+    name = models.CharField("Link name", max_length=150)
+    url = models.URLField("Link", max_length=300)
+    description = models.TextField("Description", blank=True, default="")
+
+    class Meta:
+        verbose_name = "Announcement Link"
+        verbose_name_plural = "Announcement Links"
+
+    def __str__(self):
+        return f"{self.name} — {self.announcement.title}"
 
 
 class FundedProjects(models.Model):
@@ -383,7 +409,7 @@ class AdmissionStatistics(models.Model):
 
 
 class AdmissionGraph(models.Model):
-    graph = models.ImageField(upload_to="admission/")
+    graph = models.ImageField(upload_to="admissionForm/")
     year = models.CharField(choices=ACADEMIC_YEARS, max_length=20, default="none")
 
 
@@ -457,6 +483,13 @@ class AwardedPHD(models.Model):
         verbose_name = "AwardedPHD"
         verbose_name_plural = "AwardedPHDs"
 
+class NirfPDFs(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to="NIRF_PDF")
+    year = models.IntegerField(default=0)
+
+    def __str__(self) -> str:
+        return self.title
 
 # class Techletics24(models.Model):
 #     name = models.CharField(max_length=100)
@@ -469,3 +502,90 @@ class AwardedPHD(models.Model):
 #     class Meta:
 #         verbose_name = "Techletics 24 Image"
 #         verbose_name_plural = "Tecletics Images"
+
+
+class Admission(models.Model):
+    # Personal Details
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+    student_mobile = models.CharField(max_length=15)
+    parent_mobile = models.CharField(max_length=15)
+    email = models.EmailField(unique=True)
+
+    # Academic Details
+    BOARD_CHOICES = [
+        ('CBSE', 'CBSE'),
+        ('ICSE', 'ICSE'),
+        ('Kerala State Board', 'Kerala State Board'),
+        ('Other', 'Other'),
+    ]
+    board = models.CharField(max_length=50, choices=BOARD_CHOICES)
+    physics_mark = models.IntegerField()
+    chemistry_mark = models.IntegerField()
+    mathematics_mark = models.IntegerField()
+    pcm_percentage = models.FloatField()
+    higher_secondary_percentage = models.FloatField()
+
+    # Course Preferences
+    COURSE_CHOICES = [
+        ('Civil Engineering', 'Civil Engineering'),
+        ('Computer Science & Engineering', 'Computer Science & Engineering'),
+        ('Electrical & Electronics Engineering', 'Electrical & Electronics Engineering'),
+        ('Electronics & Communication Engineering', 'Electronics & Communication Engineering'),
+        ('Mechanical Engineering', 'Mechanical Engineering'),
+        ('Computer Science & Engineering (Data Science)', 'Computer Science & Engineering (Data Science)'),
+        
+    ]
+    preference_1 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+    preference_2 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+    preference_3 = models.CharField(max_length=100, choices=COURSE_CHOICES)
+
+    def __str__(self):
+        return f"{self.name} - {self.preference_1}"
+
+
+NBA_DEPARTMENT_CHOICES = (
+    ("CSE", "Computer Science and Engineering"),
+    ("ECE", "Electronics and Communication Engineering"),
+    ("EEE", "Electrical and Electronics Engineering"),
+    ("ME", "Mechanical Engineering"),
+    ("CE", "Civil Engineering"),
+    ("BSH", "Basic Sciences and Humanities"),
+    ("General", "General / College-Wide"),
+)
+
+
+class NBAComplianceLink(models.Model):
+    """
+    Stores compliance document links (e.g. Google Drive) for different
+    departments. Admins add these from the Django admin panel; they are
+    shown on the public-facing NBA page.
+    """
+    name = models.CharField(
+        "Link Title",
+        max_length=300,
+        help_text="Display label shown on the NBA page, e.g. 'CSE SAR 2024'"
+    )
+    url = models.URLField(
+        "Drive / Document URL",
+        max_length=500,
+        help_text="Paste the full URL of the compliance document"
+    )
+    department = models.CharField(
+        "Department",
+        max_length=50,
+        choices=NBA_DEPARTMENT_CHOICES,
+        default="General",
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Lower numbers appear first within each department"
+    )
+
+    class Meta:
+        verbose_name = "NBA Compliance Link"
+        verbose_name_plural = "NBA Compliance Links"
+        ordering = ["department", "order", "name"]
+
+    def __str__(self):
+        return f"[{self.department}] {self.name}"

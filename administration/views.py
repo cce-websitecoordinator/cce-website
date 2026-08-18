@@ -3,8 +3,13 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from utils.seed_users import seed_database
 from utils.test_mail import send_email
+from django.contrib.auth.hashers import check_password, make_password
+from django.templatetags.static import static
 
+# Ensure MeetingMinutes is imported
 from administration.models import *
+from administration.models import MeetingMinutes 
+
 from cce import settings
 from website.models import Faculty, Gallery, Hero_Image
 from .forms import GrievanceBodyForm
@@ -12,7 +17,7 @@ from .forms import GrievanceBodyForm
 
 # Create your views here.
 def governing_body(request):
-    governing_body_data = GoverningBodyMembers.objects.all()
+    governing_body_data = GoverningBodyMembers.objects.all().order_by("order", "id")
     hero_img = Hero_Image.objects.filter(page="governing_body").first()
     context = {
         "governing_body_data": governing_body_data,
@@ -116,6 +121,10 @@ def sc_st_monitoring_cell_page(request):
     hero_img = Hero_Image.objects.filter(page="sc_st_monitoring_commite").first()
     sc_st_cell_data = SCSTMonitoringCommittee.objects.all()
     gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="sc_st").order_by('-date')
+    
     return render(
         request,
         "Administration/sc_monitoring_commitee.html",
@@ -124,6 +133,7 @@ def sc_st_monitoring_cell_page(request):
             "hero_title": "SC/ST Monitoring Committee",
             "sc_st_cell_data": sc_st_cell_data,
             "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
         },
     )
 
@@ -169,6 +179,9 @@ def academic_administration_page(request):
     ).first()
     res_dir = AcademicAdministrationDirector.objects.filter(
         director_reserch_role="res_dir"
+    ).first()
+    out_dir = AcademicAdministrationDirector.objects.filter(
+        director_reserch_role="out_dir"
     ).first()
     data = AcademicAdministractors.objects.all().order_by("order")
     gallery = Gallery.objects.all().order_by("?")[:10]
@@ -332,13 +345,18 @@ def handle_login(request, slug, page):
             },
         )
 
-    if password != user.password:
+    if check_password(password, user.password):
+        pass  # valid hashed password
+    elif user.password == password:
+        # legacy plain-text match: re-hash and save
+        user.password = make_password(password)
+        user.save()
+    else:
         return render(
             request,
             "Administration/grievance/login.html",
             context={"slug": slug, "page": page, "error": "Wrong Password"},
         )
-
     request.session["email"] = email
     request.session["name"] = user.name
     request.session["type"] = user.type
@@ -415,3 +433,302 @@ def external_audit_page(request):
 def seed_grievance_users(request):
     response = seed_database()
     return HttpResponse(response)
+
+
+def ugc_compliance_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_compliance").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    return render(
+        request,
+        "Administration/ugc_compliance.html",  # 👈 Make sure path is correct
+        context={
+            "hero_img": hero_img,
+            "hero_title": "UGC Compliance",
+            "gallery": gallery,
+        },
+    )
+def ugc_icc_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_icc").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+
+    members = [
+        {"name": "Dr Dhanya S", "designation": "Professor & Dean - Student Affairs", "phone": "", "role": "Chairperson"},
+        {"name": "Dr Shiney Thomas", "designation": "Associate Professor, BS&H", "phone": "9446817255", "role": "Member"},
+        {"name": "Ms. Asha Raj", "designation": "Assistant Professor, CSE", "phone": "9633291997", "role": "Member"},
+        {"name": "Mr. Prisly Varghese Mathew", "designation": "Assistant Professor, ME", "phone": "9744891402", "role": "Member"},
+        {"name": "Mr. Joseph Zacharia", "designation": "Librarian", "phone": "9947997767", "role": "Member"},
+        {"name": "Mr. P K Binoy", "designation": "Lab Instructor, ME", "phone": "9446717178", "role": "Member"},
+        {"name": "Ms. Parvathy Aravind", "designation": "Student (S8, CSE-A)", "role": "Student Member"},
+        {"name": "Mr. Abhiraj Dinesh", "designation": "Student (S8, ME)", "role": "Student Member"},
+        {"name": "Ms. Megha Suresh", "designation": "Student (S5, ECE)", "role": "Student Member"},
+        {"name": "Ms. Sheela Baji", "designation": "People’s Council for Social Justice", "role": "NGO Member"},
+    ]
+    
+    # Hardcoded minutes pointing to the static folder
+    minutes = [
+        {
+            "title": "ICC review and planning of activities",
+            "date": "27/11/2025",
+            "file": {
+                "url": static("pdfs/ICC minutes2.pdf")
+            }
+        },
+        {
+            "title": "ICC constitution cum first level of discussions",
+            "date": "10/07/2025",
+            "file": {
+                "url": static("pdfs/ICC minutes1.pdf")
+            }
+        }
+    ]
+
+    return render(
+        request,
+        "Administration/ugc_icc.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Internal Complaints Commitee(ICC)",
+            "gallery": gallery,
+            "members": members,
+            "minutes": minutes, 
+        },
+    )
+
+def ugc_grievance_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_grievance").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="grievance").order_by('-date')
+
+    return render(
+        request,
+        "Administration/ugc_grievance.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Student Grievance & Redressal Cell",
+            "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+def ugc_antiragging_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_antiragging").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="anti_ragging").order_by('-date')
+
+    return render(
+        request,
+        "Administration/ugc_antiragging.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Anti-Ragging Committee",
+            "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+def ugc_eoc_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_eoc").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # optional, if used in the template
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="eoc").order_by('-date')
+
+    return render(
+        request,
+        "Administration/ugc_eoc.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Equal Opportunity Cell",
+            "gallery": gallery,  # optional
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+def ugc_sedg_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_sedg").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # optional, use only if gallery is in template
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="sedg").order_by('-date')
+
+    return render(
+        request,
+        "Administration/ugc_sedg.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "SEDG Cell",
+            "gallery": gallery,  # optional
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+def ugc_idp_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_idp").first()
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="idp").order_by('-date')
+
+    return render(
+        request,
+        "Administration/ugc_idp.html",  
+        context={
+            "hero_img": hero_img,
+            "hero_title": "UGC IDP Document",
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+def ugc_fee_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_fee").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]  # Optional
+
+    return render(
+        request,
+        "Administration/ugc_fee.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Fee Refund Policy",
+            "gallery": gallery,  # Optional
+        },
+    )
+
+def committee_accessibility_page(request):
+    hero_img = Hero_Image.objects.filter(page="committee_accessibility").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    
+    # === ADDED MINUTES FETCH ===
+    minutes = MeetingMinutes.objects.filter(category="accessibility").order_by('-date')
+    
+    return render(
+        request,
+        "Administration/committee_accessibility.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Committee for Accessibility Standards and Inclusive Practices",
+            "gallery": gallery,
+            "minutes": minutes, # <--- Added to context
+        },
+    )
+
+
+def merit_admission_page(request):
+    hero_img = Hero_Image.objects.filter(page="merit_admission").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    return render(request, "Administration/merit_admission.html",
+            context={
+        "hero_img": hero_img,
+        "hero_title": "Merit Admission",
+        "schedule_slots": MeritAdmissionScheduleSlot.objects.all(),
+        "original_documents": MeritAdmissionDocument.objects.filter(type="original"),
+        "copy_documents": MeritAdmissionDocument.objects.filter(type="copy"),
+        "document_notes": MeritAdmissionDocumentNote.objects.all(),
+        "bank_detail": MeritAdmissionBankDetail.objects.first(),
+        "uniform_fee": MeritAdmissionUniformFee.objects.first(),
+        "form_link": MeritAdmissionFormLink.objects.first(),
+        "tutorial": MeritAdmissionTutorial.objects.first(),
+        "general_contacts": MeritAdmissionContact.objects.filter(category="general"),
+        "form_contacts": MeritAdmissionContact.objects.filter(category="form"),
+    })
+
+
+def mca_admission_page(request):
+    hero_img = Hero_Image.objects.filter(page="admissions").first()
+    return render(
+        request,
+        "Administration/mca_admission.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "MCA Admission",
+        },
+    )
+
+def cpio_page(request):
+    hero_img = Hero_Image.objects.filter(page="cpio").first()
+    gallery = Gallery.objects.all().order_by("?")[:6]
+    return render(request, "Administration/cpio.html", {
+        "hero_img": hero_img,
+        "hero_title": "Central Public Information Officer",
+        "gallery": gallery,
+    })
+
+def audited_statements_page(request):
+    hero_img = Hero_Image.objects.filter(page="audited_statements").first()
+
+    return render(
+        request,
+        "Administration/audited_statements.html",  
+        context={
+            "hero_img": hero_img,
+            "hero_title": "AUDITED STATEMENTS",
+        },
+    )
+
+def exam_circulars_page(request):
+    hero_img = Hero_Image.objects.filter(page="examination_cell").first()
+    circulars = [
+        {
+            "title": "Examination Timetable for MBA S1 (R) Examination Dec. 2025",
+            "date": "22/11/2025",
+            "ref_no": "CCE/EX3/301/#1",
+            "link": "https://drive.google.com/file/d/1SEynS0fiV0KZib24p-MuJ2np2NbRH4qP/view?usp=drivesdk" 
+        },
+        {
+            "title": "Lab Examination Schedule for B. Tech S1 (R) Examination Nov. 2025",
+            "date": "18/11/2025",
+            "ref_no": "CCE/EX4/101/#1",
+            "link": "https://drive.google.com/file/d/11uPCi7FJ-m4RsVVdRlzVuo4TdosXpHZM/view?usp=drivesdk"
+        },
+        {
+            "title": "Examination Registrations for MBA S1 (R) Exam Dec 2025",
+            "date": "17/11/2025",
+            "ref_no": "CCE/EX2/301/#1",
+            "link": "https://drive.google.com/file/d/1HGTOgyqykPNFU2neTC96VKCOPkGn1THS/view?usp=drivesdk"
+        },
+        { 
+            "title": "Slot for MBA S1 (R) Examination Dec. 2025",
+            "date": "14/11/2025",
+            "ref_no": "CCE/EX1/301/#1",
+            "link": "https://drive.google.com/file/d/1y7oePR_qUd-yo_pHOJm9y2nebHg8-ln_/view?usp=drivesdk"
+        },
+    ]
+
+    return render(
+        request,
+        "Administration/exam_circulars.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Examination Circulars",
+            "circulars": circulars,
+        },
+    )
+
+def decennial_scholarship_page(request):
+    hero_img = Hero_Image.objects.filter(page="decennial_scholarship").first()
+
+    return render(
+        request,
+        "Administration/decennial_scholarship.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Decennial Scholarship",
+        },
+    )
+
+def policies_page(request):
+    hero_img = Hero_Image.objects.filter(page="policies").first()
+    policies = Policy.objects.all()
+
+    return render(
+        request,
+        "Administration/policies.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Policies",
+            "policies": policies,
+        },
+    )

@@ -20,6 +20,22 @@ urlpatterns = [
     path('internal_audit', views.internal_audit_page, name='internal_audit'),
     path('external_audit', views.external_audit_page, name='external_audit'),
     path('seed_users', views.seed_grievance_users, name='seed_users'),
+    path('ugc-compliance/', views.ugc_compliance_page, name='ugc_compliance'),
+    path("ugc-icc/", views.ugc_icc_page, name="UGC_ICC"),
+    path('ugc_grievance/', views.ugc_grievance_page, name='ugc_grievance'),
+     path('ugc_antiragging/', views.ugc_antiragging_page, name='ugc_antiragging'),
+     path('ugc_eoc/', views.ugc_eoc_page, name='ugc_eoc'),
+     path('sedg-cell/', views.ugc_sedg_page, name='ugc_sedg'),
+     path('ugc-idp/', views.ugc_idp_page, name='ugc_idp'),
+     path("ugc_fee/", views.ugc_fee_page, name="ugc_fee"),
+     path('committee-accessibility/', views.committee_accessibility_page, name='committee_accessibility'),
+     path('merit-admission/', views.merit_admission_page, name='merit_admission'),
+     path('mca-admission/', views.mca_admission_page, name='mca_admission'),
+     path('cpio/', views.cpio_page, name='cpio'),
+     path('audited_statements/', views.audited_statements_page, name='audited_statements'),
+     path('exam_circulars', views.exam_circulars_page, name='exam_circulars'),
+     path('decennial-scholarship/', views.decennial_scholarship_page, name='decennial_scholarship'),
+     path('policies/', views.policies_page, name='policies'),
 
 ]
 
