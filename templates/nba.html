@@ -1,8 +1,28 @@
 {% extends 'base.html' %} {% load static %} {% block title %} NBA {% endblock title %} {% block head %}
 <link rel="stylesheet" href="../static/css/nirf.css" />
 <style>
+    .main-section-nba {
+        min-height: auto;
+        height: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        padding: 40px 20px;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .mainsection-parts-nba {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: left;
+        flex: 1;
+        min-width: 300px;
+    }
     .nba-links-section {
         margin-top: 2.5rem;
+        width: 100%;
     }
     .nba-links-section h2 {
         font-size: 1.6em;
@@ -44,6 +64,7 @@
         font-size: 0.97em;
         text-decoration: none;
         transition: background 0.18s, color 0.18s, border-color 0.18s;
+        width: fit-content;
     }
     .nba-link-list li a:hover {
         background: #2563eb;
@@ -53,11 +74,29 @@
     .nba-link-list li a svg {
         flex-shrink: 0;
     }
+    .nba-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 1 auto;
+    }
+    @media (max-width: 768px) {
+        .main-section-nba {
+            flex-direction: column;
+            padding: 20px;
+        }
+        .mainsection-parts-nba {
+            width: 100%;
+        }
+        .nba-image-container {
+            width: 100%;
+        }
+    }
 </style>
 {% endblock head %}
 {% block body %}
-<main class="main-section ">
-    <div class="mainsection-left mainsection-parts">
+<main class="main-section-nba">
+    <div class="mainsection-parts-nba">
         <div style="display: flex; flex-direction: column; gap: 10px;">
             <p style="font-size: 2.5em; font-weight: 100;">National Board of Accreditation</p>
             <span style="font-size: 5em; font-weight: 800;">NBA</span>
@@ -97,9 +136,9 @@
 
         </div>
     </div>
-    <div class="mainsection-right mainsection-parts">
+    <div class="mainsection-parts-nba nba-image-container">
         <a href="https://www.nbaind.org/"><img src="../static/images/nba.png" alt="image of nba"
-                style="height: 20em;"></a>
+                style="height: 20em; object-fit: contain;"></a>
     </div>
 </main>
 {% endblock %}
