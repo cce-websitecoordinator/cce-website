@@ -8,6 +8,7 @@
   <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
   <p class="text-justify text-sm mt-4 mb-11">{{about.about}}</p>
 
+  {% if dep == 'CSE' %}
   <section class="mb-14 rounded-2xl bg-white p-6 shadow-lg">
     <h4 class="text-2xl font-bold text-center mb-6">Program Offered</h4>
     <div class="grid gap-4 md:grid-cols-3">
@@ -22,6 +23,7 @@
       </div>
     </div>
   </section>
+  {% endif %}
 
   <div class="flex gap-10 lg:flex-row flex-col">
     <div class="col-span-1 flex justify-center items-center flex-col">
