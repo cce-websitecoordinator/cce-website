@@ -10,6 +10,7 @@ ACADEMIC_YEARS = [
 
 DEPARTMENTS = (
     ("CSE", "CSE"),
+    ("MCA", "MCA"),
     ("ECE", "ECE"),
     ("EEE", "EEE"),
     ("ME", "ME"),
@@ -127,6 +128,7 @@ class Faculty(models.Model):
     
     DEPARTMENTS = (
         ("CSE", "CSE"),
+        ("MCA", "MCA"),
         ("ECE", "ECE"),
         ("EEE", "EEE"),
         ("ME", "ME"),

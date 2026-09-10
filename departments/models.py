@@ -6,6 +6,7 @@ import datetime
 # Create your models here.
 DEPARTMENTS = (
     ("CSE", "CSE"),
+    ("MCA", "MCA"),
     ("ECE", "ECE"),
     ("EEE", "EEE"),
     ("ME", "ME"),

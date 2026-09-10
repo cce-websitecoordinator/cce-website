@@ -16,6 +16,8 @@ def getDepartment(department):
             return "Basic Sciences and Humanities"
         case "CSE":
             return "Computer Science and Engineering"
+        case "MCA":
+            return "Master of Computer Applications"
         case "ECE":
             return "Electronics and Communication Engineering"
         case "EEE":
@@ -209,6 +211,9 @@ def home(request):
 
 
 def Department(request, route, department):
+    if department in {"DS", "BS"}:
+        return redirect("Department", department="CSE", route="about")
+
     context = Context(department, route).data()
     match route:
         case "about":
@@ -261,7 +266,11 @@ def Department(request, route, department):
             raise Http404("Page not found")
 
         case "activity_point":
-            context["activity_point"] = Activity.objects.first()
+            context["activity_point"] = (
+                Activity.objects.exclude(activity_pdfs="")
+                .exclude(activity_pdfs="None")
+                .order_by("-id")
+            )
             return render(request, "Departments/activity_point.html", context)
         case "products":
             context["products"] = Products.objects.all().filter(department=department)
