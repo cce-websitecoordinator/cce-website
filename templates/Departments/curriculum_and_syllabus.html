@@ -43,7 +43,7 @@
           
           <div class="flex border-b border-gray-300 mb-6 flex-wrap">
             <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none active-tab" onclick="openTab(event, 'BTech')">
-              B.Tech
+              {% if dep == 'CSE' %}B.Tech (Computer Science & Engineering){% else %}B.Tech{% endif %}
             </button>
             {% if dep == 'CSE' %}
             <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_DS')">
