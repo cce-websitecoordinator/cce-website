@@ -41,10 +41,18 @@
 
         <div id="autonomous-container" class="hidden mt-6 border rounded-lg p-6 bg-gray-50 shadow-inner">
           
-          <div class="flex border-b border-gray-300 mb-6">
+          <div class="flex border-b border-gray-300 mb-6 flex-wrap">
             <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none active-tab" onclick="openTab(event, 'BTech')">
               B.Tech
             </button>
+            {% if dep == 'CSE' %}
+            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_DS')">
+              B.Tech (Data Science)
+            </button>
+            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_CSBS')">
+              B.Tech (CSBS)
+            </button>
+            {% endif %}
             <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'MTech')">
               M.Tech
             </button>
@@ -76,6 +84,62 @@
               <p class="text-gray-500 italic">No B.Tech documents available yet.</p>
             {% endif %}
           </div>
+
+          {% if dep == 'CSE' %}
+          <div id="BTech_DS" class="tab-content">
+            <div class="grid md:grid-cols-2 gap-6">
+              {% if autonomous_curriculum.btech_s1_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+              
+              {% if autonomous_curriculum.btech_s2_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% if not autonomous_curriculum.btech_s1_syllabus and not autonomous_curriculum.btech_s2_syllabus %}
+              <p class="text-gray-500 italic">No B.Tech (Data Science) documents available yet.</p>
+            {% endif %}
+          </div>
+
+          <div id="BTech_CSBS" class="tab-content">
+            <div class="grid md:grid-cols-2 gap-6">
+              {% if autonomous_curriculum.btech_s1_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+              
+              {% if autonomous_curriculum.btech_s2_syllabus %}
+              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
+                <a href="{{ autonomous_curriculum.btech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            {% if not autonomous_curriculum.btech_s1_syllabus and not autonomous_curriculum.btech_s2_syllabus %}
+              <p class="text-gray-500 italic">No B.Tech (CSBS) documents available yet.</p>
+            {% endif %}
+          </div>
+          {% endif %}
 
           <div id="MTech" class="tab-content">
             <div class="grid md:grid-cols-2 gap-6">
