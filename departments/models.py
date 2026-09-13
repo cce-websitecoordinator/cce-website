@@ -640,6 +640,30 @@ class AutonomousCurriculum(models.Model):
         verbose_name="B.Tech S2 Syllabus"
     )
     
+    # B.Tech (Data Science) Tab Data
+    ds_s1_syllabus = models.FileField(
+        upload_to="Autonomous/DS", 
+        blank=True, 
+        verbose_name="B.Tech (DS) S1 Syllabus"
+    )
+    ds_s2_syllabus = models.FileField(
+        upload_to="Autonomous/DS", 
+        blank=True, 
+        verbose_name="B.Tech (DS) S2 Syllabus"
+    )
+    
+    # B.Tech (CSBS) Tab Data
+    bs_s1_syllabus = models.FileField(
+        upload_to="Autonomous/BS", 
+        blank=True, 
+        verbose_name="B.Tech (CSBS) S1 Syllabus"
+    )
+    bs_s2_syllabus = models.FileField(
+        upload_to="Autonomous/BS", 
+        blank=True, 
+        verbose_name="B.Tech (CSBS) S2 Syllabus"
+    )
+    
     # M.Tech Tab Data
     mtech_s1_syllabus = models.FileField(
         upload_to="Autonomous/MTech", 

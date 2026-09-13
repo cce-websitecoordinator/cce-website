@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Christ Centre for Automotive Design and Development (CCADD){% endblock title %}
+
+{% block head %}
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .spec-table tr:hover { background-color: #f0f9ff; }
+</style>
+{% endblock head %}
+
+{% block body %}
+{% include 'components/Hero_section.html' %}
+
+<section class="md:px-24 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-blue-800 mb-8 fade-in-up">
+      Christ Centre for Automotive Design and Development (CCADD)
+    </h2>
+
+    <!-- Hero Image -->
+    <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up" style="animation-delay: 100ms;">
+      <img src="{% static 'images/research_labs/ccadd_img1.png' %}" 
+           alt="CCADD Lab" 
+           class="w-full h-auto object-cover">
+    </div>
+
+    <!-- About / Utilization -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-600 fade-in-up" style="animation-delay: 200ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Utilization</h3>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        The facility is utilized for the design and development of automobiles and related vehicles for prestigious student competitions, including SAE eBaja, ATVC, SAEISS mBaja, Electric Two-Wheeler Design Challenges, Go-Kart events, and various Hackathons.
+      </p>
+    </div>
+
+    <!-- Enhanced Student Learning Areas -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-green-600 fade-in-up" style="animation-delay: 300ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Enhanced Student Learning Areas</h3>
+      <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+        <li>Automobile Engineering</li>
+        <li>Machine Design</li>
+        <li>Metrology</li>
+        <li>Manufacturing Engineering</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

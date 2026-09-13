@@ -284,3 +284,25 @@ def cphr_page(request):
             "gallery": gallery,
         },
     )
+
+def ccadd_page(request):
+    hero_img = Hero_Image.objects.filter(page="ccadd").first()
+    return render(
+        request,
+        "StudentServices/ccadd.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "CCADD",
+        },
+    )
+
+def cnc_page(request):
+    hero_img = Hero_Image.objects.filter(page="cnc").first()
+    return render(
+        request,
+        "StudentServices/cnc.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "CNC Machining Centre",
+        },
+    )

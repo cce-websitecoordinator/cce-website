@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CNC Machining Centre{% endblock title %}
+
+{% block head %}
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .spec-table { border-collapse: collapse; width: 100%; }
+  .spec-table th, .spec-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  .spec-table th { background-color: #28AAE1; color: white; font-weight: 600; }
+  .spec-table tr:nth-child(even) { background-color: #f9fafb; }
+  .spec-table tr:hover { background-color: #f0f9ff; }
+</style>
+{% endblock head %}
+
+{% block body %}
+{% include 'components/Hero_section.html' %}
+
+<section class="md:px-24 px-6 py-16 bg-gradient-to-br from-gray-50 to-white min-h-screen" id="content">
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-blue-800 mb-8 fade-in-up">
+      CNC Machining Centre
+    </h2>
+
+    <!-- Hero Image -->
+    <div class="rounded-2xl overflow-hidden shadow-xl fade-in-up" style="animation-delay: 100ms;">
+      <img src="{% static 'images/research_labs/cnc_img1.jpeg' %}" 
+           alt="CNC Machining Centre" 
+           class="w-full h-auto object-cover">
+    </div>
+
+    <!-- About -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-blue-600 fade-in-up" style="animation-delay: 200ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">About</h3>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        The Department of Mechanical Engineering at Christ College of Engineering houses a state-of-the-art CNC Machining Centre dedicated to advancing manufacturing education and precision engineering research. This facility provides students and researchers with hands-on access to industry-grade equipment for learning advanced CNC programming, machining operations, and manufacturing process optimization. The centre supports academic coursework, project-based learning, and collaborative research with industry partners.
+      </p>
+    </div>
+
+    <!-- Equipment 1: BFW AGNI V4-161 -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-green-600 fade-in-up" style="animation-delay: 300ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">BFW AGNI V4-161</h3>
+      <div class="overflow-x-auto">
+        <table class="spec-table rounded-lg overflow-hidden">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>X-Axis Travel</td><td>600 mm</td></tr>
+            <tr><td>Y-Axis Travel</td><td>450 mm</td></tr>
+            <tr><td>Z-Axis Travel</td><td>500 mm</td></tr>
+            <tr><td>Table Size</td><td>900 x 450 mm</td></tr>
+            <tr><td>Max. Load on Table</td><td>500 kg</td></tr>
+            <tr><td>Spindle Speed (Standard)</td><td>8,000 RPM</td></tr>
+            <tr><td>Spindle Taper</td><td>BT 40</td></tr>
+            <tr><td>Spindle Power</td><td>5.5 kW / 7.5 kW (Continuous/30 min)</td></tr>
+            <tr><td>Rapid Traverse (X/Y/Z)</td><td>24 / 24 / 20 m/min</td></tr>
+            <tr><td>ATC (Tool Magazine)</td><td>20 / 24 Tools (Arm-type/Twin-arm)</td></tr>
+            <tr><td>CNC Controller Options</td><td>Fanuc 0i-MF</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Equipment 2: ACE CNC Lathe -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-yellow-500 fade-in-up" style="animation-delay: 400ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">ACE CNC Lathe Model: SJE 10</h3>
+      <div class="overflow-x-auto">
+        <table class="spec-table rounded-lg overflow-hidden">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Swing Over Bed</td><td>550 mm</td></tr>
+            <tr><td>Max. Turning Diameter</td><td>350 mm</td></tr>
+            <tr><td>Max. Turning Length</td><td>643 mm</td></tr>
+            <tr><td>Distance Between Centers</td><td>615 mm</td></tr>
+            <tr><td>Spindle Nose / Bore</td><td>A2-6 / 63 mm</td></tr>
+            <tr><td>Max. Spindle Speed</td><td>3,500 RPM</td></tr>
+            <tr><td>Spindle Motor Power</td><td>7.5 kW (Cont.) / 11 kW (15 min)</td></tr>
+            <tr><td>Rapid Traverse (X / Z)</td><td>30 / 30 m/min</td></tr>
+            <tr><td>Turret Type / Stations</td><td>Hydraulic / 8 Stations (12 optional)</td></tr>
+            <tr><td>Chuck Size</td><td>200 mm (Standard)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="bg-white shadow-xl rounded-xl p-6 border-l-4 border-red-600 fade-in-up" style="animation-delay: 500ms;">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Contact</h3>
+      <p class="text-gray-700 text-lg">
+        <strong>Dr. Arun Augustin</strong><br>
+        Department of Mechanical Engineering<br>
+        Christ College of Engineering<br>
+        Phone: <a href="tel:+918921171940" class="text-blue-600 underline">+91 8921171940</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}
