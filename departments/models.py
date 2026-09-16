@@ -67,6 +67,14 @@ class POS(models.Model):
         verbose_name_plural = "PO"
 
 
+class WKS(models.Model):
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    data = models.CharField(max_length=300)
+
+    class Meta:
+        verbose_name_plural = "WK"
+
+
 class PSOS(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     data = models.CharField(max_length=300)
@@ -638,6 +646,30 @@ class AutonomousCurriculum(models.Model):
         upload_to="Autonomous/BTech", 
         blank=True, 
         verbose_name="B.Tech S2 Syllabus"
+    )
+    
+    # B.Tech EC Tab Data
+    btech_ec_s1_syllabus = models.FileField(
+        upload_to="Autonomous/BTech_EC", 
+        blank=True, 
+        verbose_name="B.Tech EC S1 Syllabus"
+    )
+    btech_ec_s2_syllabus = models.FileField(
+        upload_to="Autonomous/BTech_EC", 
+        blank=True, 
+        verbose_name="B.Tech EC S2 Syllabus"
+    )
+    
+    # B.Tech VLSI Tab Data
+    btech_vlsi_s1_syllabus = models.FileField(
+        upload_to="Autonomous/BTech_VLSI", 
+        blank=True, 
+        verbose_name="B.Tech VLSI S1 Syllabus"
+    )
+    btech_vlsi_s2_syllabus = models.FileField(
+        upload_to="Autonomous/BTech_VLSI", 
+        blank=True, 
+        verbose_name="B.Tech VLSI S2 Syllabus"
     )
     
     # B.Tech (Data Science) Tab Data

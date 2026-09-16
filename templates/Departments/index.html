@@ -22,7 +22,7 @@
         Computer Science & Business Systems
       </div>
     </div>
-    <h5 class="text-xl font-semibold text-center mt-6 mb-4">PG Programs</h5>
+    <h5 class="text-xl font-semibold text-center mt-6 mb-4">PG program</h5>
     <div class="grid gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-green-100 bg-green-50 p-5 text-center font-medium text-gray-800 md:col-start-2">
         M.Tech Computer Science & Engineering
@@ -53,7 +53,7 @@
         Civil Engineering
       </div>
     </div>
-    <h5 class="text-xl font-semibold text-center mt-6 mb-4">PG Programs</h5>
+    <h5 class="text-xl font-semibold text-center mt-6 mb-4">PG program</h5>
     <div class="grid gap-4 md:grid-cols-1">
       <div class="rounded-xl border border-green-100 bg-green-50 p-5 text-center font-medium text-gray-800 md:mx-auto md:w-2/3">
         M. Tech Structural Engineering &amp; Construction Management
@@ -174,6 +174,26 @@
                   {% for item in pos %}
                   <div>
                     <h3 class="text-xl font-semibold">PO-{{forloop.counter}}</h3>
+                    <p class="text-gray-600 pl-4">{{item.data}}</p>
+                  </div>
+                  {% endfor %}
+      
+                </div>
+      
+              </div>
+            </div>
+
+            <div class="p-6 shadow-xl rounded-[16px] " id="wks">
+              <h2 class="flex justify-between text-xl md:text-2xl md:font-medium
+                font-black items-center">Work Knowledge (WK)<span
+                  class="material-symbols-outlined" style="font-size:35px ;">
+                  expand_more
+                </span></h2>
+              <div class=" pl-3 ">
+                <div class="hidden pl-3 space-y-4 " id="wks-data">
+                  {% for item in wks %}
+                  <div>
+                    <h3 class="text-xl font-semibold">WK-{{forloop.counter}}</h3>
                     <p class="text-gray-600 pl-4">{{item.data}}</p>
                   </div>
                   {% endfor %}
@@ -425,6 +445,10 @@
     $('#pos').click(() => {
         $('#pos-data').toggleClass('hidden')
         $('#pos').find('span').toggleClass('rotate-180')
+    })
+    $('#wks').click(() => {
+        $('#wks-data').toggleClass('hidden')
+        $('#wks').find('span').toggleClass('rotate-180')
     })
     $('#psos').click(() => {
         $('#psos-data').toggleClass('hidden')

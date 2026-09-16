@@ -52,6 +52,7 @@ class Context:
         self.objectives = None
         self.poes = None
         self.pos = None
+        self.wks = None
         self.psos = None
         self.associations = None
         self.professional_bodies = None
@@ -91,6 +92,7 @@ class Context:
                 self.mission = Mission.objects.filter(department=dep)
                 self.poes = POES.objects.filter(department=dep)
                 self.pos = POS.objects.filter(department=dep)
+                self.wks = WKS.objects.filter(department=dep)
                 self.psos = PSOS.objects.filter(department=dep)
                 self.faculties = (
                     Faculty.objects.filter(department=dep)
@@ -172,6 +174,7 @@ class Context:
             "mission": self.mission,
             "poes": self.poes,
             "pos": self.pos,
+            "wks": self.wks,
             "psos": self.psos,
             "associations": self.associations,
             "professional_bodies": self.professional_bodies,
