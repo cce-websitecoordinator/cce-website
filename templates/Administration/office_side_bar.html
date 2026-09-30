@@ -6,16 +6,8 @@
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Administrative Staff </span>
             {%endifequal%}
 
-            {%ifequal 'supporting_staff'  slug%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Supporting Staff</span>
-            {%endifequal%}
-
             {%ifequal 'wardens'  slug%}
             <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Wardens in-charge</span>
-            {%endifequal%}
-
-            {%ifequal 'security_staff'  slug%}
-            <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Security Staff</span>
             {%endifequal%}
 
             
@@ -35,25 +27,10 @@
             </a>
         </div>
         <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'supporting_staff' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Office' 'supporting_staff' %}"
-                class="space-x-11 text-gray-600 group-hover:text-[#007FFF] items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_1</i><span>Supporting Staff</span>
-            </a>
-        </div>
-        <div
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'wardens' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Office' 'wardens' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">book</i><span>Wardens in-charge</span>
-            </a>
-        </div>
-
-        <div
-            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'security_staff' in  slug%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
-            <a href="{% url 'Office' 'security_staff' %}"
-                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]  items-center flex">
-                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">diversity_2</i><span>Security Staff</span>
             </a>
         </div>
        
