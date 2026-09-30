@@ -11,6 +11,7 @@
         </div>
   
         <div class="flex flex-wrap lg:gap-16 md:gap-10 gap-6 justify-center items-center w-full">
+            {%if office_data%}
             {%for item in office_data%}
             <div class="bg-white shadow-md px-4 py-1 rounded-xl w-fit group ">
                 <div class="max-w-[300px] overflow-clip max-h-[300px] rounded-xl ">
@@ -25,6 +26,11 @@
                 </div>
             </div>
             {%endfor%}
+            {%else%}
+            <div class="w-full text-center py-16">
+                <p class="text-gray-400 text-lg">No data available at the moment.</p>
+            </div>
+            {%endif%}
         </div>
     </div>
   
