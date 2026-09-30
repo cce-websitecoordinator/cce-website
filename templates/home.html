@@ -537,32 +537,7 @@
   });
 
 
-  var map = L.map('map', {
-    center: [10.35891, 76.21279],
-    zoom: 15
-  });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd'
-  }).addTo(map);
-
-  var christIcon = L.icon({
-    iconUrl: "{%  static  'images/mapLogo.png'  %}",
-    iconSize: [80, 80],
-    popupAnchor: [0, -15]
-  });
-
-  var customPopup = `Christ College <img src="{%  static  'images/cce.png'  %}"></img><br/>`;
-
-  var customOptions =
-  {
-    'maxWidth': '2900',
-    'className': 'custom'
-  }
-
-  L.marker([10.35891, 76.21279], { icon: christIcon }).bindPopup(customPopup, customOptions).addTo(map);
 
   var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
