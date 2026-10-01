@@ -671,29 +671,104 @@ def audited_statements_page(request):
 def exam_circulars_page(request):
     hero_img = Hero_Image.objects.filter(page="examination_cell").first()
     circulars = [
+        # B.Tech Circulars
         {
-            "title": "Examination Timetable for MBA S1 (R) Examination Dec. 2025",
-            "date": "22/11/2025",
-            "ref_no": "CCE/EX3/301/#1",
-            "link": "https://drive.google.com/file/d/1SEynS0fiV0KZib24p-MuJ2np2NbRH4qP/view?usp=drivesdk" 
+            "title": "B.Tech S1 (R) Examination Circular - EX1",
+            "date": "09/12/2025",
+            "ref_no": "CCE/EX1/B.Tech",
+            "link": "/static/pdfs/exam_circulars/BTech_EX1-1.pdf"
         },
         {
-            "title": "Lab Examination Schedule for B. Tech S1 (R) Examination Nov. 2025",
-            "date": "18/11/2025",
+            "title": "B.Tech S1 (R) Examination Circular - EX2",
+            "date": "09/12/2025",
+            "ref_no": "CCE/EX2/B.Tech",
+            "link": "/static/pdfs/exam_circulars/BTech_EX2-1.pdf"
+        },
+        {
+            "title": "B.Tech S1 (R) Examination Circular - EX3",
+            "date": "10/12/2025",
+            "ref_no": "CCE/EX3/B.Tech",
+            "link": "/static/pdfs/exam_circulars/BTech_EX3.pdf"
+        },
+        {
+            "title": "B.Tech Exam Circular - 4",
+            "date": "21/11/2025",
+            "ref_no": "CCE/EX4/B.Tech",
+            "link": "/static/pdfs/exam_circulars/BTech_Exam_Circular-4.pdf"
+        },
+        {
+            "title": "B.Tech Lab Examination Schedule - EX4/101/#1",
+            "date": "26/11/2025",
             "ref_no": "CCE/EX4/101/#1",
-            "link": "https://drive.google.com/file/d/11uPCi7FJ-m4RsVVdRlzVuo4TdosXpHZM/view?usp=drivesdk"
+            "link": "/static/pdfs/exam_circulars/BTech_Lab_EX4-101-1.pdf"
+        },
+        {
+            "title": "B.Tech Lab Examination for Absentees - EX4/101/#3",
+            "date": "18/11/2025",
+            "ref_no": "CCE/EX4/101/#3",
+            "link": "/static/pdfs/exam_circulars/BTech_Lab_EX4-101-3_Absentees.pdf"
+        },
+        # M.Tech Circulars
+        {
+            "title": "M.Tech S1 (R) Examination Circular - EX1",
+            "date": "09/12/2025",
+            "ref_no": "CCE/EX1/M.Tech",
+            "link": "/static/pdfs/exam_circulars/MTech_EX1.pdf"
+        },
+        {
+            "title": "M.Tech S1 (R) Examination Circular - EX2",
+            "date": "09/12/2025",
+            "ref_no": "CCE/EX2/M.Tech",
+            "link": "/static/pdfs/exam_circulars/MTech_EX2.pdf"
+        },
+        {
+            "title": "M.Tech S1 (R) Examination Circular - EX3",
+            "date": "09/12/2025",
+            "ref_no": "CCE/EX3/M.Tech",
+            "link": "/static/pdfs/exam_circulars/MTech_EX3.pdf"
+        },
+        {
+            "title": "M.Tech Examination Circular - EX4 (PO-1)",
+            "date": "10/12/2025",
+            "ref_no": "CCE/EX4/M.Tech/PO-1",
+            "link": "/static/pdfs/exam_circulars/MTech_EX4-PO-1.pdf"
+        },
+        {
+            "title": "M.Tech Examination Circular - EX4",
+            "date": "10/12/2025",
+            "ref_no": "CCE/EX4/M.Tech",
+            "link": "/static/pdfs/exam_circulars/MTech_EX4.pdf"
+        },
+        # MBA Circulars
+        {
+            "title": "Slot for MBA S1 (R) Examination Dec. 2025",
+            "date": "18/11/2025",
+            "ref_no": "CCE/EX1/301/#1",
+            "link": "/static/pdfs/exam_circulars/MBA_EX1-301-1.pdf"
         },
         {
             "title": "Examination Registrations for MBA S1 (R) Exam Dec 2025",
-            "date": "17/11/2025",
+            "date": "18/11/2025",
             "ref_no": "CCE/EX2/301/#1",
-            "link": "https://drive.google.com/file/d/1HGTOgyqykPNFU2neTC96VKCOPkGn1THS/view?usp=drivesdk"
+            "link": "/static/pdfs/exam_circulars/MBA_EX2-301-1.pdf"
         },
-        { 
-            "title": "Slot for MBA S1 (R) Examination Dec. 2025",
-            "date": "14/11/2025",
-            "ref_no": "CCE/EX1/301/#1",
-            "link": "https://drive.google.com/file/d/1y7oePR_qUd-yo_pHOJm9y2nebHg8-ln_/view?usp=drivesdk"
+        {
+            "title": "Examination Timetable for MBA S1 (R) Examination Dec. 2025",
+            "date": "18/11/2025",
+            "ref_no": "CCE/EX3/301/#1",
+            "link": "/static/pdfs/exam_circulars/MBA_EX3-301-1.pdf"
+        },
+        {
+            "title": "Revised Examination Timetable for MBA S1 (R) Examination Dec. 2025",
+            "date": "28/11/2025",
+            "ref_no": "CCE/EX3/301/#2",
+            "link": "/static/pdfs/exam_circulars/MBA_EX3-301-2.pdf"
+        },
+        {
+            "title": "MBA S1 Internal Exam Marks",
+            "date": "29/11/2025",
+            "ref_no": "MBA/S1/Internal",
+            "link": "/static/pdfs/exam_circulars/MBA_S1_Internal_Exam_Marks.pdf"
         },
     ]
 
