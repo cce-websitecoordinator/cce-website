@@ -248,7 +248,7 @@ def research_page(request, slug):
         case "awarded":
             context = {
                 **context_temp,
-                "hero_title": "Faculty awarded PHD",
+                "hero_title": "Faculty with PHD",
                 "phd": AwardedPHD.objects.all(),
             }
 
