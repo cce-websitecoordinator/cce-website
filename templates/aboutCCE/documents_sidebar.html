@@ -12,6 +12,10 @@
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
             {% endifequal %}
 
+            {% ifequal 'autonomous_regulations' route %}
+            <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>Autonomous Regulations</span>
+            {% endifequal %}
+
             {% ifequal 'faculty' route %}
             <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Affiliations</span>
             {% endifequal %}
@@ -45,6 +49,13 @@
             <a href="{% url 'Ktu_Regulations' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>KTU Regulations</span>
+            </a>
+        </div>
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center{%if 'autonomous_regulations' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
+            <a href="{% url 'Autonomous_Regulations' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" lass="text-gray group-hover:text-[#007FFF]">description</i><span>Autonomous Regulations</span>
             </a>
         </div>
         <div

@@ -184,6 +184,19 @@ def ktu_regulations_page(request):
     )
 
 
+def autonomous_regulations_page(request):
+    hero_img = Hero_Image.objects.filter(page="autonomous_regulations").first()
+    return render(
+        request,
+        "aboutCCE/autonomous_regulations.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Autonomous Regulations",
+            "route": "autonomous_regulations",
+        },
+    )
+
+
 def aicte_approvals_page(request):
     data = AicteApprovals.objects.all()
     hero_img = Hero_Image.objects.filter(page="approvals").first()
