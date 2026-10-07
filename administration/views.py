@@ -807,3 +807,13 @@ def policies_page(request):
             "policies": policies,
         },
     )
+def autonomous_regulations_page(request):
+    hero_img = Hero_Image.objects.filter(page="ugc_compliance").first()
+    return render(
+        request,
+        "Administration/autonomous_regulations.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Autonomous Regulations",
+        },
+    )

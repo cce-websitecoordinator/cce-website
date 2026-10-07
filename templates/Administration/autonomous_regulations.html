@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Autonomous Regulations{% endblock title %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-20 px-6 py-16 bg-gray-50 min-h-screen" id="content">
+    <div class="max-w-5xl mx-auto space-y-12">
+
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-10">
+        Autonomous Regulations
+      </h2>
+
+      <!-- Links -->
+      <section class="flex flex-col items-center gap-6 pt-10">
+        <a href="{% static 'pdfs/B Tech 2025 Regulations (Amended)_S (1).pdf' %}"
+           target="_blank"
+           class="text-blue-700 font-bold text-lg hover:underline transition duration-200">
+          B Tech 2025 Regulations (Amended)
+        </a>
+        <a href="{% static 'pdfs/B Tech 2026 Regulations_S (1).pdf' %}"
+           target="_blank"
+           class="text-blue-700 font-bold text-lg hover:underline transition duration-200">
+          B Tech 2026 Regulations
+        </a>
+        <a href="{% static 'pdfs/B.Tech. Regulations 2025_S (1).pdf' %}"
+           target="_blank"
+           class="text-blue-700 font-bold text-lg hover:underline transition duration-200">
+          B.Tech. Regulations 2025
+        </a>
+      </section>
+
+    </div>
+  </section>
+</main>
+{% endblock %}
