@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Make in CCE
+{% endblock title %} {% block head %}
+{% endblock head %}
+{% block body %}
+{% include 'components/Hero_section.html' %}
+
+  <section class="xl:px-24 px-6 my-16 lg:mx-24 min-h-[50vh]" id="content">
+    <div class="w-full text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Make in CCE</h2>
+      <p class="text-gray-600 mt-4 text-lg">Showcasing the innovative creations and projects by our students and faculty.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {% for item in items %}
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group border border-gray-100">
+        <div class="relative w-full h-72 overflow-hidden bg-gray-50 flex items-center justify-center">
+          {% if item.image %}
+          <img src="{{item.image.url}}" alt="Make in CCE" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+          {% else %}
+          <div class="w-full h-full flex items-center justify-center text-gray-300">
+            <span class="material-symbols-outlined text-5xl">image</span>
+          </div>
+          {% endif %}
+        </div>
+        
+        {% if item.description %}
+        <div class="p-6 flex-grow border-t border-gray-100 bg-white">
+          <p class="text-gray-700 text-justify leading-relaxed">
+            {{ item.description|safe|linebreaks }}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+      {% empty %}
+      <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-20 text-gray-400">
+        <span class="material-symbols-outlined text-6xl mb-4 block">rocket_launch</span>
+        <h3 class="text-2xl font-medium">Exciting projects are on the way!</h3>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+{% endblock body %}

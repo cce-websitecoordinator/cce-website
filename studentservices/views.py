@@ -306,3 +306,16 @@ def cnc_page(request):
             "hero_title": "CNC Machining Centre",
         },
     )
+
+def make_in_cce_page(request):
+    hero_img = Hero_Image.objects.filter(page="make_in_cce").first()
+    items = MakeInCCE.objects.all()
+    return render(
+        request,
+        "StudentServices/make_in_cce.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Make In CCE",
+            "items": items,
+        },
+    )

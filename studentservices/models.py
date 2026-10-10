@@ -373,3 +373,17 @@ class CCILGallery(models.Model):
     image = models.ImageField(upload_to='cciol/gallery')
     def __str__(self):
         return self.image.name
+
+
+class MakeInCCE(models.Model):
+    image = models.ImageField(upload_to='make_in_cce/')
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        if self.description:
+            return self.description[:50]
+        return self.image.name
+
+    class Meta:
+        verbose_name = "Make In CCE Item"
+        verbose_name_plural = "Make In CCE Items"
