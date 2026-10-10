@@ -166,6 +166,9 @@ class ProfessionalBodies(models.Model):
     department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
     linkname = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = "Professional Bodies"
+
     def __str__(self):
         return self.title
 

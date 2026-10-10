@@ -26,11 +26,7 @@
 
         <h2 class="uppercase  text-2xl md:text-4xl font-semibold mt-5 text-center">{{item.title}}</h2>
         <p class="mt-6 text-center md:px-16">{{item.data}}</p>
-        {% if 'PMI' in item.title or 'pmi' in item.title %}
-        <a href="https://cce.edu.in/student_services/pmi" class="text-[#007FFF] font-bold mt-11 flex items-center justify-center gap-2">{{item.linkname}} </a>
-        {% else %}
         <a href="{% url 'dep_professionalbodies' item.id %}" class="text-[#007FFF] font-bold mt-11 flex items-center justify-center gap-2">{{item.linkname}} </a>
-        {% endif %}
         
 
       </div>
