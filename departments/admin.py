@@ -51,3 +51,17 @@ admin.site.register(Alumni)
 admin.site.register(ResearchAbout)
 admin.site.register(Facultypdf)
 admin.site.register(AutonomousCurriculum)
+
+
+@admin.register(CurriculumDocument)
+class CurriculumDocumentAdmin(admin.ModelAdmin):
+    list_display = ("title", "department", "syllabus_type", "program", "semester", "order")
+    list_editable = ("order",)
+    list_filter = ("department", "syllabus_type", "program")
+    search_fields = ("title", "program", "semester")
+    ordering = ("department", "syllabus_type", "program", "order", "semester")
+    fieldsets = (
+        (None, {
+            "fields": ("department", "syllabus_type", "program", "semester", "title", "file", "order"),
+        }),
+    )

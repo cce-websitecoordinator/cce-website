@@ -817,3 +817,46 @@ def autonomous_regulations_page(request):
             "hero_title": "Autonomous Regulations",
         },
     )
+
+
+def ugc_curriculum_page(request):
+    """
+    UGC Curriculum & Syllabus page — shows all departments' curriculum
+    documents, using the same CurriculumDocument model as department pages.
+    """
+    from departments.models import CurriculumDocument, DEPARTMENTS
+
+    hero_img = Hero_Image.objects.filter(page="ugc_compliance").first()
+
+    # Build data grouped by department
+    departments_data = []
+    for dept_code, dept_name in DEPARTMENTS:
+        if dept_code == "None":
+            continue
+        docs = CurriculumDocument.objects.filter(department=dept_code)
+        if docs.exists():
+            ktu_docs = docs.filter(syllabus_type='ktu')
+            autonomous_docs = docs.filter(syllabus_type='autonomous')
+            autonomous_programs = (
+                autonomous_docs
+                .values_list("program", flat=True)
+                .distinct()
+                .order_by("program")
+            )
+            departments_data.append({
+                'code': dept_code,
+                'name': dept_name,
+                'ktu_docs': ktu_docs,
+                'autonomous_docs': autonomous_docs,
+                'autonomous_programs': list(autonomous_programs),
+            })
+
+    return render(
+        request,
+        "Administration/ugc_curriculum.html",
+        context={
+            "hero_img": hero_img,
+            "hero_title": "Curriculum & Syllabus",
+            "departments_data": departments_data,
+        },
+    )

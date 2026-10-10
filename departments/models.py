@@ -709,8 +709,65 @@ class AutonomousCurriculum(models.Model):
     )
 
     class Meta:
-        verbose_name = "Autonomous Curriculum"
-        verbose_name_plural = "Autonomous Curriculums"
+        verbose_name = "Autonomous Curriculum (Legacy)"
+        verbose_name_plural = "Autonomous Curriculums (Legacy)"
 
     def __str__(self):
         return f"{self.department} - Autonomous Curriculum"
+
+
+class CurriculumDocument(models.Model):
+    """
+    Unified, flexible model for all curriculum and syllabus documents.
+    Replaces both SyllabusPDFS (KTU) and AutonomousCurriculum (Autonomous).
+    Admin can add any program/semester/department combination without code changes.
+    """
+    SYLLABUS_TYPE_CHOICES = (
+        ('ktu', 'KTU Syllabus'),
+        ('autonomous', 'Autonomous Syllabus'),
+    )
+
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    syllabus_type = models.CharField(
+        max_length=20,
+        choices=SYLLABUS_TYPE_CHOICES,
+        default='ktu',
+        help_text="Whether this is a KTU-affiliated or Autonomous syllabus"
+    )
+    program = models.CharField(
+        max_length=200,
+        help_text="e.g. B.Tech (CSE), B.Tech (Data Science), M.Tech, MBA, MCA, B.Tech (EC), B.Tech (VLSI), etc.",
+        blank=True,
+        default=""
+    )
+    semester = models.CharField(
+        max_length=50,
+        blank=True,
+        default="",
+        help_text="e.g. S1, S2, S3, S4, S5, S6, S7, S8, S1&S2"
+    )
+    title = models.CharField(
+        max_length=300,
+        help_text="Display title for the document"
+    )
+    file = models.FileField(upload_to="CurriculumDocuments")
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Lower numbers appear first"
+    )
+
+    class Meta:
+        verbose_name = "Curriculum & Syllabus Document"
+        verbose_name_plural = "Curriculum & Syllabus Documents"
+        ordering = ["department", "syllabus_type", "program", "order", "semester"]
+
+    def __str__(self):
+        parts = [self.department]
+        if self.syllabus_type:
+            parts.append(self.get_syllabus_type_display())
+        if self.program:
+            parts.append(self.program)
+        if self.semester:
+            parts.append(self.semester)
+        parts.append(self.title)
+        return " — ".join(parts)

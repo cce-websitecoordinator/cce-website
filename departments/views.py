@@ -61,6 +61,9 @@ class Context:
         self.semin = None
         self.handouts = None
         self.autonomous_curriculum = None
+        self.curriculum_docs_ktu = None
+        self.curriculum_docs_autonomous = None
+        self.autonomous_programs = None
         self.labs = None
         self.events = None
         self.achivements = None
@@ -129,6 +132,22 @@ class Context:
                     .values_list("semester", flat=True)
                     .distinct()
                 )
+                # New unified curriculum documents
+                self.curriculum_docs_ktu = CurriculumDocument.objects.filter(
+                    department=dep, syllabus_type='ktu'
+                )
+                self.curriculum_docs_autonomous = CurriculumDocument.objects.filter(
+                    department=dep, syllabus_type='autonomous'
+                )
+                # Get distinct programs for autonomous docs (for dynamic tabs)
+                self.autonomous_programs = (
+                    CurriculumDocument.objects.filter(
+                        department=dep, syllabus_type='autonomous'
+                    )
+                    .values_list("program", flat=True)
+                    .distinct()
+                    .order_by("program")
+                )
             case "professionalBodies":
                 self.professional_bodies = ProfessionalBodies.objects.filter(
                     department=dep
@@ -181,6 +200,9 @@ class Context:
             "syllabus": self.syllabus,
             "semesters": self.semesters,
             "autonomous_curriculum": self.autonomous_curriculum,
+            "curriculum_docs_ktu": self.curriculum_docs_ktu,
+            "curriculum_docs_autonomous": self.curriculum_docs_autonomous,
+            "autonomous_programs": self.autonomous_programs,
             "handouts": self.handouts,
             "semin": self.semin,
             "labs": self.labs,

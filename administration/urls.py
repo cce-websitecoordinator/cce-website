@@ -37,6 +37,7 @@ urlpatterns = [
      path('decennial-scholarship/', views.decennial_scholarship_page, name='decennial_scholarship'),
      path('policies/', views.policies_page, name='policies'),
      path('autonomous-regulations/', views.autonomous_regulations_page, name='autonomous_regulations'),
+     path('ugc-curriculum/', views.ugc_curriculum_page, name='ugc_curriculum'),
 
 ]
 

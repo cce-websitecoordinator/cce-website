@@ -1,265 +1,157 @@
-{% extends 'base.html' %} {% load static %} {% block title %} About - {{title}}
+{% extends 'base.html' %} {% load static %} {% block title %} Curriculum & Syllabus - {{title}}
 {% endblock title %} {% block head %} 
 <style>
-  /* Simple transition for the tabs */
   .tab-content {
     display: none;
-    animation: fadeEffect 1s;
+    animation: fadeEffect 0.4s ease-in;
   }
   .tab-content.active {
     display: block;
   }
   @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {opacity: 0; transform: translateY(8px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .tab-btn.active-tab {
+    border-color: #28AAE1;
+    color: #28AAE1;
+    background-color: #f0f9ff;
   }
 </style>
 {% endblock head %} {% block body %}
 {%include 'Departments/Hero.html' %}
 
 <section class="md:px-24 pt-24 px-6" id="content">
-  <h3 class="text-3xl font-semibold text-center mt-11">About</h3>
-  <p class="text-center text-sm mt-4">
+  <h3 class="text-3xl font-semibold text-center mt-11">Curriculum & Syllabus</h3>
+  <p class="text-center text-sm mt-4 text-gray-600">
     {{about.about}}
   </p>
 
   <div class="flex gap-10 md:flex-row flex-col">
     <div class="col-span-1">
       <h2 class="font-semibold text-2xl px-4">Departments</h2>
-      <p class="px-4 text-gray-400">Home / Academics / Department / About</p>
+      <p class="px-4 text-gray-400">Home / Academics / Department / Curriculum & Syllabus</p>
       {% include 'Departments/Sidebar.html' %}
     </div>
 
     <div class="col-span-2 w-full mt-11 pt-6">
-      
-      {% if autonomous_curriculum %}
-      <div class="mb-10">
-        <button onclick="toggleAutonomous()" class="w-full md:w-auto px-6 py-3 bg-[#28AAE1] text-white font-bold rounded-lg shadow-md hover:bg-[#1c8bbd] transition flex items-center justify-between gap-2">
-          <span>Autonomous Curriculum</span>
-          <span id="auto-icon" class="material-symbols-outlined">expand_more</span>
-        </button>
 
-        <div id="autonomous-container" class="hidden mt-6 border rounded-lg p-6 bg-gray-50 shadow-inner">
-          
-          <div class="flex border-b border-gray-300 mb-6 flex-wrap">
-            {% if dep != 'ECE' %}
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none active-tab" onclick="openTab(event, 'BTech')">
-              {% if dep == 'CSE' %}B.Tech (Computer Science & Engineering){% else %}B.Tech{% endif %}
-            </button>
-            {% endif %}
-            {% if dep == 'CSE' %}
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_DS')">
-              B.Tech (Data Science)
-            </button>
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_CSBS')">
-              B.Tech (CSBS)
-            </button>
-            {% endif %}
-            {% if dep == 'ECE' %}
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none active-tab" onclick="openTab(event, 'BTech_EC')">
-              B.Tech (EC)
-            </button>
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'BTech_VLSI')">
-              B.Tech (VLSI)
-            </button>
-            {% else %}
-            <button class="tab-link px-4 py-2 text-gray-600 font-semibold border-b-2 border-transparent hover:text-[#28AAE1] focus:outline-none" onclick="openTab(event, 'MTech')">
-              M.Tech
-            </button>
-            {% endif %}
-          </div>
+      <!-- ═══════════════════════════════════════════════ -->
+      <!-- AUTONOMOUS CURRICULUM (Dynamic Tabs)           -->
+      <!-- ═══════════════════════════════════════════════ -->
+      {% if autonomous_programs %}
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#28AAE1]">school</span>
+          Autonomous Curriculum
+        </h3>
 
-          {% if dep != 'ECE' %}
-          <div id="BTech" class="tab-content active">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.btech_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.btech_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.btech_s1_syllabus and not autonomous_curriculum.btech_s2_syllabus %}
-              <p class="text-gray-500 italic">No B.Tech documents available yet.</p>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          {% if dep == 'CSE' %}
-          <div id="BTech_DS" class="tab-content">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.ds_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.ds_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.ds_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.ds_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.ds_s1_syllabus and not autonomous_curriculum.ds_s2_syllabus %}
-              <p class="text-gray-500 italic">No B.Tech (Data Science) documents available yet.</p>
-            {% endif %}
-          </div>
-
-          <div id="BTech_CSBS" class="tab-content">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.bs_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.bs_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.bs_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.bs_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.bs_s1_syllabus and not autonomous_curriculum.bs_s2_syllabus %}
-              <p class="text-gray-500 italic">No B.Tech (CSBS) documents available yet.</p>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          {% if dep == 'ECE' %}
-          <div id="BTech_EC" class="tab-content active">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.btech_ec_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_ec_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.btech_ec_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_ec_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.btech_ec_s1_syllabus and not autonomous_curriculum.btech_ec_s2_syllabus %}
-              <p class="text-gray-500 italic">No B.Tech (EC) documents available yet.</p>
-            {% endif %}
-          </div>
-
-          <div id="BTech_VLSI" class="tab-content">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.btech_vlsi_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_vlsi_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.btech_vlsi_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.btech_vlsi_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.btech_vlsi_s1_syllabus and not autonomous_curriculum.btech_vlsi_s2_syllabus %}
-              <p class="text-gray-500 italic">No B.Tech (VLSI) documents available yet.</p>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          {% if dep != 'ECE' %}
-          <div id="MTech" class="tab-content">
-            <div class="grid md:grid-cols-2 gap-6">
-              {% if autonomous_curriculum.mtech_s1_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S1 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.mtech_s1_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-              
-              {% if autonomous_curriculum.mtech_s2_syllabus %}
-              <div class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
-                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
-                <h4 class="font-semibold mb-2">S2 Curriculum</h4>
-                <a href="{{ autonomous_curriculum.mtech_s2_syllabus.url }}" download class="text-sm bg-[#007FFF] text-white px-4 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700">
-                  Download <span class="material-symbols-outlined text-sm">download</span>
-                </a>
-              </div>
-              {% endif %}
-            </div>
-            {% if not autonomous_curriculum.mtech_s1_syllabus and not autonomous_curriculum.mtech_s2_syllabus %}
-              <p class="text-gray-500 italic">No M.Tech documents available yet.</p>
-            {% endif %}
-          </div>
-          {% endif %}
-
+        <!-- Tab buttons — generated dynamically from programs -->
+        <div class="flex border-b border-gray-300 mb-6 flex-wrap gap-1">
+          {% for program in autonomous_programs %}
+          <button 
+            class="tab-btn px-4 py-2 text-sm font-semibold border-b-2 border-transparent text-gray-600 hover:text-[#28AAE1] focus:outline-none transition {% if forloop.first %}active-tab{% endif %}"
+            onclick="openProgramTab(event, 'auto-tab-{{ forloop.counter }}')"
+          >
+            {{ program }}
+          </button>
+          {% endfor %}
         </div>
-      </div>
-      {% endif %}
-      <div class="flex flex-wrap gap-10">
-        {% for item in syllabus  %}
-        <div class="min-w-[300px] h-[300px] shadow-xl rounded-md bg-white">
-          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> 
-            <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">picture_as_pdf</span>
+
+        <!-- Tab contents — one per program -->
+        {% for program in autonomous_programs %}
+        <div id="auto-tab-{{ forloop.counter }}" class="tab-content {% if forloop.first %}active{% endif %}">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for doc in curriculum_docs_autonomous %}
+              {% if doc.program == program %}
+              <div class="bg-white border border-gray-100 p-5 shadow-md rounded-xl flex flex-col items-center text-center hover:shadow-lg transition">
+                <span class="material-symbols-outlined text-5xl text-[#BA1A1A] mb-3">picture_as_pdf</span>
+                <h4 class="font-semibold text-gray-800 mb-1">{{ doc.title }}</h4>
+                {% if doc.semester %}
+                <span class="text-xs text-gray-500 mb-3">{{ doc.semester }}</span>
+                {% endif %}
+                <a href="{{ doc.file.url }}" download 
+                   class="mt-auto text-sm bg-[#007FFF] text-white px-5 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700 transition">
+                  Download <span class="material-symbols-outlined text-sm">download</span>
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
           </div>
-          <h3 class="mx-4 mt-2 font-semibold">{{item.title}}</h3>
-          <a href="{{item.file.url}}" download class="mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center hover:bg-blue-700 transition">
-            Download <span class="material-symbols-outlined ml-2">download</span>
-          </a>
         </div>
         {% endfor %}
       </div>
-      
-     </div>
+      {% endif %}
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!-- KTU SYLLABUS DOCUMENTS                          -->
+      <!-- ═══════════════════════════════════════════════ -->
+      {% if curriculum_docs_ktu %}
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#28AAE1]">menu_book</span>
+          KTU Syllabus
+        </h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for doc in curriculum_docs_ktu %}
+          <div class="bg-white border border-gray-100 p-5 shadow-md rounded-xl flex flex-col items-center text-center hover:shadow-lg transition">
+            <span class="material-symbols-outlined text-5xl text-[#BA1A1A] mb-3">picture_as_pdf</span>
+            <h4 class="font-semibold text-gray-800 mb-1">{{ doc.title }}</h4>
+            {% if doc.program %}
+            <span class="text-xs text-gray-500">{{ doc.program }}</span>
+            {% endif %}
+            {% if doc.semester %}
+            <span class="text-xs text-gray-500 mb-3">{{ doc.semester }}</span>
+            {% endif %}
+            <a href="{{ doc.file.url }}" download 
+               class="mt-auto text-sm bg-[#007FFF] text-white px-5 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700 transition">
+              Download <span class="material-symbols-outlined text-sm">download</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!-- LEGACY: Old SyllabusPDFS (fallback)             -->
+      <!-- ═══════════════════════════════════════════════ -->
+      {% if syllabus and not curriculum_docs_ktu %}
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#28AAE1]">menu_book</span>
+          Syllabus Documents
+        </h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for item in syllabus %}
+          <div class="bg-white border border-gray-100 p-5 shadow-md rounded-xl flex flex-col items-center text-center hover:shadow-lg transition">
+            <span class="material-symbols-outlined text-5xl text-[#BA1A1A] mb-3">picture_as_pdf</span>
+            <h4 class="font-semibold text-gray-800 mb-1">{{ item.title }}</h4>
+            <a href="{{ item.file.url }}" download 
+               class="mt-auto text-sm bg-[#007FFF] text-white px-5 py-2 rounded-full flex items-center gap-1 hover:bg-blue-700 transition">
+              Download <span class="material-symbols-outlined text-sm">download</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Empty state -->
+      {% if not autonomous_programs and not curriculum_docs_ktu and not syllabus and not semin %}
+      <div class="text-center py-16 text-gray-400">
+        <span class="material-symbols-outlined text-6xl mb-4">folder_off</span>
+        <p class="text-lg">No curriculum or syllabus documents available yet.</p>
+      </div>
+      {% endif %}
+
+    </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HANDOUTS TABLE                                  -->
+<!-- ═══════════════════════════════════════════════ -->
 {% if semin %}
 <section class="md:px-24 px-7 mt-11">
   <div class="flex md:flex-row flex-col gap-10">
@@ -312,51 +204,24 @@
 
 {% block script %}
 <script>
-  function toggleAutonomous() {
-    const container = document.getElementById('autonomous-container');
-    const icon = document.getElementById('auto-icon');
-    
-    if (container.classList.contains('hidden')) {
-      container.classList.remove('hidden');
-      icon.innerText = "expand_less";
-    } else {
-      container.classList.add('hidden');
-      icon.innerText = "expand_more";
+  function openProgramTab(evt, tabId) {
+    // Hide all tab contents
+    var tabContents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < tabContents.length; i++) {
+      tabContents[i].classList.remove("active");
     }
+
+    // Remove active style from all tab buttons
+    var tabBtns = document.getElementsByClassName("tab-btn");
+    for (var i = 0; i < tabBtns.length; i++) {
+      tabBtns[i].classList.remove("active-tab");
+    }
+
+    // Show selected tab content
+    document.getElementById(tabId).classList.add("active");
+
+    // Activate clicked button
+    evt.currentTarget.classList.add("active-tab");
   }
-
-  function openTab(evt, tabName) {
-    // 1. Hide all tab contents
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].classList.remove("active");
-    }
-
-    // 2. Remove "active" visual style from all buttons
-    tablinks = document.getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].classList.remove("border-[#28AAE1]", "text-[#28AAE1]");
-      tablinks[i].classList.add("border-transparent", "text-gray-600");
-    }
-
-    // 3. Show current tab content
-    document.getElementById(tabName).classList.add("active");
-
-    // 4. Add "active" visual style to clicked button
-    evt.currentTarget.classList.remove("border-transparent", "text-gray-600");
-    evt.currentTarget.classList.add("border-[#28AAE1]", "text-[#28AAE1]");
-  }
-  
-  // Initialize the first tab as active styling manually if needed, 
-  // though HTML class 'active-tab' handles the initial look locally.
-  document.addEventListener("DOMContentLoaded", function() {
-      // Ensure visual state matches the default "active" class
-      const defaultTab = document.querySelector('.tab-link.active-tab');
-      if(defaultTab) {
-          defaultTab.classList.remove("border-transparent", "text-gray-600");
-          defaultTab.classList.add("border-[#28AAE1]", "text-[#28AAE1]");
-      }
-  });
 </script>
 {% endblock script %}

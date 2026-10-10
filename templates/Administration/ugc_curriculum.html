@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Curriculum & Syllabus — UGC{% endblock title %}
+{% block head %}
+<style>
+  .dept-section {
+    scroll-margin-top: 100px;
+  }
+  .dept-tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in;
+  }
+  .dept-tab-content.active {
+    display: block;
+  }
+  .dept-tab-btn.active-tab {
+    border-color: #28AAE1;
+    color: #28AAE1;
+    background-color: #f0f9ff;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(8px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
+<main>
+  {% include 'components/Hero_section.html' %}
+
+  <section class="md:px-24 pt-24 px-6 py-12 min-h-[90vh] bg-white" id="content">
+
+    <!-- Page Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
+      Curriculum & Syllabus
+    </h2>
+    <p class="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
+      Browse the curriculum and syllabus documents for all departments. Documents are organized by department and type (KTU / Autonomous).
+    </p>
+
+    <!-- Quick Navigation -->
+    {% if departments_data %}
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      {% for dept in departments_data %}
+      <a href="#dept-{{ dept.code }}" 
+         class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-[#28AAE1] hover:text-white transition">
+        {{ dept.code }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Department Sections -->
+    {% for dept in departments_data %}
+    <div id="dept-{{ dept.code }}" class="dept-section mb-16">
+      
+      <!-- Department Header -->
+      <div class="flex items-center gap-3 mb-6 pb-3 border-b-2 border-[#28AAE1]">
+        <div class="p-2 bg-[#28AAE1] text-white rounded-lg">
+          <span class="material-symbols-outlined text-2xl">apartment</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800">{{ dept.name }}</h3>
+          <span class="text-sm text-gray-500">Department of {{ dept.name }}</span>
+        </div>
+        <a href="{% url 'Department' dept.code 'curriculum_and_syllabus' %}" 
+           class="ml-auto text-sm text-[#007FFF] hover:underline flex items-center gap-1">
+          View Department Page <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Autonomous Syllabus -->
+      {% if dept.autonomous_programs %}
+      <div class="mb-8">
+        <h4 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#28AAE1]">school</span>
+          Autonomous Curriculum
+        </h4>
+
+        <!-- Program Tabs -->
+        <div class="flex border-b border-gray-200 mb-4 flex-wrap gap-1">
+          {% for program in dept.autonomous_programs %}
+          <button 
+            class="dept-tab-btn px-3 py-2 text-xs font-semibold border-b-2 border-transparent text-gray-500 hover:text-[#28AAE1] focus:outline-none transition {% if forloop.first %}active-tab{% endif %}"
+            onclick="openDeptTab(event, 'dept-{{ dept.code }}-auto-{{ forloop.counter }}')"
+          >
+            {{ program }}
+          </button>
+          {% endfor %}
+        </div>
+
+        {% for program in dept.autonomous_programs %}
+        <div id="dept-{{ dept.code }}-auto-{{ forloop.counter }}" class="dept-tab-content {% if forloop.first %}active{% endif %}">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {% for doc in dept.autonomous_docs %}
+              {% if doc.program == program %}
+              <div class="bg-white border border-gray-100 p-4 shadow-sm rounded-xl flex flex-col items-center text-center hover:shadow-md transition">
+                <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+                <h5 class="font-semibold text-sm text-gray-800 mb-1">{{ doc.title }}</h5>
+                {% if doc.semester %}
+                <span class="text-xs text-gray-400 mb-2">{{ doc.semester }}</span>
+                {% endif %}
+                <a href="{{ doc.file.url }}" download 
+                   class="mt-auto text-xs bg-[#007FFF] text-white px-4 py-1.5 rounded-full flex items-center gap-1 hover:bg-blue-700 transition">
+                  Download <span class="material-symbols-outlined text-xs">download</span>
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- KTU Syllabus -->
+      {% if dept.ktu_docs %}
+      <div class="mb-4">
+        <h4 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#28AAE1]">menu_book</span>
+          KTU Syllabus
+        </h4>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {% for doc in dept.ktu_docs %}
+          <div class="bg-white border border-gray-100 p-4 shadow-sm rounded-xl flex flex-col items-center text-center hover:shadow-md transition">
+            <span class="material-symbols-outlined text-4xl text-[#BA1A1A] mb-2">picture_as_pdf</span>
+            <h5 class="font-semibold text-sm text-gray-800 mb-1">{{ doc.title }}</h5>
+            {% if doc.program %}
+            <span class="text-xs text-gray-400">{{ doc.program }}</span>
+            {% endif %}
+            {% if doc.semester %}
+            <span class="text-xs text-gray-400 mb-2">{{ doc.semester }}</span>
+            {% endif %}
+            <a href="{{ doc.file.url }}" download 
+               class="mt-auto text-xs bg-[#007FFF] text-white px-4 py-1.5 rounded-full flex items-center gap-1 hover:bg-blue-700 transition">
+              Download <span class="material-symbols-outlined text-xs">download</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+    {% empty %}
+    <div class="text-center py-16 text-gray-400">
+      <span class="material-symbols-outlined text-6xl mb-4">folder_off</span>
+      <p class="text-lg">No curriculum or syllabus documents have been uploaded yet.</p>
+    </div>
+    {% endfor %}
+
+  </section>
+</main>
+{% endblock %}
+
+{% block script %}
+<script>
+  function openDeptTab(evt, tabId) {
+    // Find the parent container for this dept's tabs
+    var parentSection = evt.currentTarget.closest('.dept-section');
+    
+    // Hide all tab contents within this department
+    var tabContents = parentSection.getElementsByClassName("dept-tab-content");
+    for (var i = 0; i < tabContents.length; i++) {
+      tabContents[i].classList.remove("active");
+    }
+
+    // Remove active from all buttons within this department's tab bar
+    var tabBar = evt.currentTarget.parentElement;
+    var tabBtns = tabBar.getElementsByClassName("dept-tab-btn");
+    for (var i = 0; i < tabBtns.length; i++) {
+      tabBtns[i].classList.remove("active-tab");
+    }
+
+    // Show selected tab
+    document.getElementById(tabId).classList.add("active");
+    evt.currentTarget.classList.add("active-tab");
+  }
+</script>
+{% endblock script %}
