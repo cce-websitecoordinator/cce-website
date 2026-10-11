@@ -17,7 +17,7 @@ def getDepartment(department):
         case "CSE":
             return "Computer Science and Engineering"
         case "MCA":
-            return "Master of Computer Applications"
+            return "Computer Applications"
         case "ECE":
             return "Electronics and Communication Engineering"
         case "EEE":

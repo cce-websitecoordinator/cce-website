@@ -36,16 +36,20 @@ Administration {%endblock title %} {% block head %} {% endblock head %} {% block
     </div>
 
 
-    <div class="w-full md:flex justify-center items-center my-11 gap-10">
+    <div class="w-full flex flex-wrap justify-center items-center my-11 gap-6">
       <a href="{% url 'exam_circulars' %}" class="bg-[#007FFF] text-white font-bold px-4 p-2 rounded-xl flex items-center hover:bg-[#005bb5] transition-colors">
         <span class="material-symbols-outlined mx-2">campaign</span>
         Exam Circulars
       </a>
-      <a href="https://drive.google.com/file/d/1gOTEMll6QMbboormSD9RP_yTzhOo7r9o/view?usp=sharing" class="border-[1px] border-[#007FFF] text-[#007FFF]  px-4 p-2 rounded-xl flex items-center"><span class="material-symbols-outlined mx-2">
+      <a href="{% static 'pdfs/EXAMINATION MANUAL 2025 REGULATIONS.pdf' %}" target="_blank" class="border-[1px] border-[#007FFF] text-[#007FFF] px-4 p-2 rounded-xl flex items-center hover:bg-blue-50 transition-colors">
+        <span class="material-symbols-outlined mx-2">menu_book</span>
+        Examination Manual (2025 Regulations)
+      </a>
+      <a href="https://drive.google.com/file/d/1gOTEMll6QMbboormSD9RP_yTzhOo7r9o/view?usp=sharing" target="_blank" class="border-[1px] border-[#007FFF] text-[#007FFF] px-4 p-2 rounded-xl flex items-center hover:bg-blue-50 transition-colors"><span class="material-symbols-outlined mx-2">
         description
         </span>
         Rules And Regulation</a>
-      <a href="{% url 'grivence_redressal_index'%}" class="bg-[#007FFF] text-white font-bold p-2 rounded-xl">Grievance Redressal for Exams</a>
+      <a href="{% url 'grivence_redressal_index'%}" class="bg-[#007FFF] text-white font-bold px-4 p-2 rounded-xl flex items-center hover:bg-[#005bb5] transition-colors">Grievance Redressal for Exams</a>
     </div>
   </section>
 </main>
