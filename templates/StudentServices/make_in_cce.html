@@ -10,21 +10,21 @@
       <p class="text-gray-600 mt-4 text-lg">Showcasing the innovative creations and projects by our students and faculty.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
       {% for item in items %}
-      <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group border border-gray-100">
-        <div class="relative w-full h-72 overflow-hidden bg-gray-50 flex items-center justify-center">
-          {% if item.image %}
-          <img src="{{item.image.url}}" alt="Make in CCE" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
-          {% else %}
-          <div class="w-full h-full flex items-center justify-center text-gray-300">
-            <span class="material-symbols-outlined text-5xl">image</span>
-          </div>
-          {% endif %}
+      <div class="break-inside-avoid bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group border border-gray-100">
+        {% if item.image %}
+        <div class="w-full overflow-hidden bg-gray-50 cursor-pointer" onclick="openLightbox('{{item.image.url}}')">
+          <img src="{{item.image.url}}" alt="Make in CCE" class="w-full h-auto object-contain group-hover:scale-[1.03] transition-transform duration-500 ease-in-out" loading="lazy" />
         </div>
+        {% else %}
+        <div class="w-full py-20 flex items-center justify-center text-gray-300 bg-gray-50">
+          <span class="material-symbols-outlined text-5xl">image</span>
+        </div>
+        {% endif %}
         
         {% if item.description %}
-        <div class="p-6 flex-grow border-t border-gray-100 bg-white">
+        <div class="p-6 border-t border-gray-100 bg-white">
           <p class="text-gray-700 text-justify leading-relaxed">
             {{ item.description|safe|linebreaks }}
           </p>
@@ -32,12 +32,40 @@
         {% endif %}
       </div>
       {% empty %}
-      <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-20 text-gray-400">
+      <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-20 text-gray-400">
         <span class="material-symbols-outlined text-6xl mb-4 block">rocket_launch</span>
         <h3 class="text-2xl font-medium">Exciting projects are on the way!</h3>
       </div>
       {% endfor %}
     </div>
   </section>
+
+  <!-- Lightbox Modal for Full-Size Image Viewing -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white bg-white/20 hover:bg-white/40 rounded-full w-10 h-10 flex items-center justify-center transition-colors z-10" aria-label="Close">
+      <span class="material-symbols-outlined text-2xl">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="Full size image" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()" />
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 
 {% endblock body %}
