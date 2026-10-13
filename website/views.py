@@ -266,6 +266,19 @@ def research_page(request, slug):
             return render(
                 request, "researchAndConsultancy/research_guides.html", context
             )
+        case "patents":
+            from itertools import groupby
+            patents_qs = Patent.objects.all().order_by("-academic_year", "-date_of_publishing")
+            grouped = []
+            for year, items in groupby(patents_qs, key=lambda p: p.academic_year):
+                grouped.append((year, list(items)))
+            context = {
+                **context_temp,
+                "hero_title": "Patents Published",
+                "grouped_patents": grouped,
+                "patents": patents_qs,
+            }
+            return render(request, "researchAndConsultancy/patents.html", context)
         case other:
             raise Http404("Page Kanumanilla")
 

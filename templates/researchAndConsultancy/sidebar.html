@@ -40,6 +40,10 @@
             <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty Pursuing PHD</span>
             {%endifequal%}
 
+            {%ifequal 'patents' slug%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Patents Published</span>
+            {%endifequal%}
+
            
         </div>
     </div>
@@ -113,6 +117,14 @@
             <a href="{% url 'home_research'  'awarded' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
                 <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Faculty with PHD </span>
+            </a>
+        </div>
+
+        <div
+            class="bg-[#F9F9F9] p-3 rounded-[16px] group {%if 'patents' in slug%}border-[#007FFF] border-2{%endif%} flex items-center justify-start pl-9">
+            <a href="{% url 'home_research'  'patents' %}"
+                class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
+                <i class="material-icons" class="group-hover:text-[#007FFF]">info</i><span>Patents Published</span>
             </a>
         </div>
         
