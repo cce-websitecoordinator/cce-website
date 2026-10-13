@@ -32,6 +32,18 @@ admin.site.register(AwardedPHD)
 admin.site.register(NirfPDFs)
 admin.site.register(Admission)
 
+
+@admin.register(Patent)
+class PatentAdmin(admin.ModelAdmin):
+    list_display = (
+        "title", "name_of_faculty", "department", "patent_type",
+        "status", "academic_year", "date_of_filing",
+    )
+    list_filter = ("department", "academic_year", "patent_type", "status")
+    search_fields = ("title", "name_of_faculty", "application_no")
+    ordering = ("-academic_year", "-date_of_publishing")
+
+
 class HomeAnnouncementLinkInline(admin.TabularInline):
     model = HomeAnnouncementLink
     extra = 1

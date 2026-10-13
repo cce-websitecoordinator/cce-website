@@ -387,6 +387,39 @@ class AcademicPartnerShip(models.Model):
         return self.name
 
 
+class Patent(models.Model):
+    PATENT_TYPE_CHOICES = (
+        ("Indian", "Indian"),
+        ("UK", "UK"),
+    )
+    STATUS_CHOICES = (
+        ("Published", "Published"),
+        ("Granted", "Granted"),
+    )
+
+    name_of_faculty = models.CharField("Name of Faculty", max_length=300)
+    title = models.CharField("Title of Patent", max_length=500)
+    patent_type = models.CharField(
+        "Type of Patent", max_length=20, choices=PATENT_TYPE_CHOICES, default="Indian"
+    )
+    application_no = models.CharField("Application No", max_length=100)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Published")
+    date_of_filing = models.DateField("Date of Filing")
+    date_of_publishing = models.DateField("Date of Publishing / Grant")
+    department = models.CharField(max_length=200, choices=DEPARTMENTS, default="None")
+    academic_year = models.CharField(
+        "Academic Year", max_length=20, choices=ACADEMIC_YEARS, default="none"
+    )
+
+    def __str__(self):
+        return f"{self.title} — {self.name_of_faculty}"
+
+    class Meta:
+        verbose_name = "Patent"
+        verbose_name_plural = "Patents Published"
+        ordering = ["-academic_year", "-date_of_publishing"]
+
+
 class FacultyStudentPublications(models.Model):
     title = models.CharField(max_length=500)
     name = models.CharField(("Name Of Author"), max_length=300)

@@ -694,6 +694,21 @@ def research_page(request, department, slug):
 
             return render(request, "Departments/research/research_guides.html", context)
 
+        case "patents":
+            from itertools import groupby
+            patents_qs = website.models.Patent.objects.filter(
+                department=department
+            ).order_by("-academic_year", "-date_of_publishing")
+            # Group patents by academic_year for display
+            grouped = []
+            for year, items in groupby(patents_qs, key=lambda p: p.academic_year):
+                grouped.append((year, list(items)))
+            context = {
+                **context_temp,
+                "grouped_patents": grouped,
+            }
+            return render(request, "Departments/research/patents.html", context)
+
         case other:
             raise Http404("Page Kanumanilla")
 def ProfessionalBodie(request, slug):
