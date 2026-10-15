@@ -57,6 +57,10 @@ class POES(models.Model):
 
     class Meta:
         verbose_name_plural = "POE"
+        ordering = ["id"]
+
+    def __str__(self):
+        return f"{self.department} - {self.data[:50]}"
 
 
 class POS(models.Model):
@@ -65,6 +69,10 @@ class POS(models.Model):
 
     class Meta:
         verbose_name_plural = "PO"
+        ordering = ["id"]
+
+    def __str__(self):
+        return f"{self.department} - {self.data[:50]}"
 
 
 class WKS(models.Model):
@@ -73,6 +81,10 @@ class WKS(models.Model):
 
     class Meta:
         verbose_name_plural = "WK"
+        ordering = ["id"]
+
+    def __str__(self):
+        return f"{self.department} - {self.data[:50]}"
 
 
 class PSOS(models.Model):
@@ -81,6 +93,10 @@ class PSOS(models.Model):
 
     class Meta:
         verbose_name_plural = "PSO"
+        ordering = ["id"]
+
+    def __str__(self):
+        return f"{self.department} - {self.data[:50]}"
 
 
 class Vission(models.Model):

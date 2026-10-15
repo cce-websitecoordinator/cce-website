@@ -61,10 +61,30 @@ class CurriculumDocumentForm(forms.ModelForm):
 
 # Register your models here.
 admin.site.register(DepHero)
-admin.site.register(POES)
-admin.site.register(POS)
-admin.site.register(WKS)
-admin.site.register(PSOS)
+
+@admin.register(POES)
+class POESAdmin(admin.ModelAdmin):
+    list_display = ("id", "department", "data")
+    list_filter = ("department",)
+    ordering = ("id",)
+
+@admin.register(POS)
+class POSAdmin(admin.ModelAdmin):
+    list_display = ("id", "department", "data")
+    list_filter = ("department",)
+    ordering = ("id",)
+
+@admin.register(WKS)
+class WKSAdmin(admin.ModelAdmin):
+    list_display = ("id", "department", "data")
+    list_filter = ("department",)
+    ordering = ("id",)
+
+@admin.register(PSOS)
+class PSOSAdmin(admin.ModelAdmin):
+    list_display = ("id", "department", "data")
+    list_filter = ("department",)
+    ordering = ("id",)
 admin.site.register(Vission)
 admin.site.register(Mission)
 admin.site.register(DepUpdates)

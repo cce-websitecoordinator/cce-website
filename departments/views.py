@@ -6,8 +6,62 @@ from .models import *
 import website.models
 from .models import Achivements as DepAchievements
 from studentservices.models import Clubs,ArtsEvents,SportsEvents
+import re
 from administration.models import MeetingMinutes
 # Create your views here.
+
+
+def sort_program_outcomes(pos_queryset):
+    """
+    Sort Program Outcomes (POs) into canonical order (PO-1 through PO-11/12),
+    handling explicit PO numbers (e.g. 'PO-1:', 'PO1:', '1.') or matching
+    standard NBA/AICTE graduate attribute headings (e.g. 'Engineering Knowledge',
+    'Problem Analysis', etc.), falling back to upload order (id).
+    """
+    canonical_indices = {
+        "engineering knowledge": 1,
+        "problem analysis": 2,
+        "design/development of solutions": 3,
+        "design and development of solutions": 3,
+        "design / development of solutions": 3,
+        "conduct investigations of complex problems": 4,
+        "conduct investigations": 4,
+        "engineering tool usage": 5,
+        "modern tool usage": 5,
+        "the engineer and the world": 6,
+        "the engineer and society": 6,
+        "environment and sustainability": 6.5,
+        "ethics": 7,
+        "individual and collaborative team work": 8,
+        "individual and team work": 8,
+        "individual & collaborative team work": 8,
+        "communication": 9,
+        "project management and finance": 10,
+        "project management & finance": 10,
+        "life-long learning": 11,
+        "lifelong learning": 11,
+    }
+
+    def key_func(po):
+        text = (po.data if hasattr(po, "data") else str(po)).strip()
+        match = re.match(r"^(?:PO\s*[-_]?\s*(\d+)|(\d+)\s*[\.:\)-])", text, re.IGNORECASE)
+        if match:
+            num = int(match.group(1) or match.group(2))
+            return (num, getattr(po, "id", 0) or 0)
+
+        text_lower = text.lower()
+        for name, idx in canonical_indices.items():
+            if text_lower.startswith(name):
+                return (idx, getattr(po, "id", 0) or 0)
+
+        return (999, getattr(po, "id", 0) or 0)
+
+    try:
+        pos_list = list(pos_queryset.order_by("id"))
+    except Exception:
+        pos_list = list(pos_queryset)
+
+    return sorted(pos_list, key=key_func)
 
 
 def getDepartment(department):
@@ -91,12 +145,12 @@ class Context:
         match route:
             case "about":
                 self.vission = Vission.objects.filter(department=dep).first()
-                self.objectives = Objectives.objects.filter(department=dep)
-                self.mission = Mission.objects.filter(department=dep)
-                self.poes = POES.objects.filter(department=dep)
-                self.pos = POS.objects.filter(department=dep)
-                self.wks = WKS.objects.filter(department=dep)
-                self.psos = PSOS.objects.filter(department=dep)
+                self.objectives = Objectives.objects.filter(department=dep).order_by("id")
+                self.mission = Mission.objects.filter(department=dep).order_by("id")
+                self.poes = POES.objects.filter(department=dep).order_by("id")
+                self.pos = sort_program_outcomes(POS.objects.filter(department=dep))
+                self.wks = WKS.objects.filter(department=dep).order_by("id")
+                self.psos = PSOS.objects.filter(department=dep).order_by("id")
                 self.faculties = (
                     Faculty.objects.filter(department=dep)
                     .exclude(role__role="HOD")
