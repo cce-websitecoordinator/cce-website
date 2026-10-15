@@ -728,12 +728,6 @@ def exam_circulars_page(request):
             "link": "/static/pdfs/exam_circulars/MTech_EX3.pdf"
         },
         {
-            "title": "M.Tech Examination Circular - EX4 (PO-1)",
-            "date": "10/12/2025",
-            "ref_no": "CCE/EX4/M.Tech/PO-1",
-            "link": "/static/pdfs/exam_circulars/MTech_EX4-PO-1.pdf"
-        },
-        {
             "title": "M.Tech Examination Circular - EX4",
             "date": "10/12/2025",
             "ref_no": "CCE/EX4/M.Tech",
@@ -763,12 +757,6 @@ def exam_circulars_page(request):
             "date": "28/11/2025",
             "ref_no": "CCE/EX3/301/#2",
             "link": "/static/pdfs/exam_circulars/MBA_EX3-301-2.pdf"
-        },
-        {
-            "title": "MBA S1 Internal Exam Marks",
-            "date": "29/11/2025",
-            "ref_no": "MBA/S1/Internal",
-            "link": "/static/pdfs/exam_circulars/MBA_S1_Internal_Exam_Marks.pdf"
         },
     ]
 

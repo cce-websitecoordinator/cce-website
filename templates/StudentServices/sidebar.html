@@ -22,8 +22,12 @@
             <i class="material-icons" class="group-hover:text-[#007FFF]">diversity_3</i><span>Rules & Regulations</span>
             {%endifequal%}
             
+            {%ifequal 'ieee_journals' route%}
+            <i class="material-icons" class="group-hover:text-[#007FFF]">library_books</i><span>E- resources</span>
+            {%endifequal%}
+            
             {%ifequal 'library_resources' route%}
-            <i class="material-icons" class="group-hover:text-[#007FFF]">library_books</i><span>IEEE Journals</span>
+            <i class="material-icons" class="group-hover:text-[#007FFF]">library_books</i><span>E- resources</span>
             {%endifequal%}
             
             {%ifequal 'digital_library' route%}
@@ -85,7 +89,7 @@
             class="bg-[#F9F9F9] p-3 rounded-[16px] group flex items-center {%if 'ieee_journals' in route%} border-[#007FFF] border-2{%endif%} justify-start pl-9">
             <a href="{% url 'Central_Library' 'ieee_journals' %}"
                 class="space-x-11 text-gray-600 group-hover:text-[#007FFF]   items-center flex">
-                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">library_books</i><span>IEEE Journals</span>
+                <i class="material-icons" class="text-gray group-hover:text-[#007FFF]">library_books</i><span>E- resources</span>
             </a>
         </div> 
         <div
