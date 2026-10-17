@@ -1,32 +1,212 @@
-{% extends 'base.html' %} {% load static %} {% block title %}  Audited Statements {%endblock title %} {% block head %} {% endblock head %} {% block body %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Audited Statements | CCE{% endblock title %}
+
+{% block head %}
+<style>
+  .audited-tab-content {
+    display: none;
+    animation: fadeInTab 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .audited-tab-content.active {
+    display: block;
+  }
+  @keyframes fadeInTab {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .audited-tab-btn.active {
+    background-color: #007FFF !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px 0 rgba(0, 127, 255, 0.35);
+  }
+  .audited-tab-btn.active .tab-icon {
+    color: #ffffff !important;
+  }
+  .audited-tab-btn.active .tab-badge {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
 <main>
   {% include 'components/Hero_section.html' %}
   <section class="md:px-24 pt-24 px-6 py-11" id="content">
-    <h3 class="text-3xl font-semibold text-center mt-11">Audited Statements</h3>
-   
-  
+    <h3 class="text-3xl font-semibold text-center mt-11 text-gray-800">Audited Statements</h3>
+    <p class="text-center text-gray-500 mt-2 mb-8 max-w-xl mx-auto text-sm md:text-base">
+      Access audited balance sheets and financial statements for Christ College of Engineering and Christ Centre for Innovation.
+    </p>
+
     <div class="flex gap-10 md:flex-row flex-col items-start">
-      <div class="col-span-1 flex justify-center items-center flex-col">
+      <div class="col-span-1 flex justify-center items-center flex-col shrink-0">
         {% include 'aboutCCE/documents_sidebar.html' %}
       </div>
-      <div class="col-span-2 gap-10  mt-11 pt-6 flex w-full flex-wrap justify-center">
-        {% for item in data  %}
-        <div class="min-w-[300px] h-[300px] shadow-xl rounded-md">
-          <div class="m-2 h-[60%] bg-[#F3F3F3] flex items-center justify-center"> <span class="material-symbols-outlined text-6xl text-[#BA1A1A]">
-            picture_as_pdf
-            </span></div>
-          <h3 class="mx-4 mt-2 text-center">{{item.name}}</h3>  
-          <a href="{{item.file.url}}" target="_blank" class=" mt-4 rounded-xl text-white bg-[#007FFF] mx-4 justify-center p-2 flex items-center">Open<span class="material-symbols-outlined">
-            download
+
+      <div class="flex-1 w-full mt-4">
+        <!-- Tabs / Folder Navigation -->
+        <div class="flex flex-wrap items-center justify-start gap-3 border-b border-gray-200 pb-4 mb-8">
+          <button
+            type="button"
+            onclick="switchAuditedTab('cce')"
+            id="tab-btn-cce"
+            class="audited-tab-btn active flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-200 shadow-sm bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-[#007FFF]"
+          >
+            <span class="material-symbols-outlined tab-icon text-xl text-[#007FFF]">folder_open</span>
+            <span>Christ College of Engineering</span>
+            <span class="tab-badge text-xs px-2.5 py-0.5 rounded-full font-bold ml-1 bg-gray-200 text-gray-700">
+              {{ cce_data|length }}
             </span>
-            
-            </a>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchAuditedTab('ccil')"
+            id="tab-btn-ccil"
+            class="audited-tab-btn flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-200 shadow-sm bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-[#007FFF]"
+          >
+            <span class="material-symbols-outlined tab-icon text-xl text-gray-500">folder</span>
+            <span>Christ Centre for Innovation</span>
+            <span class="tab-badge text-xs px-2.5 py-0.5 rounded-full font-bold ml-1 bg-gray-200 text-gray-700">
+              {{ ccil_data|length }}
+            </span>
+          </button>
         </div>
-        {% endfor %}
-        
-       </div>
+
+        <!-- Tab 1: Christ College of Engineering -->
+        <div id="tab-content-cce" class="audited-tab-content active">
+          <div class="flex items-center justify-between mb-6">
+            <h4 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#007FFF]">folder_open</span>
+              Christ College of Engineering Statements
+            </h4>
+            <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">
+              {{ cce_data|length }} Document{% if cce_data|length != 1 %}s{% endif %}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
+            {% for item in cce_data %}
+            <div class="bg-white rounded-2xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5 group">
+              <div class="h-44 bg-[#F3F3F3] rounded-xl flex flex-col items-center justify-center p-3 group-hover:bg-red-50/30 transition-colors">
+                <span class="material-symbols-outlined text-6xl text-[#BA1A1A] group-hover:scale-110 transition-transform duration-200">
+                  picture_as_pdf
+                </span>
+                <span class="text-xs font-semibold text-gray-400 mt-2 uppercase tracking-wider">Audited Statement</span>
+              </div>
+              <div class="mt-4 flex-1 flex flex-col justify-between">
+                <h3 class="mx-2 mt-1 text-center font-medium text-gray-800 text-sm line-clamp-2" title="{{ item.name }}">
+                  {{ item.name }}
+                </h3>
+                <a
+                  href="{{ item.file.url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 rounded-xl text-white bg-[#007FFF] hover:bg-blue-600 transition-colors mx-2 justify-center p-2.5 flex items-center gap-2 font-medium text-sm shadow-sm"
+                >
+                  <span>Open</span>
+                  <span class="material-symbols-outlined text-base">download</span>
+                </a>
+              </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-16 text-center text-gray-400">
+              <span class="material-symbols-outlined text-6xl text-gray-300 mb-3 block">folder_off</span>
+              <p class="text-base font-medium">No audited statements found in this folder.</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Tab 2: Christ Centre for Innovation -->
+        <div id="tab-content-ccil" class="audited-tab-content">
+          <div class="flex items-center justify-between mb-6">
+            <h4 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[#007FFF]">folder_open</span>
+              Christ Centre for Innovation Statements
+            </h4>
+            <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">
+              {{ ccil_data|length }} Document{% if ccil_data|length != 1 %}s{% endif %}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
+            {% for item in ccil_data %}
+            <div class="bg-white rounded-2xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col justify-between hover:-translate-y-1.5 group">
+              <div class="h-44 bg-[#F3F3F3] rounded-xl flex flex-col items-center justify-center p-3 group-hover:bg-red-50/30 transition-colors">
+                <span class="material-symbols-outlined text-6xl text-[#BA1A1A] group-hover:scale-110 transition-transform duration-200">
+                  picture_as_pdf
+                </span>
+                <span class="text-xs font-semibold text-gray-400 mt-2 uppercase tracking-wider">Audited Statement</span>
+              </div>
+              <div class="mt-4 flex-1 flex flex-col justify-between">
+                <h3 class="mx-2 mt-1 text-center font-medium text-gray-800 text-sm line-clamp-2" title="{{ item.name }}">
+                  {{ item.name }}
+                </h3>
+                <a
+                  href="{{ item.file.url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 rounded-xl text-white bg-[#007FFF] hover:bg-blue-600 transition-colors mx-2 justify-center p-2.5 flex items-center gap-2 font-medium text-sm shadow-sm"
+                >
+                  <span>Open</span>
+                  <span class="material-symbols-outlined text-base">download</span>
+                </a>
+              </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-16 text-center text-gray-400">
+              <span class="material-symbols-outlined text-6xl text-gray-300 mb-3 block">folder_off</span>
+              <p class="text-base font-medium">No audited statements found in this folder.</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 </main>
+{% endblock body %}
 
- {% endblock %}
+{% block script %}
+<script>
+  function switchAuditedTab(tabId) {
+    var tabs = ['cce', 'ccil'];
+    tabs.forEach(function(id) {
+      var btn = document.getElementById('tab-btn-' + id);
+      var content = document.getElementById('tab-content-' + id);
+      if (btn && content) {
+        var icon = btn.querySelector('.tab-icon');
+        if (id === tabId) {
+          btn.classList.add('active');
+          content.classList.add('active');
+          if (icon) icon.textContent = 'folder_open';
+        } else {
+          btn.classList.remove('active');
+          content.classList.remove('active');
+          if (icon) icon.textContent = 'folder';
+        }
+      }
+    });
+
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, null, '#' + tabId);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var hash = window.location.hash.replace('#', '');
+    if (hash === 'ccil' || hash === 'cce') {
+      switchAuditedTab(hash);
+    }
+  });
+</script>
+{% endblock script %}

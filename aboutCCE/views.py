@@ -213,15 +213,45 @@ def aicte_approvals_page(request):
 
 
 def audited_statements_page(request):
-    data = AuditedStatements.objects.all()
+    all_statements = AuditedStatements.objects.all().order_by("order", "name")
     hero_img = Hero_Image.objects.filter(page="audited_statements").first()
+
+    cce_list = []
+    ccil_list = []
+
+    for item in all_statements:
+        inst = (getattr(item, "institution", "") or "").strip()
+        name_upper = item.name.upper()
+        if inst == "Christ Centre for Innovation" or "AUDITED FS" in name_upper or "CHRIST CENTRE" in name_upper:
+            ccil_list.append(item)
+        else:
+            cce_list.append(item)
+
+    tabs = [
+        {
+            "id": "cce",
+            "name": "Christ College of Engineering",
+            "icon": "school",
+            "data": cce_list,
+        },
+        {
+            "id": "ccil",
+            "name": "Christ Centre for Innovation",
+            "icon": "lightbulb",
+            "data": ccil_list,
+        },
+    ]
+
     return render(
         request,
         "aboutCCE/audited_statements.html",
         context={
             "hero_img": hero_img,
             "hero_title": "Audited Statements",
-            "data": data,
+            "data": all_statements,
+            "tabs": tabs,
+            "cce_data": cce_list,
+            "ccil_data": ccil_list,
             "route": "audited_statements",
         },
     )

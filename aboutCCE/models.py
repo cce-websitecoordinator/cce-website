@@ -91,12 +91,26 @@ class AicteApprovals(models.Model):
         verbose_name_plural = "AICTE Approvals"
 
 class AuditedStatements(models.Model):
+    INSTITUTION_CHOICES = (
+        ("Christ College of Engineering", "Christ College of Engineering"),
+        ("Christ Centre for Innovation", "Christ Centre for Innovation"),
+    )
     name = models.CharField(max_length=100)
     file = models.FileField(upload_to="AuditedStatements")
+    institution = models.CharField(
+        max_length=100,
+        choices=INSTITUTION_CHOICES,
+        default="Christ College of Engineering",
+        help_text="Institution or folder for this statement",
+    )
+    order = models.IntegerField(default=0, help_text="Order in display")
+
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.institution})"
+
     class Meta:
         verbose_name_plural = "Audited Statements"
+        ordering = ["order", "name"]
 
 class CollegeMagazine(models.Model):
     title = models.CharField(max_length=200, default="None")
